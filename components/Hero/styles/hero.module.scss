@@ -1,0 +1,26 @@
+.hero {
+  background-image: url(../../../public/assets/images/main/main-image-mob.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  background-color: #eadeff;
+
+  width: 320px;
+  height: 298px;
+  max-width: 1444px;
+  margin: 0 auto;
+  padding-top: 18px;
+  padding-bottom: 208px;
+
+  text-align: center;
+
+  &Title {
+    font-family: "Roboto Flex", sans-serif;
+    font-size: 36px;
+    font-weight: 800;
+    line-height: calc(46.8 / 36);
+    text-transform: capitalize;
+
+    color: var(#ff8c0c);
+  }
+}
