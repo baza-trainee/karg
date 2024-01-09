@@ -1,6 +1,6 @@
 'use client'
 import { useState } from 'react';
-import styles from '../styles/LanguageMenu.module.scss'
+import styles from '../Localication/styles/LanguageMenu.module.scss'
 
 export const LanguageMenu = () => {
     const languages = ['ukr', 'eng'];
@@ -20,7 +20,9 @@ export const LanguageMenu = () => {
                 {languages
                     .filter(language => language !== selectedLanguage)
                     .map((language) => (
-                        <li className={styles.languageItem} key={language} onClick={() => switchLanguage(language)}>{language}</li>
+                        <li className={styles.languageItem} key={language}
+                            onClick={() => switchLanguage(language)}>{language}
+                        </li>
                     ))}
             </ul>
             <div><img src='/check-mark-icon.png' alt='check mark icon'></img></div>

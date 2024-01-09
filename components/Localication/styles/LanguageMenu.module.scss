@@ -4,14 +4,17 @@
   background-color: #4d396f;
   color: #ffffff;
   font-size: 18px;
+  text-transform: uppercase;
+  max-width: 65px;
   position: relative;
   > .selectedLanguage {
-    padding-left: 10px;
+    padding-left: 9px;
   }
   .languageList {
     position: absolute;
     list-style-type: none;
-    top: 24px;
+    bottom: 0;
+    transform: translateY(100%);
     opacity: 0;
     visibility: hidden;
     &.active {
