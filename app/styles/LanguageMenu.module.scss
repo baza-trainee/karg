@@ -1,0 +1,30 @@
+.languageMenu {
+  display: flex;
+  align-items: center;
+  background-color: #4d396f;
+  color: #ffffff;
+  font-size: 18px;
+  position: relative;
+  > .selectedLanguage {
+    padding-left: 10px;
+  }
+  .languageList {
+    position: absolute;
+    list-style-type: none;
+    top: 24px;
+    opacity: 0;
+    visibility: hidden;
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      background-color: #4d396f;
+      width: 100%;
+      padding: 0 0 5px 10px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+    .languageItem:hover {
+      color: #ffa33c;
+    }
+  }
+}
