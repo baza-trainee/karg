@@ -1,5 +1,6 @@
 "use client";
 
+import SwiperSlider from "../SwiperSlider/swiper-slider";
 import styles from "./styles/mission.module.scss";
 
 const MissionSection = () => {
@@ -26,50 +27,7 @@ const MissionSection = () => {
             <use href="/assets/icons/sprite.svg#icon-arrow-right" />
           </svg>
         </button>
-        <ul className={styles.missionPicList}>
-          <li className={styles.missionPicItem}>
-            <picture>
-              <source
-                srcSet="/assets/images/mission/mission-pic-1.jpg"
-                media="(min-width: 1440px)"
-              />
-              <source srcSet="" media="(max-width: 1439px)" />
-              <img
-                src="/assets/images/mission/mission-pic-1.jpg"
-                alt="дівчина тримає кролика"
-                width={370}
-              />
-            </picture>
-          </li>
-          <li className={styles.missionPicItem}>
-            <picture>
-              <source
-                srcSet="/assets/images/mission/mission-pic-2.jpg"
-                media="(min-width: 1440px)"
-              />
-              <source srcSet="" media="(max-width: 1439px)" />
-              <img
-                src="/assets/images/mission/mission-pic-2.jpg"
-                alt="сірий кіт на руках"
-                width={370}
-              />
-            </picture>
-          </li>
-          <li className={styles.missionPicItem}>
-            <picture>
-              <source
-                srcSet="/assets/images/mission/mission-pic-3.jpg"
-                media="(min-width: 1440px)"
-              />
-              <source srcSet="" media="(max-width: 1439px)" />
-              <img
-                src="/assets/images/mission/mission-pic-3.jpg"
-                alt="хлопець тримає на руках тримає лебедя"
-                width={370}
-              />
-            </picture>
-          </li>
-        </ul>
+        <SwiperSlider />
       </div>
     </section>
   );

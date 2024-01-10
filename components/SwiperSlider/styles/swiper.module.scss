@@ -1,0 +1,24 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+
+  .swiperSlide {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+@media screen and (min-width: 1440px) {
+  .picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+
+  .img {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+}
