@@ -1,0 +1,41 @@
+.accessMenuBlock {
+    display: flex;
+    //max-width: 1440px;
+    height: 145px;
+    padding: 0px, 135px, 0px, 135px;
+    justify-content: center;
+    gap: 30px;
+}
+.accessMenuItem {
+    background-color: #4D396F;
+    width: 270px;
+    border-radius: 20px;
+        & .title {
+            color:#FFFFFF;
+            font-family: 'Manrope'; //add font
+            font-size: 24px;
+            font-weight: 700;
+            line-height: 31.2px;  
+        }
+        & .message {
+            color:#FFFFFF;
+            font-family: 'Manrope';
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 20.8px;    
+        }
+        & .details {
+            color:#FFFFFF;
+            font-family: 'Manrope';
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 20.8px;  
+        }
+        & .iconSrc { //не застосувалось
+            padding: 12px, 0px, 12px, 0px;
+        }
+        
+}
+
+
+
