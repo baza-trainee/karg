@@ -2,8 +2,15 @@
 
 import SwiperSlider from "../SwiperSlider/swiper-slider";
 import styles from "./styles/mission.module.scss";
+import { useState } from "react";
 
 const MissionSection = () => {
+  const [isModalOpen, setModalOpen] = useState(false);
+
+  const handleOnBtnClick = () => {
+    setModalOpen(true);
+  };
+
   return (
     <section className={styles.mission}>
       <div className={styles.container}>
@@ -20,7 +27,7 @@ const MissionSection = () => {
         <button
           className={styles.missionButton}
           type="button"
-          onClick={() => {}}
+          onClick={handleOnBtnClick}
         >
           Детальніше
           <svg className={styles.missionButtonIcon} width="24" height="24">
