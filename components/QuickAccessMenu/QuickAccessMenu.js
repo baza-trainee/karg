@@ -74,7 +74,8 @@ export default function QuickAccessMenu() {
           </div>
         )
       })}
-      <Link className={styles.donate} href='Пожертва'>
+      {/* id='Пожертва' || href='Пожертва' */}
+      <Link  id='Пожертва' className={styles.donate} href='/help'>
         <span>{donate}</span>
       </Link>
     </section>
