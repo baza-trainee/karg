@@ -1,7 +1,8 @@
-import React from 'react'
+import styles from './styles/help.module.scss';
 
-export default function page() {
-  return (
-    <div>Help page</div>
-  )
-}
+const Help = () => {
+    return (
+        <div>Help page</div>
+    );
+};
+export default Help;

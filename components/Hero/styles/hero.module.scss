@@ -1,7 +1,6 @@
 .hero {
   background-image: url(../../../public/assets/images/main/main-image-mob.jpg);
   background-repeat: no-repeat;
-  // background-position: center;
   background-size: contain;
   background-color: #eadeff;
 
@@ -13,7 +12,7 @@
 
   text-align: center;
 
-  @media screen and (min-width: 1444px) {
+  @media screen and (min-width: 1440px) {
     background-image: url(../../../public/assets/images/main/main-image-desk.jpg);
     background-size: cover;
 

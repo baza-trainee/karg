@@ -1,7 +1,8 @@
-import React from 'react'
+import styles from './styles/useful.module.scss';
 
-export default function page() {
-  return (
-    <div>Useful</div>
-  )
-}
+const Useful = () => {
+    return (
+        <div>Useful page</div>
+    );
+};
+export default Useful;
