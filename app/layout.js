@@ -2,7 +2,12 @@ import { Manrope } from 'next/font/google';
 import './globals.css';
 import './variables.scss';
 
-const manrope = Manrope({ subsets: ['cyrillic'] });
+const manrope = Manrope(
+  { 
+    weight: ['300','400','700', '800'],
+    subsets: ['latin', 'cyrillic'] 
+  }
+)
 
 export const metadata = {
   title: 'KARG',
