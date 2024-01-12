@@ -7,9 +7,12 @@
   text-transform: uppercase;
   max-width: 65px;
   position: relative;
+
   > .selectedLanguage {
     padding-left: 9px;
+    padding-right: 4px;
   }
+
   .languageList {
     position: absolute;
     list-style-type: none;
@@ -26,8 +29,13 @@
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
+
     .languageItem:hover {
       color: #ffa33c;
     }
+  }
+
+  .iconContainer {
+    margin-right: 5px;
   }
 }
