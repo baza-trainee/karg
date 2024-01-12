@@ -11,15 +11,15 @@ import iconShevron from '../../public/assets/images/main/btn-shevron.png';
 import styles from './styles/quickAccessPanel.module.scss';
 
 const quickMenuData = [
-  {'title': 'Пожертва', 'iconSrc': donateIcon, 'innerMessage': 'Як ви можете допомогти нам?'},
-  {'title': 'Послуги', 'iconSrc': handshakeIcon, 'innerMessage': 'Як ми можемо допомогти вам'},
-  {'title': 'Тварини' ,'iconSrc': pawprintIcon, 'innerMessage': 'Всиновлення та опікунство'},
-  {'title': 'Звіти', 'iconSrc': reportIcon, 'innerMessage': 'Чим ми займались протягом року?'},
+  {'title': 'Пожертва', 'href': '/help', 'iconSrc': donateIcon, 'innerMessage': 'Як ви можете допомогти нам?'},
+  {'title': 'Послуги', 'href': '/about/#rescue-types', 'iconSrc': handshakeIcon, 'innerMessage': 'Як ми можемо допомогти вам'},
+  {'title': 'Тварини', 'href': '/animals','iconSrc': pawprintIcon, 'innerMessage': 'Всиновлення та опікунство'},
+  {'title': 'Звіти', 'href': '/useful/#statistics', 'iconSrc': reportIcon, 'innerMessage': 'Чим ми займались протягом року?'},
 ];
 const details = 'Детальніше';
 const donate = 'Підтримати';
 
-export function MenuItem({title, iconSrc, innerMessage }) {
+export function MenuItem({title, href, iconSrc, innerMessage }) {
 
   // const handleScroll = (e) => {
   //   e.preventDefault();
@@ -46,7 +46,7 @@ export function MenuItem({title, iconSrc, innerMessage }) {
         <p className={styles.message}>
           {innerMessage}
         </p>
-        <Link href = {title === 'Звіти' ? '/useful' : (title === 'Тварини' ? '/animals' : `#${title}`)}>
+        <Link href = {href}>
           <span>{details}</span>
           <Image
             className={styles.iconShevron}
@@ -75,7 +75,7 @@ export default function QuickAccessMenu() {
         )
       })}
       {/* id='Пожертва' || href='Пожертва' */}
-      <Link  id='Пожертва' className={styles.donate} href='/help'>
+      <Link className={styles.donate} href='/help'>
         <span>{donate}</span>
       </Link>
     </section>
