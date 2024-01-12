@@ -68,6 +68,7 @@ export default function QuickAccessMenu() {
           <div key = {d.innerMessage}>
             <MenuItem 
               title = {d.title} 
+              href = {d.href}
               iconSrc = {d.iconSrc} 
               innerMessage = {d.innerMessage}
             />
