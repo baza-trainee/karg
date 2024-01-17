@@ -1,0 +1,229 @@
+@import '../../../app/colors.scss';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  background-color: $primary;
+}
+
+.topBar {
+  display: none;
+}
+
+.iconsContainer {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.icons {
+  margin: 5px;
+  font-size: 30px;
+}
+
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  // margin: 16px 8px;
+}
+
+.headerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+}
+
+.sideMenu {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo,
+.burgerIcon {
+  font-size: 48px;
+  margin: 22px 8px;
+}
+
+.langContainer {
+  cursor: pointer;
+  background-color: $primary;
+  color: #fff;
+  border: none;
+}
+
+.dropDownMenuWrapper {
+  display: flex;
+  width: 100%;
+  // height: 95vh;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: $bg-purple;
+}
+
+.dropDownMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0;
+}
+
+.dropDownMenu > li {
+  margin-bottom: 12px;
+}
+
+.dropDownMenu > li > a {
+  color: $text-dark;
+}
+
+.donateButton {
+  width: 80%;
+  margin-bottom: 48px;
+  background-color: $button-dark-default;
+  padding: 12px;
+  border-radius: 8px;
+}
+
+.donateButton > span {
+  color: #fff;
+}
+
+.contactsContainer {
+  margin-bottom: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactsContainer > a {
+  text-decoration: none;
+  color: $text-dark;
+  margin-bottom: 4px;
+}
+
+.dropDownMenuWrapper > .iconsContainer {
+  margin-bottom: 16px;
+}
+
+.navMenu {
+  display: none;
+}
+
+.supportButton {
+  display: none;
+  text-align: center;
+  background-color: $button-default;
+  border: none;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.supportButtonText {
+  color: $text-dark;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 130%;
+}
+
+@media screen and (min-width: 768px) {
+  .inner {
+    padding: 10px 9.375%;
+  }
+
+  .topBar {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    gap: 17.1528%;
+    padding: 0 9.375%;
+    background-color: $button-dark-active;
+  }
+
+  .topBar > a {
+    text-decoration: none;
+    color: $button-default;
+    // font-size: 18px;
+  }
+
+  .iconsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: 8px;
+    margin: 6.36px;
+  }
+
+  .icons {
+    color: #a1a1a1;
+  }
+
+  .burgerIcon {
+    display: none;
+  }
+
+  .navMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+  }
+
+  .navMenu a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .navMenu a:hover {
+    box-shadow: inset 0 -2px 0 $button-hover;
+  }
+
+  .navMenuDrop li {
+    display: inline-block;
+    position: relative;
+  }
+
+  .navMenuDropList {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .dropList {
+    background-color: $primary;
+    position: absolute;
+    display: none;
+    padding: 2rem;
+    min-width: fit-content;
+  }
+
+  .dropHover:hover .dropList {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 1rem;
+    border-radius: 8px;
+  }
+
+  .supportButton {
+    display: block;
+  }
+
+  .sideMenu {
+    gap: 16px;
+  }
+}
