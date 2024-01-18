@@ -23,7 +23,7 @@ $desktop_text_3: 20px;
             order: 1;
         }
 
-    @media screen and (min-width: 1200px) {
+    @media screen and (min-width: 768px) {
         height: 222px;
         justify-content: center;
         align-items: center;
@@ -36,15 +36,6 @@ $desktop_text_3: 20px;
                 order: 0;
             }
     }
-        & .achievementText {                
-            @media screen and (min-width: 1200px) {
-                //some useful styles;
-            } 
-        }
-
-        & .iconSrc {
-            padding: 12px, 0px, 12px, 0px;
-        }   
         & .cardItem {
             display: flex;
             flex-direction: column;
@@ -55,7 +46,7 @@ $desktop_text_3: 20px;
             height: 88px;
             border-radius: 4px;
      
-            @media screen and (min-width: 1200px) {
+            @media screen and (min-width: 768px) {
                 border-radius: 20px;
                 width: 270px;
                 height: 126px;
@@ -67,7 +58,7 @@ $desktop_text_3: 20px;
                     font-weight: 700;
                     line-height: 31.2px;             
                  
-                    @media screen and (min-width: 1200px) {
+                    @media screen and (min-width: 768px) {
                         font-size: $desktop_statistics;
                         font-weight: 700;
                         line-height: 65.57px; 
@@ -82,7 +73,7 @@ $desktop_text_3: 20px;
                     line-height: 18.2px;
                     width: 120px;
 
-                    @media screen and (min-width: 1200px) {
+                    @media screen and (min-width: 768px) {
                     font-size: $desktop_text_3;
                     font-weight: 400;
                     line-height: 26px; 
