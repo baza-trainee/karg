@@ -1,8 +1,9 @@
 //TODO: add id={title} to specific component and add smooth
 "use client";
 
-import React from "react";
+import React, { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
+
 import Image from "next/image";
 import Link from "next/link";
 import donateIcon from "../../public/assets/images/main/donate.png";
@@ -11,8 +12,10 @@ import pawprintIcon from "../../public/assets/images/main/pawprint.png";
 import reportIcon from "../../public/assets/images/main/report.png";
 import iconShevron from "../../public/assets/images/main/btn-shevron.png";
 
-import styles from "./styles/quickAccessPanel.module.scss";
 import Button from "../Button/button";
+import Modal from "../Modal/modal";
+
+import styles from "./styles/quickAccessPanel.module.scss";
 import stylesBtn from "./../Button/styles/button.module.scss";
 
 const quickMenuData = [
@@ -77,6 +80,11 @@ export function MenuItem({ title, href, iconSrc, innerMessage }) {
 
 export default function QuickAccessMenu() {
   const isMobile = useMediaQuery("(max-width: 1024px)");
+
+  const [isOpen, setIsOpen] = useState(false);
+
+  const onOpen = () => setIsOpen(true);
+  const onClose = () => setIsOpen(false);
   {
     /* needs data parameter */
   }
@@ -96,10 +104,20 @@ export default function QuickAccessMenu() {
       })}
       {/* id='Пожертва' || href='Пожертва' */}
       {isMobile && (
-        <Button type="click" className={stylesBtn.btnSupport}>
+        <Button type="click" className={stylesBtn.btnSupport} onClick={onOpen}>
           Підтримати
         </Button>
       )}
+      <Modal
+        isOpen={isOpen}
+        onClose={onClose}
+        title="Модальне вікно для донатів"
+      >
+        <p>
+          Сюди будуть додані варіанти платіжних систем для донацій і стилізація
+          цього модального вікна
+        </p>
+      </Modal>
     </section>
   );
 }
