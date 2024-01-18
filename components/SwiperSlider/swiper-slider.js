@@ -21,6 +21,15 @@ const SwiperSlider = () => {
           slidesPerView: 1.3,
           spaceBetween: 30,
         },
+        375: {
+          slidesPerView: 1.5,
+          spaceBetween: 30,
+        },
+
+        768: {
+          slidesPerView: 3,
+          spaceBetween: 30,
+        },
         1440: {
           slidesPerView: 3,
           spaceBetween: 30,
@@ -33,11 +42,11 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-1.jpg"
-            media="(min-width: 1440px)"
+            media="(min-width: 1024px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-1-mob.jpg"
-            media="(max-width: 1439px)"
+            media="(max-width: 767px)"
           />
           <img
             className={styles.img}
@@ -52,11 +61,11 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-2.jpg"
-            media="(min-width: 1440px)"
+            media="(min-width: 1024px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-2-mob.jpg"
-            media="(max-width: 1439px)"
+            media="(max-width: 767px)"
           />
           <img
             className={styles.img}
@@ -71,11 +80,11 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-3.jpg"
-            media="(min-width: 1440px)"
+            media="(min-width: 1024px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-3-mob.jpg"
-            media="(max-width: 1439px)"
+            media="(max-width: 767px)"
           />
           <img
             className={styles.img}
