@@ -1,7 +1,4 @@
-$mobile_subtitle_1: 24px;
-$mobile_text_3: 14px;
-$desktop_statistics: 48px;
-$desktop_text_3: 20px;
+@import '../../../app/[locale]/variables.module.scss';
 
 .achievementBlock {
     display: flex;
@@ -15,7 +12,7 @@ $desktop_text_3: 20px;
     padding-right: 16px;
     padding-top: 24px;
     padding-bottom: 24px;
-    background-color:#4D396F;
+    background-color:$primary;
         & :nth-child(3){
             order: 2;
         }
@@ -41,7 +38,7 @@ $desktop_text_3: 20px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background-color: #6B5199;
+            background-color: $primary-light;
             width: 136px;
             height: 88px;
             border-radius: 4px;
@@ -53,29 +50,21 @@ $desktop_text_3: 20px;
             }
                 & .title {
                     text-align: center;
-                    font-size: $mobile_subtitle_1;
-                    color:#FFFFFF;
-                    font-weight: 700;
+                    color:$text-white;
                     line-height: 31.2px;             
                  
                     @media screen and (min-width: 768px) {
-                        font-size: $desktop_statistics;
-                        font-weight: 700;
                         line-height: 65.57px; 
                     }
 
                 }
                 & .message {  
                     text-align: center;
-                    font-size: $mobile_text_3;
-                    color:#FFFFFF;
-                    font-weight: 400;
+                    color:$text-white;
                     line-height: 18.2px;
                     width: 120px;
 
                     @media screen and (min-width: 768px) {
-                    font-size: $desktop_text_3;
-                    font-weight: 400;
                     line-height: 26px; 
                     width: 254px;
                     }
