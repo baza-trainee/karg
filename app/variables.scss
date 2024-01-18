@@ -42,35 +42,34 @@ $line-height: 1.3;
 //   font-family: $font-family-heading;
 // }
 
-.subtitle1,
-.button1 {
-  @include font-styles(700, 20px);
-}
+// .subtitle1,
+// .button1 {
+//   @include font-styles(700, 20px);
+// }
 
-.subtitle2,
-.button2 {
-  @include font-styles(700, 18px);
-}
+// .subtitle2,
+// .button2 {
+//   @include font-styles(700, 18px);
+// }
 
-.text1 {
-  @include font-styles(500, 18px);
-}
+// .text1 {
+//   @include font-styles(500, 18px);
+// }
 
-.text2 {
-  @include font-styles(500, 16px);
-}
+// .text2 {
+//   @include font-styles(500, 16px);
+// }
 
-.text3 {
-  @include font-styles(400, 14px);
-}
+// .text3 {
+//   @include font-styles(400, 14px);
+// }
 
-.body {
-  @include font-styles(300, 16px);
-  letter-spacing: 0%;
-}
+// .body {
+//   @include font-styles(300, 16px);
+//   letter-spacing: 0%;
+// }
 
-// Typography for Desktop
-// @media (min-width: 768px) {
+// Typography for Desktop @media (min-width: 768px) {
 //   h1 {
 //     @include font-styles(800, 59px);
 //     font-family: $font-family-heading;

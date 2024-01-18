@@ -95,9 +95,6 @@ export default function QuickAccessMenu() {
         );
       })}
       {/* id='Пожертва' || href='Пожертва' */}
-      <Link className={styles.donate} href="/help">
-        <span>{donate}</span>
-      </Link>
       {isMobile && (
         <Button type="click" className={stylesBtn.btnSupport}>
           Підтримати
