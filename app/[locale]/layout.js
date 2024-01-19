@@ -1,6 +1,6 @@
 import { Manrope } from "next/font/google";
 import "./globals.css";
-import { Providers } from "./providers";
+import { Providers } from "../providers";
 
 const manrope = Manrope({
   weight: ["300", "400", "700", "800"],

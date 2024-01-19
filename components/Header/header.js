@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./styles/header.module.scss";
-import variables from "@/app/variables.module.scss";
+import variables from "@/app/[locale]/variables.module.scss";
 import stylesBtn from "./../Button/styles/button.module.scss";
 
 import {
