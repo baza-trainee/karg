@@ -21,7 +21,7 @@ import { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
 
 const Header = () => {
-  const isDesktop = useMediaQuery("(min-width: 1024px)");
+  const isDesktop = useMediaQuery("(min-width: 1200px)");
 
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);

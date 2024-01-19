@@ -79,7 +79,7 @@ export function MenuItem({ title, href, iconSrc, innerMessage }) {
 }
 
 export default function QuickAccessMenu() {
-  const isMobile = useMediaQuery("(max-width: 1024px)");
+  const isMobile = useMediaQuery("(max-width: 1199px)");
 
   const [isOpen, setIsOpen] = useState(false);
 
