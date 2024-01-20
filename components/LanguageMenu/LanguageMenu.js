@@ -6,18 +6,23 @@ import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import i18nConfig from '@/i18nConfig';
 import styles from './styles/LanguageMenu.module.scss'
+import variables from "@/app/[locale]/variables.module.scss";
+import { ArrowDown } from "@/public/assets/icons";
+import { useMediaQuery } from 'react-responsive';
 
 const LanguageMenu = () => {
     const [isOpen, setOpen] = useState(false);
     const { i18n } = useTranslation();
-    const currentLocale = i18n.language;
     const router = useRouter();
+    const currentLocale = i18n.language;
     const currentPathname = usePathname();
     const locales = i18nConfig.locales;
     const localeLables = {
         uk: 'ukr',
         en: 'eng'
-    }
+    };
+    const isMobile = useMediaQuery({ maxWidth: 767 });
+
     const changeLocale = (locale) => {
         const newLocale = locale;
         const days = 30;
@@ -40,25 +45,44 @@ const LanguageMenu = () => {
         setOpen(false);
     };
 
+    const handleMenuClick = () => {
+        if (isMobile) {
+            setOpen(!isOpen);
+        }
+    };
+
+    const handleMenuHover = () => {
+        if (!isMobile) {
+            setOpen(true);
+        }
+    };
+
+    const handleMenuLeave = () => {
+        if (!isMobile) {
+            setOpen(false);
+        }
+    };
+
     return (
-        <div className={styles.languageMenu} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <div className={styles.selectedLanguage}>{localeLables[currentLocale]}</div>
+        <div
+            className={`${styles.languageMenu} ${variables.button2}`}
+            onClick={handleMenuClick}
+            onMouseOver={handleMenuHover}
+            onMouseLeave={handleMenuLeave}
+        >
+            <div>{localeLables[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
-                {locales
-                    .filter((locale) => locale !== currentLocale)
-                    .map((locale) => (
-                        <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
-                            {localeLables[locale]}
-                        </li>
-                    ))}
+                {locales.map((locale) => (
+                    <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
+                        {localeLables[locale]}
+                    </li>
+                ))}
             </ul>
-            <div className={styles.iconContainer}>
-                <svg width="13" height="8">
-                    <use href="/assets/icons/sprite.svg#icon-check-mark" />
-                </svg>
-            </div>
+            <ArrowDown />
         </div>
     );
 };
 
 export default LanguageMenu;
+
+

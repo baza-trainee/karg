@@ -17,7 +17,6 @@ export default async function Home({ params: { locale } }) {
     <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
       <div className={styles.main}>
         <Header />
-        <LanguageMenu />
         <HeroSection />
         <QuickAccessMenu />
         <MissionSection />
