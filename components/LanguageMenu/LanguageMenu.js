@@ -8,7 +8,6 @@ import i18nConfig from '@/i18nConfig';
 import styles from './styles/LanguageMenu.module.scss'
 import variables from "@/app/[locale]/variables.module.scss";
 import { ArrowDown } from "@/public/assets/icons";
-import { useMediaQuery } from 'react-responsive';
 
 const LanguageMenu = () => {
     const [isOpen, setOpen] = useState(false);
@@ -21,8 +20,7 @@ const LanguageMenu = () => {
         uk: 'ukr',
         en: 'eng'
     };
-    const isMobile = useMediaQuery({ maxWidth: 767 });
-
+    
     const changeLocale = (locale) => {
         const newLocale = locale;
         const days = 30;
@@ -45,31 +43,12 @@ const LanguageMenu = () => {
         setOpen(false);
     };
 
-    const handleMenuClick = () => {
-        if (isMobile) {
-            setOpen(!isOpen);
-        }
-    };
-
-    const handleMenuHover = () => {
-        if (!isMobile) {
-            setOpen(true);
-        }
-    };
-
-    const handleMenuLeave = () => {
-        if (!isMobile) {
-            setOpen(false);
-        }
-    };
+    const handleMenuToggle = () => {
+        setOpen(!isOpen);
+    }
 
     return (
-        <div
-            className={`${styles.languageMenu} ${variables.button2}`}
-            onClick={handleMenuClick}
-            onMouseOver={handleMenuHover}
-            onMouseLeave={handleMenuLeave}
-        >
+        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()}>
             <div>{localeLables[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
                 {locales.map((locale) => (
