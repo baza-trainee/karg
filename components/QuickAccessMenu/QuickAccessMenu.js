@@ -8,7 +8,7 @@ import styles from './styles/quickAccessPanel.module.scss';
 
 const quickMenuData = [
   {'title': 'Донат', 'href': '/help', 'iconSrc': <DonateIcon className={styles.iconSrc}/>, 'innerMessage': 'Як ви можете допомогти нам?'},
-  {'title': 'Послуги', 'href': '/about/#rescue-types', 'iconSrc': <HandshakeIcon className={styles.iconSrc}/> , 'innerMessage': 'Як ми можемо допомогти вам'},
+  {'title': 'Послуги', 'href': '/about/#rescue-types', 'iconSrc': <HandshakeIcon className={styles.iconSrc}/> , 'innerMessage': 'Як ми можемо допомогти вам?'},
   {'title': 'Тварини', 'href': '/animals','iconSrc': <PawprintIcon className={styles.iconSrc}/>, 'innerMessage': 'Всиновлення та опікунство'},
   {'title': 'Звіти', 'href': '/useful/#statistics', 'iconSrc': <ReportIcon className={styles.iconSrc}/>, 'innerMessage': 'Чим ми займались протягом року?'},
 ];
