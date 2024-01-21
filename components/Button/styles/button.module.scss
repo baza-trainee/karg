@@ -1,0 +1,29 @@
+@import "./../../../app/[locale]/colors.scss";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: $line-height;
+
+  color: $text-dark;
+  background-color: $button-default;
+  border-color: transparent;
+
+  &Support {
+    border-radius: 4px;
+    padding: 12px;
+    width: 288px;
+    height: 44px;
+
+    @media screen and (min-width: 1200px) {
+      border-radius: 8px;
+      width: 170px;
+      height: 48px;
+    }
+  }
+}
