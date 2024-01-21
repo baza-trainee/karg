@@ -17,7 +17,8 @@
   @include font-styles(700, 24px);
 }
 .subtitle1,
-.button1 {
+.button1,
+.Subtitle1 {
   @include font-styles(700, 20px);
 }
 
@@ -39,6 +40,10 @@
   @include font-styles(400, 14px);
 }
 
+.Button2 {
+  @include font-styles(800, 16px);
+}
+
 .body {
   @include font-styles(300, 16px);
   letter-spacing: 0%;
@@ -51,8 +56,8 @@
     font-family: $font-family-heading;
   }
 
-  .h2,
-  .Subtitle2 {
+  //.Subtitle2 
+  .h2 {
     @include font-styles(700, 48px);
   }
 
@@ -70,12 +75,17 @@
     letter-spacing: 0%;
   }
 
+  .Subtitle1 {
+    @include font-styles(700, 24px);
+  }
   .Text3 {
-    @include font-styles(400, 20px);
+    @include font-styles(300, 16px);
   }
   
   .btn2,
-  .button2 {
+  .button2 ,
+  .Button2{
     @include font-styles(800, 18px);
   }
+
 }
