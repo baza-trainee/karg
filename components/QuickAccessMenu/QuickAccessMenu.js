@@ -32,15 +32,15 @@ export function MenuItem({title, href, iconSrc, innerMessage }) {
     <div className={styles.accessMenuItem}>
       {iconSrc}
       <div className={styles.accessMenuText}>
-        <p className={`${styles.title} ${variables.Subtitle1}`}>
+        <p className={`${styles.title} ${variables.quickSubtitle1}`}>
           {title}
         </p>
-        <p className={`${styles.message} ${variables.Text3}`}>
+        <p className={`${styles.message} ${variables.quickText3}`}>
           {innerMessage}
         </p>
-        <Link className={variables.Button2} href = {href}>
+        <Link className={variables.quickButton2} href = {href}>
           <span>{details}</span>
-        <ArrowRightIcon className={variables.Button2}/>
+        <ArrowRightIcon className={variables.quickButton2}/>
         </Link>
       </div>
     </div>
@@ -63,7 +63,7 @@ export default function QuickAccessMenu() {
         )
       })}
       {/* id='Пожертва' || href='Пожертва' */}
-      <Link className={`${styles.donate} ${variables.button2}`} href='/help'>
+      <Link className={`${styles.donate} ${variables.quickButton2}`} href='/help'>
         <span>{donate}</span>
       </Link>
     </section>
