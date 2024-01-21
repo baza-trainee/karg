@@ -6,6 +6,7 @@ import variables from "@/app/[locale]/variables.module.scss";
 import { Facebook, Instagram, Telegram, Logo, MenuBurger, MenuBurgerClose, ArrowDown } from "@/public/assets/icons";
 
 import { useState } from "react";
+import LanguageMenu from "../LanguageMenu/LanguageMenu";
 
 
 
@@ -60,10 +61,11 @@ const Header = () => {
                         </li>
                     </ul>
                     <div className={styles.sideMenu}>
-                        <select className={styles.langContainer}>
+                        {/* <select className={styles.langContainer}>
                             <option value="UKR">UKR</option>
                             <option value="ENG">ENG</option>
-                        </select>
+                        </select> */}
+                        <LanguageMenu />
                         <button className={styles.supportButton}><span className={`${styles.supportButtonText}`}>Підтримати</span></button>
                         <div onClick={() => setOpen(!open)}>
                             {open == false ? (<MenuBurger className={styles.burgerIcon} />) : <MenuBurgerClose className={styles.burgerIcon} />}
