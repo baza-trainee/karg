@@ -1,6 +1,5 @@
 import HeroSection from "@/components/Hero/hero-section";
 import QuickAccessMenu from "@/components/QuickAccessMenu/QuickAccessMenu";
-import LanguageMenu from '@/components/LanguageMenu/LanguageMenu';
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import styles from "./styles/main.module.scss";
@@ -17,7 +16,6 @@ export default async function Home({ params: { locale } }) {
     <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
       <div className={styles.main}>
         <Header />
-        <LanguageMenu />
         <HeroSection />
         <QuickAccessMenu />
         <MissionSection />
