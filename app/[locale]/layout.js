@@ -4,11 +4,11 @@ import { dir } from 'i18next';
 import './globals.css';
 
 const manrope = Manrope(
-  { 
-    weight: ['300','400','700', '800'],
-    subsets: ['latin', 'cyrillic'] 
+  {
+    weight: ['300', '400', '700', '800'],
+    subsets: ['latin', 'cyrillic']
   }
-)
+);
 
 export const metadata = {
   title: 'KARG',
