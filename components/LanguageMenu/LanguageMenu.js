@@ -1,26 +1,25 @@
-'use client'
+'use client';
 
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import i18nConfig from '@/i18nConfig';
-import styles from './styles/LanguageMenu.module.scss'
+import styles from './styles/LanguageMenu.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 import { ArrowDown } from "@/public/assets/icons";
 
 const LanguageMenu = () => {
     const [isOpen, setOpen] = useState(false);
     const { i18n } = useTranslation();
-    const router = useRouter();
     const currentLocale = i18n.language;
+    const router = useRouter();
     const currentPathname = usePathname();
     const locales = i18nConfig.locales;
     const localeLables = {
         uk: 'ukr',
         en: 'eng'
     };
-    
     const changeLocale = (locale) => {
         const newLocale = locale;
         const days = 30;
@@ -42,11 +41,9 @@ const LanguageMenu = () => {
         router.refresh();
         setOpen(false);
     };
-
     const handleMenuToggle = () => {
         setOpen(!isOpen);
-    }
-
+    };
     return (
         <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()}>
             <div>{localeLables[currentLocale]}</div>
@@ -63,5 +60,3 @@ const LanguageMenu = () => {
 };
 
 export default LanguageMenu;
-
-
