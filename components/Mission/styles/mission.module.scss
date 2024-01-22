@@ -1,3 +1,5 @@
+@import "../../../app/[locale]/colors.scss";
+
 .container {
   width: 100%;
   padding-left: 16px;
@@ -30,7 +32,7 @@
 
     margin-bottom: 16px;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 44px;
       margin-bottom: 32px;
     }
@@ -45,8 +47,10 @@
 
     margin-bottom: 16px;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 24px;
+      padding-right: 100px;
+      padding-left: 100px;
       margin-bottom: 32px;
     }
   }
@@ -70,7 +74,7 @@
 
     transition: color 250ms linear;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 18px;
       margin-bottom: 32px;
     }
@@ -78,7 +82,7 @@
 
   &Button:hover,
   &Button:focus {
-    color: #ffa33c;
+    color: $button-default;
   }
 
   &ButtonIcon {
@@ -87,4 +91,8 @@
     margin-left: 4px;
     fill: currentColor;
   }
+
+  // &ButtonIcon:hover {
+  //   fill: $button-default;
+  // }
 }

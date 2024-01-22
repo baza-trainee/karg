@@ -32,6 +32,9 @@ const MissionSection = () => {
         >
           Детальніше
           <ArrowRight className={styles.missionButtonIcon} />
+          {/* <svg className={styles.missionButtonIcon} width="24" height="24">
+            <use href="/assets/icons/sprite.svg#icon-arrow-right" />
+          </svg> */}
         </button>
         <SwiperSlider />
       </div>
