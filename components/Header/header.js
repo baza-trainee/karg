@@ -19,6 +19,7 @@ import Modal from "../Modal/modal";
 
 import { useState } from "react";
 import { useMediaQuery } from "@react-hook/media-query";
+import LanguageMenu from "../LanguageMenu/LanguageMenu";
 
 const Header = () => {
   const isDesktop = useMediaQuery("(min-width: 1200px)");
@@ -103,10 +104,11 @@ const Header = () => {
             </li>
           </ul>
           <div className={styles.sideMenu}>
-            <select className={styles.langContainer}>
+            {/* <select className={styles.langContainer}>
               <option value="UKR">UKR</option>
               <option value="ENG">ENG</option>
-            </select>
+            </select> */}
+            <LanguageMenu />
             {isDesktop && (
               <Button
                 type="click"

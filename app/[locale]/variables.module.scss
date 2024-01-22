@@ -69,8 +69,42 @@ $line-height: 1.3;
   letter-spacing: 0%;
 }
 
-// Typography for Desktop
+// Typography for tablet
 @media (min-width: 768px) {
+  .h1 {
+    @include font-styles(800, 46px);
+    font-family: $font-family-heading;
+  }
+
+  .h2 {
+    @include font-styles(700, 32px);
+  }
+
+  .h3,
+  .subtitle1,
+  .subtitle2 {
+    @include font-styles(700, 24px);
+  }
+
+  .btn1,
+  .button1 {
+    @include font-styles(700, 20px);
+  }
+
+  .body,
+  .p {
+    @include font-styles(400, 20px);
+    letter-spacing: 0%;
+  }
+
+  .btn2,
+  .button2 {
+    @include font-styles(800, 16px);
+  }
+}
+
+// Typography for Desktop
+@media (min-width: 1200px) {
   .h1 {
     @include font-styles(800, 59px);
     font-family: $font-family-heading;
