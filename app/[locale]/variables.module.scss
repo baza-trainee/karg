@@ -13,6 +13,9 @@
   font-family: $font-family-heading;
 }
 
+.Subtitle2 {
+  @include font-styles(700, 24px);
+}
 .subtitle1,
 .button1 {
   @include font-styles(700, 20px);
@@ -31,7 +34,8 @@
   @include font-styles(500, 16px);
 }
 
-.text3 {
+.text3,
+.Text3 {
   @include font-styles(400, 14px);
 }
 
@@ -81,7 +85,8 @@
     font-family: $font-family-heading;
   }
 
-  .h2 {
+  .h2,
+  .Subtitle2 {
     @include font-styles(700, 48px);
   }
 
@@ -99,6 +104,10 @@
     letter-spacing: 0%;
   }
 
+  .Text3 {
+    @include font-styles(400, 20px);
+  }
+  
   .btn2,
   .button2 {
     @include font-styles(800, 18px);
