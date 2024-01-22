@@ -1,11 +1,4 @@
-$mobile_subtitle_1: 20px;
-$mobile_text_3: 14px;
-$mobile_button_1: 18px;
-$mobile_button_2: 16px;
-$desktop_subtitle_2: 24px;
-$desktop_text_4: 16px;
-$desktop_button_2: 18px;
-
+@import '../../../app/[locale]/variables.module.scss';
 .accessMenuBlock {
     align-items: center;
     display: flex;
@@ -15,91 +8,71 @@ $desktop_button_2: 18px;
     flex-direction: column;
     padding-top: 24px;
     padding-bottom: 24px;
-    background-color:#EADEFF;
-
-    @media screen and (min-width: 321px) and (max-width: 1199px) {
-        flex-direction: row;
-        justify-content: center;
-        flex-flow: row wrap;
-        gap: 10px;
-    }
-    @media screen and (min-width: 1200px) {
+    background-color: $bg-purple;
+  
+    @media screen and (min-width: 786px) {
         position: relative;
         top: -72.5px;
         height: 145px;
         justify-content: center;
         flex-direction: row;
-        gap: 10px;
+        gap: 30px;
         background-color: transparent;
     }
         & .accessMenuText {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
+            justify-content: space-around;
+            gap: 7px;
             width: 182px;
             height: 100px;
 
-            @media screen and (min-width: 321px) and (max-width: 1199px) {
+            @media screen and (min-width: 768px) {
                 width: 156px;
                 height: 113px;
+                gap: 8px;
             }
-            @media screen and (min-width: 1200px) {
-                width: 156px;
-                height: 113px;
-            } 
                 & a {
                     align-self: flex-end;
+                    align-items: center;
 
-                    @media screen and (min-width: 321px) and (max-width: 1199px) {
-                        align-self: flex-start;
-                        height: 136px;
-                    }
-                    @media screen and (min-width: 1200px) {
+                    @media screen and (min-width: 768px) {
                         align-self: flex-start;
                         height: 136px;
                     }  
                         & span {
-                            font-size: $mobile_button_2;
-                            color:#FFFFFF;
-                            font-weight: 800;
-                            line-height: 20.8px;
-
-                            @media screen and (min-width: 321px) and (max-width: 1199px) {
-                                font-size: $desktop_button_2;
-                                font-weight: 800;
-                                line-height: 23.4px; 
-                            }
-                            @media screen and (min-width: 1200px) {
-                                font-size: $desktop_button_2;
-                                font-weight: 800;
-                                line-height: 23.4px; 
-                            }   
+                            color:$text-white;
+                            line-height: 20.8px; 
                         }
                 }
         }
         & .donate {
             display: flex;
             justify-content: center;
-            background-color:#FFA33C;
-            color:#141414;
-            font-size: $mobile_button_1;
-            font-weight: 700;
+            background-color:$button-default;
+            color:$text-dark;
             line-height: 23.4px;
             text-decoration: none;
             border-radius: 4px;
             width: 288px;
             height: 44px;
             padding: 12px;
+                &:hover {
+                    background-color: $button-hover;
+                }
+                &:active {
+                    color: $text-white;
+                    background-color: $button-active;
+                }
 
-            @media screen and (min-width: 321px) and (max-width: 1199px) {
-                display: none;
-            }
             @media screen and (min-width: 1200px) {
                 display: none;
             }  
         }
+    
         & .iconSrc {
-            padding: 12px, 0px, 12px, 0px;
+            font-size: 61px;   
+            width: 50px;     
         }   
         & .accessMenuItem {
             display: flex;
@@ -110,70 +83,31 @@ $desktop_button_2: 18px;
             height: 132px;
             border-radius: 4px;
 
-            @media screen and (min-width: 321px) and (max-width: 1199px) {
-                border-radius: 4px;
-            }
             @media screen and (min-width: 1200px) {
+                width: 270px;
+                height: 145px;
                 border-radius: 20px;
             }
                 & .title {
-                    font-size: $mobile_subtitle_1;
-                    color:#FFFFFF;
-                    font-weight: 700;
+                    color: $text-white;
                     line-height: 26px;
-                 
-
-                    @media screen and (min-width: 321px) and (max-width: 1199px) {
-                        font-size: $desktop_subtitle_2;
-                        font-weight: 700;
-                        line-height: 31.2px; 
-                    }
-                    @media screen and (min-width: 1200px) {
-                        font-size: $desktop_subtitle_2;
-                        font-weight: 700;
-                        line-height: 31.2px; 
-                    }
-
                 }
                 & .message {  
-                    font-size: $mobile_text_3;
-                    color:#FFFFFF;
-                    font-weight: 400;
+                    color:$text-white;
                     line-height: 18.2px;
-
-                    @media screen and (min-width: 321px) and (max-width: 1199px) {
-                    font-size: $desktop_text_4;
-                    font-weight: 300;
-                    line-height: 20.8px; 
-                    }
-                    @media screen and (min-width: 1200px) {
-                    font-size: $desktop_text_4;
-                    font-weight: 300;
-                    line-height: 20.8px; 
-                    }
                 }
                 & a {
                     display: flex;
                     border: 2px solid transparent;
                     background-color: transparent;
-                    justify-content:space-between;
+                    gap: 4px;
                     width: 124px;
                     height: 24px;
                     text-decoration: none;
-
-                    @media screen and (min-width: 321px) and (max-width: 1199px) {
-                        width: 136px;
-                        height: 24px;
-                        }
                         @media screen and (min-width: 1200px) {
                             width: 136px;
-                            height: 24px;
                         }
                 }             
     }
 
 }
-
-
-
-
