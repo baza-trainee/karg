@@ -6,6 +6,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import styles from "./styles/main.module.scss";
 import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
+import Footer from "@/components/Footer/footer";
 
 const i18nNamespaces = ['home', 'common'];
 
@@ -20,6 +21,8 @@ export default async function Home({ params: { locale } }) {
         <HeroSection />
         <QuickAccessMenu />
         <MissionSection />
+        <Achievements />
+        <Footer />
       </div>
     </TranslationsProvider>
   );
