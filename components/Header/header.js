@@ -91,7 +91,6 @@ const Header = () => {
             </li>
             <li className={styles.dropHover}>
               <a className={styles.navMenuDropList} href="#">
-                {" "}
                 <span>Корисне</span>
                 <ArrowDown />
               </a>
@@ -104,10 +103,6 @@ const Header = () => {
             </li>
           </ul>
           <div className={styles.sideMenu}>
-            {/* <select className={styles.langContainer}>
-              <option value="UKR">UKR</option>
-              <option value="ENG">ENG</option>
-            </select> */}
             <LanguageMenu />
             {isDesktop && (
               <Button
