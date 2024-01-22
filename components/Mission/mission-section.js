@@ -1,5 +1,6 @@
 "use client";
 
+import { ArrowRight } from "@/public/assets/icons";
 import SwiperSlider from "../SwiperSlider/swiper-slider";
 import styles from "./styles/mission.module.scss";
 import { useState } from "react";
@@ -30,9 +31,7 @@ const MissionSection = () => {
           onClick={handleOnBtnClick}
         >
           Детальніше
-          <svg className={styles.missionButtonIcon} width="24" height="24">
-            <use href="/assets/icons/sprite.svg#icon-arrow-right" />
-          </svg>
+          <ArrowRight className={styles.missionButtonIcon} />
         </button>
         <SwiperSlider />
       </div>
