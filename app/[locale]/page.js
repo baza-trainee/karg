@@ -7,6 +7,7 @@ import styles from "./styles/main.module.scss";
 import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
+import Achievements from "@/components/Achievements/Achievements";
 
 const i18nNamespaces = ['home', 'common'];
 
