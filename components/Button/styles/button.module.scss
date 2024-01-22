@@ -19,6 +19,13 @@
     padding: 12px;
     width: 288px;
     height: 44px;
+      &:hover {
+        background-color: $button-hover;
+     }
+      &:active {
+          color: $text-white;
+          background-color: $button-active;
+      }
 
     @media screen and (min-width: 1200px) {
       border-radius: 8px;

@@ -6,8 +6,8 @@ import variables from "@/app/[locale]/variables.module.scss";
 import { Logo, ArrowDown } from "@/public/assets/icons";
 import useToggle from '@/utils/useToggle/useToggle';
 import SocialIcons from '../SocialIcons/socialIcons';
-
-
+//import Button from '../Button/button';
+//import stylesBtn from '../Button/styles/button.module.scss';
 
 function Footer() {
 
@@ -42,6 +42,13 @@ function Footer() {
                     </li>
                 </ul>
             </nav>
+              {/* <Button
+                type="click"
+                className={stylesBtn.btnSupport}
+              >
+                <a href='/help'>Підтримати</a>
+              </Button> */}
+
             <div className={`${styles.contactsContainer} ${variables.button2}`}>
                 <a href="tel: +380939862262">+38 (093) 986-2262</a>
                 <a href="tel: +380988447937">+38 (098) 844-7937</a>

@@ -18,11 +18,9 @@ import Button from "../Button/button";
 import Modal from "../Modal/modal";
 
 import { useState } from "react";
-import { useMediaQuery } from "@react-hook/media-query";
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
 
 const Header = () => {
-  const isDesktop = useMediaQuery("(min-width: 1200px)");
 
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -109,7 +107,8 @@ const Header = () => {
               <option value="ENG">ENG</option>
             </select> */}
             <LanguageMenu />
-            {isDesktop && (
+           
+            <div className={variables.buttonStatusHeader}>
               <Button
                 type="click"
                 className={stylesBtn.btnSupport}
@@ -117,7 +116,7 @@ const Header = () => {
               >
                 Підтримати
               </Button>
-            )}
+            </div>
             <Modal
               isOpen={isModalOpen}
               onClose={onClose}

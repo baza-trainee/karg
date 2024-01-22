@@ -2,8 +2,10 @@
 'use client';
 import React from 'react';
 import Link from "next/link";
+import Button from '../Button/button';
 import { DonateIcon, HandshakeIcon, PawprintIcon, ReportIcon, ArrowRightIcon } from "@/public/assets/icons";
 import variables from '../../app/[locale]/variables.module.scss';
+import stylesBtn from '../Button/styles/button.module.scss';
 import styles from './styles/quickAccessPanel.module.scss';
 
 const quickMenuData = [
@@ -13,7 +15,6 @@ const quickMenuData = [
   { 'title': 'Звіти', 'href': '/useful/#statistics', 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': 'Чим ми займались протягом року?' },
 ];
 const details = "Детальніше";
-const donate = "Підтримати";
 
 export function MenuItem({ title, href, iconSrc, innerMessage }) {
   // const handleScroll = (e) => {
@@ -61,10 +62,15 @@ export default function QuickAccessMenu() {
           </div>
         );
       })}
-      {/* id='Пожертва' || href='Пожертва' */}
-      <Link className={`${styles.donate} ${variables.quickButton2}`} href='/help'>
-        <span>{donate}</span>
-      </Link>
+
+      <div className={variables.buttonStatusMenu}>
+              <Button
+                type="click"
+                className={`${stylesBtn.btnSupport} ${variables.quickButton2} `}
+              >
+                <a href='/help'>Підтримати</a>
+              </Button>
+            </div>
     </section>
   );
 }

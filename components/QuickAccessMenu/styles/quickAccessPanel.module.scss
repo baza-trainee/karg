@@ -46,29 +46,6 @@
                         }
                 }
         }
-        & .donate {
-            display: flex;
-            justify-content: center;
-            background-color:$button-default;
-            color:$text-dark;
-            line-height: 23.4px;
-            text-decoration: none;
-            border-radius: 4px;
-            width: 288px;
-            height: 44px;
-            padding: 12px;
-                &:hover {
-                    background-color: $button-hover;
-                }
-                &:active {
-                    color: $text-white;
-                    background-color: $button-active;
-                }
-
-            @media screen and (min-width: 1200px) {
-                display: none;
-            }  
-        }
     
         & .iconSrc {
             font-size: 61px;   

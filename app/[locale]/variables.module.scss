@@ -35,6 +35,17 @@ $line-height: 1.3;
   font-size: $font-size;
   line-height: $line-height;
 }
+.button-block {
+  display: block;
+}
+
+.buttonStatusHeader {
+  display: none;
+}
+
+.buttonStatusMenu {
+  display: block;
+}
 
 // Typography for Mobile
 .h1 {
@@ -77,6 +88,15 @@ $line-height: 1.3;
 
 // Typography for tablet
 @media (min-width: 768px) {
+
+  .buttonStatusHeader {
+    display: block;
+  }
+
+  .buttonStatusMenu {
+   display: none;
+  }
+
   .h1 {
     @include font-styles(800, 46px);
     font-family: $font-family-heading;

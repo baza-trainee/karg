@@ -4,9 +4,9 @@ const Button = ({ type = "click", children, className, ...otherProps }) => {
   const combinedClassName = `${styles.btn} ${className || ""}`;
 
   return (
-    <button className={combinedClassName} type={type} {...otherProps}>
-      {children}
-    </button>
+      <button className={combinedClassName} type={type} {...otherProps}>
+        {children}
+      </button>
   );
 };
 
