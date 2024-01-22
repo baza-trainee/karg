@@ -35,6 +35,7 @@ export default async function Home({ params: { locale } }) {
         <QuickAccessMenu />
         <MissionSection />
         <Achievements />
+        <Help  />
         <Footer />
       </div>
     </TranslationsProvider>

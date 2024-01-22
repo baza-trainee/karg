@@ -91,6 +91,10 @@
     @include font-styles(700, 48px);
   }
 
+  .Subtitle1 {
+     @include font-styles(700, 44px);
+  }
+
   .h3,
   .subtitle1,
   .subtitle2,
