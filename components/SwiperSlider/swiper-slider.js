@@ -42,7 +42,7 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-1.jpg"
-            media="(min-width: 1024px)"
+            media="(min-width: 768px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-1-mob.jpg"
@@ -61,7 +61,7 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-2.jpg"
-            media="(min-width: 1024px)"
+            media="(min-width: 768px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-2-mob.jpg"
@@ -80,7 +80,7 @@ const SwiperSlider = () => {
         <picture className={styles.picture}>
           <source
             srcSet="/assets/images/mission/mission-pic-3.jpg"
-            media="(min-width: 1024px)"
+            media="(min-width: 768px)"
           />
           <source
             srcSet="/assets/images/mission/mission-pic-3-mob.jpg"

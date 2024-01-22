@@ -6,6 +6,16 @@
   padding-right: 16px;
   margin: 0 auto;
 
+  @media screen and (min-width: 768px) {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     padding-left: 135px;
@@ -19,7 +29,7 @@
 
   color: var(--text-dark, #141414);
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1200px) {
     padding: 48px 0;
   }
 
