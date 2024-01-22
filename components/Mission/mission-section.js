@@ -5,11 +5,17 @@ import SwiperSlider from "../SwiperSlider/swiper-slider";
 import styles from "./styles/mission.module.scss";
 import { useState } from "react";
 
+import Modal from "../Modal/modal";
+
 const MissionSection = () => {
   const [isModalOpen, setModalOpen] = useState(false);
 
   const handleOnBtnClick = () => {
     setModalOpen(true);
+  };
+
+  const handleModalClose = () => {
+    setModalOpen(false);
   };
 
   return (
@@ -31,11 +37,18 @@ const MissionSection = () => {
           onClick={handleOnBtnClick}
         >
           Детальніше
-          <ArrowRight className={styles.missionButtonIcon} />
-          {/* <svg className={styles.missionButtonIcon} width="24" height="24">
+          {/* <ArrowRight className={styles.missionButtonIcon} /> */}
+          <svg className={styles.missionButtonIcon} width="24" height="24">
             <use href="/assets/icons/sprite.svg#icon-arrow-right" />
-          </svg> */}
+          </svg>
         </button>
+        <Modal
+          isOpen={isModalOpen}
+          onClose={handleModalClose}
+          title="Модальне вікно для Нашої місіі"
+        >
+          <p>Тут буде детальний опис Нашої місії</p>
+        </Modal>
         <SwiperSlider />
       </div>
     </section>
