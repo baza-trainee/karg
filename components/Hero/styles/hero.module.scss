@@ -2,22 +2,29 @@
   background-image: url(../../../public/assets/images/main/main-image-mob.jpg);
   background-repeat: no-repeat;
   background-size: contain;
+  background-position: center;
   background-color: #eadeff;
 
-  width: 320px;
-  height: 298px;
   margin: 0 auto;
-  padding-top: 18px;
   padding-bottom: 208px;
 
   text-align: center;
 
+  @media screen and (min-width: 375px) {
+    background-image: url(../../../public/assets/images/main/main-image-768.jpg);
+    background-size: cover;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: url(../../../public/assets/images/main/main-image-1200.jpg);
+    background-size: cover;
+    height: 600px;
+  }
+
   @media screen and (min-width: 1440px) {
     background-image: url(../../../public/assets/images/main/main-image-desk.jpg);
-    background-size: cover;
 
-    min-width: 1444px;
-    height: 673px;
+    max-width: 1440px;
     padding: 64px 52px 740px 1011px;
   }
 
@@ -29,5 +36,10 @@
     text-transform: capitalize;
 
     color: #ff8c0c;
+
+    @media screen and (min-width: 768px) {
+      // font-size: 24px;
+      // text-align: right;
+    }
   }
 }
