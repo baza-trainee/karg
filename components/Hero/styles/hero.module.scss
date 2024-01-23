@@ -1,3 +1,5 @@
+@import "../../../app/[locale]/colors.scss";
+
 .hero {
   background-image: url(../../../public/assets/images/main/main-image-mob.jpg);
   background-repeat: no-repeat;
@@ -35,7 +37,7 @@
     line-height: calc(46.8 / 36);
     text-transform: capitalize;
 
-    color: #ff8c0c;
+    color: $button-active;
 
     @media screen and (min-width: 768px) {
       // font-size: 24px;
