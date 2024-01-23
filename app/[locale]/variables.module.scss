@@ -1,10 +1,50 @@
-@import './colors.scss';
+// Primary colors
+$primary: #4d396f;
+$primary-light: #6b5199;
+
+// Button colors for light theme
+$button-default: #ffa33c;
+$button-hover: #f5ba78;
+$button-active: #ff8c0c;
+$button-loading: #ead3b9;
+$button-disabled: #bebebe;
+
+// Button colors for dark theme
+$button-dark-default: #3a3345;
+$button-dark-hover: #675d77;
+$button-dark-active: #251c33;
+$button-dark-loading: #b6abc7;
+$button-dark-disabled: #bebebe;
+
+// Text colors
+$text-dark: #141414;
+$text-white: #ffffff;
+$text-gray: #a1a1a1;
+
+// Background colors
+$bg-purple: #eadeff;
+$bg-white: #ffffff;
+
+// font-family
+$font-family-heading: "Roboto Flex", sans-serif;
+$line-height: 1.3;
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
   font-weight: $font-weight;
   font-size: $font-size;
   line-height: $line-height;
+}
+.button-block {
+  display: block;
+}
+
+.buttonStatusHeader {
+  display: none;
+}
+
+.buttonStatusMenu {
+  display: block;
 }
 
 // Typography for Mobile
@@ -14,7 +54,8 @@
 }
 
 .subtitle1,
-.button1 {
+.button1,
+.quickSubtitle1 {
   @include font-styles(700, 20px);
 }
 
@@ -31,8 +72,13 @@
   @include font-styles(500, 16px);
 }
 
-.text3 {
+.text3,
+.quickText3 {
   @include font-styles(400, 14px);
+}
+
+.quickButton2 {
+  @include font-styles(800, 16px);
 }
 
 .body {
@@ -40,8 +86,51 @@
   letter-spacing: 0%;
 }
 
-// Typography for Desktop
+// Typography for tablet
 @media (min-width: 768px) {
+
+  .buttonStatusHeader {
+    display: block;
+  }
+
+  .buttonStatusMenu {
+   display: none;
+  }
+
+  .h1 {
+    @include font-styles(800, 46px);
+    font-family: $font-family-heading;
+  }
+
+  .h2 {
+    @include font-styles(700, 32px);
+  }
+
+  .h3,
+  .subtitle1,
+  .subtitle2 {
+    @include font-styles(700, 24px);
+  }
+
+  .btn1,
+  .button1 {
+    @include font-styles(700, 20px);
+  }
+
+  .body,
+  .p {
+    @include font-styles(400, 20px);
+    letter-spacing: 0%;
+  }
+
+  .btn2,
+  .button2 {
+    @include font-styles(800, 16px);
+  }
+}
+
+// Typography for Desktop
+@media (min-width: 1200px) {
   .h1 {
     @include font-styles(800, 59px);
     font-family: $font-family-heading;
@@ -65,8 +154,16 @@
     letter-spacing: 0%;
   }
 
+  .quickSubtitle1 {
+    @include font-styles(700, 24px);
+  }
+  .quickText3 {
+    @include font-styles(300, 16px);
+  }
+
   .btn2,
-  .button2 {
+  .button2,
+  .quickButton2 {
     @include font-styles(800, 18px);
   }
 }

@@ -1,42 +1,44 @@
+@import '../../../app/[locale]/colors.scss';
+
 .languageMenu {
   display: flex;
   align-items: center;
-  background-color: #4d396f;
-  color: #ffffff;
-  font-size: 18px;
+  background-color: $primary;
+  color: $text-white;
   text-transform: uppercase;
-  max-width: 65px;
+  justify-content: space-between;
+  width: 73px;
   position: relative;
-
-  > .selectedLanguage {
-    padding-left: 9px;
-    padding-right: 4px;
-  }
+  text-align: center;
 
   .languageList {
     position: absolute;
     list-style-type: none;
-    bottom: 0;
+    bottom: 0px;
     transform: translateY(100%);
     opacity: 0;
     visibility: hidden;
-    
+
     &.active {
       opacity: 1;
       visibility: visible;
-      background-color: #4d396f;
+      background-color: $primary;
       width: 100%;
-      padding: 0 0 5px 10px;
+      padding-bottom: 5px;
       border-bottom-left-radius: 8px;
       border-bottom-right-radius: 8px;
     }
 
-    .languageItem:hover {
-      color: #ffa33c;
-    }
-  }
+    .languageItem {
+      padding-top: 5px;
 
-  .iconContainer {
-    margin-right: 5px;
+      &:first-child {
+        padding-top: 17px;
+      }
+
+      &:hover {
+        color: $button-default;
+      }
+    }
   }
 }
