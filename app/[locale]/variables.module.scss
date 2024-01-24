@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import "./colors.scss";
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -13,10 +13,17 @@
   font-family: $font-family-heading;
 }
 
+.Subtitle1 {
+  @include font-styles(700, 20px);
+}
+
 .subtitle1,
-.button1,
 .quickSubtitle1 {
   @include font-styles(700, 20px);
+}
+
+.button1 {
+  @include font-styles(700, 18px);
 }
 
 .subtitle2,
@@ -53,7 +60,8 @@
     font-family: $font-family-heading;
   }
 
-  .h2 {
+  .h2,
+  .Subtitle1 {
     @include font-styles(700, 32px);
   }
 
@@ -92,15 +100,18 @@
   }
 
   .Subtitle1 {
-     @include font-styles(700, 44px);
+    @include font-styles(700, 44px);
   }
 
   .h3,
   .subtitle1,
   .subtitle2,
-  .btn1,
-  .button1 {
+  .btn1 {
     @include font-styles(700, 28px);
+  }
+
+  .button1 {
+    @include font-styles(700, 20px);
   }
 
   .body,

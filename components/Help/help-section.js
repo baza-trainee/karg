@@ -2,6 +2,7 @@
 
 import styles from './styles/help.module.scss'
 import variables from "@/app/[locale]/variables.module.scss";
+import Link from 'next/link';
 
 const Help = () => {
     return (
@@ -14,9 +15,9 @@ const Help = () => {
                         які ми надаємо, і правилами звернення до нас.
                     </div>
                 </div>
-                <button type='button' className={styles.button}>
+                <Link href='/about' className={styles.button}>
                     <span className={`${styles.buttonText} ${variables.button1}`}>Правила звернення</span>
-                </button>
+                </Link>
             </div>
         </section>
     );
