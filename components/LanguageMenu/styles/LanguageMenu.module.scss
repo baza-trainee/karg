@@ -7,9 +7,11 @@
   color: $text-white;
   text-transform: uppercase;
   justify-content: space-between;
-  width: 73px;
+  min-width: 24px;
+  max-width: 73px;
   position: relative;
   text-align: center;
+  gap: 4px;
 
   .languageList {
     position: absolute;
@@ -42,3 +44,7 @@
     }
   }
 }
+
+// .icon {
+//   padding: 8px 6px 8.571px 5px;
+// }

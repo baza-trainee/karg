@@ -29,7 +29,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  // margin: 16px 8px;
+  padding: 0 16px;
 }
 
 .headerContainer {
@@ -44,12 +44,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .logo,
 .burgerIcon {
   font-size: 48px;
-  margin: 22px 8px;
+  margin: 8px 8px;
 }
 
 .langContainer {
@@ -59,15 +60,15 @@
   border: none;
 }
 
-.dropDownMenuWrapper {
-  display: flex;
-  width: 100%;
-  // height: 95vh;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: $bg-purple;
-}
+// .dropDownMenuWrapper {
+//   display: flex;
+//   width: 100%;
+//   // height: 95vh;
+//   align-items: center;
+//   justify-content: center;
+//   flex-direction: column;
+//   background-color: $bg-purple;
+// }
 
 .dropDownMenu {
   display: flex;
@@ -136,6 +137,66 @@
   line-height: 130%;
 }
 
+.dropDownMenuWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  width: 100%;
+  background-color: $bg-purple;
+  padding: 32px 16px 32px 16px;
+  gap: 32px;
+}
+
+.navMenuMobile > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.navMenuMobile {
+  & a,
+  span {
+    text-decoration: none;
+  }
+}
+
+.navMenuInnerMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.navMenuInnerList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+}
+
+.navMenuInnerList > li > a {
+  color: $button-dark-hover;
+}
+
+.contactsContainerMobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.contactsContainerMobile > a {
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
 @media screen and (min-width: 768px) {
   .inner {
     padding: 10px 9.375%;
@@ -188,6 +249,12 @@
 
   .navMenu a:hover {
     box-shadow: inset 0 -2px 0 $button-hover;
+  }
+
+  .navMenu p {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
   }
 
   .navMenuDrop li {

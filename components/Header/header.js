@@ -1,50 +1,28 @@
 "use client";
 
+import { useState } from "react";
+import Link from "next/link";
+import useToggle from '@/utils/useToggle';
+
 import styles from "./styles/header.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
-import stylesBtn from "./../Button/styles/button.module.scss";
 
 import {
-  Facebook,
-  Instagram,
-  Telegram,
   Logo,
   MenuBurger,
   MenuBurgerClose,
   ArrowDown,
 } from "@/public/assets/icons";
 
-import Button from "../Button/button";
-import Modal from "../Modal/modal";
-
-import { useState } from "react";
-import { useMediaQuery } from "@react-hook/media-query";
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
+import ButtonAsLink from "../ButtonAsLink/buttonAsLink";
+import SocialIcons from "../SocialIcons/socialIcons";
 
 const Header = () => {
-  const isDesktop = useMediaQuery("(min-width: 1200px)");
 
   const [open, setOpen] = useState(false);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-
-  const onOpen = () => setIsModalOpen(true);
-  const onClose = () => setIsModalOpen(false);
-
-  const iconsContainer = () => {
-    return (
-      <div className={styles.iconsContainer}>
-        <a href="https://www.facebook.com/">
-          <Facebook className={styles.icons} />
-        </a>
-        <a href="https://www.instagram.com/">
-          <Instagram className={styles.icons} />
-        </a>
-        <a href="https://www.telegram.com/">
-          <Telegram className={styles.icons} />
-        </a>
-      </div>
-    );
-  };
+  const [openFirst, setFirstOpen] = useToggle(false);
+  const [openSecond, setSecondOpen] = useToggle(false);
 
   return (
     <header className={styles.header}>
@@ -52,78 +30,58 @@ const Header = () => {
         <a className={variables.subtitle1} href="tel: +380939862262">
           +38 (093) 986-2262
         </a>
-        {iconsContainer()}
+        <SocialIcons iconsColor='#A1A1A1' />
         <a className={variables.subtitle1} href="tel: +380988447937">
           +38 (098) 844-7937
         </a>
       </div>
       <nav className={styles.headerContainer}>
         <div className={styles.inner}>
-          <Logo className={styles.logo} />
+          <Link href="/"><Logo className={styles.logo} /></Link>
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <li>
-              <a href="#">Головна</a>
+              <Link href="/">Головна</Link>
             </li>
             <li className={styles.dropHover}>
-              <a className={styles.navMenuDropList} href="#">
+              <p className={`${styles.navMenuDropList} ${styles.ArrowDown}`}>
                 <span>Про нас</span>
                 <ArrowDown />
-              </a>
+              </p>
               <ul
                 className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}
               >
                 <li>
-                  <a href="#">Історія виникнення</a>
+                  <Link href="/about">Історія виникнення</Link>
                 </li>
                 <li>
-                  <a href="#">Правила звернення</a>
+                  <Link href="/about/rules_of_appeal">Правила звернення</Link>
                 </li>
                 <li>
-                  <a href="#">Наша команда</a>
+                  <Link href="/about/our_team">Наша команда</Link>
                 </li>
                 <li>
-                  <a href="#">Контакти</a>
+                  <Link href="/about/contacts">Контакти</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <a href="#">Допомогти нам</a>
+              <Link href="/help">Допомогти нам</Link>
             </li>
             <li className={styles.dropHover}>
-              <a className={styles.navMenuDropList} href="#">
+              <p className={styles.navMenuDropList} href="#">
                 <span>Корисне</span>
                 <ArrowDown />
-              </a>
-              {/* <ul className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}>
-                                <li><a href="#">Щось</a></li>
-                                <li><a href="#">Під контактами</a></li>
-                                <li><a href="#">Повинно бути</a></li>
-                                <li><a href="#">Але не зрозуміло що тому поки залишу це тут</a></li>
-                            </ul> */}
+              </p>
+              <ul className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}>
+                <li><Link href="/useful">Поради</Link></li>
+                <li><Link href="/useful/faq">FAQ</Link></li>
+                <li><Link href="/useful/results">Підсумки</Link></li>
+              </ul>
             </li>
           </ul>
           <div className={styles.sideMenu}>
             <LanguageMenu />
-            {isDesktop && (
-              <Button
-                type="click"
-                className={stylesBtn.btnSupport}
-                onClick={onOpen}
-              >
-                Підтримати
-              </Button>
-            )}
-            <Modal
-              isOpen={isModalOpen}
-              onClose={onClose}
-              title="Модальне вікно для донатів"
-            >
-              <p>
-                Сюди будуть додані варіанти платіжних систем для донацій і
-                стилізація цього модального вікна
-              </p>
-            </Modal>
-
+            <ButtonAsLink route="/help" buttonCaption="Підтримати" buttonStyle="header-primary-button-default" />
             <div onClick={() => setOpen(!open)}>
               {open == false ? (
                 <MenuBurger className={styles.burgerIcon} />
@@ -135,35 +93,36 @@ const Header = () => {
         </div>
         {open == true ? (
           <div className={styles.dropDownMenuWrapper}>
-            <ul className={`${styles.dropDownMenu} ${variables.button2}`}>
-              <li>
-                <a href="#">Головна</a>
-              </li>
-              <li>
-                <a href="#">Про нас</a>
-              </li>
-              <li>
-                <a href="#">Допомогти нам</a>
-              </li>
-              <li>
-                <a href="#">Корисне</a>
-              </li>
-            </ul>
-            <button className={styles.donateButton}>
-              <span className={variables.button1}>Зробити внесок</span>
-            </button>
-            <div className={styles.contactsContainer}>
+            <div className={`${styles.navMenuMobile} ${variables.button2}`}>
+              <ul>
+                <li><Link href="/">Головна</Link></li>
+                <li><p className={styles.navMenuInnerMenu} onClick={setFirstOpen}><span>Про нас</span><ArrowDown /></p>
+                  {openFirst ? <ul className={styles.navMenuInnerList}>
+                    <li><Link href="/about">Історія виникнення</Link></li>
+                    <li><Link href="/about/rules_of_appeal">Правила звернення</Link></li>
+                    <li><Link href="/about/our_team">Наша команда</Link></li>
+                    <li><Link href="/about/contacts">Контакти</Link></li>
+                  </ul> : null}
+                </li>
+                <li><Link href="/animals">Наші тварини</Link></li>
+                <li><Link href="/help">Допомогти нам</Link></li>
+                <li><p className={styles.navMenuInnerMenu} onClick={setSecondOpen}><span>Корисне</span><ArrowDown /></p>
+                  {openSecond ? <ul className={styles.navMenuInnerList}>
+                    <li><Link href="/useful">Поради</Link></li>
+                    <li><Link href="/useful/faq">FAQ</Link></li>
+                    <li><Link href="/useful/results">Підсумки</Link></li>
+                  </ul> : null}
+                </li>
+              </ul>
+            </div>
+            <ButtonAsLink route="/help" buttonCaption="Підтримати" buttonStyle="primary-dark-W-288" />
+            <div className={`${styles.contactsContainerMobile} ${variables.button2}`}>
               <a href="tel: +380939862262">+38 (093) 986-2262</a>
               <a href="tel: +380988447937">+38 (098) 844-7937</a>
               <a href="mailto: karg.inform@gmail.com">karg.inform@gmail.com</a>
-              <a
-                href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6"
-                target="_blank"
-              >
-                м. Київ
-              </a>
+              <a href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6" target="_blank">м. Київ</a>
             </div>
-            {iconsContainer()}
+            <SocialIcons iconsColor='#3a3345' />
           </div>
         ) : null}
       </nav>

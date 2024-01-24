@@ -51,6 +51,10 @@
   gap: 4px;
 }
 
+.navMenuInnerMenu > svg {
+  color: #fff;
+}
+
 .navMenuInnerList {
   display: flex;
   flex-direction: column;
