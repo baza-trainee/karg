@@ -44,7 +44,8 @@ $line-height: 1.3;
 
 .subtitle1,
 .button1,
-.quickSubtitle1 {
+.quickSubtitle1,
+.rescueSubtitle1 {
   @include font-styles(700, 20px);
 }
 
@@ -82,6 +83,10 @@ $line-height: 1.3;
     font-family: $font-family-heading;
   }
 
+  .rescueSubtitle1 {
+    @include font-styles(700, 44px);
+  }
+  
   .h2 {
     @include font-styles(700, 32px);
   }
@@ -118,6 +123,10 @@ $line-height: 1.3;
 
   .h2 {
     @include font-styles(700, 48px);
+  }
+
+  .rescueSubtitle1 {
+    @include font-styles(700, 44px);
   }
 
   .h3,

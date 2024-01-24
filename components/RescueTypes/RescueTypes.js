@@ -1,32 +1,38 @@
 import React from 'react';
-import { CardItem } from '../Achievements/CardItem/CardItem';
+import { CardItem } from '../CardItem/CardItem';
 import styles from './styles/rescueTypes.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
 
-const rescueTypesData = [
-  {'innerMessage': 'Зняття котів з дерев'},
-  {'innerMessage': 'Зняття котів з конструкцій будинків'},
-  {'innerMessage': 'Підняття тварррин з колодязя, колектора, зливи'},
-  {'innerMessage': 'Порятунок котів з вентиляції'},
-];
+const titleRescueTypes = 'Види рятувальних робіт'; 
 
-export default function RescueTypes() { 
+const rescueTypes = [
+    {'cardMessage': 'Зняття котів з дерев'},
+    {'cardMessage': 'Зняття котів з конструкцій будинків'},
+    {'cardMessage': 'Підняття тварин з колодязя, колектора, зливи'},
+    {'cardMessage': 'Порятунок котів з вентиляції'} 
+]
+
+export default function RescueTypes() {
   return (
-    <section className={styles.rescueTypesBlock}>
-      {rescueTypesData.map((d) => {
-        return (
-          <div key = {d.innerMessage}>
-            <CardItem 
-              title = {d.title}
-              innerMessage = {d.innerMessage}
-              cardStyle = {styles.cardItem}
-              cardTextBlock = {styles.achievementText}
-              cardTitleStyle = {`${styles.title} ${variables.Subtitle2}`}
-              cardMessageStyle = {`${styles.message} ${variables.Text3}`}      
-            />
-          </div>
-        )
-      })}
-    </section>
+    <div>
+        <div className={styles.container}>
+            <p className={styles.titleWidth}>
+                <span className={`${variables.rescueSubtitle1}`}>{titleRescueTypes}</span>
+            </p>
+                        
+            {rescueTypes.map((r)=>{
+                return (
+                    <div key={r.innerMessage}>
+                        {/* {styles.cardInner} */}
+                    <CardItem 
+                        innerMessage = {r.cardMessage}
+                        cardStyle = {styles.cardItem}
+                        cardMessageStyle = {`${styles.message} ${variables.Text3}`}      
+                    />
+                    </div>
+                )
+            })}
+        </div>
+    </div>
   )
 }
