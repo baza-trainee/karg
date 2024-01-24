@@ -24,7 +24,11 @@ export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
   return (
-    <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
+    <TranslationsProvider
+      resources={resources}
+      locale={locale}
+      namespaces={i18nNamespaces}
+    >
       <div className={styles.main}>
         <Header />
         <HeroSection />
