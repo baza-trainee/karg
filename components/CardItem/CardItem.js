@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 export function CardItem({
     cardTitle, 
@@ -11,6 +11,7 @@ export function CardItem({
     cardTextBlock,
     cardTitleStyle,
     cardMessageStyle,
+    buttonText,
     buttonIconStyle
  }) {
 
@@ -46,6 +47,7 @@ export function CardItem({
                     : null}
             </Link>
         }
+            
       </div>
     </div>
   )

@@ -50,11 +50,13 @@ $line-height: 1.3;
 }
 
 .subtitle2,
-.button2 {
+.button2,
+.rescueButton1 {
   @include font-styles(700, 18px);
 }
 
-.text1 {
+.text1,
+.rescueText1 {
   @include font-styles(500, 18px);
 }
 
@@ -82,12 +84,9 @@ $line-height: 1.3;
     @include font-styles(800, 46px);
     font-family: $font-family-heading;
   }
-
-  .rescueSubtitle1 {
-    @include font-styles(700, 44px);
-  }
   
-  .h2 {
+  .h2,
+  .rescueSubtitle1 {
     @include font-styles(700, 32px);
   }
 
@@ -98,10 +97,15 @@ $line-height: 1.3;
   }
 
   .btn1,
-  .button1 {
+  .button1,
+  .rescueButton1 {
     @include font-styles(700, 20px);
   }
 
+  .rescueText1 {
+    @include font-styles(500, 20px);
+  }
+  
   .body,
   .p {
     @include font-styles(400, 20px);
@@ -143,11 +147,19 @@ $line-height: 1.3;
     letter-spacing: 0%;
   }
 
+  .rescueText1 {
+    @include font-styles(500, 24px);
+  }
+
   .quickSubtitle1 {
     @include font-styles(700, 24px);
   }
   .quickText3 {
     @include font-styles(300, 16px);
+  }
+
+  .rescueButton1 {
+    @include font-styles(700, 20px)
   }
 
   .btn2,
