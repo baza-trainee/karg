@@ -4,7 +4,7 @@ import styles from './styles/footer.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 
 import { Logo, ArrowDown } from "@/public/assets/icons";
-import useToggle from '@/utils/useToggle/useToggle';
+import useToggle from '@/utils/useToggle';
 import SocialIcons from '../SocialIcons/socialIcons';
 
 

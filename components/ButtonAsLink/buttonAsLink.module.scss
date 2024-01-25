@@ -1,0 +1,42 @@
+@import '../../app/[locale]/colors.scss';
+
+.header-primary-button-default {
+  display: none;
+}
+
+.primary-dark-W-288 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 288px;
+  border-radius: 4px;
+  background-color: $button-dark-default;
+  color: white;
+}
+
+@media screen and (min-width: 768px) {
+  .header-primary-button-default {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    min-width: 270px;
+    max-width: 288px;
+    border-radius: 4px;
+    background-color: $button-default;
+  }
+}
+
+.primary-dark {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  min-width: 270px;
+  max-width: 288px;
+  min-height: 44px;
+  max-height: 52px;
+  border-radius: 4px;
+  background-color: $button-dark-default;
+}
