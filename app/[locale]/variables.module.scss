@@ -57,6 +57,10 @@
     @include font-styles(700, 32px);
   }
 
+  .quickSubtitle1 {
+    @include font-styles(700, 28px);
+  }
+
   .h3,
   .subtitle1,
   .subtitle2 {
@@ -75,8 +79,13 @@
   }
 
   .btn2,
-  .button2 {
+  .button2,
+  .quickButton2 {
     @include font-styles(800, 16px);
+  }
+
+  .quickText3 {
+    @include font-styles(400, 16px);
   }
 }
 

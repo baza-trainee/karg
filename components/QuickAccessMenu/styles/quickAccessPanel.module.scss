@@ -1,51 +1,128 @@
 @import '../../../app/[locale]/variables.module.scss';
 .accessMenuBlock {
-    align-items: center;
     display: flex;
     min-width: 320px;
-    gap: 16px;
-    height: fit-content;
     flex-direction: column;
+    align-items: center;
+    gap: 16px;
     padding-top: 24px;
     padding-bottom: 24px;
     background-color: $bg-purple;
+    height: fit-content;
   
-    @media screen and (min-width: 786px) {
+    @media screen and (min-width: 834px) {
+        min-width:  834px;
+        padding-top: 32px;
+        padding-bottom: 32px;
+        justify-content: center;
+        flex-direction: row;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+      
+    @media screen and (min-width: 1440px) {
         position: relative;
         top: -72.5px;
-        height: 145px;
+        min-height: 145px;
         justify-content: center;
         flex-direction: row;
         gap: 30px;
         background-color: transparent;
     }
-        & .accessMenuText {
+
+        & .innerBlock {
             display: flex;
             flex-direction: column;
-            justify-content: space-around;
-            gap: 7px;
-            width: 182px;
-            height: 100px;
-
-            @media screen and (min-width: 768px) {
-                width: 156px;
-                height: 113px;
-                gap: 8px;
+            width: 90%;
+            height: fit-content;
+            gap: 8px;
+            
+            @media screen and (min-width: 834px) {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 122px 122px;
+            justify-content: center;
+            width: 84.65%;//706px
+            grid-gap: 20px;
+            background-color: bisque;
             }
-                & a {
-                    align-self: flex-end;
-                    align-items: center;
+            
+        }
 
-                    @media screen and (min-width: 768px) {
-                        align-self: flex-start;
-                        height: 136px;
-                    }  
+    & .accessMenuItem {
+        display: flex;
+        justify-content:space-evenly;
+        align-items: center;
+        background-color: #4D396F;
+        min-width: 288px;
+        min-height: 132px;
+        border-radius: 4px;
+        
+
+        @media screen and (min-width: 834px) {
+            min-height: 122px;
+        }
+        @media screen and (min-width: 1440px) {
+            width: 270px;
+            height: 145px;
+            border-radius: 20px;
+        }
+
+                & .accessMenuText {
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    gap: 7px;
+                    max-width: 182px;
+
+                    @media screen and (min-width: 843px) {
+                        width: 156px;
+                        height: 113px;
+                        gap: 8px;
+                    }
+                    & .title {
+                        color: $text-white;
+                        line-height: 26px;
+
+                        @media screen and (min-width: 1440px){
+                            line-height: 31.2px;
+                        }
+                    }
+                    & .message {  
+                        color:$text-white;
+                        line-height: 18.2px;
+                        max-height: 36px;
+                    }
+
+                    & a {
+                        display: flex;
+                        border: 2px solid transparent;
+                        background-color: transparent;
+                        gap: 4px;
+                        width: 124px;
+                        height: 24px;
+                        text-decoration: none;
+                            @media screen and (min-width: 1440px) {
+                                width: 136px;
+                            }
+                    }             
+
+                    & a {
+                        align-self: flex-end;
+                        align-items: center;
+
+                        @media screen and (min-width: 834px) {
+                            align-self: flex-start;
+                            height: 136px;
+                        }  
                         & span {
                             color:$text-white;
                             line-height: 20.8px; 
                         }
-                }
-        }
+                    }
+                }            
+    }
+
         & .donate {
             display: flex;
             justify-content: center;
@@ -54,8 +131,9 @@
             line-height: 23.4px;
             text-decoration: none;
             border-radius: 4px;
-            width: 288px;
-            height: 44px;
+            min-width: 288px;
+            min-height: 44px;
+            max-height: 52px;
             padding: 12px;
                 &:hover {
                     background-color: $button-hover;
@@ -65,49 +143,18 @@
                     background-color: $button-active;
                 }
 
-            @media screen and (min-width: 1200px) {
+            @media screen and (min-width: 834px) {
+                // display: none;
+            }  
+            @media screen and (min-width: 1440px) {
                 display: none;
             }  
         }
     
         & .iconSrc {
             font-size: 61px;   
-            width: 50px;     
+            max-width: 50px;   
         }   
-        & .accessMenuItem {
-            display: flex;
-            justify-content:space-evenly;
-            align-items: center;
-            background-color: #4D396F;
-            width: 288px;
-            height: 132px;
-            border-radius: 4px;
-
-            @media screen and (min-width: 1200px) {
-                width: 270px;
-                height: 145px;
-                border-radius: 20px;
-            }
-                & .title {
-                    color: $text-white;
-                    line-height: 26px;
-                }
-                & .message {  
-                    color:$text-white;
-                    line-height: 18.2px;
-                }
-                & a {
-                    display: flex;
-                    border: 2px solid transparent;
-                    background-color: transparent;
-                    gap: 4px;
-                    width: 124px;
-                    height: 24px;
-                    text-decoration: none;
-                        @media screen and (min-width: 1200px) {
-                            width: 136px;
-                        }
-                }             
-    }
+        
 
 }

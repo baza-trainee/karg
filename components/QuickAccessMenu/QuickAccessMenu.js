@@ -16,39 +16,32 @@ const details = "Детальніше";
 const donate = "Підтримати";
 
 export function MenuItem({ title, href, iconSrc, innerMessage }) {
-  // const handleScroll = (e) => {
-  //   e.preventDefault();
 
-  //   const href = e.currentTarget.href;
-  //   const targetId = href.replace(/.*\#/, "");
-
-  //   const elem = document.getElementById(targetId);
-  //   elem?.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // }
   return (
-    <div className={styles.accessMenuItem}>
-      {iconSrc}
-      <div className={styles.accessMenuText}>
-        <p className={`${styles.title} ${variables.quickSubtitle1}`}>
-          {title}
-        </p>
-        <p className={`${styles.message} ${variables.quickText3}`}>
-          {innerMessage}
-        </p>
-        <Link className={variables.quickButton2} href={href}>
-          <span>{details}</span>
-          <ArrowRightIcon className={variables.quickButton2} />
-        </Link>
-      </div>
+    
+        <div className={styles.accessMenuItem}>
+        {iconSrc}
+        <div className={styles.accessMenuText}>
+          <p className={`${styles.title} ${variables.quickSubtitle1}`}>
+            {title}
+          </p>
+          <p className={`${styles.message} ${variables.quickText3}`}>
+            {innerMessage}
+          </p>
+          <Link className={variables.quickButton2} href={href}>
+            <span>{details}</span>
+            <ArrowRightIcon className={variables.quickButton2} />
+          </Link>
+        </div>     
     </div>
+
   );
 }
 
 export default function QuickAccessMenu() {
   return (
     <section className={styles.accessMenuBlock}>
+      <div className={styles.innerBlock}>
       {quickMenuData.map((d) => {
         return (
           <div key={d.innerMessage}>
@@ -61,6 +54,7 @@ export default function QuickAccessMenu() {
           </div>
         );
       })}
+      </div>
       {/* id='Пожертва' || href='Пожертва' */}
       <Link className={`${styles.donate} ${variables.quickButton2}`} href='/help'>
         <span>{donate}</span>
