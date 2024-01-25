@@ -37,10 +37,7 @@ const MissionSection = () => {
           onClick={handleOnBtnClick}
         >
           Детальніше
-          {/* <ArrowRight className={styles.missionButtonIcon} /> */}
-          <svg className={styles.missionButtonIcon} width="24" height="24">
-            <use href="/assets/icons/sprite.svg#icon-arrow-right" />
-          </svg>
+          <ArrowRight className={styles.missionButtonIcon} />
         </button>
         <Modal
           isOpen={isModalOpen}
