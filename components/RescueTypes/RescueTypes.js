@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import { CardItem } from '../CardItem/CardItem';
+//import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import styles from './styles/rescueTypes.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
 
@@ -34,9 +35,10 @@ export default function RescueTypes() {
                         </div>
                     )
                 })}
-            </div>    
-
-            <Link className={`${styles.donate} ${styles.dark} ${variables.rescueButton1}`} href='/help'>
+            </div>   
+            {/* /about/rules_of_appeal  or  /about/applying_rules*/}
+            
+            <Link className={`${styles.allActivities} ${styles.dark} ${variables.rescueButton1}`} href='/about/applying_rules'>
                 <span>{allActivities}</span>
             </Link>   
         </div>
