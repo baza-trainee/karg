@@ -1,8 +1,20 @@
+@import "../../../app/[locale]/colors.scss";
+
 .container {
   width: 100%;
   padding-left: 16px;
   padding-right: 16px;
   margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 90px;
+    padding-right: 90px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
@@ -17,7 +29,7 @@
 
   color: var(--text-dark, #141414);
 
-  @media screen and (min-width: 1440px) {
+  @media screen and (min-width: 1200px) {
     padding: 48px 0;
   }
 
@@ -30,7 +42,7 @@
 
     margin-bottom: 16px;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 44px;
       margin-bottom: 32px;
     }
@@ -45,8 +57,10 @@
 
     margin-bottom: 16px;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 24px;
+      padding-right: 100px;
+      padding-left: 100px;
       margin-bottom: 32px;
     }
   }
@@ -70,7 +84,7 @@
 
     transition: color 250ms linear;
 
-    @media screen and (min-width: 1440px) {
+    @media screen and (min-width: 1200px) {
       font-size: 18px;
       margin-bottom: 32px;
     }
@@ -78,11 +92,17 @@
 
   &Button:hover,
   &Button:focus {
-    color: #ffa33c;
+    color: $button-default;
   }
 
   &ButtonIcon {
+    width: 24px;
+    height: 24px;
     margin-left: 4px;
     fill: currentColor;
   }
+
+  // &ButtonIcon:hover {
+  //   fill: $button-default;
+  // }
 }

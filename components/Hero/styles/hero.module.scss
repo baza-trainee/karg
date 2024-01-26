@@ -1,33 +1,97 @@
+@import "../../../app/[locale]/colors.scss";
+
 .hero {
-  background-image: url(../../../public/assets/images/main/main-image-mob.jpg);
+  position: relative;
+
+  background-image: url(../../../public/assets/images/main/hero-320.jpg);
   background-repeat: no-repeat;
   background-size: contain;
   background-color: #eadeff;
 
-  width: 320px;
-  height: 298px;
   margin: 0 auto;
-  padding-top: 18px;
+  padding-top: 8px;
   padding-bottom: 208px;
+  max-width: 1444px;
 
   text-align: center;
 
-  @media screen and (min-width: 1440px) {
-    background-image: url(../../../public/assets/images/main/main-image-desk.jpg);
+  @media screen and (min-width: 375px) and (max-width: 767px) {
+    background-image: url(../../../public/assets/images/main/hero-768.jpg);
+    background-size: cover;
+    background-position: center;
+
+    padding-top: 28px;
+    padding-bottom: 308px;
+  }
+
+  @media screen and (min-width: 768px) {
+    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
     background-size: cover;
 
-    min-width: 1444px;
-    height: 673px;
-    padding: 64px 52px 740px 1011px;
+    padding-top: 18px;
+    padding-bottom: 390px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
+    background-size: cover;
+
+    padding-top: 38px;
+    padding-bottom: 508px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
+    background-size: cover;
+    background-position: top;
+
+    padding-top: 48px;
+    padding-bottom: 590px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    background-image: url(../../../public/assets/images/main/hero-desk.jpg);
+    background-size: cover;
+
+    padding-top: 64px;
+    padding-bottom: 690px;
   }
 
   &Title {
-    font-family: "Roboto Flex", sans-serif;
+    font-family: $font-family-heading;
     font-size: 36px;
     font-weight: 800;
-    line-height: calc(46.8 / 36);
+    line-height: $line-height;
     text-transform: capitalize;
 
-    color: #ff8c0c;
+    color: $button-active;
+
+    @media screen and (min-width: 768px) {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 30px;
+
+      color: $button-default;
+    }
+
+    @media screen and (min-width: 1024px) {
+      top: 28px;
+      right: 28px;
+      font-size: 36px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      top: 38px;
+      right: 38px;
+      font-size: 42px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      position: absolute;
+      top: 64px;
+      right: 52px;
+      font-size: 56px;
+    }
   }
 }

@@ -13,11 +13,9 @@
   font-family: $font-family-heading;
 }
 
-.Subtitle2 {
-  @include font-styles(700, 24px);
-}
 .subtitle1,
-.button1 {
+.button1,
+.quickSubtitle1 {
   @include font-styles(700, 20px);
 }
 
@@ -35,8 +33,12 @@
 }
 
 .text3,
-.Text3 {
+.quickText3 {
   @include font-styles(400, 14px);
+}
+
+.quickButton2 {
+  @include font-styles(800, 16px);
 }
 
 .body {
@@ -44,15 +46,48 @@
   letter-spacing: 0%;
 }
 
-// Typography for Desktop
+// Typography for tablet
 @media (min-width: 768px) {
+  .h1 {
+    @include font-styles(800, 46px);
+    font-family: $font-family-heading;
+  }
+
+  .h2 {
+    @include font-styles(700, 32px);
+  }
+
+  .h3,
+  .subtitle1,
+  .subtitle2 {
+    @include font-styles(700, 24px);
+  }
+
+  .btn1,
+  .button1 {
+    @include font-styles(700, 20px);
+  }
+
+  .body,
+  .p {
+    @include font-styles(400, 20px);
+    letter-spacing: 0%;
+  }
+
+  .btn2,
+  .button2 {
+    @include font-styles(800, 16px);
+  }
+}
+
+// Typography for Desktop
+@media (min-width: 1200px) {
   .h1 {
     @include font-styles(800, 59px);
     font-family: $font-family-heading;
   }
 
-  .h2,
-  .Subtitle2 {
+  .h2 {
     @include font-styles(700, 48px);
   }
 
@@ -70,12 +105,16 @@
     letter-spacing: 0%;
   }
 
-  .Text3 {
-    @include font-styles(400, 20px);
+  .quickSubtitle1 {
+    @include font-styles(700, 24px);
   }
-  
+  .quickText3 {
+    @include font-styles(300, 16px);
+  }
+
   .btn2,
-  .button2 {
+  .button2,
+  .quickButton2 {
     @include font-styles(800, 18px);
   }
 }

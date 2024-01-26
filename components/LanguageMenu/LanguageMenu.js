@@ -1,11 +1,13 @@
-'use client'
+'use client';
 
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
 import { useState } from 'react';
 import i18nConfig from '@/i18nConfig';
-import styles from './styles/LanguageMenu.module.scss'
+import styles from './styles/LanguageMenu.module.scss';
+import variables from "@/app/[locale]/variables.module.scss";
+import { ArrowDown } from "@/public/assets/icons";
 
 const LanguageMenu = () => {
     const [isOpen, setOpen] = useState(false);
@@ -17,7 +19,7 @@ const LanguageMenu = () => {
     const localeLables = {
         uk: 'ukr',
         en: 'eng'
-    }
+    };
     const changeLocale = (locale) => {
         const newLocale = locale;
         const days = 30;
@@ -39,24 +41,20 @@ const LanguageMenu = () => {
         router.refresh();
         setOpen(false);
     };
-
+    const handleMenuToggle = () => {
+        setOpen(!isOpen);
+    };
     return (
-        <div className={styles.languageMenu} onMouseOver={() => setOpen(true)} onMouseLeave={() => setOpen(false)}>
-            <div className={styles.selectedLanguage}>{localeLables[currentLocale]}</div>
+        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()}>
+            <div>{localeLables[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
-                {locales
-                    .filter((locale) => locale !== currentLocale)
-                    .map((locale) => (
-                        <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
-                            {localeLables[locale]}
-                        </li>
-                    ))}
+                {locales.map((locale) => (
+                    <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
+                        {localeLables[locale]}
+                    </li>
+                ))}
             </ul>
-            <div className={styles.iconContainer}>
-                <svg width="13" height="8">
-                    <use href="/assets/icons/sprite.svg#icon-check-mark" />
-                </svg>
-            </div>
+            <ArrowDown />
         </div>
     );
 };
