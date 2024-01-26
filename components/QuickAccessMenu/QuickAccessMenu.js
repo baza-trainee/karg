@@ -1,4 +1,3 @@
-//TODO: add id={title} to specific component and add smooth
 import React from 'react';
 import Image from 'next/image';
 import Link from "next/link";
@@ -20,18 +19,6 @@ const details = 'Детальніше';
 const donate = 'Підтримати';
 
 export function MenuItem({title, href, iconSrc, innerMessage }) {
-
-  // const handleScroll = (e) => {
-  //   e.preventDefault();
-
-  //   const href = e.currentTarget.href;
-  //   const targetId = href.replace(/.*\#/, "");
-
-  //   const elem = document.getElementById(targetId);
-  //   elem?.scrollIntoView({
-  //     behavior: "smooth",
-  //   });
-  // }
   return (
     <div className={styles.accessMenuItem}>
       <Image
