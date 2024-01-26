@@ -13,20 +13,26 @@ const statisticsData = [
 export default function Achievements() { 
   return (
     <section className={styles.achievementBlock}>
+
+      <div className={styles.innerBlock}>
       {statisticsData.map((d) => {
         return (
           <div key = {d.innerMessage}>
             <CardItem 
-              title = {d.title}
-              innerMessage = {d.innerMessage}
-              cardStyle = {styles.cardItem}
-              cardTextBlock = {styles.achievementText}
-              cardTitleStyle = {`${styles.title} ${variables.Subtitle2}`}
-              cardMessageStyle = {`${styles.message} ${variables.Text3}`}      
+                title = {d.title}
+                innerMessage = {d.innerMessage}
+                cardStyle = {styles.cardItem}
+                cardTextBlock = {styles.achievementText}
+                cardTitleStyle = {`${styles.title} ${variables.achievSubtitle2}`}
+                cardMessageStyle = {`${styles.message} ${variables.achievText3}`}      
             />
           </div>
         )
-      })}
+      })}    
+      </div>
+
+
+      
     </section>
   )
 }

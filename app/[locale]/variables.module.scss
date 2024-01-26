@@ -19,6 +19,10 @@
   @include font-styles(700, 20px);
 }
 
+.achievSubtitle2 {
+  @include font-styles(700, 24px)
+}
+
 .subtitle2,
 .button2 {
   @include font-styles(700, 18px);
@@ -33,7 +37,8 @@
 }
 
 .text3,
-.quickText3 {
+.quickText3,
+.achievText3 {
   @include font-styles(400, 14px);
 }
 
@@ -53,7 +58,8 @@
     font-family: $font-family-heading;
   }
 
-  .h2 {
+  .h2,
+  .achievSubtitle2 {
     @include font-styles(700, 32px);
   }
 
@@ -74,6 +80,9 @@
     letter-spacing: 0%;
   }
 
+  .achievText3 {
+    @include font-styles(400, 16)
+  }
   .btn2,
   .button2 {
     @include font-styles(800, 16px);
@@ -87,7 +96,8 @@
     font-family: $font-family-heading;
   }
 
-  .h2 {
+  .h2,
+  .achievSubtitle2 {
     @include font-styles(700, 48px);
   }
 
@@ -108,6 +118,11 @@
   .quickSubtitle1 {
     @include font-styles(700, 24px);
   }
+
+  .achievText3 {
+    @include font-styles(400, 20px);
+  }
+
   .quickText3 {
     @include font-styles(300, 16px);
   }
