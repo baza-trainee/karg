@@ -42,9 +42,9 @@
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 122px 122px;
             justify-content: center;
-            width: 84.65%;//706px
+            width: 84.65%;
             grid-gap: 20px;
-            background-color: bisque;
+            // background-color: bisque;
             }
             
         }
@@ -62,7 +62,7 @@
         @media screen and (min-width: 834px) {
             min-height: 122px;
         }
-        @media screen and (min-width: 1440px) {
+        @media screen and (min-width: 1200px) {
             width: 270px;
             height: 145px;
             border-radius: 20px;
@@ -75,14 +75,19 @@
                     gap: 7px;
                     max-width: 182px;
 
-                    @media screen and (min-width: 843px) {
-                        width: 156px;
-                        height: 113px;
+                    @media screen and (min-width: 834px) {
+                        min-width: 237px;
+                        max-height: 95px;
                         gap: 8px;
+                       //background-color: lightblue;
                     }
                     & .title {
                         color: $text-white;
                         line-height: 26px;
+
+                        @media screen and (min-width: 834px){
+                            line-height: 36.4px;
+                        }
 
                         @media screen and (min-width: 1440px){
                             line-height: 31.2px;
@@ -91,7 +96,14 @@
                     & .message {  
                         color:$text-white;
                         line-height: 18.2px;
-                        max-height: 36px;
+                        height: 36px;
+
+                        @media screen and (min-width: 834px){
+                            line-height: 20.8px;
+                            min-height: 41px;
+                            margin-right: 16px;
+                            //background-color: red;
+                        }
                     }
 
                     & a {
@@ -102,19 +114,29 @@
                         width: 124px;
                         height: 24px;
                         text-decoration: none;
-                            @media screen and (min-width: 1440px) {
-                                width: 136px;
-                            }
+
+                        @media screen and (min-width: 834px) {
+                            position: relative;
+                            min-width: 136px;
+                        }
+                        @media screen and (min-width: 1200px) {
+                            min-width: 136px;
+                        }
                     }             
 
                     & a {
                         align-self: flex-end;
                         align-items: center;
 
-                        @media screen and (min-width: 834px) {
-                            align-self: flex-start;
+                        @media screen and (min-width: 834px){
+                            position: relative;
+                            top: -23px;
+                            align-self: flex-end;
+                            line-height: 20.8px;
                             height: 136px;
-                        }  
+                            //background-color: green;
+                        }
+
                         & span {
                             color:$text-white;
                             line-height: 20.8px; 
@@ -154,6 +176,8 @@
         & .iconSrc {
             font-size: 61px;   
             max-width: 50px;   
+            margin-right: 20px;
+            margin-left: 20px;
         }   
         
 
