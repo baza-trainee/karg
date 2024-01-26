@@ -2,9 +2,21 @@
 
 import styles from './styles/help.module.scss'
 import variables from "@/app/[locale]/variables.module.scss";
-import Link from 'next/link';
+import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
+import Image from "next/image";
+import { useWindowWidth } from '@react-hook/window-size'
 
 const Help = () => {
+    const width = useWindowWidth();
+
+    let backgroundImage = "/assets/images/help/help-img-mob.jpg";
+    
+    if (width >= 768 && width < 1200) {
+        backgroundImage = "/assets/images/help/help-img-tabl.jpg";
+    } else if (width >= 1200) {
+        backgroundImage = "/assets/images/help/help-img-desk.jpg";
+    }
+
     return (
         <section className={styles.container}>
             <div className={styles.desk}>
@@ -15,10 +27,17 @@ const Help = () => {
                         які ми надаємо, і правилами звернення до нас.
                     </div>
                 </div>
-                <Link href='/about' className={styles.button}>
-                    <span className={`${styles.buttonText} ${variables.button1}`}>Правила звернення</span>
-                </Link>
+                <ButtonAsLink route='/about' buttonCaption='Правила звернення' buttonStyle='button-help' />
             </div>
+            <Image
+                className={styles.image}
+                src={backgroundImage}
+                alt="рятівник поруч з автомобілем"
+                fill={true}
+                style={{
+                    objectFit: "cover",
+                }}
+            />
         </section>
     );
 }

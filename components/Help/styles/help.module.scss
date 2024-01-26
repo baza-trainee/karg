@@ -9,13 +9,15 @@
 
 .container {
   @extend .flexContainer;
-  background-image: url(/assets/images/help/help-img-mob.jpg);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
   margin: 0 auto;
-  padding: 71px 0 76px;
+  position: relative;
+  padding-top: 71px;
+  padding-bottom: 76px;
   max-width: 1440px;
+
+  .image {
+    z-index: -5;
+  }
 
   .desk {
     @extend .flexContainer;
@@ -34,31 +36,11 @@
         width: 8.8em;
       }
     }
-
-    .button {
-      @extend .flexContainer;
-      background-color: $button-default;
-      width: 270px;
-      height: 44px;
-      border-bottom-left-radius: 4px;
-      border-bottom-right-radius: 4px;
-      border: none;
-      cursor: pointer;
-
-      &:hover {
-        background-color: $button-hover;
-      }
-
-      .buttonText {
-        color: $text-dark;
-      }
-    }
   }
 }
 
 @media screen and (min-width: 768px) {
   .container {
-    background-image: url(/assets/images/help/help-img-tabl.jpg);
     padding-top: 32px;
     padding-bottom: 32px;
 
@@ -72,18 +54,12 @@
           width: 16em;
         }
       }
-
-      .button {
-        width: 288px;
-        height: 44px;
-      }
     }
   }
 }
 
 @media screen and (min-width: 1200px) {
   .container {
-    background-image: url(/assets/images/help/help-img-desk.jpg);
     padding-top: 48px;
     padding-bottom: 48px;
 
@@ -98,10 +74,6 @@
         .title {
           width: 15em;
         }
-      }
-      .button {
-        width: 288px;
-        height: 52px;
       }
     }
   }
