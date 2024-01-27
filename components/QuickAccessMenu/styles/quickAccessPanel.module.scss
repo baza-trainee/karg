@@ -1,4 +1,7 @@
 @import '../../../app/[locale]/variables.module.scss';
+.buttonTextHover {
+    color: $button-text-hover;
+}
 .accessMenuBlock {
     display: flex;
     align-items: center;
@@ -159,7 +162,10 @@
 
                         & span {
                             color:$text-white;
-                            line-height: 20.8px; 
+                            line-height: 20.8px;
+                                &:hover {
+                                    color:$button-text-hover;
+                                } 
                         }
                     }
                 }            
@@ -196,6 +202,5 @@
             margin-right: 20px;
             margin-left: 20px;
         }   
-        
 
 }

@@ -10,8 +10,8 @@
     gap: 16px;
     background-color: $bg-purple;
         
-    @media screen and (min-width: 834px) {
-        min-width: 834px;
+    @media screen and (min-width: 768px) {
+        min-width: 768px;
         padding-top: 32px;
         padding-bottom: 32px;
         gap: 20px;
@@ -29,7 +29,7 @@
             width: 90%;
             text-align: center;
                 
-        @media screen and (min-width: 834px){
+        @media screen and (min-width: 768px){
             width: 84.65%;
         }
         @media screen and (min-width: 1440px){
@@ -44,7 +44,7 @@
             height: fit-content;
             gap: 8px;
 
-            @media screen and (min-width: 834px){
+            @media screen and (min-width: 768px){
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 120px 120px;
@@ -71,7 +71,7 @@
                     border-radius: 4px;
 
 
-                    @media screen and (min-width: 834px){
+                    @media screen and (min-width: 768px){
                         min-height: 120px;
                         border-radius: 8px;
                     }
@@ -84,7 +84,7 @@
                             padding-left: 12px;
                             padding-right: 12px;
 
-                            @media screen and (min-width: 834px){
+                            @media screen and (min-width: 768px){
                             line-height: 26px;
                             }
                             @media screen and (min-width: 1440px){
@@ -131,7 +131,7 @@
                     background-color: $button-dark-active;
                 }
         }
-        @media screen and (min-width: 834px) {//768px ?
+        @media screen and (min-width: 768px) {//768px ?
             justify-content: center;
             align-items: center;
             flex-direction: row;
