@@ -1,8 +1,8 @@
 import styles from "./styles/hero.module.scss";
 import Image from "next/image";
 import heroImageMob from "@/public/assets/images/main/hero-mob.jpg";
-import heroImageTab from "@/public/assets/images/main/hero-tablet-cut.jpg";
-import heroImageDesk from "@/public/assets/images/main/hero-desktop-cut.jpg";
+import heroImageTab from "@/public/assets/images/main/hero-tablet.jpg";
+import heroImageDesk from "@/public/assets/images/main/hero-desktop.jpg";
 
 const HeroSection = () => {
   return (
