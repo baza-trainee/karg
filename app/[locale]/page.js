@@ -7,6 +7,7 @@ import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import Achievements from "@/components/Achievements/Achievements";
+import RescueTypes from "@/components/RescueTypes/RescueTypes";
 
 // import { deviceDetect } from "@/utils/deviceDetect";
 
@@ -35,6 +36,7 @@ export default async function Home({ params: { locale } }) {
         <QuickAccessMenu />
         <MissionSection />
         <Achievements />
+        <RescueTypes/>
         <Footer />
       </div>
     </TranslationsProvider>
