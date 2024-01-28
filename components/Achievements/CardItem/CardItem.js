@@ -30,14 +30,16 @@ export function CardItem({
         </p>
         {href ?
             <Link href = {href}>
-            <span>{label}</span>
-            {icon ? 
-            <Image
-            className={buttonIconStyle}
-            src={icon}
-            alt="Button icon"
-        /> : null}
-        </Link> : null
+              <span>{label}</span>
+              {
+                icon ? 
+                <Image
+                className={buttonIconStyle}
+                src={icon}
+                alt="Button icon"
+              /> : null
+            }
+           </Link> : null
         }
       </div>
     </div>

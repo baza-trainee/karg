@@ -7,6 +7,8 @@ import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import Achievements from "@/components/Achievements/Achievements";
+import RescueTypes from "@/components/RescueTypes/RescueTypes";
+import Help from "@/components/Help/help-section";
 
 const i18nNamespaces = ['home', 'common'];
 
@@ -25,6 +27,8 @@ export default async function Home({ params: { locale } }) {
         <QuickAccessMenu />
         <MissionSection />
         <Achievements />
+        <RescueTypes />
+        <Help />
         <Footer />
       </div>
     </TranslationsProvider>

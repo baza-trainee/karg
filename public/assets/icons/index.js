@@ -10,3 +10,4 @@ export { default as HandshakeIcon } from "./quick-menu/handshake.svg";
 export { default as PawprintIcon } from "./quick-menu/pawfootprint.svg";
 export { default as ReportIcon } from "./quick-menu/report.svg";
 export { default as ArrowRightIcon } from "./quick-menu/arrow_right.svg";
+export { default as ArrowRight } from "./arrow-right.svg";

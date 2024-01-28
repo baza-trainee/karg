@@ -41,16 +41,16 @@ const SwiperSlider = () => {
       <SwiperSlide className={styles.swiperSlide}>
         <picture className={styles.picture}>
           <source
-            srcSet="/assets/images/mission/mission-pic-1.jpg"
+            srcSet="/assets/images/mission/mission-desk-1.jpg"
             media="(min-width: 768px)"
           />
           <source
-            srcSet="/assets/images/mission/mission-pic-1-mob.jpg"
+            srcSet="/assets/images/mission/mission-mob-1.jpg"
             media="(max-width: 767px)"
           />
           <img
             className={styles.img}
-            src="/assets/images/mission/mission-pic-1-mob.jpg"
+            src="/assets/images/mission/mission-mob-1.jpg"
             alt="дівчина тримає кролика"
             width={234}
             height={356}
@@ -60,16 +60,16 @@ const SwiperSlider = () => {
       <SwiperSlide className={styles.swiperSlide}>
         <picture className={styles.picture}>
           <source
-            srcSet="/assets/images/mission/mission-pic-2.jpg"
+            srcSet="/assets/images/mission/mission-desk-2.jpg"
             media="(min-width: 768px)"
           />
           <source
-            srcSet="/assets/images/mission/mission-pic-2-mob.jpg"
+            srcSet="/assets/images/mission/mission-mob-2.jpg"
             media="(max-width: 767px)"
           />
           <img
             className={styles.img}
-            src="/assets/images/mission/mission-pic-2-mob.jpg"
+            src="/assets/images/mission/mission-mob-2.jpg"
             alt="сірий кіт на руках"
             width={234}
             height={356}
@@ -79,16 +79,16 @@ const SwiperSlider = () => {
       <SwiperSlide className={styles.swiperSlide}>
         <picture className={styles.picture}>
           <source
-            srcSet="/assets/images/mission/mission-pic-3.jpg"
+            srcSet="/assets/images/mission/mission-desk-3.jpg"
             media="(min-width: 768px)"
           />
           <source
-            srcSet="/assets/images/mission/mission-pic-3-mob.jpg"
+            srcSet="/assets/images/mission/mission-mob-3.jpg"
             media="(max-width: 767px)"
           />
           <img
             className={styles.img}
-            src="/assets/images/mission/mission-pic-3-mob.jpg"
+            src="/assets/images/mission/mission-mob-3.jpg"
             alt="хлопець тримає на руках лебедя"
             width={234}
             height={356}
