@@ -1,10 +1,10 @@
-@import "./colors.scss";
+@import './colors.scss';
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
   font-weight: $font-weight;
   font-size: $font-size;
-  line-height: $line-height;
+  line-height: 130%;
 }
 
 // Typography for Mobile
@@ -24,7 +24,8 @@
 }
 
 .achievSubtitle2 {
-  @include font-styles(700, 24px)
+  @include font-styles(700, 24px);
+}
 
 .quickSubtitle1 {
   @include font-styles(700, 20px);
@@ -70,10 +71,10 @@
     @include font-styles(800, 46px);
     font-family: $font-family-heading;
   }
-  
+
   .h2,
   .rescueSubtitle1,
-  .achievSubtitle2 {
+  .achievSubtitle2,
   .Subtitle1 {
     @include font-styles(700, 32px);
   }
@@ -97,7 +98,7 @@
   .rescueText1 {
     @include font-styles(500, 20px);
   }
-  
+
   .body,
   .p {
     @include font-styles(400, 20px);
@@ -105,7 +106,7 @@
   }
 
   .achievText3 {
-    @include font-styles(400, 16)
+    @include font-styles(400, 16);
   }
   .btn2,
   .button2,
@@ -130,8 +131,7 @@
     @include font-styles(700, 48px);
   }
 
-
-  .rescueSubtitle1 {
+  .rescueSubtitle1,
   .Subtitle1 {
     @include font-styles(700, 44px);
   }
@@ -170,7 +170,7 @@
   }
 
   .rescueButton1 {
-    @include font-styles(700, 20px)
+    @include font-styles(700, 20px);
   }
 
   .btn2,
