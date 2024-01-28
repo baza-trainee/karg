@@ -7,8 +7,9 @@
   flex-direction: column;
   flex-shrink: 0;
   background-color: $button-dark-default;
-  padding: 16px 16px 8px 16px;
+  padding: 16px 16px 40px 16px;
   gap: 32px;
+  position: relative;
 }
 
 .brandHolder {
@@ -36,10 +37,18 @@
 }
 
 .navMenu {
+  position: relative;
   & a,
   span {
     color: #fff;
     text-decoration: none;
+  }
+}
+
+.navMenu {
+  & a,
+  p {
+    cursor: pointer;
   }
 }
 
@@ -73,12 +82,19 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-}
 
-.contactsContainer > a {
-  text-decoration: none;
-  color: #fff;
-  margin-bottom: 4px;
+  & a {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 4px;
+  }
+
+  .contactsContainerTelephones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .signature {
@@ -87,4 +103,83 @@
   font-style: normal;
   font-weight: 400;
   line-height: 140%;
+  position: absolute;
+  bottom: 8px;
+  justify-self: center;
+}
+
+@media screen and (min-width: 1200px) {
+  .footer {
+    padding: 56px 135px;
+    display: grid;
+    place-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    grid-template-areas:
+      'logo contactsContainer  navMenu navMenu button'
+      'logo contactsContainer  navMenu navMenu socialIcons';
+  }
+
+  .buttonAndIconsHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    grid-area: button;
+  }
+
+  .brandHolder {
+    grid-area: logo;
+  }
+
+  .brandHolderLogo {
+    font-size: 100px;
+  }
+
+  .brandHolderName {
+    display: none;
+  }
+
+  .navMenu {
+    grid-area: navMenu;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+
+    & ul {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-start;
+      gap: 24px;
+    }
+  }
+
+  .navMenuInnerList {
+    // grid-area: navMenu;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    position: relative;
+    // top: 0;
+    // left: 0;
+    // z-index: 100;
+    // background-color: $button-dark-default;
+  }
+
+  .navMenuLI {
+    display: none;
+  }
+
+  .contactsContainer {
+    grid-area: contactsContainer;
+    width: 100%;
+    margin-right: 30px;
+  }
 }
