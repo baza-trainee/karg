@@ -1,34 +1,4 @@
-// Primary colors
-$primary: #4d396f;
-$primary-light: #6b5199;
-
-// Button colors for light theme
-$button-default: #ffa33c;
-$button-hover: #f5ba78;
-$button-active: #ff8c0c;
-$button-loading: #ead3b9;
-$button-disabled: #bebebe;
-
-// Button colors for dark theme
-$button-dark-default: #3a3345;
-$button-dark-hover: #675d77;
-$button-dark-active: #251c33;
-$button-dark-loading: #b6abc7;
-$button-dark-disabled: #bebebe;
-
-// Text colors
-$text-dark: #141414;
-$text-white: #ffffff;
-$text-gray: #a1a1a1;
-$button-text-hover: #FFA33C;
-
-// Background colors
-$bg-purple: #eadeff;
-$bg-white: #ffffff;
-
-// font-family
-$font-family-heading: "Roboto Flex", sans-serif;
-$line-height: 1.3;
+@import "./colors.scss";
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -43,8 +13,11 @@ $line-height: 1.3;
   font-family: $font-family-heading;
 }
 
+.Subtitle1 {
+  @include font-styles(700, 20px);
+}
+
 .subtitle1,
-.button1,
 .quickSubtitle1,
 .rescueSubtitle1 {
   @include font-styles(700, 20px);
@@ -52,6 +25,13 @@ $line-height: 1.3;
 
 .achievSubtitle2 {
   @include font-styles(700, 24px)
+
+.quickSubtitle1 {
+  @include font-styles(700, 20px);
+}
+
+.button1 {
+  @include font-styles(700, 18px);
 }
 
 .subtitle2,
@@ -94,6 +74,7 @@ $line-height: 1.3;
   .h2,
   .rescueSubtitle1,
   .achievSubtitle2 {
+  .Subtitle1 {
     @include font-styles(700, 32px);
   }
 
@@ -149,16 +130,21 @@ $line-height: 1.3;
     @include font-styles(700, 48px);
   }
 
+
   .rescueSubtitle1 {
+  .Subtitle1 {
     @include font-styles(700, 44px);
   }
 
   .h3,
   .subtitle1,
   .subtitle2,
-  .btn1,
-  .button1 {
+  .btn1 {
     @include font-styles(700, 28px);
+  }
+
+  .button1 {
+    @include font-styles(700, 20px);
   }
 
   .body,
