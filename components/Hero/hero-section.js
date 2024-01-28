@@ -12,13 +12,37 @@ const HeroSection = () => {
         rescue group
       </h1>
       <div className={styles.mobImage}>
-        <Image src={heroImageMob} alt="Picture of the team" sizes="100vw" />
+        <Image
+          src={heroImageMob}
+          alt="Picture of the team"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
       <div className={styles.tabImage}>
-        <Image src={heroImageTab} alt="Picture of the team" sizes="100vw" />
+        <Image
+          src={heroImageTab}
+          alt="Picture of the team"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
       <div className={styles.deskImage}>
-        <Image src={heroImageDesk} alt="Picture of the team" sizes="100vw" />
+        <Image
+          src={heroImageDesk}
+          alt="Picture of the team"
+          sizes="100vw"
+          style={{
+            width: "100%",
+            height: "auto",
+          }}
+        />
       </div>
     </section>
   );
