@@ -1,0 +1,80 @@
+@import "../../../app/[locale]/colors.scss";
+
+.flexContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
+  @extend .flexContainer;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 71px;
+  padding-bottom: 76px;
+  max-width: 1440px;
+
+  .image {
+    z-index: -5;
+  }
+
+  .desk {
+    @extend .flexContainer;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 42px 9px;
+    gap: 16px;
+
+    .text {
+      @extend .flexContainer;
+      width: 15.4em;
+      text-align: center;
+      gap: 16px;
+      line-height: 130%;
+
+      .title {
+        width: 8.8em;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    .desk {
+      padding: 32px 37px;
+
+      .text {
+        width: 34.5em;
+
+        .title {
+          width: 16em;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding-top: 48px;
+    padding-bottom: 48px;
+
+    .desk {
+      padding: 48px 134px;
+      gap: 32px;
+
+      .text {
+        width: 52em;
+        gap: 32px;
+
+        .title {
+          width: 15em;
+        }
+      }
+    }
+  }
+}
