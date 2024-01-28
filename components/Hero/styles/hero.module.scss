@@ -2,96 +2,68 @@
 
 .hero {
   position: relative;
-
-  background-image: url(../../../public/assets/images/main/hero-320.jpg);
-  background-repeat: no-repeat;
-  background-size: contain;
   background-color: #eadeff;
 
-  margin: 0 auto;
-  padding-top: 8px;
-  padding-bottom: 208px;
-  max-width: 1444px;
-
-  text-align: center;
-
-  @media screen and (min-width: 375px) and (max-width: 767px) {
-    background-image: url(../../../public/assets/images/main/hero-768.jpg);
-    background-size: cover;
-    background-position: center;
-
-    padding-top: 28px;
-    padding-bottom: 308px;
-  }
-
-  @media screen and (min-width: 768px) {
-    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
-    background-size: cover;
-
-    padding-top: 18px;
-    padding-bottom: 390px;
-  }
-
-  @media screen and (min-width: 1024px) {
-    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
-    background-size: cover;
-
-    padding-top: 38px;
-    padding-bottom: 508px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    background-image: url(../../../public/assets/images/main/hero-1200.jpg);
-    background-size: cover;
-    background-position: top;
-
-    padding-top: 48px;
-    padding-bottom: 590px;
-  }
-
-  @media screen and (min-width: 1440px) {
-    background-image: url(../../../public/assets/images/main/hero-desk.jpg);
-    background-size: cover;
-
-    padding-top: 64px;
-    padding-bottom: 690px;
-  }
-
   &Title {
+    position: absolute;
+    top: 8px;
+    left: -50%;
+    right: -50%;
+
+    text-align: center;
+
     font-family: $font-family-heading;
     font-size: 36px;
     font-weight: 800;
     line-height: $line-height;
     text-transform: capitalize;
+    letter-spacing: 0;
 
     color: $button-active;
 
     @media screen and (min-width: 768px) {
       position: absolute;
-      top: 10px;
-      right: 10px;
-      font-size: 30px;
+      top: 28px;
+      font-size: 46px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      right: 52px;
+      left: auto;
 
       color: $button-default;
     }
 
-    @media screen and (min-width: 1024px) {
-      top: 28px;
-      right: 28px;
-      font-size: 36px;
-    }
-
-    @media screen and (min-width: 1200px) {
-      top: 38px;
-      right: 38px;
-      font-size: 42px;
-    }
-
     @media screen and (min-width: 1440px) {
-      position: absolute;
       top: 64px;
-      right: 52px;
       font-size: 56px;
     }
+  }
+}
+
+.mobImage {
+  object-fit: cover;
+
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+}
+
+.tabImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+    background-position: top;
   }
 }
