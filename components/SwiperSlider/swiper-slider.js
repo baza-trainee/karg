@@ -6,6 +6,15 @@ import "swiper/scss/autoplay";
 import { Autoplay } from "swiper/modules";
 
 import styles from "./styles/swiper.module.scss";
+import Image from "next/image";
+
+import missionMobOne from "@/public/assets/images/mission/mission-mob-1.jpg";
+import missionMobTwo from "@/public/assets/images/mission/mission-mob-2.jpg";
+import missionMobThree from "@/public/assets/images/mission/mission-mob-3.jpg";
+
+import missionDeskOne from "@/public/assets/images/mission/mission-desk-1.jpg";
+import missionDeskTwo from "@/public/assets/images/mission/mission-desk-2.jpg";
+import missionDeskThree from "@/public/assets/images/mission/mission-desk-3.jpg";
 
 const SwiperSlider = () => {
   return (
@@ -39,23 +48,22 @@ const SwiperSlider = () => {
       className={styles.swiper}
     >
       <SwiperSlide className={styles.swiperSlide}>
-        <picture className={styles.picture}>
-          <source
-            srcSet="/assets/images/mission/mission-desk-1.jpg"
-            media="(min-width: 768px)"
-          />
-          <source
-            srcSet="/assets/images/mission/mission-mob-1.jpg"
-            media="(max-width: 767px)"
-          />
-          <img
-            className={styles.img}
-            src="/assets/images/mission/mission-mob-1.jpg"
-            alt="дівчина тримає кролика"
+        <div className={styles.picture}>
+          <Image
+            src={missionMobOne}
+            alt="Girl with rabbit"
             width={234}
             height={356}
           />
-        </picture>
+        </div>
+        <div className={styles.picture}>
+          <Image
+            src={missionDeskOne}
+            alt="Girl with rabbit"
+            width={370}
+            height={462}
+          />
+        </div>
       </SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>
         <picture className={styles.picture}>
