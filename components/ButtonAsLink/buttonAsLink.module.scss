@@ -1,42 +1,51 @@
 @import '../../app/[locale]/colors.scss';
 
+@mixin button-style() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
 .header-primary-button-default {
   display: none;
 }
 
 .primary-dark-W-288 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
+  @include button-style;
   min-width: 288px;
-  border-radius: 4px;
   background-color: $button-dark-default;
   color: white;
 }
 
-@media screen and (min-width: 768px) {
+.primary-lite-W-288 {
+  @include button-style;
+  min-width: 288px;
+  background-color: $button-default;
+  color: #141414;
+  grid-area: button;
+}
+
+@media screen and (min-width: 1200px) {
   .header-primary-button-default {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 12px;
-    min-width: 270px;
-    max-width: 288px;
-    border-radius: 4px;
+    @include button-style;
+    min-width: 170px;
     background-color: $button-default;
+    transition: background-color 0.4s ease;
+  }
+
+  .header-primary-button-default:hover {
+    background-color: $button-hover;
   }
 }
 
 .primary-dark {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 12px;
+  @include button-style;
   min-width: 270px;
   max-width: 288px;
   min-height: 44px;
   max-height: 52px;
-  border-radius: 4px;
   background-color: $button-dark-default;
 }
