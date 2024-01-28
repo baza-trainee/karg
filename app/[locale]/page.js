@@ -8,17 +8,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import Achievements from "@/components/Achievements/Achievements";
 
-// import { deviceDetect } from "@/utils/deviceDetect";
-
 const i18nNamespaces = ['home', 'common'];
-
-// export async function getServerSideProps(context) {
-//   const viewport = deviceDetect(context);
-
-//   return {
-//     props: { viewport },
-//   };
-// }
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
