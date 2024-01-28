@@ -18,6 +18,14 @@
 }
 
 .subtitle1,
+.quickSubtitle1,
+.rescueSubtitle1 {
+  @include font-styles(700, 20px);
+}
+
+.achievSubtitle2 {
+  @include font-styles(700, 24px)
+
 .quickSubtitle1 {
   @include font-styles(700, 20px);
 }
@@ -27,11 +35,13 @@
 }
 
 .subtitle2,
-.button2 {
+.button2,
+.rescueButton1 {
   @include font-styles(700, 18px);
 }
 
-.text1 {
+.text1,
+.rescueText1 {
   @include font-styles(500, 18px);
 }
 
@@ -40,7 +50,8 @@
 }
 
 .text3,
-.quickText3 {
+.quickText3,
+.achievText3 {
   @include font-styles(400, 14px);
 }
 
@@ -59,10 +70,16 @@
     @include font-styles(800, 46px);
     font-family: $font-family-heading;
   }
-
+  
   .h2,
+  .rescueSubtitle1,
+  .achievSubtitle2 {
   .Subtitle1 {
     @include font-styles(700, 32px);
+  }
+
+  .quickSubtitle1 {
+    @include font-styles(700, 28px);
   }
 
   .h3,
@@ -72,19 +89,32 @@
   }
 
   .btn1,
-  .button1 {
+  .button1,
+  .rescueButton1 {
     @include font-styles(700, 20px);
   }
 
+  .rescueText1 {
+    @include font-styles(500, 20px);
+  }
+  
   .body,
   .p {
     @include font-styles(400, 20px);
     letter-spacing: 0%;
   }
 
+  .achievText3 {
+    @include font-styles(400, 16)
+  }
   .btn2,
-  .button2 {
+  .button2,
+  .quickButton2 {
     @include font-styles(800, 16px);
+  }
+
+  .quickText3 {
+    @include font-styles(400, 16px);
   }
 }
 
@@ -95,10 +125,13 @@
     font-family: $font-family-heading;
   }
 
-  .h2 {
+  .h2,
+  .achievSubtitle2 {
     @include font-styles(700, 48px);
   }
 
+
+  .rescueSubtitle1 {
   .Subtitle1 {
     @include font-styles(700, 44px);
   }
@@ -120,11 +153,24 @@
     letter-spacing: 0%;
   }
 
+  .rescueText1 {
+    @include font-styles(500, 24px);
+  }
+
   .quickSubtitle1 {
     @include font-styles(700, 24px);
   }
+
+  .achievText3 {
+    @include font-styles(400, 20px);
+  }
+
   .quickText3 {
     @include font-styles(300, 16px);
+  }
+
+  .rescueButton1 {
+    @include font-styles(700, 20px)
   }
 
   .btn2,

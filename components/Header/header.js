@@ -80,6 +80,10 @@ const Header = () => {
             </li>
           </ul>
           <div className={styles.sideMenu}>
+            {/* <select className={styles.langContainer}>
+              <option value="UKR">UKR</option>
+              <option value="ENG">ENG</option>
+            </select> */}
             <LanguageMenu />
             <ButtonAsLink route="/help" buttonCaption="Підтримати" buttonStyle="header-primary-button-default" />
             <div onClick={() => setOpen(!open)}>
