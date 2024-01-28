@@ -1,7 +1,9 @@
 .iconsContainer {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: center;
   gap: 8px;
+  grid-area: socialIcons;
 }
 
 .icons {
