@@ -1,5 +1,5 @@
-@import '../../app/[locale]/colors.scss';
-@import '@/app/[locale]/variables.module.scss';
+@import "../../app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
 
 @mixin button-style() {
   display: flex;
@@ -25,11 +25,10 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  @include font-styles(700, 18px);
   background-color: $button-default;
   min-width: 270px;
   max-width: 288px;
-  padding: 12px;
+  padding: 10px 12px;
   border-radius: 4px;
   border: none;
 
@@ -44,6 +43,13 @@
   background-color: $button-default;
   color: #141414;
   grid-area: button;
+}
+
+@media screen and (min-width: 768px) {
+  .button-help {
+    min-width: 288px;
+    padding: 9px 12px;
+  }
 }
 
 @media screen and (min-width: 1200px) {
@@ -61,12 +67,7 @@
 
   .button-help {
     @include font-styles(700, 20px);
-    min-width: 288px;
-  }
-
-  .button-help {
-    @include font-styles(700, 20px);
-    min-width: 288px;
+    padding: 13px 12px;
   }
 }
 
