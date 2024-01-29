@@ -12,6 +12,10 @@ import missionMobOne from "@/public/assets/images/mission/mission-mob-1.jpg";
 import missionMobTwo from "@/public/assets/images/mission/mission-mob-2.jpg";
 import missionMobThree from "@/public/assets/images/mission/mission-mob-3.jpg";
 
+import missionTabOne from "@/public/assets/images/mission/mission-tab-1.jpg";
+import missionTabTwo from "@/public/assets/images/mission/mission-tab-2.jpg";
+import missionTabThree from "@/public/assets/images/mission/mission-tab-3.jpg";
+
 import missionDeskOne from "@/public/assets/images/mission/mission-desk-1.jpg";
 import missionDeskTwo from "@/public/assets/images/mission/mission-desk-2.jpg";
 import missionDeskThree from "@/public/assets/images/mission/mission-desk-3.jpg";
@@ -48,7 +52,7 @@ const SwiperSlider = () => {
       className={styles.swiper}
     >
       <SwiperSlide className={styles.swiperSlide}>
-        <div className={styles.picture}>
+        <div className={`${styles.picture} ${styles.imgMissionMob}`}>
           <Image
             src={missionMobOne}
             alt="Girl with rabbit"
@@ -56,7 +60,15 @@ const SwiperSlider = () => {
             height={356}
           />
         </div>
-        <div className={styles.picture}>
+        <div className={`${styles.picture} ${styles.imgMissionTab}`}>
+          <Image
+            src={missionTabOne}
+            alt="Girl with rabbit"
+            width={222}
+            height={338}
+          />
+        </div>
+        <div className={`${styles.picture} ${styles.imgMissionDesk}`}>
           <Image
             src={missionDeskOne}
             alt="Girl with rabbit"
