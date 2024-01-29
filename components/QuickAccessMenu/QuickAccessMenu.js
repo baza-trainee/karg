@@ -30,7 +30,7 @@ export function MenuItem({ title, href, iconSrc, innerMessage }) {
           </p>
           <Link className={variables.quickButton2} href={href}>
             <span>{details}</span>
-            <ArrowRightIcon className={variables.quickButton2} />
+            <ArrowRightIcon className={`${styles.detailsButtonIcon} ${variables.quickButton2}`} />
           </Link>
         </div>     
     </div>

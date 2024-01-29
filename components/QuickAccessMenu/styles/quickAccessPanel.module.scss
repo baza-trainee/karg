@@ -65,6 +65,7 @@
         min-width: 288px;
         min-height: 132px;
         border-radius: 4px;
+        padding-right: 16px;
         
 
         @media screen and (min-width: 768px) {
@@ -82,6 +83,7 @@
                     justify-content: space-between;
                     gap: 7px;
                     max-width: 182px;
+                    color: $text-white;
 
                     @media screen and (min-width: 768px) {
                         max-width: 237px;
@@ -95,7 +97,6 @@
                         gap: 8px;
                     }
                     & .title {
-                        color: $text-white;
                         line-height: 26px;
 
                         @media screen and (min-width: 768px){
@@ -107,7 +108,6 @@
                         }
                     }
                     & .message {  
-                        color:$text-white;
                         line-height: 18.2px;
                         height: 36px;
 
@@ -130,44 +130,34 @@
                         width: 124px;
                         height: 24px;
                         text-decoration: none;
-
+                        color: $text-white;
+                        align-self: flex-end;
+                        align-items: center;
+                        transition: color 250ms linear;
+                            &:hover,
+                            &:focus {
+                            color: $button-default;
+                            }
+                            & .detailsButtonIcon {
+                                fill: currentColor;
+                                width: 24px;
+                                height: 24px;
+                            }
                         @media screen and (min-width: 768px) {
                             position: relative;
                             min-width: 136px;
-                        }
-                        @media screen and (min-width: 1200px) {
-                            min-width: 136px;
-                        }
-                    }             
-
-                    & a {
-                        align-self: flex-end;
-                        align-items: center;
-
-                        @media screen and (min-width: 768px){
-                            position: relative;
                             top: -23px;
                             align-self: flex-end;
                             line-height: 20.8px;
                             height: 136px;
-                            //background-color: green;
                         }
-                        
-                        @media screen and (min-width: 1200px){
-                            position: relative;
+                        @media screen and (min-width: 1200px) {
+                            min-width: 136px;
                             top: 0;
                             align-self: flex-start;
                             line-height: 20.8px;
                         }
-
-                        & span {
-                            color:$text-white;
-                            line-height: 20.8px;
-                                &:hover {
-                                    color:$button-text-hover;
-                                } 
-                        }
-                    }
+                    }             
                 }            
     }
 
