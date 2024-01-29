@@ -9,23 +9,6 @@
   }
 }
 
-.picture {
-  // display: block;
-  // width: 100%;
-  // height: 100%;
-}
-
-// .img {
-//   border-radius: 4px;
-//   display: block;
-//   width: 100%;
-//   height: 356px;
-
-//   @media screen and (min-width: 768px) {
-//     height: auto;
-//   }
-// }
-
 .imgMissionMob {
   @media screen and (min-width: 768px) {
     display: none;
@@ -37,6 +20,8 @@
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
+    display: flex;
+    justify-content: center;
   }
 }
 

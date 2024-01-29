@@ -34,16 +34,23 @@ const SwiperSlider = () => {
           slidesPerView: 1.3,
           spaceBetween: 30,
         },
+
         375: {
-          slidesPerView: 1.5,
+          slidesPerView: 1.4,
           spaceBetween: 30,
+        },
+
+        425: {
+          slidesPerView: 1.5,
+          spaceBetween: 20,
         },
 
         768: {
           slidesPerView: 3,
-          spaceBetween: 30,
+          spaceBetween: 20,
         },
-        1440: {
+
+        1200: {
           slidesPerView: 3,
           spaceBetween: 30,
         },
