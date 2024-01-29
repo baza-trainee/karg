@@ -11,7 +11,11 @@
   max-width: 73px;
   position: relative;
   text-align: center;
-  gap: 4px;
+  z-index: 5;
+
+  .languageMenuIndicator {
+    transition: color 0.3s ease-in-out;
+  }
 
   .languageList {
     position: absolute;
@@ -20,6 +24,7 @@
     transform: translateY(100%);
     opacity: 0;
     visibility: hidden;
+    z-index: 1000;
 
     &.active {
       opacity: 1;
@@ -39,12 +44,16 @@
       }
 
       &:hover {
+        cursor: pointer;
         color: $button-default;
       }
     }
   }
 }
 
-// .icon {
-//   padding: 8px 6px 8.571px 5px;
-// }
+.languageMenu:hover {
+  cursor: pointer;
+  & .languageMenuIndicator {
+    color: $button-default;
+  }
+}

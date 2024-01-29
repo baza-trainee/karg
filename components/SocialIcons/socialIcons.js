@@ -3,12 +3,12 @@ import styles from './socialIcons.module.scss';
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
 import PropTypes from 'prop-types';
 
-const SocialIcons = ({ iconsColor }) => {
+const SocialIcons = ({ iconsColor, gridOption }) => {
 
     const iconsStyle = { color: iconsColor };
 
     return (
-        <div className={styles.iconsContainer}>
+        <div className={`${styles.iconsContainer}`} style={gridOption}>
             <a href="https://www.facebook.com/">
                 <Facebook className={`${styles.icons}`} style={iconsStyle} />
             </a>

@@ -195,9 +195,10 @@
 .contactsContainerMobile > a {
   text-decoration: none;
   margin-bottom: 4px;
+  color: #141414;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1200px) {
   .inner {
     padding: 10px 9.375%;
   }
@@ -245,16 +246,24 @@
   .navMenu a {
     color: #fff;
     text-decoration: none;
+    transition: color 0.3s ease-in-out;
   }
 
   .navMenu a:hover {
     box-shadow: inset 0 -2px 0 $button-hover;
+    color: $button-default;
   }
 
   .navMenu p {
     color: #fff;
     text-decoration: none;
     cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+
+  .navMenu p:hover {
+    transition: color 0.3s ease-in-out;
+    color: $button-default;
   }
 
   .navMenuDrop li {
@@ -275,6 +284,7 @@
     display: none;
     padding: 2rem;
     min-width: fit-content;
+    z-index: 1000;
   }
 
   .dropHover:hover .dropList {

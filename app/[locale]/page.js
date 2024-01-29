@@ -7,18 +7,10 @@ import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import Achievements from "@/components/Achievements/Achievements";
-
-// import { deviceDetect } from "@/utils/deviceDetect";
+import RescueTypes from "@/components/RescueTypes/RescueTypes";
+import Help from "@/components/Help/help-section";
 
 const i18nNamespaces = ['home', 'common'];
-
-// export async function getServerSideProps(context) {
-//   const viewport = deviceDetect(context);
-
-//   return {
-//     props: { viewport },
-//   };
-// }
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
@@ -35,6 +27,8 @@ export default async function Home({ params: { locale } }) {
         <QuickAccessMenu />
         <MissionSection />
         <Achievements />
+        <RescueTypes />
+        <Help />
         <Footer />
       </div>
     </TranslationsProvider>

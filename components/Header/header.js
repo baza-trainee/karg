@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import useToggle from '@/utils/useToggle';
 
@@ -20,7 +19,7 @@ import SocialIcons from "../SocialIcons/socialIcons";
 
 const Header = () => {
 
-  const [open, setOpen] = useState(false);
+  const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
   const [openFirst, setFirstOpen] = useToggle(false);
   const [openSecond, setSecondOpen] = useToggle(false);
 
@@ -65,10 +64,13 @@ const Header = () => {
               </ul>
             </li>
             <li>
+              <Link href="/animals">Наші тварини</Link>
+            </li>
+            <li>
               <Link href="/help">Допомогти нам</Link>
             </li>
             <li className={styles.dropHover}>
-              <p className={styles.navMenuDropList} href="#">
+              <p className={styles.navMenuDropList}>
                 <span>Корисне</span>
                 <ArrowDown />
               </p>
@@ -80,10 +82,14 @@ const Header = () => {
             </li>
           </ul>
           <div className={styles.sideMenu}>
+            {/* <select className={styles.langContainer}>
+              <option value="UKR">UKR</option>
+              <option value="ENG">ENG</option>
+            </select> */}
             <LanguageMenu />
             <ButtonAsLink route="/help" buttonCaption="Підтримати" buttonStyle="header-primary-button-default" />
-            <div onClick={() => setOpen(!open)}>
-              {open == false ? (
+            <div onClick={setOpenBurgerMenu}>
+              {openBurgerMenu == false ? (
                 <MenuBurger className={styles.burgerIcon} />
               ) : (
                 <MenuBurgerClose className={styles.burgerIcon} />
@@ -91,7 +97,7 @@ const Header = () => {
             </div>
           </div>
         </div>
-        {open == true ? (
+        {openBurgerMenu == true ? (
           <div className={styles.dropDownMenuWrapper}>
             <div className={`${styles.navMenuMobile} ${variables.button2}`}>
               <ul>

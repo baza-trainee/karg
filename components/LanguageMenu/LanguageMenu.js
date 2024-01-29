@@ -46,7 +46,7 @@ const LanguageMenu = () => {
     };
     return (
         <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()}>
-            <div>{localeLables[currentLocale]}</div>
+            <div className={styles.languageMenuIndicator}>{localeLables[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
                 {locales.map((locale) => (
                     <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
@@ -54,7 +54,7 @@ const LanguageMenu = () => {
                     </li>
                 ))}
             </ul>
-            <ArrowDown />
+            <ArrowDown className={`${styles.languageMenuIndicator}`} />
         </div>
     );
 };
