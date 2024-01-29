@@ -19,7 +19,8 @@
 
 .subtitle1,
 .quickSubtitle1,
-.rescueSubtitle1 {
+.rescueSubtitle1,
+.supportSubtitle1 {
   @include font-styles(700, 20px);
 }
 
@@ -37,7 +38,8 @@
 
 .subtitle2,
 .button2,
-.rescueButton1 {
+.rescueButton1,
+.supportSubtitle2 {
   @include font-styles(700, 18px);
 }
 
@@ -48,6 +50,10 @@
 
 .text2 {
   @include font-styles(500, 16px);
+}
+
+.supportText4 {
+  @include font-styles(300, 16px);
 }
 
 .text3,

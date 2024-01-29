@@ -9,7 +9,7 @@ import Footer from "@/components/Footer/footer";
 import Achievements from "@/components/Achievements/Achievements";
 import RescueTypes from "@/components/RescueTypes/RescueTypes";
 import Help from "@/components/Help/help-section";
-
+import Support from "@/components/Support/Support";
 const i18nNamespaces = ['home', 'common'];
 
 export default async function Home({ params: { locale } }) {
@@ -29,6 +29,7 @@ export default async function Home({ params: { locale } }) {
         <Achievements />
         <RescueTypes />
         <Help />
+        <Support/>
         <Footer />
       </div>
     </TranslationsProvider>
