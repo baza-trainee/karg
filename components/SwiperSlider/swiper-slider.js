@@ -56,64 +56,96 @@ const SwiperSlider = () => {
           <Image
             src={missionMobOne}
             alt="Girl with rabbit"
-            width={234}
-            height={356}
+            style={{
+              width: "234px",
+              height: "356px",
+            }}
           />
         </div>
         <div className={`${styles.picture} ${styles.imgMissionTab}`}>
           <Image
             src={missionTabOne}
             alt="Girl with rabbit"
-            width={222}
-            height={338}
+            style={{
+              width: "222px",
+              height: "338px",
+            }}
           />
         </div>
         <div className={`${styles.picture} ${styles.imgMissionDesk}`}>
           <Image
             src={missionDeskOne}
             alt="Girl with rabbit"
-            width={370}
-            height={462}
+            style={{
+              width: "370px",
+              height: "462px",
+            }}
           />
         </div>
       </SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>
-        <picture className={styles.picture}>
-          <source
-            srcSet="/assets/images/mission/mission-desk-2.jpg"
-            media="(min-width: 768px)"
+        <div className={`${styles.picture} ${styles.imgMissionMob}`}>
+          <Image
+            src={missionMobTwo}
+            alt="Gray cat"
+            style={{
+              width: "234px",
+              height: "356px",
+            }}
           />
-          <source
-            srcSet="/assets/images/mission/mission-mob-2.jpg"
-            media="(max-width: 767px)"
+        </div>
+        <div className={`${styles.picture} ${styles.imgMissionTab}`}>
+          <Image
+            src={missionTabTwo}
+            alt="Gray cat"
+            style={{
+              width: "222px",
+              height: "338px",
+            }}
           />
-          <img
-            className={styles.img}
-            src="/assets/images/mission/mission-mob-2.jpg"
-            alt="сірий кіт на руках"
-            width={234}
-            height={356}
+        </div>
+        <div className={`${styles.picture} ${styles.imgMissionDesk}`}>
+          <Image
+            src={missionDeskTwo}
+            alt="Gray cat"
+            style={{
+              width: "370px",
+              height: "462px",
+            }}
           />
-        </picture>
+        </div>
       </SwiperSlide>
       <SwiperSlide className={styles.swiperSlide}>
-        <picture className={styles.picture}>
-          <source
-            srcSet="/assets/images/mission/mission-desk-3.jpg"
-            media="(min-width: 768px)"
+        <div className={`${styles.picture} ${styles.imgMissionMob}`}>
+          <Image
+            src={missionMobThree}
+            alt="Boy with a swan"
+            style={{
+              width: "234px",
+              height: "356px",
+            }}
           />
-          <source
-            srcSet="/assets/images/mission/mission-mob-3.jpg"
-            media="(max-width: 767px)"
+        </div>
+        <div className={`${styles.picture} ${styles.imgMissionTab}`}>
+          <Image
+            src={missionTabThree}
+            alt="Boy with a swan"
+            style={{
+              width: "222px",
+              height: "338px",
+            }}
           />
-          <img
-            className={styles.img}
-            src="/assets/images/mission/mission-mob-3.jpg"
-            alt="хлопець тримає на руках лебедя"
-            width={234}
-            height={356}
+        </div>
+        <div className={`${styles.picture} ${styles.imgMissionDesk}`}>
+          <Image
+            src={missionDeskThree}
+            alt="Boy with a swan"
+            style={{
+              width: "370px",
+              height: "462px",
+            }}
           />
-        </picture>
+        </div>
       </SwiperSlide>
     </Swiper>
   );

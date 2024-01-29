@@ -7,10 +7,12 @@
   &Title {
     position: absolute;
     top: 8px;
-    left: -50%;
-    right: -50%;
+    left: 0;
+    right: 0;
 
     text-align: center;
+    display: flex;
+    justify-content: center;
 
     font-family: $font-family-heading;
     font-size: 36px;
@@ -21,9 +23,12 @@
 
     color: $button-active;
 
+    @media screen and (min-width: 425px) {
+    }
+
     @media screen and (min-width: 768px) {
       position: absolute;
-      top: 28px;
+      // top: 28px;
       font-size: 46px;
     }
 
@@ -35,7 +40,7 @@
     }
 
     @media screen and (min-width: 1440px) {
-      top: 64px;
+      // top: 64px;
       font-size: 56px;
     }
   }
@@ -55,6 +60,7 @@
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
     object-fit: cover;
+    background-position: top;
   }
 }
 
