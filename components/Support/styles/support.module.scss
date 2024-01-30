@@ -11,13 +11,11 @@
     @media screen and (min-width: 768px) {
         min-width: 768px;
         padding: 32px 64px;
-        gap: 20px;
+        gap: 24px;
         flex-wrap: wrap;
     }
     @media screen and (min-width: 1440px) {
         min-width: 1440px;
-        // padding-top: 48px;
-        // padding-bottom: 48px;
         padding: 48px 135px;
         gap: 32px;
         flex-wrap: wrap;
@@ -28,10 +26,10 @@
             text-align: center;
                 
         @media screen and (min-width: 768px){
-            width: 84.65%;
+            width: 100%;
         }
-        @media screen and (min-width: 1440px){
-            width: 81.25%;
+        @media screen and (min-width: 1200px){
+            width: 100%;
         }
         }
 
@@ -46,25 +44,23 @@
             @media screen and (min-width: 768px){
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: 120px 120px;
+                grid-template-rows: 282px;
                 justify-content: center ;
-                width: 84.65%;
+                width: 100%;
                 grid-gap: 20px;
             }
-            @media screen and (min-width: 1440px){
+            @media screen and (min-width: 1200px){
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 161px 161px;
                 justify-content: center ;
-                //min-width: 1440px;
-                width: 81.25%;
+                width: 100%;
                 grid-gap: 30px;
             }
 
                 & .cardItemContainer {
                     display: flex;
                     flex-direction: column;
-                    padding: 16px;
                     gap: 16px;
                     max-height: 166px;
                     align-items: center;
@@ -74,8 +70,8 @@
                     border-radius: 4px;
 
                     @media screen and (min-width: 768px){
-                        min-height: 120px;
-                        border-radius: 8px;
+                        min-height: 282px;
+                        border-radius: 16px;
                     }
                     @media screen and (min-width: 1440px){
                         min-height: 161px;
@@ -87,6 +83,7 @@
                             justify-content: space-between;
                             align-items: center;
                             min-height: 118px;
+                            border: 0.5px solid red;
                         }
 
                         & .message {
@@ -95,7 +92,11 @@
                             max-width: 200px;
 
                             @media screen and (min-width: 768px){
-                            line-height: 26px;
+                                padding-bottom: 16px;
+                                line-height: 26px;
+                                letter-spacing: 1px;
+                                max-width: 294px;
+                                height: 62px;
                             }
                             @media screen and (min-width: 1440px){
                                 line-height: 31.2px;
@@ -104,6 +105,11 @@
                         & .title {
                             min-height: 23px;
                             padding-bottom: 8px;
+
+                            @media screen and (min-width: 768px) {
+                                line-height: 36.4px;
+                                padding-bottom: 16px;
+                            }
                         }
                 }
 

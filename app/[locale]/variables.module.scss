@@ -82,11 +82,13 @@
   .h2,
   .rescueSubtitle1,
   .achievSubtitle2,
+  .supportSubtitle1,
   .Subtitle1 {
     @include font-styles(700, 32px);
   }
 
-  .quickSubtitle1 {
+  .quickSubtitle1,
+  .supportSubtitle2 {
     @include font-styles(700, 28px);
   }
 
@@ -106,6 +108,7 @@
     @include font-styles(500, 20px);
   }
 
+  .supportText4,
   .body,
   .p {
     @include font-styles(400, 20px);

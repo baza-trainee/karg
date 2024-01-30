@@ -93,6 +93,14 @@
       background-color: $button-dark-active;
     }
 }
+@media screen and (min-width: 768px) {
+  .support {
+    min-width: 270px;
+    margin-top: 16px;
+    min-height: 52px;
+    line-height: 26px;
+  }
+}
 
 .rescue {
   @extend .support;
