@@ -5,6 +5,7 @@
     display: flex;
     padding-top: 24px;
     padding-bottom: 24px;
+    padding: 24px 16px;
     flex-direction: column;
     align-items: center;
     gap: 16px;
@@ -12,35 +13,37 @@
         
     @media screen and (min-width: 768px) {
         min-width: 768px;
-        padding-top: 32px;
-        padding-bottom: 32px;
+        padding: 32px 64px;
         gap: 20px;
         flex-wrap: wrap;
     }
-    @media screen and (min-width: 1440px) {
-        min-width: 1440px;
-        padding-top: 48px;
-        padding-bottom: 48px;
+    @media screen and (min-width: 1200px) {
+        min-width: 1200px;
+        padding: 48px 135px;
         gap: 32px;
         flex-wrap: wrap;
     }
+    @media screen and (min-width: 1441px) {
+        min-width: 1441px;
+        padding: 48px 9.375%;
+    }
 
         & .titleBlock{
-            width: 90%;
+            width: 100%;
             text-align: center;
                 
         @media screen and (min-width: 768px){
-            width: 84.65%;
+            width: 100%;
         }
-        @media screen and (min-width: 1440px){
-            width: 81.25%;
+        @media screen and (min-width: 1200px){
+            width: 100%;
         }
         }
 
         & .cardBlock{
             display: flex;
             flex-direction: column;
-            width: 90%;
+            width: 100%;
             height: fit-content;
             gap: 8px;
 
@@ -49,15 +52,15 @@
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 120px 120px;
                 justify-content: center ;
-                width: 84.65%;
+                width: 100%;
                 grid-gap: 20px;
             }
-            @media screen and (min-width: 1440px){
+            @media screen and (min-width: 1200px){
                 display: grid;
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 161px 161px;
                 justify-content: center ;
-                width: 81.25%;
+                width: 100%;
                 grid-gap: 30px;
             }
 
@@ -75,8 +78,12 @@
                         min-height: 120px;
                         border-radius: 8px;
                     }
-                    @media screen and (min-width: 1440px){
+                    @media screen and (min-width: 1200px){
                         min-height: 161px;
+                        max-width: 570px;
+                    }
+                    @media screen and (min-width: 1441px){
+                        max-width: calc(100vw - 30px - 18.75%);
                     }
                      
                         & .message {
@@ -85,56 +92,13 @@
                             padding-right: 12px;
 
                             @media screen and (min-width: 768px){
-                            line-height: 26px;
+                                line-height: 26px;
                             }
-                            @media screen and (min-width: 1440px){
+                            @media screen and (min-width: 1200px){
                                 line-height: 31.2px;
                             }
                         }
                 }
 
         }
-        & .allActivities {
-            display: flex;
-            justify-content: center;
-            background-color: $button-default;
-            color: $text-dark;
-            line-height: 23.4px;
-            text-decoration: none;
-            border-radius: 4px;
-            min-width: 288px;
-            height: fit-content;
-            padding: 12px;
-                &:hover {
-                    background-color: $button-hover;
-                }
-                &:active {
-                    color: $text-white;
-                    background-color: $button-active;
-                }
-        
-            @media screen and (min-width: 1440px) {
-                min-width: 370px;
-                line-height: 26px;
-                padding-top: 15px;
-                padding-bottom: 15px;
-            }  
-        }
-        & .dark {
-            background-color: $button-dark-default;
-            color: $text-white;
-                &:hover {
-                    background-color: $button-dark-hover;
-                }
-                &:active {
-                    color: $text-white;
-                    background-color: $button-dark-active;
-                }
-        }
-        @media screen and (min-width: 768px) {//768px ?
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
-        }
-
 }

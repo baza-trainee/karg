@@ -1,14 +1,13 @@
 import React from 'react';
 import { CardItem } from '../CardItem/CardItem';
-import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import styles from './styles/support.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
 
 const supportTitle = 'Як підтримати нас';
 
 const supportData = [
-    {'cardTitle':'Фінансово','cardMessage': 'Кожний донат має значення', 'buttonText': 'Зробити внесок'},
-    {'cardTitle': 'Взяти тварину','cardMessage': 'Кожний улюбленець чекає на свій дім','buttonText': 'Взяти тварину'},
+    {'cardTitle':'Фінансово','cardMessage': 'Кожний донат має значення', 'buttonText': 'Зробити внесок', 'buttonRoute': '/help'},
+    {'cardTitle': 'Взяти тварину','cardMessage': 'Кожний улюбленець чекає на свій дім','buttonText': 'Взяти тварину', 'buttonRoute': '/animals'},
 ]
 
 export default function Support() {
@@ -24,26 +23,22 @@ export default function Support() {
                     return (
                         <div key={r.innerMessage}>
                             <CardItem 
+                                cardContainer = {styles.cardItemContainer}
+                                cardTextBlock={styles.cardTextBlock}
                                 cardTitle={r.cardTitle}
-                                cardTitleStyle={variables.supportSubtitle2}
+                                cardTitleStyle={`${styles.title} ${variables.supportSubtitle2}`}
                                 cardMessage = {r.cardMessage}
-                                cardContainer = {styles.cardItem}
+                                isButtonAsLink = {true}
                                 cardMessageStyle = {`${styles.message} ${variables.supportText4}`}
+                                buttonCaption={r.buttonText}
+                                buttonStyle='support'
+                                buttonRoute={r.buttonRoute}
                             />
-                        <ButtonAsLink 
-                            buttonCaption={r.buttonText} 
-                            buttonStyle='' 
-                            buttonRoute='#'
-                        />
                         </div>
                     )
                 })}
             </div>   
-
-{/*             
-            <Link className={`${styles.allActivities} ${styles.dark} ${variables.rescueButton1}`} href='/about/applying_rules'>
-                <span>{allActivities}</span>
-            </Link>    */}
+            
         </div>
     </div>
   )

@@ -1,7 +1,6 @@
 @import '../../../app/[locale]/variables.module.scss';
 
 .container {
-    //max-width: 320px;
     display: flex;
     padding: 24px 16px;
     flex-direction: column;
@@ -17,8 +16,9 @@
     }
     @media screen and (min-width: 1440px) {
         min-width: 1440px;
-        padding-top: 48px;
-        padding-bottom: 48px;
+        // padding-top: 48px;
+        // padding-bottom: 48px;
+        padding: 48px 135px;
         gap: 32px;
         flex-wrap: wrap;
     }
@@ -26,7 +26,6 @@
         & .titleBlock{
             width: 100%;
             text-align: center;
-            border: 0.5px solid red;
                 
         @media screen and (min-width: 768px){
             width: 84.65%;
@@ -42,7 +41,6 @@
             width: 100%;
             height: fit-content;
             gap: 8px;
-            border: 0.5px solid red;
 
 
             @media screen and (min-width: 768px){
@@ -58,20 +56,22 @@
                 grid-template-columns: 1fr 1fr;
                 grid-template-rows: 161px 161px;
                 justify-content: center ;
+                //min-width: 1440px;
                 width: 81.25%;
                 grid-gap: 30px;
             }
 
-                & .cardItem {
+                & .cardItemContainer {
                     display: flex;
+                    flex-direction: column;
+                    padding: 16px;
                     gap: 16px;
-                    //min-height: 80px;
+                    max-height: 166px;
                     align-items: center;
                     justify-content: center;
                     text-align: center;
                     background-color: $bg-purple;
                     border-radius: 4px;
-
 
                     @media screen and (min-width: 768px){
                         min-height: 120px;
@@ -81,11 +81,18 @@
                         min-height: 161px;
                     }
 
-                     
+                        & .cardTextBlock{
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: space-between;
+                            align-items: center;
+                            min-height: 118px;
+                        }
+
                         & .message {
                             color: $text-dark;
-                            // padding-left: 12px;
-                            // padding-right: 12px;
+                            min-height: 40px;
+                            max-width: 200px;
 
                             @media screen and (min-width: 768px){
                             line-height: 26px;
@@ -94,50 +101,12 @@
                                 line-height: 31.2px;
                             }
                         }
+                        & .title {
+                            min-height: 23px;
+                            padding-bottom: 8px;
+                        }
                 }
 
-        }
-        & .allActivities {
-            display: flex;
-            justify-content: center;
-            background-color: $button-default;
-            color: $text-dark;
-            line-height: 23.4px;
-            text-decoration: none;
-            border-radius: 4px;
-            min-width: 288px;
-            height: fit-content;
-            padding: 12px;
-                &:hover {
-                    background-color: $button-hover;
-                }
-                &:active {
-                    color: $text-white;
-                    background-color: $button-active;
-                }
-        
-            @media screen and (min-width: 1440px) {
-                min-width: 370px;
-                line-height: 26px;
-                padding-top: 15px;
-                padding-bottom: 15px;
-            }  
-        }
-        & .dark {
-            background-color: $button-dark-default;
-            color: $text-white;
-                &:hover {
-                    background-color: $button-dark-hover;
-                }
-                &:active {
-                    color: $text-white;
-                    background-color: $button-dark-active;
-                }
-        }
-        @media screen and (min-width: 768px) {//768px ?
-            justify-content: center;
-            align-items: center;
-            flex-direction: row;
         }
 
 }

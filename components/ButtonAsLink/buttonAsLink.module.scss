@@ -78,3 +78,40 @@
   max-height: 52px;
   background-color: $button-dark-default;
 }
+
+.support {
+  @extend .primary-dark;
+  padding: 10.5px 12px;
+  min-width: 256px;
+  margin-top: 16px;
+  line-height: 23.5px;
+  color: $text-white;
+    &:hover {
+      background-color: $button-dark-hover;
+    }
+    &:active {
+      background-color: $button-dark-active;
+    }
+}
+
+.rescue {
+  @extend .support;
+  min-width: 288px;
+  max-height: 44px;
+  margin-top: 0;
+}
+
+@media screen and (min-width: 768px) {
+  .rescue {
+    padding: 9px 12px;
+  }
+}
+@media screen and (min-width: 1200px){
+  .rescue {
+    min-width: 370px;
+    min-height: 52px;
+    padding: 12px;
+  }
+}
+
+
