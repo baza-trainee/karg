@@ -1,13 +1,18 @@
 import styles from "./styles/hero.module.scss";
 import Image from "next/image";
+import { Roboto_Flex } from "next/font/google";
 import heroImageMob from "@/public/assets/images/main/hero-mob.jpg";
 import heroImageTab from "@/public/assets/images/main/hero-tablet.jpg";
 import heroImageDesk from "@/public/assets/images/main/hero-desktop.jpg";
 
+export const robotoFlex = Roboto_Flex({
+  subsets: ["latin"],
+});
+
 const HeroSection = () => {
   return (
     <section className={styles.hero}>
-      <h1 className={styles.heroTitle}>
+      <h1 className={`${robotoFlex.className} ${styles.heroTitle}`}>
         Kyiv animal <br />
         rescue group
       </h1>
