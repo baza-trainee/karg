@@ -4,18 +4,11 @@ import styles from './styles/help.module.scss'
 import variables from "@/app/[locale]/variables.module.scss";
 import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import Image from "next/image";
-import { useWindowWidth } from '@react-hook/window-size'
+import helpImageMob from "@/public/assets/images/help/help-img-mob.jpg";
+import helpImageTabl from "@/public/assets/images/help/help-img-tabl.jpg";
+import helpImageDesk from "@/public/assets/images/help/help-img-desk.jpg";
 
 const Help = () => {
-    const width = useWindowWidth();
-
-    let backgroundImage = "/assets/images/help/help-img-mob.jpg";
-    
-    if (width >= 768 && width < 1200) {
-        backgroundImage = "/assets/images/help/help-img-tabl.jpg";
-    } else if (width >= 1200) {
-        backgroundImage = "/assets/images/help/help-img-desk.jpg";
-    }
 
     return (
         <section className={styles.container}>
@@ -30,13 +23,25 @@ const Help = () => {
                 <ButtonAsLink route='/about' buttonCaption='Правила звернення' buttonStyle='button-help' />
             </div>
             <Image
-                className={styles.image}
-                src={backgroundImage}
-                alt="рятівник поруч з автомобілем"
+                className={`${styles.image} ${styles.mobImage}`}
+                src={helpImageMob}
+                alt="Rescuer near the car"
+                sizes="100vw"
                 fill={true}
-                style={{
-                    objectFit: "cover",
-                }}
+            />
+            <Image
+                className={`${styles.image} ${styles.tablImage}`}
+                src={helpImageTabl}
+                alt="Rescuer near the car"
+                sizes="100vw"
+                fill={true}
+            />
+            <Image
+                className={`${styles.image} ${styles.deskImage}`}
+                src={helpImageDesk}
+                alt="Rescuer near the car"
+                sizes="100vw"
+                fill={true}
             />
         </section>
     );
