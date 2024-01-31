@@ -29,7 +29,7 @@ export default async function Home({ params: { locale } }) {
         <Achievements />
         <RescueTypes />
         <Help />
-        <Support/>
+        <Support />
         <Footer />
       </div>
     </TranslationsProvider>

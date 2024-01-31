@@ -1,5 +1,4 @@
 import { Manrope } from "next/font/google";
-import { Roboto_Flex } from "next/font/google";
 import "./globals.css";
 import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
