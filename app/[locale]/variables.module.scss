@@ -141,6 +141,7 @@
     @include font-styles(700, 48px);
   }
 
+  .supportSubtitle1,
   .rescueSubtitle1,
   .Subtitle1 {
     @include font-styles(700, 44px);
@@ -149,7 +150,8 @@
   .h3,
   .subtitle1,
   .subtitle2,
-  .btn1 {
+  .btn1,
+  .supportSubtitle2 {
     @include font-styles(700, 28px);
   }
 
@@ -157,6 +159,7 @@
     @include font-styles(700, 20px);
   }
 
+  .supportText4,
   .body,
   .p {
     @include font-styles(400, 24px);

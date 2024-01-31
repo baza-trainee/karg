@@ -102,6 +102,13 @@
   }
 }
 
+@media screen and (min-width: 1200px) {
+  .support {
+    padding: 12px;
+    line-height: 26px;
+  }
+}
+
 .rescue {
   @extend .support;
   min-width: 288px;
