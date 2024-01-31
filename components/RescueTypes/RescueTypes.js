@@ -4,6 +4,7 @@ import { CardItem } from '../CardItem/CardItem';
 //import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import styles from './styles/rescueTypes.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
+import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 
 const titleRescueTypes = 'Види рятувальних робіт'; 
 const allActivities = 'Дивитись усі';
@@ -37,10 +38,11 @@ export default function RescueTypes() {
                 })}
             </div>   
             {/* /about/rules_of_appeal  or  /about/applying_rules*/}
-            
-            <Link className={`${styles.allActivities} ${styles.dark} ${variables.rescueButton1}`} href='/about/applying_rules'>
-                <span>{allActivities}</span>
-            </Link>   
+            <ButtonAsLink 
+                buttonStyle='rescue'
+                buttonCaption={allActivities}
+                route='/about/rules_of_appeal'
+            />
         </div>
     </div>
   )
