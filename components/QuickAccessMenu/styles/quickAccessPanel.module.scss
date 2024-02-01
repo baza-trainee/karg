@@ -1,7 +1,4 @@
 @import '../../../app/[locale]/variables.module.scss';
-.buttonTextHover {
-    color: $button-text-hover;
-}
 .accessMenuBlock {
     display: flex;
     align-items: center;
@@ -14,6 +11,15 @@
     background-color: $bg-purple;
     height: fit-content;
   
+    // @media screen and (min-width: 768px) {
+    //     min-width: 768px;
+    //     padding: 4.07% 0;
+    //     justify-content: center;
+    //     flex-direction: row;
+    //     gap: 20px;
+    //     flex-wrap: wrap;
+    // }
+
     @media screen and (min-width: 768px) {
         min-width: 768px;
         padding: 4.07% 0;
