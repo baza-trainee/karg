@@ -2,6 +2,7 @@ import { Manrope } from "next/font/google";
 import "./globals.css";
 import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
+import { Providers } from "../providers";
 
 const manrope = Manrope({
   weight: ["300", "400", "700", "800"],
@@ -20,7 +21,9 @@ export function generateStaticParams() {
 export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale} dir={dir(locale)}>
-      <body className={manrope.className}>{children}</body>
+      <body className={manrope.className}>
+        <Providers>{children}</Providers>
+      </body>
     </html>
   );
 }
