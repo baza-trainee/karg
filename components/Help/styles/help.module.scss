@@ -78,3 +78,30 @@
     }
   }
 }
+
+.mobImage {
+  display: block;
+  object-fit: cover;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+  }
+}

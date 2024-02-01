@@ -14,26 +14,23 @@
     display: flex;
     justify-content: center;
 
-    font-family: $font-family-heading;
     font-size: 36px;
     font-weight: 800;
+
     line-height: $line-height;
     text-transform: capitalize;
     letter-spacing: 0;
 
     color: $button-active;
 
-    @media screen and (min-width: 425px) {
-    }
-
     @media screen and (min-width: 768px) {
-      position: absolute;
-      top: 28px;
+      top: 20px;
       font-size: 46px;
     }
 
     @media screen and (min-width: 1200px) {
       right: 52px;
+      top: 54px;
       left: auto;
 
       color: $button-default;
@@ -42,6 +39,7 @@
     @media screen and (min-width: 1440px) {
       top: 64px;
       font-size: 56px;
+      letter-spacing: 1.12px;
     }
   }
 }

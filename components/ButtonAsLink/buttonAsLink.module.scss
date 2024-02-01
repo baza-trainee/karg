@@ -1,5 +1,5 @@
-@import "../../app/[locale]/colors.scss";
-@import "@/app/[locale]/variables.module.scss";
+@import '../../app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
 
 @mixin button-style() {
   display: flex;
@@ -57,7 +57,8 @@
     @include button-style;
     min-width: 170px;
     background-color: $button-default;
-
+    border-radius: 8px;
+    border: none;
     transition: background-color 0.4s ease;
   }
 
@@ -66,7 +67,6 @@
   }
 
   .button-help {
-    @include font-styles(700, 20px);
     padding: 13px 12px;
   }
 }
@@ -87,12 +87,12 @@
   margin-top: 16px;
   line-height: 23.5px;
   color: $text-white;
-    &:hover {
-      background-color: $button-dark-hover;
-    }
-    &:active {
-      background-color: $button-dark-active;
-    }
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
+  }
 }
 @media screen and (min-width: 768px) {
   .support {
@@ -122,12 +122,10 @@
     padding: 9px 12px;
   }
 }
-@media screen and (min-width: 1200px){
+@media screen and (min-width: 1200px) {
   .rescue {
     min-width: 370px;
     min-height: 52px;
     padding: 12px;
   }
 }
-
-
