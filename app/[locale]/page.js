@@ -25,13 +25,11 @@ export default async function Home({ params: { locale } }) {
         <Header />
         <HeroSection />
         <QuickAccessMenu />
-        <RescueTypes />
-        <Support/>
         <MissionSection />
         <Achievements />
-        {/* <RescueTypes /> */}
+        <RescueTypes />
         <Help />
-        {/* <Support/> */}
+        <Support/>
         <Footer />
       </div>
     </TranslationsProvider>
