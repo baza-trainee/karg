@@ -156,7 +156,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
             специфічними навичками порятунку тварин, а й погодилися робити це за
             невелику плату, а подеколи й безкоштовно.
           </p>
-          <div>
+          <div className={styles.imgOuterWrap}>
             <Image
               className={styles.historyMob}
               src={historyMobFour}
@@ -188,10 +188,9 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           <ButtonAsLink
             route="/our_team"
             buttonCaption="Про команду"
-            buttonStyle={`${btnLinkStyles.rescue}`}
+            buttonStyle="rescue"
           />
         </div>
-
         <Footer />
       </div>
     </TranslationsProvider>
