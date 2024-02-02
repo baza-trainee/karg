@@ -1,4 +1,56 @@
-.history {
+@import "@/app/[locale]/colors.scss";
+
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 56px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 80px;
+    padding-right: 80px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding-left: 135px;
+    padding-right: 135px;
+  }
+}
+
+.historyTitle {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
+}
+
+.historyText {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: left;
+
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+  }
+
+  @media screen and (min-width: 1200px) {
+  }
 }
 
 .imgOuterWrap {
@@ -7,6 +59,8 @@
   justify-content: center;
   align-items: center;
   gap: 8px;
+
+  margin-bottom: 16px;
 }
 
 .imgInnerWrap {
@@ -17,10 +71,41 @@
 }
 
 .historyMob {
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
 }
 
 .historyTab {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
 }
 
 .historyDesk {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
 }
+
+// .btnLink {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   width: 288px;
+//   height: 44px;
+//   //   min-width: 270px;
+//   //   max-width: 288px;
+//   //   min-height: 44px;
+//   //   max-height: 52px;
+//   padding: 10.5px 12px;
+
+//   border-radius: 4px;
+
+//   background-color: $button-dark-default;
+//   color: $text-white;
+// }
