@@ -1,0 +1,89 @@
+@import "@/app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
+
+.pageHero {
+  position: relative;
+  display: flex;
+  max-width: 1440px;
+  position: relative;
+  margin: 0 auto;
+  padding: 40px 0;
+  justify-content: center;
+
+  .pseudoButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $button-default;
+    min-width: 218px;
+    max-width: 536px;
+    border-radius: 8px;
+
+    .buttonText {
+      @include font-styles(700, 18px);
+      padding-top: 9px;
+      padding-bottom: 8px;
+    }
+  }
+
+  .image {
+    z-index: -5;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageHero {
+    padding: 86px 0;
+
+    .pseudoButton {
+      min-width: 372px;
+
+      .buttonText {
+        @include font-styles(700, 28px);
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pageHero {
+    padding: 137px 0;
+
+    .pseudoButton {
+      min-width: 536px;
+
+      .buttonText {
+        @include font-styles(700, 48px);
+        padding: 32px 0;
+      }
+    }
+  }
+}
+
+.mobImage {
+  display: block;
+  object-fit: cover;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+  }
+}
