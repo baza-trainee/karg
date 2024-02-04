@@ -47,6 +47,14 @@
   min-width: 288px;
 }
 
+.button-quick-menu {
+  @extend .button-help;
+    &:active {
+        color: $text-white;
+        background-color: $button-active;
+    }
+}
+
 .primary-lite-W-288 {
   @include button-style;
   min-width: 288px;
@@ -57,7 +65,8 @@
 
 @media screen and (min-width: 768px) {
   .button-help-main-page,
-  .button-help {
+  .button-help, 
+  .button-quick-menu {
     min-width: 288px;
     padding: 9px 12px;
   }
@@ -81,6 +90,9 @@
   .button-help {
     padding: 13px 12px;
   }
+  .button-quick-menu {
+    display: none;
+  }
 }
 
 .primary-dark {
@@ -99,12 +111,12 @@
   margin-top: 16px;
   line-height: 23.5px;
   color: $text-white;
-  &:hover {
-    background-color: $button-dark-hover;
-  }
-  &:active {
-    background-color: $button-dark-active;
-  }
+    &:hover {
+      background-color: $button-dark-hover;
+    }
+    &:active {
+      background-color: $button-dark-active;
+    }
 }
 @media screen and (min-width: 768px) {
   .support {
