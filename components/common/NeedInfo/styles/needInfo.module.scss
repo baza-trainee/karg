@@ -1,0 +1,123 @@
+@import "@/app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
+
+@mixin flexContainer() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.desk {
+  background-color: $bg-purple;
+  padding: 48px 9px;
+}
+
+.mainPageDesk {
+  background-color: $bg-white;
+  padding: 43px 9px;
+}
+
+.desk,
+.mainPageDesk {
+  @include flexContainer;
+  max-width: 1440px;
+  margin: 0 auto;
+  gap: 16px;
+
+  .text {
+    @include flexContainer;
+    width: 15.4em;
+    text-align: center;
+    gap: 16px;
+    line-height: 130%;
+
+    .title {
+      width: 8.8em;
+      @include font-styles(700, 20px);
+    }
+
+    .subtitle {
+      @include font-styles(500, 16px);
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {//отличаются стили
+  .desk {
+    padding: 32px 37px;
+    gap: 20px;
+
+    .text {
+      width: 30.1em;
+      gap: 20px;
+
+      .title {
+        @include font-styles(700, 28px);
+        width: 16em;
+      }
+
+      .subtitle {
+        @include font-styles(500, 18px);
+      }
+    }
+  }
+
+  .mainPageDesk {
+    padding: 32px 37px;
+    gap: 16px;
+
+    .text {
+      width: 34.5em;
+      gap: 16px;
+
+      .title {
+        @include font-styles(700, 32px);
+        width: 16em;
+      }
+
+      .subtitle {
+        @include font-styles(500, 20px);
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .desk {
+    padding: 57px 134px;
+    gap: 32px;
+
+    .text {
+      width: 52em;
+      gap: 32px;
+
+      .title {
+        width: 15em;
+      }
+
+      .subtitle {
+        @include font-styles(500, 20px);
+      }
+    }
+  }
+
+  .mainPageDesk {
+    padding: 48px 134px;
+    gap: 32px;
+
+    .text {
+      width: 52em;
+      gap: 32px;
+
+      .title {
+        @include font-styles(700, 44px);
+        width: 15em;
+      }
+
+      .subtitle {
+        @include font-styles(500, 24px);
+      }
+    }
+  }
+}

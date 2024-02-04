@@ -1,27 +1,27 @@
 'use client'
 
 import styles from './styles/help.module.scss'
-import variables from "@/app/[locale]/variables.module.scss";
-import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import Image from "next/image";
 import helpImageMob from "@/public/assets/images/help/help-img-mob.jpg";
 import helpImageTabl from "@/public/assets/images/help/help-img-tabl.jpg";
 import helpImageDesk from "@/public/assets/images/help/help-img-desk.jpg";
+import NeedInfo from "../common/NeedInfo/needInfo";
 
 const Help = () => {
+    const title = "Потрібна допомога?";
+    const subtitle = "Перш ніж звертатися до нас, обов'язково ознайомтеся з переліком послуг, які ми надаємо, і правилами звернення до нас.";
+    const buttonCaption = "Правила звернення";
+    const route = "/about";
 
     return (
         <section className={styles.container}>
-            <div className={styles.desk}>
-                <div className={styles.text}>
-                    <div className={`${styles.title} ${variables.Subtitle1}`}>Потрібна допомога?</div>
-                    <div className={`${styles.subtitle} ${variables.p}`}>
-                        Перш ніж звертатися до нас, обов'язково ознайомтеся з переліком послуг,
-                        які ми надаємо, і правилами звернення до нас.
-                    </div>
-                </div>
-                <ButtonAsLink route='/about' buttonCaption='Правила звернення' buttonStyle='button-help' />
-            </div>
+            <NeedInfo
+                title={title}
+                subtitle={subtitle}
+                route={route}
+                buttonCaption={buttonCaption}
+                isMainPageStyle={true}
+            />
             <Image
                 className={`${styles.image} ${styles.mobImage}`}
                 src={helpImageMob}
