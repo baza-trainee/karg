@@ -8,17 +8,17 @@ import { Autoplay } from "swiper/modules";
 import styles from "./styles/swiper.module.scss";
 import Image from "next/image";
 
-import missionMobOne from "@/public/assets/images/mission/mission-mob-1.jpg";
-import missionMobTwo from "@/public/assets/images/mission/mission-mob-2.jpg";
-import missionMobThree from "@/public/assets/images/mission/mission-mob-3.jpg";
-
-import missionTabOne from "@/public/assets/images/mission/mission-tab-1.jpg";
-import missionTabTwo from "@/public/assets/images/mission/mission-tab-2.jpg";
-import missionTabThree from "@/public/assets/images/mission/mission-tab-3.jpg";
-
-import missionDeskOne from "@/public/assets/images/mission/mission-desk-1.jpg";
-import missionDeskTwo from "@/public/assets/images/mission/mission-desk-2.jpg";
-import missionDeskThree from "@/public/assets/images/mission/mission-desk-3.jpg";
+import {
+  missionMobOne,
+  missionMobTwo,
+  missionMobThree,
+  missionTabOne,
+  missionTabTwo,
+  missionTabThree,
+  missionDeskOne,
+  missionDeskTwo,
+  missionDeskThree,
+} from "@/public/assets/images/mission/index";
 
 const SwiperSlider = () => {
   return (

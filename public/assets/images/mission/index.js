@@ -1,1 +1,9 @@
-
+export { default as missionMobOne } from "./mission-mob-1.jpg";
+export { default as missionMobTwo } from "./mission-mob-2.jpg";
+export { default as missionMobThree } from "./mission-mob-3.jpg";
+export { default as missionTabOne } from "./mission-tab-1.jpg";
+export { default as missionTabTwo } from "./mission-tab-2.jpg";
+export { default as missionTabThree } from "./mission-tab-3.jpg";
+export { default as missionDeskOne } from "./mission-desk-1.jpg";
+export { default as missionDeskTwo } from "./mission-desk-2.jpg";
+export { default as missionDeskThree } from "./mission-desk-3.jpg";
