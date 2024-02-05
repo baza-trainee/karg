@@ -1,3 +1,7 @@
+export { default as historyHeroMob } from "./history-hero-mob.jpg";
+export { default as historyHeroTab } from "./history-hero-tab.jpg";
+export { default as historyHeroDesk } from "./history-hero-desk.jpg";
+
 export { default as historyMobOne } from "./mob-1.jpg";
 export { default as historyMobTwo } from "./mob-2.jpg";
 export { default as historyMobThree } from "./mob-3.jpg";

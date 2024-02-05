@@ -8,6 +8,9 @@ import Footer from "@/components/Footer/footer";
 import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
 import Image from "next/image";
 import {
+  historyHeroMob,
+  historyHeroTab,
+  historyHeroDesk,
   historyMobOne,
   historyMobTwo,
   historyMobThree,
@@ -20,7 +23,8 @@ import {
   historyDeskTwo,
   historyDeskThree,
   historyDeskFour,
-} from "@/public/assets/images/history-page/index";
+} from "@/public/assets/images/about/history-page/index";
+import PageHero from "@/components/common/PageHero/pageHero";
 
 const i18nNamespaces = ["home", "common"];
 
@@ -34,6 +38,13 @@ const historyOfOrigin = async ({ params: { locale } }) => {
     >
       <div className={styles.history}>
         <Header />
+        <PageHero
+          mobImage={historyHeroMob.src}
+          tablImage={historyHeroTab.src}
+          deskImage={historyHeroDesk.src}
+          buttonText="Історія виникнення"
+          altText="Boy open a car trunk"
+        />
         <div className={styles.container}>
           <h3 className={styles.historyTitle}>Історія виникнення команди</h3>
           <div className={`${styles.historyText} ${styles.historyTextTop}`}>
