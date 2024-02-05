@@ -1,0 +1,161 @@
+@import "@/app/[locale]/colors.scss";
+
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  padding-top: 24px;
+  padding-bottom: 56px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 64px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    max-width: 1440px;
+    padding: 56px 135px 128px 135px;
+  }
+}
+
+.historyTitle {
+  font-size: 18px;
+  font-weight: 700;
+  text-align: center;
+
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 44px;
+    margin-bottom: 32px;
+  }
+}
+
+.historyText {
+  font-size: 16px;
+  font-weight: 300;
+  text-align: left;
+  line-height: 1.3;
+
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: calc(31.68 / 24);
+  }
+
+  &Top {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &Bottom {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+.historyTextTop > p:not(:last-child) {
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 1200px) {
+    margin-bottom: 16px;
+  }
+}
+
+.imgOuterWrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+    gap: 10px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 24px;
+  }
+
+  &Top {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &Bottom {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 32px;
+    }
+  }
+}
+
+.imgInnerWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 30px;
+  }
+}
+
+.historyMob {
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+}
+
+.historyTab {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
+}
+
+.historyDesk {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

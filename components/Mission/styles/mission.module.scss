@@ -1,4 +1,4 @@
-@import "../../../app/[locale]/colors.scss";
+@import "@/app/[locale]/colors.scss";
 
 .container {
   width: 100%;
@@ -12,11 +12,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    padding-left: 80px;
-    padding-right: 80px;
-  }
-
-  @media screen and (min-width: 1440px) {
+    // padding: 0 9.38%;
     max-width: 1440px;
     padding-left: 135px;
     padding-right: 135px;
