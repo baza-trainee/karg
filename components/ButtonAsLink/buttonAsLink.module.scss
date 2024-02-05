@@ -1,5 +1,5 @@
-@import '../../app/[locale]/colors.scss';
-@import '@/app/[locale]/variables.module.scss';
+@import "../../app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
 
 @mixin button-style() {
   display: flex;
@@ -127,5 +127,6 @@
     min-width: 370px;
     min-height: 52px;
     padding: 12px;
+    border-radius: 8px;
   }
 }

@@ -1,5 +1,4 @@
 import styles from "./historyOfOrigin.module.scss";
-import btnLinkStyles from "@/components/ButtonAsLink/buttonAsLink.module.scss";
 
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
@@ -37,33 +36,38 @@ const historyOfOrigin = async ({ params: { locale } }) => {
         <Header />
         <div className={styles.container}>
           <h3 className={styles.historyTitle}>Історія виникнення команди</h3>
-          <p className={styles.historyText}>
-            Жодна державна чи комунальна установа в Україні не спеціалізується
-            на рятуванні диких, безхатніх чи домашніх тварин, що потрапили в
-            смертельно небезпечне становище. Тому ці завдання лягають на плечі
-            волонтерів із необхідними навичками і спорядженням. Так, у Києві з
-            2014 року працює Команда порятунку тварин, або Kyiv Animal Rescue
-            Group (KARG) — громадська організація, яка за час своєї діяльності
-            врятувала понад 10 тисяч живих істот. У селі Плоскому, неподалік
-            Києва, кіт потрапив до вентиляційної шахти будинку. Отримавши
-            дзвінок від власниці тварини, екіпаж рятувальників вирушає на
-            завдання. Троє людей, одягнені у спеціальні робочі костюми,
-            підіймаються на горище. Спершу вони роблять два заміри: один вказує
-            на відстань від вентиляції до торцевої стіни будівлі, а інший —
-            висоту, де застряг кіт. Після цього вони просвердлюють перфоратором
-            кахельну стіну ванної кімнати (до якої тварина перебуває найближче).
-            Звідти на них позирає пара спантеличених котячих очей. Наостанок
-            лишається небагато: відламати ще кілька сантиметрів цементу та
-            витягнути тварину.
-          </p>
-          <div className={styles.imgOuterWrap}>
+          <div className={`${styles.historyText} ${styles.historyTextTop}`}>
+            <p>
+              Жодна державна чи комунальна установа в Україні не спеціалізується
+              на рятуванні диких, безхатніх чи домашніх тварин, що потрапили в
+              смертельно небезпечне становище. Тому ці завдання лягають на плечі
+              волонтерів із необхідними навичками і спорядженням. Так, у Києві з
+              2014 року працює Команда порятунку тварин, або Kyiv Animal Rescue
+              Group (KARG) — громадська організація, яка за час своєї діяльності
+              врятувала понад 10 тисяч живих істот.
+            </p>
+            <p>
+              У селі Плоскому,неподалік Києва, кіт потрапив до вентиляційної
+              шахти будинку. Отримавши дзвінок від власниці тварини, екіпаж
+              рятувальників вирушає на завдання. Троє людей, одягнені у
+              спеціальні робочі костюми, підіймаються на горище. Спершу вони
+              роблять два заміри: один вказує на відстань від вентиляції до
+              торцевої стіни будівлі, а інший — висоту, де застряг кіт. Після
+              цього вони просвердлюють перфоратором кахельну стіну ванної
+              кімнати (до якої тварина перебуває найближче). Звідти на них
+              позирає пара спантеличених котячих очей. Наостанок лишається
+              небагато: відламати ще кілька сантиметрів цементу та витягнути
+              тварину.
+            </p>
+          </div>
+          <div className={`${styles.imgOuterWrap} ${styles.imgOuterWrapTop}`}>
             <Image
               className={styles.historyMob}
               src={historyMobOne}
               alt="Team seat on the car"
               style={{
                 width: "288px",
-                height: "127px",
+                height: "100%",
               }}
             />
             <Image
@@ -72,7 +76,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               alt="Team seat on the car"
               style={{
                 width: "706px",
-                height: "311px",
+                height: "100%",
               }}
             />
             <Image
@@ -81,7 +85,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               alt="Team seat on the car"
               style={{
                 width: "1170px",
-                height: "361px",
+                height: "100%",
               }}
             />
 
@@ -92,7 +96,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Girl in the boat"
                 style={{
                   width: "136px",
-                  height: "170px",
+                  height: "100%",
                 }}
               />
               <Image
@@ -101,7 +105,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Girl in the boat"
                 style={{
                   width: "343px",
-                  height: "429px",
+                  height: "100%",
                 }}
               />
               <Image
@@ -110,7 +114,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Girl in the boat"
                 style={{
                   width: "570px",
-                  height: "529px",
+                  height: "100%",
                 }}
               />
 
@@ -120,7 +124,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Boy with a swan"
                 style={{
                   width: "136px",
-                  height: "170px",
+                  height: "100%",
                 }}
               />
               <Image
@@ -129,7 +133,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Boy with a swan"
                 style={{
                   width: "343px",
-                  height: "429px",
+                  height: "100%",
                 }}
               />
               <Image
@@ -138,12 +142,12 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 alt="Boy with a swan"
                 style={{
                   width: "570px",
-                  height: "529px",
+                  height: "100%",
                 }}
               />
             </div>
           </div>
-          <p className={styles.historyText}>
+          <p className={`${styles.historyText} ${styles.historyTextBottom}`}>
             Саме так працює KARG — структура, що починалася з особистої
             ініціативи двох волонтерів — Михайла Сторожука та Любови Кравчук — і
             перетворилася на громадську організацію, яка опікується порятунком
@@ -156,14 +160,16 @@ const historyOfOrigin = async ({ params: { locale } }) => {
             специфічними навичками порятунку тварин, а й погодилися робити це за
             невелику плату, а подеколи й безкоштовно.
           </p>
-          <div className={styles.imgOuterWrap}>
+          <div
+            className={`${styles.imgOuterWrap} ${styles.imgOuterWrapBottom}`}
+          >
             <Image
               className={styles.historyMob}
               src={historyMobFour}
               alt="Team seat on the car"
               style={{
                 width: "288px",
-                height: "127px",
+                height: "100%",
               }}
             />
             <Image
@@ -172,7 +178,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               alt="Team seat on the car"
               style={{
                 width: "706px",
-                height: "311px",
+                height: "100%",
               }}
             />
             <Image
@@ -181,15 +187,17 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               alt="Team seat on the car"
               style={{
                 width: "1170px",
-                height: "455px",
+                height: "100%",
               }}
             />
           </div>
-          <ButtonAsLink
-            route="/our_team"
-            buttonCaption="Про команду"
-            buttonStyle="rescue"
-          />
+          <div className={styles.btnWrap}>
+            <ButtonAsLink
+              route="/our_team"
+              buttonCaption="Про команду"
+              buttonStyle="rescue"
+            />
+          </div>
         </div>
         <Footer />
       </div>

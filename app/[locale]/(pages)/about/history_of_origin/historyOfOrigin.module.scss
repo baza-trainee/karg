@@ -9,19 +9,12 @@
   margin: 0 auto;
 
   @media screen and (min-width: 768px) {
-    padding-left: 64px;
-    padding-right: 64px;
-  }
-
-  @media screen and (min-width: 1200px) {
-    padding-left: 80px;
-    padding-right: 80px;
+    padding: 32px 64px;
   }
 
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
-    padding-left: 135px;
-    padding-right: 135px;
+    padding: 56px 135px 128px 135px;
   }
 }
 
@@ -33,9 +26,12 @@
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
+    font-size: 28px;
   }
 
   @media screen and (min-width: 1200px) {
+    font-size: 44px;
+    margin-bottom: 32px;
   }
 }
 
@@ -43,24 +39,74 @@
   font-size: 16px;
   font-weight: 300;
   text-align: left;
+  line-height: 1.3;
 
   margin-bottom: 16px;
 
   @media screen and (min-width: 768px) {
+    font-size: 20px;
   }
 
   @media screen and (min-width: 1200px) {
+    font-size: 24px;
+    font-weight: 400;
+    line-height: calc(31.68 / 24);
+  }
+
+  &Top {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &Bottom {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 24px;
+    }
   }
 }
 
 .imgOuterWrap {
+  width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 8px;
 
   margin-bottom: 16px;
+
+  @media screen and (min-width: 768px) {
+    gap: 10px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 24px;
+  }
+
+  &Top {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 24px;
+    }
+  }
+
+  &Bottom {
+    @media screen and (min-width: 768px) {
+      margin-bottom: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      margin-bottom: 32px;
+    }
+  }
 }
 
 .imgInnerWrap {
@@ -68,6 +114,14 @@
   justify-content: center;
   align-items: center;
   gap: 16px;
+
+  @media screen and (min-width: 768px) {
+    gap: 20px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    gap: 30px;
+  }
 }
 
 .historyMob {
@@ -90,4 +144,10 @@
   @media screen and (min-width: 1200px) {
     display: block;
   }
+}
+
+.btnWrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
