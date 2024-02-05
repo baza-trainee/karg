@@ -2,6 +2,7 @@
 'use client';
 import React from 'react';
 import Link from "next/link";
+import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
 import { DonateIcon, HandshakeIcon, PawprintIcon, ReportIcon, ArrowRightIcon } from "@/public/assets/icons";
 import variables from '../../app/[locale]/variables.module.scss';
 import styles from './styles/quickAccessPanel.module.scss';
@@ -55,10 +56,12 @@ export default function QuickAccessMenu() {
         );
       })}
       </div>
-      {/* id='Пожертва' || href='Пожертва' */}
-      <Link className={`${styles.donate} ${variables.quickButton2}`} href='/help'>
-        <span>{donate}</span>
-      </Link>
+
+      <ButtonAsLink 
+        buttonStyle='button-quick-menu'
+        buttonCaption={donate}
+        route='/help'
+      />
     </section>
   );
 }
