@@ -25,11 +25,21 @@ import {
   historyDeskFour,
 } from "@/public/assets/images/about/history-page/index";
 import PageHero from "@/components/common/PageHero/pageHero";
+import NeedInfo from "@/components/common/NeedInfo/needInfo";
 
 const i18nNamespaces = ["home", "common"];
 
 const historyOfOrigin = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
+  const altText = "Boy open a car trunk";
+  const buttonText = "Історія виникнення";
+  const title = "Потрібна допомога?";
+  const subtitle =
+    "Перш ніж звертатися до нас, обов`язково ознайомтеся з переліком послуг, які ми надаємо, і правилами звернення до нас.";
+  const buttonCaption = "Правила звернення";
+  const route = "/rules_of_appeal";
+
   return (
     <TranslationsProvider
       resources={resources}
@@ -42,8 +52,8 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           mobImage={historyHeroMob.src}
           tablImage={historyHeroTab.src}
           deskImage={historyHeroDesk.src}
-          buttonText="Історія виникнення"
-          altText="Boy open a car trunk"
+          buttonText={buttonText}
+          altText={altText}
         />
         <div className={styles.container}>
           <h3 className={styles.historyTitle}>Історія виникнення команди</h3>
@@ -210,6 +220,12 @@ const historyOfOrigin = async ({ params: { locale } }) => {
             />
           </div>
         </div>
+        <NeedInfo
+          title={title}
+          subtitle={subtitle}
+          buttonCaption={buttonCaption}
+          route={route}
+        />
         <Footer />
       </div>
     </TranslationsProvider>
