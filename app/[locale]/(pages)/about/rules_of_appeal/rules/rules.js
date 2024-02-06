@@ -25,9 +25,7 @@ const Rules = () => {
                         src={ruleImageMob}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        style={{
-                            width: "100%",
-                        }}
+                        fill={true}
                     />
                     <Image
                         className={`${styles.ruleImage} ${styles.tablImage}`}
