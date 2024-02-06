@@ -1,0 +1,180 @@
+@import "/app/[locale]/colors.scss";
+@import "/app//[locale]//variables.module.scss";
+
+@mixin flexContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+@mixin ruleStyle($backgroundColor, $maxWidthText, $verticalPadding) {
+  @include flexContainer;
+  background-color: $backgroundColor;
+  border-radius: 8px;
+  .ruleText {
+    max-width: $maxWidthText;
+    padding: $verticalPadding 0;
+  }
+}
+
+.container {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding-top: 24px;
+  padding-left: 16px;
+  padding-right: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  .rulesTitle {
+    text-align: center;
+  }
+}
+
+.rulesBlock {
+  min-width: 288px;
+  display: grid;
+  grid-auto-rows: auto;
+  gap: 8px;
+
+  .ruleAvailability {
+    min-height: 67px;
+  }
+
+  .ruleAvailability,
+  .rulePaymentConditions,
+  .ruleAnimalRescue {
+    @include ruleStyle($bg-purple, 14.2em, 16px);
+  }
+
+  .ruleImage {
+    position: relative;
+    min-height: 220px;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  .ruleDescription {
+    padding-top: 8px;
+    padding-bottom: 4px;
+  }
+
+  .ruleDescription p {
+    padding-bottom: 12px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 32px;
+    padding-left: 64px;
+    padding-right: 64px;
+    gap: 20px;
+  }
+
+  .rulesBlock {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px 20px;
+
+    .ruleAvailability,
+    .rulePaymentConditions,
+    .ruleAnimalRescue {
+      @include ruleStyle($bg-purple, 14.7em, 20px);
+      grid-column: 1;
+    }
+
+    .ruleImage {
+      grid-column: 2;
+      grid-row: 1/4;
+    }
+
+    .ruleDescription {
+      grid-column: 1/3;
+      padding-top: 12px;
+      padding-bottom: 26px;
+    }
+
+    .ruleDescription p {
+      padding-bottom: 8px;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding-top: 56px;
+    padding-left: 135px;
+    padding-right: 135px;
+    gap: 32px;
+  }
+
+  .rulesBlock {
+    max-width: 1170px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: auto;
+    gap: 24px 30px;
+
+    .ruleAvailability,
+    .rulePaymentConditions,
+    .ruleAnimalRescue {
+      grid-column: 1;
+    }
+
+    .ruleAvailability {
+      @include ruleStyle($bg-purple, 8.9em, 42px);
+      min-height: 192px;
+    }
+
+    .rulePaymentConditions {
+      @include ruleStyle($bg-purple, 14em, 42px);
+    }
+
+    .ruleAnimalRescue {
+      @include ruleStyle($bg-purple, 14em, 42px);
+    }
+
+    .ruleImage {
+      grid-column: 2;
+      grid-row: 1/4;
+    }
+
+    .ruleDescription {
+      grid-column: 1/3;
+      padding-top: 8px;
+      padding-bottom: 15px;
+      line-height: 132%;
+    }
+
+    .ruleDescription p {
+      padding-bottom: 17px;
+    }
+  }
+}
+
+.mobImage {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}

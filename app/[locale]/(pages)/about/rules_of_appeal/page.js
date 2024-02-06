@@ -8,6 +8,7 @@ import mobImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-
 import tablImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-tabl.jpg";
 import deskImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-desk.jpg";
 import NeedInfo from "@/components/common/NeedInfo/needInfo";
+import Rules from "./rules/rules";
 
 const i18nNamespaces = ['rules', 'common'];
 
@@ -31,6 +32,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                     deskImage={deskImage.src}
                     buttonText={buttonText}
                     altText={altText} />
+                <Rules />
                 <NeedInfo
                     title={title}
                     subtitle={subtitle}
