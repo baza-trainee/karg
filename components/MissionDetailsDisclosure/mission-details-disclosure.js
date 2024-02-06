@@ -9,7 +9,7 @@ const MotionBox = motion(Box);
 
 const variants = {
   hidden: { opacity: 0, transform: "translateY(-100px)" },
-  enter: { opacity: 1, transform: "translateY(-30px)" },
+  enter: { opacity: 1, transform: "translateY(-17px)" },
   exit: { opacity: 0, transform: "translateY(-100px)" },
 };
 

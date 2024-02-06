@@ -87,7 +87,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyMobOne}
               alt="Team seat on the car"
               style={{
-                width: "288px",
+                width: "100vw",
                 height: "100%",
               }}
             />
@@ -96,7 +96,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyTabOne}
               alt="Team seat on the car"
               style={{
-                width: "706px",
+                width: "100vw",
                 height: "100%",
               }}
             />
@@ -116,7 +116,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyMobTwo}
                 alt="Girl in the boat"
                 style={{
-                  width: "136px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -125,7 +125,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyTabTwo}
                 alt="Girl in the boat"
                 style={{
-                  width: "343px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -144,7 +144,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyMobThree}
                 alt="Boy with a swan"
                 style={{
-                  width: "136px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -153,7 +153,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyTabThree}
                 alt="Boy with a swan"
                 style={{
-                  width: "343px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -189,7 +189,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyMobFour}
               alt="Team seat on the car"
               style={{
-                width: "288px",
+                width: "100vw",
                 height: "100%",
               }}
             />
@@ -198,7 +198,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyTabFour}
               alt="Team seat on the car"
               style={{
-                width: "706px",
+                width: "100vw",
                 height: "100%",
               }}
             />
