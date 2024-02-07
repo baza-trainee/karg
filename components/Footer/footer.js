@@ -4,7 +4,7 @@ import styles from './styles/footer.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 
 import Link from "next/link";
-import { Logo, ArrowDown, LocationIcon, EmailIcon, PhoneIcon, Line } from "@/public/assets/icons";
+import { Logo, ArrowDown, LocationIcon, EmailIcon, PhoneIcon } from "@/public/assets/icons";
 import { useState } from 'react';
 import SocialIcons from '../SocialIcons/socialIcons';
 import ButtonAsLinkAsLink from '@/components/ButtonAsLink/buttonAsLink';
@@ -26,7 +26,6 @@ function Footer() {
                 </Link>
                 <h2 className={`${styles.brandHolderName} ${variables.button2}`}>KYIV ANIMAL RESCUE GROUP</h2>
             </div>
-            <Line className={styles.line} />
             <nav className={`${styles.navMenu} ${variables.button2}`}>
                 <ul>
                     <li ><Link href="/">Головна</Link></li>
@@ -34,21 +33,17 @@ function Footer() {
                         {open.firstList ? <>
                             <ul className={styles.navMenuInnerList}>
                                 <li><Link href="/about/history_of_origin">
-                                    Історія<br />виникнення
+                                    Історія виникнення
                                 </Link></li>
                                 <li><Link href="/about/rules_of_appeal">
-                                    Правила<br />звернення
+                                    Правила звернення
                                 </Link></li>
-                            </ul>
-                            <ul className={styles.navMenuInnerList}>
                                 <li><Link href="/about/our_team">Наша команда</Link></li>
                                 <li><Link href="/about/contacts">Контакти</Link></li>
                             </ul>
                         </> : null}
                     </li>
                     <li ><Link href="/animals">Наші тварини</Link></li>
-                </ul>
-                <ul>
                     <li><Link href="/help">Допомогти нам</Link></li>
                     <li><p className={styles.navMenuInnerMenu} data-list="secondList" onClick={(e) => handleClick(e)}><span>Корисне</span><ArrowDown className={styles.arrowDownIcon} /></p>
                         {open.secondList ? <ul className={styles.navMenuInnerList}>

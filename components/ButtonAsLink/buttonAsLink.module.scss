@@ -1,5 +1,5 @@
-@import "../../app/[locale]/colors.scss";
-@import "@/app/[locale]/variables.module.scss";
+@import '../../app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
 
 @mixin button-style() {
   display: flex;
@@ -8,6 +8,11 @@
   padding: 12px;
   border-radius: 4px;
   cursor: pointer;
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    background-color: $button-hover;
+  }
 }
 
 @mixin button-help-style() {
@@ -49,10 +54,10 @@
 
 .button-quick-menu {
   @extend .button-help;
-    &:active {
-        color: $text-white;
-        background-color: $button-active;
-    }
+  &:active {
+    color: $text-white;
+    background-color: $button-active;
+  }
 }
 
 .primary-lite-W-288 {
@@ -65,7 +70,7 @@
 
 @media screen and (min-width: 768px) {
   .button-help-main-page,
-  .button-help, 
+  .button-help,
   .button-quick-menu {
     min-width: 288px;
     padding: 9px 12px;
@@ -79,11 +84,6 @@
     background-color: $button-default;
     border-radius: 8px;
     border: none;
-    transition: background-color 0.4s ease;
-  }
-
-  .header-primary-button-default:hover {
-    background-color: $button-hover;
   }
 
   .button-help-main-page,
@@ -111,12 +111,12 @@
   margin-top: 16px;
   line-height: 23.5px;
   color: $text-white;
-    &:hover {
-      background-color: $button-dark-hover;
-    }
-    &:active {
-      background-color: $button-dark-active;
-    }
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
+  }
 }
 @media screen and (min-width: 768px) {
   .support {

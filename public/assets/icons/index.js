@@ -15,4 +15,3 @@ export { default as DetailsClose } from "./close-details.svg";
 export { default as EmailIcon } from "./footer/email_icon.svg";
 export { default as LocationIcon } from "./footer/map_pin_icon.svg";
 export { default as PhoneIcon } from "./footer/phone_icon.svg";
-export { default as Line } from "./footer/line.svg";

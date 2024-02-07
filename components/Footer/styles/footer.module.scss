@@ -39,21 +39,17 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
 
-.navMenu {
-  position: relative;
-  & a,
-  span {
+  p,
+  a {
+    transition: color 0.4s ease-in-out;
     color: #fff;
-    text-decoration: none;
-  }
-}
-
-.navMenu {
-  & a,
-  p {
     cursor: pointer;
+  }
+
+  p:hover,
+  a:hover {
+    color: $button-default;
   }
 }
 
@@ -65,10 +61,6 @@
   gap: 4px;
 }
 
-.navMenuInnerMenu > svg {
-  color: #fff;
-}
-
 .navMenuInnerList {
   display: flex;
   flex-direction: column;
@@ -77,10 +69,10 @@
   gap: 4px;
   margin-top: 10px;
   text-align: center;
-}
 
-.navMenuInnerList > li > a {
-  color: $text-gray;
+  & > li > a {
+    color: $text-gray;
+  }
 }
 
 .contactsContainer {
@@ -138,8 +130,8 @@
     gap: 30px;
     width: 100%;
     grid-template-areas:
-      'logo contactsContainer line  navMenu navMenu button'
-      'logo contactsContainer line  navMenu navMenu button';
+      'logo contactsContainer navMenu navMenu button'
+      'logo contactsContainer navMenu navMenu button';
   }
 
   .logo {
@@ -175,11 +167,14 @@
     justify-content: center;
     gap: 24px;
     position: relative;
+    border-left: 2px solid $button-default;
+    padding-left: 60%;
 
     & ul {
       flex-direction: column;
-      flex-wrap: nowrap;
+      align-items: center;
       justify-content: center;
+      text-align: center;
       gap: 24px;
     }
   }
@@ -235,11 +230,5 @@
 
   .contactsContainerLocation {
     @include flex-center;
-  }
-
-  .line {
-    display: block;
-    grid-area: line;
-    font-size: 147px;
   }
 }
