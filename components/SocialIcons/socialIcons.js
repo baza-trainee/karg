@@ -9,13 +9,13 @@ const SocialIcons = ({ iconsColor, gridOption }) => {
 
     return (
         <div className={`${styles.iconsContainer}`} style={gridOption}>
-            <a href="https://www.facebook.com/">
+            <a target='_blanc' href="https://www.facebook.com/KARG.kyivanimalrescuegroup">
                 <Facebook className={`${styles.icons}`} style={iconsStyle} />
             </a>
-            <a href="https://www.instagram.com/">
+            <a target='_blanc' href="https://www.instagram.com/karg.kyiv?igsh=MWp0cDE1dDB4bHRoeQ==">
                 <Instagram className={styles.icons} style={iconsStyle} />
             </a>
-            <a href="https://www.telegram.com/">
+            <a target='_blanc' href={`https://t.me/share/url?url=${encodeURIComponent('https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D1%96%D0%B1%D0%B0%D1%80%D0%B0')}&text=${encodeURIComponent('Тут буде адреса сайту коли вын буде готовий а поки почитайте про Капібару')}`}>
                 <Telegram className={styles.icons} style={iconsStyle} />
             </a>
         </div>

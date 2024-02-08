@@ -21,7 +21,6 @@
 .desk,
 .mainPageDesk {
   @include flexContainer;
-  max-width: 1440px;
   margin: 0 auto;
   gap: 16px;
 
@@ -43,7 +42,7 @@
   }
 }
 
-@media screen and (min-width: 768px) {//отличаются стили
+@media screen and (min-width: 768px) {
   .desk {
     padding: 32px 37px;
     gap: 20px;
@@ -104,6 +103,7 @@
 
   .mainPageDesk {
     padding: 48px 134px;
+    width: 76.39vw;
     gap: 32px;
 
     .text {

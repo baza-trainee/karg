@@ -12,11 +12,16 @@
   position: relative;
 }
 
+.logo {
+  font-size: 60px;
+}
+
 .brandHolder {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 16px;
 }
 
 .brandHolderLogo {
@@ -34,21 +39,17 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-}
 
-.navMenu {
-  position: relative;
-  & a,
-  span {
+  p,
+  a {
+    transition: color 0.4s ease-in-out;
     color: #fff;
-    text-decoration: none;
-  }
-}
-
-.navMenu {
-  & a,
-  p {
     cursor: pointer;
+  }
+
+  p:hover,
+  a:hover {
+    color: $button-default;
   }
 }
 
@@ -60,10 +61,6 @@
   gap: 4px;
 }
 
-.navMenuInnerMenu > svg {
-  color: #fff;
-}
-
 .navMenuInnerList {
   display: flex;
   flex-direction: column;
@@ -71,10 +68,11 @@
   justify-content: center;
   gap: 4px;
   margin-top: 10px;
-}
+  text-align: center;
 
-.navMenuInnerList > li > a {
-  color: $text-gray;
+  & > li > a {
+    color: $text-gray;
+  }
 }
 
 .contactsContainer {
@@ -97,6 +95,21 @@
   }
 }
 
+.line {
+  display: none;
+}
+
+.contactsContainerIcons {
+  display: none;
+}
+
+.socialIconsHolderDesktop {
+  display: none;
+}
+
+.arrowDownIcon {
+}
+
 .signature {
   color: $text-gray;
   font-size: 10px;
@@ -110,15 +123,19 @@
 
 @media screen and (min-width: 1200px) {
   .footer {
-    padding: 56px 135px;
+    padding: 56px 9.375%;
     display: grid;
     place-items: center;
     justify-content: space-between;
     gap: 30px;
     width: 100%;
     grid-template-areas:
-      'logo contactsContainer  navMenu navMenu button'
-      'logo contactsContainer  navMenu navMenu socialIcons';
+      'logo contactsContainer navMenu navMenu button'
+      'logo contactsContainer navMenu navMenu button';
+  }
+
+  .logo {
+    font-size: 100px;
   }
 
   .buttonAndIconsHolder {
@@ -146,40 +163,72 @@
     grid-area: navMenu;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: center;
     gap: 24px;
     position: relative;
+    border-left: 2px solid $button-default;
+    padding-left: 60%;
 
     & ul {
-      flex-direction: row;
-      flex-wrap: wrap;
-      justify-content: flex-start;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
       gap: 24px;
     }
-  }
-
-  .navMenuInnerList {
-    // grid-area: navMenu;
-    display: flex;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
-    flex-wrap: wrap;
-    position: relative;
-    // top: 0;
-    // left: 0;
-    // z-index: 100;
-    // background-color: $button-dark-default;
   }
 
   .navMenuLI {
     display: none;
   }
 
+  .buttonAndIconsHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .socialIconsHolderDesktop {
+    display: block;
+  }
+
+  .socialIconsHolderMobile {
+    display: none;
+  }
+
   .contactsContainer {
     grid-area: contactsContainer;
+    justify-content: flex-start;
+    align-items: flex-start;
     width: 100%;
     margin-right: 30px;
+  }
+
+  .contactsContainerIcons {
+    display: block;
+    font-size: 40px;
+  }
+
+  @mixin flex-center($gap: 10px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+  }
+
+  .contactsContainerHolder {
+    @include flex-center;
+  }
+
+  .contactsContainerEmail {
+    @include flex-center;
+  }
+
+  .contactsContainerLocation {
+    @include flex-center;
   }
 }

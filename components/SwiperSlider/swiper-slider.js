@@ -8,22 +8,22 @@ import { Autoplay } from "swiper/modules";
 import styles from "./styles/swiper.module.scss";
 import Image from "next/image";
 
-import missionMobOne from "@/public/assets/images/mission/mission-mob-1.jpg";
-import missionMobTwo from "@/public/assets/images/mission/mission-mob-2.jpg";
-import missionMobThree from "@/public/assets/images/mission/mission-mob-3.jpg";
-
-import missionTabOne from "@/public/assets/images/mission/mission-tab-1.jpg";
-import missionTabTwo from "@/public/assets/images/mission/mission-tab-2.jpg";
-import missionTabThree from "@/public/assets/images/mission/mission-tab-3.jpg";
-
-import missionDeskOne from "@/public/assets/images/mission/mission-desk-1.jpg";
-import missionDeskTwo from "@/public/assets/images/mission/mission-desk-2.jpg";
-import missionDeskThree from "@/public/assets/images/mission/mission-desk-3.jpg";
+import {
+  missionMobOne,
+  missionMobTwo,
+  missionMobThree,
+  missionTabOne,
+  missionTabTwo,
+  missionTabThree,
+  missionDeskOne,
+  missionDeskTwo,
+  missionDeskThree,
+} from "@/public/assets/images/mission/index";
 
 const SwiperSlider = () => {
   return (
     <Swiper
-      slidesPerView={1.3}
+      slidesPerView={1}
       spaceBetween={30}
       autoplay={{
         delay: 2500,
@@ -31,18 +31,8 @@ const SwiperSlider = () => {
       }}
       breakpoints={{
         320: {
-          slidesPerView: 1.3,
+          slidesPerView: 1,
           spaceBetween: 30,
-        },
-
-        375: {
-          slidesPerView: 1.4,
-          spaceBetween: 30,
-        },
-
-        425: {
-          slidesPerView: 1.5,
-          spaceBetween: 20,
         },
 
         768: {
@@ -64,8 +54,8 @@ const SwiperSlider = () => {
             src={missionMobOne}
             alt="Girl with rabbit"
             style={{
-              width: "234px",
-              height: "356px",
+              width: "100vw",
+              height: "100%",
             }}
           />
         </div>
@@ -74,8 +64,8 @@ const SwiperSlider = () => {
             src={missionTabOne}
             alt="Girl with rabbit"
             style={{
-              width: "222px",
-              height: "338px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>
@@ -84,8 +74,8 @@ const SwiperSlider = () => {
             src={missionDeskOne}
             alt="Girl with rabbit"
             style={{
-              width: "370px",
-              height: "462px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>
@@ -96,8 +86,8 @@ const SwiperSlider = () => {
             src={missionMobTwo}
             alt="Gray cat"
             style={{
-              width: "234px",
-              height: "356px",
+              width: "100vw",
+              height: "100%",
             }}
           />
         </div>
@@ -106,8 +96,8 @@ const SwiperSlider = () => {
             src={missionTabTwo}
             alt="Gray cat"
             style={{
-              width: "222px",
-              height: "338px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>
@@ -116,8 +106,8 @@ const SwiperSlider = () => {
             src={missionDeskTwo}
             alt="Gray cat"
             style={{
-              width: "370px",
-              height: "462px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>
@@ -128,8 +118,8 @@ const SwiperSlider = () => {
             src={missionMobThree}
             alt="Boy with a swan"
             style={{
-              width: "234px",
-              height: "356px",
+              width: "100vw",
+              height: "100%",
             }}
           />
         </div>
@@ -138,8 +128,8 @@ const SwiperSlider = () => {
             src={missionTabThree}
             alt="Boy with a swan"
             style={{
-              width: "222px",
-              height: "338px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>
@@ -148,8 +138,8 @@ const SwiperSlider = () => {
             src={missionDeskThree}
             alt="Boy with a swan"
             style={{
-              width: "370px",
-              height: "462px",
+              width: "33vw",
+              height: "100%",
             }}
           />
         </div>

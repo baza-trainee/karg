@@ -40,7 +40,8 @@
 .button2,
 .rescueButton1,
 .supportSubtitle2,
-.supportButton1 {
+.supportButton1,
+.Subtitle2 {
   @include font-styles(700, 18px);
 }
 
@@ -88,7 +89,8 @@
   }
 
   .quickSubtitle1,
-  .supportSubtitle2 {
+  .supportSubtitle2,
+  .Subtitle2 {
     @include font-styles(700, 28px);
   }
 
@@ -104,7 +106,8 @@
     @include font-styles(700, 20px);
   }
 
-  .rescueText1 {
+  .rescueText1,
+  .text1 {
     @include font-styles(500, 20px);
   }
 
@@ -144,7 +147,8 @@
 
   .supportSubtitle1,
   .rescueSubtitle1,
-  .Subtitle1 {
+  .Subtitle1,
+  .Subtitle2 {
     @include font-styles(700, 44px);
   }
 
@@ -152,7 +156,8 @@
   .subtitle1,
   .subtitle2,
   .btn1,
-  .supportSubtitle2 {
+  .supportSubtitle2,
+  .text1 {
     @include font-styles(700, 28px);
   }
 

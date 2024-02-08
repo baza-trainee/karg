@@ -11,4 +11,8 @@ export { default as PawprintIcon } from "./quick-menu/pawfootprint.svg";
 export { default as ReportIcon } from "./quick-menu/report.svg";
 export { default as ArrowRightIcon } from "./quick-menu/arrow_right.svg";
 export { default as ArrowRight } from "./arrow-right.svg";
+export { default as DetailsClose } from "./close-details.svg";
+export { default as EmailIcon } from "./footer/email_icon.svg";
+export { default as LocationIcon } from "./footer/map_pin_icon.svg";
+export { default as PhoneIcon } from "./footer/phone_icon.svg";
 export {default as HideShow} from "./eye.svg";
