@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation';
 import { usePathname } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import i18nConfig from '@/i18nConfig';
 import styles from './styles/LanguageMenu.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
@@ -44,8 +44,23 @@ const LanguageMenu = () => {
     const handleMenuToggle = () => {
         setOpen(!isOpen);
     };
+
+    const wrapRef = useRef(null);
+    const handleClickOutsideMenu = (event) => {
+        if (wrapRef.current && !wrapRef.current.contains(event.target)) {
+            setOpen(false);
+        }
+    };
+
+    useEffect(() => {
+        document.addEventListener("mousedown", handleClickOutsideMenu);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutsideMenu);
+        }
+    }, []);
+
     return (
-        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()}>
+        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()} ref={wrapRef}>
             <div className={styles.languageMenuIndicator}>{localeLables[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
                 {locales.map((locale) => (
