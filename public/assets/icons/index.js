@@ -15,6 +15,7 @@ export { default as DetailsClose } from "./close-details.svg";
 export { default as EmailIcon } from "./footer/email_icon.svg";
 export { default as LocationIcon } from "./footer/map_pin_icon.svg";
 export { default as PhoneIcon } from "./footer/phone_icon.svg";
+export { default as HideShow } from "./eye.svg";
 export { default as PhoneIconContacts } from "./contacts/phone.svg";
 export { default as EnvelopeIconContacts } from "./contacts/envelope.svg";
 export { default as ClockIconContacts } from "./contacts/clock.svg";

@@ -105,7 +105,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyDeskOne}
               alt="Team seat on the car"
               style={{
-                width: "1170px",
+                width: "100vw",
                 height: "100%",
               }}
             />
@@ -134,7 +134,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyDeskTwo}
                 alt="Girl in the boat"
                 style={{
-                  width: "570px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -162,7 +162,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyDeskThree}
                 alt="Boy with a swan"
                 style={{
-                  width: "570px",
+                  width: "50vw",
                   height: "100%",
                 }}
               />
@@ -207,7 +207,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyDeskFour}
               alt="Team seat on the car"
               style={{
-                width: "1170px",
+                width: "100vw",
                 height: "100%",
               }}
             />

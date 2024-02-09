@@ -11,7 +11,7 @@ const Help = () => {
     const title = "Потрібна допомога?";
     const subtitle = "Перш ніж звертатися до нас, обов'язково ознайомтеся з переліком послуг, які ми надаємо, і правилами звернення до нас.";
     const buttonCaption = "Правила звернення";
-    const route = "/about";
+    const route = "/about/rules_of_appeal";
 
     return (
         <section className={styles.container}>
