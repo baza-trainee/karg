@@ -1,0 +1,163 @@
+@import "@/app/[locale]/colors.scss";
+
+.contacts {
+  padding: 24px 16px 56px;
+  text-align: center;
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 64px 96px;
+  }
+
+  &Title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 16px;
+  }
+
+  &Wrap {
+    @media screen and (min-width: 768px) {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+  }
+
+  &List {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
+  // &Item {
+  //   display: flex;
+  //   flex-direction: column;
+  //   justify-content: center;
+  //   align-items: center;
+  //   gap: 13px;
+
+  //   width: 100%;
+  //   padding: 16px 16px 24px 16px;
+  //   border-radius: 4px;
+
+  //   background-color: $bg-purple;
+
+  //   @media screen and (min-width: 768px) {
+  //     padding: 8px 16px;
+  //     min-width: 282px;
+  //   }
+  // }
+}
+
+.contact {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 13px;
+
+  // width: 100%;
+  // padding: 16px 16px 24px 16px;
+  // border-radius: 4px;
+
+  // background-color: $bg-purple;
+
+  // @media screen and (min-width: 768px) {
+  //   padding: 8px 16px;
+  //   min-width: 282px;
+  //   justify-content: space-between;
+  //   align-items: center;
+  //   gap: 15px;
+  // }
+
+  &Icon {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 16px;
+
+    border-radius: 4px;
+    background-color: $primary-light;
+
+    @media screen and (min-width: 768px) {
+      width: 30px;
+      height: 30px;
+
+      padding: 0;
+    }
+  }
+
+  &Wrap {
+  }
+
+  &Title {
+    font-size: 18px;
+    font-weight: 700;
+
+    @media screen and (min-width: 768px) {
+      // font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      line-height: 22px;
+      text-align: left;
+    }
+  }
+
+  &List {
+  }
+
+  &Item {
+    font-size: 16px;
+    font-weight: 500;
+
+    @media screen and (min-width: 768px) {
+      font-weight: 400;
+      text-align: left;
+      min-width: 206px;
+    }
+  }
+}
+
+.socImgWrap {
+  min-width: 404px;
+}
+
+.imgMob {
+  margin-bottom: 16px;
+
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+}
+
+.imgTab {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
+}
+
+.imgDesk {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}
+
+.iconSizes {
+  width: 44px;
+  height: 44px;
+
+  @media screen and (min-width: 767px) {
+    // width: 16px;
+    // height: 16px;
+  }
+}
