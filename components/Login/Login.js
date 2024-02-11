@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import {login} from '../../utils/login';
 import { Logo, HideShow } from '@/public/assets/icons';
 import styles from './styles/login.module.scss';
 
@@ -86,35 +87,21 @@ export default function LoginPage() {
 
   const handleSubmit = async () => {
     try{
-      //видалити, коли буде потрібний endpoint
-      const response = await fetch ('http://localhost:3333/api/auth/login',{
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({email, password})
-      })
-
+      const response = await login('http://localhost:3333/api/auth/login',{email, password});
       const data = await response.json();
-      console.log('receiving data', data); //delete console
 
       if(response.status === 200){
         setLoginStatus(`${data.user.email}, Ви успішно увійшли до адмінпанелі`);
-        console.log(`${data.user.email}, Ви успішно увійшли до адмінпанелі`); //delete console
           if(data.user.email===actualUser){
             setCorrectUser(data.user);
-            console.log('Redirect to dashhboard'); //delete console
             setTimeout(() => {router.push("/dashboard")},3000);           
         }return
       }
       if((response.status === 400) && (data.message ==='User not found')){
-        setLoginStatus("Даний користувач не зареєстрований");
-        console.log("Даний користувач не зареєстрований"); //delete console
+        setLoginStatus("Електронна адреса або пароль невірні.");
       }
       else if(response.status === 401){
         setLoginStatus("Електронна адреса або пароль невірні.");
-        console.log("Електронна адреса або пароль невірні.");//data.message ==='Invalid password'
-        //delete console
       }
     }
     catch(e){
@@ -164,7 +151,7 @@ export default function LoginPage() {
             {(passwordDirty && passwordError) && <p className={styles.error}>{passwordError}</p>} 
         </div>
         
-        {(loginStatus && isFormValid) && <p className={styles.error}>{loginStatus}</p>}
+        {(loginStatus && isFormValid) && <p className={correctUser ? styles.success : styles.error}>{loginStatus}</p>}
 
         <button className={styles.buttonReset} onClick={() => router.push("/restore")}>{resetButton}</button>
         <button 

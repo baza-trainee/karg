@@ -16,11 +16,11 @@ export default function Restore() {
 
   const [email, setEmail] = useState('');
   const [emailDirty, setEmailDirty] = useState(false);
-  const [emailError, setEmailError] = useState('Введіть логін, будь ласка');
+  const [emailError, setEmailError] = useState('Введіть електронну адрресу, будь ласка');
   const [isFormValid, setIsFormValid] = useState(false); 
 
   useEffect(() => {
-    if(emailError || email == ''){
+    if(emailError){
       setIsFormValid(false);
     }else {
       setIsFormValid(true);
@@ -39,18 +39,13 @@ export default function Restore() {
         setEmailError('');
     }
     if(!e.target.value){
-        setEmailError('Введіть логін, будь ласка');
+        setEmailError('Введіть електронну адрресу, будь ласка');
   }
 };
 
   const blurHandler = (e) => {
-    switch(e.target.name){
-      case 'email':
-          setEmailDirty(true);
-          break;
-      case 'password':
-          setPasswordDirty(true);
-          break;
+    if(e.target.name === 'email'){
+      setEmailDirty(true);
     }
   }
 
@@ -58,16 +53,17 @@ export default function Restore() {
     <div className={styles.container}>
       <Link href="/"><Logo className={styles.logo} /></Link>
 
-      <form className={styles.form}>
+      <div className={styles.form}>
         <div className={styles.email}>
-          <h4>{pageTitle}</h4>
-          <h6>{pageSubtitle}</h6>
+          <p className={styles.title}>{pageTitle}</p>
+          <p className={styles.subtitle}>{pageSubtitle}</p>
             <label htmlFor='email'>
                 {addressLabel}
                 <input
                     className={(emailDirty && emailError) ? styles.errorBorder: styles.ordinaryBorder}
                     aria-label='email'
                     name = 'email'
+                    id='email'
                     type='email' 
                     value={email} 
                     placeholder={emailPlaceholder}
@@ -79,11 +75,11 @@ export default function Restore() {
         </div>
 
         <button 
-            className={!isFormValid ? styles.buttonLoginDesabled : styles.buttonLogin}
+            className={!isFormValid ? styles.buttonSendDesabled : styles.buttonSend}
             disabled={!isFormValid} 
         >{sendNewEmail}
         </button>
-      </form>
+      </div>
     </div>
   )
 }

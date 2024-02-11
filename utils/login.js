@@ -1,5 +1,5 @@
 
-export  default async function login(url = "", data = {}) {
+export async function login(url = "", data = {}) {
     try{
         const response = await fetch (url,{
             method: "POST",
@@ -8,10 +8,9 @@ export  default async function login(url = "", data = {}) {
             },
             body: JSON.stringify(data),
         }) 
-        return response.json();
+        return response;
     }
     catch(e){
         console.log(e);
     }
-
   }
