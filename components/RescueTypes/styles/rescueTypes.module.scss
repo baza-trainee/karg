@@ -55,6 +55,10 @@
                 justify-content: center ;
                 width: 100%;
                 grid-gap: 20px;
+                
+                .lastOddItem {
+                    grid-column: span 2;
+                }
             }
             @media screen and (min-width: 1200px){
                 display: grid;
@@ -63,6 +67,10 @@
                 justify-content: center ;
                 width: 100%;
                 grid-gap: 30px;
+
+                .lastOddItem {
+                    grid-column: span 2;
+                }
             }
 
                 & .cardItem {
@@ -81,7 +89,6 @@
                     }
                     @media screen and (min-width: 1200px){
                         min-height: 161px;
-                        max-width: 570px;
                     }
                     @media screen and (min-width: 1441px){
                         max-width: calc(100vw - 30px - 18.75%);
