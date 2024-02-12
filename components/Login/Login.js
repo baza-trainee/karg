@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
+import {login} from '../../utils/login';
 import { Logo, HideShow } from '@/public/assets/icons';
 import styles from './styles/login.module.scss';
 
@@ -15,7 +16,7 @@ export default function LoginPage() {
   const loginButton = 'Увійти';
   const resetButton = 'Забули пароль?';
 
-  const experementalUser = 'Sincere@april.biz';
+  const actualUser = 'kargthebest2024@gmail.com';
 
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -26,7 +27,7 @@ export default function LoginPage() {
   const [passwordError, setPasswordError] = useState('Введіть пароль, будь ласка');
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false); 
-  const [authError, setAuthError] = useState('');
+  const [loginStatus, setLoginStatus] = useState('');
   const [correctUser, setCorrectUser] = useState('');
 
   useEffect(() => {
@@ -39,6 +40,7 @@ export default function LoginPage() {
 
 
   const emailHandler = (e) => {
+    setLoginStatus('')
     setEmail(e.target.value);
     const re=/^\S+@\S+\.\S+$/;
     //const re =/^[A-Za-z0-9]*([A-Za-z][0-9]|[0-9][A-Za-z])[A-Za-z0-9]*$/i;
@@ -53,8 +55,8 @@ export default function LoginPage() {
   }
 };
 
-  
   const passwordHandler = (e) => {
+    setLoginStatus('');
     setPassword(e.target.value);
     if(e.target.value.length < 6 ){
         setPasswordError('Довжина пароля має бути від 6 до 30 символів');
@@ -83,51 +85,42 @@ export default function LoginPage() {
     }
   }
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    try {
-      // const response = await fetch("/api/login", {
-      //   method: "POST",
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify({ email, password }),
-      // });
+  const handleSubmit = async () => {
+    try{
+      const response = await login('http://localhost:3333/api/auth/login',{email, password});
+      const data = await response.json();
 
-      //видалити, коли буде потрібний endpoint
-      const response = await fetch ('https://jsonplaceholder.typicode.com/users/1',{
-          method: "GET",
-          headers: {
-            "Content-Type": "application/json",
-          }
-      }) 
-      const user = await response.json();
-      console.log('receiving data', user);
-      if (response.status === 200) {
-        if(user.email === experementalUser){
-            setCorrectUser(user.email);
-            router.push("/dashboard");
-        }
-      } 
-      else if(response.status === 401){
-        setAuthError("Електронна адреса або пароль невірні.");
+      if(response.status === 200){
+        setLoginStatus(`${data.user.email}, Ви успішно увійшли до адмінпанелі`);
+          if(data.user.email===actualUser){
+            setCorrectUser(data.user);
+            setTimeout(() => {router.push("/dashboard")},3000);           
+        }return
       }
-    } catch (error) {
-      setAuthError("Електронна адреса або пароль невірні.");
+      if((response.status === 400) && (data.message ==='User not found')){
+        setLoginStatus("Електронна адреса або пароль невірні.");
+      }
+      else if(response.status === 401){
+        setLoginStatus("Електронна адреса або пароль невірні.");
+      }
     }
+    catch(e){
+      console.log(e);
+    }     
   }; 
 
   return (
     <div className={styles.container}>
       <Link href="/"><Logo className={styles.logo} /></Link>
 
-      <form className={styles.form}>
+      <div className={styles.form}>
         <div className={styles.email}>
             <label htmlFor='email'>
                 {emailLabel}
                 <input
                     className={(emailDirty && emailError) ? styles.errorBorder: styles.ordinaryBorder}
                     aria-label='email'
+                    id='email'
                     name = 'email'
                     type='email' 
                     value={email} 
@@ -146,6 +139,7 @@ export default function LoginPage() {
                     className={(passwordDirty && passwordError) ? styles.errorBorder : styles.ordinaryBorder}
                     type= {isPasswordVisible ? 'text' : 'password'} 
                     aria-label='password'
+                    id='password'
                     name='password'
                     placeholder={passwordPlaceholder}
                     value={password} 
@@ -156,6 +150,8 @@ export default function LoginPage() {
             </label>
             {(passwordDirty && passwordError) && <p className={styles.error}>{passwordError}</p>} 
         </div>
+        
+        {(loginStatus && isFormValid) && <p className={correctUser ? styles.success : styles.error}>{loginStatus}</p>}
 
         <button className={styles.buttonReset} onClick={() => router.push("/restore")}>{resetButton}</button>
         <button 
@@ -164,7 +160,7 @@ export default function LoginPage() {
             onClick={handleSubmit}
         >{loginButton}
         </button>
-      </form>
+      </div>
     </div>
   )
 }

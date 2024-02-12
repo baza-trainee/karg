@@ -76,6 +76,10 @@
             line-height: 18.2px;
             min-height: 36px;
         }
+        .success {
+            @extend .error;
+            color: $button-default;
+        }
         .email,
         .password {
             display: flex;

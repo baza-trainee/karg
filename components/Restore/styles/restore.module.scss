@@ -76,16 +76,17 @@
             line-height: 18.2px;
             min-height: 36px;
         }
-        .email,
-        .password {
+        .email {
             display: flex;
             flex-direction: column;
-        }
-        .icon {
-            position: relative;
-            font-size: 24px;
-            left: calc(100% - 40px);
-            bottom: 32px;
+                & .title {
+                    font-size: 24px;
+                    font-weight: 700;
+                }
+                & .subtitle {
+                    font-size: 16px;
+                    font-weight: 300;
+                }
         }
 }
 
@@ -97,19 +98,7 @@
     }
 }
 
-.buttonReset {
-    padding: 8px 2px 8px 308px;
-    height: 40px;
-    border: none;
-    background-color: transparent;
-    font-size: 18px;
-    font-weight: 800;
-    color: $text-dark;  
-        &:focus{
-            outline: none;
-        }  
-}
-.buttonLogin {
+.buttonSend {
     display: flex;
     width: 100%;
     justify-content: center;
@@ -131,8 +120,8 @@
             color: $text-white;
         }
   }
-  .buttonLoginDesabled {
-    @extend .buttonLogin;
+  .buttonSendDesabled {
+    @extend .buttonSend;
     background-color: $button-dark-disabled;
     color: $text-gray;
         &:hover {
