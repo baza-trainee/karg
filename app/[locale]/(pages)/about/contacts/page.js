@@ -37,9 +37,14 @@ const contactsData = [
   },
   {
     id: 2,
-    icon: <ClockIconContacts width={22} height={22} />,
+    icon: <ClockIconContacts width={24} height={24} />,
     title: "Графік роботи",
-    data: "Екстренні виклики (із загрозою для життя тварини) приймаються цілодобово",
+    // data: "Екстренні виклики (із загрозою для життя тварини) приймаються цілодобово",
+    data: [
+      "Екстренні виклики (із загрозою",
+      "для життя тварини)",
+      "приймаються цілодобово",
+    ],
   },
   {
     id: 3,
@@ -52,12 +57,12 @@ const contactsData = [
 
 const ContactItem = ({ id, icon, title, data, href }) => {
   return (
-    <div className={styles.contact}>
+    <>
       <span className={styles.contactIcon}>{icon}</span>
       <div className={styles.contactWrap}>
         <h4 className={styles.contactTitle}>{title}</h4>
         {id === 1 && (
-          <ul className={styles.contactList}>
+          <ul>
             <li className={styles.contactItem}>
               <a href={href[0]}>{data[0]}</a>
             </li>
@@ -66,14 +71,27 @@ const ContactItem = ({ id, icon, title, data, href }) => {
             </li>
           </ul>
         )}
-        {id === 2 && <p className={styles.contactItem}>{data}</p>}
+        {/* {id === 2 && <span className={styles.contactItem}>{data}</span>} */}
+        {id === 2 && (
+          <ul className={styles.contactList}>
+            <li className={styles.contactItem}>
+              <span>{data[0]}</span>
+            </li>
+            <li className={styles.contactItem}>
+              <span>{data[1]}</span>
+            </li>
+            <li className={styles.contactItem}>
+              <span>{data[2]}</span>
+            </li>
+          </ul>
+        )}
         {id === 3 && (
           <a className={styles.contactItem} href={href}>
             {data}
           </a>
         )}
       </div>
-    </div>
+    </>
   );
 };
 
@@ -144,16 +162,15 @@ const Contacts = async ({ params: { locale } }) => {
                   height: "100%",
                 }}
               />
-              <div className={styles.contactsItem}>
-                <h4 className={styles.contactTitle}>Соціальні мережі</h4>
+              <div className={styles.contactsSoc}>
+                <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
                 <SocialIcons
                   className={styles.iconSizes}
                   iconsColor="#6B5199"
-                  gridOption={{
-                    width: "100%",
-                    justifyContent: "space-around",
-                  }}
-                  
+                  // gridOption={{
+                  //   width: "100%",
+                  //   justifyContent: "space-around",
+                  // }}
                 />
               </div>
             </div>
