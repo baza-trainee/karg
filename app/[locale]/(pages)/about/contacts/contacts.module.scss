@@ -8,6 +8,10 @@
     padding: 32px 64px 96px;
   }
 
+  @media screen and (min-width: 1200px) {
+    padding: 56px 135px 128px;
+  }
+
   &Title {
     font-size: 18px;
     font-weight: 700;
@@ -17,6 +21,15 @@
       font-size: 28px;
       margin-bottom: 20px;
     }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 44px;
+      margin-bottom: 32px;
+    }
+  }
+
+  &Container {
+    display: flex;
   }
 
   &Wrap {
@@ -24,26 +37,39 @@
       display: flex;
       flex-direction: row-reverse;
       justify-content: center;
-      align-items: flex-start;
+      align-items: stretch;
+      // align-items: flex-start;
+      flex-grow: 2;
       gap: 20px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      // align-items: stretch;
+      gap: 30px;
     }
   }
 
   &List {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
+
     gap: 8px;
 
     margin-bottom: 16px;
 
     @media screen and (min-width: 768px) {
       gap: 20px;
-      align-items: flex-end;
+      // align-items: flex-end;
+      flex-basis: calc(100% / 3);
 
       margin-bottom: 0;
-      // height: 352px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      gap: 24px;
+      // flex-basis: calc(100% / 2);
     }
   }
 
@@ -69,12 +95,20 @@
       align-items: center;
       gap: 15px;
       padding: 8px 16px;
-      min-width: 290px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      gap: 34px;
+      padding: 16px 16px 24px;
     }
   }
 
   &Item:last-child {
     padding: 17px 16px;
+
+    @media screen and (min-width: 1200px) {
+      padding: 16px 16px 24px;
+    }
   }
 
   &Soc {
@@ -92,8 +126,14 @@
     border-radius: 4px;
 
     background-color: $bg-purple;
+
     @media screen and (min-width: 768px) {
       padding: 8px;
+      gap: 4px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      padding: 16px;
       gap: 4px;
     }
   }
@@ -130,6 +170,11 @@
       text-align: left;
       margin-bottom: 4px;
     }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
   }
 
   &SocTitle {
@@ -143,6 +188,10 @@
       line-height: calc(22 / 20);
       text-align: left;
     }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 24px;
+    }
   }
 
   &Item {
@@ -154,12 +203,21 @@
       text-align: left;
       min-width: 200px;
     }
+
+    @media screen and (min-width: 1200px) {
+      font-family: "Roboto", sans-serif;
+      font-size: 20px;
+      font-weight: 300;
+    }
   }
 }
 
 .socImgWrap {
   @media screen and (min-width: 767px) {
-    min-width: 404px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
   }
 }
 
@@ -185,6 +243,7 @@
 
   @media screen and (min-width: 1200px) {
     display: block;
+    margin-bottom: 24px;
   }
 }
 

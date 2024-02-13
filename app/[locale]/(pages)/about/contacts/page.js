@@ -118,60 +118,60 @@ const Contacts = async ({ params: { locale } }) => {
         />
         <section className={styles.contacts}>
           <h3 className={styles.contactsTitle}>Як нас знайти</h3>
-          <div className={styles.contactsWrap}>
-            <ul className={styles.contactsList}>
-              {contactsData?.map((c) => {
-                return (
-                  <li className={styles.contactsItem} key={c?.id}>
-                    <ContactItem
-                      id={c?.id}
-                      icon={c?.icon}
-                      title={c?.title}
-                      data={c?.data}
-                      href={c?.href}
-                    />
-                  </li>
-                );
-              })}
-            </ul>
-            <div className={styles.socImgWrap}>
-              <Image
-                className={styles.imgMob}
-                src={contactsMobOne}
-                alt="A man is standing backside in a jacket with a signature Animal rescue team"
-                style={{
-                  width: "100vw",
-                  height: "100%",
-                }}
-              />
-              <Image
-                className={styles.imgTab}
-                src={contactsTabOne}
-                alt="A man is standing backside in a jacket with a signature Animal rescue team"
-                style={{
-                  width: "100%",
-                  height: "100%",
-                }}
-              />
-              <Image
-                className={styles.imgDesk}
-                src={contactsDeskOne}
-                alt="A man is standing backside in a jacket with a signature Animal rescue team"
-                style={{
-                  width: "100vw",
-                  height: "100%",
-                }}
-              />
-              <div className={styles.contactsSoc}>
-                <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
-                <SocialIcons
-                  className={styles.iconSizes}
-                  iconsColor="#6B5199"
-                  // gridOption={{
-                  //   width: "100%",
-                  //   justifyContent: "space-around",
-                  // }}
+          <div className={styles.contactsContainer}>
+            <div className={styles.contactsWrap}>
+              <ul className={styles.contactsList}>
+                {contactsData?.map((c) => {
+                  return (
+                    <li className={styles.contactsItem} key={c?.id}>
+                      <ContactItem
+                        id={c?.id}
+                        icon={c?.icon}
+                        title={c?.title}
+                        data={c?.data}
+                        href={c?.href}
+                      />
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className={styles.socImgWrap}>
+                <Image
+                  className={styles.imgMob}
+                  src={contactsMobOne}
+                  alt="A man is standing backside in a jacket with a signature Animal rescue team"
+                  style={{
+                    width: "100vw",
+                    height: "100%",
+                  }}
                 />
+                <Image
+                  className={styles.imgTab}
+                  src={contactsTabOne}
+                  alt="A man is standing backside in a jacket with a signature Animal rescue team"
+                  style={{
+                    height: "100%",
+                  }}
+                />
+                <Image
+                  className={styles.imgDesk}
+                  src={contactsDeskOne}
+                  alt="A man is standing backside in a jacket with a signature Animal rescue team"
+                  style={{
+                    height: "100%",
+                  }}
+                />
+                <div className={styles.contactsSoc}>
+                  <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
+                  <SocialIcons
+                    className={styles.iconSizes}
+                    iconsColor="#6B5199"
+                    // gridOption={{
+                    //   width: "100%",
+                    //   justifyContent: "space-around",
+                    // }}
+                  />
+                </div>
               </div>
             </div>
           </div>
