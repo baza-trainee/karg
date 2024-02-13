@@ -54,6 +54,7 @@
     min-height: 220px;
     object-fit: cover;
     object-position: center;
+    border-radius: 8px;
   }
 
   .ruleDescription {
@@ -88,6 +89,7 @@
     .ruleImage {
       grid-column: 2;
       grid-row: 1/4;
+      min-height: 387px;
     }
 
     .ruleDescription {
@@ -116,6 +118,10 @@
     grid-template-columns: repeat(2, 1fr);
     grid-auto-rows: auto;
     gap: 24px 30px;
+
+    .ruleImage {
+      min-height: 696px;
+    }
 
     .ruleAvailability,
     .rulePaymentConditions,

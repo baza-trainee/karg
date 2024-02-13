@@ -25,21 +25,30 @@ const Rules = () => {
                         src={ruleImageMob}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                     <Image
                         className={`${styles.ruleImage} ${styles.tablImage}`}
                         src={ruleImageTabl}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                     <Image
                         className={`${styles.ruleImage} ${styles.deskImage}`}
                         src={ruleImageDesk}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                 </div>
                 <div className={`${styles.ruleDescription} ${variables.text4}`}>
