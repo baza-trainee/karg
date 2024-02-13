@@ -41,7 +41,8 @@
 .rescueButton1,
 .supportSubtitle2,
 .supportButton1,
-.Subtitle2 {
+.Subtitle2,
+.subtitle3 {
   @include font-styles(700, 18px);
 }
 
@@ -54,7 +55,8 @@
   @include font-styles(500, 16px);
 }
 
-.supportText4 {
+.supportText4, 
+.text4 {
   @include font-styles(300, 16px);
 }
 
@@ -90,7 +92,8 @@
 
   .quickSubtitle1,
   .supportSubtitle2,
-  .Subtitle2 {
+  .Subtitle2,
+  .subtitle3 {
     @include font-styles(700, 28px);
   }
 
@@ -107,7 +110,8 @@
   }
 
   .rescueText1,
-  .text1 {
+  .text1,
+  .text3 {
     @include font-styles(500, 20px);
   }
 
@@ -129,6 +133,10 @@
 
   .quickText3 {
     @include font-styles(400, 16px);
+  }
+
+  .text4 {
+     @include font-styles(300, 20px);
   }
 }
 
@@ -157,7 +165,8 @@
   .subtitle2,
   .btn1,
   .supportSubtitle2,
-  .text1 {
+  .text1,
+  .subtitle3 {
     @include font-styles(700, 28px);
   }
 
@@ -167,12 +176,14 @@
 
   .supportText4,
   .body,
-  .p {
+  .p,
+  .text4 {
     @include font-styles(400, 24px);
     letter-spacing: 0%;
   }
 
-  .rescueText1 {
+  .rescueText1,
+  .text3 {
     @include font-styles(500, 24px);
   }
 
