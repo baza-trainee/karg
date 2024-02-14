@@ -1,0 +1,146 @@
+@mixin flexContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.container {
+  @include flexContainer;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 24px 16px 16px;
+
+  .introduction {
+    @include flexContainer;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 16px;
+
+    .foundersQuote {
+      @include flexContainer;
+      gap: 4px;
+
+      .quote {
+        line-height: 110%;
+      }
+    }
+  }
+
+  .mobImage,
+  .tablImage,
+  .deskImage {
+    border-radius: 4px;
+  }
+
+  .teamEquipmentText {
+    @include flexContainer;
+    gap: 10px;
+  }
+
+  .twoImagesContainer {
+    @include flexContainer;
+    gap: 8px;
+  }
+
+  .treeImagesContainer {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px 16px;
+
+    .treeImagesTop {
+      grid-column: 1/3;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 32px 64px 32px;
+    gap: 32px;
+
+    .introduction {
+      gap: 20px;
+
+      .foundersQuote {
+        gap: 0;
+        text-align: end;
+        align-self: flex-end;
+
+        .quote {
+          line-height: 130%;
+          max-width: 585px;
+        }
+      }
+    }
+
+    .teamEquipmentText {
+      @include flexContainer;
+      gap: 8px;
+    }
+
+    .twoImagesContainer {
+      display: flex;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    .treeImagesContainer {
+      gap: 20px;
+    }
+  }
+  .donatesText {
+    line-height: 130%;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding: 56px 135px 32px;
+    gap: 32px;
+
+    .introduction {
+      gap: 32px;
+    }
+
+    .teamEquipmentText {
+      line-height: 132%;
+      gap: 17px;
+    }
+
+    .volontiersText {
+      line-height: 132%;
+    }
+
+    .twoImagesContainer {
+      gap: 30px;
+    }
+
+    .treeImagesContainer {
+      gap: 24px 30px;
+    }
+  }
+}
+
+.mobImage {
+  display: block;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}

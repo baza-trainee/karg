@@ -46,7 +46,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                     altText={altText} />
                 <Rules />
                 <RescueTypes rescueTypes={rescueTypes} isButtonAsLink={false} />
-                <div className={`${styles.article} ${variables.body}`}>
+                <div className={`${styles.article} ${variables.text4}`}>
                     <p>При порятунку пораненої тварини та її госпіталізації варто врахувати,
                         що ветеринарна медицина в нашій країні платна і рятувальники не зможуть вплинути
                         на вартість подальшого лікування тварини, зазначену у ветклініці. Якщо врятовану тварину

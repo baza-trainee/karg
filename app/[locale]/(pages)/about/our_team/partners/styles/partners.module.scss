@@ -1,0 +1,56 @@
+.container {
+  padding: 32px 16px 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  .partners {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    .partnerLogo {
+      min-width: 117px;
+      min-height: 110px;
+      border-radius: 4px;
+
+      // &:hover rect {
+      //  fill: #251C35;
+      // }
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 32px 64px;
+    gap: 20px;
+
+    .partners {
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+
+      .partnerLogo {
+        min-width: 162px;
+        min-height: 152px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding: 80px 135px 64px;
+    gap: 32px;
+
+    .partners {
+      gap: 30px;
+
+      .partnerLogo {
+        min-width: 270px;
+        min-height: 252px;
+      }
+    }
+  }
+}

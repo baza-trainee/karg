@@ -25,24 +25,33 @@ const Rules = () => {
                         src={ruleImageMob}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                     <Image
                         className={`${styles.ruleImage} ${styles.tablImage}`}
                         src={ruleImageTabl}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                     <Image
                         className={`${styles.ruleImage} ${styles.deskImage}`}
                         src={ruleImageDesk}
                         alt="rescuer near the car"
                         sizes="100vw"
-                        fill={true}
+                        style={{
+                            width: "100vw",
+                            height: "auto",
+                        }}
                     />
                 </div>
-                <div className={`${styles.ruleDescription} ${variables.body}`}>
+                <div className={`${styles.ruleDescription} ${variables.text4}`}>
                     <p>Працювати на висоті та під землею складно. Така робота потребує дорогого і якісного спорядження, засобів для відлову тварин, бензину для автомобіля служби тощо.</p>
                     <p>Залежно від складності виконання робіт та часу доби виклику, ціна виїзду групи становить від 200 до 500 грн.</p>
                     <p>Отримані кошти насамперед покривають витрати на придбання нового спорядження або допомогу тваринам, які перебувають на лікуванні.</p>

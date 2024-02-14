@@ -1,0 +1,76 @@
+@import "../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  background-color: $bg-purple;
+  padding: 24px 16px;
+
+  .donatesText {
+    padding: 0 16px;
+    line-height: 130%;
+  }
+
+  .title {
+    text-align: center;
+  }
+
+  .paymentSystems {
+    display: grid;
+    grid-template-rows: repeat(3, 1fr);
+    gap: 8px;
+    width: 100%;
+    text-align: center;
+
+    .paymentItem {
+      display: flex;
+      background-color: $bg-white;
+      min-height: 64px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+    }
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    gap: 32px;
+    padding: 20px 64px;
+
+    .donatesText {
+      padding: 0 64px;
+    }
+
+    .paymentSystems {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 20px;
+    }
+  }
+
+  .title {
+    width: 464px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding: 48px 135px;
+    gap: 32px;
+
+    .title {
+      width: 100%;
+    }
+
+    .paymentSystems {
+      gap: 30px;
+
+      .paymentItem {
+        min-height: 100px;
+      }
+    }
+  }
+}
