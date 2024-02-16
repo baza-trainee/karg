@@ -23,7 +23,6 @@ import {
   EnvelopeIconContacts,
   ClockIconContacts,
 } from "@/public/assets/icons/index";
-import Link from "next/link";
 
 const i18nNamespaces = ["home", "common"];
 
@@ -163,14 +162,7 @@ const Contacts = async ({ params: { locale } }) => {
                 />
                 <div className={styles.contactsSoc}>
                   <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
-                  <SocialIcons
-                    className={styles.iconSizes}
-                    iconsColor="#6B5199"
-                    // gridOption={{
-                    //   width: "100%",
-                    //   justifyContent: "space-around",
-                    // }}
-                  />
+                  <SocialIcons className={styles.iconsContacts} />
                 </div>
               </div>
             </div>

@@ -1,30 +1,34 @@
 import styles from './socialIcons.module.scss';
 
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
-import PropTypes from 'prop-types';
 
-const SocialIcons = ({ iconsColor, gridOption }) => {
-
-    const iconsStyle = { color: iconsColor };
-
-    return (
-        <div className={`${styles.iconsContainer}`} style={gridOption}>
-            <a target='_blanc' href="https://www.facebook.com/KARG.kyivanimalrescuegroup">
-                <Facebook className={`${styles.icons}`} style={iconsStyle} />
-            </a>
-            <a target='_blanc' href="https://www.instagram.com/karg.kyiv?igsh=MWp0cDE1dDB4bHRoeQ==">
-                <Instagram className={styles.icons} style={iconsStyle} />
-            </a>
-            <a target='_blanc' href={`https://t.me/share/url?url=${encodeURIComponent('https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D1%96%D0%B1%D0%B0%D1%80%D0%B0')}&text=${encodeURIComponent('Тут буде адреса сайту коли вын буде готовий а поки почитайте про Капібару')}`}>
-                <Telegram className={styles.icons} style={iconsStyle} />
-            </a>
-        </div>
-    );
+const SocialIcons = ({ className }) => {
+  return (
+    <div className={`${styles.iconsContainer}`}>
+      <a
+        target="_blanc"
+        href="https://www.facebook.com/KARG.kyivanimalrescuegroup"
+      >
+        <Facebook className={className} />
+      </a>
+      <a
+        target="_blanc"
+        href="https://www.instagram.com/karg.kyiv?igsh=MWp0cDE1dDB4bHRoeQ=="
+      >
+        <Instagram className={className} />
+      </a>
+      <a
+        target="_blanc"
+        href={`https://t.me/share/url?url=${encodeURIComponent(
+          "https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D1%96%D0%B1%D0%B0%D1%80%D0%B0"
+        )}&text=${encodeURIComponent(
+          "Тут буде адреса сайту коли вын буде готовий а поки почитайте про Капібару"
+        )}`}
+      >
+        <Telegram className={className} />
+      </a>
+    </div>
+  );
 };
-
-SocialIcons.propTypes = {
-    iconColor: PropTypes.string,
-};
-
 
 export default SocialIcons;

@@ -247,12 +247,14 @@
   }
 }
 
-.iconSizes {
-  width: 44px;
-  height: 44px;
+.iconsContacts {
+  margin: 10px;
+  font-size: 44px;
 
-  @media screen and (min-width: 767px) {
-    width: 16px;
-    height: 16px;
+  color: $primary-light;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin: 10px;
+    font-size: 30px;
   }
 }
