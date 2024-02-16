@@ -3,7 +3,6 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import initTranslations from "../../../../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
-import styles from "../our_team/ourTeam.module.scss";
 import mobImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-mob.jpg";
 import tablImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-tabl.jpg";
 import deskImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-desk.jpg";
@@ -17,8 +16,6 @@ const OurTeam = async ({ params: { locale } }) => {
 
     const altText = "rescuer holding a cat";
     const buttonText = "Наша команда";
-
-    
 
     return (
         <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
