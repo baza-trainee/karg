@@ -28,6 +28,10 @@
   &:hover {
     background-color: $button-hover;
   }
+
+  &:active {
+    background-color: $button-active;
+  }
 }
 
 .header-primary-button-default {
@@ -66,6 +70,15 @@
   background-color: $button-default;
   color: #141414;
   grid-area: button;
+  
+  &:active {
+    background-color: $button-active;
+  }
+}
+
+.button-support-donate-block {
+   @include button-help-style;
+   @extend .button-help;
 }
 
 @media screen and (min-width: 768px) {
@@ -92,6 +105,11 @@
   }
   .button-quick-menu {
     display: none;
+  }
+
+  .button-support-donate-block {
+    padding: 15px 12px;
+    min-width: 370px;
   }
 }
 
