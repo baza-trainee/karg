@@ -1,21 +1,11 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
-import Link from 'next/link';
-import {login} from '../../utils/login';
-import { Logo, HideShow } from '@/public/assets/icons';
-import styles from './styles/login.module.scss';
-
+import { login } from '../../utils/login';
+import  Form  from './Form';
 
 export default function LoginPage() {
-
-  const emailLabel = 'Логін';
-  const emailPlaceholder = 'Введіть електронну адресу';
-  const passwordLabel = 'Пароль';
-  const passwordPlaceholder = 'Введіть пароль';
-  const loginButton = 'Увійти';
-  const resetButton = 'Забули пароль?';
-
+  
   const actualUser = 'kargthebest2024@gmail.com';
 
   const router = useRouter();
@@ -40,10 +30,9 @@ export default function LoginPage() {
 
 
   const emailHandler = (e) => {
-    setLoginStatus('')
+    setLoginStatus('');
     setEmail(e.target.value);
     const re=/^\S+@\S+\.\S+$/;
-    //const re =/^[A-Za-z0-9]*([A-Za-z][0-9]|[0-9][A-Za-z])[A-Za-z0-9]*$/i;
     if(!re.test(String(e.target.value).toLowerCase())){
        setEmailError('Надана Вами електронна адреса має неправильний формат.');
     }else {
@@ -94,7 +83,7 @@ export default function LoginPage() {
         setLoginStatus(`${data.user.email}, Ви успішно увійшли до адмінпанелі`);
           if(data.user.email===actualUser){
             setCorrectUser(data.user);
-            setTimeout(() => {router.push("/dashboard")},3000);           
+            router.push("/dashboard");          
         }return
       }
       if((response.status === 400) && (data.message ==='User not found')){
@@ -110,57 +99,23 @@ export default function LoginPage() {
   }; 
 
   return (
-    <div className={styles.container}>
-      <Link href="/"><Logo className={styles.logo} /></Link>
 
-      <div className={styles.form}>
-        <div className={styles.email}>
-            <label htmlFor='email'>
-                {emailLabel}
-                <input
-                    className={(emailDirty && emailError) ? styles.errorBorder: styles.ordinaryBorder}
-                    aria-label='email'
-                    id='email'
-                    name = 'email'
-                    type='email' 
-                    value={email} 
-                    placeholder={emailPlaceholder}
-                    onChange={(e) => emailHandler(e)}
-                    onBlur={(e) => blurHandler(e)} 
-                />
-          </label>
-         {(emailDirty && emailError) && <p className={styles.error}>{emailError}</p>}
-        </div>
-        
-        <div className={styles.password}>
-            <label htmlFor = 'password'>
-                {passwordLabel}
-                <input
-                    className={(passwordDirty && passwordError) ? styles.errorBorder : styles.ordinaryBorder}
-                    type= {isPasswordVisible ? 'text' : 'password'} 
-                    aria-label='password'
-                    id='password'
-                    name='password'
-                    placeholder={passwordPlaceholder}
-                    value={password} 
-                    onChange={(e) => passwordHandler(e)}
-                    onBlur={(e) => blurHandler(e)}
-                />
-                <HideShow className={styles.icon} onClick={()=>setIsPasswordVisible(!isPasswordVisible)} />   
-            </label>
-            {(passwordDirty && passwordError) && <p className={styles.error}>{passwordError}</p>} 
-        </div>
-        
-        {(loginStatus && isFormValid) && <p className={correctUser ? styles.success : styles.error}>{loginStatus}</p>}
-
-        <button className={styles.buttonReset} onClick={() => router.push("/restore")}>{resetButton}</button>
-        <button 
-            className={!isFormValid ? styles.buttonLoginDesabled : styles.buttonLogin}
-            disabled={!isFormValid} 
-            onClick={handleSubmit}
-        >{loginButton}
-        </button>
-      </div>
-    </div>
+    <Form 
+        email={email}
+        emailDirty = {emailDirty} 
+        emailError = {emailError}
+        emailHandler = {emailHandler}
+        password = {password}
+        blurHandler = {blurHandler}
+        passwordHandler = {passwordHandler}
+        passwordDirty = {passwordDirty}
+        passwordError = {passwordError}
+        setIsPasswordVisible = {setIsPasswordVisible}
+        isPasswordVisible = {isPasswordVisible}
+        loginStatus = {loginStatus}
+        isFormValid = {isFormValid}
+        resetButton = "Забули пароль"
+        handleSubmit = {handleSubmit}
+    />
   )
 }
