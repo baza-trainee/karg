@@ -26,7 +26,7 @@ export default function RescueTypes({ rescueTypes, isButtonAsLink = true }) {
             const lastItemClass = isOdd && isLastItem ? styles.lastOddItem : "";
 
             return (
-              <div key={r.id} className={lastItemClass}>
+              <div key={r.id} className={`${lastItemClass}`}>
                 <CardItem
                   cardMessage={r.cardMessage}
                   cardContainer={styles.cardItem}
