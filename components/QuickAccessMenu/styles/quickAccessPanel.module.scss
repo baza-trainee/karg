@@ -22,10 +22,14 @@
     }
       
     @media screen and (min-width: 1200px) {
-        padding: 0 9.38%;
+        padding: 0 80px;
         position: relative;
         top: -72.5px;
         background-color: transparent;
+    }
+          
+    @media screen and (min-width: 1440px) {
+        padding: 0 135px;
     }
 
         & .innerBlock {
@@ -38,7 +42,7 @@
             @media screen and (min-width:768px) {
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                grid-template-rows: 122px 122px;
+                grid-template-rows: 142px 142px;
                 justify-content: center;
                 width: 100%;
                 grid-gap: 20px;
@@ -49,10 +53,11 @@
                 grid-template-rows: 145px;
                 width: 100%;
                 justify-content: center;
+                grid-column-gap: 13px;
+            }   
+            @media screen and (min-width: 1440px){
                 grid-column-gap: 30px;
-            }
-     
-            
+            }     
         }
 
     & .accessMenuItem {
@@ -67,12 +72,19 @@
         
 
         @media screen and (min-width: 768px) {
-            min-height: 122px;
+            min-height: 142px;
+            padding: 16px;
         }
         @media screen and (min-width: 1200px) {
-            min-width: 270px;
+            max-width: 270px;
+            min-width: 250px;
             height: 145px;
             border-radius: 20px;
+            padding-right:0;
+        }
+        @media screen and (min-width:1440px) {
+            max-width: 100%;
+            min-width: 270px;
         }
 
                 & .accessMenuText {
@@ -84,15 +96,15 @@
                     color: $text-white;
 
                     @media screen and (min-width: 768px) {
-                        max-width: 237px;
-                        max-height: 95px;
-                        gap: 8px;
+                        min-width: 241px;
+                        min-height: 95px;
+                        gap: 0;
                     }
 
                     @media screen and (min-width: 1200px) {
                         min-width: 156px;
                         max-height: 113px;
-                        gap: 8px;
+                        gap: 0;
                     }
                     & .title {
                         line-height: 26px;
@@ -111,8 +123,7 @@
 
                         @media screen and (min-width: 768px){
                             line-height: 20.8px;
-                            min-height: 41px;
-                            margin-right: 16px;
+                            min-height: 42px;
                         }
                         @media screen and (min-width: 1200px){
                             line-height: 20.8px;
@@ -126,7 +137,7 @@
                         background-color: transparent;
                         gap: 4px;
                         width: 124px;
-                        height: 24px;
+                        height: 28px;
                         text-decoration: none;
                         color: $text-white;
                         align-self: flex-end;
@@ -143,18 +154,13 @@
                             }
                       
                         @media screen and (min-width: 768px) {
-                            position: relative;
-                            min-width: 136px;
-                            top: -12px;
                             align-self: flex-end;
                             line-height: 20.8px;
-                            height: 136px;
                         }
                         @media screen and (min-width: 820px) {
                             top: -12px;
                         }
                         @media screen and (min-width: 834px) {
-                            top: -23px;
                         }
                         @media screen and (min-width: 1200px) {
                             min-width: 136px;
@@ -166,10 +172,9 @@
                 }            
     }  
         & .iconSrc {
-            font-size: 61px;   
+            font-size: 62px;   
             max-width: 50px;   
             margin-right: 20px;
-            margin-left: 20px;
         }   
 
 }
