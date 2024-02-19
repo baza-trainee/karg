@@ -159,7 +159,10 @@ const Contacts = async ({ params: { locale } }) => {
                 />
                 <div className={styles.contactsSoc}>
                   <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
+
                   <SocialIcons className={styles.iconsContacts} />
+
+
                 </div>
               </div>
             </div>

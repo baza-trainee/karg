@@ -14,7 +14,7 @@ const Donation = () => {
                 <div className={styles.paymentItem}>Monobank</div>
                 <div className={styles.paymentItem}>Patreon</div>
             </div>
-            <ButtonAsLinkAsLink route="/help" buttonCaption="Підтримати" buttonStyle="primary-lite-W-288" />
+            <ButtonAsLinkAsLink route="/help" buttonCaption="Підтримати" buttonStyle="button-support-donate-block" />
         </div>
     );
 }

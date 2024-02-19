@@ -11,3 +11,12 @@
     justify-content: center;
   }
 }
+
+.iconsContacts {
+  margin: 10px;
+  font-size: 44px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin: 5px;
+    font-size: 30px;
+  }
+}

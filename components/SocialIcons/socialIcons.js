@@ -2,6 +2,7 @@ import styles from "./socialIcons.module.scss";
 
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
 
+
 const SocialIcons = ({ className }) => {
   return (
     <div className={`${styles.iconsContainer}`}>
@@ -29,6 +30,8 @@ const SocialIcons = ({ className }) => {
       </a>
     </div>
   );
+
+
 };
 
 export default SocialIcons;
