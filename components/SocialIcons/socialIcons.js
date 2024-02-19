@@ -3,20 +3,29 @@ import styles from './socialIcons.module.scss';
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
 import PropTypes from 'prop-types';
 
-const SocialIcons = ({ iconsColor, gridOption }) => {
+const SocialIcons = ({ iconsColor, gridOption, customStyles }) => {
 
     const iconsStyle = { color: iconsColor };
+    const customStylesArr = [{ styleName: 'iconsContacts', style: styles.iconsContacts }];
+
+    const getStyles = () => {
+        if (customStyles) {
+            return customStylesArr.find(el => el.styleName === customStyles)?.style;
+        }
+    };
+
+    const scssClass = getStyles() ? getStyles() : styles.icons;
 
     return (
         <div className={`${styles.iconsContainer}`} style={gridOption}>
             <a target='_blanc' href="https://www.facebook.com/KARG.kyivanimalrescuegroup">
-                <Facebook className={`${styles.icons}`} style={iconsStyle} />
+                <Facebook className={scssClass} style={iconsStyle} />
             </a>
             <a target='_blanc' href="https://www.instagram.com/karg.kyiv?igsh=MWp0cDE1dDB4bHRoeQ==">
-                <Instagram className={styles.icons} style={iconsStyle} />
+                <Instagram className={scssClass} style={iconsStyle} />
             </a>
-            <a target='_blanc' href={`https://t.me/share/url?url=${encodeURIComponent('https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D1%96%D0%B1%D0%B0%D1%80%D0%B0')}&text=${encodeURIComponent('Тут буде адреса сайту коли вын буде готовий а поки почитайте про Капібару')}`}>
-                <Telegram className={styles.icons} style={iconsStyle} />
+            <a target='_blanc' href={`https://t.me/share/url?url=${encodeURIComponent('https://karg-roman-hana.vercel.app/')}&text=${encodeURIComponent('Сюди треба придумати якийсь текст будь-ласка')}`}>
+                <Telegram className={scssClass} style={iconsStyle} />
             </a>
         </div>
     );

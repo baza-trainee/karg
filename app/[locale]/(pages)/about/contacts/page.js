@@ -164,12 +164,13 @@ const Contacts = async ({ params: { locale } }) => {
                 <div className={styles.contactsSoc}>
                   <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
                   <SocialIcons
-                    className={styles.iconSizes}
+                    // className={styles.iconSizes}
+                    customStyles="iconsContacts"
                     iconsColor="#6B5199"
-                    // gridOption={{
-                    //   width: "100%",
-                    //   justifyContent: "space-around",
-                    // }}
+                  // gridOption={{
+                  //   width: "100%",
+                  //   justifyContent: "space-around",
+                  // }}
                   />
                 </div>
               </div>
