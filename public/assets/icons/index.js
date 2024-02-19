@@ -19,3 +19,14 @@ export { default as HideShow } from "./eye.svg";
 export { default as PhoneIconContacts } from "./contacts/phone.svg";
 export { default as EnvelopeIconContacts } from "./contacts/envelope.svg";
 export { default as ClockIconContacts } from "./contacts/clock.svg";
+export { default as ContactsIcon } from "./aside/email.svg";
+export { default as PetsIcon } from "./aside/pets.svg";
+export { default as SwitchCameraIcon } from "./aside/switch_camera.svg";
+export { default as SupervisedUserIcon } from "./aside/supervised_user_circle.svg";  
+export { default as GroupIcon } from "./aside/group.svg";
+export { default as IdentityIcon } from "./aside/perm_identity.svg";
+export { default as SettingsIcon } from "./aside/settings.svg";
+export { default as HelpIcon } from "./aside/help_outline.svg"; 
+export { default as LogoutIcon } from "./aside/logout.svg";
+export { default as LogoIcon } from "./aside/Logo.svg";
+
