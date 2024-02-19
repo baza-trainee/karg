@@ -1,4 +1,4 @@
-import styles from './socialIcons.module.scss';
+import styles from "./socialIcons.module.scss";
 
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
 
