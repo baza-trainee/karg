@@ -15,9 +15,9 @@
       min-height: 110px;
       border-radius: 4px;
 
-      // &:hover rect {
-      //  fill: #251C35;
-      // }
+      &:hover .logo {
+        fill: #251c35;
+      }
     }
   }
 }

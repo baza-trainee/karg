@@ -14,8 +14,9 @@
 }
 
 .mainPageDesk {
-  background-color: $bg-white;
+  background-color: $bg-white-transparent;
   padding: 43px 9px;
+
 }
 
 .desk,
@@ -76,7 +77,7 @@
       }
 
       .subtitle {
-        @include font-styles(500, 20px);
+        @include font-styles(400, 20px);
       }
     }
   }
@@ -96,7 +97,7 @@
       }
 
       .subtitle {
-        @include font-styles(500, 20px);
+        @include font-styles(400, 20px);
       }
     }
   }
@@ -116,7 +117,7 @@
       }
 
       .subtitle {
-        @include font-styles(500, 24px);
+        @include font-styles(400, 24px);
       }
     }
   }
