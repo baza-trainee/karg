@@ -23,32 +23,32 @@ import {
   EnvelopeIconContacts,
   ClockIconContacts,
 } from "@/public/assets/icons/index";
-import Link from "next/link";
 
 const i18nNamespaces = ["home", "common"];
 
 const contactsData = [
   {
     id: 1,
-    icon: <PhoneIconContacts width={21} height={21} />,
+    icon: <PhoneIconContacts className={styles.contactSvg} />,
     title: "Контактний телефон",
     data: ["+38 (093) 986-2262", "+38 (098) 844-7937"],
     href: ["tel:+380939862262", "tel:+380988447937"],
   },
   {
     id: 2,
-    icon: <ClockIconContacts width={24} height={24} />,
+    icon: <ClockIconContacts className={styles.contactSvg} />,
     title: "Графік роботи",
-    // data: "Екстренні виклики (із загрозою для життя тварини) приймаються цілодобово",
     data: [
-      "Екстренні виклики (із загрозою",
-      "для життя тварини)",
-      "приймаються цілодобово",
+      "Екстренні виклики (із ",
+      "загрозою для життя ",
+      "тварини) ",
+      "приймаються ",
+      "цілодобово",
     ],
   },
   {
     id: 3,
-    icon: <EnvelopeIconContacts width={21} height={17} />,
+    icon: <EnvelopeIconContacts className={styles.contactSvg} />,
     title: "Електронна пошта",
     data: "karg.inform@gmail.com",
     href: "mailto:karg.inform@gmail.com",
@@ -71,24 +71,20 @@ const ContactItem = ({ id, icon, title, data, href }) => {
             </li>
           </ul>
         )}
-        {/* {id === 2 && <span className={styles.contactItem}>{data}</span>} */}
+
         {id === 2 && (
-          <ul className={styles.contactList}>
-            <li className={styles.contactItem}>
-              <span>{data[0]}</span>
-            </li>
-            <li className={styles.contactItem}>
-              <span>{data[1]}</span>
-            </li>
-            <li className={styles.contactItem}>
-              <span>{data[2]}</span>
-            </li>
-          </ul>
+          <div className={styles.contactList}>
+            <span className={styles.contactItem}>{data[0]}</span>
+            <span className={styles.contactItem}>{data[1]}</span>
+            <span className={styles.contactItem}>{data[2]}</span>
+            <span className={styles.contactItem}>{data[3]}</span>
+            <span className={styles.contactItem}>{data[4]}</span>
+          </div>
         )}
         {id === 3 && (
-          <a className={styles.contactItem} href={href}>
-            {data}
-          </a>
+          <div className={styles.contactItem}>
+            <a href={href}>{data}</a>
+          </div>
         )}
       </div>
     </>
@@ -163,15 +159,10 @@ const Contacts = async ({ params: { locale } }) => {
                 />
                 <div className={styles.contactsSoc}>
                   <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
-                  <SocialIcons
-                    // className={styles.iconSizes}
-                    customStyles="iconsContacts"
-                    iconsColor="#6B5199"
-                  // gridOption={{
-                  //   width: "100%",
-                  //   justifyContent: "space-around",
-                  // }}
-                  />
+
+                  <SocialIcons className={styles.iconsContacts} />
+
+
                 </div>
               </div>
             </div>
