@@ -1,3 +1,5 @@
+@import "/app/[locale]/colors.scss";
+
 @mixin flexContainer {
   display: flex;
   flex-direction: column;
@@ -9,6 +11,7 @@
   flex-wrap: wrap;
   gap: 16px;
   padding: 24px 16px 16px;
+  color: $text-dark;
 
   .introduction {
     @include flexContainer;
@@ -19,6 +22,7 @@
     .foundersQuote {
       @include flexContainer;
       gap: 4px;
+      color: $button-dark-default;
 
       .quote {
         line-height: 110%;

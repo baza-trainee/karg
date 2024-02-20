@@ -16,12 +16,13 @@
     background-color: $button-default;
     min-width: 218px;
     max-width: 536px;
-    border-radius: 8px;
+    border-radius: 4px;
 
     .buttonText {
       @include font-styles(700, 18px);
       padding-top: 9px;
       padding-bottom: 8px;
+      color: $text-dark;
     }
   }
 
@@ -36,6 +37,7 @@
 
     .pseudoButton {
       min-width: 372px;
+      border-radius: 8px;
 
       .buttonText {
         @include font-styles(700, 28px);
