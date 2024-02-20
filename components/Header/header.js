@@ -28,7 +28,7 @@ const Header = () => {
         <a className={variables.subtitle1} href="tel: +380939862262">
           +38 (093) 986-2262
         </a>
-        <SocialIcons iconsColor="#A1A1A1" />
+        <SocialIcons className={styles.socIcons} />
         <a className={variables.subtitle1} href="tel: +380988447937">
           +38 (098) 844-7937
         </a>

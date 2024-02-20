@@ -24,6 +24,13 @@
   font-size: 30px;
 }
 
+.socIcons {
+  margin: 5px;
+  font-size: 30px;
+
+  color: #a1a1a1;
+}
+
 .inner {
   display: flex;
   align-items: center;
@@ -216,7 +223,7 @@
   .topBar > a {
     text-decoration: none;
     color: $button-default;
-    // font-size: 18px;
+    text-wrap: nowrap;
   }
 
   .logo {
