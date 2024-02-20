@@ -87,6 +87,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyMobOne}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
@@ -97,6 +98,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyTabOne}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
@@ -107,6 +109,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyDeskOne}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
@@ -119,6 +122,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyMobTwo}
                 alt="Girl in the boat"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -129,6 +133,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyTabTwo}
                 alt="Girl in the boat"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -139,6 +144,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyDeskTwo}
                 alt="Girl in the boat"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -150,6 +156,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyMobThree}
                 alt="Boy with a swan"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -160,6 +167,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyTabThree}
                 alt="Boy with a swan"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -170,6 +178,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 src={historyDeskThree}
                 alt="Boy with a swan"
                 sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
                   height: "auto",
@@ -198,6 +207,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyMobFour}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
@@ -208,6 +218,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyTabFour}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
@@ -218,6 +229,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               src={historyDeskFour}
               alt="Team seat on the car"
               sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
                 height: "auto",
