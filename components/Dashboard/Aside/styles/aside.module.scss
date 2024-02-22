@@ -5,7 +5,7 @@
     backdrop-filter: blur(43.79999923706055px);
 }
 .container {
-    max-width: 246px;
+    min-width: 246px;
     min-height: 960px;
     height: fit-content;
     background-color:$bg-dark;

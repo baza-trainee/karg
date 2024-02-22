@@ -1,5 +1,4 @@
 import React from "react";
-import Link from "next/link";
 import { CardItem } from "../CardItem/CardItem";
 import styles from "./styles/rescueTypes.module.scss";
 import variables from "../../app/[locale]/variables.module.scss";

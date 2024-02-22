@@ -29,4 +29,8 @@ export { default as SettingsIcon } from "./aside/settings.svg";
 export { default as HelpIcon } from "./aside/help_outline.svg"; 
 export { default as LogoutIcon } from "./aside/logout.svg";
 export { default as LogoIcon } from "./aside/Logo.svg";
-
+export { default as UserIcon } from "./header/user_identity.svg";
+export { default as SearchIcon } from "./header/search.svg";
+export { default as ShevronDown } from "./filter/arrow-down.svg";
+export { default as CreateIcon } from "./filter/create.svg";
+export { default as TrashIcon } from "./filter/trash.svg";
