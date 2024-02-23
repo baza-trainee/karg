@@ -7,6 +7,7 @@
   align-items: center;
   background-color: $bg-purple;
   padding: 24px 16px;
+  color: $text-dark;
 
   .donatesText {
     padding: 0 16px;
@@ -48,6 +49,7 @@
       grid-template-columns: repeat(3, 1fr);
       grid-template-rows: auto;
       gap: 20px;
+      color: $button-dark-default;
     }
   }
 
@@ -67,6 +69,7 @@
 
     .paymentSystems {
       gap: 30px;
+      color: $text-dark;
 
       .paymentItem {
         min-height: 100px;

@@ -68,7 +68,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               врятувала понад 10 тисяч живих істот.
             </p>
             <p>
-              У селі Плоскому,неподалік Києва, кіт потрапив до вентиляційної
+              У селі Плоскому, неподалік Києва, кіт потрапив до вентиляційної
               шахти будинку. Отримавши дзвінок від власниці тварини, екіпаж
               рятувальників вирушає на завдання. Троє людей, одягнені у
               спеціальні робочі костюми, підіймаються на горище. Спершу вони
@@ -86,27 +86,33 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               className={styles.historyMob}
               src={historyMobOne}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
             <Image
               className={styles.historyTab}
               src={historyTabOne}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
             <Image
               className={styles.historyDesk}
               src={historyDeskOne}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
 
@@ -115,27 +121,33 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 className={styles.historyMob}
                 src={historyMobTwo}
                 alt="Girl in the boat"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
               <Image
                 className={styles.historyTab}
                 src={historyTabTwo}
                 alt="Girl in the boat"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
               <Image
                 className={styles.historyDesk}
                 src={historyDeskTwo}
                 alt="Girl in the boat"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
 
@@ -143,27 +155,33 @@ const historyOfOrigin = async ({ params: { locale } }) => {
                 className={styles.historyMob}
                 src={historyMobThree}
                 alt="Boy with a swan"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
               <Image
                 className={styles.historyTab}
                 src={historyTabThree}
                 alt="Boy with a swan"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
               <Image
                 className={styles.historyDesk}
                 src={historyDeskThree}
                 alt="Boy with a swan"
+                sizes="50vw"
+                quality={100}
                 style={{
                   width: "50vw",
-                  height: "100%",
+                  height: "auto",
                 }}
               />
             </div>
@@ -188,33 +206,39 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               className={styles.historyMob}
               src={historyMobFour}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
             <Image
               className={styles.historyTab}
               src={historyTabFour}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
             <Image
               className={styles.historyDesk}
               src={historyDeskFour}
               alt="Team seat on the car"
+              sizes="100vw"
+              quality={100}
               style={{
                 width: "100vw",
-                height: "100%",
+                height: "auto",
               }}
             />
           </div>
           <div className={styles.btnWrap}>
             <ButtonAsLink
-              route="/our_team"
+              route="/about/our_team"
               buttonCaption="Про команду"
               buttonStyle="rescue"
             />

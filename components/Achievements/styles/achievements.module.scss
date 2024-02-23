@@ -5,7 +5,6 @@
     flex-direction: column;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: center;
     min-width: 320px;
     padding: 24px 16px;
     background-color: $primary;
@@ -44,6 +43,7 @@
                 grid-column-gap: 30px;
                 width: 100%;
             }
+            
         }
         & .cardItem {
             display: flex;
@@ -52,13 +52,13 @@
             justify-content: center;
             background-color: $primary-light;
             min-width: 136px;
+            max-width: 100%;
             min-height: 88px;
             padding: 4px 8px;
             border-radius: 4px;
      
             @media screen and (min-width: 768px) {
                 border-radius: 20px;
-                max-width: 162px;
                 min-height: 108px;
                 border-radius: 8px;
             }
@@ -73,6 +73,7 @@
             @media screen and (min-width: 1440px) {
                 border-radius: 20px;
                 min-width: 270px;
+                max-width: 100%;
                 min-height: 126px;
             }
 
