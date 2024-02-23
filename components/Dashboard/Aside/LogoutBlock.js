@@ -1,9 +1,9 @@
 import React from 'react';
 import AsideItem from './AsideItem';
-import { LogoutIcon } from '@/public/assets/icons';
+import { LogoutIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 
-export default function Logout() {
+export default function LogoutBlock() {
   return (
     <div className={styles.log_out}>
           <AsideItem 

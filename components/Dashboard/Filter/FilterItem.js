@@ -24,6 +24,7 @@ export default function FilterItem(
                 className={photoStyle}
                 src={photoSrc}
                 alt={photoAlt}
+                loading="lazy"
             />
         <p className={nameStyle}>{petName}</p>
         <p className={detailsStyle}>{petDetails}</p>

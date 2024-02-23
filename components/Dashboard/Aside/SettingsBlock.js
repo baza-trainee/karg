@@ -1,6 +1,6 @@
 import React from 'react';
 import AsideItem from './AsideItem';
-import { IdentityIcon, SettingsIcon, HelpIcon, LogoutIcon } from '@/public/assets/icons';
+import { IdentityIcon, SettingsIcon, HelpIcon, LogoutIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 
 const dataList = [

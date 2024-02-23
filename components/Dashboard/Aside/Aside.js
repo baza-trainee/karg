@@ -1,18 +1,18 @@
 import React from 'react';
 import styles from "./styles/aside.module.scss";
-import MainMenu from './MainMenu';
+import MainBlock from './MenuBlock';
 import LogoBlock from './LogoBlock';
 import SettingsBlock from './SettingsBlock';
-import Logout from './Logout';
+import LogoutBlock from './LogoutBlock';
 
 
 export default function Aside() {
   return (
     <div className={styles.container}>
       <LogoBlock/>
-      <MainMenu/>
+      <MainBlock/>
       <SettingsBlock/>
-      <Logout/>
+      <LogoutBlock/>
     </div>
   )
 }

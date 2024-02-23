@@ -11,15 +11,17 @@
     padding: 0 16px 0 16px;
         & .photo {
             width: 92px;
+            border-radius: 8px;
         }
         & .name {
             width: 150px;
         }
         & .discribtion {
+            white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
-            max-height: 92px;
-            width: 326px;
+            max-height: 26px;
+            max-width: 326px;
         }
         & .story {
             width: 201px;
@@ -59,10 +61,11 @@
     padding: 16px;
 }
 .story_details {
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    max-height: 92px;
-    width: 326px;
+    max-height: 26px;
+    max-width: 326px;
 }
 .font_details {
     @extend .font;

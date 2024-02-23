@@ -1,0 +1,11 @@
+export { default as ContactsIcon } from "./email.svg";
+export { default as PetsIcon } from "./pets.svg";
+export { default as SwitchCameraIcon } from "./switch_camera.svg";
+export { default as SupervisedUserIcon } from "./supervised_user_circle.svg";  
+export { default as GroupIcon } from "./group.svg";
+export { default as IdentityIcon } from "./perm_identity.svg";
+export { default as SettingsIcon } from "./settings.svg";
+export { default as HelpIcon } from "./help_outline.svg"; 
+export { default as LogoutIcon } from "./logout.svg";
+export { default as LogoIcon } from "./Logo.svg";
+export { default as ShevronDown } from "./arrow-down.svg";

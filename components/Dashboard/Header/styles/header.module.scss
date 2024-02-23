@@ -12,6 +12,7 @@
     width: 100%;
 
         & .icon {
+            cursor: pointer;
             justify-self: end;
             font-size: 40px;
             height: 40px;
@@ -23,6 +24,7 @@
             line-height: 36.4px;
         }
         & .user {
+            cursor: pointer;
             @extend .greeting;
             color: $button-dark-active;
             font-weight: 500;

@@ -1,6 +1,6 @@
 import React from 'react';
 import AsideItem from './AsideItem';
-import { LogoIcon } from '@/public/assets/icons';
+import { LogoIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 
 export default function LogoBlock() {
