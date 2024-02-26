@@ -32,10 +32,6 @@
     @media screen and (min-width: 768px) {
       display: flex;
       flex-direction: row-reverse;
-      // justify-content: center;
-      // align-items: stretch;
-      // flex-grow: 1;
-      // flex-grow: 3;
       gap: 20px;
     }
 
@@ -50,6 +46,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    flex-shrink: 2;
 
     gap: 8px;
 
@@ -162,19 +159,13 @@
 
   &Svg {
     font-size: 21px;
-    // width: 21px;
-    // height: 21px;
 
     @media screen and (min-width: 768px) {
       font-size: 16px;
-      // width: 16px;
-      // height: 16px;
     }
 
     @media screen and (min-width: 1200px) {
       font-size: 24px;
-      // width: 24px;
-      // height: 24px;
     }
   }
 
@@ -189,12 +180,16 @@
       font-weight: 700;
       line-height: calc(22 / 20);
       text-align: left;
-      margin-bottom: 4px;
+      margin-bottom: 10px;
     }
 
     @media screen and (min-width: 1200px) {
       font-size: 24px;
-      margin-bottom: 8px;
+      margin-bottom: 1px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      margin-bottom: 12px;
     }
   }
 
@@ -222,8 +217,25 @@
       display: flex;
       flex-wrap: wrap;
       gap: 3px;
+      width: 206px;
 
       text-align: left;
+    }
+
+    @media screen and (min-width: 1024px) {
+      width: 450px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      width: 220px;
+    }
+
+    @media screen and (min-width: 1440px) {
+      width: 354px;
+    }
+
+    @media screen and (min-width: 1680px) {
+      width: 700px;
     }
   }
 
@@ -243,8 +255,26 @@
     }
   }
 
-  &Item:not(:last-child) {
-    margin-bottom: 4px;
+  &ItemLink {
+    transition: color 250ms linear;
+
+    &:not(:last-child) {
+      // margin-bottom: 4px;
+    }
+
+    &:hover,
+    &:focus {
+      color: $button-hover;
+    }
+  }
+
+  &ItemText {
+    display: inline-flex;
+    margin-right: 3px;
+
+    @media screen and (min-width: 768px) {
+      margin-right: 0;
+    }
   }
 }
 
@@ -272,6 +302,7 @@
 
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
+    width: 100%;
     margin-bottom: 20px;
   }
 }
@@ -292,8 +323,15 @@
 
   color: $primary-light;
 
+  transition: color 250ms linear;
+
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     margin: 10px;
     font-size: 30px;
+  }
+
+  &:hover,
+  &:focus {
+    color: $button-hover;
   }
 }

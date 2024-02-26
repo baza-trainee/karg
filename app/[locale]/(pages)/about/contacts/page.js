@@ -39,11 +39,15 @@ const contactsData = [
     icon: <ClockIconContacts className={styles.contactSvg} />,
     title: "Графік роботи",
     data: [
-      "Екстренні виклики (із ",
-      "загрозою для життя ",
-      "тварини) ",
-      "приймаються ",
-      "цілодобово",
+      "Екстренні",
+      "виклики",
+      "(із",
+      "загрозою",
+      "для",
+      "життя",
+      "тварини)",
+      "приймаються",
+      "цілодобово.",
     ],
   },
   {
@@ -63,10 +67,10 @@ const ContactItem = ({ id, icon, title, data, href }) => {
         <h4 className={styles.contactTitle}>{title}</h4>
         {id === 1 && (
           <ul>
-            <li className={styles.contactItem}>
+            <li className={`${styles.contactItem} ${styles.contactItemLink}`}>
               <a href={href[0]}>{data[0]}</a>
             </li>
-            <li className={styles.contactItem}>
+            <li className={`${styles.contactItem} ${styles.contactItemLink}`}>
               <a href={href[1]}>{data[1]}</a>
             </li>
           </ul>
@@ -74,15 +78,20 @@ const ContactItem = ({ id, icon, title, data, href }) => {
 
         {id === 2 && (
           <div className={styles.contactList}>
-            <span className={styles.contactItem}>{data[0]}</span>
-            <span className={styles.contactItem}>{data[1]}</span>
-            <span className={styles.contactItem}>{data[2]}</span>
-            <span className={styles.contactItem}>{data[3]}</span>
-            <span className={styles.contactItem}>{data[4]}</span>
+            {data?.map((item, idx) => {
+              return (
+                <span
+                  className={`${styles.contactItem} ${styles.contactItemText}`}
+                  key={idx}
+                >
+                  {item}
+                </span>
+              );
+            })}
           </div>
         )}
         {id === 3 && (
-          <div className={styles.contactItem}>
+          <div className={`${styles.contactItem} ${styles.contactItemLink}`}>
             <a href={href}>{data}</a>
           </div>
         )}
@@ -161,8 +170,6 @@ const Contacts = async ({ params: { locale } }) => {
                   <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
 
                   <SocialIcons className={styles.iconsContacts} />
-
-
                 </div>
               </div>
             </div>
