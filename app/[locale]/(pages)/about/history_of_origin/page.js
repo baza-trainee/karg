@@ -38,7 +38,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
   const subtitle =
     "Перш ніж звертатися до нас, обов`язково ознайомтеся з переліком послуг, які ми надаємо, і правилами звернення до нас.";
   const buttonCaption = "Правила звернення";
-  const route = "/rules_of_appeal";
+  const route = "/about/rules_of_appeal";
 
   return (
     <TranslationsProvider

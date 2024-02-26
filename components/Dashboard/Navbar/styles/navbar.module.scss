@@ -1,0 +1,16 @@
+@import '../../../../app/[locale]/variables.module.scss';
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    background-color: $bg-lightgray;
+    width: 100%;
+    padding: 19px 48px 19px 48px;
+        & .active_section{
+            color: $button-dark-active;
+            font-size: 32px;
+            font-weight: 700;
+            line-height: 41.6px; 
+        }      
+}

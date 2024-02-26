@@ -31,7 +31,6 @@ export default function Restore() {
   const emailHandler = (e) => {
     setEmail(e.target.value);
     const re=/^\S+@\S+\.\S+$/;
-    //const re =/^[A-Za-z0-9]*([A-Za-z][0-9]|[0-9][A-Za-z])[A-Za-z0-9]*$/i;
     if(!re.test(String(e.target.value).toLowerCase())){
        setEmailError('Надана Вами електронна адреса має неправильний формат.');
     }else {
@@ -59,18 +58,19 @@ export default function Restore() {
           <p className={styles.subtitle}>{pageSubtitle}</p>
             <label htmlFor='email'>
                 {addressLabel}
-                <input
-                    className={(emailDirty && emailError) ? styles.errorBorder: styles.ordinaryBorder}
-                    aria-label='email'
-                    name = 'email'
-                    id='email'
-                    type='email' 
-                    value={email} 
-                    placeholder={emailPlaceholder}
-                    onChange={(e) => emailHandler(e)}
-                    onBlur={(e) => blurHandler(e)} 
-                />
-          </label>
+            </label>
+            <input
+                className={(emailDirty && emailError) ? styles.errorBorder: styles.ordinaryBorder}
+                aria-label='email'
+                name = 'email'
+                id='email'
+                type='email' 
+                value={email} 
+                placeholder={emailPlaceholder}
+                onChange={(e) => emailHandler(e)}
+                onBlur={(e) => blurHandler(e)} 
+            />
+    
          {(emailDirty && emailError) && <p className={styles.error}>{emailError}</p>}
         </div>
 
