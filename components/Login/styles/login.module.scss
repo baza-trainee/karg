@@ -11,8 +11,7 @@
     background-color: $button-dark-default;
     
     @media screen and (min-width:1440px) {
-        padding: 9.72% 31.805% 19.861% 31.805%;
-        justify-content: space-between;
+        padding: 140px 458px 286px 458px;//9.72% 31.805% 19.861% 31.805%;
     }
 }
 .form {
@@ -26,47 +25,42 @@
     box-shadow: 2px 4px 10px 0px rgba(1, 1, 1, 0.20);
     padding: 32px;
     gap: 12px;
-    @media screen and (min-width:1440px) {
-        height: fit-content;
-    }
         & label {
             width: 100%;
-            max-height: 78px;
             font-size: 20px;
             font-weight: 400;
-            line-height: 26px;
-            color: $text-dark;
-                & input {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-top: 4px;
-                    width: 460px;
-                    min-height: 40px;
-                    padding: 8px 16px 8px 8px;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: 18px;
-                    font-weight: 500;
-                    line-height: 23.4px;
-                    border-radius: 8px;
-                        &::placeholder {
-                            color: $text-gray;
-                        }
+            color: $text-dark;  
+        }
+        & input {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            height: 48px;
+            padding: 8px 16px 8px 8px;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 23.4px;
+            border-radius: 8px;
 
-                        &:focus{
-                        outline: none;
-                        border: 1px solid $button-active;
-                        border-radius: 8px;
-                        }
+                &::placeholder {
+                    color: $text-gray;
                 }
-                & .errorBorder {
-                    outline: none;
-                    border: 1px solid $text-error;
+
+                &:focus{
+                outline: none;
+                border: 1px solid $button-active;
+                border-radius: 8px;
                 }
-                & .ordinaryBorder {
-                    outline: none;
-                    border: 1px solid $text-dark;
-                }
+        }
+        & .errorBorder {
+            outline: none;
+            border: 1px solid $text-error;
+        }
+        & .ordinaryBorder {
+            outline: none;
+            border: 1px solid $text-dark;
         }
         .error {
             color: $text-error;
@@ -74,7 +68,7 @@
             font-style: normal;
             font-weight: 400;
             line-height: 18.2px;
-            min-height: 36px;
+            max-height: 18px;
         }
         .success {
             @extend .error;
@@ -86,19 +80,21 @@
             flex-direction: column;
         }
         .icon {
-            position: relative;
+            position: absolute;
+            cursor: pointer;
             font-size: 24px;
-            left: calc(100% - 40px);
-            bottom: 32px;
+            left: calc(50% + 180px);
+            bottom: calc(50% - 38px);
+        }
+        .icon_error{
+            @extend .icon;
+            bottom: calc(50% - 28px) ;
         }
 }
 
 .logo {
     font-size: 158px;
-    margin-bottom: 10px;
-    @media screen and (min-width:1440px) {
-        margin-bottom: 32px;
-    }
+    margin-bottom: 32px;
 }
 
 .buttonReset {

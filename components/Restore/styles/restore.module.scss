@@ -11,14 +11,13 @@
     background-color: $button-dark-default;
     
     @media screen and (min-width:1440px) {
-        padding: 9.72% 31.805% 19.861% 31.805%;
-        justify-content: space-between;
+        padding: 140px 458px 286px 458px;//9.72% 31.805% 19.861% 31.805%;
     }
 }
 .form {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     max-width: 524px;
     height: fit-content;
     background-color: $bg-white;
@@ -26,9 +25,7 @@
     box-shadow: 2px 4px 10px 0px rgba(1, 1, 1, 0.20);
     padding: 32px;
     gap: 12px;
-    @media screen and (min-width:1440px) {
-        height: fit-content;
-    }
+
         & label {
             width: 100%;
             max-height: 78px;
@@ -36,37 +33,38 @@
             font-weight: 400;
             line-height: 26px;
             color: $text-dark;
-                & input {
-                    display: flex;
-                    justify-content: space-between;
-                    margin-top: 4px;
-                    width: 460px;
-                    min-height: 40px;
-                    padding: 8px 16px 8px 8px;
-                    align-items: center;
-                    gap: 8px;
-                    font-size: 18px;
-                    font-weight: 500;
-                    line-height: 23.4px;
-                    border-radius: 8px;
-                        &::placeholder {
-                            color: $text-gray;
-                        }
+               
+        }
+        & input {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 4px;
+            width: 460px;
+            min-height: 40px;
+            padding: 8px 16px 8px 8px;
+            align-items: center;
+            gap: 8px;
+            font-size: 18px;
+            font-weight: 500;
+            line-height: 23.4px;
+            border-radius: 8px;
+                &::placeholder {
+                    color: $text-gray;
+                }
 
-                        &:focus{
-                        outline: none;
-                        border: 1px solid $button-active;
-                        border-radius: 8px;
-                        }
+                &:focus{
+                outline: none;
+                border: 1px solid $button-active;
+                border-radius: 8px;
                 }
-                & .errorBorder {
-                    outline: none;
-                    border: 1px solid $text-error;
-                }
-                & .ordinaryBorder {
-                    outline: none;
-                    border: 1px solid $text-dark;
-                }
+        }
+        & .errorBorder {
+            outline: none;
+            border: 1px solid $text-error;
+        }
+        & .ordinaryBorder {
+            outline: none;
+            border: 1px solid $text-dark;
         }
         .error {
             color: $text-error;
