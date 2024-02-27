@@ -1,4 +1,4 @@
-@import '../../../app/[locale]/colors.scss';
+@import '../../../../colors.scss';
 
 
 .container {
@@ -30,8 +30,9 @@
         height: fit-content;
     }
         & label {
+            padding: 0;
             width: 100%;
-            max-height: 78px;
+            max-height: 74px;
             font-size: 20px;
             font-weight: 400;
             line-height: 26px;
@@ -101,7 +102,7 @@
     }
 }
 
-.buttonReset {
+.buttonForgot {
     padding: 8px 2px 8px 308px;
     height: 40px;
     border: none;

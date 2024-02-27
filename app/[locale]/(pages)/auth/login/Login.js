@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
-import { Logo, HideShow } from '@/public/assets/icons';
+import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import styles from './styles/login.module.scss';
 
 
@@ -14,7 +14,7 @@ export default function LoginPage() {
   'passwordLabel': 'Пароль',
   'passwordPlaceholder': 'Введіть пароль',
   'loginButton': 'Увійти',
-  'resetButton': 'Забули пароль?',
+  'forgotButton': 'Забули пароль?',
   'actualUser': 'kargthebest2024@gmail.com',
  }
 
@@ -27,7 +27,7 @@ export default function LoginPage() {
     {value: '', passwordError: '', passwordVisited: false},
   });
 
-  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false); 
 
   const [loginStatus, setLoginStatus] = useState('');
@@ -38,7 +38,6 @@ export default function LoginPage() {
 
 
   useEffect(() => {
-    console.log(isFormValid );
     if(form.email.emailError || form.password.passwordError || form.email.value == ''|| form.password.value == '' ){
       setIsFormValid(false);
     }else {
@@ -46,19 +45,25 @@ export default function LoginPage() {
     }
   }, [form.email.emailError, form.password.passwordError])
 
-
+  const ActualEyeIcon = () => {
+    return (
+      (isPasswordVisible) ? <HideShow className={styles.icon} onClick={()=>setIsPasswordVisible(!isPasswordVisible)}/> 
+      : <EyeSlashFill className={styles.icon} onClick={()=>setIsPasswordVisible(!isPasswordVisible)}/>
+    )
+  }
+  
   const emailHandler = (e) => {
     setLoginStatus('');
     setForm({ ...form, email: { ...form.email, value: e.target.value}});
 
     const re=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if(!re.test(String(e.target.value).toLowerCase())){
-        setForm({ ...form, email: { ...form.email, emailError: 'Надана Вами електронна адреса має неправильний формат.'}});
+        setForm({ ...form, email: { ...form.email, emailError: 'Ви ввели невідповідний логін.'}});
     }else {        
         setForm({ ...form, email: { ...form.email, value: e.target.value, emailError: ''}});
     }
     if(!e.target.value){
-        setForm({ ...form, email: { ...form.email, emailError: 'Поле для електронної пошти пусте'}});
+        setForm({ ...form, email: { ...form.email, emailError: 'Ви ввели невідповідний логін.'}});
   }
 };
 
@@ -70,13 +75,13 @@ export default function LoginPage() {
     const passwordRegex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,30}$/;
 
     if(!e.target.value){
-      setForm({ ...form, password: { ...form.password, passwordError: 'Поле для пароля пусте'}});
+      setForm({ ...form, password: { ...form.password, passwordError: 'Ви ввели невідповідний парольі.'}});
     }
     else if(passwordRegex.test(e.target.value)){
       setForm({ ...form, password: { ...form.password, value: e.target.value, passwordError: ''}});
     }
     else{
-      setForm({ ...form, password: { ...form.password, value: '', passwordError: 'Пароль виключно латиницею повинен мати хоча б одну велику літеру, одну цифру та мати довжину від 6 до 30 символів'}});
+      setForm({ ...form, password: { ...form.password, value: '', passwordError: 'Ви ввели невідповідний пароль.'}});
     }
 
   }
@@ -105,17 +110,18 @@ export default function LoginPage() {
       const data = await response.json();
 
       if(response.status === 200){
-        setLoginStatus(`${data.user.email}, Ви успішно увійшли до адмінпанелі`);
+        //setLoginStatus(`${data.user.email}, Ви успішно увійшли до адмінпанелі`);
+        setLoginStatus("");
           if(data.user.email===blockCaptions.actualUser){
             setCorrectUser(data.user);
-            router.push("/dashboard", { email: form.email.value });           
+            router.push("/auth/dashboard", { email: form.email.value });           
         }return
       }
       if((response.status === 400)){
-        setLoginStatus("Електронна адреса або пароль невірні.");
+        setLoginStatus("Введено невіррний логін або пароль.");
       }
       else if(response.status === 401){
-        setLoginStatus("Електронна адреса або пароль невірні.");
+        setLoginStatus("Введено невіррний логін або пароль.");
       }
     }
     catch(e){
@@ -160,14 +166,15 @@ export default function LoginPage() {
                     onChange={(e) => passwordHandler(e)}
                     onBlur={(e) => blurHandler(e)}
                 />
-                <HideShow className={styles.icon} onClick={()=>setIsPasswordVisible(!isPasswordVisible)} />   
+                {ActualEyeIcon()}
+                  
             </label>
             {(form.password.passwordVisited && form.password.passwordError) && <p className={styles.error}>{form.password.passwordError}</p>} 
         </div>
         
         {(loginStatus && isFormValid) && <p className={correctUser ? styles.success : styles.error}>{loginStatus}</p>}
 
-        <button className={styles.buttonReset} onClick={() => router.push("/restore")}>{blockCaptions.resetButton}</button>
+        <button className={styles.buttonForgot} onClick={() => router.push("/auth/restore")}>{blockCaptions.forgotButton}</button>
         <button 
             className={!isFormValid ? styles.buttonLoginDesabled : styles.buttonLogin}
             disabled={!isFormValid} 
