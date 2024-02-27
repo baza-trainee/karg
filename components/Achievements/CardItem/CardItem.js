@@ -22,25 +22,25 @@ export function CardItem({
         alt="Donate icon"
       /> : null}
       <div className={cardTextBlock}>
-        <p className={cardTitleStyle}>
-          {title}
-        </p>
-        <p className={cardMessageStyle}>
-          {innerMessage}
-        </p>
-        {href ?
-            <Link href = {href}>
-              <span>{label}</span>
-              {
-                icon ? 
-                <Image
-                className={buttonIconStyle}
-                src={icon}
-                alt="Button icon"
-              /> : null
-            }
-           </Link> : null
-        }
+          <p className={cardTitleStyle}>
+              {title}
+          </p>
+          <p className={cardMessageStyle}>
+              {innerMessage}
+          </p>
+          {href ?
+              <Link href = {href}>
+                  <span>{label}</span>
+                      {
+                        icon ? 
+                        <Image
+                        className={buttonIconStyle}
+                        src={icon}
+                        alt="Button icon"
+                      /> : null
+                      }
+            </Link> : null
+          }
       </div>
     </div>
   )

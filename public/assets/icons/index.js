@@ -20,3 +20,8 @@ export { default as EyeSlashFill } from "./eye-slash-fill-svgrepo-com (1).svg"
 export { default as PhoneIconContacts } from "./contacts/phone.svg";
 export { default as EnvelopeIconContacts } from "./contacts/envelope.svg";
 export { default as ClockIconContacts } from "./contacts/clock.svg";
+export { default as UserIcon } from "./header/user_identity.svg";
+export { default as SearchIcon } from "./header/search.svg";
+export { default as ShevronDown } from "./filter/arrow-down.svg";
+export { default as CreateIcon } from "./filter/create.svg";
+export { default as TrashIcon } from "./filter/trash.svg";

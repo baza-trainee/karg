@@ -1,0 +1,115 @@
+@import '../../../../app/[locale]/variables.module.scss';
+
+.active {
+    background: linear-gradient(90deg, rgba(190, 190, 190, 0.50) 21.55%, rgba(190, 190, 190, 0.00) 88.74%);
+    backdrop-filter: blur(43.79999923706055px);
+}
+.container {
+    min-width: 246px;
+    min-height: 960px;
+    height: fit-content;
+    background-color:$bg-dark;
+        & .logo_name{
+            width: 100%;
+            padding: 21px 27px 21px 27px;
+            border-bottom: 1px solid $button-disabled;
+        }
+        & .main_menu{
+            width: 100%;
+            padding-top: 24px;
+        }
+        & .settings{
+            width: 100%;
+            padding-top: 32px;
+        }
+        & .log_out{
+            width: 100%;
+            padding-top: 220px;
+            padding-bottom: 24px;
+        }
+
+}
+.wrapper {
+    color: $button-disabled;
+    &:hover{
+        @extend .active;    
+        color: $text-white; 
+        transition: color 0.3s ease-in-out;   
+    }
+
+    &:hover  .title{
+        color: $text-white;
+        transition: color 0.3s ease-in-out;
+    }
+}
+.item_logo {
+    cursor: pointer;
+    display: flex;
+    align-items:center;
+}
+.item_header {
+    padding: 10px 10px 10px 32px;
+    color:$button-disabled;
+}
+.item {
+    display: flex;
+    padding: 16px 10px 16px 32px;
+}
+.header {
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 15.6px; 
+}
+.title {
+    cursor: pointer;
+    color:$button-disabled;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+}
+.logo_title {
+    cursor: pointer;
+    max-width: 142px;
+    text-align: center;
+    color: $button-default;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 20px ;
+
+}
+.logo {
+    cursor: pointer;
+    font-size: 46px;
+    margin-right: 4px;
+}
+.icon {
+    fill: currentColor;
+    cursor: pointer;
+    font-size: 24px;
+    margin-right: 16px;
+}
+.nestedStyle {
+    gap: 8px;
+    padding: 12px 72px 12px 72px;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-dark;
+    color: $button-disabled;
+        & li{
+            border-bottom: 2px solid transparent;
+            &:hover {
+                color: $text-white;
+                border-bottom: 2px solid $button-default;
+                width: fit-content;
+                transition: color 0.3s ease-in-out; 
+            }
+        }
+}
+.icon_shevronDown {
+    margin-top: 8px;
+    fill: currentColor;
+    width: 13px;
+    fill: currentColor;
+    cursor: pointer;
+    margin-left: 21px;
+}
