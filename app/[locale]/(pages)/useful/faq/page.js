@@ -7,7 +7,14 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from "@/components/common/PageHero/pageHero";
 
-import Image from "next/image";
+import {
+  faqHeroMob,
+  faqHeroTab,
+  faqHeroDesk,
+} from "@/public/assets/images/useful/faq";
+
+const buttonText = "faq";
+const altText = "bats sit on a branch";
 
 const i18nNamespaces = ["home", "common"];
 
@@ -23,11 +30,11 @@ const Faq = async ({ params: { locale } }) => {
       <Header />
       <main>
         <PageHero
-        //   mobImage={contactsHeroMob.src}
-        //   tablImage={contactsHeroTab.src}
-        //   deskImage={contactsHeroDesk.src}
-        //   buttonText={buttonText}
-        //   altText={altText}
+          mobImage={faqHeroMob.src}
+          tablImage={faqHeroTab.src}
+          deskImage={faqHeroDesk.src}
+          buttonText={buttonText}
+          altText={altText}
         />
         Faq
       </main>
