@@ -10,7 +10,7 @@ import Achievements from "@/components/Achievements/Achievements";
 import RescueTypes from "@/components/RescueTypes/RescueTypes";
 import Help from "@/components/Help/help-section";
 import Support from "@/components/Support/Support";
-const i18nNamespaces = ['home', 'common'];
+const i18nNamespaces = ['main', 'common'];
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
@@ -32,10 +32,10 @@ export default async function Home({ params: { locale } }) {
         <HeroSection />
         <QuickAccessMenu />
         <MissionSection />
-        <Achievements />
+        <Achievements locale={locale} namespaces={i18nNamespaces} />
         <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} />
         <Help />
-        <Support />
+        <Support locale={locale} namespaces={i18nNamespaces} />
         <Footer />
       </div>
     </TranslationsProvider>

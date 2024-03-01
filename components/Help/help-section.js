@@ -6,11 +6,13 @@ import helpImageMob from "@/public/assets/images/help/help-img-mob.jpg";
 import helpImageTabl from "@/public/assets/images/help/help-img-tabl.jpg";
 import helpImageDesk from "@/public/assets/images/help/help-img-desk.jpg";
 import NeedInfo from "../common/NeedInfo/needInfo";
+import { useTranslation } from 'react-i18next';
 
 const Help = () => {
-    const title = "Потрібна допомога?";
-    const subtitle = "Перш ніж звертатися до нас, обов'язково ознайомтеся з переліком послуг, які ми надаємо, і правилами звернення до нас.";
-    const buttonCaption = "Правила звернення";
+    const { t } = useTranslation();
+    const title = t('helpTitle');
+    const subtitle = t('helpSubtitle');
+    const buttonCaption = t('helpButtonRules');
     const route = "/about/rules_of_appeal";
 
     return (
