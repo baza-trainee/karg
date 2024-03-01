@@ -14,8 +14,8 @@ const Partners = () => {
     const [visibleLogosCount, setVisibleLogosCount] = useState(4);
     const [isOpenButtonVisible, setOpenButtonVisible] = useState(true);
     const { t } = useTranslation();
-    const openText = t('buttonOpenText');
-    const closeText = t('buttonCloseText');
+    const openText = t('common:buttonOpenText');
+    const closeText = t('common:buttonCloseText');
 
     const handleOpenClick = () => {
         setVisibleLogosCount(partners.length);

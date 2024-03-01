@@ -1,3 +1,16 @@
 {
-    "buttonSupportText": "Support"
+    "buttonSupportText": "Support",
+    "buttonOpenText": "View all",
+    "buttonCloseText": "Collapse",
+    "buttonQuestion": "Questions and answers",
+    "rescueTypestytle": "Types of rescue operations",
+    "rescueTypes1": "Rescuing cats from trees",
+    "rescueTypes2": "Removing cats from building structures",
+    "rescueTypes3": "Lifting animals from a well, sewer, drain",
+    "rescueTypes4": "Rescuing cats from ventilation",
+    "rescueTypes5": "Rescuing animals on ice or water",
+    "rescueTypes6": "Extraction of animals from narrow or hard-to-reach places",
+    "rescueTypes7": "Catching animals in residential utilities, particularly in the basements of buildings",
+    "needInfoTitle": "Do you have any questions?",
+    "needInfoSubtitle": "Before contacting us, feel free to review and find answers to frequently asked questions."
 }

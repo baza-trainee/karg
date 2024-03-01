@@ -15,10 +15,10 @@ const i18nNamespaces = ['home', 'common'];
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   const rescueTypes = [
-    { cardMessage: "Зняття котів з дерев", id: 1 },
-    { cardMessage: "Зняття котів з конструкцій будинків", id: 2 },
-    { cardMessage: "Підняття тварин з колодязя, колектора, зливи", id: 3 },
-    { cardMessage: "Порятунок котів з вентиляції", id: 4 },
+    { cardMessage: t('common:rescueTypes1'), id: 1 },
+    { cardMessage: t('common:rescueTypes2'), id: 2 },
+    { cardMessage: t('common:rescueTypes3'), id: 3 },
+    { cardMessage: t('common:rescueTypes4'), id: 4 },
   ];
 
   return (
@@ -33,7 +33,7 @@ export default async function Home({ params: { locale } }) {
         <QuickAccessMenu />
         <MissionSection />
         <Achievements />
-        <RescueTypes rescueTypes={rescueTypes} />
+        <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} />
         <Help />
         <Support />
         <Footer />

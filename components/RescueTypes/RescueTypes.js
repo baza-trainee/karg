@@ -3,13 +3,14 @@ import { CardItem } from "../CardItem/CardItem";
 import styles from "./styles/rescueTypes.module.scss";
 import variables from "../../app/[locale]/variables.module.scss";
 import ButtonAsLink from "../ButtonAsLink/buttonAsLink";
+import initTranslations from "../../app/i18n";
 
-const titleRescueTypes = "Види рятувальних робіт";
-const allActivities = "Дивитись усі";
-
-export default function RescueTypes({ rescueTypes, isButtonAsLink = true }) {
+export default async function RescueTypes({ locale, namespaces, rescueTypes, isButtonAsLink = true }) {
+  const { t } = await initTranslations(locale, namespaces);
+  const titleRescueTypes = t('common:rescueTypestytle');
+  const allActivities = t('common:buttonOpenText');
   const isOdd = rescueTypes.length % 2 != 0;
-  
+
   return (
     <div>
       <div className={styles.container}>
