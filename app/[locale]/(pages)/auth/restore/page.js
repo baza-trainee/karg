@@ -1,5 +1,5 @@
 import React from 'react';
-import RestoreUser from '../../../../components/Restore/Restore';
+import RestoreUser from './Restore';
 
 export default function RestoreUserPage() {
   return (
