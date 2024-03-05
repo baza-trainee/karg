@@ -1,4 +1,7 @@
+"use client";
 import styles from "./faq.module.scss";
+
+import { useState, useEffect } from "react";
 
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
@@ -12,6 +15,8 @@ import {
   faqHeroTab,
   faqHeroDesk,
 } from "@/public/assets/images/useful/faq";
+import { FaqItem } from "@/components/FaqItem/faq-item";
+import initialFaq from "@/public/qa";
 
 const buttonText = "faq";
 const altText = "bats sit on a branch";
@@ -20,6 +25,24 @@ const i18nNamespaces = ["home", "common"];
 
 const Faq = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
+  // const [questions, setQuestion] = useState(initialFaq);
+
+  const questions = initialFaq;
+
+  // useEffect(() => {
+  //   const fetchQA = async () => {
+  //     try {
+  //       const res = await fetch("./");
+  //       const data = await res.json();
+  //       setQuestion(data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+
+  //   fetchQA();
+  // }, []);
 
   return (
     <TranslationsProvider
@@ -35,8 +58,15 @@ const Faq = async ({ params: { locale } }) => {
           deskImage={faqHeroDesk.src}
           buttonText={buttonText}
           altText={altText}
+          priority={true}
         />
-        Faq
+        <ul className={styles.questionsList}>
+          {questions?.map(({ id, q, a }) => (
+            <li key={id}>
+              <FaqItem q={q} a={a} />
+            </li>
+          ))}
+        </ul>
       </main>
       <Footer />
     </TranslationsProvider>
