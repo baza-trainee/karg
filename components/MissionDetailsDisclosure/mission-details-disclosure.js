@@ -4,6 +4,7 @@ import { ArrowRight, DetailsClose } from "@/public/assets/icons";
 import { Box } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 const MotionBox = motion(Box);
 
@@ -15,6 +16,7 @@ const variants = {
 
 const MissionDetailsDisclosure = () => {
   const [isDisclosureOpen, setIsDisclosureOpen] = useState(false);
+  const { t } = useTranslation();
 
   const handleDisclosure = () => {
     setIsDisclosureOpen(!isDisclosureOpen);
@@ -23,13 +25,7 @@ const MissionDetailsDisclosure = () => {
   return (
     <div>
       <p className={styles.missionText}>
-        Нашою місією є створення безпечного та турботливого середовища для
-        тварин у Києві. Мета роботи команди - порятунок тварин, що опинились в
-        надзвичайній ситуації, і не можуть вибратися звідти самостійно, чи за
-        допомогою небайдужих людей за відсутності спеціальних навиків та
-        спорядження, також допомога диким тваринам, та допомога в надзвичайних
-        ситуаціях в екосистемах. Ми працюємо для того, щоб кожна тварина мала
-        шанс на нове життя.
+        {t('missionText')}
       </p>
       {!isDisclosureOpen && (
         <button
@@ -37,7 +33,7 @@ const MissionDetailsDisclosure = () => {
           type="button"
           onClick={handleDisclosure}
         >
-          Детальніше
+          {t('missionMore')}
           <ArrowRight className={styles.missionButtonIcon} />
         </button>
       )}
@@ -50,20 +46,14 @@ const MissionDetailsDisclosure = () => {
           transition={{ duration: 0.5, ease: "easeInOut" }}
         >
           <p className={styles.missionText}>
-            Нашою місією є створення безпечного та турботливого середовища для
-            тварин у Києві. Мета роботи команди - порятунок тварин, що опинились
-            в надзвичайній ситуації, і не можуть вибратися звідти самостійно, чи
-            за допомогою небайдужих людей за відсутності спеціальних навиків та
-            спорядження, також допомога диким тваринам, та допомога в
-            надзвичайних ситуаціях в екосистемах. Ми працюємо для того, щоб
-            кожна тварина мала шанс на нове життя.
+            {t('missionText')}
           </p>
           <button
             className={styles.missionButton}
             type="button"
             onClick={handleDisclosure}
           >
-            Закрити
+            {t('missionClose')}
             <DetailsClose className={styles.missionButtonIcon} />
           </button>
         </MotionBox>

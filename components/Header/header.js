@@ -16,11 +16,13 @@ import {
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
 import ButtonAsLink from "../ButtonAsLink/buttonAsLink";
 import SocialIcons from "../SocialIcons/socialIcons";
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
   const [openFirst, setFirstOpen] = useToggle(false);
   const [openSecond, setSecondOpen] = useToggle(false);
+  const { t } = useTranslation();
 
   return (
     <header className={styles.header}>
@@ -40,11 +42,11 @@ const Header = () => {
           </Link>
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <li>
-              <Link href="/">Головна</Link>
+              <Link href="/">{t('common:linkMain')}</Link>
             </li>
             <li className={styles.dropHover}>
               <p className={`${styles.navMenuDropList} ${styles.ArrowDown}`}>
-                <span>Про нас</span>
+                <span>{t('common:linkAboutUs')}</span>
                 <ArrowDown />
               </p>
               <ul
@@ -52,42 +54,42 @@ const Header = () => {
               >
                 <li>
                   <Link href="/about/history_of_origin">
-                    Історія виникнення
+                    {t('common:linkHistory')}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about/rules_of_appeal">Правила звернення</Link>
+                  <Link href="/about/rules_of_appeal">{t('common:linkRules')}</Link>
                 </li>
                 <li>
-                  <Link href="/about/our_team">Наша команда</Link>
+                  <Link href="/about/our_team">{t('common:linkTeam')}</Link>
                 </li>
                 <li>
-                  <Link href="/about/contacts">Контакти</Link>
+                  <Link href="/about/contacts">{t('common:linkContacts')}</Link>
                 </li>
               </ul>
             </li>
             <li>
-              <Link href="/animals">Наші тварини</Link>
+              <Link href="/animals">{t('common:linkAnimals')}</Link>
             </li>
             <li>
-              <Link href="/help">Допомогти нам</Link>
+              <Link href="/help">{t('common:linkHelpUs')}</Link>
             </li>
             <li className={styles.dropHover}>
               <p className={styles.navMenuDropList}>
-                <span>Корисне</span>
+                <span>{t('common:linkUseful')}</span>
                 <ArrowDown />
               </p>
               <ul
                 className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}
               >
                 <li>
-                  <Link href="/useful">Поради</Link>
+                  <Link href="/useful">{t('common:linkAdvices')}</Link>
                 </li>
                 <li>
                   <Link href="/useful/faq">FAQ</Link>
                 </li>
                 <li>
-                  <Link href="/useful/results">Підсумки</Link>
+                  <Link href="/useful/results">{t('common:linkSummaries')}</Link>
                 </li>
               </ul>
             </li>
@@ -96,7 +98,7 @@ const Header = () => {
             <LanguageMenu />
             <ButtonAsLink
               route="/help"
-              buttonCaption="Підтримати"
+              buttonCaption={t('common:buttonSupportText')}
               buttonStyle="header-primary-button-default"
             />
             <div onClick={setOpenBurgerMenu}>
@@ -113,58 +115,58 @@ const Header = () => {
             <div className={`${styles.navMenuMobile} ${variables.button2}`}>
               <ul>
                 <li>
-                  <Link href="/">Головна</Link>
+                  <Link href="/">{t('common:linkMain')}</Link>
                 </li>
                 <li>
                   <p className={styles.navMenuInnerMenu} onClick={setFirstOpen}>
-                    <span>Про нас</span>
+                    <span>{t('common:linkAboutUs')}</span>
                     <ArrowDown />
                   </p>
                   {openFirst ? (
                     <ul className={styles.navMenuInnerList}>
                       <li>
                         <Link href="/about/history_of_origin">
-                          Історія виникнення
+                          {t('common:linkHistory')}
                         </Link>
                       </li>
                       <li>
                         <Link href="/about/rules_of_appeal">
-                          Правила звернення
+                          {t('common:linkRules')}
                         </Link>
                       </li>
                       <li>
-                        <Link href="/about/our_team">Наша команда</Link>
+                        <Link href="/about/our_team">{t('common:linkTeam')}</Link>
                       </li>
                       <li>
-                        <Link href="/about/contacts">Контакти</Link>
+                        <Link href="/about/contacts">{t('common:linkContacts')}</Link>
                       </li>
                     </ul>
                   ) : null}
                 </li>
                 <li>
-                  <Link href="/animals">Наші тварини</Link>
+                  <Link href="/animals">{t('common:linkAnimals')}</Link>
                 </li>
                 <li>
-                  <Link href="/help">Допомогти нам</Link>
+                  <Link href="/help">{t('common:linkHelpUs')}</Link>
                 </li>
                 <li>
                   <p
                     className={styles.navMenuInnerMenu}
                     onClick={setSecondOpen}
                   >
-                    <span>Корисне</span>
+                    <span>{t('common:linkUseful')}</span>
                     <ArrowDown />
                   </p>
                   {openSecond ? (
                     <ul className={styles.navMenuInnerList}>
                       <li>
-                        <Link href="/useful">Поради</Link>
+                        <Link href="/useful">{t('common:linkAdvices')}</Link>
                       </li>
                       <li>
                         <Link href="/useful/faq">FAQ</Link>
                       </li>
                       <li>
-                        <Link href="/useful/results">Підсумки</Link>
+                        <Link href="/useful/results">{t('common:linkSummaries')}</Link>
                       </li>
                     </ul>
                   ) : null}
@@ -173,7 +175,7 @@ const Header = () => {
             </div>
             <ButtonAsLink
               route="/help"
-              buttonCaption="Підтримати"
+              buttonCaption={t('common:buttonSupportText')}
               buttonStyle="primary-dark-W-288"
             />
             <div
@@ -186,7 +188,7 @@ const Header = () => {
                 href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6"
                 target="_blank"
               >
-                м. Київ
+                {t('common:address')}
               </a>
             </div>
             <SocialIcons iconsColor="#3a3345" />
