@@ -9,6 +9,7 @@ import deskImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-d
 import TeamSection from "./team-section/teamSection";
 import Donation from "./donation-block/donation";
 import Partners from "./partners/partners";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 const i18nNamespaces = ['team', 'common'];
 
 const OurTeam = async ({ params: { locale } }) => {
@@ -30,6 +31,7 @@ const OurTeam = async ({ params: { locale } }) => {
                 <TeamSection />
                 <Donation />
                 <Partners />
+                <ScrollToTop/>
             </main>
             <Footer />
         </TranslationsProvider >
