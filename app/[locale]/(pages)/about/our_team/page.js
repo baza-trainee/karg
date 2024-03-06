@@ -9,6 +9,7 @@ import deskImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-d
 import TeamSection from "./team-section/teamSection";
 import Donation from "./donation-block/donation";
 import Partners from "./partners/partners";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ['ourTeam', 'common'];
 
