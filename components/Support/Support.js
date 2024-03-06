@@ -2,15 +2,17 @@ import React from 'react';
 import { CardItem } from '../CardItem/CardItem';
 import styles from './styles/support.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
+import initTranslations from "../../app/i18n";
 
-const supportTitle = 'Як підтримати нас';
+export default async function Support({ locale, namespaces }) {
+    const { t } = await initTranslations(locale, namespaces);
 
-const supportData = [
-    { 'cardTitle': 'Фінансово', 'cardMessage': 'Кожний донат має значення', 'buttonText': 'Зробити внесок', 'buttonRoute': '/help', id: 1 },
-    { 'cardTitle': 'Взяти тварину', 'cardMessage': 'Кожний улюбленець чекає на свій дім', 'buttonText': 'Взяти тварину', 'buttonRoute': '/animals', id: 2 },
-];
+    const supportTitle = t('supportTitle');
+    const supportData = [
+        { 'cardTitle': t('supportSubtitle1'), 'cardMessage': t('supportMessage1'), 'buttonText': t('supportButtonText1'), 'buttonRoute': '/help', id: 1 },
+        { 'cardTitle': t('supportSubtitle2'), 'cardMessage': t('supportMessage2'), 'buttonText': t('supportButtonText2'), 'buttonRoute': '/animals', id: 2 },
+    ];
 
-export default function Support() {
     return (
         <div>
             <div className={styles.container}>

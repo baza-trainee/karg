@@ -6,14 +6,16 @@ import stylesBtn from "@/components/Button/styles/button.module.scss";
 import styles from "../partners/styles/partners.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
 import { useState } from "react";
+import { useTranslation } from 'react-i18next';
 
 const partners = Object.values(logos);
-const openText = "Дивитись усі";
-const closeText = "Згорнути";
 
 const Partners = () => {
     const [visibleLogosCount, setVisibleLogosCount] = useState(4);
     const [isOpenButtonVisible, setOpenButtonVisible] = useState(true);
+    const { t } = useTranslation();
+    const openText = t('common:buttonOpenText');
+    const closeText = t('common:buttonCloseText');
 
     const handleOpenClick = () => {
         setVisibleLogosCount(partners.length);
@@ -27,7 +29,7 @@ const Partners = () => {
 
     return (
         <div className={styles.container}>
-            <div className={`${styles.title} ${variables.subtitle1}`}>Партнери</div>
+            <div className={`${styles.title} ${variables.subtitle1}`}>{t('partnersTitle')}</div>
             <div className={styles.partners}>
                 {partners.slice(0, visibleLogosCount).map((PartnerLogo, index) =>
                     <PartnerLogo key={index} className={styles.partnerLogo} />

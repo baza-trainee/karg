@@ -14,9 +14,11 @@ import {
 import { useState } from "react";
 import SocialIcons from "../SocialIcons/socialIcons";
 import ButtonAsLinkAsLink from "@/components/ButtonAsLink/buttonAsLink";
+import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const [open, setOpen] = useState({ firstList: false, secondList: false });
+  const { t } = useTranslation();
 
   const handleClick = (e) => {
     const target = e.currentTarget.dataset.list;
@@ -36,7 +38,7 @@ function Footer() {
       <nav className={`${styles.navMenu} ${variables.button2}`}>
         <ul>
           <li>
-            <Link href="/">Головна</Link>
+            <Link href="/">{t('common:linkMain')}</Link>
           </li>
           <li>
             <p
@@ -44,7 +46,7 @@ function Footer() {
               data-list="firstList"
               onClick={(e) => handleClick(e)}
             >
-              <span>Про нас</span>
+              <span>{t('common:linkAboutUs')}</span>
               <ArrowDown />
             </p>
             {open.firstList ? (
@@ -52,27 +54,27 @@ function Footer() {
                 <ul className={styles.navMenuInnerList}>
                   <li>
                     <Link href="/about/history_of_origin">
-                      Історія виникнення
+                      {t('common:linkHistory')}
                     </Link>
                   </li>
                   <li>
-                    <Link href="/about/rules_of_appeal">Правила звернення</Link>
+                    <Link href="/about/rules_of_appeal">{t('common:linkRules')}</Link>
                   </li>
                   <li>
-                    <Link href="/about/our_team">Наша команда</Link>
+                    <Link href="/about/our_team">{t('common:linkTeam')}</Link>
                   </li>
                   <li>
-                    <Link href="/about/contacts">Контакти</Link>
+                    <Link href="/about/contacts">{t('common:linkContacts')}</Link>
                   </li>
                 </ul>
               </>
             ) : null}
           </li>
           <li>
-            <Link href="/animals">Наші тварини</Link>
+            <Link href="/animals">{t('common:linkAnimals')}</Link>
           </li>
           <li>
-            <Link href="/help">Допомогти нам</Link>
+            <Link href="/help">{t('common:linkHelpUs')}</Link>
           </li>
           <li>
             <p
@@ -80,19 +82,19 @@ function Footer() {
               data-list="secondList"
               onClick={(e) => handleClick(e)}
             >
-              <span>Корисне</span>
+              <span>{t('common:linkUseful')}</span>
               <ArrowDown className={styles.arrowDownIcon} />
             </p>
             {open.secondList ? (
               <ul className={styles.navMenuInnerList}>
                 <li>
-                  <Link href="/useful">Поради</Link>
+                  <Link href="/useful">{t('common:linkAdvices')}</Link>
                 </li>
                 <li>
                   <Link href="/useful/faq">FAQ</Link>
                 </li>
                 <li>
-                  <Link href="/useful/results">Підсумки</Link>
+                  <Link href="/useful/results">{t('common:linkSummaries')}</Link>
                 </li>
               </ul>
             ) : null}
@@ -102,7 +104,7 @@ function Footer() {
       <div className={styles.buttonAndIconsHolder}>
         <ButtonAsLinkAsLink
           route="/help"
-          buttonCaption="Підтримати"
+          buttonCaption={t('common:buttonSupportText')}
           buttonStyle="primary-lite-W-288"
         />
         <div className={styles.socialIconsHolderDesktop}>
@@ -124,7 +126,7 @@ function Footer() {
         <div className={styles.contactsContainerLocation}>
           <LocationIcon className={styles.contactsContainerIcons} />
           <a href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6" target="_blank">
-            м. Київ
+            {t('common:address')}
           </a>
         </div>
       </div>
@@ -132,7 +134,7 @@ function Footer() {
         <SocialIcons className={styles.socIcons} />
       </div>
       <p className={styles.signature}>
-        Розробка Baza Trainee Ukraine © 2023 Всі права захищені
+        {t('common:copyright')}
       </p>
     </footer>
   );
