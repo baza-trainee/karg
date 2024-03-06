@@ -1,0 +1,67 @@
+@import "../../../app/[locale]/colors.scss";
+
+.questionWrap {
+  display: flex;
+  justify-content: space-between;
+
+  padding: 4px 7px 4px 10px;
+  border-radius: 4px;
+  background: $button-dark-loading;
+
+  @media screen and (min-width: 1440px) {
+    min-width: 570px;
+    flex-grow: 3;
+  }
+}
+
+.question {
+  max-width: 230px;
+
+  font-size: 20px;
+  font-weight: 700;
+  color: $text-dark;
+
+  @media screen and (min-width: 768px) {
+    max-width: 500px;
+    font-size: 28px;
+  }
+}
+
+.questionButton {
+  padding: 16px 13px;
+
+  @media screen and (min-width: 768px) {
+    padding: 13px 8px;
+  }
+}
+
+.questionArrow {
+  font-size: 13px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 24px;
+  }
+}
+
+.answer {
+  padding: 8px;
+  font-size: 14px;
+  font-weight: 400;
+  border-radius: 4px;
+  color: $text-dark;
+  background: $bg-purple;
+
+  margin-bottom: 8px;
+
+  @media screen and (min-width: 768px) {
+    font-size: 16px;
+    font-weight: 300;
+
+    margin-bottom: 9px;
+  }
+
+  @media screen and (min-width: 1440px) {
+    margin-bottom: 0;
+    width: 570px;
+  }
+}
