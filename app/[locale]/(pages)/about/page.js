@@ -1,8 +1,6 @@
 import styles from './styles/about.module.scss';
-
 import initTranslations from "../../../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
-
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 
