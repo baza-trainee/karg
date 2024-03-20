@@ -4,6 +4,7 @@ import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
 import { Providers } from "../providers";
 
+
 const manrope = Manrope({
   weight: ["300", "400", "700", "800"],
   subsets: ["latin", "cyrillic"],
