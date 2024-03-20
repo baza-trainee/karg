@@ -186,7 +186,7 @@
     gap: 24px;
     position: relative;
     border-left: 2px solid $button-default;
-    padding-left: 60%;
+    // padding-left: 60%;
 
     & ul {
       flex-direction: column;
@@ -194,6 +194,20 @@
       justify-content: center;
       text-align: center;
       gap: 24px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      min-width: 150px;
+      padding-left: 30%;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding-left: 45%;
+    }
+
+    @media screen and (min-width: 1600px) {
+      padding-left: 60%;
+      min-width: 200px;
     }
   }
 
