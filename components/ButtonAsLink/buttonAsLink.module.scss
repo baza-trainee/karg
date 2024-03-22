@@ -58,7 +58,8 @@
 }
 
 .button-quick-menu {
-  @extend .button-help;
+  @include button-help-style;
+  min-width: 288px;
   &:active {
     color: $text-white;
     background-color: $button-active;
@@ -79,7 +80,7 @@
 
 .button-support-donate-block {
    @include button-help-style;
-   @extend .button-help;
+   min-width: 288px;
 }
 
 .button-add-new-pet {
@@ -112,6 +113,7 @@
 
   .button-help-main-page,
   .button-help {
+    min-width: 370px;
     padding: 13px 12px;
   }
   .button-quick-menu {
