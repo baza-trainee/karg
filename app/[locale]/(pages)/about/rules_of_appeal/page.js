@@ -22,7 +22,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
     const title = t('common:needInfoTitle');
     const subtitle = t('common:needInfoSubtitle');
     const buttonCaption = t('common:buttonQuestion');
-    const route = "/useful";
+    const route = "/useful/faq";
 
     const rescueTypes = [
         { cardMessage: t('common:rescueTypes1'), id: 1 },
