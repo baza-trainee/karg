@@ -18,7 +18,7 @@ import {
 import { FaqItem } from "@/components/FaqItem/faq-item";
 import initialFaq from "@/public/qa";
 
-const buttonText = "faq";
+const buttonText = "FAQ";
 const altText = "bats sit on a branch";
 
 const i18nNamespaces = ["home", "common"];
