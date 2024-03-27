@@ -28,6 +28,22 @@
   font-weight: 700;
   color: $text-dark;
 
+  @media screen and (min-width: 375px) {
+    max-width: 280px;
+  }
+
+  @media screen and (min-width: 425px) {
+    max-width: 320px;
+  }
+
+  @media screen and (min-width: 500px) and (max-width: 570px) {
+    max-width: 450px;
+  }
+
+  @media screen and (min-width: 571px) and (max-width: 767px) {
+    max-width: 540px;
+  }
+
   @media screen and (min-width: 768px) {
     max-width: 500px;
     font-size: 28px;
