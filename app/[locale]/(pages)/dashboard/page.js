@@ -5,7 +5,6 @@ export default function DashboardPage({children}) {
   return (
     <div>
         <Main/>
-
         {children}
     </div>
   )

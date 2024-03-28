@@ -3,7 +3,7 @@ import Header from '../Header/Header';
 import styles from "./styles/main.module.scss";
 import Aside from '../Aside/Aside';
 import Navbar from '../Navbar/Navbar';
-import Search from '../Search/Search';
+import Search from '@/components/common/Search/Search';
 import Filter from '../Filter/Filter';
 
 export default function Main() {

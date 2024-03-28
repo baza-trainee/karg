@@ -6,7 +6,7 @@ import Footer from "@/components/Footer/footer";
 const i18nNamespaces = ['advices', 'common'];
 
 export default async function UsefulLayout ({children, params: { locale }}) {
-    const { t, resources } = await initTranslations(locale, i18nNamespaces);
+    const { resources } = await initTranslations(locale, i18nNamespaces);
  return (
     <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>        
         <Header/>
