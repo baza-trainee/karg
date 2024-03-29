@@ -5,7 +5,7 @@ import styles from "../ScrollToTop/styles/scrollToTop.module.scss";
 
 export default function ScrollToTop() {
     const isBrowser = () => typeof window !== 'undefined';
-    const screenHeight = typeof window !== 'undefined' && window.innerHeight;
+    const clientInnerHeight = typeof window !== 'undefined' && window.innerHeight;
 
     function scrollToTop() {
         if (!isBrowser()) return;
@@ -16,7 +16,7 @@ export default function ScrollToTop() {
     const [isReachedBottom, setIsReachedBottom] = useState(false);
 
     const handleScroll = () => {
-        if (window.scrollY > screenHeight) {
+        if (window.scrollY > clientInnerHeight) {
         setIsVisible(true);
         }
         else {
