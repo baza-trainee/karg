@@ -6,6 +6,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import Image from "next/image";
 import {
   historyHeroMob,
@@ -216,6 +217,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           buttonCaption={t('needInfoButtonCaption')}
           route={route}
         />
+        <ScrollToTop/>
         <Footer />
       </div>
     </TranslationsProvider>

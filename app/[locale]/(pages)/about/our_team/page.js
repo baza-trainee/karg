@@ -32,8 +32,8 @@ const OurTeam = async ({ params: { locale } }) => {
                 <TeamSection locale={locale} namespaces={i18nNamespaces} />
                 <Donation locale={locale} namespaces={i18nNamespaces} />
                 <Partners />
-                <ScrollToTop/>
             </main>
+            <ScrollToTop/>
             <Footer />
         </TranslationsProvider >
     );

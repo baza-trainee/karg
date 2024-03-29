@@ -10,6 +10,7 @@ import deskImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img
 import NeedInfo from "@/components/common/NeedInfo/needInfo";
 import Rules from "./rules/rules";
 import RescueTypes from "@/components/RescueTypes/RescueTypes";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import variables from "@/app/[locale]/variables.module.scss";
 
 const i18nNamespaces = ['rulesOfAppeal', 'common'];
@@ -57,6 +58,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                     buttonCaption={buttonCaption}
                 />
             </main>
+            <ScrollToTop/>
             <Footer />
         </TranslationsProvider >
     );
