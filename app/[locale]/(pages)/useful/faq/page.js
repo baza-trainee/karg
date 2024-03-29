@@ -1,7 +1,7 @@
-"use client";
+// "use client";
 import styles from "./faq.module.scss";
 
-import { useState, useEffect } from "react";
+// import { useState, useEffect } from "react";
 
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";

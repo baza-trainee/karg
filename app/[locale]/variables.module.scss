@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import "./colors.scss";
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -55,7 +55,7 @@
   @include font-styles(500, 16px);
 }
 
-.supportText4, 
+.supportText4,
 .text4 {
   @include font-styles(300, 16px);
 }
@@ -73,6 +73,38 @@
 .body {
   @include font-styles(300, 16px);
   letter-spacing: 0%;
+}
+
+.font32w700 {
+   @include font-styles(700, 32px);
+}
+
+.font24w700 {
+  @include font-styles(700, 24px);
+}
+
+.font24w400 {
+  @include font-styles(400, 24px);
+}
+
+.font20w400 {
+  @include font-styles(400, 20px);
+}
+
+.font18w500 {
+  @include font-styles(500, 18px);
+}
+
+.font16w300 {
+  @include font-styles(300, 16px);
+}
+
+.font14w400 {
+  @include font-styles(400, 14px);
+}
+
+.font20w700 {
+  @include font-styles(700, 20px);
 }
 
 // Typography for tablet
@@ -136,7 +168,7 @@
   }
 
   .text4 {
-     @include font-styles(300, 20px);
+    @include font-styles(300, 20px);
   }
 }
 
