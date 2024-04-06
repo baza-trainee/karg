@@ -10,6 +10,7 @@ import Achievements from "@/components/Achievements/Achievements";
 import RescueTypes from "@/components/RescueTypes/RescueTypes";
 import Help from "@/components/Help/help-section";
 import Support from "@/components/Support/Support";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 const i18nNamespaces = ['main', 'common'];
 
 export default async function Home({ params: { locale } }) {
@@ -36,6 +37,7 @@ export default async function Home({ params: { locale } }) {
         <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} />
         <Help />
         <Support locale={locale} namespaces={i18nNamespaces} />
+        <ScrollToTop/>
         <Footer />
       </div>
     </TranslationsProvider>

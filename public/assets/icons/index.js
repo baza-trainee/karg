@@ -26,3 +26,5 @@ export { default as ShevronDown } from "./filter/arrow-down.svg";
 export { default as CreateIcon } from "./filter/create.svg";
 export { default as TrashIcon } from "./filter/trash.svg";
 export { default as ArrowUp } from "./arrowUp.svg";
+export { default as ScrollArrowMob } from "./scroll_arrow_mob.svg";
+export { default as ScrollArrowDesk } from "./scroll_arrow_desk.svg";
