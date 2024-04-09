@@ -1,0 +1,12 @@
+@import "../../../../variables.module.scss";
+.container {
+  display: flex;
+  justify-content: space-between;
+  background-color: $bg-lightgray;
+  width: 100%;
+  & .column {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+}
