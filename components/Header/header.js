@@ -160,7 +160,7 @@ const Header = () => {
                   {openSecond ? (
                     <ul className={styles.navMenuInnerList}>
                       <li>
-                        <Link href="/useful">{t('common:linkAdvices')}</Link>
+                        <Link href="/useful/advices">{t('common:linkAdvices')}</Link>
                       </li>
                       <li>
                         <Link href="/useful/faq">FAQ</Link>

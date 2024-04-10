@@ -1,16 +1,25 @@
+"use client";
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { SearchIcon } from '@/public/assets/icons';
 import styles from "./styles/search.module.scss";
+ 
+const Search = () => {
 
-export default function Search() {
+  const { t } = useTranslation();
+  
   return (
-    <div className={styles.container}>
-        <input 
-            type='text'
-            placeholder='Пошук'
-            className={styles.search}
-        />
-        <SearchIcon className={styles.icon}/>
-    </div>
+    <main>
+      <div className={styles.container}>
+         <input 
+             type='text'
+             placeholder={t('advices:inputPlaceholder')}
+             className={styles.input}
+         />
+         <SearchIcon className={styles.icon}/>
+     </div>
+    </main>
   )
 }
+
+export default Search;
