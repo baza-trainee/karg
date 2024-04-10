@@ -17,8 +17,9 @@ import {
 } from "@/public/assets/images/useful/faq";
 import { FaqItem } from "@/components/FaqItem/faq-item";
 import initialFaq from "@/public/qa";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
-const buttonText = "faq";
+const buttonText = "FAQ";
 const altText = "bats sit on a branch";
 
 const i18nNamespaces = ["home", "common"];
@@ -68,6 +69,7 @@ const Faq = async ({ params: { locale } }) => {
           ))}
         </ul>
       </main>
+      <ScrollToTop/>
       <Footer />
     </TranslationsProvider>
   );

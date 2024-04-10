@@ -7,6 +7,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from "@/components/common/PageHero/pageHero";
 import SocialIcons from "@/components/SocialIcons/socialIcons";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 import Image from "next/image";
 import {
@@ -176,6 +177,7 @@ const Contacts = async ({ params: { locale } }) => {
           </div>
         </section>
       </main>
+      <ScrollToTop/>
       <Footer />
     </TranslationsProvider>
   );

@@ -6,6 +6,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import Image from "next/image";
 import {
   historyHeroMob,
@@ -29,7 +30,6 @@ import NeedInfo from "@/components/common/NeedInfo/needInfo";
 
 const i18nNamespaces = ["historyOfOrigin", "common"];
 
-
 const historyOfOrigin = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
@@ -48,14 +48,14 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           mobImage={historyHeroMob.src}
           tablImage={historyHeroTab.src}
           deskImage={historyHeroDesk.src}
-          buttonText={t('pageHeroButtonText')}
+          buttonText={t("pageHeroButtonText")}
           altText={altText}
         />
         <div className={styles.container}>
-          <h3 className={styles.historyTitle}>{t('historyOfOriginTitle')}</h3>
+          <h3 className={styles.historyTitle}>{t("historyOfOriginTitle")}</h3>
           <div className={`${styles.historyText} ${styles.historyTextTop}`}>
-            <p>{t('historyOfOriginTextFirstPart')}</p>
-            <p>{t('historyOfOriginTextSecondPart')}</p>
+            <p>{t("historyOfOriginTextFirstPart")}</p>
+            <p>{t("historyOfOriginTextSecondPart")}</p>
           </div>
           <div className={`${styles.imgOuterWrap} ${styles.imgOuterWrapTop}`}>
             <Image
@@ -163,7 +163,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
             </div>
           </div>
           <p className={`${styles.historyText} ${styles.historyTextBottom}`}>
-          {t('historyOfOriginTextThirdPart')}
+            {t("historyOfOriginTextThirdPart")}
           </p>
           <div
             className={`${styles.imgOuterWrap} ${styles.imgOuterWrapBottom}`}
@@ -205,17 +205,18 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           <div className={styles.btnWrap}>
             <ButtonAsLink
               route="/about/our_team"
-              buttonCaption={t('historyOfOriginButtonText')}
+              buttonCaption={t("historyOfOriginButtonText")}
               buttonStyle="rescue"
             />
           </div>
         </div>
         <NeedInfo
-          title={t('needInfoTitle')}
-          subtitle={t('needInfoSubtitle')}
-          buttonCaption={t('needInfoButtonCaption')}
+          title={t("needInfoTitle")}
+          subtitle={t("needInfoSubtitle")}
+          buttonCaption={t("needInfoButtonCaption")}
           route={route}
         />
+        <ScrollToTop/>
         <Footer />
       </div>
     </TranslationsProvider>
