@@ -13,6 +13,7 @@ import mobImage from "@/public/assets/images/useful/advices/adviceItem/adviceCar
 import tabImage from "@/public/assets/images/useful/advices/adviceItem/adviceCardExample-tab.jpg";
 import deskImage from "@/public/assets/images/useful/advices/adviceItem/adviceCardExample-desk.jpg";
 import SocialIcons from "@/components/SocialIcons/socialIcons";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 
 const i18nNamespaces = ["advices", "common"];
@@ -187,6 +188,7 @@ const ItemAdvice = async({params:{locale, id}}) => {
                   </div>
             </div>            
         </main>
+        <ScrollToTop/>
         <Footer />
     </TranslationsProvider>
     );
