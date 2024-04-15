@@ -68,7 +68,7 @@
         min-width: 288px;
         min-height: 132px;
         border-radius: 4px;
-        padding-right: 16px;
+        padding: 16px 16px 16px 20px;
         
 
         @media screen and (min-width: 768px) {
@@ -80,7 +80,7 @@
             min-width: 250px;
             height: 145px;
             border-radius: 20px;
-            padding-right:0;
+            padding: 16px 24px 16px 20px;
         }
         @media screen and (min-width:1440px) {
             max-width: 100%;
@@ -92,7 +92,7 @@
                     flex-direction: column;
                     justify-content: space-between;
                     gap: 7px;
-                    max-width: 182px;
+                    min-width: 182px;
                     color: $text-white;
 
                     @media screen and (min-width: 768px) {
