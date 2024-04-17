@@ -1,12 +1,16 @@
+'use client'
+
 import React from 'react';
-import Main from '../../../../components/Dashboard/Main/Main';
+import Main from './Main/Main';
+import { AdminProvider } from '@/app/adminProvider';
 
-export default function DashboardPage({children}) {
+export default function DashboardPage({ children }) {
   return (
-    <div>
-        <Main/>
-
+    <AdminProvider>
+      <div>
+        <Main />
         {children}
-    </div>
+      </div>
+    </AdminProvider>
   )
 }

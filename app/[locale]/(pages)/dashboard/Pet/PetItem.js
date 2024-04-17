@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
-import styles from "./styles/filter.module.scss";
+import styles from "./styles/petList.module.scss";
 
-export default function FilterItem(
+export default function PetItem(
 {
     containerStyle,
     photoStyle,
@@ -36,7 +36,7 @@ export default function FilterItem(
     </div>
   )
 }
-FilterItem.propTypes = {
+PetItem.propTypes = {
     containerStyle: PropTypes.string,
     photoStyle: PropTypes.string,
     photoSrc: PropTypes.object,
