@@ -1,6 +1,6 @@
 export { default as Phill } from "./Phill.jpg";
 export { default as Snowball } from "./Snowball.jpg";
-export { default as Paspurtu } from "./Paspurtu.jpg";
+export { default as Paspertu } from "./Paspertu.jpg";
 export { default as Oblina } from "./Oblina.jpg";
 export { default as Mirtl } from "./Mirtl.jpg";
 export { default as Lada } from "./Lada.jpg";

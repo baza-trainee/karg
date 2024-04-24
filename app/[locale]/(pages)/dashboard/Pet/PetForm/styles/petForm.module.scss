@@ -1,0 +1,77 @@
+@import "/app/[locale]/colors.scss";
+@import "/app/[locale]/variables.module.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 950px;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: $bg-white;
+  color: $text-dark;
+  margin: auto;
+
+  .title {
+    color: $button-default;
+    text-align: center;
+  }
+
+  .languageSwitcher {
+    display: flex;
+    gap: 30px;
+    background-color: rgba(77, 57, 111, 0.04);
+    border-radius: 10px;
+
+    & button {
+      width: 50%;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .selectedLanguage {
+      border-bottom: 2px solid $button-default;
+    }
+  }
+
+  .languageSwitcher.ua {
+    border-radius: 10px 10px 10px 0px;
+  }
+
+  .languageSwitcher.en {
+    border-radius: 10px 10px 0px 10px;
+  }
+
+  input {
+    min-height: 48px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid $text-dark;
+  }
+
+  .inputBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .categoryFieldInput {
+    padding: 12px 16px 12px 8px;
+  }
+
+  .uploadArea {
+    width: 100%;
+    border-radius: 8px;
+
+    .placeholderImage {
+      width: 920px;
+      min-height: 282px;
+    }
+  }
+
+  .buttonGroup {
+    display: flex;
+    gap: 30px;
+  }
+}

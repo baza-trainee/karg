@@ -10,6 +10,7 @@ export { default as HandshakeIcon } from "./quick-menu/handshake.svg";
 export { default as PawprintIcon } from "./quick-menu/pawfootprint.svg";
 export { default as ReportIcon } from "./quick-menu/report.svg";
 export { default as ArrowRightIcon } from "./quick-menu/arrow_right.svg";
+export { default as ArrowLeft } from "./arrow-left.svg";
 export { default as ArrowRight } from "./arrow-right.svg";
 export { default as DetailsClose } from "./close-details.svg";
 export { default as EmailIcon } from "./footer/email_icon.svg";
@@ -28,3 +29,5 @@ export { default as TrashIcon } from "./filter/trash.svg";
 export { default as ArrowUp } from "./arrowUp.svg";
 export { default as ScrollArrowMob } from "./scroll_arrow_mob.svg";
 export { default as ScrollArrowDesk } from "./scroll_arrow_desk.svg";
+export { default as PlusPlaceholderImage } from "./plus_placeholder_image.svg";
+

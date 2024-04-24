@@ -1,11 +1,10 @@
 'use client'
 
 import React, { useContext } from 'react';
-import Header from '../Header/Header';
 import styles from "./styles/main.module.scss";
 import Aside from '../Aside/Aside';
 import Navbar from '../Navbar/Navbar';
-import PetList from '../Pet/PetList';
+import PetList from '../Pet/PetList/PetList';
 import { AdminContext } from '@/app/adminProvider';
 import PartnerList from '../Partner/PartnerList';
 
@@ -37,7 +36,6 @@ export default function Main() {
     <div className={styles.container}>
       <Aside />
       <div className={styles.column}>
-        <Header />
         <Navbar />
         {renderSection()}
       </div>
