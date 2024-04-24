@@ -1,0 +1,1 @@
+export { default as ourAnimalsImage } from "./ourAnimals.png";

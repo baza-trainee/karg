@@ -8,7 +8,7 @@ const nextConfig = {
         return config;
     },
     images: {
-        domains: ['iili.io'],
+        domains: ['iili.io', 'encrypted-tbn0.gstatic.com'],
     }
 };
 
