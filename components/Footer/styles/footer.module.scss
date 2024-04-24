@@ -46,17 +46,28 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-
   p,
   a {
-    transition: color 0.4s ease-in-out;
     color: #fff;
     cursor: pointer;
   }
 
-  p:hover,
-  a:hover {
-    color: $button-default;
+  @media (hover: none) {
+    p:active,
+    a:active {
+      color: $button-default;
+    }
+  }
+
+  @media (hover: hover) {
+    p,
+    a {
+      transition: color 0.4s ease-in-out;
+    }
+    p:hover,
+    a:hover {
+      color: $button-default;
+    }
   }
 }
 
@@ -175,7 +186,7 @@
     gap: 24px;
     position: relative;
     border-left: 2px solid $button-default;
-    padding-left: 60%;
+    // padding-left: 60%;
 
     & ul {
       flex-direction: column;
@@ -183,6 +194,20 @@
       justify-content: center;
       text-align: center;
       gap: 24px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      min-width: 150px;
+      padding-left: 30%;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding-left: 45%;
+    }
+
+    @media screen and (min-width: 1600px) {
+      padding-left: 60%;
+      min-width: 200px;
     }
   }
 

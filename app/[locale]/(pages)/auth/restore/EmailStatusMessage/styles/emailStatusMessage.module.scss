@@ -1,0 +1,51 @@
+@import "../../../../../colors.scss";
+
+.container {
+  width: 100%;
+  padding-top: 14.5vh;
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  gap: 32px;
+  background-color: $button-dark-default;
+  align-items: center;
+
+  @media screen and (min-width: 1440px) {
+    padding: 140px 458px 0;
+  }
+
+  .desk {
+    width: 524px;
+    background-color: $bg-white;
+    border-radius: 12px;
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+    color: $text-dark;
+    text-align: center;
+    letter-spacing: 1.2px;
+    box-shadow: 2px 4px 10px 0px rgba(1, 1, 1, 0.2);
+
+    .button {
+      width: 460px;
+      padding: 11px 12px;
+      border-radius: 8px;
+      background-color: $button-default;
+      color: $text-white;
+
+      &:hover {
+        background-color: $button-hover;
+      }
+      
+      &:active {
+        background-color: $button-active;
+      }
+    }
+  }
+}
+
+.logo {
+  font-size: 158px;
+}

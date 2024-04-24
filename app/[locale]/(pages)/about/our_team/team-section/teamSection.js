@@ -2,16 +2,19 @@ import Image from "next/image";
 import teamImages from "@/public/assets/images/about/ourTeam-page/images";
 import styles from "../team-section/styles/teamSection.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
+import initTranslations from "../../../../../i18n";
 
-const TeamSection = () => {
+const TeamSection = async ({ locale, namespaces }) => {
+    const { t } = await initTranslations(locale, namespaces);
+
     return (
         <section>
             <div className={styles.container}>
                 <div className={styles.introduction}>
-                    <h3 className={variables.Subtitle2}>Наша команда</h3>
+                    <h3 className={variables.Subtitle2}>{t('subtitle')}</h3>
                     <div className={styles.foundersQuote}>
-                        <p className={`${styles.quote} ${variables.subtitle2}`}>— Ми команда небайдужих добровольців, рятуємо тварин, які потрапили в халепу.</p>
-                        <p className={`${styles.signature} ${variables.text3}`}>засновники KARG Михайло та Любов</p>
+                        <p className={`${styles.quote} ${variables.subtitle2}`}>{t('quote')}</p>
+                        <p className={`${styles.signature} ${variables.text3}`}>{t('signature')}</p>
                     </div>
                     <div className={styles.singleImageContainer}>
                         <Image
@@ -48,18 +51,13 @@ const TeamSection = () => {
                 </div>
                 <div className={`${styles.teamEquipmentText} ${variables.text4}`}>
                     <p>
-                        У її розпорядженні KARG - чотири рятувальні автомобілі та один пожежний, а сама команда
-                        нараховує понад двадцять людей - рятувальники, водії , диспетчери, програміст, інженер-механік,
-                        завідувач гаражу, бухгалтер, юрист-консультант.
+                        {t('teamEquipmentTextFirstPar')}
                     </p>
                     <p>
-                        Учасники команди або професійні альпіністи, або спелеологи (дослідники печер),або ж дигери
-                        (дослідники підземних сполучень), тому можуть дістати тваринок фактично з будь-якого місця.
+                        {t('teamEquipmentTextSecondPar')}
                     </p>
                     <p>
-                        Крім того є у розпорядженні моторний човен та обладнання для роботи на воді.
-                        У випадку лісових пожеж команда використовує пожежну машину для ліквідації лісових загорянь
-                        та групу з 10 волонтерів, які не є рятувальниками команди.
+                        {t('teamEquipmentTextThirdPar')}
                     </p>
                 </div>
                 <div className={styles.twoImagesContainer}>
@@ -125,13 +123,7 @@ const TeamSection = () => {
                     />
                 </div>
                 <p className={`${styles.volontiersText} ${variables.text4}`}>
-                    Дотепер лави Команди порятунку час від часу поповнюються новими волонтерами.
-                    Щоби стати рятувальником KARG, треба пройти стажування. Але багато людей долучаються
-                    до команди на короткий термін, а згодом йдуть і більше не повертаються. В організації
-                    бували й складні періоди, коли одна людина могла виконувати кілька ролей одночасно і
-                    брати 4-5 змін поспіль. Попри це, за весь час Команда порятунку жодного разу не
-                    призупиняла роботу. А волонтери, яким вдається протриматися в організації більше місяця,
-                    залишаються тут надовго.
+                    {t('volontiersText')}
                 </p>
                 <div className={styles.treeImagesContainer}>
                     <Image
@@ -225,11 +217,9 @@ const TeamSection = () => {
                         }}
                     />
                 </div>
-                <p className={`${styles.donatesText} ${variables.text4}`}>Дзвінків зі зверненнями про допомогу щодня
-                більше, а кількість оплачуваних виїздів не росте: лише третина заявників готові платити за роботу.
-                Стабільних фінансових надходжень отримувати немає можливості. Тому рятувальники завжди раді
-                благодійникам, за допомогою яких шанс на життя отримає більше тваринок.
-            </p>
+                <p className={`${styles.donatesText} ${variables.text4}`}>
+                    {t('donatesText')}
+                </p>
             </div>
         </section>
     );

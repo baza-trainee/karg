@@ -1,0 +1,107 @@
+@import "../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 14.58vh;
+  min-height: 100vh;
+  align-items: center;
+  background-color: $button-dark-default;
+  gap: 32px;
+
+  @media screen and (min-width: 1440px) {
+    padding: 140px 458px 0;
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 524px;
+  height: fit-content;
+  background-color: $bg-white;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px 0px rgba(1, 1, 1, 0.2);
+  padding: 32px;
+  gap: 12px;
+
+  & label {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $text-dark;
+    & input {
+      padding: 12px 8px 13px;
+      border-radius: 8px;
+      box-sizing: border-box;
+      max-height: 48px;
+      &::placeholder {
+        color: $text-gray;
+      }
+      &:focus {
+        outline: none;
+        border: 1px solid $button-active;
+      }
+    }
+    & .errorBorder {
+      outline: none;
+      border: 1px solid $text-error;
+    }
+    & .ordinaryBorder {
+      outline: none;
+      border: 1px solid $text-dark;
+    }
+  }
+  .error {
+    color: $text-error;
+  }
+
+  .email {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    color: $text-dark;
+  }
+}
+
+.logo {
+  font-size: 158px;
+}
+
+.buttonSend {
+  background-color: $button-default;
+  color: $text-dark;
+  padding: 11px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-active;
+    color: $text-white;
+  }
+}
+
+.buttonSendDesabled {
+  background-color: $button-disabled;
+  color: $text-gray;
+  padding: 11px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+}
+
+.goToLogin {
+  padding: 11px;
+  border-radius: 8px; 
+  max-height: 48px;
+  cursor: pointer;
+  outline: none;
+  background-color: $bg-white;
+  color: $button-dark-default;
+  border: 1px solid $button-dark-default;
+}

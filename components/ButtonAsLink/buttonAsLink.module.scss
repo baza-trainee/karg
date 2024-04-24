@@ -1,5 +1,5 @@
-@import '../../app/[locale]/colors.scss';
-@import '@/app/[locale]/variables.module.scss';
+@import "../../app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
 
 @mixin button-style() {
   display: flex;
@@ -58,7 +58,8 @@
 }
 
 .button-quick-menu {
-  @extend .button-help;
+  @include button-help-style;
+  min-width: 288px;
   &:active {
     color: $text-white;
     background-color: $button-active;
@@ -71,18 +72,18 @@
   background-color: $button-default;
   color: #141414;
   grid-area: button;
-  
+
   &:active {
     background-color: $button-active;
   }
 }
 
 .button-support-donate-block {
-   @include button-help-style;
-   @extend .button-help;
+  @include button-help-style;
+  min-width: 288px;
 }
 
-.button-add-new-pet {
+.button-add-new-item {
   cursor: pointer;
   min-width: 256px;
   height: 48px;
@@ -112,6 +113,7 @@
 
   .button-help-main-page,
   .button-help {
+    min-width: 370px;
     padding: 13px 12px;
   }
   .button-quick-menu {
@@ -172,6 +174,7 @@
 
 @media screen and (min-width: 768px) {
   .rescue {
+    min-height: 44px;
     padding: 9px 12px;
   }
 }

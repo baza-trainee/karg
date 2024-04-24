@@ -48,6 +48,7 @@
   .rulePaymentConditions,
   .ruleAnimalRescue {
     @include ruleStyle($bg-purple, 14.2em, 16px);
+    border-radius: 4px;
   }
 
   .ruleImage {
@@ -55,7 +56,7 @@
     min-height: 220px;
     object-fit: cover;
     object-position: center;
-    border-radius: 8px;
+    border-radius: 4px;
   }
 
   .ruleDescription {
@@ -91,6 +92,7 @@
       grid-column: 2;
       grid-row: 1/4;
       min-height: 387px;
+      border-radius: 8px;
     }
 
     .ruleDescription {
@@ -122,6 +124,7 @@
 
     .ruleImage {
       min-height: 696px;
+      border-radius: 8px;
     }
 
     .ruleAvailability,

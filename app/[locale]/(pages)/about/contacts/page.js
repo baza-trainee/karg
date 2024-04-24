@@ -7,6 +7,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from "@/components/common/PageHero/pageHero";
 import SocialIcons from "@/components/SocialIcons/socialIcons";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 import Image from "next/image";
 import {
@@ -24,40 +25,7 @@ import {
   ClockIconContacts,
 } from "@/public/assets/icons/index";
 
-const i18nNamespaces = ["home", "common"];
-
-const contactsData = [
-  {
-    id: 1,
-    icon: <PhoneIconContacts className={styles.contactSvg} />,
-    title: "Контактний телефон",
-    data: ["+38 (093) 986-2262", "+38 (098) 844-7937"],
-    href: ["tel:+380939862262", "tel:+380988447937"],
-  },
-  {
-    id: 2,
-    icon: <ClockIconContacts className={styles.contactSvg} />,
-    title: "Графік роботи",
-    data: [
-      "Екстренні",
-      "виклики",
-      "(із",
-      "загрозою",
-      "для",
-      "життя",
-      "тварини)",
-      "приймаються",
-      "цілодобово.",
-    ],
-  },
-  {
-    id: 3,
-    icon: <EnvelopeIconContacts className={styles.contactSvg} />,
-    title: "Електронна пошта",
-    data: "karg.inform@gmail.com",
-    href: "mailto:karg.inform@gmail.com",
-  },
-];
+const i18nNamespaces = ["contacts", "common"];
 
 const ContactItem = ({ id, icon, title, data, href }) => {
   return (
@@ -103,6 +71,39 @@ const ContactItem = ({ id, icon, title, data, href }) => {
 const Contacts = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
+  const contactsData = [
+    {
+      id: 1,
+      icon: <PhoneIconContacts className={styles.contactSvg} />,
+      title: t('titleId1'),
+      data: ["+38 (093) 986-2262", "+38 (098) 844-7937"],
+      href: ["tel:+380939862262", "tel:+380988447937"],
+    },
+    {
+      id: 2,
+      icon: <ClockIconContacts className={styles.contactSvg} />,
+      title: t('titleId2'),
+      data: [
+        t('dataId2Row0'),
+        t('dataId2Row1'),
+        t('dataId2Row2'),
+        t('dataId2Row3'),
+        t('dataId2Row4'),
+        t('dataId2Row5'),
+        t('dataId2Row6'),
+        t('dataId2Row7'),
+        t('dataId2Row8'),
+      ],
+    },
+    {
+      id: 3,
+      icon: <EnvelopeIconContacts className={styles.contactSvg} />,
+      title: t('titleId3'),
+      data: "karg.inform@gmail.com",
+      href: "mailto:karg.inform@gmail.com",
+    },
+  ];
+
   const altText = "Squirrel sit on a tree";
   const buttonText = "Контакти";
 
@@ -118,11 +119,11 @@ const Contacts = async ({ params: { locale } }) => {
           mobImage={contactsHeroMob.src}
           tablImage={contactsHeroTab.src}
           deskImage={contactsHeroDesk.src}
-          buttonText={buttonText}
+          buttonText={t('pageHeroButtonText')}
           altText={altText}
         />
         <section className={styles.contacts}>
-          <h3 className={styles.contactsTitle}>Як нас знайти</h3>
+          <h3 className={styles.contactsTitle}>{t('contactsTitle')}</h3>
           <div className={styles.contactsContainer}>
             <div className={styles.contactsWrap}>
               <ul className={styles.contactsList}>
@@ -167,7 +168,7 @@ const Contacts = async ({ params: { locale } }) => {
                   }}
                 />
                 <div className={styles.contactsSoc}>
-                  <h4 className={styles.contactSocTitle}>Соціальні мережі</h4>
+                  <h4 className={styles.contactSocTitle}>{t('socialNetworksText')}</h4>
 
                   <SocialIcons className={styles.iconsContacts} />
                 </div>
@@ -176,6 +177,7 @@ const Contacts = async ({ params: { locale } }) => {
           </div>
         </section>
       </main>
+      <ScrollToTop/>
       <Footer />
     </TranslationsProvider>
   );

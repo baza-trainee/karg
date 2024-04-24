@@ -9,13 +9,15 @@ import deskImage from "@/public/assets/images/about/ourTeam-page/team-hero-img-d
 import TeamSection from "./team-section/teamSection";
 import Donation from "./donation-block/donation";
 import Partners from "./partners/partners";
-const i18nNamespaces = ['team', 'common'];
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
+
+const i18nNamespaces = ['ourTeam', 'common'];
 
 const OurTeam = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
     const altText = "rescuer holding a cat";
-    const buttonText = "Наша команда";
+    const buttonText = t('pseudoButtonText');
 
     return (
         <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
@@ -27,10 +29,11 @@ const OurTeam = async ({ params: { locale } }) => {
                     deskImage={deskImage.src}
                     buttonText={buttonText}
                     altText={altText} />
-                <TeamSection />
-                <Donation />
+                <TeamSection locale={locale} namespaces={i18nNamespaces} />
+                <Donation locale={locale} namespaces={i18nNamespaces} />
                 <Partners />
             </main>
+            <ScrollToTop/>
             <Footer />
         </TranslationsProvider >
     );
