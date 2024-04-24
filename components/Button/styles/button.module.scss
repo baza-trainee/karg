@@ -74,3 +74,35 @@
     }
   }
 }
+
+.adminFormButtonReject,
+.adminFormButtonSubmit {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+}
+.adminFormButtonSubmit {
+  background: $button-default;
+  &:hover {
+    background-color: $button-hover;
+  }
+
+  &:active {
+    background-color: $button-active;
+  }
+}
+.adminFormButtonReject {
+  border: 1px solid $button-dark-default;
+  background: none;
+}
+
+.buttonAddNewItem {
+  cursor: pointer;
+  min-width: 256px;
+  height: 48px;
+  padding: 11px 12px 11px 12px;
+  background-color: $button-dark-default;
+  border-radius: 8px;
+  color: $text-white;
+}
+

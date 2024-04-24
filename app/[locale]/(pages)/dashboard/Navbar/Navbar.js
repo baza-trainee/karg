@@ -1,53 +1,57 @@
 import React, { useContext } from 'react';
-import ButtonAsLink from '@/components/ButtonAsLink/buttonAsLink';
+import Button from '@/components/Button/button';
 import styles from "./styles/navbar.module.scss";
+import stylesBtn from "../../../../../components/Button/styles/button.module.scss"
 import { AdminContext } from '@/app/adminProvider';
+import PetForm from '../Pet/PetForm/PetForm';
+import ModalContext from '@/app/ModalContext';
 
 export default function Navbar() {
   const { activeSection } = useContext(AdminContext);
+  const { showModal } = useContext(ModalContext);
+
   const buttonData = {
     'Контакти': {
       caption: "Додати контакт",
-      style: "button-add-new-item",
-      route: "/add_new_contact"
+      genericModalContent: ""
     },
     'Тварини': {
       caption: "Додати тварину",
-      style: "button-add-new-item",
-      route: "/add_new_pet"
+      genericModalContent: PetForm
     },
     'Партнери': {
       caption: "Додати партнера",
-      style: "button-add-new-item",
-      route: "/add_new_partner"
+      genericModalContent: ""
     },
     'Поради': {
       caption: "Додати статтю",
-      style: "button-add-new-item",
-      route: "/add_new_article"
+      genericModalContent: ""
     },
     'FAQ': {
       caption: "Додати питання",
-      style: "button-add-new-item",
-      route: "/add_new_question"
+      genericModalContent: ""
     },
     'Підсумки': {
       caption: "Додати статтю",
-      style: "button-add-new-item",
-      route: "/add_new_result"
+      genericModalContent: ""
     },
   }
 
-  const { caption, style, route } = buttonData[activeSection] || buttonData['Тварини'];
+  const { caption, genericModalContent } = buttonData[activeSection] || buttonData['Тварини'];
+
+  const handleButtonClick = () => {
+    showModal('generic', genericModalContent);
+  };
 
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      <ButtonAsLink
-        buttonCaption={caption}
-        buttonStyle={style}
-        route={route}
-      />
+      <Button
+        className={stylesBtn.buttonAddNewItem}
+        onClick={handleButtonClick}
+      >
+        {caption}
+      </Button>
     </div>
   )
 }

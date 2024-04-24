@@ -22,7 +22,6 @@ export default function Search({ setSearchTerm }) {
 
   function onSearch(searchQuery) {
     setSearchTerm(searchQuery);
-    console.log('setSearchTerm: ' + searchQuery);
   }
 
   return (

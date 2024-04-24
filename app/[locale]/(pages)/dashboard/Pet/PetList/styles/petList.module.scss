@@ -1,0 +1,83 @@
+@import "../../../../../variables.module.scss";
+@import "../../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 48px 8px 48px;
+  flex-direction: column;
+  align-items: center;
+  background-color: $bg-lightgray;
+  gap: 8px;
+  color: $text-dark;
+
+  .petTitle {
+    display: flex;
+    gap: 24px;
+    padding: 6px 16px;
+    padding-top: 16px;
+   
+    .photo {
+      width: 92px;
+    }
+
+    .detailsTitle {
+      width: 176px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+  }
+
+  .petLine {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 16px;
+    height: 124px;
+    overflow: hidden;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+  }
+  
+  & .photo {
+    width: 92px;
+    max-height: 92px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  & .basicInfo {
+    width: 120px;
+  }
+
+  & .detailsInfo {
+    max-height: 26px;
+    width: 269px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & .detailsInfoBlock {
+    width: 269px;
+  }
+
+  .iconsContainer {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+  }
+
+  & .create_icon {
+    cursor: pointer;
+    font-size: 32px;
+  }
+  
+  & .trash_icon {
+    cursor: pointer;
+    font-size: 32px;
+  }
+}
