@@ -13,8 +13,6 @@ import PageHero from '@/components/common/PageHero/pageHero';
 // images
 import { ourAnimalsImage } from '@/public/assets/images/animals';
 
-import CardChakra from '@/components/CardChakra/CardChakra';
-
 const i18nNamespaces = ['home', 'common'];
 
 const data = [{ id: 1, catName: "Біляш", description: "Неймовіно красивий кіт Біляшик ще зовсім юний. Охоче грається, але інколи може булити інших котів. Територіальні війни, як ніяк. Біляш надзвичайно ласкавий, тому регулярна кототерапія вам забезпечена. Котик дуже любить ...", rescueHistory: "В липні 2023 р. наш рятувальник, повертаючись після зміни додому, побачив кота на дорозі та не зміг проїхати повз. У клініці в Біляша виявили травму кульшової кістки та забиття печінки. Зараз кіт повністю здоровий, кастрований та привчений до лотка.", image: { url: "https://iili.io/JEDPWwF.md.jpg", alt: "A cat" }, images: [{ url: "https://iili.io/JEDPWwF.md.jpg", alt: "A cat" }, { url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSsbpHmCoksK8ZUDlh8FBQpX9BmWhz5m7wV85SzpGa0IK5Fi6_o2iMkWTfWbA&s", alt: "A cat" }, { url: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ-f7HclUKR6x_JPSNVanC4aF7CcsCOLf3nm5AMMhvwP_ezMYRnwq6e8u9S3w&s", alt: "A cat" }] },
