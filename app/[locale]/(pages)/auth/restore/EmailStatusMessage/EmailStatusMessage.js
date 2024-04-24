@@ -17,11 +17,6 @@ function EmailStatusMessage({ emailStatus, handleResend, handleReturnToRestore }
         buttonText: 'Спробувати ще раз'
     }
 
-    // const titlesFailure = {
-    //     title: 'Лист не надіслано',
-    //     text: 'Надана електронна пошта не зареєстрована',
-    //     buttonText: 'Спробувати ще раз'
-    // }
     let titles;
     if (emailStatus === 'success') {
         titles = titlesSuccess;

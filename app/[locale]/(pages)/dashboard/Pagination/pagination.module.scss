@@ -1,0 +1,61 @@
+@import "../../../colors.scss";
+
+.paginationContainer {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.navigationContainer {
+  padding: 10px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+
+  .arrowIcon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .disabled {
+    fill: $button-dark-disabled;
+  }
+}
+
+.navigationButton {
+  font-size: 18px;
+  font-weight: 800;
+  color: $primary;
+
+  &:disabled {
+    cursor: default;
+    color: $button-dark-disabled;
+  }
+}
+
+.pageButtonContainer {
+  display: flex;
+  gap: 16px;
+  padding: 0 8px;
+}
+
+.pageButton {
+  font-size: 28px;
+  font-weight: 500;
+  color: $primary;
+  padding: 0 8px;
+}
+
+.currentPage {
+  color: $button-active;
+  font-size: 28px;
+  font-weight: 700;
+  padding: 0 8px;
+  cursor: default;
+}
+
+.ellipsis {
+  font-size: 28px;
+  font-weight: 500;
+  color: $primary;
+}

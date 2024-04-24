@@ -83,16 +83,6 @@
   min-width: 288px;
 }
 
-.button-add-new-pet {
-  cursor: pointer;
-  min-width: 256px;
-  height: 48px;
-  padding: 11px 12px 11px 12px;
-  background-color: $button-dark-default;
-  border-radius: 8px;
-  color: $text-white;
-}
-
 @media screen and (min-width: 768px) {
   .button-help-main-page,
   .button-help,

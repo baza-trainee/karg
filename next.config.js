@@ -6,6 +6,9 @@ const nextConfig = {
             use: [{ loader: '@svgr/webpack', options: { icon: true } }],
         });
         return config;
+    },
+    images: {
+        domains: ['iili.io', 'encrypted-tbn0.gstatic.com'],
     }
 };
 

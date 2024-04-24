@@ -1,0 +1,376 @@
+@import '../../app/[locale]/colors.scss';
+
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  width: 100%;
+
+  .cardContainer {
+    display: grid;
+    grid-template-columns: 0.1fr 1fr;
+    .cardImage {
+      grid-column: 2;
+      width: 100%;
+    }
+
+    .cardName {
+      grid-column: 2;
+      grid-row: 2;
+      transform: translate(-20px, -40px);
+      padding: 25px 49px;
+      width: 230px;
+      overflow: hidden;
+      text-wrap: nowrap;
+      height: 74px;
+      color: #fff;
+      background-color: $button-dark-default;
+      text-align: center;
+      border-radius: 4px;
+      z-index: 1;
+    }
+
+    .contentHolder {
+      grid-column: 2;
+      grid-row: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 16px 8px 16px;
+      gap: 8px;
+      background-color: $bg-purple;
+      border-radius: 4px;
+      overflow: hidden;
+
+      .cardDesc {
+        color: $text-dark;
+        border-radius: 4px 4px 0 0;
+        margin-bottom: 10px;
+      }
+
+      .cardButton {
+        background-color: $button-dark-default;
+        color: #fff;
+        width: 100%;
+        padding: 10.5px 12px;
+        border-radius: 0 0 4px 4px;
+      }
+
+      .cardLink {
+        font-weight: 800;
+        align-self: flex-end;
+        margin-top: auto;
+      }
+    }
+  }
+
+  .modalContentContainer {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    width: 100vw;
+    height: 100dvh;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    z-index: 1000;
+    overscroll-behavior-y: none;
+  }
+
+  .modalContainer {
+    position: relative;
+    left: 0;
+    width: 100%;
+    // transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    flex-direction: column;
+
+    .imageContainer {
+      position: relative;
+      background-color: #ead3b9;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      // gap: 30px;
+
+      .leftIcon {
+        font-size: 24px;
+        margin: 10px;
+        color: #6b5199;
+      }
+
+      .rightIcon {
+        font-size: 24px;
+        margin: 10px;
+        color: #6b5199;
+      }
+
+      .closeButtonContainer {
+        position: absolute;
+        width: 60px;
+        height: 64px;
+        top: 0;
+        right: 0;
+        padding: 16px 14px;
+      }
+
+      .closeButton {
+        font-size: 32px;
+        color: #6b5199;
+      }
+    }
+
+    .innerModalContainer {
+      background: white;
+      padding: 20px;
+      border-radius: 4px;
+      max-width: 500px;
+      width: 100%;
+      display: grid;
+      place-items: center;
+      gap: 8px;
+
+      & h2 {
+        color: $button-default;
+        justify-self: flex-start;
+      }
+
+      & h3 {
+        justify-self: flex-start;
+        color: #000;
+      }
+
+      .innerModalButtons {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        gap: 8px;
+      }
+    }
+
+    .actionButtonTransparent {
+      display: flex;
+      width: 270px;
+      padding: 11px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid $button-dark-default;
+    }
+
+    .actionButtonBackground {
+      display: flex;
+      width: 270px;
+      padding: 11px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid $button-dark-default;
+      background-color: $button-dark-default;
+      color: #fff;
+    }
+  }
+
+  .adoptionModalContainer {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 1000;
+    flex-direction: column;
+    padding: 8px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    transform: translateY(50%);
+
+    .adoptionModalHeading {
+      color: $button-default;
+    }
+
+    .adoptionModalForm {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      gap: 8px;
+
+      .adoptionModalInput {
+        padding: 12px 8px 13px 8px;
+        border: 1px solid #141414;
+        border-radius: 8px;
+      }
+
+      .adoptionModalText {
+        text-align: center;
+      }
+
+      .adoptionModalText > span {
+        color: $button-default;
+      }
+
+      .adoptionModalErrorText {
+        color: red;
+      }
+    }
+    .actionButtonTransparent {
+      display: flex;
+      width: 270px;
+      padding: 11px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid $button-dark-default;
+    }
+
+    .actionButtonBackground {
+      display: flex;
+      width: 270px;
+      padding: 11px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 8px;
+      border: 1px solid $button-dark-default;
+      background-color: $button-dark-default;
+      color: #fff;
+    }
+  }
+}
+@media screen and (min-width: 768px) {
+  .container {
+    // width: 525px;
+    .cardContainer {
+      width: 343px;
+      grid-auto-rows: 370px;
+
+      .cardName {
+        width: 100%;
+        padding: 26px 72px;
+        font-size: 18px;
+      }
+
+      .contentHolder {
+        .cardDesc {
+          max-width: 308px;
+        }
+        .cardButton {
+          align-self: end;
+          margin-top: auto;
+          border-radius: 8px;
+        }
+      }
+    }
+
+    .modalContentContainer {
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      overflow: auto;
+      width: 100vw;
+      height: 100dvh;
+      position: fixed;
+      left: 0px;
+      top: 0px;
+      z-index: 1000;
+      overscroll-behavior-y: none;
+    }
+
+    .modalContainer {
+      position: relative;
+      width: 625px;
+      padding: 16px;
+
+      .innerModalContainer {
+        max-width: 625px;
+        align-items: flex-start;
+        justify-items: flex-start;
+
+        .innerModalButtons {
+          display: flex;
+          width: 493px;
+          align-items: flex-start;
+          flex-direction: row;
+          gap: 19px;
+        }
+      }
+
+      .actionButtonBackground {
+        width: fit-content;
+        padding: 9px 12px;
+        flex: 1 0 0;
+      }
+
+      .actionButtonTransparent {
+        width: fit-content;
+        padding: 9px 12px;
+        flex: 1 0 0;
+      }
+    }
+
+    .adoptionModalContainer {
+      display: flex;
+      width: 520px;
+      padding: 24px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+
+      .adoptionModalButtons {
+        display: flex;
+        gap: 16px;
+        align-self: stretch;
+      }
+    }
+  }
+}
+@media screen and (min-width: 1200px) {
+  .container {
+    // padding: 0 64px;
+    .cardContainer {
+      width: 370px;
+      grid-auto-rows: 370px;
+
+      .cardName {
+        width: 100%;
+        padding: 26px 72px;
+        font-size: 18px;
+      }
+
+      .contentHolder {
+        .cardDesc {
+          max-width: 308px;
+        }
+        .cardButton {
+          align-self: end;
+          margin-top: auto;
+          border-radius: 8px;
+        }
+      }
+    }
+  }
+}

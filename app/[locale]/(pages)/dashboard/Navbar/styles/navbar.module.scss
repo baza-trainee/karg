@@ -1,0 +1,17 @@
+@import "../../../../variables.module.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  background-color: $bg-lightgray;
+  width: 100%;
+  padding: 20px 48px 20px 48px;
+  border-bottom: 1px solid #251C33;
+  & .active_section {
+    color: $button-dark-active;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41.6px;
+  }
+}
