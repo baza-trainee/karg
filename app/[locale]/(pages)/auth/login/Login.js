@@ -4,11 +4,8 @@ import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import styles from './styles/login.module.scss';
-import { AdminContext } from '@/app/adminProvider';
-
 
 export default function LoginPage() {
-  const { loginAdmin } = useContext(AdminContext);
 
  const blockCaptions = {
   'emailLabel':'Логін',
@@ -116,7 +113,6 @@ export default function LoginPage() {
         setLoginStatus("");
           if(data.user.email===blockCaptions.actualUser){
             setCorrectUser(data.user);
-            loginAdmin(data.user);
             router.push("/auth/dashboard", { email: form.email.value });           
         }return
       }

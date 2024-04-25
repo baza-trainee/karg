@@ -1,4 +1,6 @@
-import React, { createContext, useState } from 'react';
+'use client'
+
+import { createContext, useState } from 'react';
 
 export const AdminContext = createContext({
     activeSection: '',
