@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useCallback, useState } from "react";
+import React, { createContext, useCallback, useState } from "react";
 
 const ModalContext = createContext();
 
@@ -9,10 +9,9 @@ export const ModalProvider = ({ children }) => {
         generic: { isVisible: false, content: null },
         confirmation: { isVisible: false, content: null }
     })
-    
+
     const showModal = useCallback((type, modalContent) => {
         const contentToSet = typeof modalContent === 'function' ? React.createElement(modalContent) : modalContent;
-        console.log('contentToSet: ')
         setModals(prevModals => ({
             ...prevModals,
             [type]: { isVisible: true, content: contentToSet }

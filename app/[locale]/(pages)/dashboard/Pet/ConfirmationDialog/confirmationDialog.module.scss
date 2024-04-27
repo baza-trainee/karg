@@ -1,0 +1,37 @@
+@import "../../../../colors.scss";
+
+.container {
+  width: 612px;
+  min-height: 177px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: $bg-white;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  .messageBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    color: $text-dark;
+    text-align: center;
+  }
+
+  .buttonBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    .cancelBtn {
+      color: $button-dark-default;
+    }
+
+    .confirmBtn {
+      color: $text-dark;
+    }
+  }
+}
