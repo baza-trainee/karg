@@ -78,6 +78,13 @@
   }
 }
 
+.rescue {
+  @extend .support;
+  min-width: 288px;
+  max-height: 44px;
+  margin-top: 0;
+}
+
 .button-support-donate-block {
   @include button-help-style;
   min-width: 288px;
@@ -155,12 +162,6 @@
   }
 }
 
-.rescue {
-  @extend .support;
-  min-width: 288px;
-  max-height: 44px;
-  margin-top: 0;
-}
 
 @media screen and (min-width: 768px) {
   .rescue {
@@ -168,10 +169,10 @@
     padding: 9px 12px;
   }
 }
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1400px) {
   .rescue {
     min-width: 370px;
-    min-height: 52px;
+    min-height: 56px;
     padding: 12px;
     border-radius: 8px;
   }
