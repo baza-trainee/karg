@@ -1,3 +1,5 @@
+import styles from './styles/cardItem.module.scss';
+
 export function CardItem({
     title, 
     href, 
@@ -7,7 +9,6 @@ export function CardItem({
     innerMessage,
     cardStyle,
     cardImageStyle,
-    cardTextBlock,
     cardTitleStyle,
     cardMessageStyle,
     buttonIconStyle
@@ -21,7 +22,7 @@ export function CardItem({
         src={iconSrc}
         alt="Donate icon"
       /> : null}
-      <div className={cardTextBlock}>
+      <div className={styles.cardTextBlock}>
           <p className={cardTitleStyle}>
               {title}
           </p>
