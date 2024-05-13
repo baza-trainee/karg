@@ -96,15 +96,15 @@
                     color: $text-white;
 
                     @media screen and (min-width: 768px) {
-                        min-width: 241px;
+                        //min-width: 241px;
                         min-height: 95px;
-                        gap: 0;
+                        gap: 4px;
                     }
 
                     @media screen and (min-width: 1200px) {
                         min-width: 156px;
                         max-height: 113px;
-                        gap: 0;
+                        gap: 8px;
                     }
                     & .title {
                         line-height: 26px;
@@ -133,7 +133,6 @@
 
                     & a {
                         display: flex;
-                        border: 2px solid transparent;
                         background-color: transparent;
                         gap: 4px;
                         width: 124px;

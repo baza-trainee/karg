@@ -28,6 +28,7 @@ export default async function RescueTypes({ locale, namespaces, rescueTypes, isB
             return (
               <div key={r.id} className={`${lastItemClass}`}>
                 <CardItem
+                  cardTextBlock={styles.cardTextBlock}
                   cardMessage={r.cardMessage}
                   cardContainer={styles.cardItem}
                   cardMessageStyle={`${styles.message} ${variables.rescueText1}`}

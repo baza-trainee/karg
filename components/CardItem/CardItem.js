@@ -1,5 +1,6 @@
 import React from 'react';
 import ButtonAsLink from '../ButtonAsLink/buttonAsLink';
+import styles from './styles/item.module.scss';
 
 export function CardItem({
     cardTitle, 

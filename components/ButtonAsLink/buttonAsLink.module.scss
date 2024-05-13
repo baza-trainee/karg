@@ -64,6 +64,12 @@
     color: $text-white;
     background-color: $button-active;
   }
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+  }
 }
 
 .primary-lite-W-288 {
