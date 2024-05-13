@@ -17,7 +17,7 @@ export default function Navbar() {
     },
     'Тварини': {
       caption: "Додати тварину",
-      genericModalContent: PetForm
+      genericModalContent: <PetForm type="create" />
     },
     'Партнери': {
       caption: "Додати партнера",

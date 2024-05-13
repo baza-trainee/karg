@@ -1,11 +1,12 @@
 'use client'
 
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 const Portal = ({ children }) => {
     const [container] = useState(() => {
-        return document.createElement('div');
+        const newContainer = document.createElement('div');
+        return newContainer;
     });
 
     useEffect(() => {
@@ -13,8 +14,8 @@ const Portal = ({ children }) => {
         return () => {
             document.body.removeChild(container);
         };
-    }, [container]);
-
+    }, []);
+    
     return ReactDOM.createPortal(children, container);
 };
 
