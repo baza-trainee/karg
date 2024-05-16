@@ -1,6 +1,6 @@
 'use client'
 
-import React, { createContext, useCallback, useState } from "react";
+import React, { createContext, useCallback, useState, useEffect } from "react";
 
 const ModalContext = createContext();
 
@@ -24,6 +24,15 @@ export const ModalProvider = ({ children }) => {
             [type]: { isVisible: false, content: null }
         }));
     }, []);
+
+    useEffect(() => {
+        const anyModalVisible = Object.values(modals).some(modal => modal.isVisible);
+        if (anyModalVisible) {
+            document.body.classList.add('no-scroll');
+        } else {
+            document.body.classList.remove('no-scroll');
+        }
+    }, [modals]);
 
     return (
         <ModalContext.Provider value={{ modals, showModal, hideModal }}>

@@ -30,4 +30,5 @@ export { default as ArrowUp } from "./arrowUp.svg";
 export { default as ScrollArrowMob } from "./scroll_arrow_mob.svg";
 export { default as ScrollArrowDesk } from "./scroll_arrow_desk.svg";
 export { default as PlusPlaceholderImage } from "./plus_placeholder_image.svg";
+export { default as PlusPlaceholderMinImage } from "./plus_placeholder_image_min.svg";
 

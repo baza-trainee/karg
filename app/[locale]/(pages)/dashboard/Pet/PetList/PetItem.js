@@ -2,12 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import variables from '../../../../variables.module.scss';
+import { PlusPlaceholderMinImage } from '@/public/assets/icons';
 export default function PetItem(
     {
         containerStyle,
         photoStyle,
-        photoSrc,
+        photoSrc = [],
         photoAlt,
+        photoContainerStyle,
         basicInfoStyle,
         petName,
         petCategory,
@@ -19,15 +21,24 @@ export default function PetItem(
         iconsContainerStyle,
         children
     }) {
+
     return (
         <div className={containerStyle}>
             <div className={petLineStyle}>
-                <Image
-                    className={photoStyle}
-                    src={photoSrc}
-                    alt={photoAlt}
-                    loading="lazy"
-                />
+                <div className={photoContainerStyle}>
+                    {photoSrc && photoSrc.length > 0 ? (
+                        <Image
+                            src={photoSrc[0]}
+                            alt={photoAlt}
+                            width={92}
+                            height={92}
+                            loading="lazy"
+                            className={photoStyle}
+                        />
+                    ) : (
+                        <PlusPlaceholderMinImage />
+                    )}
+                </div>
                 <div className={`${basicInfoStyle} ${variables.font24w700}`}>{petName}</div>
                 <div className={`${basicInfoStyle} ${variables.font20w500}`}>{petCategory}</div>
                 <div className={detailsBlockStyle}>
@@ -46,7 +57,7 @@ export default function PetItem(
 PetItem.propTypes = {
     containerStyle: PropTypes.string,
     photoStyle: PropTypes.string,
-    photoSrc: PropTypes.object,
+    photoSrc: PropTypes.array,
     photoAlt: PropTypes.string,
     petName: PropTypes.string,
     petDetails: PropTypes.string,

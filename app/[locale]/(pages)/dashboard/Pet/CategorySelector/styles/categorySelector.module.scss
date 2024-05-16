@@ -17,6 +17,7 @@
   .icon {
     width: 13px;
     height: auto;
+    cursor: pointer;
   }
 }
 
@@ -28,7 +29,7 @@
 
 .dropdownContent {
   position: absolute;
-  top: 100%;
+  top: 30px;
   display: flex;
   flex-direction: column;
   gap: 8px;

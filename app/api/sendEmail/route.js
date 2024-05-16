@@ -10,53 +10,47 @@ export async function POST(req) {
     });
   }
   //simulating a check in a database
-  const validEmail = "kargthebest2024@gmail.com";
+  const validEmail = "";
 
   try {
     const { email } = await req.json();
     if (email === validEmail) {
       const resetLink = 'http://localhost:3000/en/auth/reset';
       const emailSubject = "Відновлення паролю";
-      const htmlContent = `
-    <div>
-      <div>
-        <p>Вітаємо!</p>
-        <p>
-          Ми отримали запит на відновлення паролю для облікового запису
-          контрольної панелі на сайті КАРГ, що пов'язаний з Вашою електронною
-          адресою.
-        </p>
-        <p>
-          Якщо Ви дійсно бажаєте відновити пароль, можете це зробити натиснувши
-          на посилання:
-        </p>
-      </div>
-      <a
-        href="${resetLink}"
-        style="
-          display: inline-block;
-          padding: 10px 20px;
-          background-color: #ffa33c;
-          color: white;
-          text-align: center;
-          text-decoration: none;
-          border-radius: 5px;
-          font-weight: bold;
-        "
-      >
-        Змінити пароль
-      </a>
-      <div>
-        <p>
-          Якщо Ви не подавали запит до відновлення паролю - не відповідайте на
-          цей лист.
-        </p>
-        <p>З повагою, команда КАРГ.</p>
-      </div>
-    </div>
+      const htmlContent =
+        `
+<div>
+  <table style="margin: 0 auto; width: 600px; text-align: center; box-sizing: border-box; font-family: Arial, sans-serif; font-size: 16px; color: #070707; line-height: 22px; border-spacing: 0; border-collapse: collapse;">
+    <tr>
+      <td style="padding: 24px 40px;">Вітаємо!</td>
+    </tr>
+    <tr>
+      <td style="padding: 0 40px 21px 40px">
+        Ми отримали запит на відновлення паролю для облікового запису
+        контрольної панелі на сайті КАРГ, що пов'язаний з Вашою електронною
+        адресою ${email}.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 40px 16px 40px;">
+        Якщо Ви дійсно бажаєте відновити пароль, можете це зробити натиснувши
+        на посилання: <a href="${resetLink}" target="_blank">${resetLink}</a>
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 40px 21px 40px">
+        Якщо Ви не подавали запит до відновлення паролю - не відповідайте на
+        цей лист.
+      </td>
+    </tr>
+    <tr>
+      <td style="padding: 0 40px 32px 40px;">З повагою, команда КАРГ.</td>
+    </tr>
+  </table>
+</div>
   `;
       await sendMail(emailSubject, email, htmlContent);
-      
+
       return new Response(JSON.stringify({ success: true, message: 'Success' }), {
         headers: {
           'Content-Type': 'application/json',
