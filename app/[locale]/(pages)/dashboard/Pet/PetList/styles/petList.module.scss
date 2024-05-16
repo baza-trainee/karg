@@ -14,10 +14,12 @@
   .petTitle {
     display: flex;
     gap: 24px;
-    padding: 6px 16px;
-    padding-top: 16px;
-   
-    .photo {
+    padding: 0px 16px 0 16px;
+    margin-top: 16px;
+    height: 40px;
+    align-items: center;
+
+    .photoTitle {
       width: 92px;
     }
 
@@ -40,11 +42,13 @@
     background-color: #fff;
     border-radius: 8px;
   }
-  
+  .photoContainer {
+    flex-shrink: 0;
+  }
+
   & .photo {
     width: 92px;
-    max-height: 92px;
-    flex-shrink: 0;
+    height: 92px;
     border-radius: 8px;
   }
 
@@ -75,7 +79,7 @@
     cursor: pointer;
     font-size: 32px;
   }
-  
+
   & .trash_icon {
     cursor: pointer;
     font-size: 32px;

@@ -26,3 +26,8 @@ ul,
 ol {
   list-style: none;
 }
+
+.no-scroll {
+    overflow: hidden;
+    padding-right: 15px; 
+}
