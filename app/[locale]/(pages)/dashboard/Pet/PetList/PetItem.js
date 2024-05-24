@@ -2,7 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import variables from '../../../../variables.module.scss';
-import { PlusPlaceholderMinImage } from '@/public/assets/icons';
 export default function PetItem(
     {
         containerStyle,
@@ -36,7 +35,7 @@ export default function PetItem(
                             className={photoStyle}
                         />
                     ) : (
-                        <PlusPlaceholderMinImage />
+                        <div className={photoStyle} aria-hidden="true"></div>
                     )}
                 </div>
                 <div className={`${basicInfoStyle} ${variables.font24w700}`}>{petName}</div>
