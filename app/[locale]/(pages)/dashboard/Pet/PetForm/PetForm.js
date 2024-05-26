@@ -13,6 +13,7 @@ import SuccessDialog from "../SuccessDialog/SuccessDialog";
 import { ArrowDown } from "@/public/assets/icons";
 import Spinner from "@/components/Spinner/Spinner";
 import { TrashIcon } from "@/public/assets/icons";
+import { useUnsavedChanges } from "@/app/UnsavedChangesContext";
 
 const labels = {
     ukrLng: "Українська",
@@ -41,90 +42,153 @@ const successDialogActions = {
     buttonText: 'Закрити'
 }
 
-function PetForm({ type = 'create', petData = {} }) {
+function PetForm({ type = 'create', petData = {}, refreshPets }) {
     const { ukrLng, engLng, nameTitle, categoryTitle, placeholder, descriptionTitle, storyTitle, btnReject, btnSubmit, btnSaveChanges } = labels;
     const { confirmationTitle, message, cancelTitle, confirmTitle } = confirmationDialogActions;
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
-    const { showModal } = useContext(ModalContext);
-    const [nameEn, setNameEn] = useState('');
-    const [descriptionEn, setDescriptionEn] = useState('');
-    const [storyEn, setStoryEn] = useState('');
+    const { hideModal, showModal } = useContext(ModalContext);
     const [language, setLanguage] = useState('ua');
     const [isLoading, setIsLoading] = useState(false);
-    const [originalData] = useState(() => {
-        return { ...petData };
-    });
-    const [images, setImages] = useState([]);
+    const [images, setImages] = useState(petData.images || []);
     const title = type === 'create' ? "Додати тварину" : "Редагувати тварину";
     const maxImages = 4;
-
-    const [formData, setFormData] = useState({
-        id: '',
-        name: '',
-        category: '',
-        description: '',
-        story: '',
-        images: []
-    });
+    const initializeFormData = (data) => {
+        if (data) {
+            return {
+                id: data.id || '',
+                name_ua: data.name_ua || data.name || '',
+                category: data.category || '',
+                description_ua: data.description_ua || data.description || '',
+                story_ua: data.story_ua || data.story || '',
+                images: data.images || [],
+                name_en: data.name_en || '',
+                description_en: data.description_en || '',
+                story_en: data.story_en || ''
+            }
+        }
+    }
+    const [formData, setFormData] = useState(initializeFormData(petData));
+    const [originalData, setOriginalData] = useState(initializeFormData(petData));
+    const { setHasUnsavedChanges } = useUnsavedChanges();
+    const [isFormValid, setIsFormValid] = useState(false);
 
     useEffect(() => {
-        if (type === 'edit' && petData) {
-            setFormData({
-                id: petData.id || '',
-                name: petData.name || '',
-                category: petData.category || '',
-                description: petData.description || '',
-                story: petData.story || '',
-                images: petData.images || []
-            });
+        if (type === 'edit' && petData.id) {
+            setIsLoading(true);
+            const fetchData = async () => {
+                try {
+                    const uaResponse = await fetch(`https://karg-backend.onrender.com/karg/animal/getbyid?id=${petData.id}&cultureCode=ua`);
+                    const enResponse = await fetch(`https://karg-backend.onrender.com/karg/animal/getbyid?id=${petData.id}&cultureCode=en`);
+                    if (!uaResponse.ok || !enResponse.ok) throw new Error('Failed to fetch');
+                    const uaData = await uaResponse.json();
+                    const enData = await enResponse.json();
+                    const updatedFormData = {
+                        id: uaData.id,
+                        name_ua: uaData.name || '',
+                        category: uaData.category || '',
+                        description_ua: uaData.description || '',
+                        story_ua: uaData.story || '',
+                        images: uaData.images || '',
+                        name_en: enData.name || '',
+                        description_en: enData.description || '',
+                        story_en: enData.story || '',
+                    };
+                    setFormData(updatedFormData);
+                    setOriginalData(updatedFormData);
+                    setImages(uaData.images || []);
+                    setIsFormValid(checkFormValidity(updatedFormData));
+                } catch (error) {
+                    console.error('Error fetching animal data:', error.message);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
+            fetchData();
+        } else {
+            setIsFormValid(checkFormValidity(formData));
         }
     }, [type, petData]);
 
     useEffect(() => {
-        setImages(formData.images);
+        setImages(formData.images)
     }, [formData.images]);
 
-    const toggleLanguage = (e) => {
+    const toggleLanguage = async (e) => {
         e.preventDefault();
-        setLanguage(prevLanguage => prevLanguage === 'ua' ? 'en' : 'ua');
-    };
+        setLanguage((prev) => prev === 'ua' ? 'en' : 'ua');
+    }
 
     const handleImageUploaded = (newImageUrl) => {
-        setImages(prevImages => [...prevImages, newImageUrl].slice(0, maxImages));
+        setFormData(prev => {
+            const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
+            setHasUnsavedChanges(true);
+            return { ...prev, images: updatedImages };
+        });
     };
 
     function handleChange(e) {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setHasUnsavedChanges(true);
+        setFormData(prev => {
+            const updatedFormData = { ...prev, [name]: value };
+            setIsFormValid(checkFormValidity(updatedFormData));
+            return updatedFormData;
+        });
     }
 
     function getUpdatedFields(formData, originalData) {
         const patch = [];
         Object.keys(formData).forEach(key => {
-            if (formData[key] !== originalData[key]) {
-                patch.push({
-                    operationType: 0,
-                    path: `/${key}`,
-                    op: "replace",
-                    from: originalData[key],
-                    value: formData[key]
-                });
+            if (Array.isArray(formData[key])) {
+                if (JSON.stringify(formData[key]) !== JSON.stringify(originalData[key])) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
+            } else {
+                if (formData[key] !== originalData[key]) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
             }
         })
         return patch;
     }
 
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        if (type === 'create') {
+            await handleCreateAnimal();
+        } else {
+            await handleUpdateAnimal();
+        }
+    }
+
     const handleCreateAnimal = async () => {
+        if (!checkFormValidity(formData)) {
+            setIsFormValid(false);
+            return;
+        }
         const animalData = {
-            name: formData.name,
+            name_ua: formData.name_ua,
             category: formData.category,
-            description: formData.description,
-            story: formData.story,
-            images: images
+            description_ua: formData.description_ua,
+            story_ua: formData.story_ua,
+            images: formData.images,
+            name_en: formData.name_en,
+            story_en: formData.story_en,
+            description_en: formData.description_en,
         };
         try {
             setIsLoading(true);
-            const response = await fetch('http://karg.us-east-1.elasticbeanstalk.com/karg/animal/add', {
+            const response = await fetch('https://karg-backend.onrender.com/karg/animal/add', {
                 method: "POST",
                 headers: {
                     'Accept': 'application/json',
@@ -133,37 +197,37 @@ function PetForm({ type = 'create', petData = {} }) {
                 body: JSON.stringify(animalData)
             });
             if (response.ok) {
-                const data = await response.json();
-                console.log('Animal added successfully:', data);
                 showModal('confirmation',
                     <SuccessDialog
                         title={successTitle}
                         message={type === 'create' ? successAddMessage : successChangeMessage}
                         buttonText={buttonText}
-                        onCancel={() => console.log('closing modal window')}
+                        onClick={() => {
+                            hideModal('confirmation');
+                            hideModal('generic');
+                        }}
                         buttonStyle={stylesBtn.congratsCloseBtn}
                     />)
-                console.log('sending data to DB');
+                // refreshPets();
+                setHasUnsavedChanges(false);
             } else {
                 throw new Error(`Failed to submit form with status: ${response.status}`);
             }
         } catch (error) {
             console.error('Error submitting form:', error);
         } finally {
-
             setIsLoading(false);
         }
     };
 
     const handleUpdateAnimal = async () => {
         const updates = getUpdatedFields(formData, originalData);
-        if (Object.keys(updates).length === 0) {
-            console.log('No changes to update');
+        if (!updates.length) {
             return;
         }
         try {
             setIsLoading(true);
-            const response = await fetch(`http://karg.us-east-1.elasticbeanstalk.com/karg/animal/update?id=${formData.id}`, {
+            const response = await fetch(`https://karg-backend.onrender.com/karg/animal/update?id=${formData.id}`, {
                 method: "PATCH",
                 headers: {
                     'Accept': 'application/json',
@@ -174,16 +238,19 @@ function PetForm({ type = 'create', petData = {} }) {
             if (!response.ok) {
                 throw new Error('Failed to update animal');
             }
-            const data = await response.json();
-            console.log('Update successful:', data);
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
                     message={type === 'create' ? successAddMessage : successChangeMessage}
                     buttonText={buttonText}
-                    onCancel={() => console.log('closing modal window')}
+                    onClick={() => {
+                        hideModal('confirmation');
+                        hideModal('generic');
+                    }}
                     buttonStyle={stylesBtn.congratsCloseBtn}
                 />)
+            refreshPets('ua');
+            setHasUnsavedChanges(false);
         } catch (error) {
             console.error('Error updating animal:', error);
         } finally {
@@ -191,12 +258,48 @@ function PetForm({ type = 'create', petData = {} }) {
         }
     };
 
-    const handleDeleteImage = (index) => {
-        setImages(prevImages => prevImages.filter((_, i) => i !== index));
+    const undoingChanges = () => {
+        setFormData({ ...originalData });
+        setIsFormValid(checkFormValidity(originalData));
+        setHasUnsavedChanges(false);
+        hideModal('confirmation');
     }
 
+    const handleDeleteImage = (index) => {
+        setFormData(prev => {
+            const updatedImages = prev.images.filter((_, i) => i !== index);
+            return { ...prev, images: updatedImages };
+        });
+        setHasUnsavedChanges(true);
+    }
+
+    const showConfirmation = () => {
+        showModal('confirmation',
+            <ConfirmationDialog
+                confirmationTitle={confirmationTitle}
+                message={message}
+                cancelTitle={cancelTitle}
+                confirmTitle={confirmTitle}
+                onConfirm={() => {
+                    undoingChanges();
+                    hideModal('confirmation');
+                    hideModal('generic');
+                }}
+                onCancel={() => {
+                    hideModal('confirmation');
+                }}
+                leftButtonStyle={stylesBtn.confirmationCancelBtn}
+                rightButtonStyle={stylesBtn.confirmationRevertBtn}
+            />)
+    }
+
+    const checkFormValidity = (formData) => {
+        const requiredFields = ['name_ua', 'name_en', 'category', 'description_ua', 'description_en', 'story_ua', 'story_en'];
+        return requiredFields.every(field => formData[field].trim() !== '');
+    };
+
     return (
-        <form className={styles.form}>
+        <form className={styles.form} onSubmit={handleSubmit}>
             {isLoading ? (
                 <Spinner />
             ) : (
@@ -216,8 +319,8 @@ function PetForm({ type = 'create', petData = {} }) {
                             <input
                                 type="text"
                                 id="nameField"
-                                name="name"
-                                value={language === 'ua' ? formData.name : nameEn}
+                                name={language === 'ua' ? "name_ua" : "name_en"}
+                                value={language === 'ua' ? formData.name_ua : formData.name_en}
                                 className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                                 onChange={(e) => handleChange(e)}
                             >
@@ -238,7 +341,7 @@ function PetForm({ type = 'create', petData = {} }) {
                                                 <div className={styles.deleteIconContainer}
                                                     onClick={(e) => {
                                                         e.stopPropagation();
-                                                        handleDeleteImage(index)
+                                                        handleDeleteImage(index);
                                                     }}>
                                                     <TrashIcon
                                                         className={styles.deleteIcon}
@@ -267,6 +370,7 @@ function PetForm({ type = 'create', petData = {} }) {
                                 <select
                                     id="categoryField"
                                     name="category"
+                                    required
                                     className={`${styles.categoryFieldInput} ${styles.field} ${variables.font18w500}`}
                                     value={formData.category}
                                     onChange={(e) => handleChange(e)}
@@ -288,9 +392,9 @@ function PetForm({ type = 'create', petData = {} }) {
                             </label>
                             <textarea
                                 id="descriptionField"
-                                name="description"
+                                name={language === 'ua' ? "description_ua" : "description_en"}
                                 maxLength="500"
-                                value={language === 'ua' ? formData.description : descriptionEn}
+                                value={language === 'ua' ? formData.description_ua : formData.description_en}
                                 className={`${styles.textareaField} ${variables.font18w500}`}
                                 onChange={(e) => handleChange(e)}
                             >
@@ -304,9 +408,9 @@ function PetForm({ type = 'create', petData = {} }) {
                             </label>
                             <textarea
                                 id="storyField"
-                                name="story"
+                                name={language === 'ua' ? "story_ua" : "story_en"}
                                 maxLength="500"
-                                value={language === 'ua' ? formData.story : storyEn}
+                                value={language === 'ua' ? formData.story_ua : formData.story_en}
                                 className={`${styles.textareaField} ${variables.font18w500}`}
                                 onChange={(e) => handleChange(e)}
                             >
@@ -316,24 +420,14 @@ function PetForm({ type = 'create', petData = {} }) {
                             <Button
                                 type="button"
                                 className={stylesBtn.adminFormButtonReject}
-                                onClick={() => showModal('confirmation',
-                                    <ConfirmationDialog
-                                        confirmationTitle={confirmationTitle}
-                                        message={message}
-                                        cancelTitle={cancelTitle}
-                                        confirmTitle={confirmTitle}
-                                        onConfirm={() => console.log('undoing changes')}
-                                        onCancel={() => console.log('cancellation')}
-                                        leftButtonStyle={stylesBtn.confirmationCancelBtn}
-                                        rightButtonStyle={stylesBtn.confirmationRevertBtn}
-                                    />)}
+                                onClick={() => showConfirmation()}
                             >
                                 {btnReject}
                             </Button>
                             <Button
-                                type="button"
+                                type="submit"
                                 className={stylesBtn.adminFormButtonSubmit}
-                                onClick={() => type === 'create' ? handleCreateAnimal() : handleUpdateAnimal()}
+                                disabled={!isFormValid}
                             >
                                 {type === 'create' ? btnSubmit : btnSaveChanges}
                             </Button>

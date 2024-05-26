@@ -90,6 +90,10 @@
   &:active {
     background-color: $button-active;
   }
+
+  &:disabled {
+    background-color: $button-disabled;
+  }
 }
 .adminFormButtonReject {
   border: 1px solid $button-dark-default;
