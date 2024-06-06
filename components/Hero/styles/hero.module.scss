@@ -3,6 +3,9 @@
 .hero {
   position: relative;
   background-color: #eadeff;
+    @media screen and (min-width: 1200px){
+      top: 156px;
+    }
 
   &Title {
     position: absolute;

@@ -108,6 +108,7 @@
 @media screen and (min-width: 1200px) {
   .header-primary-button-default {
     @include button-style;
+    padding: 11px 12px;
     min-width: 170px;
     background-color: $button-default;
     border-radius: 8px;

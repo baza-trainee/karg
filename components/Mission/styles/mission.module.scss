@@ -12,6 +12,7 @@
   }
 
   @media screen and (min-width: 1200px) {
+    position: relative;
     padding-left: 135px;
     padding-right: 135px;
   }
@@ -28,7 +29,9 @@
   }
 
   @media screen and (min-width: 1200px) {
+    position: relative;
     padding: 48px 0;
+    top: 131.5px;
   }
 
   &Title {
