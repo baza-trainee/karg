@@ -11,6 +11,8 @@
     position: fixed;
     background-color: $button-hover; 
     border-radius: 50%;
+    
+
     @media screen and (min-width: 320px) and (max-width: 834px) {
         height: 40px;
         width: 40px;
@@ -52,19 +54,22 @@
     @extend .container;
     position: absolute;
 
-        @media screen and (min-width: 320px) and (max-width: 834px) {
+        @media screen and (min-width: 320px) and (max-width:768px) {
             right: 24px;
-            bottom: 647px;
+            bottom: 648px;
         }
-        @media screen and (min-width: 835px) and (max-width: 1440px) {
+        @media screen and (min-width: 789px) and (max-width: 1199px) {
             right: 24px;
-            bottom: 387px;
+            bottom: 624px;
+        }
+        @media screen and (min-width: 1200px) and (max-width: 1440px) {
+            right: 24px;
+            bottom: 225.8px;
         }
         @media screen and (min-width: 1441px){
             right: 40px;
-            bottom: 387px;
-        }
-    
+            bottom: 225.8px;
+        }   
 }
 
 

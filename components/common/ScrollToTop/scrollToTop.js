@@ -5,7 +5,7 @@ import styles from "../ScrollToTop/styles/scrollToTop.module.scss";
 
 export default function ScrollToTop() {
     const isBrowser = () => typeof window !== 'undefined';
-    const clientInnerHeight = typeof window !== 'undefined' && window.innerHeight;
+    const clientInnerHeight = typeof window !== 'undefined' && window.innerHeight && window.innerWidth;
 
     function scrollToTop() {
         if (!isBrowser()) return;
@@ -25,20 +25,19 @@ export default function ScrollToTop() {
     };
 
     const handleDetectPageBottom = () => {
-      if ((window.innerWidth <= 834) && (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 637) {
+
+      if ((window.innerWidth < 834) && (window.innerHeight + window.scrollY >= document.body.scrollHeight - 637)) {
         // you're at the bottom of the page
         setIsReachedBottom(true);
       }
-      else if ((834 < window.innerWidth <= 1440) && (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 383) {
-        // you're at the bottom of the page
+     if ((window.innerWidth >= 834) && (window.innerWidth <= 1199) && (window.innerHeight + window.scrollY >= document.body.scrollHeight - 613)) {
         setIsReachedBottom(true);
       }
-      else if ((window.innerWidth > 1440) && (window.innerHeight + window.scrollY) >= document.body.scrollHeight - 383) {
-        // you're at the bottom of the page
+      if ((window.innerWidth >= 1200) && (window.innerWidth <= 1440)) {
         setIsReachedBottom(true);
       }
-      else {
-        setIsReachedBottom(false);
+      if ((window.innerWidth >= 1441) && (window.innerHeight + window.scrollY >= document.body.scrollHeight - 372)){
+        setIsReachedBottom(true);
       }
     }
     useEffect(() => {
@@ -54,7 +53,7 @@ export default function ScrollToTop() {
 
 
   return (
-    <div className={`... scrollToTopButton ${isVisible ? 'visible' : ''}`} onClick={ scrollToTop }>
+    <div className={`...scrollToTopButton ${isVisible ? 'visible' : ''}`} onClick={ scrollToTop }>
         {isVisible && 
             <div className={isReachedBottom ? styles.scrollBtnMargin : styles.container}>
                 <ScrollArrowMob className={styles.iconMob}/>
