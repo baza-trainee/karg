@@ -10,6 +10,7 @@
   background-color: $bg-lightgray;
   gap: 8px;
   color: $text-dark;
+  min-width: 1194px;
 
   .petTitle {
     display: flex;
@@ -41,9 +42,11 @@
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
+    width: 1098px;
   }
   .photoContainer {
     flex-shrink: 0;
+    min-width: 92px;
   }
 
   & .photo {
@@ -73,6 +76,7 @@
     display: flex;
     justify-content: space-between;
     text-align: center;
+    flex-shrink: 0;
   }
 
   & .create_icon {
@@ -83,5 +87,6 @@
   & .trash_icon {
     cursor: pointer;
     font-size: 32px;
+    fill: rgba(0, 0, 0, 0.85);
   }
 }

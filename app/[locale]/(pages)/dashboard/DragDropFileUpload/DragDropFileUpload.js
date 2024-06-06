@@ -38,6 +38,7 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, className = '', 
         if (files && files.length > 0 && files[0].type.match(accept)) {
             const file = files[0];
             setFile(file);
+            handleFileUpload(file);
         }
     };
 
