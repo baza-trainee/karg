@@ -1,9 +1,11 @@
 import styles from "./styles/categorySelector.module.scss";
 import variables from "../../../../variables.module.scss";
 import { ShevronDown } from '@/public/assets/icons';
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useContext } from "react";
+import { PetContext } from "../PetContext";
 
-function CategorySelector({ categories, selectedCategory, onSelectedCategory }) {
+function CategorySelector({ categories, onSelectedCategory }) {
+    const { selectedCategory } = useContext(PetContext);
     const [isOpen, setIsOpen] = useState(false);
     const toggleDropdown = () => setIsOpen(!isOpen);
     const dropDownRef = useRef(null);

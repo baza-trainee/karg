@@ -9,7 +9,6 @@ import ModalContext from '@/app/ModalContext';
 export default function Navbar() {
   const { activeSection } = useContext(AdminContext);
   const { showModal } = useContext(ModalContext);
-
   const buttonData = {
     'Контакти': {
       caption: "Додати контакт",

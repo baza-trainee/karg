@@ -1,7 +1,7 @@
 import styles from "./pagination.module.scss";
 import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
 
-function Pagination({ currentPage, setCurrentPage, totalPages }) {
+function Pagination({ totalPages, currentPage, handlePageChange }) {
     const pageButtons = [];
     let startPage = Math.max(1, currentPage - 1);
     let endPage = Math.min(totalPages, currentPage + 1);
@@ -9,7 +9,7 @@ function Pagination({ currentPage, setCurrentPage, totalPages }) {
     if (startPage > 1) {
         if (startPage > 2) {
             pageButtons.push(
-                <button key="1" className={styles.pageButton} onClick={() => setCurrentPage(1)}>
+                <button key="1" className={styles.pageButton} onClick={() => handlePageChange(1)}>
                     1
                 </button>
             );
@@ -24,7 +24,7 @@ function Pagination({ currentPage, setCurrentPage, totalPages }) {
             <button
                 key={i}
                 className={currentPage === i ? styles.currentPage : styles.pageButton}
-                onClick={() => setCurrentPage(i)}
+                onClick={() => handlePageChange(i)}
                 disabled={currentPage === i}
             >
                 {i}
@@ -37,7 +37,7 @@ function Pagination({ currentPage, setCurrentPage, totalPages }) {
             pageButtons.push(<span key="ellipsis-end" className={styles.ellipsis}>...</span>);
         }
         pageButtons.push(
-            <button key={totalPages} className={styles.pageButton} onClick={() => setCurrentPage(totalPages)}>
+            <button key={totalPages} className={styles.pageButton} onClick={() => handlePageChange(totalPages)}>
                 {totalPages}
             </button>
         );
@@ -50,7 +50,7 @@ function Pagination({ currentPage, setCurrentPage, totalPages }) {
                 <button
                     key='prev'
                     className={styles.navigationButton}
-                    onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+                    onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
                     disabled={currentPage === 1}
                 >
                     Попередня
@@ -63,7 +63,7 @@ function Pagination({ currentPage, setCurrentPage, totalPages }) {
                 <button
                     key='next'
                     className={styles.navigationButton}
-                    onClick={() => setCurrentPage(Math.min(totalPages, currentPage + 1))}
+                    onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
                     disabled={currentPage === totalPages}
                 >
                     Наступна

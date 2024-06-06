@@ -1,8 +1,8 @@
 import Button from "@/components/Button/button";
 import styles from "./confirmationDialog.module.scss";
-import variables from "../../../../variables.module.scss";
+import variables from "../../../variables.module.scss";
 
-function ConfirmationDialog({ leftButtonStyle, rightButtonStyle, confirmationTitle, message, cancelTitle, confirmTitle, onConfirm, onCancel }) {
+function ConfirmationDialog({ confirmationTitle, message, cancelTitle, confirmTitle, leftButtonStyle, rightButtonStyle, onConfirm, onCancel }) {
 
     return (
         <div className={styles.container}>

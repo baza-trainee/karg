@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useContext, useEffect } from 'react';
+import { useContext, useEffect, memo } from 'react';
 import { TrashIcon, CreateIcon } from '@/public/assets/icons';
 import variables from '../../../../variables.module.scss';
 import styles from "./styles/petList.module.scss";
@@ -10,8 +10,11 @@ import Pagination from '../../Pagination/Pagination';
 import CategorySelector from "../CategorySelector/CategorySelector";
 import ModalContext from '@/app/ModalContext';
 import PetForm from '../PetForm/PetForm';
-import ConfirmationDialog from '../ConfirmationDialog/ConfirmationDialog';
 import Spinner from '@/components/Spinner/Spinner';
+import { deletePet } from '../utilsFetchPetData';
+import { PetContext } from "../PetContext";
+import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
+import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -20,57 +23,39 @@ const deleteDialogActions = {
     confirmTitle: 'Видалити'
 };
 
-export default function PetList() {
-    const initialCategory = 'Найновіші';
-    const [selectedCategory, setSelectedCategory] = useState(initialCategory);
-    const [currentPage, setCurrentPage] = useState(1);
-    const [totalPages, setTotalPages] = useState(1);
-    const [pets, setPets] = useState([]);
-    const [isLoading, setIsLoading] = useState(false);
+function PetList() {
+    const {
+        loadPets,
+        currentPage,
+        selectedCategory,
+        setSelectedCategory,
+        initialCategory,
+        setIsLoading,
+        isLoading,
+        pets,
+        setPets,
+        handlePageChange,
+        totalPages
+    } = useContext(PetContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
-    const { hideModal, showModal } = useContext(ModalContext);
+    const { showModal } = useContext(ModalContext);
     const categories = [
         { label: 'Коти', value: 'Cat' },
         { label: 'Собаки', value: 'Dog' },
         { label: 'Інші тварини', value: 'Other' },
     ];
 
-    async function fetchPets(currentLanguage = 'ua', page = currentPage) {
-        setIsLoading(true);
-        const categoryQuery = selectedCategory === initialCategory ? '' : `&CategoryFilter=${selectedCategory}`;
-        const url = `https://karg-backend.onrender.com/karg/animal/getall?Page=${page}&PageSize=10${categoryQuery}&cultureCode=${currentLanguage}`;
-        try {
-            const response = await fetch(url);
-            if (!response.ok) throw new Error('Failed to fetch');
-            const data = await response.json();
-            setPets(data.animals);
-            setTotalPages(data.totalPages);
-        } catch (error) {
-            console.error('Error fetching pets:', error.message);
-            setPets([]);
-        } finally {
-            setIsLoading(false);
-        }
-    }
-
     useEffect(() => {
-        fetchPets();
-    }, [currentPage, selectedCategory]);
-
-    async function deletePets(id) {
-        setIsLoading(true);
-        hideModal('confirmation');
-        try {
-            const response = await fetch(`https://karg-backend.onrender.com/karg/animal/delete?id=${id}`, { method: "DELETE" });
-            if (!response.ok) throw new Error('Failed to fetch');
-        } catch (error) {
-            console.error('Error delete the animal:', error.message);
-        } finally {
-            setIsLoading(false);
-            const newPage = currentPage > 1 && pets.length === 1 ? currentPage - 1 : currentPage;
-            setCurrentPage(newPage);
+        if (!isLoading) {
+            loadPets();
         }
-    }
+    }, [currentPage, selectedCategory, loadPets]);
+
+    const handleDeletePet = async (id) => {
+        setIsLoading(true);
+        await deletePet(id, currentPage, pets, handlePageChange, setPets);
+        setIsLoading(false);
+    };
 
     return (
         <div className={styles.container}>
@@ -82,10 +67,12 @@ export default function PetList() {
                 <p className={`${styles.detailsTitle} ${variables.font20w700}`}>Історія порятунку</p>
                 <CategorySelector
                     categories={categories}
-                    selectedCategory={selectedCategory}
                     onSelectedCategory={(category) => {
-                        setCurrentPage(1);
-                        setSelectedCategory(category ? category.value : initialCategory)
+                        const newCategory = category && category.value !== null ? category.value : initialCategory;
+                        if (newCategory !== selectedCategory || currentPage !== 1) {
+                            handlePageChange(1);
+                            setSelectedCategory(newCategory);
+                        }
                     }}
                 />
             </div>
@@ -114,34 +101,39 @@ export default function PetList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={() => showModal('generic', <PetForm type='edit' petData={pet} refreshPets={fetchPets} />)}
+                                    onClick={() => {
+                                        showModal('generic', <PetForm type='edit' petData={pet} />)
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={() => showModal('confirmation',
-                                        <ConfirmationDialog
-                                            confirmationTitle={confirmationTitle}
-                                            message={message}
-                                            cancelTitle={cancelTitle}
-                                            confirmTitle={confirmTitle}
-                                            onConfirm={() => deletePets(pet.id)}
-                                            onCancel={() => {
-                                                hideModal('confirmation');
-                                            }}
-                                            leftButtonStyle={stylesBtn.confirmationCancelBtn}
-                                            rightButtonStyle={stylesBtn.confirmationDeleteBtn}
-                                        />)}
+                                    onClick={() => {
+                                        showModal('confirmation',
+                                            <ConfirmationDialogTrigger
+                                                confirmationTitle={confirmationTitle}
+                                                message={message}
+                                                cancelTitle={cancelTitle}
+                                                confirmTitle={confirmTitle}
+                                                leftButtonStyle={stylesBtn.confirmationCancelBtn}
+                                                rightButtonStyle={stylesBtn.confirmationDeleteBtn}
+                                                actionOnConfirm={handleDeletePet}
+                                                actionArgs={pet.id}
+                                            />)
+                                    }}
                                 />
                             </PetItem>
                         )
                     })}
+                    <ScrollToTop />
                     <Pagination
-                        currentPage={currentPage}
-                        setCurrentPage={setCurrentPage}
                         totalPages={totalPages}
+                        currentPage={currentPage}
+                        handlePageChange={handlePageChange}
                     />
                 </>
             )}
         </div>
     )
 }
+
+export default memo(PetList);
