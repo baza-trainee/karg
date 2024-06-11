@@ -16,21 +16,24 @@ const PageHero = ({ mobImage, tablImage, deskImage, buttonText, altText }) => {
                 src={mobImage}
                 alt={altText}
                 sizes="100vw"
-                fill={true}
+                width={320}
+                height={120}
             />
             <Image
                 className={`${styles.image} ${styles.tablImage}`}
                 src={tablImage}
                 alt={altText}
                 sizes="100vw"
-                fill={true}
+                width={834}
+                height={232}
             />
             <Image
                 className={`${styles.image} ${styles.deskImage}`}
                 src={deskImage}
                 alt={altText}
                 sizes="100vw"
-                fill={true}
+                width={1440}
+                height={400}
             />
         </section>
     );
