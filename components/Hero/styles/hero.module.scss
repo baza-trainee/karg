@@ -3,13 +3,10 @@
 .hero {
   position: relative;
   background-color: #eadeff;
-    @media screen and (min-width: 1200px){
-      top: 156px;
-    }
 
   &Title {
     position: absolute;
-    top: 8px;
+    top: 72px;
     left: 0;
     right: 0;
 
@@ -27,20 +24,20 @@
     color: $button-active;
 
     @media screen and (min-width: 768px) {
-      top: 20px;
+      top: 120px;
       font-size: 46px;
     }
 
     @media screen and (min-width: 1200px) {
       right: 52px;
-      top: 54px;
+      top: 224px;
       left: auto;
 
       color: $button-default;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 64px;
+      top: 224px;
       font-size: 56px;
       letter-spacing: 1.12px;
     }
@@ -49,6 +46,7 @@
 
 .mobImage {
   object-fit: cover;
+  padding-top: 64px;
 
   @media screen and (min-width: 767px) {
     display: none;
@@ -62,6 +60,7 @@
     display: block;
     object-fit: cover;
     background-position: top;
+    padding-top: 100px;
   }
 }
 
@@ -72,5 +71,6 @@
     display: block;
     object-fit: cover;
     background-position: top;
+    padding-top: 160px;
   }
 }
