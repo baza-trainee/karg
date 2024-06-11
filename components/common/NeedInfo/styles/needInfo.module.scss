@@ -16,7 +16,7 @@
 .mainPageDesk {
   background-color: $bg-white-transparent;
   padding: 43px 9px;
-
+  border-radius: 4px;
 }
 
 .desk,
@@ -67,6 +67,7 @@
   .mainPageDesk {
     padding: 32px 37px;
     gap: 16px;
+    border-radius: 8px;
 
     .text {
       width: 34.5em;
