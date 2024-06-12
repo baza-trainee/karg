@@ -258,10 +258,13 @@
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
+      &.active{
+        box-shadow: inset 0 -2px 0 $button-hover;
+      } 
   }
 
   .navMenu a:hover {
-    box-shadow: inset 0 -2px 0 $button-hover;
+    //box-shadow: inset 0 -2px 0 $button-hover; use it for current navigation tab
     color: $button-default;
   }
 
@@ -287,24 +290,33 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+      &.active{
+        box-shadow: inset 0 -2px 0 $button-hover;
+      } 
   }
-
-  .dropList {
-    background-color: $primary;
-    position: absolute;
-    display: none;
-    padding: 2rem;
-    min-width: fit-content;
-    z-index: 1000;
-  }
-
-  .dropHover:hover .dropList {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 1rem;
-    border-radius: 8px;
+  
+  .dropHover{
+        &.active{
+          & .dropList {
+            opacity: 1;
+            visibility: visible;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            gap: 1rem;
+            border-radius: 8px;
+          }
+        } 
+        & .dropList {
+          background-color: $primary;
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          padding: 2rem;
+          min-width: fit-content;
+          z-index: 1000;
+        }
   }
 
   .supportButton {

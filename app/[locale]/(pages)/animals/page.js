@@ -4,6 +4,7 @@
 import styles from './styles/animals.module.scss';
 // locale
 import initTranslations from "@/app/i18n";
+import { UserProvider } from '@/app/userProvider';
 import TranslationsProvider from "@/components/TranslationsProvider";
 // components
 import Header from "@/components/Header/header";
@@ -90,23 +91,25 @@ const Animals = async ({ params: { locale } }) => {
             locale={locale}
             namespaces={i18nNamespaces}
         >
-            <Header />
-            <PageHero
-                mobImage={ourAnimalsImage.src}
-                tablImage={ourAnimalsImage.src}
-                deskImage={ourAnimalsImage.src}
-                buttonText={DOCUMENT_TEXT.buttonText}
-                altText={DOCUMENT_TEXT.altText}
-            />
+            <UserProvider>
+                <Header />
+                <PageHero
+                    mobImage={ourAnimalsImage.src}
+                    tablImage={ourAnimalsImage.src}
+                    deskImage={ourAnimalsImage.src}
+                    buttonText={DOCUMENT_TEXT.buttonText}
+                    altText={DOCUMENT_TEXT.altText}
+                />
 
-            <main className={styles.pageContainer}>
-                <section className={styles.textContainer}>
-                    <p>Вітаємо у нашому особливому світі, де кожен хвіст – це власна історія кохання та чекання. Кожен кіт та собака, яких ви зустрінете в анкетах нижче, не просто шукають дім – вони чекають на той момент, коли їхня історія переплететься з вашою. </p>
-                    <p>Якщо ви поки не готові обзавестися другом, але дуже хочете допомогти тваринці, можна стати її опікуном. Тут все просто: щомісяця переводите певну сумму на утримання тваринки, а вона вам - свої відео та фото.</p>
-                </section>
-                <MultiPageCardItem data={data} buttonVariant={'button'} />
-            </main>
-            <Footer />
+                <main className={styles.pageContainer}>
+                    <section className={styles.textContainer}>
+                        <p>Вітаємо у нашому особливому світі, де кожен хвіст – це власна історія кохання та чекання. Кожен кіт та собака, яких ви зустрінете в анкетах нижче, не просто шукають дім – вони чекають на той момент, коли їхня історія переплететься з вашою. </p>
+                        <p>Якщо ви поки не готові обзавестися другом, але дуже хочете допомогти тваринці, можна стати її опікуном. Тут все просто: щомісяця переводите певну сумму на утримання тваринки, а вона вам - свої відео та фото.</p>
+                    </section>
+                    <MultiPageCardItem data={data} buttonVariant={'button'} />
+                </main>
+                <Footer />
+            </UserProvider>
         </TranslationsProvider>
     );
 };

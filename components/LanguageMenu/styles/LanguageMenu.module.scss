@@ -2,11 +2,11 @@
 
 .languageMenu {
   display: flex;
+  gap: 9px;
   align-items: center;
   background-color: $primary;
   color: $text-white;
   text-transform: uppercase;
-  justify-content: space-between;
   min-width: 24px;
   max-width: 73px;
   position: relative;
