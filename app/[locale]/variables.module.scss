@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@import './colors.scss';
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -11,6 +11,10 @@
 .h1 {
   @include font-styles(800, 36px);
   font-family: $font-family-heading;
+}
+
+.mobileBody {
+  @include font-styles(300, 16px);
 }
 
 .Subtitle1 {
@@ -31,7 +35,8 @@
 .quickSubtitle1 {
   @include font-styles(700, 20px);
 }
-.Heading3 {
+.Heading3,
+.mobileHeading3 {
   @include font-styles(700, 19px);
 }
 
@@ -46,17 +51,20 @@
 .supportButton1,
 .Subtitle2,
 .subtitle3,
-.Subtitle3 {
+.Subtitle3,
+.mobileSubtitle1 {
   @include font-styles(700, 18px);
 }
 
 .text1,
-.rescueText1 {
+.rescueText1,
+.mobileSubtitle2 {
   @include font-styles(500, 18px);
 }
 
-.text2 {
-  @include font-styles(500, 16px);
+.text2,
+.mobileText2 {
+  @include font-styles(400, 16px);
 }
 
 .supportText4,
@@ -84,8 +92,9 @@
   letter-spacing: 0%;
 }
 
+// admin panel fonts
 .font32w700 {
-   @include font-styles(700, 32px);
+  @include font-styles(700, 32px);
 }
 
 .font24w700 {
@@ -171,14 +180,14 @@
     letter-spacing: 0%;
   }
 
-  .Button2{
+  .Button2 {
     @include font-styles(800, 18px);
   }
-  .Subtitle3{
+  .Subtitle3 {
     @include font-styles(700, 18px);
   }
 
-  .Text3{
+  .Text3 {
     @include font-styles(400, 18px);
   }
   .achievText3 {

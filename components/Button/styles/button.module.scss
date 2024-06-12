@@ -108,6 +108,14 @@
   background-color: $button-dark-default;
   border-radius: 8px;
   color: $text-white;
+
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+
+  &:active {
+    background-color: $button-dark-active;
+  }
 }
 
 .confirmationCancelBtn,
@@ -123,9 +131,16 @@
 .confirmationCancelBtn {
   background-color: $bg-white;
 }
+
 .confirmationRevertBtn {
   background-color: $button-default;
   border: none;
+  &:hover {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-active;
+  }
 }
 
 .confirmationDeleteBtn {

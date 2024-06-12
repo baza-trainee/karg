@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import Portal from './Portal';
+import Portal from "../Portal";
 import ModalContext from '@/app/ModalContext';
 import { useUnsavedChanges } from '@/app/UnsavedChangesContext';
 import styles from "./genericModal.module.scss"
@@ -14,7 +14,7 @@ const GenericModal = () => {
         if (!hasUnsavedChanges) hideModal('generic');
     }
 
-    const handleContentClick = e => { 
+    const handleContentClick = e => {
         e.stopPropagation();
 
     }

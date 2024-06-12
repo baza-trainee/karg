@@ -15,6 +15,7 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, className = '', 
         try {
             const url = await uploadImage(file);
             onFileUploaded(url);
+            setFile(null); 
         } catch (error) {
             console.error('Error loading image:', error);
         }

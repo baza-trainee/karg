@@ -1,4 +1,4 @@
-import Portal from './Portal';
+import Portal from '../Portal';
 import styles from "./confirmationModal.module.scss";
 import ModalContext from '@/app/ModalContext';
 import { useContext } from 'react';
