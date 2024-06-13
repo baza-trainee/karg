@@ -4,7 +4,6 @@
 .pageHero {
   position: relative;
   width: 100%;
-  padding-top: 64px;
 
   .pseudoButton {
     display: flex;
@@ -15,7 +14,7 @@
     max-width: 536px;
     border-radius: 4px;
     position: absolute;
-    top: calc(50% + 32px);
+    top: calc(50%);
     left: 50%;
     transform: translate(-50%, -50%);
 
@@ -36,12 +35,11 @@
 
 @media screen and (min-width: 768px) {
   .pageHero {
-    padding-top: 100px;
     
     .pseudoButton {
       min-width: 372px;
       border-radius: 8px;
-      top: calc(50% + 50px);
+      top: calc(50%);
 
       .buttonText {
         @include font-styles(700, 28px);
@@ -53,11 +51,9 @@
 
 @media screen and (min-width: 1200px) {
   .pageHero {
-    padding-top: 160px;
-
     .pseudoButton {
       min-width: 536px;
-      top: calc(50% + 80px);
+      top: calc(50%);
 
       .buttonText {
         @include font-styles(700, 48px);
