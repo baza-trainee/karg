@@ -2,7 +2,7 @@ import HeroSection from "@/components/Hero/hero-section";
 import QuickAccessMenu from "@/components/QuickAccessMenu/QuickAccessMenu";
 import initTranslations from "../i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
-import styles from "./styles/main.module.scss";
+import { AdminProvider } from '@/app/adminProvider';
 import MissionSection from "@/components/Mission/mission-section";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
@@ -11,6 +11,7 @@ import RescueTypes from "@/components/RescueTypes/RescueTypes";
 import Help from "@/components/Help/help-section";
 import Support from "@/components/Support/Support";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
+import styles from "./styles/main.module.scss";
 const i18nNamespaces = ['main', 'common'];
 
 export default async function Home({ params: { locale } }) {
@@ -28,18 +29,20 @@ export default async function Home({ params: { locale } }) {
       locale={locale}
       namespaces={i18nNamespaces}
     >
-      <div className={styles.main}>
-        <Header />
-        <HeroSection />
-        <QuickAccessMenu />
-        <MissionSection />
-        <Achievements locale={locale} namespaces={i18nNamespaces} />
-        <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} />
-        <Help />
-        <Support locale={locale} namespaces={i18nNamespaces} />
-        <ScrollToTop/>
-        <Footer />
-      </div>
+      <AdminProvider>
+        <div className={styles.main}>
+          <Header />
+          <HeroSection />
+          <QuickAccessMenu />
+          <MissionSection />
+          <Achievements locale={locale} namespaces={i18nNamespaces} />
+          <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} />
+          <Help />
+          <Support locale={locale} namespaces={i18nNamespaces} />
+          <ScrollToTop />
+          <Footer />
+        </div>
+      </AdminProvider>
     </TranslationsProvider>
   );
 }
