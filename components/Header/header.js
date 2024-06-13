@@ -1,8 +1,8 @@
 "use client";
 
-import Link from "next/link";
+import { usePathname } from "next/navigation";
+import Link from "next/link"
 import useToggle from "@/utils/useToggle";
-
 import styles from "./styles/header.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
 
@@ -10,19 +10,38 @@ import {
   Logo,
   MenuBurger,
   MenuBurgerClose,
-  ArrowDown,
 } from "@/public/assets/icons";
 
 import LanguageMenu from "../LanguageMenu/LanguageMenu";
 import ButtonAsLink from "../ButtonAsLink/buttonAsLink";
 import SocialIcons from "../SocialIcons/socialIcons";
 import { useTranslation } from 'react-i18next';
+import DropdownList from '../DropdownList/DropdownList';
 
 const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
-  const [openFirst, setFirstOpen] = useToggle(false);
-  const [openSecond, setSecondOpen] = useToggle(false);
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLocale = i18n.language;
+  const currentPathname = usePathname();
+
+  console.log(currentLocale);
+  console.log(currentPathname);
+
+  const labelFirst = t('common:linkAboutUs');
+
+  const listLableFirst = [
+    { label: t('common:linkHistory'), link: currentLocale === "uk" ? "/about/history_of_origin" : `/${currentLocale}/about/history_of_origin` },
+    { label: t('common:linkRules'), link: currentLocale === "uk" ? "/about/rules_of_appeal" : `/${currentLocale}/about/rules_of_appeal` },
+    { label: t('common:linkTeam'), link: currentLocale === "uk" ? "/about/our_team" : `/${currentLocale}/about/our_team` },
+    { label: t('common:linkContacts'), link: currentLocale === "uk" ? "/about/contacts" : `/${currentLocale}/about/contacts` }
+  ];
+
+  const labelSecond = t('common:linkUseful');
+  const listLableSecond = [
+    { label: t('common:linkAdvices'), link: currentLocale === "uk" ? "/useful/advices" : `/${currentLocale}/useful/advices` },
+    { label: 'FAQ', link: currentLocale === "uk" ? "/useful/faq" : `/${currentLocale}/useful/faq` },
+    { label: t('common:linkSummaries'), link: currentLocale === "uk" ? "/useful/results" : `/${currentLocale}/useful/results` },
+  ];
 
   return (
     <header className={styles.header}>
@@ -42,56 +61,19 @@ const Header = () => {
           </Link>
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <li>
-              <Link href="/">{t('common:linkMain')}</Link>
-            </li>
-            <li className={styles.dropHover}>
-              <p className={`${styles.navMenuDropList} ${styles.ArrowDown}`}>
-                <span>{t('common:linkAboutUs')}</span>
-                <ArrowDown />
-              </p>
-              <ul
-                className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}
-              >
-                <li>
-                  <Link href="/about/history_of_origin">
-                    {t('common:linkHistory')}
-                  </Link>
-                </li>
-                <li>
-                  <Link href="/about/rules_of_appeal">{t('common:linkRules')}</Link>
-                </li>
-                <li>
-                  <Link href="/about/our_team">{t('common:linkTeam')}</Link>
-                </li>
-                <li>
-                  <Link href="/about/contacts">{t('common:linkContacts')}</Link>
-                </li>
-              </ul>
+              <Link className={(currentPathname === '/' || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
             </li>
             <li>
-              <Link href="/animals">{t('common:linkAnimals')}</Link>
+              <DropdownList label={labelFirst} list={listLableFirst} subst="/about" />
             </li>
             <li>
-              <Link href="/help">{t('common:linkHelpUs')}</Link>
+              <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
             </li>
-            <li className={styles.dropHover}>
-              <p className={styles.navMenuDropList}>
-                <span>{t('common:linkUseful')}</span>
-                <ArrowDown />
-              </p>
-              <ul
-                className={`${styles.navMenu} ${variables.button2} ${styles.dropList}`}
-              >
-                <li>
-                  <Link href="/useful/advices">{t('common:linkAdvices')}</Link>
-                </li>
-                <li>
-                  <Link href="/useful/faq">FAQ</Link>
-                </li>
-                <li>
-                  <Link href="/useful/results">{t('common:linkSummaries')}</Link>
-                </li>
-              </ul>
+            <li>
+              <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href="/help">{t('common:linkHelpUs')}</Link>
+            </li>
+            <li>
+              <DropdownList label={labelSecond} list={listLableSecond} subst="/useful" />
             </li>
           </ul>
           <div className={styles.sideMenu}>
@@ -118,30 +100,7 @@ const Header = () => {
                   <Link href="/">{t('common:linkMain')}</Link>
                 </li>
                 <li>
-                  <p className={styles.navMenuInnerMenu} onClick={setFirstOpen}>
-                    <span>{t('common:linkAboutUs')}</span>
-                    <ArrowDown />
-                  </p>
-                  {openFirst ? (
-                    <ul className={styles.navMenuInnerList}>
-                      <li>
-                        <Link href="/about/history_of_origin">
-                          {t('common:linkHistory')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/about/rules_of_appeal">
-                          {t('common:linkRules')}
-                        </Link>
-                      </li>
-                      <li>
-                        <Link href="/about/our_team">{t('common:linkTeam')}</Link>
-                      </li>
-                      <li>
-                        <Link href="/about/contacts">{t('common:linkContacts')}</Link>
-                      </li>
-                    </ul>
-                  ) : null}
+                  <DropdownList label={labelFirst} list={listLableFirst} openBurgerMenu={openBurgerMenu} />
                 </li>
                 <li>
                   <Link href="/animals">{t('common:linkAnimals')}</Link>
@@ -150,26 +109,7 @@ const Header = () => {
                   <Link href="/help">{t('common:linkHelpUs')}</Link>
                 </li>
                 <li>
-                  <p
-                    className={styles.navMenuInnerMenu}
-                    onClick={setSecondOpen}
-                  >
-                    <span>{t('common:linkUseful')}</span>
-                    <ArrowDown />
-                  </p>
-                  {openSecond ? (
-                    <ul className={styles.navMenuInnerList}>
-                      <li>
-                        <Link href="/useful/advices">{t('common:linkAdvices')}</Link>
-                      </li>
-                      <li>
-                        <Link href="/useful/faq">FAQ</Link>
-                      </li>
-                      <li>
-                        <Link href="/useful/results">{t('common:linkSummaries')}</Link>
-                      </li>
-                    </ul>
-                  ) : null}
+                  <DropdownList label={labelSecond} list={listLableSecond} openBurgerMenu={openBurgerMenu} />
                 </li>
               </ul>
             </div>
@@ -195,7 +135,7 @@ const Header = () => {
           </div>
         ) : null}
       </nav>
-    </header>
+    </header >
   );
 };
 
