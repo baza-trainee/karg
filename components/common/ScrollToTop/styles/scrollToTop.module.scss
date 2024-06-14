@@ -29,7 +29,7 @@
         bottom: 10px;
             & .iconMob {
                 display: none;
-            }
+            }            
     }
 
     @media screen and (min-width: 1441px){
@@ -64,11 +64,11 @@
         }
         @media screen and (min-width: 1200px) and (max-width: 1440px) {
             right: 24px;
-            bottom: 225.8px;
+            bottom: 339px;
         }
         @media screen and (min-width: 1441px){
             right: 40px;
-            bottom: 225.8px;
+            bottom: 339px;
         }   
 }
 
