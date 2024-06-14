@@ -23,10 +23,6 @@ const Header = () => {
   const { t, i18n } = useTranslation();
   const currentLocale = i18n.language;
   const currentPathname = usePathname();
-
-  console.log(currentLocale);
-  console.log(currentPathname);
-
   const labelFirst = t('common:linkAboutUs');
 
   const listLableFirst = [
