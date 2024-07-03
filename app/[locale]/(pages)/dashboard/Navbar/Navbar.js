@@ -4,6 +4,7 @@ import styles from "./styles/navbar.module.scss";
 import stylesBtn from "../../../../../components/Button/styles/button.module.scss"
 import { AdminContext } from '@/app/adminProvider';
 import PetForm from '../Pet/PetForm/PetForm';
+import AdviceForm from '../Advice/AdviceForm/AdviceForm';
 import ModalContext from '@/app/ModalContext';
 
 export default function Navbar() {
@@ -24,7 +25,7 @@ export default function Navbar() {
     },
     'Поради': {
       caption: "Додати статтю",
-      genericModalContent: ""
+      genericModalContent: <AdviceForm type="create" />
     },
     'FAQ': {
       caption: "Додати питання",

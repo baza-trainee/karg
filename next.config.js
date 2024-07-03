@@ -9,6 +9,12 @@ const nextConfig = {
     },
     images: {
         domains: ['i.ibb.co', 'iili.io', 'encrypted-tbn0.gstatic.com', 'depositphotos.com'],
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'upload.wikimedia.org',
+            },
+        ],
     }
 };
 

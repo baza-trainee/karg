@@ -33,15 +33,15 @@ export default function MenuBlock() {
 
       {dataList.map((a) => {
         return (
-          <div key={a.title} onClick={() => handleItemClick(a.title)}>
+          <div key={a.title} onClick={(a.title !== 'Корисне') ? () => handleItemClick(a.title) : () => { }}>
             <AsideItem
               itemStyle={styles.item}
               titleStyle={styles.title}
               title={a.title}
-              href={a.href}
               wrapperStyle={styles.wrapper}
               isNestedItems={a.isNestedItems}
               nestedData={a.isNestedItems ? a.nestedData : " "}
+              handleItemClick={handleItemClick}
             >
               {a.icon}
             </AsideItem>

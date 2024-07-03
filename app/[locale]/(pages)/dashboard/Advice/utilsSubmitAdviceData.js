@@ -1,9 +1,9 @@
-import { addAnimal, updateAnimal } from "./api";
-import { checkFormValidity } from './PetForm/checkFormValidity';
+import { addAdvice, updateAdvice } from "./api";
+import { checkFormValidity } from './AdviceForm/checkFormValidity';
 import SuccessDialog from "./SuccessDialog/SuccessDialog";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
 
-export const submitPetData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitAdviceData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
@@ -29,27 +29,25 @@ export const submitPetData = async (type, formData, originalData, hideModal, sho
                 }
             }
         })
-        console.log(patch);
         return patch;
     }
 
-    const handleCreateAnimal = async () => {
+    const handleCreateAdvice = async () => {
+        console.log(checkFormValidity(formData));
         if (!checkFormValidity(formData)) {
             setIsFormValid(false);
             return;
         }
-        const animalData = {
-            name_ua: formData.name_ua,
-            category: formData.category,
-            description_ua: formData.description_ua,
-            story_ua: formData.story_ua,
-            images: formData.images,
-            name_en: formData.name_en,
-            story_en: formData.story_en,
+        const adviceData = {
+            title_en: formData.title_en,
+            title_ua: formData.title_ua,
             description_en: formData.description_en,
+            description_ua: formData.description_ua,
+            created_At: formData.created_At,
+            image: formData.image,
         };
         try {
-            await addAnimal(animalData);
+            await addAdvice(adviceData);
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -62,13 +60,13 @@ export const submitPetData = async (type, formData, originalData, hideModal, sho
         }
     };
 
-    const handleUpdateAnimal = async () => {
+    const handleUpdateAdvice = async () => {
         const updates = getUpdatedFields(formData, originalData);
         if (!updates.length) {
             return;
         }
         try {
-            await updateAnimal(formData.id, updates);
+            await updateAdvice(formData.id, updates);
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -81,8 +79,8 @@ export const submitPetData = async (type, formData, originalData, hideModal, sho
         }
     };
     if (type === 'create') {
-        await handleCreateAnimal();
+        await handleCreateAdvice();
     } else {
-        await handleUpdateAnimal();
+        await handleUpdateAdvice();
     }
 }

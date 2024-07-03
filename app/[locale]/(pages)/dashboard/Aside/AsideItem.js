@@ -9,7 +9,7 @@ import styles from "./styles/aside.module.scss";
 const AsideItem = ({
     titleStyle,
     title,
-    href,
+    handleItemClick,
     itemStyle,
     wrapperStyle,
     children,
@@ -30,7 +30,7 @@ const AsideItem = ({
                 <ul className={styles.nestedStyle}>
                     {nestedData.map((d, index) => {
                         return (
-                            <li key={index}><Link href={d.href}>{d.title}</Link></li>
+                            <li key={index} onClick={() => { handleItemClick(d.title) }}><p>{d.title}</p></li>
                         )
                     })}
                 </ul>
