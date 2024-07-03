@@ -8,7 +8,7 @@ export const AdminContext = createContext({
 });
 
 export const AdminProvider = ({ children }) => {
-    const [activeSection, setActiveSection] = useState('Поради'); //'Тварини'
+    const [activeSection, setActiveSection] = useState('Тварини');
 
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
