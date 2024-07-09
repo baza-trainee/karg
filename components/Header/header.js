@@ -25,7 +25,7 @@ const Header = () => {
   const currentPathname = usePathname();
   const labelFirst = t('common:linkAboutUs');
 
-  const listLableFirst = [
+  const listLabelFirst = [
     { label: t('common:linkHistory'), link: currentLocale === "uk" ? "/about/history_of_origin" : `/${currentLocale}/about/history_of_origin` },
     { label: t('common:linkRules'), link: currentLocale === "uk" ? "/about/rules_of_appeal" : `/${currentLocale}/about/rules_of_appeal` },
     { label: t('common:linkTeam'), link: currentLocale === "uk" ? "/about/our_team" : `/${currentLocale}/about/our_team` },
@@ -33,7 +33,7 @@ const Header = () => {
   ];
 
   const labelSecond = t('common:linkUseful');
-  const listLableSecond = [
+  const listLabelSecond = [
     { label: t('common:linkAdvices'), link: currentLocale === "uk" ? "/useful/advices" : `/${currentLocale}/useful/advices` },
     { label: 'FAQ', link: currentLocale === "uk" ? "/useful/faq" : `/${currentLocale}/useful/faq` },
     { label: t('common:linkSummaries'), link: currentLocale === "uk" ? "/useful/results" : `/${currentLocale}/useful/results` },
@@ -60,7 +60,7 @@ const Header = () => {
               <Link className={(currentPathname === '/' || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
             </li>
             <li>
-              <DropdownList label={labelFirst} list={listLableFirst} subst="/about" />
+              <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
             </li>
             <li>
               <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
@@ -69,7 +69,7 @@ const Header = () => {
               <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href="/help">{t('common:linkHelpUs')}</Link>
             </li>
             <li>
-              <DropdownList label={labelSecond} list={listLableSecond} subst="/useful" />
+              <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
             </li>
           </ul>
           <div className={styles.sideMenu}>
