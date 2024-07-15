@@ -1,14 +1,14 @@
 import { getAdviceById, deleteAdvice, getAllAdvices } from "./api";
 
 export const initializeFormData = (data) => {
+    const date = new Date().toISOString().split("T")[0];
     return {
-        id: data.id || new Date().toISOString(),
-        title_ua: data.title_ua || data.title || '',
         title_en: data.title_en || '',
-        description_ua: data.description_ua || data.description || '',
         description_en: data.description_en || '',
+        title_ua: data.title_ua || data.title || '',
+        description_ua: data.description_ua || data.description || '',
         image: data.image || '',
-        created_At: data.created_At || new Date().toISOString()
+        created_at: data.created_at || date
     }
 }
 
@@ -18,13 +18,12 @@ export const fetchAdviceData = async (adviceId, type) => {
             const uaData = await getAdviceById(adviceId, 'ua');
             const enData = await getAdviceById(adviceId, 'en');
             const updatedFormData = {
-                id: uaData.id || new Date().toISOString(),
-                title_ua: uaData.title || '',
                 title_en: enData.title || '',
-                description_ua: uaData.description || '',
                 description_en: enData.description || '',
+                title_ua: uaData.title || '',
+                description_ua: uaData.description || '',
                 image: uaData.image || '',
-                created_At: uaData.created_At || ''
+                created_at: uaData.created_at || ''
             };
             return updatedFormData;
         } catch (error) {
@@ -49,10 +48,10 @@ export const deleteAdviceData = async (id, currentPage, advices, handlePageChang
     }
 }
 
-export const fetchAdvicesData = async (currentPage, selectedCategory, initialCategory, currentLanguage = 'ua', setAdvices, setTotalPages) => {
-    const categoryQuery = selectedCategory === initialCategory ? '' : `&CategoryFilter=${selectedCategory}`;
+export const fetchAdvicesData = async (currentPage, currentLanguage = 'ua', setAdvices, setTotalPages) => {
+    //const categoryQuery = selectedCategory === initialCategory ? '' : `&CategoryFilter=${selectedCategory}`;
     try {
-        const data = await getAllAdvices(currentPage, categoryQuery, currentLanguage);
+        const data = await getAllAdvices(currentPage, currentLanguage);
         setAdvices(data.advices);
         setTotalPages(data.totalPages);
     } catch (error) {

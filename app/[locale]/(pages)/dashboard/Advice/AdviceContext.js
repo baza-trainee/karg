@@ -13,7 +13,7 @@ export const AdviceProvider = ({ children }) => {
     const loadAdvices = useCallback(async () => {
         setIsLoading(true);
         try {
-            await fetchAdvicesData(currentPage, selectedCategory, initialCategory, 'ua', setAdvices, setTotalPages);
+            await fetchAdvicesData(currentPage, 'ua', setAdvices, setTotalPages);
         } catch (error) {
             console.error('Error loading advices:', error);
             setAdvices([]);

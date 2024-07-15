@@ -7,6 +7,8 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
+        console.log(formData, 'formData');
+        console.log(originalData, 'originalData');
         const patch = [];
         Object.keys(formData).forEach(key => {
             if (Array.isArray(formData[key])) {
@@ -40,10 +42,10 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
         }
         const adviceData = {
             title_en: formData.title_en,
-            title_ua: formData.title_ua,
             description_en: formData.description_en,
+            title_ua: formData.title_ua,
             description_ua: formData.description_ua,
-            created_At: formData.created_At,
+            created_at: formData.created_at,
             image: formData.image,
         };
         try {
@@ -62,6 +64,7 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
 
     const handleUpdateAdvice = async () => {
         const updates = getUpdatedFields(formData, originalData);
+        console.log(updates);
         if (!updates.length) {
             return;
         }

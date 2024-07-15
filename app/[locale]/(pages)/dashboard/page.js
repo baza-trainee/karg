@@ -17,12 +17,12 @@ export default function DashboardPage({ children }) {
         <UnsavedChangesProvider>
           <PetProvider>
             <AdviceProvider>
-            <div>
-              <Main />
-              {children}
-              <GenericModal />
-              <ConfirmationModal />
-            </div>
+              <div>
+                <Main />
+                {children}
+                <GenericModal />
+                <ConfirmationModal />
+              </div>
             </AdviceProvider>
           </PetProvider>
         </UnsavedChangesProvider>
