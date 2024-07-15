@@ -44,7 +44,7 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
                         {list.map((item) => {
                             return (
                                 <li key={item.label}>
-                                    <Link href={item.link}>{item.label}</Link>
+                                    <Link href={item.link} className={`${styles.navMenuDropList} ${(currentPathname === item.link) ? styles.active : ""}`}>{item.label}</Link>
                                 </li>
                             )
                         })}
