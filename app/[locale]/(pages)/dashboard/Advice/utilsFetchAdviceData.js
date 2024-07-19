@@ -49,7 +49,6 @@ export const deleteAdviceData = async (id, currentPage, advices, handlePageChang
 }
 
 export const fetchAdvicesData = async (currentPage, currentLanguage = 'ua', setAdvices, setTotalPages) => {
-    //const categoryQuery = selectedCategory === initialCategory ? '' : `&CategoryFilter=${selectedCategory}`;
     try {
         const data = await getAllAdvices(currentPage, currentLanguage);
         setAdvices(data.advices);

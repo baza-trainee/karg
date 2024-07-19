@@ -3,7 +3,9 @@ import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from "next/navigation";
 import Link from 'next/link';
 import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
+import authService from './authService';
 import styles from './styles/login.module.scss';
+import { AdminContext } from '@/app/adminProvider';
 
 export default function LoginPage() {
 
@@ -18,18 +20,23 @@ export default function LoginPage() {
 
   const router = useRouter();
 
-  const [form, setForm] = useState({
+  const initialForm = {
     email:
       { value: '', emailError: '', emailVisited: false },
     password:
       { value: '', passwordError: '', passwordVisited: false },
-  });
+  };
+
+  const [form, setForm] = useState(initialForm);
 
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [loginStatus, setLoginStatus] = useState('');
   const [correctUser, setCorrectUser] = useState('');
+
+  const { setActiveUser, setIsAuth } = useContext(AdminContext);
+
 
   const { email } = form.email.value;
   const { password } = form.password.value;
@@ -66,7 +73,6 @@ export default function LoginPage() {
   };
 
   const passwordHandler = (e) => {
-
     setLoginStatus('');
     setForm({ ...form, password: { ...form.password, value: e.target.value } });
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\u0400-\u04FF\d~!?@#$%^&*(){}\[\]><\/\\|"'.,:;-]{1,64}$/;
@@ -93,37 +99,28 @@ export default function LoginPage() {
         break;
     }
   }
-
   const handleSubmit = async () => {
-    console.log('Start handleSubmit');
     try {
-      const response = await fetch('https://karg-backend.onrender.com/karg/authentication/login', {
-        method: 'POST',
-        body: JSON.stringify({ email: form.email.value, password: form.password.value }),
-        headers: {
-          'Content-Type': 'application/json'
-        }
-      });
-      const data = await response.json();
+      const response = await authService.login(form.email.value, form.password.value);
+      const data = await response;
 
-      if (response.status === 200) {
+      if (response.status === 1) {
         const authToken = await data.token;
         localStorage.setItem('auth-token', authToken);
         setLoginStatus(`Ви успішно увійшли до адмінпанелі`);
         setCorrectUser(data.user);
         router.push("/dashboard", { email: form.email.value });
       }
-      if ((response.status === 400)) {
+      if ((!response.status)) {
         setLoginStatus("Введено невірний логін або пароль.");
+        setTimeout(() => location.reload(), 3000);
       }
-      // else if (response.status === 401) {
-      //   setLoginStatus("Введено невірний логін або пароль.");
-      //   //await fetch('https://karg-backend.onrender.com/karg/authentication/refresh');
-      //   return;
-      // }
+      else if (response.status === 401) {
+        setLoginStatus("Введено невірний логін або пароль.");
+        setTimeout(() => location.reload(), 3000);
+      }
     }
     catch (e) {
-      console.log(e, 'test this part');
       setLoginStatus("Введено невірний логін або пароль.");
     }
   };

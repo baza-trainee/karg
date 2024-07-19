@@ -30,6 +30,10 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'storinka.com.ua'
             },
+            {
+                protocol: 'https',
+                hostname: 'freeimage.host'
+            },
 
         ],
     }

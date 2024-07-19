@@ -9,6 +9,12 @@ export const AdminContext = createContext({
 
 export const AdminProvider = ({ children }) => {
     const [activeSection, setActiveSection] = useState('Тварини');
+    const [activeUser, setActiveUser] = useState(null);
+    const [isAuth, setIsAuth] = useState(false);
+
+    const handleSetActiveUser = (user) => {
+        setActiveUser(user);
+    };
 
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
@@ -17,6 +23,8 @@ export const AdminProvider = ({ children }) => {
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
+        activeUser,
+        setActiveUser: handleSetActiveUser
     };
 
     return (
