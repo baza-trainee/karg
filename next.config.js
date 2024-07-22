@@ -18,6 +18,23 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: 'dailylviv.com',
             },
+            {
+                protocol: 'https',
+                hostname: 'media.istockphoto.com'
+            },
+            {
+                protocol: 'https',
+                hostname: 'turtlerescueleague.org'
+            },
+            {
+                protocol: 'https',
+                hostname: 'storinka.com.ua'
+            },
+            {
+                protocol: 'https',
+                hostname: 'freeimage.host'
+            },
+
         ],
     }
 };
