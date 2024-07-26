@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import styles from "./dragDropFileUpload.module.scss";
 import uploadImage from '../../../../api/uploadImage/route';
 
-const DragDropFileUpload = ({ onFileUploaded, placeholderImage, className = '', accept = 'image/*', style = {} }) => {
+const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText, placeholderTextClassName = '', className = '', accept = 'image/*', style = {} }) => {
     const [file, setFile] = useState(null);
     const fileInputRef = useRef();
 
@@ -15,7 +15,7 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, className = '', 
         try {
             const url = await uploadImage(file);
             onFileUploaded(url);
-            setFile(null); 
+            setFile(null);
         } catch (error) {
             console.error('Error loading image:', error);
         }
@@ -55,6 +55,7 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, className = '', 
             ) : (
                 <>
                     <div className={styles.placeholder}>{placeholderImage}</div>
+                    {placeholderText && <div className={placeholderTextClassName}>{placeholderText}</div>}
                     <input
                         ref={fileInputRef}
                         type="file"

@@ -47,9 +47,7 @@ export const deletePet = async (id, currentPage, pets, handlePageChange, setPets
     } catch (error) {
         console.error('Error deleting the animal:', error.message);
     } finally {
-        console.log('currentPage:', currentPage);
         const newPage = currentPage > 1 && pets.length === 1 ? currentPage - 1 : currentPage;
-        console.log('newPage:', newPage);
         handlePageChange(newPage);
     }
 }
