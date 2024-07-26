@@ -1,0 +1,32 @@
+@import "/app/[locale]/colors.scss";
+
+.field {
+  min-height: 48px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid $text-dark;
+  box-sizing: border-box;
+}
+
+.formFields {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.editMode {
+  .field {
+    border: 1px solid $button-active;
+  }
+
+  .field:focus {
+    border-color: $button-active;
+    outline: none;
+  }
+}

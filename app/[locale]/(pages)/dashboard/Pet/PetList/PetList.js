@@ -11,7 +11,7 @@ import CategorySelector from "../CategorySelector/CategorySelector";
 import ModalContext from '@/app/ModalContext';
 import PetForm from '../PetForm/PetForm';
 import Spinner from '@/components/Spinner/Spinner';
-import { deletePet } from '../utilsFetchPetData';
+import { deletePet } from '../api/utilsFetchPetData';
 import { PetContext } from "../PetContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';

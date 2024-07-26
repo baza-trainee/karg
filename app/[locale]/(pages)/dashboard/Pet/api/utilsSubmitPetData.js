@@ -1,9 +1,8 @@
 import { addAnimal, updateAnimal } from "./api";
-import { checkFormValidity } from './PetForm/checkFormValidity';
-import SuccessDialog from "./SuccessDialog/SuccessDialog";
-import stylesBtn from '@/components/Button/styles/button.module.scss';
+import { checkFormValidity } from '../PetForm/checkFormValidity';
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
-export const submitPetData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitPetData = async (type, formData, originalData, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
@@ -29,7 +28,7 @@ export const submitPetData = async (type, formData, originalData, hideModal, sho
                 }
             }
         })
-        console.log(patch);
+    
         return patch;
     }
 

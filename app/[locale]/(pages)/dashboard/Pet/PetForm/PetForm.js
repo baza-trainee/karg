@@ -6,13 +6,13 @@ import { useContext, useState, useEffect } from "react";
 import ModalContext from "@/app/ModalContext";
 import Spinner from "@/components/Spinner/Spinner";
 import { useUnsavedChanges } from "@/app/UnsavedChangesContext";
-import { submitPetData } from "../utilsSubmitPetData";
+import { submitPetData } from "../api/utilsSubmitPetData";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, fetchPetData } from "../utilsFetchPetData";
+import { initializeFormData, fetchPetData } from "../api/utilsFetchPetData";
 import { PetContext } from "../PetContext";
 
 const labels = {
@@ -48,7 +48,7 @@ const successDialogActions = {
 function PetForm({ type = 'create', petData = {} }) {
     const { ukrLng, engLng, nameTitle, categoryTitle, placeholder, descriptionTitle, storyTitle } = labels;
     const { confirmationTitle, message, cancelTitle, confirmTitle } = confirmationDialogActions;
-    const { hideModal, showModal } = useContext(ModalContext);
+    const { showModal } = useContext(ModalContext);
     const [language, setLanguage] = useState('ua');
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
@@ -91,7 +91,6 @@ function PetForm({ type = 'create', petData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
