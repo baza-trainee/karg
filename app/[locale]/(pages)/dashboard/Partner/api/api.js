@@ -1,7 +1,7 @@
 const API_BASE_URL_PARTNER = 'https://karg-backend.onrender.com/karg/partner';
-const authToken = localStorage.getItem('auth-token');
 
 export const getAllPartners = async () => {
+    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/getall`, {
         headers: {
             'Authorization': authToken
@@ -14,6 +14,7 @@ export const getAllPartners = async () => {
 }
 
 export const addPartner = async (partnerData) => {
+    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/add`, {
         method: "POST",
         headers: {
@@ -30,6 +31,7 @@ export const addPartner = async (partnerData) => {
 };
 
 export const updatePartner = async (id, updates) => {
+    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/update?id=${id}`, {
         method: "PATCH",
         headers: {
@@ -47,6 +49,7 @@ export const updatePartner = async (id, updates) => {
 
 
 export const deletePartnerApi = async (id) => {
+    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
@@ -62,6 +65,7 @@ export const deletePartnerApi = async (id) => {
 }
 
 export const getPartnerById = async (id) => {
+    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/getbyid?id=${id}`, {
         headers: {
             'Authorization': authToken
