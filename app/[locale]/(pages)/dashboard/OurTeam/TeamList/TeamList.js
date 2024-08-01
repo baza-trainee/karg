@@ -3,17 +3,15 @@
 import { useContext, useEffect, memo } from 'react';
 import { TrashIcon, CreateIcon } from '@/public/assets/icons';
 import variables from '../../../../variables.module.scss';
-import styles from "./styles/adviceList.module.scss";
+import styles from "./styles/teamtList.module.scss";
 import stylesBtn from "../../../../../../components/Button/styles/button.module.scss";
-import AdviceItem from "./AdviceItem";
-import Pagination from '../../Pagination/Pagination';
+import RescuerItem from "./RescuerItem";
 import ModalContext from '@/app/ModalContext';
-import AdviceForm from '../AdviceForm/AdviceForm';
+import RescuerForm from '../TeamForm/RescuerForm';
 import Spinner from '@/components/Spinner/Spinner';
-import { deleteAdviceData } from '../utilsFetchAdviceData';
-import { AdviceContext } from "../AdviceContext";
+import { deleteTeamUserData } from '../utilsFetchTeamData';
+import { TeamContext } from "../TeamContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
-import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -22,62 +20,59 @@ const deleteDialogActions = {
     confirmTitle: 'Видалити'
 };
 
-function AdviceList() {
+function TeamList() {
     const {
-        loadAdvices,
-        currentPage,
+        loadRescuers,
         setIsLoading,
         isLoading,
-        advices,
-        setAdvices,
-        handlePageChange,
-        totalPages
-    } = useContext(AdviceContext);
+        rescuers,
+        setRescuers,
+    } = useContext(TeamContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
     useEffect(() => {
         if (!isLoading) {
-            loadAdvices();
+            loadRescuers();
         }
-    }, [currentPage, loadAdvices]);
+    }, [loadRescuers, loadRescuers]);
 
-    const handleDeleteAdvice = async (id) => {
+    const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
-        await deleteAdviceData(id, currentPage, advices, handlePageChange, setAdvices);
+        await deleteTeamUserData(id, setRescuers);
         setIsLoading(false);
     };
 
     return (
         <div className={styles.container}>
-            <div className={styles.adviceTitle}>
+            <div className={styles.teamTitle}>
                 <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Заголовок</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Текст статті</p>
+                <p className={`${styles.fullname} ${variables.font20w700}`}>Імʼя та прізвище</p>
+                <p className={`${styles.phoneTitle} ${variables.font20w700}`}>Телефон</p>
             </div>
             {isLoading ? <Spinner /> : (
                 <>
-                    {advices && advices.map((advice) => {
-                        const photoUrls = advice.images.length ? [...advice.images] : [];
-                        const photoAlt = 'Advice photo';
+                    {rescuers && rescuers.map((rescuer) => {
+                        const photoUrls = rescuer.images.length ? [...rescuer.images] : [];
+                        const photoAlt = 'Rescuer photo';
                         return (
-                            <AdviceItem
-                                key={advice.id}
-                                adviceLineStyle={styles.adviceLine}
+                            <RescuerItem
+                                key={rescuer.id}
+                                rescuerLineStyle={styles.teamLine}
                                 photoStyle={styles.photo}
                                 photoSrc={photoUrls}
                                 photoAlt={photoAlt}
                                 photoContainerStyle={styles.photoContainer}
-                                basicInfoStyle={styles.basicInfo}
-                                adviceTitle={advice.title}
-                                adviceDetails={advice.description}
-                                detailsStyle={styles.detailsInfo}
+                                rescuerFullname={rescuer.fullName}
+                                rescuerPhone={rescuer.phoneNumber}
+                                phoneStyle={styles.phone}
+                                fullnameStyle={styles.fullname}
                                 iconsContainerStyle={styles.iconsContainer}
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
                                     onClick={() => {
-                                        showModal('generic', <AdviceForm type='edit' adviceData={advice} />)
+                                        showModal('generic', <RescuerForm type='edit' rescuerData={rescuer} />)
                                     }}
                                 />
                                 <TrashIcon
@@ -91,24 +86,18 @@ function AdviceList() {
                                                 confirmTitle={confirmTitle}
                                                 leftButtonStyle={stylesBtn.confirmationCancelBtn}
                                                 rightButtonStyle={stylesBtn.confirmationDeleteBtn}
-                                                actionOnConfirm={handleDeleteAdvice}
-                                                actionArgs={advice.id}
+                                                actionOnConfirm={handleDeleteRescuer}
+                                                actionArgs={rescuer.id}
                                             />)
                                     }}
                                 />
-                            </AdviceItem>
+                            </RescuerItem>
                         )
                     })}
-                    <ScrollToTop />
-                    <Pagination
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        handlePageChange={handlePageChange}
-                    />
                 </>
             )}
         </div>
     )
 }
 
-export default memo(AdviceList);
+export default memo(TeamList);

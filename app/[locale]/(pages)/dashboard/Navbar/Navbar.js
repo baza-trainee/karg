@@ -5,6 +5,7 @@ import stylesBtn from "../../../../../components/Button/styles/button.module.scs
 import { AdminContext } from '@/app/adminProvider';
 import PetForm from '../Pet/PetForm/PetForm';
 import AdviceForm from '../Advice/AdviceForm/AdviceForm';
+import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
 
 export default function Navbar() {
@@ -34,6 +35,10 @@ export default function Navbar() {
     'Підсумки': {
       caption: "Додати статтю",
       genericModalContent: ""
+    },
+    'Команда': {
+      caption: "Додати користувача",
+      genericModalContent: <RescuerForm type="create" />
     },
   }
 

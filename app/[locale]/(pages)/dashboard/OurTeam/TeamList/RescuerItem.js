@@ -2,28 +2,27 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import variables from '../../../../variables.module.scss';
-export default function AdviceItem(
+export default function RescuerItem(
     {
         containerStyle,
         photoStyle,
         photoAlt,
         photoSrc = [],
         photoContainerStyle,
-        basicInfoStyle,
-        adviceTitle,
-        adviceDetails,
-        detailsStyle,
-        detailsBlockStyle,
-        adviceLineStyle,
+        rescuerFullname,
+        rescuerPhone,
+        phoneStyle,
+        fullnameStyle,
+        rescuerLineStyle,
         iconsContainerStyle,
         children
     }) {
 
     return (
         <div className={containerStyle}>
-            <div className={adviceLineStyle}>
+            <div className={rescuerLineStyle}>
                 <div className={photoContainerStyle}>
-                    {photoSrc && photoSrc.length > 0 ? (
+                    {photoSrc && photoAlt.length > 0 ? (
                         <Image
                             src={photoSrc[0]}
                             alt={photoAlt}
@@ -36,10 +35,10 @@ export default function AdviceItem(
                         <div className={photoStyle} aria-hidden="true"></div>
                     )}
                 </div>
-                <div className={`${basicInfoStyle} ${variables.font24w700}`}>{adviceTitle}</div>
-                <div className={detailsBlockStyle}>
-                    <div className={`${detailsStyle} ${variables.font20w500}`}>{adviceDetails}</div>
-                </div>
+                <div className={`${fullnameStyle} ${variables.font20w500}`}>{rescuerFullname}</div>
+
+                <div className={`${phoneStyle} ${variables.font20w500}`}>{rescuerPhone}</div>
+
                 <div className={iconsContainerStyle}>
                     {children}
                 </div>
@@ -47,18 +46,15 @@ export default function AdviceItem(
         </div>
     )
 }
-AdviceItem.propTypes = {
+RescuerItem.propTypes = {
     containerStyle: PropTypes.string,
     photoStyle: PropTypes.string,
     photoSrc: PropTypes.array,
     photoAlt: PropTypes.string,
-    adviceTitle: PropTypes.string,
-    adviceDetails: PropTypes.string,
-    detailsStyle: PropTypes.string,
-    rescueStory: PropTypes.string,
-    basicInfoStyle: PropTypes.string,
-    detailsBlockStyle: PropTypes.string,
-    adviceLineStyle: PropTypes.string,
+    rescuerFullName: PropTypes.string,
+    rescuerPhone: PropTypes.string,
+    phoneStyle: PropTypes.string,
+    rescuerLineStyle: PropTypes.string,
     iconsContainerStyle: PropTypes.string,
 };
 
