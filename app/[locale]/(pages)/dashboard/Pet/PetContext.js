@@ -1,5 +1,5 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
-import { fetchPets } from "./utilsFetchPetData";
+import React, { createContext, useState, useCallback } from 'react';
+import { fetchPets } from "./api/utilsFetchPetData";
 export const PetContext = createContext(null);
 
 export const PetProvider = ({ children }) => {

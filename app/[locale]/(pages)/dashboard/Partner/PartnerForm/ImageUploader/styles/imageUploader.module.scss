@@ -1,0 +1,68 @@
+@import "/app/[locale]/variables.module.scss";
+@import "/app/[locale]/colors.scss";
+
+.uploadArea {
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 27px 0;
+
+  .placeholderText {
+    margin-top: 6px;
+    font-weight: 400;
+    font-size: 20px;
+    color: $primary;
+  }
+
+  .placeholderImageMin {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.imageMin {
+  height: 160px;
+  width: 160px;
+}
+
+.imageUploader {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .imageContainer {
+    height: 100%;
+    width: 160px;
+    position: relative;
+
+    .deleteIconContainer {
+      position: absolute;
+      z-index: 20;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 28px;
+      height: 28px;
+      background-color: white;
+      top: 8px;
+      right: 8px;
+      border-radius: 2px;
+      border: 0.5px solid $button-active;
+
+      .deleteIcon {
+        fill: $button-active;
+        height: 20px;
+        width: 16px;
+      }
+    }
+  }
+}
+
+.imageContainer img {
+  height: 160px;
+  width: 160px;
+  border-radius: 8px;
+}

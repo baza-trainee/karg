@@ -1,7 +1,7 @@
 import styles from "./styles/successDialog.module.scss";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
 import Button from "@/components/Button/button";
-import variables from "../../../../variables.module.scss";
+import variables from "../../../variables.module.scss";
 import { useContext } from 'react';
 import ModalContext from '@/app/ModalContext';
 

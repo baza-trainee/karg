@@ -7,7 +7,7 @@ import Navbar from '../Navbar/Navbar';
 import PetList from '../Pet/PetList/PetList';
 import AdviceList from '../Advice/AdviceList/AdviceList';
 import { AdminContext } from '@/app/adminProvider';
-import PartnerList from '../Partner/PartnerList';
+import PartnerList from '../Partner/PartnerList/PartnerList';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);

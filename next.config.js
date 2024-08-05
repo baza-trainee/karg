@@ -8,7 +8,7 @@ const nextConfig = {
         return config;
     },
     images: {
-        domains: ['i.ibb.co', 'iili.io', 'encrypted-tbn0.gstatic.com', 'depositphotos.com'],
+        domains: ['i.ibb.co', 'iili.io', 'freeimage.host'],
         remotePatterns: [
             {
                 protocol: 'https',
