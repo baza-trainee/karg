@@ -4,6 +4,7 @@ import styles from "./styles/navbar.module.scss";
 import stylesBtn from "../../../../../components/Button/styles/button.module.scss"
 import { AdminContext } from '@/app/adminProvider';
 import PetForm from '../Pet/PetForm/PetForm';
+import PartnerForm from '../Partner/PartnerForm/PartnerForm';
 import AdviceForm from '../Advice/AdviceForm/AdviceForm';
 import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
@@ -22,7 +23,7 @@ export default function Navbar() {
     },
     'Партнери': {
       caption: "Додати партнера",
-      genericModalContent: ""
+      genericModalContent: <PartnerForm type="create" />
     },
     'Поради': {
       caption: "Додати статтю",

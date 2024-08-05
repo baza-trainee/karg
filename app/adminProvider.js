@@ -1,6 +1,6 @@
 'use client'
 
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 
 export const AdminContext = createContext({
     activeSection: '',
@@ -16,9 +16,20 @@ export const AdminProvider = ({ children }) => {
         setActiveUser(user);
     };
 
+    useEffect(() => {
+        const section = localStorage.getItem('activeSection');
+        if (section) {
+            setActiveSection(section);
+        }
+    }, []);
+
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
     };
+
+    useEffect(() => {
+        localStorage.setItem('activeSection', activeSection);
+    }, [activeSection]);
 
     const contextValue = {
         activeSection,

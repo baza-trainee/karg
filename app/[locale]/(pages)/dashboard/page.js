@@ -9,6 +9,7 @@ import ConfirmationModal from "./ConfirmationModal/ConfirmationModal";
 import { PetProvider } from './Pet/PetContext';
 import { AdviceProvider } from './Advice/AdviceContext';
 import { TeamProvider } from './OurTeam/TeamContext';
+import { PartnerProvider } from './Partner/PartnerContext';
 
 export default function DashboardPage({ children }) {
 
@@ -16,18 +17,20 @@ export default function DashboardPage({ children }) {
     <AdminProvider>
       <ModalProvider>
         <UnsavedChangesProvider>
-          <PetProvider>
-            <AdviceProvider>
+          <PartnerProvider>
+            <PetProvider>
+              <AdviceProvider>
               <TeamProvider>
-                <div>
-                  <Main />
-                  {children}
-                  <GenericModal />
-                  <ConfirmationModal />
+              <div>
+                <Main />
+                {children}
+                <GenericModal />
+                <ConfirmationModal />
                 </div>
-              </TeamProvider>
-            </AdviceProvider>
-          </PetProvider>
+                </TeamProvider>
+              </AdviceProvider>
+            </PetProvider>
+          </PartnerProvider>
         </UnsavedChangesProvider>
       </ModalProvider>
     </AdminProvider>
