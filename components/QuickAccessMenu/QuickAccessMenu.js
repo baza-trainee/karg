@@ -38,9 +38,9 @@ export default function QuickAccessMenu() {
 
   const quickMenuData = [
     { 'title': t('quickMenuDonate'), 'href': '/help', 'iconSrc': <DonateIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuDonateMessage') },
-    { 'title': t('quickMenuServices'), 'href': '/about/#rescue-types', 'iconSrc': <HandshakeIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuServicesMessage') },
+    { 'title': t('quickMenuServices'), 'href': '/about/rules_of_appeal#rescue-types', 'iconSrc': <HandshakeIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuServicesMessage') },
     { 'title': t('quickMenuAnimals'), 'href': '/animals', 'iconSrc': <PawprintIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuAnimalsMessage') },
-    { 'title': t('quickMenuReports'), 'href': '/useful/#statistics', 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
+    { 'title': t('quickMenuReports'), 'href': '/useful#statistics', 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
   ];
 
   const donate = t('common:buttonSupportText');
