@@ -1,0 +1,51 @@
+@import "/app/[locale]/colors.scss";
+
+.field {
+    min-height: 48px;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid $text-dark;
+    box-sizing: border-box;
+  }
+
+  .nameFieldInput{
+    height: 48px;
+  }
+
+  .formContainer{
+    display: flex;
+    width: 100%;
+    background-color: $bg-white;
+    border-radius: 8px;
+    justify-content: center;
+  }
+
+  .formFields {
+    display: grid;
+    
+    grid-template-columns: repeat(2, 1fr);
+    width: 980px;
+    grid-template-rows: auto;
+    gap: 24px;
+    padding: 16px 0 32px 0;
+  }
+
+  .inputBlock {
+    display: flex;
+    flex-direction: column;
+    width: 478px;
+    gap: 4px;
+  }
+
+  .editMode {
+  .field {
+    border: 1px solid $text-dark;
+  }
+  .field:focus {
+    border-color: $button-active;
+    outline: none;
+  }
+}
+
+
+  

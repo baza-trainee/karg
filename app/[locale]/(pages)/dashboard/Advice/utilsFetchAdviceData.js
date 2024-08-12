@@ -59,3 +59,4 @@ export const fetchAdvicesData = async (currentPage, currentLanguage = 'ua', setA
     }
 };
 
+

@@ -47,12 +47,14 @@ export default function Navbar() {
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      <Button
-        className={stylesBtn.buttonAddNewItem}
-        onClick={handleButtonClick}
-      >
-        {caption}
-      </Button>
+      {activeSection !== "Мій акаунт" &&
+        <Button
+          className={stylesBtn.buttonAddNewItem}
+          onClick={handleButtonClick}
+        >
+          {caption}
+        </Button>
+      }
     </div>
   )
 }
