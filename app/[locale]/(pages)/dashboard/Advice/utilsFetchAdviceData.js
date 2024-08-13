@@ -3,11 +3,13 @@ import { getAdviceById, deleteAdvice, getAllAdvices } from "./api";
 export const initializeFormData = (data) => {
     const date = new Date().toISOString().split("T")[0];
     return {
+        id: data.id || '',
         title_en: data.title_en || '',
         description_en: data.description_en || '',
         title_ua: data.title_ua || data.title || '',
         description_ua: data.description_ua || data.description || '',
-        image: data.image || '',
+        images: data.images || [],
+        //image: data.image || '',
         created_at: data.created_at || date
     }
 }
@@ -18,11 +20,13 @@ export const fetchAdviceData = async (adviceId, type) => {
             const uaData = await getAdviceById(adviceId, 'ua');
             const enData = await getAdviceById(adviceId, 'en');
             const updatedFormData = {
+                id: uaData.id,
                 title_en: enData.title || '',
                 description_en: enData.description || '',
                 title_ua: uaData.title || '',
                 description_ua: uaData.description || '',
-                image: uaData.image || '',
+                images: uaData.images || '',
+                //image: uaData.image || '',
                 created_at: uaData.created_at || ''
             };
             return updatedFormData;

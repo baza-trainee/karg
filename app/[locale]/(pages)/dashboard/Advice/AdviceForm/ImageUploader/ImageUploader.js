@@ -3,10 +3,10 @@ import { PlusPlaceholderImage, PlusPlaceholderMinImage, TrashIcon } from '@/publ
 import styles from "./styles/imageUploader.module.scss";
 import { memo } from 'react';
 
-const ImageUploader = memo(({ image, imageId, handleImageUploaded, handleDeleteImage }) => {
+const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDeleteImage }) => {
     return (
         <div>
-            {!image ? (
+            {!images.length ? (
                 <DragDropFileUpload
                     placeholderImage={<PlusPlaceholderImage className={styles.placeholderImage} />}
                     className={styles.uploadArea}
@@ -14,28 +14,30 @@ const ImageUploader = memo(({ image, imageId, handleImageUploaded, handleDeleteI
                 />
             ) : (
                 <div className={styles.imagesGrid}>
-                    <div className={styles.imageContainer}>
-                        {image ? (
-                            <div>
-                                <div className={styles.deleteIconContainer}
-                                    onClick={(e) => {
-                                        e.stopPropagation();
-                                        handleDeleteImage(imageId);
-                                    }}>
-                                    <TrashIcon
-                                        className={styles.deleteIcon}
-                                    />
+                    {Array.from({ length: maxImages }).map((_, index) => (
+                        <div key={index} className={styles.imageContainer}>
+                            {images[index] ? (
+                                <div>
+                                    <div className={styles.deleteIconContainer}
+                                        onClick={(e) => {
+                                            e.stopPropagation();
+                                            handleDeleteImage(index);
+                                        }}>
+                                        <TrashIcon
+                                            className={styles.deleteIcon}
+                                        />
+                                    </div>
+                                    <img src={images[index]} alt={`Advice image ${index + 1}`} className={styles.imageMin} />
                                 </div>
-                                <img src={image} alt={`Advice image ${imageId}`} className={styles.imageMin} />
-                            </div>
-                        ) : (
-                            <DragDropFileUpload
-                                placeholderImage={<PlusPlaceholderMinImage className={styles.placeholderImageMin} />}
-                                className={styles.uploadArea}
-                                onFileUploaded={handleImageUploaded}
-                            />
-                        )}
-                    </div>
+                            ) : (
+                                <DragDropFileUpload
+                                    placeholderImage={<PlusPlaceholderMinImage className={styles.placeholderImageMin} />}
+                                    className={styles.uploadArea}
+                                    onFileUploaded={handleImageUploaded}
+                                />
+                            )}
+                        </div>
+                    ))}
                 </div>
             )}
         </div>
