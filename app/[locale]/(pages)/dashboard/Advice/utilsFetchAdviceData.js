@@ -9,7 +9,6 @@ export const initializeFormData = (data) => {
         title_ua: data.title_ua || data.title || '',
         description_ua: data.description_ua || data.description || '',
         images: data.images || [],
-        //image: data.image || '',
         created_at: data.created_at || date
     }
 }
@@ -26,7 +25,6 @@ export const fetchAdviceData = async (adviceId, type) => {
                 title_ua: uaData.title || '',
                 description_ua: uaData.description || '',
                 images: uaData.images || '',
-                //image: uaData.image || '',
                 created_at: uaData.created_at || ''
             };
             return updatedFormData;

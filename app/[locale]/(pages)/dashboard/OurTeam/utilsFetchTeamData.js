@@ -19,7 +19,7 @@ export const fetchTeamUserData = async (rescuerId, type) => {
                 fullName: Data.fullName || '',
                 email: Data.email || '',
                 phoneNumber: Data.phoneNumber || '',
-                images: Data.image || '',
+                images: Data.images || '',
             };
             return updatedFormData;
         } catch (error) {
