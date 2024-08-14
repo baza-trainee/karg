@@ -1,14 +1,12 @@
-import { addAdvice, updateAdvice } from "./api";
-import { checkFormValidity } from './AdviceForm/checkFormValidity';
+import { addRescuer, updateRescuerInfo } from "./api";
+import { checkFormValidity } from './TeamForm/checkFormValidity';
 import SuccessDialog from "./SuccessDialog/SuccessDialog";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
 
-export const submitAdviceData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitTeamMemberData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
-        console.log(formData, 'formData');
-        console.log(originalData, 'originalData');
         const patch = [];
         Object.keys(formData).forEach(key => {
             if (Array.isArray(formData[key])) {
@@ -34,22 +32,20 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
         return patch;
     }
 
-    const handleCreateAdvice = async () => {
+    const handleCreateTeamMember = async () => {
         console.log(checkFormValidity(formData));
         if (!checkFormValidity(formData)) {
             setIsFormValid(false);
             return;
         }
-        const adviceData = {
-            title_en: formData.title_en,
-            description_en: formData.description_en,
-            title_ua: formData.title_ua,
-            description_ua: formData.description_ua,
-            created_at: formData.created_at,
+        const rescuerData = {
+            fullName: formData.fullName,
+            email: formData.email,
+            phoneNumber: formData.phoneNumber,
             images: formData.images,
         };
         try {
-            await addAdvice(adviceData);
+            await addRescuer(rescuerData);
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -62,14 +58,13 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
         }
     };
 
-    const handleUpdateAdvice = async () => {
+    const handleUpdateRescuer = async () => {
         const updates = getUpdatedFields(formData, originalData);
-        console.log(updates);
         if (!updates.length) {
             return;
         }
         try {
-            await updateAdvice(formData.id, updates);
+            await updateRescuerInfo(formData.id, updates);
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -78,12 +73,12 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
                 />)
             setHasUnsavedChanges(false);
         } catch (error) {
-            console.error('Error updating advice:', error);
+            console.error('Error updating animal:', error);
         }
     };
     if (type === 'create') {
-        await handleCreateAdvice();
+        await handleCreateTeamMember();
     } else {
-        await handleUpdateAdvice();
+        await handleUpdateRescuer();
     }
 }

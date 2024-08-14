@@ -116,6 +116,14 @@ export default function LoginPage() {
         setLoginStatus("Введено невірний логін або пароль.");
         setTimeout(() => location.reload(), 3000);
       }
+      // if ((response.ok === 500)) {
+      //   setLoginStatus("Internal Server Error.");
+      //   setTimeout(() => location.reload(), 3000);
+      // }
+      // if (!response.ok) {
+      //   setLoginStatus(response.status);
+      //   throw new Error(`HTTP error: ${response.status}`);
+      // }
       else if (response.status === 401) {
         setLoginStatus("Введено невірний логін або пароль.");
         setTimeout(() => location.reload(), 3000);

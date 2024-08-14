@@ -58,7 +58,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                     buttonCaption={buttonCaption}
                 />
             </main>
-            <ScrollToTop/>
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider >
     );

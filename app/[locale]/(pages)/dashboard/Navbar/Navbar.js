@@ -6,6 +6,7 @@ import { AdminContext } from '@/app/adminProvider';
 import PetForm from '../Pet/PetForm/PetForm';
 import PartnerForm from '../Partner/PartnerForm/PartnerForm';
 import AdviceForm from '../Advice/AdviceForm/AdviceForm';
+import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
 
 export default function Navbar() {
@@ -35,6 +36,10 @@ export default function Navbar() {
     'Підсумки': {
       caption: "Додати статтю",
       genericModalContent: ""
+    },
+    'Команда': {
+      caption: "Додати користувача",
+      genericModalContent: <RescuerForm type="create" />
     },
   }
 

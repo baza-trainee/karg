@@ -38,7 +38,6 @@
     top: 8px;
     right: 8px;
     border-radius: 2px;
-    border:2px solid red;
     border: 0.5px solid $button-active;
 
     .deleteIcon {
@@ -54,9 +53,13 @@
   border-radius: 8px;
 }
 
+.imagesFlex{
+  display: flex;
+  justify-content: center;
+}
 .imagesGrid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 10px;
-  width: 100%;
+  width: fit-content;
 }

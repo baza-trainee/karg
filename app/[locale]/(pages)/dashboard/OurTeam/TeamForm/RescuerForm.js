@@ -6,21 +6,18 @@ import { useContext, useState, useEffect } from "react";
 import ModalContext from "@/app/ModalContext";
 import Spinner from "@/components/Spinner/Spinner";
 import { useUnsavedChanges } from "@/app/UnsavedChangesContext";
-import { submitAdviceData } from "../utilsSubmitAdviceData";
+import { submitTeamMemberData } from "../utilsSubmitTeamData";
 import FormHeader from "../../components/FormHeader/FormHeader";
 import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, fetchAdviceData } from "../utilsFetchAdviceData";
-import { AdviceContext } from "../AdviceContext";
-const maxImages = 4;
+import { initializeFormData, fetchTeamData } from "../utilsFetchTeamData";
+import { TeamContext } from "../TeamContext";
 
 const labels = {
-    ukrLng: "Українська",
-    engLng: "Англійська",
-    nameTitle: "Заголовок",
-    descriptionTitle: "Текст статті",
+    fullNameTitle: "Імʼя та прізвище",
+    phoneNumberTitle: "Телефон",
 };
 
 const btnLabels = {
@@ -38,44 +35,44 @@ const confirmationDialogActions = {
 
 const successDialogActions = {
     successTitle: 'Вітаємо!',
-    successAddMessage: 'Нову пораду успішно додано!',
+    successAddMessage: 'Нового користувача успішно додано!',
     successChangeMessage: 'Внесені зміни збережено!',
     buttonText: 'Закрити'
 }
 
-function AdviceForm({ type = 'create', adviceData = {} }) {
-    const { ukrLng, engLng, nameTitle, descriptionTitle } = labels;
+function RescuerForm({ type = 'create', rescuerData = {} }) {
+    const { fullNameTitle, phoneNumberTitle } = labels;
     const { confirmationTitle, message, cancelTitle, confirmTitle } = confirmationDialogActions;
     const { hideModal, showModal } = useContext(ModalContext);
-    const [language, setLanguage] = useState('ua');
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
-    const [formData, setFormData] = useState(initializeFormData(adviceData));
-    const [originalData, setOriginalData] = useState(initializeFormData(adviceData));
+    const [formData, setFormData] = useState(initializeFormData(rescuerData));
+    const [originalData, setOriginalData] = useState(initializeFormData(rescuerData));
     const [isLoading, setIsLoading] = useState(false);
-    const { loadAdvices } = useContext(AdviceContext);
-    const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
+    const { loadRescuers } = useContext(TeamContext);
+    const title = type === 'create' ? "Додати користувача" : "Редагувати користувача";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
+    const maxImages = 2;
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchAdviceData(adviceData.id, type, setIsLoading);
+                const data = await fetchTeamData(rescuerData.id, type, setIsLoading);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
             } catch (error) {
-                console.error('Error loading addvice data:', error.message);
+                console.error('Error loading rescuers data:', error.message);
             }
             setIsLoading(false);
         };
-        if (type === 'edit' && adviceData.id) {
+        if (type === 'edit' && rescuerData.id) {
             fetchInitialData();
         } else {
             setIsFormValid(checkFormValidity(formData));
         }
-    }, [adviceData.id, type]);
+    }, [rescuerData.id, type]);
 
     useEffect(() => {
         setIsFormValid(checkFormValidity(formData));
@@ -84,7 +81,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        await submitAdviceData(
+        await submitTeamMemberData(
             type,
             formData,
             originalData,
@@ -93,21 +90,14 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
             setHasUnsavedChanges,
             successDialogActions,
         );
-        await loadAdvices();
+        await loadRescuers();
         setIsLoading(false);
     };
-
-    const toggleLanguage = async (e) => {
-        e.preventDefault();
-        setLanguage((prev) => prev === 'ua' ? 'en' : 'ua');
-    }
 
     const handleImageUploaded = (newImageUrl) => {
         setFormData(prev => {
             const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
             return { ...prev, images: updatedImages };
-            // const updatedImage = newImageUrl;
-            // return { ...prev, image: updatedImage };
         });
         setHasUnsavedChanges(true);
     };
@@ -118,6 +108,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
         setFormData(prev => {
             const updatedFormData = { ...prev, [name]: value };
             setIsFormValid(checkFormValidity(updatedFormData));
+            console.log(checkFormValidity(updatedFormData));
             return updatedFormData;
         });
     }
@@ -132,8 +123,6 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
         setFormData(prev => {
             const updatedImages = prev.images.filter((_, i) => i !== index);
             return { ...prev, images: updatedImages };
-            // const updatedImage = '';
-            // return { ...prev, image: updatedImage };
         });
         setHasUnsavedChanges(true);
     }
@@ -147,21 +136,16 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
                     <div className={styles.container}>
                         <FormHeader
                             title={title}
-                            language={language}
-                            toggleLanguage={toggleLanguage}
-                            ukrLng={ukrLng}
-                            engLng={engLng}
                         />
                         <FormFields
                             formData={formData}
                             type={type}
-                            language={language}
                             handleChange={handleChange}
                             handleImageUploaded={handleImageUploaded}
                             handleDeleteImage={handleDeleteImage}
                             maxImages={maxImages}
-                            descriptionTitle={descriptionTitle}
-                            nameTitle={nameTitle}
+                            phoneNumberTitle={phoneNumberTitle}
+                            fullNameTitle={fullNameTitle}
                         />
                         <FormButtons
                             isFormValid={isFormValid}
@@ -183,4 +167,4 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     );
 }
 
-export default memo(AdviceForm)
+export default memo(RescuerForm)

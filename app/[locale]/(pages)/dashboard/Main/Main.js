@@ -27,6 +27,8 @@ export default function Main() {
         return <FAQList />;
       case 'Підсумки':
         return <SummariesList />;
+      case 'Мій аккаунт':
+        return <MyAccount />;
       case 'Команда':
         return <CommandList />;
       case 'Мій акаунт':
