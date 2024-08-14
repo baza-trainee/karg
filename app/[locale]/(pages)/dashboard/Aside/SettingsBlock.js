@@ -1,24 +1,23 @@
-import React from 'react';
-import AsideItem from './AsideItem';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { AdminContext } from '@/app/adminProvider';
+import AsideItem from './AsideItem';
 import { IdentityIcon, SupervisedUserIcon, HelpIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 
 
 export default function SettingsBlock() {
-    const { setActiveSection } = useContext(AdminContext);
 
     const dataList = [
-        { 'title': 'Мій аккаунт', 'icon': <IdentityIcon className={styles.icon} />, 'href': '/dashboard/my_account' },
+        { 'title': 'Мій акаунт', 'icon': <IdentityIcon className={styles.icon} />, 'href': '/dashboard/my_account' },
         { 'title': 'Команда', 'icon': <SupervisedUserIcon className={styles.icon} />, 'href': '/dashboard/our_team' },
         { 'title': 'Допомога', 'icon': <HelpIcon className={styles.icon} />, 'href': '/dashboard/support' },
     ];
 
+    const { setActiveSection } = useContext(AdminContext);
+
     const handleItemClick = (section) => {
         setActiveSection(section);
     }
-
     return (
         <div className={styles.settings}>
             <AsideItem

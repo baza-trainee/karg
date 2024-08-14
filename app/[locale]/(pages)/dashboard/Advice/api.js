@@ -27,9 +27,6 @@ export const addAdvice = async (adviceData) => {
         },
         body: JSON.stringify(adviceData)
     });
-    // if (response.status === 401) {
-    //     router.push("/authentication/login");
-    // }
     if (!response.ok) {
         throw new Error(`Failed to submit form with status: ${response.status}`);
     }
@@ -50,9 +47,6 @@ export const updateAdvice = async (id, updates) => {
     if (!response.ok) {
         throw new Error('Failed to update advice');
     }
-    // if (response.status === 401) {
-    //     router.push("/authentication/login");
-    // }
     return response.json();
 };
 

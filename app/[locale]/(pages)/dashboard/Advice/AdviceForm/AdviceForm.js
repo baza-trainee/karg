@@ -106,8 +106,6 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
         setFormData(prev => {
             const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
             return { ...prev, images: updatedImages };
-            // const updatedImage = newImageUrl;
-            // return { ...prev, image: updatedImage };
         });
         setHasUnsavedChanges(true);
     };
@@ -132,8 +130,6 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
         setFormData(prev => {
             const updatedImages = prev.images.filter((_, i) => i !== index);
             return { ...prev, images: updatedImages };
-            // const updatedImage = '';
-            // return { ...prev, image: updatedImage };
         });
         setHasUnsavedChanges(true);
     }

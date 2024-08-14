@@ -1,4 +1,4 @@
-import { loginUser, logoutUser } from "./api";
+import { loginUser, logoutUser, getUserById } from "./api";
 
 export default class authService {
     static async login(email, password) {
@@ -7,5 +7,9 @@ export default class authService {
 
     static async logout() {
         return await logoutUser();
+    };
+
+    static async getById(id) {
+        return await getUserById(id);
     }
 }

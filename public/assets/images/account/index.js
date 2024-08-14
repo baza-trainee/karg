@@ -1,0 +1,1 @@
+export { default as userDefault } from "./user-avatar-filled.png";

@@ -1,0 +1,41 @@
+@import "/app/[locale]/colors.scss";
+@import "/app/[locale]/variables.module.scss";
+
+.formWrapper{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 1194px;
+}
+
+.form {
+  width: 1098px;
+  margin: 16px 48px 0 48px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  border-radius: 8px;
+  color: $text-dark;
+  margin: auto;
+  max-height: calc(100vh - 15px);
+}
+.customHeader{
+  background-color: $bg-white;
+  height: 63px;
+  border-radius: 8px;
+  padding: 16px;
+}
+.customButtonGroup{
+  display: flex;
+  justify-content: center;
+  background-color: $bg-white;
+  padding: 16px 0 24px 0;
+  gap: 24px;
+}
+
+

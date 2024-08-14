@@ -78,7 +78,7 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
                 />)
             setHasUnsavedChanges(false);
         } catch (error) {
-            console.error('Error updating animal:', error);
+            console.error('Error updating advice:', error);
         }
     };
     if (type === 'create') {

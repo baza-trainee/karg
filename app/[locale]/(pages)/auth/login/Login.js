@@ -33,9 +33,7 @@ export default function LoginPage() {
   const [isFormValid, setIsFormValid] = useState(false);
 
   const [loginStatus, setLoginStatus] = useState('');
-  const [correctUser, setCorrectUser] = useState('');
-
-  const { setActiveUser, setIsAuth } = useContext(AdminContext);
+  const { accountId, setAccountId } = useContext(AdminContext);
 
 
   const { email } = form.email.value;
@@ -48,7 +46,11 @@ export default function LoginPage() {
     } else {
       setIsFormValid(true);
     }
-  }, [form.email.emailError, form.password.passwordError])
+  }, [form.email.emailError, form.password.passwordError]);
+
+  useEffect(() => {
+    setAccountId(accountId);
+  }, [accountId])
 
   const ActualEyeIcon = () => {
     return (
@@ -102,13 +104,12 @@ export default function LoginPage() {
   const handleSubmit = async () => {
     try {
       const response = await authService.login(form.email.value, form.password.value);
-      const data = await response;
 
       if (response.status === 1) {
-        const authToken = await data.token;
+        const authToken = await response.token;
         localStorage.setItem('auth-token', authToken);
         setLoginStatus(`Ви успішно увійшли до адмінпанелі`);
-        setCorrectUser(data.user);
+        setAccountId(response.rescuerId);
         router.push("/dashboard", { email: form.email.value });
       }
       if ((!response.status)) {
@@ -130,6 +131,7 @@ export default function LoginPage() {
     }
     catch (e) {
       setLoginStatus("Введено невірний логін або пароль.");
+      console.log("cathh block");
     }
   };
 
@@ -176,7 +178,7 @@ export default function LoginPage() {
           {(form.password.passwordVisited && form.password.passwordError) && <p className={styles.error}>{form.password.passwordError}</p>}
         </div>
 
-        {(loginStatus && isFormValid) && <p className={correctUser ? styles.success : styles.error}>{loginStatus}</p>}
+        {(loginStatus && isFormValid) && <p className={accountId ? styles.success : styles.error}>{loginStatus}</p>}
 
         <button className={styles.buttonForgot} onClick={() => router.push("/auth/restore")}>{blockCaptions.forgotButton}</button>
         <button

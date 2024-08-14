@@ -1,3 +1,4 @@
+import { useRouter } from "next/navigation";
 import Button from '@/components/Button/button';
 import stylesBtn from '@/components/Button/styles/button.module.scss';
 import styles from "./styles/formButtons.module.scss";
@@ -6,6 +7,7 @@ import ModalContext from "@/app/ModalContext";
 import ConfirmationDialogTrigger from '../../ConfirmationDialogTrigger';
 
 function FormButtons({
+    customButtonGroup,
     confirmationTitle,
     message,
     cancelTitle,
@@ -13,17 +15,22 @@ function FormButtons({
     handleSubmit,
     actionOnConfirm,
     rejectButtonStyle,
+    customVariables,
     submitButtonStyle,
     rejectButtonTitle,
     submitButtonTitle,
+    changePasswordButtonTitle,
+    restoreButtonStyle,
     isFormValid = true }) {
     const { showModal } = useContext(ModalContext);
 
+    const router = useRouter();
+
     return (
-        <div className={styles.buttonGroup}>
+        <div className={`${styles.buttonGroup} ${customButtonGroup}`}>
             <Button
                 type="button"
-                className={rejectButtonStyle}
+                className={`${rejectButtonStyle} ${customVariables}`}
                 onClick={() => {
                     showModal('confirmation',
                         <ConfirmationDialogTrigger
@@ -39,6 +46,14 @@ function FormButtons({
             >
                 {rejectButtonTitle}
             </Button>
+            {changePasswordButtonTitle &&
+                <Button
+                    className={restoreButtonStyle}
+                    disabled={!isFormValid}
+                    onClick={() => router.push("/auth/restore")}
+                >
+                    {changePasswordButtonTitle}
+                </Button>}
             <Button
                 type="submit"
                 className={submitButtonStyle}

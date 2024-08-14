@@ -8,6 +8,7 @@ import PetList from '../Pet/PetList/PetList';
 import AdviceList from '../Advice/AdviceList/AdviceList';
 import { AdminContext } from '@/app/adminProvider';
 import PartnerList from '../Partner/PartnerList/PartnerList';
+import MyAccount from '../MyAccount/AccountForm/AccountForm';
 import OurTeamList from '../OurTeam/TeamList/TeamList';
 
 export default function Main() {
@@ -31,6 +32,8 @@ export default function Main() {
         return <MyAccount />;
       case 'Команда':
         return <OurTeamList />;
+      case 'Мій акаунт':
+        return <MyAccount />
       default:
         return <PetList />;
     }
