@@ -9,6 +9,7 @@ import AdviceList from '../Advice/AdviceList/AdviceList';
 import { AdminContext } from '@/app/adminProvider';
 import PartnerList from '../Partner/PartnerList/PartnerList';
 import MyAccount from '../MyAccount/AccountForm/AccountForm';
+import OurTeamList from '../OurTeam/TeamList/TeamList';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);
@@ -30,7 +31,7 @@ export default function Main() {
       case 'Мій аккаунт':
         return <MyAccount />;
       case 'Команда':
-        return <CommandList />;
+        return <OurTeamList />;
       case 'Мій акаунт':
         return <MyAccount />
       default:

@@ -1,8 +1,6 @@
 import React, { useContext } from 'react';
 import { AdminContext } from '@/app/adminProvider';
 import AsideItem from './AsideItem';
-import { useContext } from 'react';
-import { AdminContext } from '@/app/adminProvider';
 import { IdentityIcon, SupervisedUserIcon, HelpIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 
