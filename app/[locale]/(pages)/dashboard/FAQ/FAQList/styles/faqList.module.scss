@@ -13,7 +13,7 @@
   color: $text-dark;
   min-width: 1194px;
 
-  .adviceTitle {
+  .faqTitle {
     display: flex;
     gap: 24px;
     padding: 0px 16px 0 16px;
@@ -22,51 +22,31 @@
     align-items: center;
     width: 100%;
 
-    .photoTitle {
-      width: 92px;
-    }
-
-    .detailsTitle {
-      width: 176px;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-    }
   }
 
-  .adviceLine {
+  .faqLine {
     display: flex;
     flex-direction: row;
     gap: 24px;
     padding: 16px;
-    height: 124px;
+    height: 64px;
     overflow: hidden;
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
     width: 1098px;
   }
-  .photoContainer {
-    flex-shrink: 0;
-    min-width: 92px;
-  }
 
-  & .photo {
-    width: 92px;
-    height: 92px;
-    border-radius: 8px;
-  }
-
-  & .basicInfo {
+  & .basicInfo { 
     width: 300px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
-  & .detailsInfo {
+  & .anserInfo {
     max-height: 26px;
-    width: 526px;
+    width: 642px;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

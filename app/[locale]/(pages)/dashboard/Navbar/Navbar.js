@@ -8,6 +8,7 @@ import PartnerForm from '../Partner/PartnerForm/PartnerForm';
 import AdviceForm from '../Advice/AdviceForm/AdviceForm';
 import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
+import FAQForm from '../FAQ/FAQForm/FAQForm';
 
 export default function Navbar() {
   const { activeSection } = useContext(AdminContext);
@@ -31,7 +32,7 @@ export default function Navbar() {
     },
     'FAQ': {
       caption: "Додати питання",
-      genericModalContent: ""
+      genericModalContent: <FAQForm type="create" />
     },
     'Підсумки': {
       caption: "Додати статтю",
