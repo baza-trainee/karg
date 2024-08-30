@@ -41,18 +41,6 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
                         </div>
                     ))}
                 </div>
-                // <div className={styles.imageContainer}>
-                //     <div className={styles.deleteIconContainer}
-                //         onClick={(e) => {
-                //             e.stopPropagation();
-                //             handleDeleteImage(image);
-                //         }}>
-                //         <TrashIcon
-                //             className={styles.deleteIcon}
-                //         />
-                //     </div>
-                //     <img src={image} alt={`Partner's logo`} className={styles.imageMin} />
-                // </div>
             )}
         </div>
     );
