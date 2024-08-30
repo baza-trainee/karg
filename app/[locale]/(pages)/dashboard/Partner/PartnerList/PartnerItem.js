@@ -2,11 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import variables from '../../../../variables.module.scss';
+
 export default function PartnerItem(
     {
         containerStyle,
         photoStyle,
-        photoSrc = '',
+        photoSrc = [],
         photoAlt,
         photoContainerStyle,
         partnerName,
@@ -24,7 +25,7 @@ export default function PartnerItem(
                 <div className={photoContainerStyle}>
                     {photoSrc && photoSrc.length > 0 ? (
                         <Image
-                            src={photoSrc}
+                            src={photoSrc[0]}
                             alt={photoAlt}
                             width={92}
                             height={92}
@@ -44,18 +45,18 @@ export default function PartnerItem(
         </div>
     )
 }
-// PetItem.propTypes = {
-//     containerStyle: PropTypes.string,
-//     photoStyle: PropTypes.string,
-//     photoSrc: PropTypes.string,
-//     photoAlt: PropTypes.string,
-//     petName: PropTypes.string,
-//     petDetails: PropTypes.string,
-//     detailsStyle: PropTypes.string,
-//     rescueStory: PropTypes.string,
-//     basicInfoStyle: PropTypes.string,
-//     detailsBlockStyle: PropTypes.string,
-//     petLineStyle: PropTypes.string,
-//     iconsContainerStyle: PropTypes.string,
-// };
+PartnerItem.propTypes = {
+    containerStyle: PropTypes.string,
+    photoStyle: PropTypes.string,
+    photoSrc: PropTypes.array,
+    photoAlt: PropTypes.string,
+    petName: PropTypes.string,
+    petDetails: PropTypes.string,
+    detailsStyle: PropTypes.string,
+    rescueStory: PropTypes.string,
+    basicInfoStyle: PropTypes.string,
+    detailsBlockStyle: PropTypes.string,
+    petLineStyle: PropTypes.string,
+    iconsContainerStyle: PropTypes.string,
+};
 

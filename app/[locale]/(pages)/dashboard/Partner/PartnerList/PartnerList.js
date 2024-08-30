@@ -47,14 +47,14 @@ export default function PartnerList() {
                 isLoading ? < Spinner /> : (
                     <>
                         {partners.map((partner) => {
-                            const photoUrl = partner.image ? partner.image : '';
+                            const photoUrls = partner.images.length ? [...partner.images] : [];
                             const photoAlt = "Partner's logo";
                             return (
                                 <PartnerItem
                                     key={partner.id}
                                     partnerLineStyle={styles.partnerLine}
                                     photoStyle={styles.photo}
-                                    photoSrc={photoUrl}
+                                    photoSrc={photoUrls}
                                     photoAlt={photoAlt}
                                     photoContainerStyle={styles.photoContainer}
                                     partnerNameStyle={styles.partnerName}
