@@ -38,7 +38,7 @@ export const submitPartnerData = async (type, formData, originalData, showModal,
         }
         const partnerData = {
             name: formData.name,
-            image: formData.image,
+            images: formData.images,
             uri: formData.uri,
         };
         try {

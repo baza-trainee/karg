@@ -17,12 +17,13 @@
     gap: 16px;
 
     .partnerLogo {
-      min-width: 117px;
-      min-height: 110px;
+      width: 270px;
+      height: 252px;
       border-radius: 4px;
+      background-color: $primary;
 
-      &:hover .logo {
-        fill: #251c35;
+      &:hover {
+        background-color: #251c35;
       }
     }
   }
