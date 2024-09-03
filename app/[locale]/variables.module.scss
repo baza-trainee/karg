@@ -1,4 +1,4 @@
-@import './colors.scss';
+@import "./colors.scss";
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -52,7 +52,8 @@
 .Subtitle2,
 .subtitle3,
 .Subtitle3,
-.mobileSubtitle1 {
+.mobileSubtitle1,
+.subtitle4 {
   @include font-styles(700, 18px);
 }
 
@@ -116,7 +117,8 @@
 .font18w500 {
   @include font-styles(500, 18px);
 }
-.Text3 {
+
+.font18w400 {
   @include font-styles(400, 18px);
 }
 
@@ -157,7 +159,8 @@
 
   .h3,
   .subtitle1,
-  .subtitle2 {
+  .subtitle2,
+  .subtitle4 {
     @include font-styles(700, 24px);
   }
 
@@ -227,6 +230,10 @@
   .Subtitle2,
   .Heading3 {
     @include font-styles(700, 44px);
+  }
+
+  .subtitle4 {
+    @include font-styles(700, 30px);
   }
 
   .h3,
