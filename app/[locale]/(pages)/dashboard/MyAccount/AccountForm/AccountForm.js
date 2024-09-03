@@ -39,6 +39,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
     const { accountId } = useContext(AdminContext);
+    const { isDirector, setIsDirector } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData(accountData));
@@ -53,12 +54,11 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                localStorage.setItem('accountId', accountId);
                 const data = await fetchTeamUserData(accountId, type);
+                console.log(isDirector);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
-
             } catch (error) {
                 console.error('Error loading account data:', error.message);
             }

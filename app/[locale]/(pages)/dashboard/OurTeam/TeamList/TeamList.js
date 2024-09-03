@@ -11,7 +11,9 @@ import RescuerForm from '../TeamForm/RescuerForm';
 import Spinner from '@/components/Spinner/Spinner';
 import { deleteTeamUserData } from '../utilsFetchTeamData';
 import { TeamContext } from "../TeamContext";
+import { AdminContext } from '@/app/adminProvider';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
+
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -28,8 +30,12 @@ function TeamList() {
         rescuers,
         setRescuers,
     } = useContext(TeamContext);
+    const { isDirector } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
+
+    const currentRole = (isDirector === 'true') ? true : false;
+    console.log(currentRole);
 
     useEffect(() => {
         if (!isLoading) {
@@ -71,13 +77,13 @@ function TeamList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('generic', <RescuerForm type='edit' rescuerData={rescuer} />)
-                                    }}
+                                    } : null}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -89,7 +95,7 @@ function TeamList() {
                                                 actionOnConfirm={handleDeleteRescuer}
                                                 actionArgs={rescuer.id}
                                             />)
-                                    }}
+                                    } : null}
                                 />
                             </RescuerItem>
                         )
