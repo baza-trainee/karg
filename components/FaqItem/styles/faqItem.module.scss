@@ -16,14 +16,11 @@
 
   @media screen and (min-width: 1440px) {
     min-height: 120px;
-    min-width: 570px;
-    flex-grow: 3;
   }
 }
 
 .question {
   max-width: 230px;
-
   font-size: 20px;
   font-weight: 700;
   color: $text-dark;
@@ -54,7 +51,7 @@
   }
 
   @media screen and (min-width: 1440px) {
-    max-width: 400px;
+    min-width: 800px;
   }
 }
 
@@ -89,13 +86,11 @@
     font-weight: 300;
     border-radius: 8px;
     padding: 16px;
-
     margin-bottom: 9px;
   }
 
   @media screen and (min-width: 1440px) {
     margin-bottom: 0;
-    width: 570px;
   }
 
   @media screen and (min-width: 1680px) {

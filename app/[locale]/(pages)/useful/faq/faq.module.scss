@@ -10,11 +10,11 @@
   }
 
   @media screen and (min-width: 1440px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+    // flex-direction: row;
+    // flex-wrap: wrap;
+    // justify-content: center;
     gap: 30px;
-    flex-basis: calc((100% - 30px) / 2);
+    // flex-basis: calc((100% - 30px) / 2);
 
     padding: 80px 135px 100px;
   }
