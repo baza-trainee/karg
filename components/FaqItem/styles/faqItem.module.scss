@@ -15,22 +15,23 @@
   }
 
   @media screen and (min-width: 1440px) {
-    min-height: 120px;
+    min-height: 82px;
   }
 }
 
 .question {
   max-width: 230px;
-  font-size: 20px;
+  font-size: 18px;
   font-weight: 700;
   color: $text-dark;
+  line-height: 23.4px;
 
   @media screen and (min-width: 375px) {
     max-width: 280px;
   }
 
   @media screen and (min-width: 425px) {
-    max-width: 320px;
+    max-width: 400px;
   }
 
   @media screen and (min-width: 500px) and (max-width: 570px) {
@@ -43,15 +44,20 @@
 
   @media screen and (min-width: 768px) {
     max-width: 500px;
-    font-size: 28px;
+    font-size: 26px;
+    line-height: 33.8px;
   }
 
   @media screen and (min-width: 1024px) and (max-width: 1439px) {
     max-width: 800px;
+    font-size: 26px;
+    line-height: 33.8px;
   }
 
   @media screen and (min-width: 1440px) {
     min-width: 800px;
+    font-size: 28px;
+    line-height: 36.4px;
   }
 }
 
