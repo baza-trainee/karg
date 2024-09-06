@@ -51,13 +51,11 @@ export const updateFAQItem = async (id, updates) => {
 };
 
 export const getAllFAQ = async (page, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_FAQ}/getall?cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
         },
     });
     if (!response.ok) {
