@@ -1,4 +1,4 @@
-@import "./colors.scss";
+@import './colors.scss';
 
 // Mixins
 @mixin font-styles($font-weight, $font-size) {
@@ -197,7 +197,6 @@
     @include font-styles(400, 16px);
   }
   .btn2,
-  .button2,
   .quickButton2 {
     @include font-styles(800, 16px);
   }
