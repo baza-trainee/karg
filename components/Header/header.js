@@ -1,7 +1,7 @@
 "use client";
-
+import { useState, useEffect } from 'react';
 import { usePathname } from "next/navigation";
-import Link from "next/link"
+import Link from "next/link";
 import useToggle from "@/utils/useToggle";
 import styles from "./styles/header.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
@@ -17,6 +17,7 @@ import ButtonAsLink from "../ButtonAsLink/buttonAsLink";
 import SocialIcons from "../SocialIcons/socialIcons";
 import { useTranslation } from 'react-i18next';
 import DropdownList from '../DropdownList/DropdownList';
+import { DropdownProvider } from "../DropdownList/DropdownContext";
 
 const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
@@ -24,6 +25,22 @@ const Header = () => {
   const currentLocale = i18n.language;
   const currentPathname = usePathname();
   const labelFirst = t('common:linkAboutUs');
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 50) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const listLabelFirst = [
     { label: t('common:linkHistory'), link: currentLocale === "uk" ? "/about/history_of_origin" : `/${currentLocale}/about/history_of_origin` },
@@ -41,7 +58,7 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.topBar}>
+      <div className={`${styles.topBar} ${isScrolled ? styles.topBarHidden : ''}`}>
         <a className={variables.subtitle1} href="tel: +380939862262">
           +38 (093) 986-2262
         </a>
@@ -56,21 +73,23 @@ const Header = () => {
             <Logo className={styles.logo} />
           </Link>
           <ul className={`${styles.navMenu} ${variables.button2}`}>
-            <li>
-              <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
-            </li>
-            <li>
-              <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
-            </li>
-            <li>
-              <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
-            </li>
-            <li>
-              <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
-            </li>
-            <li>
-              <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
-            </li>
+            <DropdownProvider>
+              <li>
+                <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
+              </li>
+              <li>
+                <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
+              </li>
+              <li>
+                <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
+              </li>
+              <li>
+                <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
+              </li>
+              <li>
+                <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
+              </li>
+            </DropdownProvider>
           </ul>
           <div className={styles.sideMenu}>
             <LanguageMenu />
@@ -92,21 +111,23 @@ const Header = () => {
           <div className={styles.dropDownMenuWrapper}>
             <div className={`${styles.navMenuMobile} ${variables.button2}`}>
               <ul>
-                <li>
-                  <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
-                </li>
-                <li>
-                  <DropdownList label={labelFirst} list={listLabelFirst} openBurgerMenu={openBurgerMenu} />
-                </li>
-                <li>
-                  <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
-                </li>
-                <li>
-                  <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
-                </li>
-                <li>
-                  <DropdownList label={labelSecond} list={listLabelSecond} openBurgerMenu={openBurgerMenu} />
-                </li>
+                <DropdownProvider>
+                  <li>
+                    <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
+                  </li>
+                  <li>
+                    <DropdownList label={labelFirst} list={listLabelFirst} openBurgerMenu={openBurgerMenu} />
+                  </li>
+                  <li>
+                    <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
+                  </li>
+                  <li>
+                    <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
+                  </li>
+                  <li>
+                    <DropdownList label={labelSecond} list={listLabelSecond} openBurgerMenu={openBurgerMenu} />
+                  </li>
+                </DropdownProvider>
               </ul>
             </div>
             <ButtonAsLink

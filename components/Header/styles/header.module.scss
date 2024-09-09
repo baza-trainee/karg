@@ -74,6 +74,7 @@
 .burgerIcon {
   font-size: 48px;
   margin: 8px 8px;
+  color: #fff;
 }
 
 @media screen and (min-width: 768px) {
@@ -184,6 +185,9 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  & .active {
+    box-shadow: inset 0 -2px 0 $primary;
+  }
 }
 
 .navMenuMobile {
@@ -240,6 +244,14 @@
     gap: 17.1528%;
     padding: 0 9.375%;
     background-color: $button-dark-active;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: 50px;
+    overflow: hidden;
+  }
+
+  .topBarHidden {
+    max-height: 0;
+    padding: 0 9.375%;
   }
 
   .topBar > a {
