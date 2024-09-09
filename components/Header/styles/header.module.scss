@@ -184,6 +184,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  color: $text-dark;
   gap: 12px;
   & .active {
     box-shadow: inset 0 -2px 0 $primary;
@@ -228,7 +229,7 @@
 .contactsContainerMobile > a {
   text-decoration: none;
   margin-bottom: 4px;
-  color: #141414;
+  color: $text-dark;
 }
 
 @media screen and (min-width: 1200px) {
