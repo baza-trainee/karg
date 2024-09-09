@@ -35,7 +35,6 @@ export const fetchPetData = async (petId, type) => {
             console.error('Error fetching animal data:', error.message);
         }
     } else {
-        console.log(initializeFormData({}));
         return initializeFormData({});
     }
 }

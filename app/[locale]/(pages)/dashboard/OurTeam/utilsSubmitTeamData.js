@@ -33,7 +33,6 @@ export const submitTeamMemberData = async (type, formData, originalData, hideMod
     }
 
     const handleCreateTeamMember = async () => {
-        console.log(checkFormValidity(formData));
         if (!checkFormValidity(formData)) {
             setIsFormValid(false);
             return;
