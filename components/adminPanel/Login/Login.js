@@ -75,7 +75,6 @@ export default function LoginPage() {
             router.push("/dashboard", {
                 email: email,
             });
-            console.log('some');
             setServerResponse(data.message);
         } else {
             setServerResponse(data.message);
