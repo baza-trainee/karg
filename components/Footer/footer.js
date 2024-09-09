@@ -43,11 +43,11 @@ function Footer() {
         <Link href="/">
           <Logo className={styles.logo} />
         </Link>
-        <h2 className={`${styles.brandHolderName} ${variables.button2}`}>
+        <h2 className={`${styles.brandHolderName} ${variables.h3}`}>
           KYIV ANIMAL RESCUE GROUP
         </h2>
       </div>
-      <nav className={`${styles.navMenu} ${variables.button2}`}>
+      <nav className={`${styles.navMenu} ${variables.Text3}`}>
         <ul>
           <li>
             <Link href="/">{t('common:linkMain')}</Link>
