@@ -22,7 +22,19 @@ function Footer() {
 
   const handleClick = (e) => {
     const target = e.currentTarget.dataset.list;
-    setOpen((prevState) => ({ ...prevState, [target]: !prevState[target] }));
+    // setOpen((prevState) => ({ ...prevState, [target]: !prevState[target] }));
+    setOpen((prevState) => {
+      const newState = {};
+      Object.keys(prevState).forEach(key => {
+        if (key === target) {
+          newState[key] = !prevState[key];
+          return;
+        } else {
+          newState[key] = false;
+        }
+      });
+      return newState;
+    });
   };
 
   return (
