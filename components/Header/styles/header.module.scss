@@ -156,7 +156,7 @@
   background-color: $button-default;
   border: none;
   border-radius: 8px;
-  padding: 12px;
+  padding: 9px 12px;
 }
 
 .supportButtonText {
@@ -175,8 +175,8 @@
   flex-shrink: 0;
   width: 100%;
   background-color: $bg-purple;
-  padding: 32px 16px 32px 16px;
-  gap: 32px;
+  padding: 30px 64px 32px 64px;
+  gap: 30px;
 }
 
 .navMenuMobile > ul {
@@ -185,7 +185,7 @@
   align-items: center;
   justify-content: center;
   color: $text-dark;
-  gap: 12px;
+  gap: 20px;
   & .active {
     box-shadow: inset 0 -2px 0 $primary;
   }
