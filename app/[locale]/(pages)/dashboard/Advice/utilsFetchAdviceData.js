@@ -45,7 +45,6 @@ export const deleteAdviceData = async (id, currentPage, advices, handlePageChang
     } finally {
         console.log('currentPage:', currentPage);
         const newPage = currentPage > 1 && advices.length === 1 ? currentPage - 1 : currentPage;
-        console.log('newPage:', newPage);
         handlePageChange(newPage);
     }
 }

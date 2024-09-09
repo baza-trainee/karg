@@ -131,7 +131,6 @@ export default function LoginPage() {
     }
     catch (e) {
       setLoginStatus("Введено невірний логін або пароль.");
-      console.log("cathh block");
     }
   };
 

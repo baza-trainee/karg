@@ -7,8 +7,6 @@ export const submitFAQData = async (type, formData, originalData, hideModal, sho
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
-        console.log(formData, 'formData');
-        console.log(originalData, 'originalData');
         const patch = [];
         Object.keys(formData).forEach(key => {
             if (Array.isArray(formData[key])) {
@@ -35,7 +33,6 @@ export const submitFAQData = async (type, formData, originalData, hideModal, sho
     }
 
     const handleCreateFAQ = async () => {
-        console.log(checkFormValidity(formData));
         if (!checkFormValidity(formData)) {
             setIsFormValid(false);
             return;
@@ -63,7 +60,6 @@ export const submitFAQData = async (type, formData, originalData, hideModal, sho
 
     const handleUpdateFAQ = async () => {
         const updates = getUpdatedFields(formData, originalData);
-        console.log(updates);
         if (!updates.length) {
             return;
         }

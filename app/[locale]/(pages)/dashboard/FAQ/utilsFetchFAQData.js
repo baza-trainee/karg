@@ -39,7 +39,6 @@ export const deleteFAQItemData = async (id, currentPage, faq, handlePageChange, 
         console.error('Error deleting the FAQ:', error.message);
     } finally {
         const newPage = currentPage > 1 && faq.length === 1 ? currentPage - 1 : currentPage;
-        console.log('newPage:', newPage);
         handlePageChange(newPage);
     }
 }
