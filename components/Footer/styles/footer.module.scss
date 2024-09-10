@@ -1,4 +1,4 @@
-@import "../../../app/[locale]/colors.scss";
+@import '../../../app/[locale]/colors.scss';
 
 .socIcons {
   margin: 5px;
@@ -20,7 +20,7 @@
 }
 
 .logo {
-  font-size: 60px;
+  font-size: 100px;
 }
 
 .brandHolder {
@@ -46,6 +46,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
+  text-wrap: nowrap;
   p,
   a {
     color: #fff;
@@ -148,8 +149,8 @@
     gap: 30px;
     width: 100%;
     grid-template-areas:
-      "logo contactsContainer navMenu navMenu button"
-      "logo contactsContainer navMenu navMenu button";
+      'logo contactsContainer navMenu navMenu button'
+      'logo contactsContainer navMenu navMenu button';
   }
 
   .logo {
@@ -183,7 +184,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 24px;
+    gap: 16px;
     position: relative;
     border-left: 2px solid $button-default;
     // padding-left: 60%;
@@ -193,7 +194,7 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      gap: 24px;
+      gap: 16px;
     }
 
     @media screen and (min-width: 1200px) {
