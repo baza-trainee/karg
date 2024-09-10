@@ -58,13 +58,14 @@ function AdviceList() {
             {isLoading ? <Spinner /> : (
                 <>
                     {advices && advices.map((advice) => {
+                        const photoUrls = advice.images.length ? [...advice.images] : [];
                         const photoAlt = 'Advice photo';
                         return (
                             <AdviceItem
                                 key={advice.id}
                                 adviceLineStyle={styles.adviceLine}
                                 photoStyle={styles.photo}
-                                photoSrc={advice.image && advice.image}
+                                photoSrc={photoUrls}
                                 photoAlt={photoAlt}
                                 photoContainerStyle={styles.photoContainer}
                                 basicInfoStyle={styles.basicInfo}

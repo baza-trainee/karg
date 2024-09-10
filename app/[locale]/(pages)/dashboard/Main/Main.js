@@ -8,6 +8,9 @@ import PetList from '../Pet/PetList/PetList';
 import AdviceList from '../Advice/AdviceList/AdviceList';
 import { AdminContext } from '@/app/adminProvider';
 import PartnerList from '../Partner/PartnerList/PartnerList';
+import MyAccount from '../MyAccount/AccountForm/AccountForm';
+import OurTeamList from '../OurTeam/TeamList/TeamList';
+import FAQList from '../FAQ/FAQList/FAQList';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);
@@ -26,8 +29,12 @@ export default function Main() {
         return <FAQList />;
       case 'Підсумки':
         return <SummariesList />;
+      case 'Мій аккаунт':
+        return <MyAccount />;
       case 'Команда':
-        return <CommandList />;
+        return <OurTeamList />;
+      case 'Мій акаунт':
+        return <MyAccount />
       default:
         return <PetList />;
     }

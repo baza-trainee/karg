@@ -11,13 +11,12 @@
   z-index: 2000;
   top: 0;
 
-    @media screen and (min-width: 1200px) {
-      position: sticky;
-      top:0;
-      width: 100%;
-      z-index: 3;
-    }
-  
+  @media screen and (min-width: 1200px) {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 3;
+  }
 }
 
 .topBar {
@@ -50,6 +49,12 @@
   padding: 0 16px;
 }
 
+@media screen and (min-width: 768px) {
+  .inner {
+    padding: 0 64px;
+  }
+}
+
 .headerContainer {
   display: flex;
   align-items: center;
@@ -69,6 +74,13 @@
 .burgerIcon {
   font-size: 48px;
   margin: 8px 8px;
+  color: #fff;
+}
+
+@media screen and (min-width: 768px) {
+  .logo {
+    font-size: 80px;
+  }
 }
 
 .langContainer {
@@ -144,7 +156,7 @@
   background-color: $button-default;
   border: none;
   border-radius: 8px;
-  padding: 12px;
+  padding: 9px 12px;
 }
 
 .supportButtonText {
@@ -163,8 +175,8 @@
   flex-shrink: 0;
   width: 100%;
   background-color: $bg-purple;
-  padding: 32px 16px 32px 16px;
-  gap: 32px;
+  padding: 30px 64px 32px 64px;
+  gap: 30px;
 }
 
 .navMenuMobile > ul {
@@ -172,7 +184,11 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  color: $text-dark;
+  gap: 20px;
+  & .active {
+    box-shadow: inset 0 -2px 0 $primary;
+  }
 }
 
 .navMenuMobile {
@@ -213,7 +229,7 @@
 .contactsContainerMobile > a {
   text-decoration: none;
   margin-bottom: 4px;
-  color: #141414;
+  color: $text-dark;
 }
 
 @media screen and (min-width: 1200px) {
@@ -227,8 +243,16 @@
     align-items: center;
     justify-content: space-between;
     gap: 17.1528%;
-    padding: 0 9.375%;
+    padding: 10px 9.375%;
     background-color: $button-dark-active;
+    transition: max-height 0.3s ease-in-out, padding 0.3s ease-in-out;
+    max-height: 50px;
+    overflow: hidden;
+  }
+
+  .topBarHidden {
+    max-height: 0;
+    padding: 0 9.375%;
   }
 
   .topBar > a {
@@ -269,9 +293,9 @@
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
-      &.active{
-        box-shadow: inset 0 -2px 0 $button-hover; 
-      } 
+    &.active {
+      box-shadow: inset 0 -2px 0 $button-hover;
+    }
   }
 
   .navMenu a:hover {
@@ -300,33 +324,33 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-      &.active{
-        box-shadow: inset 0 -2px 0 $button-hover;
-      } 
+    &.active {
+      box-shadow: inset 0 -2px 0 $button-hover;
+    }
   }
-  
-  .dropHover{
-        &.active{
-          & .dropList {
-            opacity: 1;
-            visibility: visible;
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            justify-content: center;
-            gap: 1rem;
-            border-radius: 8px;
-          }
-        } 
-        & .dropList {
-          background-color: $primary;
-          position: absolute;
-          opacity: 0;
-          visibility: hidden;
-          padding: 2rem;
-          min-width: fit-content;
-          z-index: 1000;
-        }
+
+  .dropHover {
+    &.active {
+      & .dropList {
+        opacity: 1;
+        visibility: visible;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        gap: 1rem;
+        border-radius: 8px;
+      }
+    }
+    & .dropList {
+      background-color: $primary;
+      position: absolute;
+      opacity: 0;
+      visibility: hidden;
+      padding: 2rem;
+      min-width: fit-content;
+      z-index: 1000;
+    }
   }
 
   .supportButton {

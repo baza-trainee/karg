@@ -3,7 +3,7 @@ import variables from "../../../../../variables.module.scss";
 import ImageUploader from '../ImageUploader/ImageUploader';
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, language, handleChange, handleImageUploaded, handleDeleteImage, descriptionTitle, nameTitle, type }) => {
+const FormFields = memo(({ formData, language, handleChange, handleImageUploaded, handleDeleteImage, maxImages, descriptionTitle, nameTitle, type }) => {
     return (
         <div className={`${styles.formFields} ${type === 'edit' ? styles.editMode : ''}`}>
             <div className={styles.inputBlock}>
@@ -39,7 +39,8 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                 </textarea>
             </div>
             <ImageUploader
-                image={formData.image}
+                images={formData.images}
+                maxImages={maxImages}
                 imageId={formData.id}
                 handleImageUploaded={handleImageUploaded}
                 handleDeleteImage={handleDeleteImage}

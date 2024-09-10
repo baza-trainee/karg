@@ -22,7 +22,19 @@ function Footer() {
 
   const handleClick = (e) => {
     const target = e.currentTarget.dataset.list;
-    setOpen((prevState) => ({ ...prevState, [target]: !prevState[target] }));
+    // setOpen((prevState) => ({ ...prevState, [target]: !prevState[target] }));
+    setOpen((prevState) => {
+      const newState = {};
+      Object.keys(prevState).forEach(key => {
+        if (key === target) {
+          newState[key] = !prevState[key];
+          return;
+        } else {
+          newState[key] = false;
+        }
+      });
+      return newState;
+    });
   };
 
   return (
@@ -31,11 +43,11 @@ function Footer() {
         <Link href="/">
           <Logo className={styles.logo} />
         </Link>
-        <h2 className={`${styles.brandHolderName} ${variables.button2}`}>
+        <h2 className={`${styles.brandHolderName} ${variables.h3}`}>
           KYIV ANIMAL RESCUE GROUP
         </h2>
       </div>
-      <nav className={`${styles.navMenu} ${variables.button2}`}>
+      <nav className={`${styles.navMenu} ${variables.Text3}`}>
         <ul>
           <li>
             <Link href="/">{t('common:linkMain')}</Link>

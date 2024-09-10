@@ -1,0 +1,73 @@
+@import "../../../../../variables.module.scss";
+@import "../../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 48px 8px 48px;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background-color: $bg-lightgray;
+  gap: 8px;
+  color: $text-dark;
+  min-width: 1194px;
+
+  .faqTitle {
+    display: flex;
+    gap: 24px;
+    padding: 0px 16px 0 16px;
+    margin-top: 16px;
+    height: 40px;
+    align-items: center;
+    width: 100%;
+
+  }
+
+  .faqLine {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    padding: 16px;
+    height: 64px;
+    overflow: hidden;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 1098px;
+  }
+
+  & .basicInfo { 
+    width: 300px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  & .anserInfo {
+    max-height: 26px;
+    width: 642px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .iconsContainer {
+    width: 76px;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  & .create_icon {
+    cursor: pointer;
+    font-size: 32px;
+  }
+
+  & .trash_icon {
+    cursor: pointer;
+    font-size: 32px;
+    fill: rgba(0, 0, 0, 0.85);
+  }
+}

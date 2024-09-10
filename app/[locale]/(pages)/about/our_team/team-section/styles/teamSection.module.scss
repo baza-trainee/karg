@@ -71,7 +71,7 @@
         align-self: flex-end;
 
         .quote {
-          line-height: 130%;
+          line-height: 110%;
           max-width: 585px;
         }
       }
@@ -104,8 +104,13 @@
 
     .introduction {
       gap: 32px;
-    }
 
+      .foundersQuote {
+        .quote {
+          max-width: 635px;
+        }
+      }
+    }
     .teamEquipmentText {
       line-height: 132%;
       gap: 17px;

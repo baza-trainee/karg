@@ -14,6 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchAdviceData } from "../utilsFetchAdviceData";
 import { AdviceContext } from "../AdviceContext";
+const maxImages = 4;
 
 const labels = {
     ukrLng: "Українська",
@@ -55,7 +56,6 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     const { loadAdvices } = useContext(AdviceContext);
     const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
-    //const maxImages = 1;
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -104,8 +104,8 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
 
     const handleImageUploaded = (newImageUrl) => {
         setFormData(prev => {
-            const updatedImage = newImageUrl;
-            return { ...prev, image: updatedImage };
+            const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
+            return { ...prev, images: updatedImages };
         });
         setHasUnsavedChanges(true);
     };
@@ -128,8 +128,8 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
 
     const handleDeleteImage = (index) => {
         setFormData(prev => {
-            const updatedImage = '';
-            return { ...prev, image: updatedImage };
+            const updatedImages = prev.images.filter((_, i) => i !== index);
+            return { ...prev, images: updatedImages };
         });
         setHasUnsavedChanges(true);
     }
@@ -155,6 +155,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
                             handleChange={handleChange}
                             handleImageUploaded={handleImageUploaded}
                             handleDeleteImage={handleDeleteImage}
+                            maxImages={maxImages}
                             descriptionTitle={descriptionTitle}
                             nameTitle={nameTitle}
                         />

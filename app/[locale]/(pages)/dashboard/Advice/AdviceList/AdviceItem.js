@@ -7,7 +7,7 @@ export default function AdviceItem(
         containerStyle,
         photoStyle,
         photoAlt,
-        photoSrc,
+        photoSrc = [],
         photoContainerStyle,
         basicInfoStyle,
         adviceTitle,
@@ -23,9 +23,9 @@ export default function AdviceItem(
         <div className={containerStyle}>
             <div className={adviceLineStyle}>
                 <div className={photoContainerStyle}>
-                    {photoSrc ? (
+                    {photoSrc && photoSrc.length > 0 ? (
                         <Image
-                            src={photoSrc}
+                            src={photoSrc[0]}
                             alt={photoAlt}
                             width={92}
                             height={92}
@@ -50,7 +50,7 @@ export default function AdviceItem(
 AdviceItem.propTypes = {
     containerStyle: PropTypes.string,
     photoStyle: PropTypes.string,
-    photoSrc: PropTypes.string,
+    photoSrc: PropTypes.array,
     photoAlt: PropTypes.string,
     adviceTitle: PropTypes.string,
     adviceDetails: PropTypes.string,

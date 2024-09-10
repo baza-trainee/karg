@@ -6,7 +6,9 @@ import { AdminContext } from '@/app/adminProvider';
 import PetForm from '../Pet/PetForm/PetForm';
 import PartnerForm from '../Partner/PartnerForm/PartnerForm';
 import AdviceForm from '../Advice/AdviceForm/AdviceForm';
+import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
+import FAQForm from '../FAQ/FAQForm/FAQForm';
 
 export default function Navbar() {
   const { activeSection } = useContext(AdminContext);
@@ -30,11 +32,15 @@ export default function Navbar() {
     },
     'FAQ': {
       caption: "Додати питання",
-      genericModalContent: ""
+      genericModalContent: <FAQForm type="create" />
     },
     'Підсумки': {
       caption: "Додати статтю",
       genericModalContent: ""
+    },
+    'Команда': {
+      caption: "Додати користувача",
+      genericModalContent: <RescuerForm type="create" />
     },
   }
 
@@ -47,12 +53,14 @@ export default function Navbar() {
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      <Button
-        className={stylesBtn.buttonAddNewItem}
-        onClick={handleButtonClick}
-      >
-        {caption}
-      </Button>
+      {activeSection !== "Мій акаунт" &&
+        <Button
+          className={stylesBtn.buttonAddNewItem}
+          onClick={handleButtonClick}
+        >
+          {caption}
+        </Button>
+      }
     </div>
   )
 }

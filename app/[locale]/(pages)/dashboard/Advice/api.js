@@ -1,7 +1,8 @@
 const API_BASE_URL_ADVICE = 'https://karg-backend.onrender.com/karg/advice';
-
 export const getAdviceById = async (id, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
+    //const authToken = localStorage.getItem('auth-token');
+    //remove authToken !!!
+    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGdWxsbmFtZSI6IkFkbWluIEtBUkciLCJSb2xlIjoiRGlyZWN0b3IiLCJFbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImV4cCI6MzMyNTYxODA4OTEsImlzcyI6ImthcmcuY29tIiwiYXVkIjoia2FyZy5jb20ifQ.2RcVCXa9B_xS3zBEBTEAFsEyfS0DIpyWQtIBxs3IabM";
     const response = await fetch(`${API_BASE_URL_ADVICE}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
@@ -27,9 +28,6 @@ export const addAdvice = async (adviceData) => {
         },
         body: JSON.stringify(adviceData)
     });
-    // if (response.status === 401) {
-    //     router.push("/authentication/login");
-    // }
     if (!response.ok) {
         throw new Error(`Failed to submit form with status: ${response.status}`);
     }
@@ -50,9 +48,6 @@ export const updateAdvice = async (id, updates) => {
     if (!response.ok) {
         throw new Error('Failed to update advice');
     }
-    // if (response.status === 401) {
-    //     router.push("/authentication/login");
-    // }
     return response.json();
 };
 
@@ -90,6 +85,4 @@ export const deleteAdvice = async (id) => {
     }
     return response.json();
 };
-
-
 

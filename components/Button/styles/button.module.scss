@@ -116,6 +116,32 @@
   &:active {
     background-color: $button-dark-active;
   }
+  &:disabled {
+    background-color: $button-disabled;
+  }
+}
+.adminMyAccountFormBtnSubmit,
+.adminMyAccountFormBtnRejct{
+  cursor: pointer;
+  width: 421px;
+  height:48px;
+  padding: 11px 12px 11px 12px;
+  border-radius: 8px;
+}
+.adminMyAccountFormBtnSubmit{
+  color: $text-white;
+  background-color: $button-dark-default;
+    &:hover {
+      background-color: $button-dark-hover;
+    }
+
+    &:active {
+      background-color: $button-dark-active;
+    }
+}
+.adminMyAccountFormBtnRejct{
+  border: 1px solid $button-dark-default;
+  background: none;
 }
 
 .confirmationCancelBtn,

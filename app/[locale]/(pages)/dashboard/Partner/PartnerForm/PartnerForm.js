@@ -12,7 +12,6 @@ import { useUnsavedChanges } from "@/app/UnsavedChangesContext";
 import { checkFormValidity } from "./checkFormValidity";
 import ModalContext from "@/app/ModalContext";
 
-
 const labels = {
     nameTitle: "Назва компанії",
     linkTitle: "Посилання",
@@ -50,6 +49,7 @@ function PartnerForm({ type = 'create', partnerData = {} }) {
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const { showModal, hideModal } = useContext(ModalContext);
     const { loadPartners } = useContext(PartnerContext);
+    const maxImages = 1;
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -77,14 +77,16 @@ function PartnerForm({ type = 'create', partnerData = {} }) {
 
     const handleImageUploaded = (newImageUrl) => {
         setFormData(prev => {
-            return { ...prev, image: newImageUrl };
+            const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
+            return { ...prev, images: updatedImages };
         });
         setHasUnsavedChanges(true);
     };
 
-    const handleDeleteImage = () => {
+    const handleDeleteImage = (index) => {
         setFormData(prev => {
-            return { ...prev, image: '' };
+            const updatedImages = prev.images.filter((_, i) => i !== index);
+            return { ...prev, images: updatedImages };
         });
         setHasUnsavedChanges(true);
     }

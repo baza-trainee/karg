@@ -52,8 +52,9 @@
 .Subtitle2,
 .subtitle3,
 .Subtitle3,
-.mobileSubtitle1 {
-  @include font-styles(700, 18px);
+.mobileSubtitle1,
+.subtitle4 {
+  @include font-styles(800, 18px);
 }
 
 .text1,
@@ -116,7 +117,8 @@
 .font18w500 {
   @include font-styles(500, 18px);
 }
-.Text3 {
+
+.font18w400 {
   @include font-styles(400, 18px);
 }
 
@@ -157,7 +159,8 @@
 
   .h3,
   .subtitle1,
-  .subtitle2 {
+  .subtitle2,
+  .subtitle4 {
     @include font-styles(700, 24px);
   }
 
@@ -194,7 +197,6 @@
     @include font-styles(400, 16px);
   }
   .btn2,
-  .button2,
   .quickButton2 {
     @include font-styles(800, 16px);
   }
@@ -227,6 +229,10 @@
   .Subtitle2,
   .Heading3 {
     @include font-styles(700, 44px);
+  }
+
+  .subtitle4 {
+    @include font-styles(700, 30px);
   }
 
   .h3,

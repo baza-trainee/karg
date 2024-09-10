@@ -7,8 +7,6 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
-        console.log(formData, 'formData');
-        console.log(originalData, 'originalData');
         const patch = [];
         Object.keys(formData).forEach(key => {
             if (Array.isArray(formData[key])) {
@@ -35,7 +33,6 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
     }
 
     const handleCreateAdvice = async () => {
-        console.log(checkFormValidity(formData));
         if (!checkFormValidity(formData)) {
             setIsFormValid(false);
             return;
@@ -46,7 +43,7 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
             title_ua: formData.title_ua,
             description_ua: formData.description_ua,
             created_at: formData.created_at,
-            image: formData.image,
+            images: formData.images,
         };
         try {
             await addAdvice(adviceData);
@@ -64,7 +61,6 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
 
     const handleUpdateAdvice = async () => {
         const updates = getUpdatedFields(formData, originalData);
-        console.log(updates);
         if (!updates.length) {
             return;
         }
@@ -78,7 +74,7 @@ export const submitAdviceData = async (type, formData, originalData, hideModal, 
                 />)
             setHasUnsavedChanges(false);
         } catch (error) {
-            console.error('Error updating animal:', error);
+            console.error('Error updating advice:', error);
         }
     };
     if (type === 'create') {

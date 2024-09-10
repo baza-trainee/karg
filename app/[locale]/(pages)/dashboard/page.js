@@ -8,7 +8,9 @@ import GenericModal from "./GenericModal/GenericModal";
 import ConfirmationModal from "./ConfirmationModal/ConfirmationModal";
 import { PetProvider } from './Pet/PetContext';
 import { AdviceProvider } from './Advice/AdviceContext';
+import { TeamProvider } from './OurTeam/TeamContext';
 import { PartnerProvider } from './Partner/PartnerContext';
+import { FAQProvider } from './FAQ/FAQContext';
 
 export default function DashboardPage({ children }) {
 
@@ -19,12 +21,16 @@ export default function DashboardPage({ children }) {
           <PartnerProvider>
             <PetProvider>
               <AdviceProvider>
-              <div>
-                <Main />
-                {children}
-                <GenericModal />
-                <ConfirmationModal />
-                </div>
+                <FAQProvider>
+                  <TeamProvider>
+                    <div>
+                      <Main />
+                      {children}
+                      <GenericModal />
+                      <ConfirmationModal />
+                    </div>
+                  </TeamProvider>
+                </FAQProvider>
               </AdviceProvider>
             </PetProvider>
           </PartnerProvider>

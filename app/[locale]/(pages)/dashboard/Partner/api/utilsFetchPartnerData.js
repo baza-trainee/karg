@@ -4,7 +4,7 @@ export const initializeFormData = (data) => {
     return {
         id: data.id || '',
         name: data.name || '',
-        image: data.image || '',
+        images: data.images || [],
         uri: data.uri || '',
     }
 }
@@ -33,7 +33,7 @@ export const fetchPartnerData = async (partnerId, type) => {
             const data = await getPartnerById(partnerId);
             const updatedFormData = {
                 id: data.id,
-                image: data.image || '',
+                images: data.images || [],
                 name: data.name || '',
                 uri: data.uri || '',
             };
