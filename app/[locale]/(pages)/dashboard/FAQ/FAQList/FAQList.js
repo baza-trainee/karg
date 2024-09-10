@@ -13,6 +13,7 @@ import Spinner from '@/components/Spinner/Spinner';
 import { deleteFAQItemData } from '../utilsFetchFAQData';
 import { FAQContext } from "../FAQContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
+import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -34,6 +35,9 @@ function FAQList() {
     } = useContext(FAQContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
+    const { isDirector } = useContext(AdminContext);
+
+    const currentRole = (isDirector === 'true') ? true : false;
 
     useEffect(() => {
         if (!isLoading) {
@@ -68,13 +72,13 @@ function FAQList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('generic', <FAQForm type='edit' faqData={faqItem} />)
-                                    }}
+                                    } : null}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -86,7 +90,7 @@ function FAQList() {
                                                 actionOnConfirm={handleDeleteFAQ}
                                                 actionArgs={faqItem.id}
                                             />)
-                                    }}
+                                    } : null}
                                 />
                             </FAQItem>
                         )

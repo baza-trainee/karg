@@ -34,7 +34,8 @@ export default function LoginPage() {
 
   const [loginStatus, setLoginStatus] = useState('');
   const { accountId, setAccountId } = useContext(AdminContext);
-
+  const { isDirector, setIsDirector } = useContext(AdminContext);
+  const { setActiveSection } = useContext(AdminContext);
 
   const { email } = form.email.value;
   const { password } = form.password.value;
@@ -50,7 +51,11 @@ export default function LoginPage() {
 
   useEffect(() => {
     setAccountId(accountId);
-  }, [accountId])
+  }, [accountId]);
+
+  useEffect(() => {
+    setIsDirector(isDirector);
+  }, [isDirector]);
 
   const ActualEyeIcon = () => {
     return (
@@ -107,9 +112,20 @@ export default function LoginPage() {
 
       if (response.status === 1) {
         const authToken = await response.token;
+        const accountId = await response.rescuerId;
+        const role = await response.isDirector;
+
+        console.log(role);
+        console.log(accountId);
+
         localStorage.setItem('auth-token', authToken);
+        localStorage.setItem('accountId', accountId);
+        localStorage.setItem('isDirector', role ? 'true' : 'false');
+
         setLoginStatus(`Ви успішно увійшли до адмінпанелі`);
-        setAccountId(response.rescuerId);
+        setAccountId(accountId);
+        setIsDirector(role);
+        setActiveSection('Мій акаунт');
         router.push("/dashboard", { email: form.email.value });
       }
       if ((!response.status)) {
@@ -131,6 +147,7 @@ export default function LoginPage() {
     }
     catch (e) {
       setLoginStatus("Введено невірний логін або пароль.");
+      console.log("catch block");
     }
   };
 

@@ -67,7 +67,8 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         name="email"
                         value={formData.email}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
-                        onChange={(e) => handleChange(e)}
+                        //onChange={(e) => handleChange(e)}
+                        disabled={true}
                     >
                     </input>
                 </div>
