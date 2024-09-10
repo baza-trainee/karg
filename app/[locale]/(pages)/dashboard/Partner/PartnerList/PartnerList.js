@@ -10,6 +10,7 @@ import variables from "@/app/[locale]/variables.module.scss";
 import ModalContext from '@/app/ModalContext';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import { deletePartner } from "../api/utilsFetchPartnerData";
+import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -22,6 +23,9 @@ export default function PartnerList() {
     const { loadPartners, isLoading, setIsLoading, partners, setPartners } = useContext(PartnerContext);
     const { showModal } = useContext(ModalContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
+    const { isDirector } = useContext(AdminContext);
+
+    const currentRole = (isDirector === 'true') ? true : false;
 
     useEffect(() => {
         if (!isLoading) {
@@ -65,13 +69,13 @@ export default function PartnerList() {
                                 >
                                     <CreateIcon
                                         className={styles.create_icon}
-                                        onClick={() => {
+                                        onClick={currentRole ? () => {
                                             showModal('generic', <PartnerForm type='edit' partnerData={partner} />)
-                                        }}
+                                        } : null}
                                     />
                                     <TrashIcon
                                         className={styles.trash_icon}
-                                        onClick={() => {
+                                        onClick={currentRole ? () => {
                                             showModal('confirmation',
                                                 <ConfirmationDialogTrigger
                                                     confirmationTitle={confirmationTitle}
@@ -83,7 +87,7 @@ export default function PartnerList() {
                                                     actionOnConfirm={handleDeletePartner}
                                                     actionArgs={partner.id}
                                                 />)
-                                        }}
+                                        } : null}
                                     />
                                 </PartnerItem>
                             );

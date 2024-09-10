@@ -35,7 +35,6 @@ function TeamList() {
     const { showModal } = useContext(ModalContext);
 
     const currentRole = (isDirector === 'true') ? true : false;
-    console.log(currentRole);
 
     useEffect(() => {
         if (!isLoading) {
