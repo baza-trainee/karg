@@ -34,6 +34,7 @@ export default function LoginPage() {
 
   const [loginStatus, setLoginStatus] = useState('');
   const { accountId, setAccountId } = useContext(AdminContext);
+  const { activeSection, setActiveSection } = useContext(AdminContext);
 
 
   const { email } = form.email.value;
@@ -110,6 +111,7 @@ export default function LoginPage() {
         localStorage.setItem('auth-token', authToken);
         setLoginStatus(`Ви успішно увійшли до адмінпанелі`);
         setAccountId(response.rescuerId);
+        setActiveSection("Мій акаунт");
         router.push("/dashboard", { email: form.email.value });
       }
       if ((!response.status)) {
