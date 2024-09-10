@@ -122,7 +122,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         setFormData(prev => {
             const updatedFormData = { ...prev, [name]: value };
             setIsFormValid(checkFormValidity(updatedFormData));
-            console.log(checkFormValidity(updatedFormData));
             return updatedFormData;
         });
     }

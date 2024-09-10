@@ -38,9 +38,7 @@ export const deleteFAQItemData = async (id, currentPage, faq, handlePageChange, 
     } catch (error) {
         console.error('Error deleting the FAQ:', error.message);
     } finally {
-        console.log('currentPage:', currentPage);
         const newPage = currentPage > 1 && faq.length === 1 ? currentPage - 1 : currentPage;
-        console.log('newPage:', newPage);
         handlePageChange(newPage);
     }
 }
@@ -48,7 +46,6 @@ export const deleteFAQItemData = async (id, currentPage, faq, handlePageChange, 
 export const fetchAllFAQData = async (currentPage, currentLanguage = 'ua', setFAQ, setTotalPages) => {
     try {
         const data = await getAllFAQ(currentPage, currentLanguage);
-        console.log(data);
         setFAQ(data);
         //setTotalPages(data.totalPages);
     } catch (error) {

@@ -63,6 +63,7 @@
   .photoContainer {
     flex-shrink: 0;
     min-width: 92px;
+    background-color: $primary;
   }
 
   & .photo {

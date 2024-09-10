@@ -24,7 +24,8 @@ const FormFieldsPartner = memo(({ formData, handleChange, handleImageUploaded, h
                 </input>
             </div>
             <ImageUploader
-                image={formData.image}
+                images={formData.images}
+                maxImages={1}
                 handleImageUploaded={handleImageUploaded}
                 handleDeleteImage={handleDeleteImage}
             />
