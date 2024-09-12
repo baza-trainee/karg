@@ -104,6 +104,12 @@
     text-decoration: none;
     color: #fff;
     margin-bottom: 4px;
+    transition: color 0.4s ease-in-out;
+  }
+
+  p:hover,
+  a:hover {
+    color: $button-default;
   }
 
   .contactsContainerTelephones {
