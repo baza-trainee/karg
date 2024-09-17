@@ -14,6 +14,7 @@ import { deleteAdviceData } from '../utilsFetchAdviceData';
 import { AdviceContext } from "../AdviceContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
+import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -35,6 +36,9 @@ function AdviceList() {
     } = useContext(AdviceContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
+    const { isDirector } = useContext(AdminContext);
+
+    const currentRole = (isDirector === 'true') ? true : false;
 
     useEffect(() => {
         if (!isLoading) {
@@ -76,13 +80,13 @@ function AdviceList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('generic', <AdviceForm type='edit' adviceData={advice} />)
-                                    }}
+                                    } : null}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={() => {
+                                    onClick={currentRole ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -94,7 +98,7 @@ function AdviceList() {
                                                 actionOnConfirm={handleDeleteAdvice}
                                                 actionArgs={advice.id}
                                             />)
-                                    }}
+                                    } : null}
                                 />
                             </AdviceItem>
                         )

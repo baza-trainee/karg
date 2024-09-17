@@ -9,20 +9,23 @@ export const AdminContext = createContext({
     setCurrentSiteSection: () => { },
     accountId: '',
     setAccountId: () => { },
+    isDirector: '',
+    setIsDirector: () => { }
 });
 
 export const AdminProvider = ({ children }) => {
-    const [activeSection, setActiveSection] = useState('');
     const [currentSiteSection, setCurrentSiteSection] = useState('Main');
     const [activeUser, setActiveUser] = useState(null);
     const [accountId, setAccountId] = useState([]);
+    const [activeSection, setActiveSection] = useState('');
+    const [isDirector, setIsDirector] = useState('');
 
     const handleSiteSection = (siteSection) => {
         setCurrentSiteSection(siteSection);
     }
     const handleSetActiveUser = (user) => {
         setActiveUser(user);
-    };
+
     const handleSetAccountId = (id) => {
         setAccountId(id);
     };
@@ -30,11 +33,21 @@ export const AdminProvider = ({ children }) => {
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
     };
+    const handleSetIsDirector = (role) => {
+        setIsDirector(role);
+    }
 
     useEffect(() => {
         const section = localStorage.getItem('activeSection');
         if (section) {
             setActiveSection(section);
+        }
+    }, []);
+
+    useEffect(() => {
+        const role = localStorage.getItem('isDirector');
+        if (role) {
+            setIsDirector(role);
         }
     }, []);
 
@@ -45,6 +58,7 @@ export const AdminProvider = ({ children }) => {
         }
     }, []);
 
+
     useEffect(() => {
         localStorage.setItem('activeSection', activeSection);
     }, [activeSection]);
@@ -53,15 +67,19 @@ export const AdminProvider = ({ children }) => {
         localStorage.setItem('accountId', accountId);
     }, [accountId]);
 
+    useEffect(() => {
+        localStorage.setItem('isDirector', isDirector);
+    }, [isDirector]);
+
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
-        activeUser,
-        setActiveUser: handleSetActiveUser,
         accountId,
         setAccountId: handleSetAccountId,
         currentSiteSection,
         setCurrentSiteSection: handleSiteSection,
+        isDirector,
+        setIsDirector: handleSetIsDirector,
     };
 
     return (

@@ -2,24 +2,29 @@
 
 import Link from "next/link";
 import PropTypes from "prop-types";
-import { useState, useRef, useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import { usePathname } from "next/navigation";
 import styles from '../Header/styles/header.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 import { ArrowDown } from "@/public/assets/icons";
+import { useDropdown } from './DropdownContext';
 
 const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
-    const [isOpen, setOpen] = useState(false);
+    const { openDropdown, setOpenDropdown } = useDropdown();
     const currentPathname = usePathname();
+    const wrapRef = useRef(null);
 
     const handleMenuToggle = () => {
-        setOpen(!isOpen);
+        if (openDropdown === label) {
+            setOpenDropdown(null);
+        } else {
+            setOpenDropdown(label);
+        }
     };
 
-    const wrapRef = useRef(null);
     const handleClickOutsideMenu = (event) => {
         if (wrapRef.current && !wrapRef.current.contains(event.target)) {
-            setOpen(false);
+            setOpenDropdown(null);
         }
     };
 
@@ -27,13 +32,13 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
         document.addEventListener("mousedown", handleClickOutsideMenu);
         return () => {
             document.removeEventListener("mousedown", handleClickOutsideMenu);
-        }
+        };
     }, []);
 
     return (
         <div>
             {!openBurgerMenu &&
-                <div className={`${styles.dropHover} ${isOpen ? styles.active : ''}`} onClick={() => handleMenuToggle()} ref={wrapRef}>
+                <div className={`${styles.dropHover} ${openDropdown === label ? styles.active : ''}`} onClick={() => handleMenuToggle()} ref={wrapRef}>
                     <p className={`${styles.navMenuDropList} ${styles.ArrowDown} ${(currentPathname.includes(subst)) ? styles.active : ""}`}>
                         <span>{label}</span>
                         <ArrowDown />
@@ -46,7 +51,7 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
                                 <li key={item.label}>
                                     <Link href={item.link} className={`${styles.navMenuDropList} ${(currentPathname === item.link) ? styles.active : ""}`}>{item.label}</Link>
                                 </li>
-                            )
+                            );
                         })}
                     </ul>
                 </div>
@@ -57,14 +62,14 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
                         <span>{label}</span>
                         <ArrowDown />
                     </p>
-                    {isOpen ? (
+                    {openDropdown === label ? (
                         <ul className={styles.navMenuInnerList}>
                             {list.map((item) => {
                                 return (
                                     <li key={item.label}>
                                         <Link href={item.link}>{item.label}</Link>
                                     </li>
-                                )
+                                );
                             })}
                         </ul>
                     ) : null}
@@ -79,5 +84,5 @@ DropdownList.propTypes = {
     list: PropTypes.array,
     openBurgerMenu: PropTypes.bool,
     subst: PropTypes.string
-}
+};
 export default DropdownList;
