@@ -3,8 +3,7 @@
 .socIcons {
   margin: 5px;
   font-size: 30px;
-
-  color: #a1a1a1;
+  @include socIcons;
 }
 
 .footer {
