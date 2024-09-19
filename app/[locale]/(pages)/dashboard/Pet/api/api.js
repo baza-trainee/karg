@@ -1,10 +1,10 @@
 const API_BASE_URL_PET = 'https://karg-backend.onrender.com/karg/animal';
 
 export const getAnimalById = async (id, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PET}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         headers: {
-            'Authorization': authToken
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
         }
     });
     if (!response.ok) {
@@ -48,10 +48,10 @@ export const updateAnimal = async (id, updates) => {
 };
 
 export const getAllAnimals = async (page, categoryQuery, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PET}/getall?Page=${page}&PageSize=10${categoryQuery}&cultureCode=${cultureCode}`, {
         headers: {
-            'Authorization': authToken
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
         }
     });
     if (!response.ok) {

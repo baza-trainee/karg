@@ -25,13 +25,32 @@
   border: none;
   cursor: pointer;
   color: $text-dark;
-
   &:hover {
     background-color: $button-hover;
   }
 
   &:active {
     background-color: $button-active;
+  }
+}
+
+@mixin button-rescue-style() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $button-dark-default;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: none;
+  color: $text-white;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+ 
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
   }
 }
 
@@ -85,9 +104,9 @@
 }
 
 .rescue {
-  @extend .support;
-  min-width: 288px;
-  max-height: 44px;
+  @include button-rescue-style;
+  width: 288px;
+  height: 44px;
   margin-top: 0;
 }
 
@@ -169,18 +188,18 @@
   }
 }
 
-
 @media screen and (min-width: 768px) {
   .rescue {
-    min-height: 44px;
+    height: 44px;
     padding: 9px 12px;
   }
 }
 @media screen and (min-width: 1400px) {
   .rescue {
-    min-width: 370px;
-    min-height: 56px;
+    width: 370px;
+    height: 56px;
     padding: 12px;
     border-radius: 8px;
   }
 }
+

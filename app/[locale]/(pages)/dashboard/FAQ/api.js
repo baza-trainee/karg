@@ -1,13 +1,11 @@
 const API_BASE_URL_FAQ = 'https://karg-backend.onrender.com/karg/faq';
 
 export const getFAQById = async (id, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_FAQ}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
         },
     });
     if (!response.ok) {

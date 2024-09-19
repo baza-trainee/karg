@@ -12,15 +12,16 @@ export const AdminContext = createContext({
 });
 
 export const AdminProvider = ({ children }) => {
+    const [accountId, setAccountId] = useState([]);
     const [activeSection, setActiveSection] = useState('');
-    const [accountId, setAccountId] = useState('');
     const [isDirector, setIsDirector] = useState('');
+
+    const handleSetAccountId = (id) => {
+        setAccountId(id);
+    };
 
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
-    };
-    const handleSetAccountId = (id) => {
-        setAccountId(id);
     };
     const handleSetIsDirector = (role) => {
         setIsDirector(role);
@@ -59,6 +60,7 @@ export const AdminProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('isDirector', isDirector);
     }, [isDirector]);
+
 
     const contextValue = {
         activeSection,
