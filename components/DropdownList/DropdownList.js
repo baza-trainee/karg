@@ -3,7 +3,7 @@
 import Link from "next/link";
 import PropTypes from "prop-types";
 import { useRef, useEffect } from 'react';
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import styles from '../Header/styles/header.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 import { ArrowDown } from "@/public/assets/icons";
@@ -13,6 +13,7 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
     const { openDropdown, setOpenDropdown } = useDropdown();
     const currentPathname = usePathname();
     const wrapRef = useRef(null);
+    const router = useRouter();
 
     const handleMenuToggle = () => {
         if (openDropdown === label) {
@@ -24,6 +25,7 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
 
     const handleClickOutsideMenu = (event) => {
         if (wrapRef.current && !wrapRef.current.contains(event.target)) {
+            if (event.target.href) router.push(event.target.href);
             setOpenDropdown(null);
         }
     };

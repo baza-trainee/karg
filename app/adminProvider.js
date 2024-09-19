@@ -5,8 +5,6 @@ import { createContext, useEffect, useState } from 'react';
 export const AdminContext = createContext({
     activeSection: '',
     setActiveSection: () => { },
-    currentSiteSection: '',
-    setCurrentSiteSection: () => { },
     accountId: '',
     setAccountId: () => { },
     isDirector: '',
@@ -14,17 +12,9 @@ export const AdminContext = createContext({
 });
 
 export const AdminProvider = ({ children }) => {
-    const [currentSiteSection, setCurrentSiteSection] = useState('Main');
-    const [activeUser, setActiveUser] = useState(null);
     const [accountId, setAccountId] = useState([]);
     const [activeSection, setActiveSection] = useState('');
     const [isDirector, setIsDirector] = useState('');
-
-    const handleSiteSection = (siteSection) => {
-        setCurrentSiteSection(siteSection);
-    }
-    const handleSetActiveUser = (user) => {
-        setActiveUser(user);
 
     const handleSetAccountId = (id) => {
         setAccountId(id);
@@ -71,13 +61,12 @@ export const AdminProvider = ({ children }) => {
         localStorage.setItem('isDirector', isDirector);
     }, [isDirector]);
 
+
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
         accountId,
         setAccountId: handleSetAccountId,
-        currentSiteSection,
-        setCurrentSiteSection: handleSiteSection,
         isDirector,
         setIsDirector: handleSetIsDirector,
     };

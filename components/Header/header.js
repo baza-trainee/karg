@@ -25,6 +25,7 @@ const Header = () => {
   const currentLocale = i18n.language;
   const currentPathname = usePathname();
   const labelFirst = t('common:linkAboutUs');
+  const labelSecond = t('common:linkUseful');
   const [isScrolled, setIsScrolled] = useState(false);
 
   useEffect(() => {
@@ -35,25 +36,28 @@ const Header = () => {
         setIsScrolled(false);
       }
     };
-
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
+  useEffect(() => {
+
+  })
+
   const listLabelFirst = [
-    { label: t('common:linkHistory'), link: currentLocale === "uk" ? "/about/history_of_origin" : `/${currentLocale}/about/history_of_origin` },
-    { label: t('common:linkRules'), link: currentLocale === "uk" ? "/about/rules_of_appeal" : `/${currentLocale}/about/rules_of_appeal` },
-    { label: t('common:linkTeam'), link: currentLocale === "uk" ? "/about/our_team" : `/${currentLocale}/about/our_team` },
-    { label: t('common:linkContacts'), link: currentLocale === "uk" ? "/about/contacts" : `/${currentLocale}/about/contacts` }
+    { label: t('common:linkHistory'), link: "/about/history_of_origin" },
+    { label: t('common:linkRules'), link: "/about/rules_of_appeal" },
+    { label: t('common:linkTeam'), link: "/about/our_team" },
+    { label: t('common:linkContacts'), link: "/about/contacts" }
   ];
 
-  const labelSecond = t('common:linkUseful');
+
   const listLabelSecond = [
-    { label: t('common:linkAdvices'), link: currentLocale === "uk" ? "/useful/advices" : `/${currentLocale}/useful/advices` },
-    { label: 'FAQ', link: currentLocale === "uk" ? "/useful/faq" : `/${currentLocale}/useful/faq` },
-    { label: t('common:linkSummaries'), link: currentLocale === "uk" ? "/useful/results" : `/${currentLocale}/useful/results` },
+    { label: t('common:linkAdvices'), link: "/useful/advices" },
+    { label: 'FAQ', link: "/useful/faq" },
+    { label: t('common:linkSummaries'), link: "/useful/results" },
   ];
 
   return (
@@ -75,16 +79,16 @@ const Header = () => {
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <DropdownProvider>
               <li>
-                <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
+                <Link className={(currentPathname === '/' || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
               </li>
               <li>
                 <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
               </li>
               <li>
-                <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
+                <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href="/animals">{t('common:linkAnimals')}</Link>
               </li>
               <li>
-                <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
+                <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href="/help">{t('common:linkHelpUs')}</Link>
               </li>
               <li>
                 <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
@@ -119,10 +123,10 @@ const Header = () => {
                     <DropdownList label={labelFirst} list={listLabelFirst} openBurgerMenu={openBurgerMenu} />
                   </li>
                   <li>
-                    <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={currentLocale === "uk" ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
+                    <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={"/animals"}>{t('common:linkAnimals')}</Link>
                   </li>
                   <li>
-                    <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={currentLocale === "uk" ? "/help" : "en/help"}>{t('common:linkHelpUs')}</Link>
+                    <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={"/help"}>{t('common:linkHelpUs')}</Link>
                   </li>
                   <li>
                     <DropdownList label={labelSecond} list={listLabelSecond} openBurgerMenu={openBurgerMenu} />

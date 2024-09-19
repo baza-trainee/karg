@@ -1,14 +1,10 @@
 const API_BASE_URL_ADVICE = 'https://karg-backend.onrender.com/karg/advice';
 export const getAdviceById = async (id, cultureCode) => {
-    //const authToken = localStorage.getItem('auth-token');
-    //remove authToken !!!
-    const authToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJGdWxsbmFtZSI6IkFkbWluIEtBUkciLCJSb2xlIjoiRGlyZWN0b3IiLCJFbWFpbCI6ImFkbWluQGdtYWlsLmNvbSIsImV4cCI6MzMyNTYxODA4OTEsImlzcyI6ImthcmcuY29tIiwiYXVkIjoia2FyZy5jb20ifQ.2RcVCXa9B_xS3zBEBTEAFsEyfS0DIpyWQtIBxs3IabM";
     const response = await fetch(`${API_BASE_URL_ADVICE}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
         },
     });
     if (!response.ok) {
@@ -52,13 +48,11 @@ export const updateAdvice = async (id, updates) => {
 };
 
 export const getAllAdvices = async (page, cultureCode) => {
-    const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_ADVICE}/getall?Page=${page}&PageSize=6&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
         },
     });
     if (!response.ok) {
