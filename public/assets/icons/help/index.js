@@ -1,0 +1,1 @@
+export { default as Copy_icon } from "./Copy.svg";
