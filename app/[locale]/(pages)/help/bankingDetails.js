@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import styles from './styles/help.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
-import { Copy_icon } from "@/public/assets/icons/help";
+import BankingCard from './bankingCard';
 
 const BankingDetails = () => {
     const [copied, setCopied] = useState(false);
@@ -12,126 +12,44 @@ const BankingDetails = () => {
             setCopied(true);
             setTimeout(() => setCopied(false), 2000);
         }).catch((err) => {
-            console.error('Ошибка при копировании текста: ', err);
+            console.error('error: ', err);
         });
+    };
+
+    const bankingDetails_text = {
+        usd: {
+            swift: [{ label: 'IBAN', value: 'UA303220010000026202326656577' },
+            { label: 'SWIFT/BIC code', value: 'UNJSUAUKXXX' },
+            { label: 'Receiver', value: 'STOROZHUK MYKHAILO' },
+            { label: 'Address', address: '01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13' }
+            ]
+        },
+        eur: {
+            swift: [
+                { label: 'IBAN', value: 'UA223220010000026204326655101' },
+                { label: 'SWIFT/BIC code', value: 'UNJSUAUKXXX' },
+                { label: 'Receiver', value: 'STOROZHUK MYKHАЙЛО' },
+                { label: 'Address', address: '01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13' }
+            ],
+            sepa: [
+                { label: 'IBAN', value: 'GB07CLJU00997182234651' },
+                { label: 'BIC code', value: 'CLJUGB21' },
+                { label: 'Receiver', value: 'STOROZHUK MYKHAILO' },
+            ]
+        }
+
     };
 
     return (
         <div className={styles.bankingDetails_Container}>
             <div className={styles.bankingDetails_cardsContainer}>
-                <div className={styles.bankingDetails_card}>
-                    <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
-                        USD
-                    </h4>
-                    <div className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
-                        <dl>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>SWIFT</strong></dt>
-                                <dd></dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>IBAN:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('UA303220010000026202326656577')}>
-                                    <span>UA303220010000026202326656577</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>SWIFT/BIC code:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('UNJSUAUKXXX')}>
-                                    <span>UNJSUAUKXXX</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>Receiver:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('STOROZHUK MYKHAILO')}>
-                                    <span>STOROZHUK MYKHAILO</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>Address:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13')}>
-                                    <address>
-                                        01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
-                                    </address>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
-                <div className={styles.bankingDetails_card}>
-                    <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
-                        EUR
-                    </h4>
-                    <div className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
-                        <dl>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>SEPA</strong></dt>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>IBAN:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('GB07CLJU00997182234651')}>
-                                    <span>GB07CLJU00997182234651</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>BIC code:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('CLJUGB21')}>
-                                    <span>CLJUGB21</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>Receiver:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('STOROZHUK MYKHAILO')}>
-                                    <span>STOROZHUK MYKHAILO</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>SWIFT</strong></dt>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>IBAN:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('UA223220010000026204326655101')}>
-                                    <span>UA223220010000026204326655101</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>SWIFT/BIC code:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('UNJSUAUKXXX')}>
-                                    <span>UNJSUAUKXXX</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>Receiver:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('STOROZHUK MYKHAILO')}>
-                                    <span>STOROZHUK MYKHАЙЛО</span>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                            <div className={styles.bankingDetails_textItem}>
-                                <dt><strong>Address:</strong></dt>
-                                <dd className={styles.bankingDetails_IconItem} onClick={() => copyToClipboard('01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13')}>
-                                    <address>
-                                        01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
-                                    </address>
-                                    <Copy_icon className={styles.copy_icon} />
-                                </dd>
-                            </div>
-                        </dl>
-                    </div>
-                </div>
+                <BankingCard title="USD (SWIFT)" details={bankingDetails_text.usd.swift} copyToClipboard={copyToClipboard} />
+                <BankingCard title="EUR (SWIFT)" details={bankingDetails_text.eur.swift} copyToClipboard={copyToClipboard} />
+                <BankingCard title="EUR (SEPA)" details={bankingDetails_text.eur.sepa} copyToClipboard={copyToClipboard} />
             </div>
             <div className={`${styles.bankingDetails_toast} ${copied ? styles.bankingDetails_toast_show : ''}`}>
                 <div className={styles.bankingDetails_toast_content}>
-                    <span>Скопійовано!</span>
+                    <span>Copied to clipboard!</span>
                 </div>
             </div>
         </div>
