@@ -17,7 +17,7 @@ const InfiniteScroll = () => {
             console.log('fetch');
             axios.get(`https://karg-backend.onrender.com/karg/animal/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=ua`)
                 .then(response => {
-                    console.log(response.data.animals);
+                    // console.log(response.data.animals);
                     setCards(prevCards => {
                         const uniqueCards = new Set([...prevCards, ...response.data.animals]);
                         return Array.from(uniqueCards);

@@ -145,8 +145,8 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                                 <LeftIcon className={styles.leftIcon} />
                             </button>
                             <Image
-                                src={selectedCard.images[carouselIndex].url}
-                                alt={selectedCard.images[carouselIndex].alt}
+                                src={selectedCard.images[carouselIndex]}
+                                alt='фото тваринок'
                                 sizes="100vw"
                                 width={300}
                                 height={359}

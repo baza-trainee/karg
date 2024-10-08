@@ -24,6 +24,7 @@
     .cardImage {
       grid-column: 2;
       width: 100%;
+      background-color: $bg-purple;
     }
 
     .cardName {
@@ -58,7 +59,8 @@
       .cardDesc {
         color: $text-dark;
         border-radius: 4px 4px 0 0;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        overflow: hidden;
       }
 
       .cardButton {
@@ -83,10 +85,10 @@
     align-items: flex-start;
     overflow: auto;
     width: 100vw;
-    height: 100dvh;
+    height: 95dvh;
     position: fixed;
     left: 0px;
-    top: 0px;
+    top: 50px;
     z-index: 1000;
     overscroll-behavior-y: none;
   }
@@ -294,7 +296,7 @@
       height: 100dvh;
       position: fixed;
       left: 0px;
-      top: 0px;
+      top: 70px;
       z-index: 1000;
       overscroll-behavior-y: none;
     }
