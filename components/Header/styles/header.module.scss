@@ -40,6 +40,18 @@
   @include socIcons;
 }
 
+.socIconsMobile {
+  margin: 5px;
+  font-size: 30px;
+  // display: flex;
+  color: #3a3345;
+  transition: color 0.4s ease-in-out;
+
+  &:hover {
+    color: $button-default;
+  }
+}
+
 .inner {
   display: flex;
   align-items: center;
