@@ -85,10 +85,10 @@
     align-items: flex-start;
     overflow: auto;
     width: 100vw;
-    height: 95dvh;
+    height: 90dvh;
     position: fixed;
     left: 0px;
-    top: 50px;
+    top: 60px;
     z-index: 1000;
     overscroll-behavior-y: none;
   }
@@ -96,7 +96,7 @@
   .modalContainer {
     position: relative;
     left: 0;
-    width: 100%;
+    // width: 100%;
     // transform: translateY(-50%);
     display: flex;
     justify-content: center;
@@ -293,10 +293,10 @@
       align-items: flex-start;
       overflow: auto;
       width: 100vw;
-      height: 100dvh;
+      height: 95dvh;
       position: fixed;
       left: 0px;
-      top: 70px;
+      top: 20px;
       z-index: 1000;
       overscroll-behavior-y: none;
     }
