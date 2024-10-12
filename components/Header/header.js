@@ -152,7 +152,7 @@ const Header = () => {
                 {t('common:address')}
               </a>
             </div>
-            <SocialIcons iconsColor="#3a3345" />
+            <SocialIcons className={styles.socIconsMobile} />
           </div>
         ) : null}
       </nav>

@@ -20,16 +20,26 @@ $button-dark-disabled: #bebebe;
 $text-dark: #141414;
 $text-white: #ffffff;
 $text-gray: #a1a1a1;
-$text-error: #D90000;
-$text-dark-mail:#070707;
+$text-error: #d90000;
+$text-dark-mail: #070707;
 
 // Background colors
 $bg-purple: #eadeff;
 $bg-white: #ffffff;
-$bg-white-transparent:rgba(255, 255, 255, 0.9);
-$bg-dark: #251C33;
-$bg-lightgray: #F2F2F2;
+$bg-white-transparent: rgba(255, 255, 255, 0.9);
+$bg-dark: #251c33;
+$bg-lightgray: #f2f2f2;
 
 // font-family
 $font-family-heading: 'Roboto Flex', sans-serif;
 $line-height: 1.3;
+
+// mixins
+@mixin socIcons() {
+  color: $text-gray;
+  transition: color 0.4s ease-in-out;
+
+  &:hover {
+    color: $button-default;
+  }
+}
