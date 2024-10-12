@@ -44,7 +44,7 @@ export default function Navbar() {
     },
   }
 
-  const { caption, genericModalContent } = buttonData[activeSection] || buttonData['Тварини'];
+  const { caption, genericModalContent } = buttonData[activeSection] || ''; //buttonData['Тварини'];
 
   const handleButtonClick = () => {
     showModal('generic', genericModalContent);

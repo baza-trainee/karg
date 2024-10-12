@@ -7,24 +7,37 @@ export const AdminContext = createContext({
     setActiveSection: () => { },
     accountId: '',
     setAccountId: () => { },
+    isDirector: '',
+    setIsDirector: () => { }
 });
 
 export const AdminProvider = ({ children }) => {
-    const [activeSection, setActiveSection] = useState('Тварини');
-    const [activeUser, setActiveUser] = useState(null);
     const [accountId, setAccountId] = useState([]);
+    const [activeSection, setActiveSection] = useState('');
+    const [isDirector, setIsDirector] = useState('');
 
-    const handleSetActiveUser = (user) => {
-        setActiveUser(user);
-    };
     const handleSetAccountId = (id) => {
         setAccountId(id);
     };
+
+    const handleSetActiveSection = (section) => {
+        setActiveSection(section);
+    };
+    const handleSetIsDirector = (role) => {
+        setIsDirector(role);
+    }
 
     useEffect(() => {
         const section = localStorage.getItem('activeSection');
         if (section) {
             setActiveSection(section);
+        }
+    }, []);
+
+    useEffect(() => {
+        const role = localStorage.getItem('isDirector');
+        if (role) {
+            setIsDirector(role);
         }
     }, []);
 
@@ -35,9 +48,6 @@ export const AdminProvider = ({ children }) => {
         }
     }, []);
 
-    const handleSetActiveSection = (section) => {
-        setActiveSection(section);
-    };
 
     useEffect(() => {
         localStorage.setItem('activeSection', activeSection);
@@ -47,13 +57,18 @@ export const AdminProvider = ({ children }) => {
         localStorage.setItem('accountId', accountId);
     }, [accountId]);
 
+    useEffect(() => {
+        localStorage.setItem('isDirector', isDirector);
+    }, [isDirector]);
+
+
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
-        activeUser,
-        setActiveUser: handleSetActiveUser,
         accountId,
         setAccountId: handleSetAccountId,
+        isDirector,
+        setIsDirector: handleSetIsDirector,
     };
 
     return (

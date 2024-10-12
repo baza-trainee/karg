@@ -26,6 +26,7 @@ export const logoutUser = async () => {
     const userData = await response.json();
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
+    localStorage.removeItem('isDirector');
     return userData.token;
 };
 

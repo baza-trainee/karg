@@ -12,7 +12,7 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, deleteTeamUserData } from "../utilsFetchTeamData";
+import { initializeFormData, deleteTeamUserData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 
 const labels = {
@@ -58,7 +58,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await deleteTeamUserData(rescuerData.id, type, setIsLoading);
+                const data = await fetchTeamUserData(rescuerData.id, type, setIsLoading);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
