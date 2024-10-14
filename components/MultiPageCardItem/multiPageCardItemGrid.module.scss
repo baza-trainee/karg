@@ -24,6 +24,7 @@
     .cardImage {
       grid-column: 2;
       width: 100%;
+      background-color: $bg-purple;
     }
 
     .cardName {
@@ -58,7 +59,8 @@
       .cardDesc {
         color: $text-dark;
         border-radius: 4px 4px 0 0;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
+        overflow: hidden;
       }
 
       .cardButton {
@@ -83,10 +85,10 @@
     align-items: flex-start;
     overflow: auto;
     width: 100vw;
-    height: 100dvh;
+    height: 90dvh;
     position: fixed;
     left: 0px;
-    top: 0px;
+    top: 60px;
     z-index: 1000;
     overscroll-behavior-y: none;
   }
@@ -94,7 +96,7 @@
   .modalContainer {
     position: relative;
     left: 0;
-    width: 100%;
+    // width: 100%;
     // transform: translateY(-50%);
     display: flex;
     justify-content: center;
@@ -291,10 +293,10 @@
       align-items: flex-start;
       overflow: auto;
       width: 100vw;
-      height: 100dvh;
+      height: 95dvh;
       position: fixed;
       left: 0px;
-      top: 0px;
+      top: 20px;
       z-index: 1000;
       overscroll-behavior-y: none;
     }

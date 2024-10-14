@@ -110,8 +110,8 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                 <div key={card.id} className={styles.cardContainer}>
                     <div className={styles.cardImage}>
                         <Image
-                            src={card.image.url}
-                            alt={card.image.alt}
+                            src={card.images[0]}
+                            alt='Фото тваринки'
                             sizes="100vw"
                             width={268}
                             height={268}
@@ -123,7 +123,7 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                         />
 
                     </div>
-                    <h2 className={`${styles.cardName} ${variables.subtitle2}`}>{card.catName}</h2>
+                    <h2 className={`${styles.cardName} ${variables.subtitle2}`}>{card.name}</h2>
                     <div className={styles.contentHolder}>
                         <p className={styles.cardDesc}>{card.description}</p>
                         {renderButton(card.id)}
@@ -145,8 +145,8 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                                 <LeftIcon className={styles.leftIcon} />
                             </button>
                             <Image
-                                src={selectedCard.images[carouselIndex].url}
-                                alt={selectedCard.images[carouselIndex].alt}
+                                src={selectedCard.images[carouselIndex]}
+                                alt='фото тваринок'
                                 sizes="100vw"
                                 width={300}
                                 height={359}
@@ -162,7 +162,7 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                             </button>
                         </div>
                         <div className={styles.innerModalContainer}>
-                            <h2>{selectedCard.catName}</h2>
+                            <h2>{selectedCard.name}</h2>
                             <p>{selectedCard.description}</p>
                             <h3>{selectedCard?.rescueHistory ? 'Історія порятунку' : null}</h3>
                             <p>{selectedCard?.rescueHistory ? selectedCard.rescueHistory : null}</p>
@@ -218,7 +218,7 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                                 }}
                             />
                             <p className={styles.adoptionModalErrorText}>{adoptionModalError}</p>
-                            <p className={styles.adoptionModalText}>Тварина, яку всиновлюють <br /><span>{adoptionModal.catName}</span></p>
+                            <p className={styles.adoptionModalText}>Тварина, яку всиновлюють <br /><span>{adoptionModal.name}</span></p>
                         </form>
                         <div className={styles.adoptionModalButtons}>
                             <input

@@ -3,8 +3,7 @@
 .socIcons {
   margin: 5px;
   font-size: 30px;
-
-  color: #a1a1a1;
+  @include socIcons;
 }
 
 .footer {
@@ -104,6 +103,12 @@
     text-decoration: none;
     color: #fff;
     margin-bottom: 4px;
+    transition: color 0.4s ease-in-out;
+  }
+
+  p:hover,
+  a:hover {
+    color: $button-default;
   }
 
   .contactsContainerTelephones {

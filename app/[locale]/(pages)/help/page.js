@@ -11,6 +11,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from "@/components/common/PageHero/pageHero";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
+import BankingDetails from './bankingDetails';
 // images, icons
 import {
     help_usHeroMob,
@@ -49,25 +50,51 @@ const Help = async ({ params: { locale } }) => {
                         Для підтримки діяльності команди заповніть форму нижче.</p>
                 </section>
                 <section className={styles.bankingDetails_Container}>
-                    <h3 className={`${styles.bankingDetails_title} ${variables.mobileSubtitle2}`}>Банківські реквізити</h3>
+                    <BankingDetails />
+                    {/* <h3 className={`${styles.bankingDetails_title} ${variables.mobileSubtitle2}`}>Банківські реквізити</h3>
                     <div className={styles.bankingDetails_cardsContainer}>
                         <div className={styles.bankingDetails_card}>
                             <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
                                 USD
                             </h4>
-                            <p className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
-                                SWIFT
-                                IBAN
-                                UA303220010000026202326656577
-                                SWIFT/BIC code
-                                UNJSUAUKXXX
-                                Receiver
-                                STOROZHUK MYKHAILO
-                                Address
-                                01001, Ukraine, c. Kyiv, ave.
-                                Peremohy, build. 99/1, fl. 13
-                            </p>
-                            <button className={styles.bankingDetails_cardButton}>Зробити внесок</button>
+                            <div className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
+                                <dl>
+                                    <div className={styles.bankingDetails_textItem}>
+                                        <dt><strong>SWIFT</strong></dt>
+                                        <dd></dd>
+                                    </div>
+                                    <div className={styles.bankingDetails_textItem}>
+                                        <dt><strong>IBAN:</strong></dt>
+                                        <dd className={styles.bankingDetails_IconItem}>
+                                            <span>UA3032200100000262023266</span>
+                                            <span>56577</span>
+                                            <Copy_icon className={styles.copy_icon} />
+                                        </dd>
+                                    </div>
+                                    <div className={styles.bankingDetails_textItem}>
+                                        <dt><strong>SWIFT/BIC code:</strong></dt>
+                                        <dd className={styles.bankingDetails_IconItem}>
+                                            <span>UNJSUAUKXXX</span>
+                                            <Copy_icon className={styles.copy_icon} />
+                                        </dd>
+                                    </div>
+                                    <div className={styles.bankingDetails_textItem}>
+                                        <dt><strong>Receiver:</strong></dt>
+                                        <dd className={styles.bankingDetails_IconItem}>
+                                            <span>STOROZHUK MYKHAILO</span>
+                                            <Copy_icon className={styles.copy_icon} />
+                                        </dd>
+                                    </div>
+                                    <div className={styles.bankingDetails_textItem}>
+                                        <dt><strong>Address:</strong></dt>
+                                        <dd>
+                                            <address>
+                                                01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
+                                            </address>
+                                        </dd>
+                                    </div>
+                                </dl>
+                            </div>
                         </div>
                         <div className={styles.bankingDetails_card}>
                             <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
@@ -94,9 +121,8 @@ const Help = async ({ params: { locale } }) => {
                                 Address
                                 01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
                             </p>
-                            <button className={styles.bankingDetails_cardButton}>Зробити внесок</button>
                         </div>
-                    </div>
+                    </div> */}
                 </section>
                 <section className={styles.paymentsButtons_Container}>
                     <h4 className={styles.paymentsButtons_title}>
