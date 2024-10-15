@@ -7,11 +7,21 @@
   background-color: $bg-lightgray;
   min-width: 1194px;
   padding: 20px 48px 20px 48px;
-  border-bottom: 1px solid #251C33;
+  border-bottom: 1px solid #251c33;
   & .active_section {
     color: $button-dark-active;
     font-size: 32px;
     font-weight: 700;
     line-height: 41.6px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .container {
+    min-height: 94px;
+  }
+
+  .container .active_section {
+    font-size: clamp(32px, calc(1rem + 3vw), 40px);
   }
 }
