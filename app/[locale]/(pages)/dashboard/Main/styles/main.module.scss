@@ -1,12 +1,15 @@
 @import "../../../../variables.module.scss";
 .container {
   display: flex;
-  justify-content: space-between;
   background-color: $bg-lightgray;
-  width: 100%;  
+  width: 100%;
   & .column {
     display: flex;
     flex-direction: column;
     background-color: $bg-lightgray;
+
+    @media screen and (min-width: 1400px) {
+      width: 82.92%;
+    }
   }
 }
