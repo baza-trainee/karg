@@ -1,5 +1,5 @@
 "use client";
-
+import { AdminContext } from "@/app/adminProvider";
 import styles from "./styles/footer.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
 
@@ -11,14 +11,20 @@ import {
   EmailIcon,
   PhoneIcon,
 } from "@/public/assets/icons";
-import { useState } from "react";
+import { useState, useRef, useLayoutEffect, useContext, useEffect } from "react";
 import SocialIcons from "../SocialIcons/socialIcons";
 import ButtonAsLinkAsLink from "@/components/ButtonAsLink/buttonAsLink";
 import { useTranslation } from 'react-i18next';
 
 function Footer() {
   const [open, setOpen] = useState({ firstList: false, secondList: false });
+  const footerBlock = useRef(null);
+  const { footerHeight, setFooterHeight } = useContext(AdminContext);
   const { t } = useTranslation();
+
+  useLayoutEffect(() => {
+    setFooterHeight(footerBlock.current.clientHeight);
+  }, [footerHeight])
 
   const handleClick = (e) => {
     const target = e.currentTarget.dataset.list;
@@ -38,7 +44,7 @@ function Footer() {
   };
 
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} ref={footerBlock}>
       <div className={styles.brandHolder}>
         <Link href="/">
           <Logo className={styles.logo} />
