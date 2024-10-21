@@ -66,7 +66,7 @@ function PetList() {
                 <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
                 <p className={`${styles.basicInfo} ${variables.font20w700}`}>Імʼя</p>
                 <p className={`${styles.basicInfo} ${variables.font20w700}`}>Категорія</p>
-                <p className={`${styles.detailsInfo} ${variables.font20w700}`}>Опис</p>
+                <p className={`${styles.detailsInfoTitle} ${variables.font20w700}`}>Опис</p>
                 <p className={`${styles.detailsTitle} ${variables.font20w700}`}>Історія порятунку</p>
                 <CategorySelector
                     categories={categories}

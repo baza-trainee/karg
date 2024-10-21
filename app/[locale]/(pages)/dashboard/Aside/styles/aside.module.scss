@@ -76,7 +76,7 @@
 }
 .logo_title {
   cursor: pointer;
-  max-width: 142px;
+  width: 142px;
   text-align: center;
   color: $button-default;
   font-size: 20px;
@@ -88,11 +88,13 @@
   cursor: pointer;
   font-size: 46px;
 }
+
 .icon {
   fill: currentColor;
-  cursor: pointer; 
+  cursor: pointer;
   font-size: 24px;
 }
+
 .nestedStyle {
   gap: 8px;
   padding: 12px 72px 12px 72px;
@@ -116,4 +118,44 @@
   fill: currentColor;
   cursor: pointer;
   margin-left: 5px;
+}
+
+@media screen and (min-width: 1441px) {
+  .container {
+    width: 23%;
+  }
+
+  .title {
+    font-size: clamp(20px, calc(1rem + 0.3vw), 24px);
+  }
+
+  .logo_title {
+    font-size: clamp(20px, calc(1rem + 0.3vw), 24px);
+  }
+
+  .logo_name {
+    min-height: 94px;
+  }
+
+  .header {
+    font-size: clamp(14px, calc(0.875rem + 0.3vw), 18px);
+  }
+
+  .logo {
+    font-size: clamp(46px, calc(1rem + 2vw), 50px);
+  }
+
+  .icon {
+    font-size: clamp(24px, calc(1rem + 0.3vw), 28px);
+  }
+
+  .item_logo {
+    gap: 4%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .logo_title {
+    width: 160px;
+  }
 }

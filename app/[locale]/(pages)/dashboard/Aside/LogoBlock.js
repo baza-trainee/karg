@@ -11,6 +11,7 @@ export default function LogoBlock() {
       <AsideItem
         itemStyle={styles.item_logo}
         titleStyle={styles.logo_title}
+        wrapperStyle={styles.wrapper_logo}
         title="Kyiv animal rescue group"
       >
         <LogoIcon className={styles.logo} />
