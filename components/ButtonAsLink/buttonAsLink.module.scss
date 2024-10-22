@@ -194,7 +194,15 @@
     padding: 9px 12px;
   }
 }
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 835px) and (max-width: 1440px) {
+  .rescue {
+    width: 370px;
+    height: 56px;
+    padding: 12px;
+    border-radius: 8px;
+  }
+}
+@media screen and (min-width: 1441px) {
   .rescue {
     width: 370px;
     height: 56px;
