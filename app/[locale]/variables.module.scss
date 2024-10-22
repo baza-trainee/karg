@@ -147,7 +147,6 @@
     @include font-styles(700, 32px);
   }
 
-  .quickSubtitle1,
   .supportSubtitle2,
   .Subtitle2,
   .subtitle3,
@@ -256,7 +255,6 @@
     @include font-styles(500, 24px);
   }
 
-  .quickSubtitle1,
   .Subtitle3 {
     @include font-styles(700, 24px);
   }
@@ -270,7 +268,8 @@
     @include font-styles(300, 16px);
   }
 
-  .rescueButton1 {
+  .rescueButton1,
+  .quickSubtitle1 {
     @include font-styles(700, 20px);
   }
 
