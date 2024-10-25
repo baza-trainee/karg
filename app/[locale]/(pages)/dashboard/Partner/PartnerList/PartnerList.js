@@ -6,7 +6,6 @@ import PartnerForm from '../PartnerForm/PartnerForm';
 import styles from "./styles/partnerList.module.scss";
 import stylesBtn from "@/components/Button/styles/button.module.scss";
 import { CreateIcon, TrashIcon } from '@/public/assets/icons';
-import variables from "@/app/[locale]/variables.module.scss";
 import ModalContext from '@/app/ModalContext';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import { deletePartner } from "../api/utilsFetchPartnerData";
@@ -43,9 +42,9 @@ export default function PartnerList() {
     return (
         <div className={styles.container}>
             <div className={styles.partnerTitle}>
-                <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.nameTitle} ${variables.font20w700}`}>Назва</p>
-                <p className={`${styles.uriTitle} ${variables.font20w700}`}>Посилання</p>
+                <p className={styles.photoTitle}>Фото</p>
+                <p className={styles.nameTitle}>Назва</p>
+                <p className={styles.uriTitle}>Посилання</p>
             </div>
             {
                 isLoading ? < Spinner /> : (

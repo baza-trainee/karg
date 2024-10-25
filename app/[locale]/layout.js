@@ -6,7 +6,7 @@ import { Providers } from "../providers";
 
 
 const manrope = Manrope({
-  weight: ["300", "400", "700", "800"],
+  weight: ["300", "400", "500", "700", "800"],
   subsets: ["latin", "cyrillic"],
 });
 

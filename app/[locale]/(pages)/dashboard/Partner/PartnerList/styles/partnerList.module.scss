@@ -4,90 +4,204 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  padding: 0 48px 8px 48px;
+  padding: 0 3.33% 0 3.33%;
   flex-direction: column;
   width: 100%;
   align-items: center;
   background-color: $bg-lightgray;
   gap: 8px;
   color: $text-dark;
-  min-width: 1194px;
 
   .partnerTitle {
     display: flex;
-    gap: 24px;
-    padding: 0px 16px 0 16px;
+    gap: 2.19%;
+    padding: 0 1.46% 14px 1.46%;
     margin-top: 16px;
-    height: 40px;
     align-items: center;
+    width: 100%;
 
     .photoTitle {
-      width: 92px;
+      width: 8.38%;
     }
 
     .nameTitle {
-      width: 350px;
+      width: 31.88%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
     }
 
     .uriTitle {
-      width: 576px;
+      width: 52.46%;
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+    }
+
+    .photoTitle,
+    .uriTitle,
+    .nameTitle {
+      font-weight: 700;
     }
   }
 
   .partnerLine {
     display: flex;
     flex-direction: row;
-    gap: 24px;
-    padding: 16px;
-    height: 124px;
+    gap: 2.19%;
+    padding: 1.46%;
     overflow: hidden;
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
-    width: 1098px;
+    width: 100%;
 
     .partnerName {
-      width: 350px;
+      width: 31.88%;
     }
 
     .partnerUri {
-      width: 476px;
+      width: 43.38%;
+      font-weight: 500;
     }
   }
+
   .photoContainer {
     flex-shrink: 0;
-    min-width: 92px;
+    width: 8.38%;
     background-color: $primary;
   }
 
   & .photo {
-    width: 92px;
-    height: 92px;
+    width: 100%;
+    aspect-ratio: 1 / 1;
     border-radius: 8px;
   }
 
   .iconsContainer {
-    width: 76px;
+    width: 6.92%;
     display: flex;
-    justify-content: space-between;
+    gap: 15.79%;
     text-align: center;
     flex-shrink: 0;
   }
 
   & .create_icon {
     cursor: pointer;
-    font-size: 32px;
   }
 
   & .trash_icon {
     cursor: pointer;
-    font-size: 32px;
     fill: rgba(0, 0, 0, 0.85);
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .partnerLine,
+  .partnerTitle {
+    width: clamp(632px, 100%, 100%);
+  }
+
+  .photoTitle,
+  .uriTitle,
+  .nameTitle {
+    font-size: clamp(0.813rem, calc(0.813vw + 0.8vh), 1.25rem);
+  }
+
+  .partnerName {
+    font-size: clamp(0.875rem, calc(0.875vw + 0.8vh), 1.5rem);
+  }
+
+  .partnerUri {
+    font-size: clamp(0.813rem, calc(0.75vw + 0.8vh), 1.25rem);
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: clamp(1rem, calc(1rem + 0.7vh), 2rem);
+  }
+}
+
+@media screen and (width: 1440px) {
+  .container {
+    padding: 0 48px 8px 48px;
+    width: 1194px;
+  }
+
+  .partnerTitle {
+    padding: 0 16px 14px 16px;
+    width: 1098px;
+    gap: 24px;
+  }
+
+  .partnerLine {
+    gap: 24px;
+    padding: 16px;
+  }
+
+  .partnerName {
+    width: 350px;
+    font-size: 24px;
+  }
+
+  .partnerUri {
+    width: 476px;
+  }
+
+  .photoContainer,
+  .photoTitle {
+    min-width: 92px;
+  }
+
+  .nameTitle,
+  .uriTitle,
+  .photoTitle {
+    font-size: 20px;
+  }
+
+  .iconsContainer {
+    justify-content: flex-end;
+    width: 76px;
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .partnerName {
+    font-size: clamp(1.5rem, calc(1.5vw + 0.6vh), 2.25rem);
+  }
+
+  .nameTitle,
+  .uriTitle,
+  .photoTitle,
+  .partnerUri {
+    font-size: clamp(1.25rem, calc(1.25vw + 0.4vh), 1.75rem);
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: clamp(2rem, calc(1.5vw + 0.6vh), 2.5rem);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .partnerName {
+    font-size: clamp(2rem, calc(1.75vw + 0.4vh), 2.6rem);
+  }
+
+  .nameTitle,
+  .uriTitle,
+  .photoTitle,
+  .partnerUri {
+    font-size: clamp(1.75rem, calc(1.25vw + 0.3vh), 2.2rem);
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: clamp(2.5rem, calc(2.5vw + 0.6vh), 3rem);
   }
 }

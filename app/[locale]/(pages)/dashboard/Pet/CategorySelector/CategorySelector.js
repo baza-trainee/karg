@@ -34,7 +34,7 @@ function CategorySelector({ categories, onSelectedCategory }) {
         <div className={styles.selectorBlock}>
             <div ref={dropDownRef} className={styles.selectedCategoryBlock}>
                 <p key="all"
-                    className={`${styles.defaultCategory} ${variables.font20w500}`}
+                    className={styles.defaultCategory}
                     onClick={() => handleSelectCategory({ label: 'Найновіші', value: null })}>
                     Найновіші
                 </p>
@@ -45,7 +45,7 @@ function CategorySelector({ categories, onSelectedCategory }) {
                     <div className={styles.dropdownContent}>
                         {categories.map((category) => (
                             <p key={category.value}
-                                className={`${styles.category} ${variables.font18w500} ${category.value === selectedCategory ? styles.activeCategory : ''}`}
+                                className={`${styles.category} ${category.value === selectedCategory ? styles.activeCategory : ''}`}
                                 onClick={() => handleSelectCategory(category)}>
                                 {category.label}
                             </p>
