@@ -68,7 +68,7 @@
 
   .photoContainer {
     flex-shrink: 0;
-    width: 8.38%;
+    width: clamp(50px, 8.38%, 100px);
     background-color: $primary;
   }
 

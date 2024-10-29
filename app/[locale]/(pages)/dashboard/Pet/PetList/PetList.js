@@ -14,7 +14,6 @@ import { deletePet } from '../api/utilsFetchPetData';
 import { PetContext } from "../PetContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -44,9 +43,7 @@ function PetList() {
         { label: 'Собаки', value: 'Dog' },
         { label: 'Інші тварини', value: 'Other' },
     ];
-    const { isDirector } = useContext(AdminContext);
-    const currentRole = (isDirector === 'true') ? true : false;
-
+    
     useEffect(() => {
         if (!isLoading) {
             loadPets();
@@ -104,13 +101,13 @@ function PetList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('generic', <PetForm type='edit' petData={pet} />)
-                                    } : null}
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -122,7 +119,7 @@ function PetList() {
                                                 actionOnConfirm={handleDeletePet}
                                                 actionArgs={pet.id}
                                             />)
-                                    } : null}
+                                    }}
                                 />
                             </PetItem>
                         )

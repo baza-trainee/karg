@@ -44,7 +44,7 @@
   }
 
   .photoContainer {
-    width: 8.38%;
+    width: clamp(50px, 8.38%, 100px);
     flex-shrink: 0;
   }
 
@@ -160,7 +160,7 @@
 
   .photoContainer,
   .photoTitle {
-    width: 92px;
+    min-width: 92px;
   }
 
   .petNameStyle {
