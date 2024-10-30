@@ -3,13 +3,17 @@
   display: flex;
   background-color: $bg-lightgray;
   width: 100%;
+  height: 100vh;
   & .column {
+    width: 83%;
     display: flex;
     flex-direction: column;
     background-color: $bg-lightgray;
+  }
+}
 
-    @media screen and (min-width: 1400px) {
-      width: 82.92%;
-    }
+@media screen and (max-width: 767px) {
+  .column {
+    min-width: 638px;
   }
 }

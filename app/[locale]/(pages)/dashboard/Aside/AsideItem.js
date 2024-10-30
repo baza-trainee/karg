@@ -17,24 +17,38 @@ const AsideItem = ({
     nestedData
 }) => {
     const [collapsed, setCollapsed] = useState(false);
+
+    const toggleCollapse = () => {
+        if (isNestedItems) {
+            setCollapsed(!collapsed);
+        }
+    };
+
     return (
         <div className={wrapperStyle}>
-            <div className={itemStyle}>
+            <div className={itemStyle} onClick={toggleCollapse}>
                 {children}
                 <p className={titleStyle}>
                     <Link href='#'>{title}</Link>
                 </p>
-                {isNestedItems && <ShevronDown className={styles.icon_shevronDown} onClick={() => { setCollapsed(!collapsed) }} />}
+                {isNestedItems && (
+                    <ShevronDown
+                        className={styles.icon_shevronDown}
+                        onClick={toggleCollapse}
+                    />
+                )}
             </div>
-            {isNestedItems && collapsed &&
+            {isNestedItems && collapsed && (
                 <ul className={styles.nestedStyle}>
                     {nestedData.map((d, index) => {
                         return (
-                            <li key={index} onClick={() => { handleItemClick(d.title) }}><p>{d.title}</p></li>
+                            <li key={index} onClick={() => handleItemClick(d.title)}>
+                                <p>{d.title}</p>
+                            </li>
                         )
                     })}
                 </ul>
-            }
+            )}
         </div>
     );
 };

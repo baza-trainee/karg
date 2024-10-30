@@ -2,7 +2,6 @@
 
 import { useContext, useEffect, memo } from 'react';
 import { TrashIcon, CreateIcon } from '@/public/assets/icons';
-import variables from '../../../../variables.module.scss';
 import styles from "./styles/petList.module.scss";
 import stylesBtn from "../../../../../../components/Button/styles/button.module.scss";
 import PetItem from "./PetItem";
@@ -15,7 +14,6 @@ import { deletePet } from '../api/utilsFetchPetData';
 import { PetContext } from "../PetContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -45,9 +43,7 @@ function PetList() {
         { label: 'Собаки', value: 'Dog' },
         { label: 'Інші тварини', value: 'Other' },
     ];
-    const { isDirector } = useContext(AdminContext);
-    const currentRole = (isDirector === 'true') ? true : false;
-
+    
     useEffect(() => {
         if (!isLoading) {
             loadPets();
@@ -63,11 +59,11 @@ function PetList() {
     return (
         <div className={styles.container}>
             <div className={styles.petTitle}>
-                <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Імʼя</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Категорія</p>
-                <p className={`${styles.detailsInfoTitle} ${variables.font20w700}`}>Опис</p>
-                <p className={`${styles.detailsTitle} ${variables.font20w700}`}>Історія порятунку</p>
+                <p className={styles.photoTitle}>Фото</p>
+                <p className={styles.nameTitle}>Імʼя</p>
+                <p className={styles.categoryTitle}>Категорія</p>
+                <p className={styles.detailsInfoTitle}>Опис</p>
+                <p className={styles.detailsTitle}>Історія порятунку</p>
                 <CategorySelector
                     categories={categories}
                     onSelectedCategory={(category) => {
@@ -93,7 +89,8 @@ function PetList() {
                                 photoSrc={photoUrls}
                                 photoAlt={photoAlt}
                                 photoContainerStyle={styles.photoContainer}
-                                basicInfoStyle={styles.basicInfo}
+                                petNameStyle={styles.petNameStyle}
+                                petCategoryStyle={styles.petCategoryStyle}
                                 petName={pet.name}
                                 petCategory={categoryLabel}
                                 petDetails={pet.description}
@@ -104,13 +101,13 @@ function PetList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('generic', <PetForm type='edit' petData={pet} />)
-                                    } : null}
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -122,7 +119,7 @@ function PetList() {
                                                 actionOnConfirm={handleDeletePet}
                                                 actionArgs={pet.id}
                                             />)
-                                    } : null}
+                                    }}
                                 />
                             </PetItem>
                         )
