@@ -190,19 +190,16 @@
 
 @media screen and (min-width: 768px) {
   .rescue {
-    height: 44px;
     padding: 9px 12px;
   }
 }
-@media screen and (min-width: 835px) and (max-width: 1440px) {
-  .rescue {
-    width: 370px;
-    height: 56px;
+@media screen and (max-width: 1399px) {
+  .rescue { 
     padding: 12px;
     border-radius: 8px;
   }
 }
-@media screen and (min-width: 1441px) {
+@media screen and (min-width: 1400px) {
   .rescue {
     width: 370px;
     height: 56px;

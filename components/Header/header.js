@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import i18nConfig from '@/i18nConfig';
 import useToggle from "@/utils/useToggle";
 import styles from "./styles/header.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
@@ -23,10 +24,13 @@ const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
   const { t, i18n } = useTranslation();
   const currentLocale = i18n.language;
+  const defaultLocale = i18nConfig.defaultLocale;
   const currentPathname = usePathname();
   const labelFirst = t('common:linkAboutUs');
   const labelSecond = t('common:linkUseful');
   const [isScrolled, setIsScrolled] = useState(false);
+
+  let isEn = (defaultLocale === currentLocale) ? false : true;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,17 +51,17 @@ const Header = () => {
   })
 
   const listLabelFirst = [
-    { label: t('common:linkHistory'), link: "/about/history_of_origin" },
-    { label: t('common:linkRules'), link: "/about/rules_of_appeal" },
-    { label: t('common:linkTeam'), link: "/about/our_team" },
-    { label: t('common:linkContacts'), link: "/about/contacts" }
+    { label: t('common:linkHistory'), link: !isEn ? "/about/history_of_origin" : "/en/about/history_of_origin" },
+    { label: t('common:linkRules'), link: !isEn ? "/about/rules_of_appeal" : "/en/about/rules_of_appeal" },
+    { label: t('common:linkTeam'), link: !isEn ? "/about/our_team" : "/en/about/our_team" },
+    { label: t('common:linkContacts'), link: !isEn ? "/about/contacts" : "/en/about/contacts" }
   ];
 
 
   const listLabelSecond = [
-    { label: t('common:linkAdvices'), link: "/useful/advices" },
-    { label: 'FAQ', link: "/useful/faq" },
-    { label: t('common:linkSummaries'), link: "/useful/results" },
+    { label: t('common:linkAdvices'), link: !isEn ? "/useful/advices" : "/en/useful/advices" },
+    { label: 'FAQ', link: !isEn ? "/useful/faq" : "/en/useful/faq" },
+    { label: t('common:linkSummaries'), link: !isEn ? "/useful/results" : "/useful/results" },
   ];
 
   return (
@@ -79,16 +83,16 @@ const Header = () => {
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <DropdownProvider>
               <li>
-                <Link className={(currentPathname === '/' || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
+                <Link className={((!isEn && currentPathname === '/') || (isEn && currentPathname === '/en')) ? styles.active : ""} href={!isEn ? "/" : "/en"}>{t('common:linkMain')}</Link>
               </li>
               <li>
                 <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
               </li>
               <li>
-                <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href="/animals">{t('common:linkAnimals')}</Link>
+                <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href={!isEn ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
               </li>
               <li>
-                <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href="/help">{t('common:linkHelpUs')}</Link>
+                <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href={!isEn ? "/help" : "/en/help"}>{t('common:linkHelpUs')}</Link>
               </li>
               <li>
                 <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
