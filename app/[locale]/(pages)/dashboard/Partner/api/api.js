@@ -4,7 +4,7 @@ export const getAllPartners = async () => {
     const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/getall`, {
         headers: {
-            'Authorization': authToken
+            'Authorization': `Bearer ${authToken}`
         }
     });
     if (!response.ok) {
@@ -20,7 +20,7 @@ export const addPartner = async (partnerData) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            'Authorization': authToken
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify(partnerData)
     });
@@ -37,7 +37,7 @@ export const updatePartner = async (id, updates) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Authorization": authToken
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify(updates)
     });
@@ -53,7 +53,7 @@ export const deletePartnerApi = async (id) => {
     const response = await fetch(`${API_BASE_URL_PARTNER}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
-            'Authorization': authToken
+            'Authorization': `Bearer ${authToken}`
         }
     });
     if (!response.ok) {
@@ -68,7 +68,7 @@ export const getPartnerById = async (id) => {
     const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL_PARTNER}/getbyid?id=${id}`, {
         headers: {
-            'Authorization': authToken
+            'Authorization': `Bearer ${authToken}`
         }
     });
     if (!response.ok) {
