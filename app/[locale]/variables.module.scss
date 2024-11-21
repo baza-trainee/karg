@@ -23,7 +23,10 @@
 
 .subtitle1,
 .quickSubtitle1,
-.rescueSubtitle1,
+.rescueSubtitle1 {
+  @include font-styles(700, 20px);
+}
+
 .supportSubtitle1 {
   @include font-styles(700, 19px);
 }
@@ -67,8 +70,11 @@
   @include font-styles(400, 16px);
 }
 
-.supportText4,
 .text4 {
+  @include font-styles(300, 16px);
+}
+
+.supportText4 {
   @include font-styles(400, 16px);
 }
 
@@ -142,17 +148,25 @@
   .h2,
   .rescueSubtitle1,
   .achievSubtitle2,
-  .supportSubtitle1,
   .Subtitle1 {
+    @include font-styles(700, 32px);
+  }
+
+  .supportSubtitle1 {
     @include font-styles(700, 28px);
   }
 
-  .supportSubtitle2,
   .Subtitle2,
   .subtitle3,
   .Heading3 {
+    @include font-styles(700, 28px);
+  }
+
+  .supportSubtitle2 {//BUG-M-T-110.11/1 
     @include font-styles(700, 26px);
   }
+
+
 
   .h3,
   .subtitle1,
