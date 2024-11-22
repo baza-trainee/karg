@@ -20,7 +20,7 @@ export const addAnimal = async (animalData) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Authorization": authToken
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify(animalData)
     });
@@ -37,7 +37,7 @@ export const updateAnimal = async (id, updates) => {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
-            "Authorization": authToken
+            'Authorization': `Bearer ${authToken}`
         },
         body: JSON.stringify(updates)
     });
@@ -65,7 +65,7 @@ export const deleteAnimal = async (id) => {
     const response = await fetch(`${API_BASE_URL_PET}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
-            'Authorization': authToken
+            'Authorization': `Bearer ${authToken}`
         }
     });
     if (!response.ok) {
