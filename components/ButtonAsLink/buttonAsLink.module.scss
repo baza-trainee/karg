@@ -188,22 +188,16 @@
   }
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 834px) {
   .rescue {
     padding: 9px 12px;
   }
 }
-@media screen and (max-width: 1399px) {
-  .rescue { 
-    padding: 12px;
-    border-radius: 8px;
-  }
-}
-@media screen and (min-width: 1400px) {
+@media screen and (min-width: 1440px) {
   .rescue {
     width: 370px;
     height: 56px;
-    padding: 12px;
+    padding: 15px 12px;
     border-radius: 8px;
   }
 }
