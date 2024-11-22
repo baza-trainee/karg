@@ -11,12 +11,30 @@
 .desk {
   background-color: $bg-purple;
   padding: 48px 9px;
+
+  .title {
+    @include font-styles(700, 18px);
+  }
+
+  .subtitle {
+    @include font-styles(400, 16px);
+  }
 }
 
 .mainPageDesk {
   background-color: $bg-white-transparent;
   padding: 43px 9px;
   border-radius: 4px;
+
+  .title {
+    width: 8.8em;
+    @include font-styles(700, 19px);
+  }
+
+  .subtitle {
+    @include font-styles(400, 16px);
+    letter-spacing: 0.05em;
+  }
 }
 
 .desk,
@@ -32,15 +50,6 @@
     gap: 16px;
     line-height: 130%;
     color: $text-dark;
-
-    .title {
-      width: 8.8em;
-      @include font-styles(700, 20px);
-    }
-
-    .subtitle {
-      @include font-styles(500, 16px);
-    }
   }
 }
 
@@ -54,12 +63,12 @@
       gap: 20px;
 
       .title {
-        @include font-styles(700, 28px);
+        @include font-styles(700, 26px);
         width: 16em;
       }
 
       .subtitle {
-        @include font-styles(500, 18px);
+        @include font-styles(400, 18px);
       }
     }
   }
@@ -74,12 +83,13 @@
       gap: 16px;
 
       .title {
-        @include font-styles(700, 32px);
+        @include font-styles(700, 28px);
         width: 16em;
       }
 
       .subtitle {
         @include font-styles(400, 20px);
+        letter-spacing: 0.05em;
       }
     }
   }
@@ -95,11 +105,12 @@
       gap: 32px;
 
       .title {
+        @include font-styles(700, 44px);
         width: 15em;
       }
 
       .subtitle {
-        @include font-styles(400, 20px);
+        @include font-styles(400, 24px);
       }
     }
   }
@@ -120,6 +131,7 @@
 
       .subtitle {
         @include font-styles(400, 24px);
+        letter-spacing: 0.05em;
       }
     }
   }
