@@ -1,9 +1,9 @@
 'use client';
 
-import { useState } from "react";
+import { useState, useContext } from "react";
 import PropTypes from "prop-types";
-import Link from "next/link";
 import { ShevronDown } from '@/public/assets/icons/aside';
+import { AdminContext } from '@/app/adminProvider';
 import styles from "./styles/aside.module.scss";
 
 const AsideItem = ({
@@ -16,6 +16,7 @@ const AsideItem = ({
     isNestedItems,
     nestedData
 }) => {
+    const { activeSection } = useContext(AdminContext);
     const [collapsed, setCollapsed] = useState(false);
 
     const toggleCollapse = () => {
@@ -29,7 +30,7 @@ const AsideItem = ({
             <div className={itemStyle} onClick={toggleCollapse}>
                 {children}
                 <p className={titleStyle}>
-                    <Link href='#'>{title}</Link>
+                    {title}
                 </p>
                 {isNestedItems && (
                     <ShevronDown
@@ -42,7 +43,10 @@ const AsideItem = ({
                 <ul className={styles.nestedStyle}>
                     {nestedData.map((d, index) => {
                         return (
-                            <li key={index} onClick={() => handleItemClick(d.title)}>
+                            <li key={index}
+                                onClick={() => handleItemClick(d.title)}
+                                className={d.title === activeSection ? styles.activeNestedStyle : ''}
+                            >
                                 <p>{d.title}</p>
                             </li>
                         )

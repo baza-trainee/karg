@@ -5,7 +5,7 @@ import { ContactsIcon, PetsIcon, SwitchCameraIcon, GroupIcon } from '@/public/as
 import styles from "./styles/aside.module.scss";
 
 export default function MenuBlock() {
-  const { setActiveSection } = useContext(AdminContext);
+  const { activeSection, setActiveSection } = useContext(AdminContext);
 
   const handleItemClick = (section) => {
     setActiveSection(section);
@@ -33,7 +33,11 @@ export default function MenuBlock() {
 
       {dataList.map((a) => {
         return (
-          <div key={a.title} onClick={(a.title !== 'Корисне') ? () => handleItemClick(a.title) : () => { }}>
+          <div
+            key={a.title}
+            onClick={(a.title !== 'Корисне') ? () => handleItemClick(a.title) : () => { }}
+            className={a.title === activeSection || (a.title === 'Корисне' && nestedData.some(item => item.title === activeSection)) ? styles.active : ''}
+          >
             <AsideItem
               itemStyle={styles.item}
               titleStyle={styles.title}
