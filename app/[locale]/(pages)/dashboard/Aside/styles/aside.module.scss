@@ -1,12 +1,40 @@
 @import "../../../../variables.module.scss";
 
-.active {
+.bg-gradient {
   background: linear-gradient(
     90deg,
     rgba(190, 190, 190, 0.5) 21.55%,
     rgba(190, 190, 190, 0) 88.74%
   );
-  backdrop-filter: blur(43.79999923706055px);
+  color: $text-white;
+  transition: color 0.3s ease-in-out;
+  backdrop-filter: blur(43.8px);
+}
+
+.wrapper,
+.title {
+  color: $button-disabled;
+  transition: color 0.3s ease-in-out;
+}
+
+.active {
+  @extend .bg-gradient;
+  &:hover {
+    background: inherit;
+  }
+
+  .title,
+  .wrapper {
+    color: $text-white;
+  }
+}
+
+.wrapper:hover {
+  @extend .bg-gradient;
+
+  .title {
+    color: $text-white;
+  }
 }
 
 .container {
@@ -35,19 +63,6 @@
     width: 100%;
     padding-top: 250px;
     padding-bottom: 24px;
-  }
-}
-
-.wrapper {
-  color: $button-disabled;
-  &:hover {
-    @extend .active;
-    color: $text-white;
-    transition: color 0.3s ease-in-out;
-  }
-  &:hover .title {
-    color: $text-white;
-    transition: color 0.3s ease-in-out;
   }
 }
 
@@ -106,9 +121,14 @@
   flex-direction: column;
   background-color: $bg-dark;
   color: $button-disabled;
+  transition: color 0.3s ease-in-out;
+
   & li {
     border-bottom: 2px solid transparent;
-    &:hover {
+    transition: color 0.3s ease-in-out;
+    
+    &:hover,
+    &.activeNestedStyle {
       color: $text-white;
       border-bottom: 2px solid $button-default;
       width: fit-content;
