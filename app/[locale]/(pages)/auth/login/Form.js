@@ -72,7 +72,7 @@ export default function Form({
 
       <button className={styles.buttonReset} onClick={() => router.push("/restore")}>{resetButton}</button>
       <button 
-          className={!isFormValid ? styles.buttonLoginDesabled : styles.buttonLogin}
+          className={!isFormValid ? styles.buttonLoginDisabled : styles.buttonLogin}
           disabled={!isFormValid} 
           onClick={handleSubmit}
       >Увійти
