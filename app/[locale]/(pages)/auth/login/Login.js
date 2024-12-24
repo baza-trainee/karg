@@ -198,7 +198,7 @@ export default function LoginPage() {
 
         <button className={styles.buttonForgot} onClick={() => router.push("/auth/restore")}>{blockCaptions.forgotButton}</button>
         <button
-          className={!isFormValid ? styles.buttonLoginDesabled : styles.buttonLogin}
+          className={!isFormValid ? styles.buttonLoginDisabled : styles.buttonLogin}
           disabled={!isFormValid}
           onClick={handleSubmit}
         >{blockCaptions.loginButton}

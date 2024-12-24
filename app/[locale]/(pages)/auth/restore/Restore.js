@@ -8,9 +8,11 @@ import styles from './styles/restore.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 import EmailStatusMessage from "./EmailStatusMessage/EmailStatusMessage"
 
+const API_BASE_URL = 'https://karg-backend.onrender.com/karg';
+
 export const sendEmailForm = async (data) => {
   try {
-    const response = await fetch("http://localhost:3000/api/sendEmail", {
+    const response = await fetch(`${API_BASE_URL}/authentication/sendresetpasswordemail`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
@@ -18,17 +20,13 @@ export const sendEmailForm = async (data) => {
         Accept: "application/json"
       },
     });
-    if (!response.ok) {
-      throw new Error("Failed to send message");
-    }
     const result = await response.json();
     return result;
+
   } catch (error) {
-    console.error("Error sending email:", error);
-    throw error;
+    console.error('Error sending email:', error.message);
   }
 };
-
 
 export default function Restore() {
   const router = useRouter();
@@ -83,14 +81,16 @@ export default function Restore() {
       const emailObj = { 'email': email }
       try {
         const response = await sendEmailForm(emailObj);
-        if (response.success) {
+
+        if (response && response.status === 1) {
           setEmailStatus('success');
         } else {
           setEmailStatus('failure');
         }
       } catch (error) {
         setEmailStatus('failure');
-        console.error('Processing error:', error);
+        console.error('Error during email sending process:', error.message);
+
       } finally {
         setEmailSent(true);
       }
@@ -127,7 +127,7 @@ export default function Restore() {
                 {(emailDirty && emailError) && <p className={`${styles.error} ${variables.font14w400}`}>{emailError}</p>}
               </label>
               <button
-                className={`${!isFormValid ? styles.buttonSendDesabled : styles.buttonSend} ${variables.font20w700}`}
+                className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
                 type='submit'
                 disabled={!isFormValid}
               >{blockTitles.sendNewEmail}

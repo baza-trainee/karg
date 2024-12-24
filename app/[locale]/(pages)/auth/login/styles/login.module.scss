@@ -136,7 +136,7 @@
             color: $text-white;
         }
   }
-  .buttonLoginDesabled {
+  .buttonLoginDisabled {
     @extend .buttonLogin;
     background-color: $button-dark-disabled;
     color: $text-gray;
