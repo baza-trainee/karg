@@ -4,7 +4,7 @@ export const loginUser = async (email, password) => {
     const authToken = localStorage.getItem('auth-token');
     const response = await fetch(`${API_BASE_URL}/authentication/login`, {
         method: 'POST',
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email: email, password: password }),
         headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${authToken}`

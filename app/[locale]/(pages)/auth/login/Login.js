@@ -1,11 +1,9 @@
 'use client';
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from "next/navigation";
-import Link from 'next/link';
-import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import authService from './authService';
-import styles from './styles/login.module.scss';
 import { AdminContext } from '@/app/adminProvider';
+import LoginForm from './LoginForm';
 
 export default function LoginPage() {
 
@@ -16,194 +14,143 @@ export default function LoginPage() {
     'passwordPlaceholder': 'Введіть пароль',
     'loginButton': 'Увійти',
     'forgotButton': 'Забули пароль?',
-  }
-
-  const router = useRouter();
-
-  const initialForm = {
-    email:
-      { value: '', emailError: '', emailVisited: false },
-    password:
-      { value: '', passwordError: '', passwordVisited: false },
   };
 
-  const [form, setForm] = useState(initialForm);
+  const errorMessages = {
+    'emailError': 'Ви ввели невідповідний логін.',
+    'passwordError': 'Ви ввели невідповідний пароль.',
+    'authError': 'Введено невірний логін або пароль.'
+  };
 
+  const successMessages = {
+    'authSuccess': 'Ви успішно увійшли до адмінпанелі.'
+  };
+
+  const router = useRouter();
+  const [emailVisited, setEmailVisited] = useState(false);
+  const [passwordVisited, setPasswordVisited] = useState(false);
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false);
-
   const [loginStatus, setLoginStatus] = useState('');
-  const { accountId, setAccountId } = useContext(AdminContext);
-  const { isDirector, setIsDirector } = useContext(AdminContext);
+  const { setAccountId } = useContext(AdminContext);
+  const { setIsDirector } = useContext(AdminContext);
   const { setActiveSection } = useContext(AdminContext);
-
-  const { email } = form.email.value;
-  const { password } = form.password.value;
-
+  const [form, setForm] = useState({
+    email: { value: '', emailError: '' },
+    password: { value: '', passwordError: '' },
+  });
+  const email = form.email.value;
+  const password = form.password.value;
 
   useEffect(() => {
-    if (form.email.emailError || form.password.passwordError || form.email.value == '' || form.password.value == '') {
-      setIsFormValid(false);
-    } else {
+    const isEmailValid = form.email.value && !form.email.emailError;
+    const isPasswordValid = form.password.value && !form.password.passwordError;
+
+    if (isEmailValid && isPasswordValid) {
       setIsFormValid(true);
+    } else {
+      setIsFormValid(false);
     }
-  }, [form.email.emailError, form.password.passwordError]);
+  }, [form]);
 
-  useEffect(() => {
-    setAccountId(accountId);
-  }, [accountId]);
-
-  useEffect(() => {
-    setIsDirector(isDirector);
-  }, [isDirector]);
-
-  const ActualEyeIcon = () => {
-    return (
-      (isPasswordVisible) ? <HideShow className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
-        : <EyeSlashFill className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
-    )
+  const validateEmail = (value) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!re.test(value.toLowerCase())) {
+      return errorMessages.emailError;
+    }
+    return '';
   }
 
   const emailHandler = (e) => {
-    setLoginStatus('');
-    setForm({ ...form, email: { ...form.email, value: e.target.value } });
-
-    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!re.test(String(e.target.value).toLowerCase())) {
-      setForm({ ...form, email: { ...form.email, emailError: 'Ви ввели невідповідний логін.' } });
-    } else {
-      setForm({ ...form, email: { ...form.email, value: e.target.value, emailError: '' } });
-    }
-    if (!e.target.value) {
-      setForm({ ...form, email: { ...form.email, emailError: 'Ви ввели невідповідний логін.' } });
-    }
+    const value = e.target.value;
+    const errorMessage = validateEmail(value);
+    setForm((prev) => ({ ...prev, email: { ...prev.email, value: value, emailError: errorMessage } }));
+    setEmailVisited(true);
   };
 
-  const passwordHandler = (e) => {
-    setLoginStatus('');
-    setForm({ ...form, password: { ...form.password, value: e.target.value } });
+  const validatePassword = (value) => {
     const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\u0400-\u04FF\d~!?@#$%^&*(){}\[\]><\/\\|"'.,:;-]{1,64}$/;
+    if (!passwordRegex.test(value)) {
+      return errorMessages.passwordError;
+    }
+    return '';
+  }
 
-    if (!e.target.value) {
-      setForm({ ...form, password: { ...form.password, passwordError: 'Ви ввели невідповідний парольі.' } });
-    }
-    else if (passwordRegex.test(e.target.value)) {
-      setForm({ ...form, password: { ...form.password, value: e.target.value, passwordError: '' } });
-    }
-    else {
-      setForm({ ...form, password: { ...form.password, value: '', passwordError: 'Ви ввели невідповідний пароль.' } });
-    }
-
+  const passwordHandler = (e) => {
+    const value = e.target.value;
+    const errorMessage = validatePassword(value);
+    setForm((prev) => ({ ...prev, password: { ...prev.password, value: value, passwordError: errorMessage } }));
+    setPasswordVisited(true);
   }
 
   const blurHandler = (e) => {
     switch (e.target.name) {
       case 'email':
-        setForm({ ...form, email: { ...form.email, emailVisited: true } });
+        setEmailVisited(true);
         break;
       case 'password':
-        setForm({ ...form, password: { ...form.password, passwordVisited: true } });
+        setPasswordVisited(true);
         break;
     }
   }
-  const handleSubmit = async () => {
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!isFormValid) {
+      setLoginStatus(errorMessages.authError);
+      return;
+    }
     try {
       const response = await authService.login(form.email.value, form.password.value);
 
-      if (response.status === 1) {
+      if (response && response.status === 1) {
         const authToken = await response.token;
         const accountId = await response.rescuerId;
         const role = await response.isDirector;
 
-        console.log(role);
-        console.log(accountId);
-
+        setLoginStatus(successMessages.authSuccess);
         localStorage.setItem('auth-token', authToken);
         localStorage.setItem('accountId', accountId);
         localStorage.setItem('isDirector', role ? 'true' : 'false');
-
-        setLoginStatus(`Ви успішно увійшли до адмінпанелі`);
         setAccountId(accountId);
         setIsDirector(role);
         setActiveSection('Мій акаунт');
         router.push("/dashboard", { email: form.email.value });
       }
       if ((!response.status)) {
-        setLoginStatus("Введено невірний логін або пароль.");
-        setTimeout(() => location.reload(), 3000);
+        setLoginStatus(errorMessages.authError);
       }
-      // if ((response.ok === 500)) {
-      //   setLoginStatus("Internal Server Error.");
-      //   setTimeout(() => location.reload(), 3000);
-      // }
-      // if (!response.ok) {
-      //   setLoginStatus(response.status);
-      //   throw new Error(`HTTP error: ${response.status}`);
-      // }
-      else if (response.status === 401) {
-        setLoginStatus("Введено невірний логін або пароль.");
-        setTimeout(() => location.reload(), 3000);
+      if ((response.ok === 500)) {
+        setLoginStatus("Internal Server Error.");
+      }
+      else if (response.status === 400) {
+        setLoginStatus(errorMessages.authError);
       }
     }
-    catch (e) {
-      setLoginStatus("Введено невірний логін або пароль.");
-      console.log("catch block");
+    catch (error) {
+      setLoginStatus(errorMessages.authError);
+      console.error("Error:", error);
     }
   };
 
   return (
-    <div className={styles.container}>
-      <Link href="/"><Logo className={styles.logo} /></Link>
-
-      <div className={styles.form}>
-        <div className={styles.email}>
-          <label htmlFor='email'>
-            {blockCaptions.emailLabel}
-            <input
-              className={(form.email.emailVisited && form.email.emailError) ? styles.errorBorder : styles.ordinaryBorder}
-              aria-label='email'
-              id='email'
-              name='email'
-              type='email'
-              value={email}
-              placeholder={blockCaptions.emailPlaceholder}
-              onChange={(e) => emailHandler(e)}
-              onBlur={(e) => blurHandler(e)}
-            />
-          </label>
-          {(form.email.emailVisited && form.email.emailError) && <p className={styles.error}>{form.email.emailError}</p>}
-        </div>
-
-        <div className={styles.password}>
-          <label htmlFor='password'>
-            {blockCaptions.passwordLabel}
-            <input
-              className={(form.password.passwordVisited && form.password.passwordError) ? styles.errorBorder : styles.ordinaryBorder}
-              type={isPasswordVisible ? 'text' : 'password'}
-              aria-label='password'
-              id='password'
-              name='password'
-              placeholder={blockCaptions.passwordPlaceholder}
-              value={password}
-              onChange={(e) => passwordHandler(e)}
-              onBlur={(e) => blurHandler(e)}
-            />
-            {ActualEyeIcon()}
-
-          </label>
-          {(form.password.passwordVisited && form.password.passwordError) && <p className={styles.error}>{form.password.passwordError}</p>}
-        </div>
-
-        {(loginStatus && isFormValid) && <p className={accountId ? styles.success : styles.error}>{loginStatus}</p>}
-
-        <button className={styles.buttonForgot} onClick={() => router.push("/auth/restore")}>{blockCaptions.forgotButton}</button>
-        <button
-          className={!isFormValid ? styles.buttonLoginDisabled : styles.buttonLogin}
-          disabled={!isFormValid}
-          onClick={handleSubmit}
-        >{blockCaptions.loginButton}
-        </button>
-      </div>
-    </div>
+    <LoginForm
+      blockCaptions={blockCaptions}
+      email={email}
+      emailVisited={emailVisited}
+      emailError={form.email.emailError}
+      handleEmailChange={emailHandler}
+      password={password}
+      onEmailBlur={blurHandler}
+      onPasswordBlur={blurHandler}
+      handlePasswordChange={passwordHandler}
+      passwordVisited={passwordVisited}
+      passwordError={form.password.passwordError}
+      isPasswordVisible={isPasswordVisible}
+      onTogglePasswordVisibility={() => setIsPasswordVisible((prev) => !prev)}
+      loginStatus={loginStatus}
+      isFormValid={isFormValid}
+      handleSubmit={handleSubmit}
+    />
   )
 }

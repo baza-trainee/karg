@@ -130,17 +130,17 @@ export default function ResetPassword() {
       'password': newPassword,
       'token': token
     };
-    
+
     try {
       const result = await sendNewPassword(data);
-      if (!result.success) {
+      if (result.status === 1) {
+        router.push('/dashboard');
+      } else {
         if (result.message === 'Password previously used') {
           setServerErrorMessage(errorMessages.reusedPassword)
         } else {
           console.error(result.message);
         }
-      } else {
-        router.push('/auth/dashboard');
       }
     } catch (error) {
       console.error(error);
