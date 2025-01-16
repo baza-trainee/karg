@@ -12,28 +12,37 @@
   background-color: $bg-purple;
   padding: 48px 9px;
 
-  .title {
-    @include font-styles(700, 18px);
-  }
+  .text {
+    width: 81.46%;
 
-  .subtitle {
-    @include font-styles(400, 16px);
+    .title {
+      @include font-styles(700, 18px);
+    }
+
+    .subtitle {
+      @include font-styles(400, 16px);
+    }
   }
 }
 
 .mainPageDesk {
   background-color: $bg-white-transparent;
+  width: 90vw;
   padding: 43px 9px;
   border-radius: 4px;
 
-  .title {
-    width: 8.8em;
-    @include font-styles(700, 19px);
-  }
+  .text {
+    width: 91.11%;
 
-  .subtitle {
-    @include font-styles(400, 16px);
-    letter-spacing: 0.05em;
+    .title {
+      width: 72.36%;
+      @include font-styles(700, 19px);
+    }
+
+    .subtitle {
+      @include font-styles(400, 16px);
+      letter-spacing: 0.8px;
+    }
   }
 }
 
@@ -45,7 +54,6 @@
 
   .text {
     @include flexContainer;
-    width: 15.4em;
     text-align: center;
     gap: 16px;
     line-height: 130%;
@@ -59,58 +67,62 @@
     gap: 20px;
 
     .text {
-      width: 30.1em;
+      width: 90.1%;
       gap: 20px;
 
       .title {
         @include font-styles(700, 26px);
-        width: 16em;
+        width: 100%;
       }
 
       .subtitle {
         @include font-styles(400, 18px);
+        width: 100%;
       }
     }
   }
 
   .mainPageDesk {
+    width: 74.94vw;
     padding: 32px 37px;
     gap: 16px;
     border-radius: 8px;
 
     .text {
-      width: 34.5em;
+      width: 100%;
       gap: 16px;
 
       .title {
         @include font-styles(700, 28px);
-        width: 16em;
+        width: 94.38%;
       }
 
       .subtitle {
         @include font-styles(400, 20px);
-        letter-spacing: 0.05em;
+        letter-spacing: 1px;
       }
     }
   }
 }
 
-@media screen and (min-width: 1200px) {
+@media screen and (min-width: 1440px) {
   .desk {
     padding: 57px 134px;
     gap: 32px;
 
     .text {
-      width: 52em;
+      width: 70.82%;
       gap: 32px;
 
       .title {
         @include font-styles(700, 44px);
-        width: 15em;
+        width: 62.7%;
       }
 
       .subtitle {
         @include font-styles(400, 24px);
+        width: 100%;
+        letter-spacing: 1.2px;
       }
     }
   }
@@ -121,17 +133,17 @@
     gap: 32px;
 
     .text {
-      width: 52em;
+      width: 100%;
       gap: 32px;
 
       .title {
         @include font-styles(700, 44px);
-        width: 15em;
+        width: 62.5%;
       }
 
       .subtitle {
         @include font-styles(400, 24px);
-        letter-spacing: 0.05em;
+        letter-spacing: 1.2px;
       }
     }
   }
