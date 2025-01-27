@@ -17,7 +17,7 @@ export default async function Support({ locale, namespaces }) {
         <div>
             <div className={styles.container}>
                 <p className={styles.titleBlock}>
-                    <span className={variables.supportSubtitle1}>{supportTitle}</span>
+                    <span className={variables.w700_f20_f36_f44_subtitle_shared}>{supportTitle}</span>
                 </p>
 
                 <div className={styles.cardBlock}>

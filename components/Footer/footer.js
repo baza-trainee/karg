@@ -137,9 +137,7 @@ function Footer() {
         </div>
         <div className={styles.contactsContainerLocation}>
           <LocationIcon className={styles.contactsContainerIcons} />
-          <a href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6" target="_blank">
-            {t('common:address')}
-          </a>
+          <a>{t('common:address')}</a>
         </div>
       </div>
       <div className={styles.socialIconsHolderMobile}>

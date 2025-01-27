@@ -1,0 +1,17 @@
+{
+    "cardButtonText": "Детальніше",
+    "cardLinkText": "Читати далі",
+    "adoptionModalFormText": "Поле ім'я пусте",
+    "cardAltText": "Фото тваринки",
+    "rescueHistoryText": "Історія порятунку",
+    "actionButtonTransparentText": "Підтримати",
+    "actionButtonBackgroundText": "Всиновити",
+    "adoptionModalHeadingText": "Заява на всиновлення",
+    "adoptionModalFormLabelText": "Ім'я",
+    "adoptionModalFormPlaceholderText": "Введіть ваше ім'я",
+    "adoptionModalFormPhoneText": "Номер телефону",
+    "adoptionModalFormPhonePlaceholderText": "Введіть актуальний номер телефону",
+    "adoptionModalText_text": "Тварина, яку всиновлюють",
+    "adoptionModalButtonsText": "Відправити",
+    "adoptionModalButtonsCancelText": "Скасувати"
+}

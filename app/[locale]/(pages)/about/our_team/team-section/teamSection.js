@@ -49,7 +49,7 @@ const TeamSection = async ({ locale, namespaces }) => {
                         />
                     </div>
                 </div>
-                <div className={`${styles.teamEquipmentText} ${variables.text4}`}>
+                <div className={`${styles.teamEquipmentText} ${variables.text_4}`}>
                     <p>
                         {t('teamEquipmentTextFirstPar')}
                     </p>
@@ -122,7 +122,7 @@ const TeamSection = async ({ locale, namespaces }) => {
                         }}
                     />
                 </div>
-                <p className={`${styles.volontiersText} ${variables.text4}`}>
+                <p className={`${styles.volontiersText} ${variables.text_4}`}>
                     {t('volontiersText')}
                 </p>
                 <div className={styles.treeImagesContainer}>
@@ -217,12 +217,12 @@ const TeamSection = async ({ locale, namespaces }) => {
                         }}
                     />
                 </div>
-                <p className={`${styles.donatesText} ${variables.text4}`}>
+                <p className={`${styles.donatesText} ${variables.text_4}`}>
                     {t('donatesText')}
                 </p>
             </div>
         </section>
     );
-}
+};
 
 export default TeamSection;

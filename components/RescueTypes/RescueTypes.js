@@ -15,7 +15,7 @@ export default async function RescueTypes({ locale, namespaces, rescueTypes, isB
     <div>
       <div className={styles.container}>
         <p className={styles.titleBlock}>
-          <span className={`${variables.rescueSubtitle1}`}>
+          <span className={`${variables.w700_f20_f36_f44_subtitle_shared}`}>
             {titleRescueTypes}
           </span>
         </p>

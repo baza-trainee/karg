@@ -47,7 +47,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                     altText={altText} />
                 <Rules locale={locale} namespaces={i18nNamespaces} />
                 <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} isButtonAsLink={false} />
-                <div className={`${styles.article} ${variables.text4}`}>
+                <div className={`${styles.article} ${variables.text_4}`}>
                     <p>{t('articleFirstPar')}</p>
                     <p>{t('articleSecondPar')}</p>
                 </div>

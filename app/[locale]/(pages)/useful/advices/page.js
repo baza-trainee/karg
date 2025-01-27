@@ -1,5 +1,5 @@
 // styles
-import styles from './styles/animals.module.scss';
+import styles from './styles/advices.module.scss';
 // locale
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
@@ -10,19 +10,18 @@ import PageHero from '@/components/common/PageHero/pageHero';
 import InfiniteScroll from './infiniteScroll';
 import InitialFetch from './initialFetch';
 // images
-import { ourAnimalsImage } from '@/public/assets/images/animals';
+import { advices } from '@/public/assets/images/advices';
+import SearchBar from '@/components/SearchBar/SearchBar';
 
-const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
+const i18nNamespaces = ["advices", "uniCards", "common"];
 
-const Animals = async ({ params: { locale } }) => {
+const Advices = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
     const DOCUMENT_TEXT = {
-        buttonText: t('buttonText'),
-        altText: t('buttonText'),
-        p1: t('p1'),
-        p2: t('p2'),
+        buttonText: t('pseudoButtonText'),
+        altText: t('pseudoButtonText'),
     };
-    // console.log('Current localeAnim:', locale);
 
     return (
         <TranslationsProvider
@@ -32,23 +31,22 @@ const Animals = async ({ params: { locale } }) => {
         >
             <Header />
             <PageHero
-                mobImage={ourAnimalsImage.src}
-                tablImage={ourAnimalsImage.src}
-                deskImage={ourAnimalsImage.src}
+                mobImage={advices.src}
+                tablImage={advices.src}
+                deskImage={advices.src}
                 buttonText={DOCUMENT_TEXT.buttonText}
                 altText={DOCUMENT_TEXT.altText}
             />
 
             <main className={styles.pageContainer}>
-                <section className={styles.textContainer}>
-                    <p>{DOCUMENT_TEXT.p1}</p>
-                    <p>{DOCUMENT_TEXT.p2}</p>
-                </section>
+                <SearchBar />
                 <InitialFetch locale={locale} />
-                <InfiniteScroll locale={locale} />
+                <InfiniteScroll />
             </main>
             <Footer />
         </TranslationsProvider>
     );
+
 };
-export default Animals;
+
+export default Advices;

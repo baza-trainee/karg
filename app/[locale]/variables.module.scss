@@ -1,47 +1,35 @@
 @import './colors.scss';
 
 // Mixins
-@mixin font-styles($font-weight, $font-size) {
+@mixin font-styles($font-weight, $font-size, $line-height: normal) {
   font-weight: $font-weight;
   font-size: $font-size;
-  line-height: 130%;
+  line-height: $line-height;
 }
+
+// *_component - style used only in components
+// *_page - style used only in pages
+// *_shared - style used in both components and pages
 
 // Typography for Mobile
-.h1 {
-  @include font-styles(800, 36px);
-  font-family: $font-family-heading;
+
+.quickAccessMenu_button_component,
+.advicesButton_page {
+  @include font-styles(800, 16px);
 }
 
-.mobileBody {
-  @include font-styles(300, 16px);
-}
-
-.Subtitle1 {
-  @include font-styles(700, 20px);
-}
-
-.subtitle1,
-.quickSubtitle1,
-.rescueSubtitle1,
-.supportSubtitle1 {
-  @include font-styles(700, 20px);
+.mainSubtitle_shared,
+.quickAccessMenu_subtitle_component,
+.w700_f20_f36_f44_subtitle_shared {
+  @include font-styles(700, 20px, 26px);
 }
 
 .achievSubtitle2 {
   @include font-styles(700, 24px);
 }
 
-.quickSubtitle1 {
-  @include font-styles(700, 20px);
-}
-.Heading3,
-.mobileHeading3 {
-  @include font-styles(700, 19px);
-}
-
-.button1 {
-  @include font-styles(700, 18px);
+.button_1 {
+  @include font-styles(700, 18px, 23.4px);
 }
 
 .subtitle2,
@@ -67,9 +55,8 @@
   @include font-styles(400, 16px);
 }
 
-.supportText4,
-.text4 {
-  @include font-styles(300, 16px);
+.Text3 {
+  @include font-styles(400, 16px);
 }
 
 .text3,
@@ -78,13 +65,13 @@
   @include font-styles(400, 14px);
 }
 
-.quickButton2,
-.Button2 {
-  @include font-styles(800, 16px);
+.font16w300lh20 {
+  @include font-styles(300, 16px, 20.8px);
 }
 
-.Text3 {
-  @include font-styles(400, 16px);
+.supportText4,
+.text_4 {
+  @include font-styles(300, 14px);
 }
 
 .body {
@@ -134,20 +121,19 @@
 
 // Typography for tablet
 @media (min-width: 768px) {
-  .h1 {
-    @include font-styles(800, 46px);
+  .heading {
+    @include font-styles(800, 46px, 59.8px);
     font-family: $font-family-heading;
   }
 
   .h2,
-  .rescueSubtitle1,
+  .w700_f20_f36_f44_subtitle_shared,
   .achievSubtitle2,
-  .supportSubtitle1,
-  .Subtitle1 {
+  .w700_f20_f36_f44_subtitle_shared {
     @include font-styles(700, 32px);
   }
 
-  .quickSubtitle1,
+  .quickAccessMenu_subtitle_component,
   .supportSubtitle2,
   .Subtitle2,
   .subtitle3,
@@ -156,7 +142,7 @@
   }
 
   .h3,
-  .subtitle1,
+  .mainSubtitle_shared,
   .subtitle2 {
     @include font-styles(700, 24px);
   }
@@ -180,7 +166,7 @@
     letter-spacing: 0%;
   }
 
-  .Button2 {
+  .advicesButton_page {
     @include font-styles(800, 18px);
   }
   .Subtitle3 {
@@ -195,7 +181,7 @@
   }
   .btn2,
   .button2,
-  .quickButton2 {
+  .quickAccessMenu_button_component {
     @include font-styles(800, 16px);
   }
 
@@ -203,15 +189,15 @@
     @include font-styles(400, 16px);
   }
 
-  .text4 {
+  .text_4 {
     @include font-styles(300, 20px);
   }
 }
 
 // Typography for Desktop
 @media (min-width: 1200px) {
-  .h1 {
-    @include font-styles(800, 59px);
+  .heading {
+    @include font-styles(800, 59px, 72.8px);
     font-family: $font-family-heading;
   }
 
@@ -221,16 +207,15 @@
     @include font-styles(700, 48px);
   }
 
-  .supportSubtitle1,
-  .rescueSubtitle1,
-  .Subtitle1,
+  .w700_f20_f36_f44_subtitle_shared,
+  .w700_f20_f36_f44_subtitle_shared,
   .Subtitle2,
   .Heading3 {
     @include font-styles(700, 44px);
   }
 
   .h3,
-  .subtitle1,
+  .mainSubtitle_shared,
   .subtitle2,
   .btn1,
   .supportSubtitle2,
@@ -246,7 +231,7 @@
   .supportText4,
   .body,
   .p,
-  .text4 {
+  .text_4 {
     @include font-styles(400, 24px);
     letter-spacing: 0%;
   }
@@ -256,7 +241,7 @@
     @include font-styles(500, 24px);
   }
 
-  .quickSubtitle1,
+  .quickAccessMenu_subtitle_component,
   .Subtitle3 {
     @include font-styles(700, 24px);
   }
@@ -276,8 +261,8 @@
 
   .btn2,
   .button2,
-  .quickButton2,
-  .Button2 {
+  .quickAccessMenu_button_component,
+  .advicesButton_page {
     @include font-styles(800, 18px);
   }
 }
