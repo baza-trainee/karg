@@ -46,83 +46,11 @@ const Help = async ({ params: { locale } }) => {
             <main className={styles.container}>
                 <section className={styles.textBlock}>
                     <h2 className={`${styles.textBlock_title} ${variables.mobileHeading3}`}>Зробити донат</h2>
-                    <p className={`${styles.textBlock_text} ${variables.mobileBody}`}>Команда рятувальників завжди рада благодійникам, за допомогою яких шанс на життя отримає більше тваринок. Отримані кошти насамперед покривають витрати на придбання нового спорядження або допомогу тваринам, які перебувають на лікуванні.<br /><br />
+                    <p className={`${styles.textBlock_text} ${variables.font16w300lh20}`}>Команда рятувальників завжди рада благодійникам, за допомогою яких шанс на життя отримає більше тваринок. Отримані кошти насамперед покривають витрати на придбання нового спорядження або допомогу тваринам, які перебувають на лікуванні.<br /><br />
                         Для підтримки діяльності команди заповніть форму нижче.</p>
                 </section>
                 <section className={styles.bankingDetails_Container}>
                     <BankingDetails />
-                    {/* <h3 className={`${styles.bankingDetails_title} ${variables.mobileSubtitle2}`}>Банківські реквізити</h3>
-                    <div className={styles.bankingDetails_cardsContainer}>
-                        <div className={styles.bankingDetails_card}>
-                            <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
-                                USD
-                            </h4>
-                            <div className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
-                                <dl>
-                                    <div className={styles.bankingDetails_textItem}>
-                                        <dt><strong>SWIFT</strong></dt>
-                                        <dd></dd>
-                                    </div>
-                                    <div className={styles.bankingDetails_textItem}>
-                                        <dt><strong>IBAN:</strong></dt>
-                                        <dd className={styles.bankingDetails_IconItem}>
-                                            <span>UA3032200100000262023266</span>
-                                            <span>56577</span>
-                                            <Copy_icon className={styles.copy_icon} />
-                                        </dd>
-                                    </div>
-                                    <div className={styles.bankingDetails_textItem}>
-                                        <dt><strong>SWIFT/BIC code:</strong></dt>
-                                        <dd className={styles.bankingDetails_IconItem}>
-                                            <span>UNJSUAUKXXX</span>
-                                            <Copy_icon className={styles.copy_icon} />
-                                        </dd>
-                                    </div>
-                                    <div className={styles.bankingDetails_textItem}>
-                                        <dt><strong>Receiver:</strong></dt>
-                                        <dd className={styles.bankingDetails_IconItem}>
-                                            <span>STOROZHUK MYKHAILO</span>
-                                            <Copy_icon className={styles.copy_icon} />
-                                        </dd>
-                                    </div>
-                                    <div className={styles.bankingDetails_textItem}>
-                                        <dt><strong>Address:</strong></dt>
-                                        <dd>
-                                            <address>
-                                                01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
-                                            </address>
-                                        </dd>
-                                    </div>
-                                </dl>
-                            </div>
-                        </div>
-                        <div className={styles.bankingDetails_card}>
-                            <h4 className={`${styles.bankingDetails_cardTitle} ${variables.mobileSubtitle1}`}>
-                                EUR
-                            </h4>
-                            <p className={`${styles.bankingDetails_cardText} ${variables.mobileText2}`}>
-                                У межах Європи
-                                IBAN
-                                GB07CLJU00997182234651
-                                BIC code
-                                CLJUGB21
-                                Receiver
-                                STOROZHUK MYKHAILO
-
-                                Для переказів з Європи по SEPA
-                                Використовуйте лише для валюти EUR
-                                SWIFT
-                                IBAN
-                                UA223220010000026204326655101
-                                SWIFT/BIC code
-                                UNJSUAUKXXX
-                                Receiver
-                                STOROZHUK MYKHAILO
-                                Address
-                                01001, Ukraine, c. Kyiv, ave. Peremohy, build. 99/1, fl. 13
-                            </p>
-                        </div>
-                    </div> */}
                 </section>
                 <section className={styles.paymentsButtons_Container}>
                     <h4 className={styles.paymentsButtons_title}>
@@ -131,7 +59,7 @@ const Help = async ({ params: { locale } }) => {
                     <div className={styles.paymentsButtons_buttonContainer}>
                         <button className={`${styles.paymentsButtons_button} ${variables.mobileSubtitle1}`}>PayPal</button>
                         <button className={`${styles.paymentsButtons_button} ${variables.mobileSubtitle1}`}><a href='https://send.monobank.ua/jar/7hQnoo2erG'>Monobank</a></button>
-                        <button className={`${styles.paymentsButtons_button} ${variables.mobileSubtitle1}`}>Patreon</button>
+                        <button className={`${styles.paymentsButtons_button} ${variables.mobileSubtitle1}`}><a href='https://www.patreon.com/karg'>Patreon</a></button>
                     </div>
                 </section>
                 <section className={styles.photoBlock_Container}>

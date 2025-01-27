@@ -16,10 +16,10 @@ const InfiniteScroll = ({ locale }) => {
     useEffect(() => {
         if (fetching && currentPage <= totalPages) {
             // console.log('fetch');
-            axios.get(`https://karg-backend-rkb4.onrender.com/karg/animal/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
+            axios.get(`https://karg-backend-rkb4.onrender.com/karg/advice/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {
-                        const uniqueCards = new Set([...prevCards, ...response.data.animals]);
+                        const uniqueCards = new Set([...prevCards, ...response.data.advices]);
                         return Array.from(uniqueCards);
                     });
                     setCurrentPage(prev => prev + 1);

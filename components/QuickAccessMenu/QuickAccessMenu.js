@@ -17,15 +17,15 @@ export function MenuItem({ title, href, iconSrc, innerMessage }) {
     <div className={styles.accessMenuItem}>
       {iconSrc}
       <div className={styles.accessMenuText}>
-        <p className={`${styles.title} ${variables.quickSubtitle1}`}>
+        <p className={`${styles.title} ${variables.quickAccessMenu_subtitle_component}`}>
           {title}
         </p>
         <p className={`${styles.message} ${variables.quickText3}`}>
           {innerMessage}
         </p>
-        <Link className={variables.quickButton2} href={href}>
+        <Link className={variables.quickAccessMenu_button_component} href={href}>
           <span>{details}</span>
-          <ArrowRightIcon className={`${styles.detailsButtonIcon} ${variables.quickButton2}`} />
+          <ArrowRightIcon className={`${styles.detailsButtonIcon} ${variables.quickAccessMenu_button_component}`} />
         </Link>
       </div>
     </div>

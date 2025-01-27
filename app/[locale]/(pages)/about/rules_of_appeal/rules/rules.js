@@ -54,7 +54,7 @@ const Rules = async ({ locale, namespaces }) => {
                         }}
                     />
                 </div>
-                <div className={`${styles.ruleDescription} ${variables.text4}`}>
+                <div className={`${styles.ruleDescription} ${variables.text_4}`}>
                     <p>{t('ruleDescriptionFirstPar')}</p>
                     <p>{t('ruleDescriptionSecondPar')}</p>
                     <p>{t('ruleDescriptionThirdPar')}</p>
@@ -63,6 +63,6 @@ const Rules = async ({ locale, namespaces }) => {
             </div>
         </div>
     );
-}
+};
 
 export default Rules;

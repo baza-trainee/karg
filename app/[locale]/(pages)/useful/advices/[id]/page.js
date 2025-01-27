@@ -41,7 +41,7 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
 
           <GoBackButton className={styles.goBackButton}>
             <GoBackIcon />
-            <span className={variables.Button2}>{t('goBackButtonText')}</span>
+            <span className={variables.advicesButton_page}>{t('goBackButtonText')}</span>
           </GoBackButton>
 
           <div className={`${variables.Heading3} ${styles.adviceTitle}`}>
@@ -56,7 +56,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={570}
                 height={393}
                 className={`${styles.image} ${styles.deskImage}`}
-                src={res.images[0]}
+                // src={res.images[0]}
+                src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="33vw"
@@ -70,7 +71,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={706}
                 height={487}
                 className={`${styles.image} ${styles.tablImage}`}
-                src={res.images[0]}
+                // src={res.images[0]}
+                src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="100vw"
@@ -84,7 +86,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={288}
                 height={199}
                 className={`${styles.image} ${styles.mobImage}`}
-                src={res.images[0]}
+                // src={res.images[0]}
+                src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="33vw"

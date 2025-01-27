@@ -48,7 +48,7 @@ const Header = () => {
 
   useEffect(() => {
 
-  })
+  });
 
   const listLabelFirst = [
     { label: t('common:linkHistory'), link: !isEn ? "/about/history_of_origin" : "/en/about/history_of_origin" },
@@ -67,11 +67,11 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`${styles.topBar} ${isScrolled ? styles.topBarHidden : ''}`}>
-        <a className={variables.subtitle1} href="tel: +380939862262">
+        <a className={variables.mainSubtitle_shared} href="tel: +380939862262">
           +38 (093) 986-2262
         </a>
         <SocialIcons className={styles.socIcons} />
-        <a className={variables.subtitle1} href="tel: +380988447937">
+        <a className={variables.mainSubtitle_shared} href="tel: +380988447937">
           +38 (098) 844-7937
         </a>
       </div>

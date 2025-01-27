@@ -31,7 +31,7 @@
       grid-column: 2;
       grid-row: 2;
       transform: translate(-20px, -40px);
-      padding: 25px 49px;
+      padding: 25px 29px;
       width: 230px;
       overflow: hidden;
       text-wrap: nowrap;
@@ -39,6 +39,7 @@
       color: #fff;
       background-color: $button-dark-default;
       text-align: center;
+      text-overflow: ellipsis;
       border-radius: 4px;
       z-index: 1;
     }
@@ -271,7 +272,7 @@
 
       .cardName {
         width: 100%;
-        padding: 26px 72px;
+        padding: 26px 22px;
         font-size: 18px;
       }
 
@@ -359,7 +360,7 @@
 
       .cardName {
         width: 100%;
-        padding: 26px 72px;
+        padding: 26px 22px;
         font-size: 18px;
       }
 
