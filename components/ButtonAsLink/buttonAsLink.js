@@ -10,7 +10,7 @@ const ButtonAsLink = ({ route, buttonCaption, buttonStyle }) => {
 
   return (
     <button
-      className={`${styles[buttonStyle]} ${variables.button_1}`}
+      className={`${styles[buttonStyle]} ${variables.button1}`}
       onClick={() => router.push(route)}
     >
       <span>{buttonCaption}</span>

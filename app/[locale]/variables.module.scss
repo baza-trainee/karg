@@ -1,7 +1,7 @@
 @import './colors.scss';
 
 // Mixins
-@mixin font-styles($font-weight, $font-size, $line-height: normal) {
+@mixin font-styles($font-weight, $font-size, $line-height: 130%) {
   font-weight: $font-weight;
   font-size: $font-size;
   line-height: $line-height;
@@ -73,6 +73,7 @@
 
 .Text3 {
   @include font-styles(400, 16px);
+}
 .text4 {
   @include font-styles(300, 16px);
 }
@@ -165,17 +166,15 @@
     @include font-styles(700, 28px);
   }
 
-  .supportSubtitle2 {//BUG-M-T-110.11/1 
+  .supportSubtitle2 {
+    //BUG-M-T-110.11/1
     @include font-styles(700, 26px);
   }
 
-
-
-  .supportSubtitle2 {//BUG-M-T-110.11/1 
+  .supportSubtitle2 {
+    //BUG-M-T-110.11/1
     @include font-styles(700, 26px);
   }
-
-
 
   .h3,
   .mainSubtitle_shared,
