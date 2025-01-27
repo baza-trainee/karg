@@ -13,7 +13,7 @@ export default function SettingsBlock() {
         { 'title': 'Допомога', 'icon': <HelpIcon className={styles.icon} />, 'href': '/dashboard/support' },
     ];
 
-    const { setActiveSection } = useContext(AdminContext);
+    const { activeSection, setActiveSection } = useContext(AdminContext);
 
     const handleItemClick = (section) => {
         setActiveSection(section);
@@ -28,7 +28,11 @@ export default function SettingsBlock() {
 
             {dataList.map((a) => {
                 return (
-                    <div key={a.title} onClick={() => handleItemClick(a.title)}>
+                    <div
+                        key={a.title}
+                        onClick={() => handleItemClick(a.title)}
+                        className={a.title === activeSection ? styles.active : ''}
+                    >
                         <AsideItem
                             itemStyle={styles.item}
                             titleStyle={styles.title}

@@ -9,7 +9,9 @@ const NeedInfo = ({ title, subtitle, route, buttonCaption, isMainPageStyle = fal
     return (
         <div className={`${styles.desk} ${isMainPageStyle ? styles.mainPageDesk : ''}`}>
             <div className={styles.text}>
-                <div className={styles.title}>{title}</div>
+                <div className={styles.title}>
+                    {title}
+                </div>
                 <div className={styles.subtitle}>
                     {subtitle}
                 </div>

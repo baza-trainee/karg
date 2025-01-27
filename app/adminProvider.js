@@ -8,7 +8,7 @@ export const AdminContext = createContext({
     accountId: '',
     setAccountId: () => { },
     isDirector: '',
-    setIsDirector: () => { }
+    setIsDirector: () => { },
 });
 
 export const AdminProvider = ({ children }) => {

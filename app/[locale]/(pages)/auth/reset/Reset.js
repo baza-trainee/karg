@@ -2,10 +2,12 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import styles from './styles/reset.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
+
+const API_BASE_URL = 'https://karg-backend.onrender.com/karg';
 
 export default function ResetPassword() {
   const blockCaptions = {
@@ -18,7 +20,7 @@ export default function ResetPassword() {
   }
   const errorMessages = {
     'emptyFieldError': 'Це поле не може бути пустим',
-    'faildValidation': 'Ви ввели невідповідний пароль',
+    'failedValidation': 'Ви ввели невідповідний пароль',
     'passwordMismatch': 'Паролі не співпадають, переконайтеся, що обидва паролі введено правильно',
     'reusedPassword': 'Цей пароль вже використовувался раніше. Будь ласка, виберіть іншій пароль',
   }
@@ -51,7 +53,7 @@ export default function ResetPassword() {
     if (!value) {
       errorMessage = errorMessages.emptyFieldError;
     } else if (!passwordRegex.test(value)) {
-      errorMessage = errorMessages.faildValidation;
+      errorMessage = errorMessages.failedValidation;
     }
     return errorMessage;
   }
@@ -90,7 +92,6 @@ export default function ResetPassword() {
     }
   }
 
-
   const blurHandler = (e) => {
     const name = e.target.name;
     setForm({
@@ -101,7 +102,7 @@ export default function ResetPassword() {
 
   const sendNewPassword = async (data) => {
     try {
-      const response = await fetch('https://localhost:3000/api/resetPassword', {
+      const response = await fetch(`${API_BASE_URL}/authentication/resetpassword`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -119,25 +120,27 @@ export default function ResetPassword() {
     }
   };
 
+  const searchParams = useSearchParams();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPassword = form.password.value;
-    const { token } = router.query;
+    const token = searchParams.get('token')
     const data = {
-      token,
-      newPassword,
+      'password': newPassword,
+      'token': token
     };
+
     try {
       const result = await sendNewPassword(data);
-      //result = {success: boolean, message:'errorMessage'}
-      if (!result.success) {
+      if (result.status === 1) {
+        router.push('/dashboard');
+      } else {
         if (result.message === 'Password previously used') {
           setServerErrorMessage(errorMessages.reusedPassword)
         } else {
           console.error(result.message);
         }
-      } else {
-        router.push('/auth/dashboard');
       }
     } catch (error) {
       console.error(error);
@@ -198,7 +201,7 @@ export default function ResetPassword() {
           </div>
           {(form.repeatPassword.repeatPasswordVisited && form.repeatPassword.repeatPasswordError) && <p className={`${styles.mistmatchError} ${variables.font20w400}`}>{form.repeatPassword.repeatPasswordError}</p>}
           <button
-            className={`${!isFormValid ? styles.buttonSendDesabled : styles.buttonSend} ${variables.font20w700}`}
+            className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
             disabled={!isFormValid}
             type='submit'
           >{blockCaptions.save}

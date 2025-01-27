@@ -1,22 +1,55 @@
 @import "../../../../variables.module.scss";
 
-.active {
+.bg-gradient {
   background: linear-gradient(
     90deg,
     rgba(190, 190, 190, 0.5) 21.55%,
     rgba(190, 190, 190, 0) 88.74%
   );
-  backdrop-filter: blur(43.79999923706055px);
+  color: $text-white;
+  transition: color 0.3s ease-in-out;
+  backdrop-filter: blur(43.8px);
 }
+
+.wrapper,
+.title {
+  color: $button-disabled;
+  transition: color 0.3s ease-in-out;
+}
+
+.active {
+  @extend .bg-gradient;
+  &:hover {
+    background: inherit;
+  }
+
+  .title,
+  .wrapper {
+    color: $text-white;
+  }
+}
+
+.wrapper:hover {
+  @extend .bg-gradient;
+
+  .title {
+    color: $text-white;
+  }
+}
+
 .container {
-  min-width: 246px;
-  min-height: 960px;
-  height: fit-content;
+  width: 17%;
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
   background-color: $bg-dark;
+
   & .logo_name {
     width: 100%;
-    padding: 21px 27px;
+    padding: 21px 12.6%;
     border-bottom: 1px solid $button-disabled;
+    display: flex;
+    align-items: center;
   }
   & .aside_menu {
     width: 100%;
@@ -33,76 +66,69 @@
   }
 }
 
-.wrapper {
-  color: $button-disabled;
-  &:hover {
-    @extend .active;
-    color: $text-white;
-    transition: color 0.3s ease-in-out;
-  }
-
-  &:hover .title {
-    color: $text-white;
-    transition: color 0.3s ease-in-out;
-  }
-}
 .item_logo {
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 4px;
+  gap: 1.6%;
 }
+
 .item_header {
-  padding: 10px 10px 10px 32px;
+  padding: 10px 10px 10px 13%;
   color: $button-disabled;
 }
+
 .item {
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 16px 10px 16px 32px;
+  gap: 6.5%;
+  padding: 16px 4.07% 16px 13%;
 }
+
 .header {
-  font-size: 14px;
   font-weight: 300;
   line-height: 130%;
 }
+
 .title {
   cursor: pointer;
   color: $button-disabled;
-  font-size: 20px;
   font-weight: 500;
   line-height: 130%;
 }
+
 .logo_title {
   cursor: pointer;
-  max-width: 142px;
   text-align: center;
   color: $button-default;
-  font-size: 20px;
   font-weight: 600;
   line-height: 100%;
 }
 
 .logo {
   cursor: pointer;
-  font-size: 46px;
 }
+
 .icon {
   fill: currentColor;
-  cursor: pointer; 
-  font-size: 24px;
+  cursor: pointer;
 }
+
 .nestedStyle {
   gap: 8px;
-  padding: 12px 72px 12px 72px;
+  padding: 12px 29.27% 12px 29.27%;
   display: flex;
   flex-direction: column;
   background-color: $bg-dark;
   color: $button-disabled;
+  transition: color 0.3s ease-in-out;
+
   & li {
     border-bottom: 2px solid transparent;
-    &:hover {
+    transition: color 0.3s ease-in-out;
+    
+    &:hover,
+    &.activeNestedStyle {
       color: $text-white;
       border-bottom: 2px solid $button-default;
       width: fit-content;
@@ -110,10 +136,168 @@
     }
   }
 }
+
 .icon_shevronDown {
   fill: currentColor;
   width: 13px;
-  fill: currentColor;
   cursor: pointer;
   margin-left: 5px;
+}
+
+@media screen and (max-width: 1439px) {
+  .container {
+    min-width: 132px;
+  }
+
+  .title {
+    font-size: clamp(0.813rem, calc(0.813rem + 0.4vw), 1.25rem);
+  }
+
+  .logo_title {
+    width: 75.5%;
+    font-size: clamp(0.875rem, calc(0.675rem + 0.6vw), 1.25rem);
+  }
+
+  .logo {
+    width: 24.5%;
+  }
+
+  .logo_name {
+    display: flex;
+    align-items: center;
+    min-height: 110px;
+  }
+
+  .wrapper_logo {
+    width: 100%;
+  }
+
+  .header,
+  .nestedStyle {
+    font-size: clamp(0.75rem, calc(0.75rem + 0.2vw), 1rem);
+  }
+
+  .nestedStyle {
+    padding: 12px 26.5% 12px 26%;
+  }
+
+  .logo {
+    width: 24%;
+    font-size: clamp(2.25rem, calc(2.25rem + 1vw), 2.875rem);
+  }
+
+  .icon {
+    font-size: clamp(1.125rem, calc(1rem + 0.3vw), 1.25rem);
+  }
+
+  .item_logo {
+    gap: 4%;
+  }
+
+  .log_out {
+    padding-top: 16vh;
+  }
+}
+
+@media screen and (width: 1440px) {
+  .container {
+    min-width: 246px;
+    min-height: 960px;
+  }
+
+  .header {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .logo_title {
+    width: 142px;
+    font-size: 20px;
+  }
+
+  .logo {
+    font-size: 46px;
+  }
+
+  .icon {
+    font-size: 24px;
+  }
+
+  .item_logo {
+    gap: 4px;
+  }
+
+  .item_header {
+    padding: 10px 10px 10px 32px;
+  }
+
+  .item {
+    gap: 16px;
+    padding: 16px 10px 16px 32px;
+  }
+
+  .nestedStyle {
+    font-size: 18px;
+    gap: 8px;
+    padding: 12px 72px 12px 72px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .title {
+    font-size: clamp(1.25rem, calc(1rem + 0.4vw), 1.625rem);
+  }
+
+  .logo_title {
+    width: 74%;
+    font-size: clamp(1.25rem, calc(1rem + 0.3vw), 1.625rem);
+  }
+
+  .logo_name {
+    min-height: 94px;
+  }
+
+  .header,
+  .nestedStyle {
+    font-size: clamp(0.875rem, calc(0.875rem + 0.3vw), 1.125rem);
+  }
+
+  .logo {
+    font-size: clamp(2.875rem, calc(1rem + 2vw), 3.125rem);
+  }
+
+  .icon {
+    font-size: clamp(1.5rem, calc(1rem + 0.3vw), 1.75rem);
+  }
+
+  .item_logo {
+    gap: 4%;
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .title {
+    font-size: clamp(1.625rem, calc(1.625rem + 0.2vw), 2.5rem);
+  }
+
+  .logo_title {
+    width: 74%;
+    font-size: clamp(1.625rem, calc(1.625rem + 0.2vw), 2.5rem);
+  }
+
+  .logo_name {
+    min-height: 135px;
+  }
+
+  .header,
+  .nestedStyle {
+    font-size: clamp(0.875rem, calc(0.875rem + 0.4vw), 2rem);
+  }
+
+  .logo {
+    font-size: clamp(3.125rem, calc(1rem + 2vw), 3.75rem);
+  }
 }

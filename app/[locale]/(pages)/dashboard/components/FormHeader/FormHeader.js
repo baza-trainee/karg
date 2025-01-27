@@ -8,8 +8,8 @@ const FormHeader = memo(({ title, customTitle, customHeader, language, toggleLan
             <p className={`${styles.title} ${variables.font24w700} ${customTitle}`}> {title}</p >
             {language ?
                 <div className={`${styles.languageSwitcher} ${language === 'ua' ? styles.ua : styles.en} ${variables.font20w700}`}>
-                    <button className={`${ukrLangClassName} ${language === 'ua' ? styles.selectedLanguage : ''}`} onClick={toggleLanguage}>{ukrLng}</button>
-                    <button className={`${engLangClassName} ${language === 'en' ? styles.selectedLanguage : ''}`} onClick={toggleLanguage}>{engLng}</button>
+                    <button className={`${ukrLangClassName} ${language === 'ua' ? styles.selectedLanguage : ''}`} onClick={(e) => toggleLanguage(e, 'ua')}>{ukrLng}</button>
+                    <button className={`${engLangClassName} ${language === 'en' ? styles.selectedLanguage : ''}`} onClick={(e) => toggleLanguage(e, 'en')}>{engLng}</button>
                 </div> : null}
         </div>
     );

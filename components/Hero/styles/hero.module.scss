@@ -5,6 +5,7 @@
   background-color: #eadeff;
 
   &Title {
+    top: 10px;
     position: absolute;
     left: 0;
     right: 0;
@@ -24,18 +25,18 @@
 
     @media screen and (min-width: 768px) {
       font-size: 46px;
-      top: 20px;
+      top: 28px;
     }
 
     @media screen and (min-width: 1200px) {
       right: 52px;
-      top: 24px;
+      top: 64px;
       left: auto;
       color: $button-default;
     }
 
     @media screen and (min-width: 1440px) {
-      top: 224px;
+      top: 64px;
       font-size: 56px;
       letter-spacing: 1.12px;
     }

@@ -6,11 +6,9 @@ import PartnerForm from '../PartnerForm/PartnerForm';
 import styles from "./styles/partnerList.module.scss";
 import stylesBtn from "@/components/Button/styles/button.module.scss";
 import { CreateIcon, TrashIcon } from '@/public/assets/icons';
-import variables from "@/app/[locale]/variables.module.scss";
 import ModalContext from '@/app/ModalContext';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import { deletePartner } from "../api/utilsFetchPartnerData";
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -23,9 +21,6 @@ export default function PartnerList() {
     const { loadPartners, isLoading, setIsLoading, partners, setPartners } = useContext(PartnerContext);
     const { showModal } = useContext(ModalContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
-    const { isDirector } = useContext(AdminContext);
-
-    const currentRole = (isDirector === 'true') ? true : false;
 
     useEffect(() => {
         if (!isLoading) {
@@ -39,13 +34,12 @@ export default function PartnerList() {
         setIsLoading(false);
     };
 
-
     return (
         <div className={styles.container}>
             <div className={styles.partnerTitle}>
-                <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.nameTitle} ${variables.font20w700}`}>Назва</p>
-                <p className={`${styles.uriTitle} ${variables.font20w700}`}>Посилання</p>
+                <p className={styles.photoTitle}>Фото</p>
+                <p className={styles.nameTitle}>Назва</p>
+                <p className={styles.uriTitle}>Посилання</p>
             </div>
             {
                 isLoading ? < Spinner /> : (
@@ -69,13 +63,13 @@ export default function PartnerList() {
                                 >
                                     <CreateIcon
                                         className={styles.create_icon}
-                                        onClick={currentRole ? () => {
+                                        onClick={() => {
                                             showModal('generic', <PartnerForm type='edit' partnerData={partner} />)
-                                        } : null}
+                                        }}
                                     />
                                     <TrashIcon
                                         className={styles.trash_icon}
-                                        onClick={currentRole ? () => {
+                                        onClick={() => {
                                             showModal('confirmation',
                                                 <ConfirmationDialogTrigger
                                                     confirmationTitle={confirmationTitle}
@@ -87,7 +81,7 @@ export default function PartnerList() {
                                                     actionOnConfirm={handleDeletePartner}
                                                     actionArgs={partner.id}
                                                 />)
-                                        } : null}
+                                        }}
                                     />
                                 </PartnerItem>
                             );

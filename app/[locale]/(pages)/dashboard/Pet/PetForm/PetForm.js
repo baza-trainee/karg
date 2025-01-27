@@ -100,9 +100,9 @@ function PetForm({ type = 'create', petData = {} }) {
         setIsLoading(false);
     };
 
-    const toggleLanguage = async (e) => {
+    const toggleLanguage = async (e, selectedLanguage) => {
         e.preventDefault();
-        setLanguage((prev) => prev === 'ua' ? 'en' : 'ua');
+        setLanguage((prev) => (prev !== selectedLanguage ? selectedLanguage : prev));
     }
 
     const handleImageUploaded = (newImageUrl) => {

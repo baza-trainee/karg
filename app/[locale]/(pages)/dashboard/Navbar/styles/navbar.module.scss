@@ -4,14 +4,53 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
   background-color: $bg-lightgray;
-  min-width: 1194px;
-  padding: 20px 48px 20px 48px;
-  border-bottom: 1px solid #251C33;
+  padding: 20px 3.33% 20px 3.33%;
+  border-bottom: 1px solid #251c33;
   & .active_section {
     color: $button-dark-active;
-    font-size: 32px;
     font-weight: 700;
     line-height: 41.6px;
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .container {
+    min-height: 110px;
+    width: clamp(640px, 100%, 1194px);
+  }
+
+  .container .active_section {
+    font-size: clamp(1.375rem, calc(1.375rem + 0.4vw), 2rem);
+  }
+}
+
+@media screen and (width: 1440px) {
+  .container {
+    padding: 20px 48px 20px 48px;
+    width: 1194px;
+  }
+
+  .container .active_section {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .container {
+    min-height: 94px;
+    width: clamp(1194px, 100%, 100%);
+  }
+
+  .container .active_section {
+    font-size: clamp(2rem, calc(1rem + 1vw), 2.875rem);
+  }
+}
+
+@media screen and (min-width: 1920px) {
+  .container {
+    min-height: 135px;
+    width: 100%;
   }
 }

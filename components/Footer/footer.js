@@ -1,5 +1,5 @@
 "use client";
-
+import { AdminContext } from "@/app/adminProvider";
 import styles from "./styles/footer.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
 
