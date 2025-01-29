@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export default async function fetchInitialCards(locale, endpoint, method) {
+export default async function FetchInitialCards(locale, endpoint, method) {
     const BASE_URL = 'https://karg-backend.onrender.com/karg';
     const currentPage = 1;
     const cultureCode = locale === 'uk' ? 'ua' : 'en';
@@ -14,6 +14,9 @@ export default async function fetchInitialCards(locale, endpoint, method) {
 
             case "animal":
                 return response.data.animals || [];
+
+            case "yearresult":
+                return response.data.yearsResults || [];
         }
 
     } catch (error) {
