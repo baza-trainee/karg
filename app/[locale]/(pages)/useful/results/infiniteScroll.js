@@ -16,7 +16,7 @@ const InfiniteScroll = ({ locale }) => {
     useEffect(() => {
         if (fetching && currentPage <= totalPages) {
             // console.log('fetch');
-            axios.get(`https://karg-backend-rkb4.onrender.com/karg/advice/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
+            axios.get(`https://karg-backend.onrender.com/karg/yearresult/getall?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {
                         const uniqueCards = new Set([...prevCards, ...response.data.advices]);
