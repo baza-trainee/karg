@@ -1,10 +1,10 @@
-import fetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
+import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
 
 
 
 export default async function InitialFetch({ locale }) {
-    const initialCards = await fetchInitialCards(locale, 'advice', 'getall');
+    const initialCards = await FetchInitialCards(locale, 'advice', 'getall');
 
     return (
         <>

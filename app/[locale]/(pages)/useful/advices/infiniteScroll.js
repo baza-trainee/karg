@@ -48,7 +48,7 @@ const InfiniteScroll = ({ locale }) => {
 
     return (
         <>
-            <MultiPageCardItem data={cards} buttonVariant={'button'} />
+            <MultiPageCardItem data={cards} buttonVariant={'link'} />
         </>
     );
 };
