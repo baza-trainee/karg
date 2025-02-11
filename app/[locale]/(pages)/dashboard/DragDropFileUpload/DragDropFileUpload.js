@@ -1,7 +1,6 @@
 'use client'
 import { useState, useRef } from 'react';
 import styles from "./dragDropFileUpload.module.scss";
-import uploadImage from '../../../../api/uploadImage/route';
 
 const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText, placeholderTextClassName = '', className = '', accept = 'image/*', style = {} }) => {
     const [file, setFile] = useState(null);
@@ -11,6 +10,31 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText,
         e.preventDefault();
     };
 
+    const uploadImage = async (file) => {
+        if (!(file instanceof File)) {
+            throw new Error("Provided argument is not a File");
+        }
+        const formData = new FormData();
+        formData.append('file', file);
+
+        try {
+            const response = await fetch('/api/uploadImage', {
+                method: 'POST',
+                body: formData,
+            });
+            const data = await response.json();
+            if (response.ok) {
+                console.log('Upload successful:', data);
+                return data.url;
+            } else {
+                throw new Error(data.error.message || 'Loading error');
+            }
+        } catch (error) {
+            console.error('Error uploading file:', error);
+            throw error;
+        }
+    };
+    
     const handleFileUpload = async (file) => {
         try {
             const url = await uploadImage(file);

@@ -8,7 +8,7 @@ const nextConfig = {
         return config;
     },
     images: {
-        domains: ['i.ibb.co', 'iili.io', 'freeimage.host'],
+        domains: ['i.ibb.co', 'iili.io', 'freeimage.host', 'res.cloudinary.com'],
         remotePatterns: [
             {
                 protocol: 'https',
