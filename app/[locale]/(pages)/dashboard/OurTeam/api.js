@@ -1,8 +1,9 @@
-const API_BASE_URL_RESCUER = 'https://karg-backend.onrender.com/karg/rescuer';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_RESCUER = '/karg/rescuer';
 
 export const getRescuerById = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_RESCUER}/getbyid?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getbyid?id=${id}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -18,7 +19,7 @@ export const getRescuerById = async (id) => {
 
 export const addRescuer = async (rescuerData) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_RESCUER}/add`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/add`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -35,7 +36,7 @@ export const addRescuer = async (rescuerData) => {
 
 export const updateRescuerInfo = async (id, updates) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_RESCUER}/update?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/update?id=${id}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -52,7 +53,7 @@ export const updateRescuerInfo = async (id, updates) => {
 
 export const getAllRescuers = async () => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_RESCUER}/getall`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getall`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -68,7 +69,7 @@ export const getAllRescuers = async () => {
 
 export const deleteRescuerInfo = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_RESCUER}/delete?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
             'Accept': 'application/json',

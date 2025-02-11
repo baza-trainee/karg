@@ -7,7 +7,8 @@ import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import styles from './styles/reset.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 
-const API_BASE_URL = 'https://karg-backend.onrender.com/karg';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_AUTH = '/karg/authentication';
 
 export default function ResetPassword() {
   const blockCaptions = {
@@ -102,7 +103,7 @@ export default function ResetPassword() {
 
   const sendNewPassword = async (data) => {
     try {
-      const response = await fetch(`${API_BASE_URL}/authentication/resetpassword`, {
+      const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/resetpassword`, {
         method: "POST",
         headers: {
           'Content-Type': 'application/json',
@@ -125,7 +126,8 @@ export default function ResetPassword() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const newPassword = form.password.value;
-    const token = searchParams.get('token')
+    const token = searchParams.get('token');
+    localStorage.setItem('auth-token', token);
     const data = {
       'password': newPassword,
       'token': token

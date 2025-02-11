@@ -1,7 +1,8 @@
-const API_BASE_URL_FAQ = 'https://karg-backend.onrender.com/karg/faq';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_FAQ = '/karg/faq';
 
 export const getFAQById = async (id, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_FAQ}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -16,7 +17,7 @@ export const getFAQById = async (id, cultureCode) => {
 
 export const addFAQItem = async (faqItemData) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_FAQ}/add`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/add`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -33,7 +34,7 @@ export const addFAQItem = async (faqItemData) => {
 
 export const updateFAQItem = async (id, updates) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_FAQ}/update?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/update?id=${id}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -49,7 +50,7 @@ export const updateFAQItem = async (id, updates) => {
 };
 
 export const getAllFAQ = async (page, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_FAQ}/getall?cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/getall?cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -64,7 +65,7 @@ export const getAllFAQ = async (page, cultureCode) => {
 
 export const deleteFAQ = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_FAQ}/delete?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
             'Accept': 'application/json',

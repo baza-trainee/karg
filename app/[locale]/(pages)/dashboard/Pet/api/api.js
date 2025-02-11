@@ -1,7 +1,9 @@
-const API_BASE_URL_PET = 'https://karg-backend.onrender.com/karg/animal';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_PET = '/karg/animal';
 
 export const getAnimalById = async (id, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_PET}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
+
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -15,7 +17,7 @@ export const getAnimalById = async (id, cultureCode) => {
 
 export const addAnimal = async (animalData) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PET}/add`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/add`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -32,7 +34,7 @@ export const addAnimal = async (animalData) => {
 
 export const updateAnimal = async (id, updates) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PET}/update?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/update?id=${id}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -48,7 +50,7 @@ export const updateAnimal = async (id, updates) => {
 };
 
 export const getAllAnimals = async (page, categoryQuery, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_PET}/getall?Page=${page}&PageSize=10${categoryQuery}&cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/getall?Page=${page}&PageSize=10${categoryQuery}&cultureCode=${cultureCode}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',
@@ -62,7 +64,7 @@ export const getAllAnimals = async (page, categoryQuery, cultureCode) => {
 
 export const deleteAnimal = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PET}/delete?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
             'Authorization': `Bearer ${authToken}`

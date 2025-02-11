@@ -8,11 +8,12 @@ import styles from './styles/restore.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
 import EmailStatusMessage from "./EmailStatusMessage/EmailStatusMessage"
 
-const API_BASE_URL = 'https://karg-backend.onrender.com/karg';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_AUTH = '/karg/authentication';
 
 export const sendEmailForm = async (data) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/authentication/sendresetpasswordemail`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/sendresetpasswordemail`, {
       method: "POST",
       body: JSON.stringify(data),
       headers: {
