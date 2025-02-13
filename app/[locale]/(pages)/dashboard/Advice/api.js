@@ -1,6 +1,8 @@
-const API_BASE_URL_ADVICE = 'https://karg-backend.onrender.com/karg/advice';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_ADVICE = '/karg/advice';
+
 export const getAdviceById = async (id, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_ADVICE}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -15,7 +17,7 @@ export const getAdviceById = async (id, cultureCode) => {
 
 export const addAdvice = async (adviceData) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_ADVICE}/add`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/add`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -32,7 +34,7 @@ export const addAdvice = async (adviceData) => {
 
 export const updateAdvice = async (id, updates) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_ADVICE}/update?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/update?id=${id}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -48,7 +50,7 @@ export const updateAdvice = async (id, updates) => {
 };
 
 export const getAllAdvices = async (page, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL_ADVICE}/getall?Page=${page}&PageSize=6&cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/getall?Page=${page}&PageSize=6&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',
@@ -63,7 +65,7 @@ export const getAllAdvices = async (page, cultureCode) => {
 
 export const deleteAdvice = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_ADVICE}/delete?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
             'Accept': 'application/json',

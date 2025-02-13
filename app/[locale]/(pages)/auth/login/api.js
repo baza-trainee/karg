@@ -1,8 +1,10 @@
-const API_BASE_URL = 'https://karg-backend.onrender.com/karg';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_AUTH = '/karg/authentication';
+const API_ENDPOINT_RESCUER = '/karg/rescuer';
 
 export const loginUser = async (email, password) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}/authentication/login`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/login`, {
         method: 'POST',
         body: JSON.stringify({ email: email, password: password }),
         headers: {
@@ -16,7 +18,7 @@ export const loginUser = async (email, password) => {
 
 export const logoutUser = async () => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}/authentication/logout`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/logout`, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -32,7 +34,7 @@ export const logoutUser = async () => {
 
 export const getUserById = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}/rescuer/getbyid?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getbyid?id=${id}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',

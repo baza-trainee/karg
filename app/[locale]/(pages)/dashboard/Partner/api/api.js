@@ -1,8 +1,9 @@
-const API_BASE_URL_PARTNER = 'https://karg-backend.onrender.com/karg/partner';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+const API_ENDPOINT_PARTNER = '/karg/partner';
 
 export const getAllPartners = async () => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PARTNER}/getall`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PARTNER}/getall`, {
         headers: {
             'Authorization': `Bearer ${authToken}`
         }
@@ -15,7 +16,7 @@ export const getAllPartners = async () => {
 
 export const addPartner = async (partnerData) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PARTNER}/add`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PARTNER}/add`, {
         method: "POST",
         headers: {
             'Accept': 'application/json',
@@ -32,7 +33,7 @@ export const addPartner = async (partnerData) => {
 
 export const updatePartner = async (id, updates) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PARTNER}/update?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PARTNER}/update?id=${id}`, {
         method: "PATCH",
         headers: {
             'Accept': 'application/json',
@@ -47,10 +48,9 @@ export const updatePartner = async (id, updates) => {
     return response.json();
 };
 
-
 export const deletePartnerApi = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PARTNER}/delete?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PARTNER}/delete?id=${id}`, {
         method: "DELETE",
         headers: {
             'Authorization': `Bearer ${authToken}`
@@ -66,7 +66,7 @@ export const deletePartnerApi = async (id) => {
 
 export const getPartnerById = async (id) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL_PARTNER}/getbyid?id=${id}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PARTNER}/getbyid?id=${id}`, {
         headers: {
             'Authorization': `Bearer ${authToken}`
         }
