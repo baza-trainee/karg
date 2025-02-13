@@ -55,7 +55,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             setIsLoading(true);
             try {
                 const data = await fetchTeamUserData(accountId, type);
-                console.log(isDirector);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -79,7 +78,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const handleSubmit = async (e) => {
 
 
-        const distructuredFormData = {
+        const destructuredFormData = {
             id: formData.id ? formData.id : accountId,
             fullName: formData.fullName_name + " " + formData.fullName_lastName,
             email: formData.email,
@@ -87,7 +86,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             images: formData.images,
         };
 
-        const distructuredOriginalData = {
+        const destructuredOriginalData = {
             id: originalData.id ? originalData.id : accountId,
             fullName: originalData.fullName_name + " " + originalData.fullName_lastName,
             email: originalData.email,
@@ -99,8 +98,8 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         setIsLoading(true);
         await submitTeamMemberData(
             //type,
-            distructuredFormData,
-            distructuredOriginalData,
+            destructuredFormData,
+            destructuredOriginalData,
             hideModal,
             showModal,
             setHasUnsavedChanges,

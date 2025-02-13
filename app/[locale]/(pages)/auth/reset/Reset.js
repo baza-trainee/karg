@@ -1,11 +1,13 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from "next/navigation";
 import { Logo, HideShow, EyeSlashFill } from '@/public/assets/icons';
 import styles from './styles/reset.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
+import { AdminContext } from '@/app/adminProvider';
+import Spinner from "@/components/Spinner/Spinner";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const API_ENDPOINT_AUTH = '/karg/authentication';
@@ -23,7 +25,6 @@ export default function ResetPassword() {
     'emptyFieldError': 'Це поле не може бути пустим',
     'failedValidation': 'Ви ввели невідповідний пароль',
     'passwordMismatch': 'Паролі не співпадають, переконайтеся, що обидва паролі введено правильно',
-    'reusedPassword': 'Цей пароль вже використовувался раніше. Будь ласка, виберіть іншій пароль',
   }
 
   const router = useRouter();
@@ -35,6 +36,7 @@ export default function ResetPassword() {
     password: { value: '', passwordError: '', passwordVisited: false, passwordVisible: false },
     repeatPassword: { value: '', repeatPasswordError: '', repeatPasswordVisited: false, passwordVisible: false },
   });
+  const { isLoading, setIsLoading } = useContext(AdminContext);
   const password = form.password.value;
   const repeatPassword = form.repeatPassword.value;
 
@@ -112,7 +114,8 @@ export default function ResetPassword() {
         body: JSON.stringify(data),
       });
       if (!response.ok) {
-        throw new Error("Failed to change password");
+        const errorData = await response.json();
+        throw new Error(errorData.message || "Failed to change password");
       }
       return await response.json();
     } catch (error) {
@@ -134,82 +137,91 @@ export default function ResetPassword() {
     };
 
     try {
+      setIsLoading(true);
       const result = await sendNewPassword(data);
+
       if (result.status === 1) {
         router.push('/dashboard');
       } else {
-        if (result.message === 'Password previously used') {
-          setServerErrorMessage(errorMessages.reusedPassword)
-        } else {
-          console.error(result.message);
-        }
+        setServerErrorMessage(result.message)
       }
     } catch (error) {
+      setServerErrorMessage(error.message);
       console.error(error);
+
+    } finally {
+      setIsLoading(false);
     }
   }
 
   return (
-    <div className={styles.container}>
-      <Link href="/"><Logo className={styles.logo} /></Link>
-      <form onSubmit={handleSubmit}>
-        <div className={styles.form}>
-          <div className={styles.email}>
-            <p className={`${styles.title} ${variables.font24w700}`}>{blockCaptions.pageTitle}</p>
-            <p className={`${variables.font16w300} ${serverErrorMessage ? styles.error : styles.subtitle}`}>
-              {serverErrorMessage || blockCaptions.pageSubtitle}
-            </p>
+    isLoading ? (
+      < Spinner />
+    ) : (
+      <div className={styles.container}>
+        <Link href="/"><Logo className={styles.logo} /></Link>
+        <form onSubmit={handleSubmit}>
+          <div className={styles.form}>
+            <div className={styles.email}>
+              <p className={`${styles.title} ${variables.font24w700}`}>{blockCaptions.pageTitle}</p>
+              <p className={`${variables.font16w300} ${serverErrorMessage ? styles.error : styles.subtitle}`}>
+                {blockCaptions.pageSubtitle}
+              </p>
+            </div>
+            <div className={styles.password}>
+              <label htmlFor='password' className={variables.font20w400}>
+                {blockCaptions.passwordLabel}
+                <input
+                  className={`${(form.password.passwordVisited && form.password.passwordError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
+                  type={isPasswordVisible ? 'text' : 'password'}
+                  aria-label='password'
+                  id='password'
+                  name='password'
+                  placeholder={blockCaptions.passwordPlaceholder}
+                  value={password}
+                  onChange={(e) => passwordHandler(e)}
+                  onBlur={(e) => blurHandler(e)}
+                />
+                {isPasswordVisible ? (
+                  <HideShow className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
+                ) : (
+                  <EyeSlashFill className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />)}
+              </label>
+              {(form.password.passwordVisited && form.password.passwordError) && <p className={`${styles.error} ${variables.font14w400}`}>{form.password.passwordError}</p>}
+            </div>
+            <div className={styles.password}>
+              <label htmlFor='repeatPassword' className={variables.font20w400}>
+                {blockCaptions.repeatPasswordLabel}
+                <input
+                  className={`${(form.repeatPassword.repeatPasswordVisited && form.repeatPassword.repeatPasswordError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
+                  type={isRepeatPasswordVisible ? 'text' : 'password'}
+                  aria-label='repeatPassword'
+                  id='repeatPassword'
+                  name='repeatPassword'
+                  placeholder={blockCaptions.passwordPlaceholder}
+                  value={repeatPassword}
+                  onChange={(e) => passwordHandler(e)}
+                  onBlur={(e) => blurHandler(e)}
+                />
+                {isRepeatPasswordVisible ? (
+                  <HideShow className={styles.icon} onClick={() => setIsRepeatPasswordVisible(!isRepeatPasswordVisible)} />
+                ) : (
+                  <EyeSlashFill className={styles.icon} onClick={() => setIsRepeatPasswordVisible(!isRepeatPasswordVisible)} />)}
+              </label>
+            </div>
+            {(serverErrorMessage || (form.repeatPassword.repeatPasswordVisited && form.repeatPassword.repeatPasswordError)) && (
+              <p className={`${styles.mismatchError} ${variables.font20w400}`}>
+                {serverErrorMessage || form.repeatPassword.repeatPasswordError}
+              </p>
+            )}
+            <button
+              className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
+              disabled={!isFormValid}
+              type='submit'
+            >{blockCaptions.save}
+            </button>
           </div>
-          <div className={styles.password}>
-            <label htmlFor='password' className={variables.font20w400}>
-              {blockCaptions.passwordLabel}
-              <input
-                className={`${(form.password.passwordVisited && form.password.passwordError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
-                type={isPasswordVisible ? 'text' : 'password'}
-                aria-label='password'
-                id='password'
-                name='password'
-                placeholder={blockCaptions.passwordPlaceholder}
-                value={password}
-                onChange={(e) => passwordHandler(e)}
-                onBlur={(e) => blurHandler(e)}
-              />
-              {isPasswordVisible ? (
-                <HideShow className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
-              ) : (
-                <EyeSlashFill className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />)}
-            </label>
-            {(form.password.passwordVisited && form.password.passwordError) && <p className={`${styles.error} ${variables.font14w400}`}>{form.password.passwordError}</p>}
-          </div>
-          <div className={styles.password}>
-            <label htmlFor='repeatPassword' className={variables.font20w400}>
-              {blockCaptions.repeatPasswordLabel}
-              <input
-                className={`${(form.repeatPassword.repeatPasswordVisited && form.repeatPassword.repeatPasswordError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
-                type={isRepeatPasswordVisible ? 'text' : 'password'}
-                aria-label='repeatPassword'
-                id='repeatPassword'
-                name='repeatPassword'
-                placeholder={blockCaptions.passwordPlaceholder}
-                value={repeatPassword}
-                onChange={(e) => passwordHandler(e)}
-                onBlur={(e) => blurHandler(e)}
-              />
-              {isRepeatPasswordVisible ? (
-                <HideShow className={styles.icon} onClick={() => setIsRepeatPasswordVisible(!isRepeatPasswordVisible)} />
-              ) : (
-                <EyeSlashFill className={styles.icon} onClick={() => setIsRepeatPasswordVisible(!isRepeatPasswordVisible)} />)}
-            </label>
-          </div>
-          {(form.repeatPassword.repeatPasswordVisited && form.repeatPassword.repeatPasswordError) && <p className={`${styles.mistmatchError} ${variables.font20w400}`}>{form.repeatPassword.repeatPasswordError}</p>}
-          <button
-            className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
-            disabled={!isFormValid}
-            type='submit'
-          >{blockCaptions.save}
-          </button>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>)
   )
 }

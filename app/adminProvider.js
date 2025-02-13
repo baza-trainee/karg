@@ -9,12 +9,15 @@ export const AdminContext = createContext({
     setAccountId: () => { },
     isDirector: '',
     setIsDirector: () => { },
+    isLoading: false,
+    setIsLoading: () => { },
 });
 
 export const AdminProvider = ({ children }) => {
     const [accountId, setAccountId] = useState([]);
     const [activeSection, setActiveSection] = useState('');
     const [isDirector, setIsDirector] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSetAccountId = (id) => {
         setAccountId(id);
@@ -69,6 +72,8 @@ export const AdminProvider = ({ children }) => {
         setAccountId: handleSetAccountId,
         isDirector,
         setIsDirector: handleSetIsDirector,
+        isLoading,
+        setIsLoading,
     };
 
     return (
