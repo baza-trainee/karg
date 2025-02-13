@@ -1,12 +1,14 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
 import { Logo } from '@/public/assets/icons';
 import styles from './styles/restore.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
-import EmailStatusMessage from "./EmailStatusMessage/EmailStatusMessage"
+import EmailStatusMessage from "./EmailStatusMessage/EmailStatusMessage";
+import { AdminContext } from '@/app/adminProvider';
+import Spinner from "@/components/Spinner/Spinner";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const API_ENDPOINT_AUTH = '/karg/authentication';
@@ -47,6 +49,7 @@ export default function Restore() {
   const [isFormValid, setIsFormValid] = useState(false);
   const [emailStatus, setEmailStatus] = useState(null);
   const [emailSent, setEmailSent] = useState(false);
+  const { isLoading, setIsLoading } = useContext(AdminContext);
 
   useEffect(() => {
     setIsFormValid(email && !emailError);
@@ -81,6 +84,7 @@ export default function Restore() {
     if (isFormValid) {
       const emailObj = { 'email': email }
       try {
+        setIsLoading(true);
         const response = await sendEmailForm(emailObj);
 
         if (response && response.status === 1) {
@@ -94,6 +98,7 @@ export default function Restore() {
 
       } finally {
         setEmailSent(true);
+        setIsLoading(false);
       }
     }
   }
@@ -103,48 +108,52 @@ export default function Restore() {
   }
 
   return (
-    <>
-      {(!emailSent) ? (
-        <div className={styles.container}>
-          <Link href="/"><Logo className={styles.logo} /></Link>
-          <form onSubmit={handleSubmit}>
-            <div className={styles.form}>
-              <div className={styles.email}>
-                <p className={`${styles.title} ${variables.font24w700}`}>{blockTitles.pageTitle}</p>
-                <p className={`${styles.subtitle} ${variables.font16w300}`}>{blockTitles.pageSubtitle}</p>
+    isLoading ? (
+      < Spinner />
+    ) : (
+      <>
+        {(!emailSent) ? (
+          <div className={styles.container}>
+            <Link href="/"><Logo className={styles.logo} /></Link>
+            <form onSubmit={handleSubmit}>
+              <div className={styles.form}>
+                <div className={styles.email}>
+                  <p className={`${styles.title} ${variables.font24w700}`}>{blockTitles.pageTitle}</p>
+                  <p className={`${styles.subtitle} ${variables.font16w300}`}>{blockTitles.pageSubtitle}</p>
+                </div>
+                <label htmlFor='email' className={variables.font20w400}>{blockTitles.addressLabel}
+                  <input
+                    className={`${(emailDirty && emailError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
+                    aria-label='email'
+                    name='email'
+                    id='email'
+                    type='email'
+                    value={email}
+                    placeholder={blockTitles.emailPlaceholder}
+                    onChange={(e) => emailHandler(e)}
+                    onBlur={(e) => blurHandler(e)}
+                  />
+                  {(emailDirty && emailError) && <p className={`${styles.error} ${variables.font14w400}`}>{emailError}</p>}
+                </label>
+                <button
+                  className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
+                  type='submit'
+                  disabled={!isFormValid}
+                >{blockTitles.sendNewEmail}
+                </button>
+                <button
+                  className={`${styles.goToLogin} ${variables.font20w700}`}
+                  onClick={() => router.push('/auth/login')}
+                >{blockTitles.goToLogin}
+                </button>
               </div>
-              <label htmlFor='email' className={variables.font20w400}>{blockTitles.addressLabel}
-                <input
-                  className={`${(emailDirty && emailError) ? styles.errorBorder : styles.ordinaryBorder} ${variables.font18w500}`}
-                  aria-label='email'
-                  name='email'
-                  id='email'
-                  type='email'
-                  value={email}
-                  placeholder={blockTitles.emailPlaceholder}
-                  onChange={(e) => emailHandler(e)}
-                  onBlur={(e) => blurHandler(e)}
-                />
-                {(emailDirty && emailError) && <p className={`${styles.error} ${variables.font14w400}`}>{emailError}</p>}
-              </label>
-              <button
-                className={`${!isFormValid ? styles.buttonSendDisabled : styles.buttonSend} ${variables.font20w700}`}
-                type='submit'
-                disabled={!isFormValid}
-              >{blockTitles.sendNewEmail}
-              </button>
-              <button
-                className={`${styles.goToLogin} ${variables.font20w700}`}
-                onClick={() => router.push('/auth/login')}
-              >{blockTitles.goToLogin}
-              </button>
-            </div>
-          </form>
-        </div>
-      ) : (
-        <EmailStatusMessage emailStatus={emailStatus} handleResend={handleSubmit} handleReturnToRestore={handleReturnToRestore} />
-      )}
-    </>
+            </form>
+          </div>
+        ) : (
+          <EmailStatusMessage emailStatus={emailStatus} handleResend={handleSubmit} handleReturnToRestore={handleReturnToRestore} />
+        )}
+      </>
+    )
   );
 }
 

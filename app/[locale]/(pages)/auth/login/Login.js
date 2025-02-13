@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import authService from './authService';
 import { AdminContext } from '@/app/adminProvider';
 import LoginForm from './LoginForm';
+import Spinner from "@/components/Spinner/Spinner";
 
 export default function LoginPage() {
 
@@ -32,9 +33,7 @@ export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(true);
   const [isFormValid, setIsFormValid] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
-  const { setAccountId } = useContext(AdminContext);
-  const { setIsDirector } = useContext(AdminContext);
-  const { setActiveSection } = useContext(AdminContext);
+  const { setAccountId, setIsDirector, setActiveSection, isLoading, setIsLoading } = useContext(AdminContext);
   const [form, setForm] = useState({
     email: { value: '', emailError: '' },
     password: { value: '', passwordError: '' },
@@ -101,6 +100,7 @@ export default function LoginPage() {
       return;
     }
     try {
+      setIsLoading(true);
       const response = await authService.login(form.email.value, form.password.value);
 
       if (response && response.status === 1) {
@@ -117,40 +117,43 @@ export default function LoginPage() {
         setActiveSection('Мій акаунт');
         router.push("/dashboard", { email: form.email.value });
       }
-      if ((!response.status)) {
-        setLoginStatus(errorMessages.authError);
+      else if (response.status === 400 || (!response.status)) {
+        setLoginStatus(response.message || errorMessages.authError);
       }
-      if ((response.ok === 500)) {
-        setLoginStatus("Internal Server Error.");
+      else if ((response.status === 500)) {
+        setLoginStatus(response.message || "Виникла помилка на сервері. Будь ласка, спробуйте пізніше.");
       }
-      else if (response.status === 400) {
-        setLoginStatus(errorMessages.authError);
-      }
-    }
-    catch (error) {
+    } catch (error) {
       setLoginStatus(errorMessages.authError);
       console.error("Error:", error);
+
+    } finally {
+      setIsLoading(false);
     }
   };
 
   return (
-    <LoginForm
-      blockCaptions={blockCaptions}
-      email={email}
-      emailVisited={emailVisited}
-      emailError={form.email.emailError}
-      handleEmailChange={emailHandler}
-      password={password}
-      onEmailBlur={blurHandler}
-      onPasswordBlur={blurHandler}
-      handlePasswordChange={passwordHandler}
-      passwordVisited={passwordVisited}
-      passwordError={form.password.passwordError}
-      isPasswordVisible={isPasswordVisible}
-      onTogglePasswordVisibility={() => setIsPasswordVisible((prev) => !prev)}
-      loginStatus={loginStatus}
-      isFormValid={isFormValid}
-      handleSubmit={handleSubmit}
-    />
+    isLoading ? (
+      < Spinner />
+    ) : (
+      <LoginForm
+        blockCaptions={blockCaptions}
+        email={email}
+        emailVisited={emailVisited}
+        emailError={form.email.emailError}
+        handleEmailChange={emailHandler}
+        password={password}
+        onEmailBlur={blurHandler}
+        onPasswordBlur={blurHandler}
+        handlePasswordChange={passwordHandler}
+        passwordVisited={passwordVisited}
+        passwordError={form.password.passwordError}
+        isPasswordVisible={isPasswordVisible}
+        onTogglePasswordVisibility={() => setIsPasswordVisible((prev) => !prev)}
+        loginStatus={loginStatus}
+        isFormValid={isFormValid}
+        handleSubmit={handleSubmit}
+      />
+    )
   )
 }
