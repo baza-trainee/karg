@@ -1,5 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_PET = '/karg/animal';
+const API_ENDPOINT_PET = '/api/animal';
 
 export const getAnimalById = async (id, cultureCode) => {
 

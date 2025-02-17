@@ -1,6 +1,6 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_AUTH = '/karg/authentication';
-const API_ENDPOINT_RESCUER = '/karg/rescuer';
+const API_ENDPOINT_AUTH = '/api/authentication';
+const API_ENDPOINT_RESCUER = '/api/rescuer';
 
 export const loginUser = async (email, password) => {
     const authToken = localStorage.getItem('auth-token');
