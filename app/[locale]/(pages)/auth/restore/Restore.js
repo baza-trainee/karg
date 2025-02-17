@@ -11,7 +11,7 @@ import { AdminContext } from '@/app/adminProvider';
 import Spinner from "@/components/Spinner/Spinner";
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_AUTH = '/karg/authentication';
+const API_ENDPOINT_AUTH = '/api/authentication';
 
 export const sendEmailForm = async (data) => {
   try {

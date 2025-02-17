@@ -1,5 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_FAQ = '/karg/faq';
+const API_ENDPOINT_FAQ = '/api/faq';
 
 export const getFAQById = async (id, cultureCode) => {
     const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/getbyid?id=${id}&cultureCode=${cultureCode}`, {
