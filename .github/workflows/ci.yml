@@ -1,17 +1,23 @@
-name: CI
+name: CICD
 
 on:
+  workflow_dispatch:
   pull_request:
-    branches:
-      - main
     types:
+      - opened
+      - synchronize
       - closed
+
 jobs:
-  build-and-push:
+  build:
+    if: github.event_name == 'workflow_dispatch' || github.event.action == 'opened' || github.event.action == 'synchronize'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
 
       - name: Setup Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -25,26 +31,25 @@ jobs:
           username: ${{ secrets.KARG_DOCKERHUB_USERNAME }}
           password: ${{ secrets.KARG_DOCKERHUB_TOKEN }}
 
-      - name: Setup QEMU
-        uses: docker/setup-qemu-action@v3
 
       - name: Build and push Docker image
         uses: docker/build-push-action@v5
         with:
           context: .
           file: ./Dockerfile
-          platforms: linux/amd64,linux/arm64
+          platforms: linux/arm64
           push: true
           build-args: FORCE_COLOR=1
           progress: plain
           tags: |
-            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/frontend:latest
-            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
-            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/frontend:${{ github.ref_name }}
+            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/backend:latest
+            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
 
   deploy:
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
-    needs: build-and-push
+    env:
+      DEPLOY_HOST: ${{ github.event.pull_request.base.ref == 'main' && 'stg' || 'dev' }}
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@v1.2.0
@@ -52,4 +57,4 @@ jobs:
           host: ${{ secrets.KARG_HOST }}
           username: github
           key: ${{ secrets.KARG_SSH_PRIVATE_KEY }}
-          script: dev.karg.kyiv.ua
+          script: ${{ env.DEPLOY_HOST }}.karg.kyiv.ua
