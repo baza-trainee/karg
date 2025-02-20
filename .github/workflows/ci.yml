@@ -40,7 +40,6 @@ jobs:
           platforms: linux/arm64
           push: true
           build-args: FORCE_COLOR=1
-          progress: plain
           tags: |
             ${{ secrets.KARG_DOCKERHUB_USERNAME }}/backend:latest
             ${{ secrets.KARG_DOCKERHUB_USERNAME }}/backend:${{ github.sha }}
