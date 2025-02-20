@@ -2,8 +2,10 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const InfiniteScroll = ({ locale }) => {
+
     const initialCategory = 'Найновіші';
     const cultureCode = locale === 'uk' ? 'ua' : 'en';
 
@@ -16,7 +18,7 @@ const InfiniteScroll = ({ locale }) => {
     useEffect(() => {
         if (fetching && currentPage <= totalPages) {
             // console.log('fetch');
-            axios.get(`https://karg-backend.onrender.com/karg/yearresult/getall?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`)
+            axios.get(`${API_BASE_URL}api/yearresult/getall?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {
                         const uniqueCards = new Set([...prevCards, ...response.data.advices]);

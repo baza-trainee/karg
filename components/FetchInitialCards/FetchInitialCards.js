@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 export default async function FetchInitialCards(locale, endpoint, method) {
-    const BASE_URL = 'https://karg-backend.onrender.com/karg';
+    const BASE_URL = 'https://karg-backend.onrender.com/api';
     const currentPage = 1;
     const cultureCode = locale === 'uk' ? 'ua' : 'en';
 
