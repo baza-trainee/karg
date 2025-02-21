@@ -26,7 +26,10 @@ jobs:
           cache-dependency-path: 'package-lock.json'
 
       - name: Set URL
-        run: echo "NEXT_PUBLIC_API_BASE_URL=https://${DEPLOY_HOST}.karg.kyiv.ua/" > .env
+        run: |
+          echo '${{ toJson(github) }}' | jq .
+          env
+          echo "NEXT_PUBLIC_API_BASE_URL=https://${DEPLOY_HOST}.karg.kyiv.ua/" > .env
 
       - name: Install dependencies
         run: npm ci
