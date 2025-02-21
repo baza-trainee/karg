@@ -1,4 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+// console.log('API_BASE_URL:', API_BASE_URL);
 const API_ENDPOINT_FAQ = '/api/faq';
 
 export const getFAQById = async (id, cultureCode) => {
@@ -27,7 +28,8 @@ export const addFAQItem = async (faqItemData) => {
         body: JSON.stringify(faqItemData)
     });
     if (!response.ok) {
-        throw new Error(`Failed to submit form with status: ${response.status}`);
+        console.log(`Failed to submit form with status: ${response.status}`);;
+
     }
     return response.json();
 };
@@ -44,7 +46,7 @@ export const updateFAQItem = async (id, updates) => {
         body: JSON.stringify(updates)
     });
     if (!response.ok) {
-        throw new Error('Failed to update faq');
+        console.log('Failed to update faq');
     }
     return response.json();
 };
@@ -58,7 +60,7 @@ export const getAllFAQ = async (page, cultureCode) => {
         },
     });
     if (!response.ok) {
-        throw new Error('Failed to fetch');
+        console.log('Failed to fetch');
     }
     return response.json();
 };
@@ -74,7 +76,7 @@ export const deleteFAQ = async (id) => {
         },
     });
     if (!response.ok) {
-        throw new Error('Failed to fetch');
+        console.log('Failed to fetch');
     }
     if (response.status === 204) {
         return;

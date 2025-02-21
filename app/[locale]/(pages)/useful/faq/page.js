@@ -23,7 +23,7 @@ const Faq = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
   let cultureCode = (locale === "uk") ? "ua" : "en";
-  const response = await getAllFAQ("", cultureCode);
+  // const response = await getAllFAQ("", cultureCode);
 
   return (
     <TranslationsProvider
@@ -41,13 +41,13 @@ const Faq = async ({ params: { locale } }) => {
           altText={altText}
           priority={true}
         />
-        <ul className={styles.questionsList}>
+        {/* <ul className={styles.questionsList}>
           {response?.map(({ id, question, answer }) => (
             <li key={id}>
               <FaqItem q={question} a={answer} />
             </li>
           ))}
-        </ul>
+        </ul> */}
       </main>
       <ScrollToTop />
       <Footer />
