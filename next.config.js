@@ -7,6 +7,9 @@ const nextConfig = {
         });
         return config;
     },
+    env: {
+        NEXT_PUBLIC_API_BASE_URL: process.env.NEXT_PUBLIC_API_BASE_URL,
+    },
     images: {
         domains: ['i.ibb.co', 'iili.io', 'freeimage.host'],
         remotePatterns: [
