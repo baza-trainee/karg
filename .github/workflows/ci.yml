@@ -22,7 +22,6 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '20.x'
-          cache: 'yarn'
 
       - name: Set URL
         run: echo "NEXT_PUBLIC_API_BASE_URL=https://${DEPLOY_HOST}.karg.kyiv.ua/" > .env
