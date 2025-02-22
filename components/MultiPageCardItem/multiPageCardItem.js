@@ -15,6 +15,8 @@ import { useTranslation } from 'react-i18next';
 const MultiPageCardItem = ({ data, buttonVariant }) => {
     const { t } = useTranslation('uniCards');
 
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
     const [selectedCard, setSelectedCard] = useState(null);
     const [carouselIndex, setCarouselIndex] = useState(0);
     const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
@@ -105,6 +107,10 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
 
     };
 
+    const handleRedirect = (route) => {
+        router.push(route);
+    };
+
     const renderButton = (id) => {
         switch (buttonVariant) {
             case 'button':
@@ -139,27 +145,34 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
             : image;
     };
 
+    const renderImage = (card) => {
+        const imageUrl = `${API_BASE_URL}${card.images[0].slice(1)}`;
+        console.log('Full Image URL:', imageUrl);
+        console.log('API_BASE_URL:', API_BASE_URL);
+        console.log('Image Path:', card.images[0].slice(1));
+
+        return (
+            <Image
+                src={imageUrl}
+                alt={DOCUMENT_TEXT.cardAltText}
+                sizes="100vw"
+                width={268}
+                height={268}
+                style={{
+                    width: "100%",
+                    height: "auto",
+                }}
+            />
+        );
+    };
+
     return (
         <div className={styles.container}>
             {data.map(card => (
 
                 <div key={card.id} className={styles.cardContainer}>
                     <div className={styles.cardImage}>
-                        <Image
-                            // src={card.images[0]}
-                            // src={`data:image/png;base64,${card.images[0]}`}
-                            src={getImageSource(card.images[0])}
-                            alt={DOCUMENT_TEXT.cardAltText}
-                            sizes="100vw"
-                            width={268}
-                            height={268}
-                            style={{
-                                width: "100%",
-                                height: "auto",
-                            }}
-
-                        />
-
+                        {renderImage(card)}
                     </div>
                     <h2 className={`${styles.cardName} ${variables.subtitle2}`}>{card.name || card.title}</h2>
                     <div className={styles.contentHolder}>
@@ -183,9 +196,9 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                                 <LeftIcon className={styles.leftIcon} />
                             </button>
                             <Image
-                                // src={selectedCard.images[carouselIndex]}
+                                src={`${API_BASE_URL}${selectedCard.images[carouselIndex]}`}
                                 // src={`data:image/png;base64,${selectedCard.images[carouselIndex]}`}
-                                src={getImageSource(selectedCard.images[carouselIndex])}
+                                // src={getImageSource(selectedCard.images[carouselIndex])}
                                 alt={DOCUMENT_TEXT.cardAltText}
                                 sizes="100vw"
                                 width={300}
@@ -207,7 +220,7 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                             <h3>{selectedCard?.rescueHistory ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
                             <p>{selectedCard?.rescueHistory ? selectedCard.rescueHistory : null}</p>
                             <div className={styles.innerModalButtons}>
-                                <button className={styles.actionButtonTransparent}>
+                                <button onClick={() => handleRedirect('/help')} className={styles.actionButtonTransparent}>
                                     {DOCUMENT_TEXT.actionButtonTransparentText}
                                 </button>
                                 <button onClick={(e) => handleAdoptionModal(e, selectedCard)} className={styles.actionButtonBackground}>

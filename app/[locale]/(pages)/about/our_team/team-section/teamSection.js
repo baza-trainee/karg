@@ -13,7 +13,7 @@ const TeamSection = async ({ locale, namespaces }) => {
                 <div className={styles.introduction}>
                     <h3 className={variables.Subtitle2}>{t('subtitle')}</h3>
                     <div className={styles.foundersQuote}>
-                        <p className={`${styles.quote} ${variables.subtitle4}`}>{t('quote')}</p>
+                        <p className={`${styles.quote} ${variables.heading3}`}>{t('quote')}</p>
                         <p className={`${styles.signature} ${variables.Text3}`}>{t('signature')}</p>
                     </div>
                     <div className={styles.singleImageContainer}>
