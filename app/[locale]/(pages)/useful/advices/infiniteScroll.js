@@ -16,7 +16,7 @@ const InfiniteScroll = ({ locale }) => {
 
     useEffect(() => {
         if (fetching && currentPage <= totalPages) {
-            axios.get(`${API_BASE_URL}/api/advice/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
+            axios.get(`${API_BASE_URL}api/advice/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {
                         const uniqueCards = new Set([...prevCards, ...response.data.advices]);
