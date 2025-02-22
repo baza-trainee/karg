@@ -74,6 +74,7 @@
 .Text3 {
   @include font-styles(400, 16px);
 }
+
 .text4 {
   @include font-styles(300, 16px);
 }
@@ -102,6 +103,10 @@
   letter-spacing: 0%;
 }
 
+.heading3 {
+  @include font-styles(700, 18px);
+}
+
 // admin panel fonts
 .font32w700 {
   @include font-styles(700, 32px);
@@ -126,9 +131,9 @@
 .font18w500 {
   @include font-styles(500, 18px);
 }
-.Text3 {
-  @include font-styles(400, 18px);
-}
+// .Text3 {
+//   @include font-styles(400, 18px);
+// }
 
 .font16w300 {
   @include font-styles(300, 16px);
@@ -227,6 +232,10 @@
   .text_4 {
     @include font-styles(300, 20px);
   }
+
+  .heading3 {
+    @include font-styles(700, 24px);
+  }
 }
 
 // Typography for Desktop
@@ -300,5 +309,9 @@
   .quickAccessMenu_button_component,
   .advicesButton_page {
     @include font-styles(800, 18px);
+  }
+
+  .heading3 {
+    @include font-styles(700, 30px);
   }
 }

@@ -20,9 +20,9 @@ const SocialIcons = ({ className }) => {
       <a
         target="_blanc"
         href={`https://t.me/share/url?url=${encodeURIComponent(
-          "https://uk.wikipedia.org/wiki/%D0%9A%D0%B0%D0%BF%D1%96%D0%B1%D0%B0%D1%80%D0%B0"
+          "https://www.karg.kyiv.ua/"
         )}&text=${encodeURIComponent(
-          "Тут буде адреса сайту коли вын буде готовий а поки почитайте про Капібару"
+          "Сайт Карг"
         )}`}
       >
         <Telegram className={className} />

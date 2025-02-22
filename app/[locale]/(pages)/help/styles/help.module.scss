@@ -208,9 +208,19 @@
     display: none;
     border-radius: 8px;
   }
+
+  .photoBlock_image_desktop {
+    display: none;
+    border-radius: 8px;
+  }
 }
 
 @media screen and (min-width: 768px) {
+  .paymentsButtons_button {
+    width: 222px;
+    height: 66px;
+  }
+
   .textBlock {
     display: flex;
     width: 834px;
@@ -270,14 +280,16 @@
     padding: 32px 64px;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
     gap: 20px;
     background: #eadeff;
 
     .paymentsButtons_buttonContainer {
       display: flex;
-      width: 706px;
+      // width: 706px;
       align-items: center;
       justify-items: center;
+      justify-content: center;
       flex-direction: row;
       gap: 20px;
     }
@@ -294,6 +306,34 @@
 
     .photoBlock_image_tablet {
       display: block;
+    }
+
+    .photoBlock_image_desktop {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .paymentsButtons_button {
+    width: 370px;
+    height: 100px;
+  }
+
+  .photoBlock_image_desktop {
+    display: block;
+  }
+
+  .textBlock {
+    display: flex;
+    width: 1170px;
+    padding: 32px 64px 8px 64px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .textBlock_text {
+      align-self: stretch;
     }
   }
 }
