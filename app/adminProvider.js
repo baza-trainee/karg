@@ -14,7 +14,9 @@ export const AdminContext = createContext({
 });
 
 export const AdminProvider = ({ children }) => {
-    const [accountId, setAccountId] = useState([]);
+    const [accountId, setAccountId] = useState(() => {
+        return localStorage.getItem('accountId') || '';
+    });
     const [activeSection, setActiveSection] = useState('');
     const [isDirector, setIsDirector] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -50,6 +52,12 @@ export const AdminProvider = ({ children }) => {
             setAccountId(id);
         }
     }, []);
+
+    useEffect(() => {
+        if (accountId) {
+            localStorage.setItem('accountId', accountId);
+        }
+    }, [accountId]);
 
 
     useEffect(() => {

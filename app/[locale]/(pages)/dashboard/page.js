@@ -11,6 +11,7 @@ import { AdviceProvider } from './Advice/AdviceContext';
 import { TeamProvider } from './OurTeam/TeamContext';
 import { PartnerProvider } from './Partner/PartnerContext';
 import { FAQProvider } from './FAQ/FAQContext';
+import ProtectedRoute from './ProtectedRoute';
 
 export default function DashboardPage({ children }) {
 
@@ -23,12 +24,14 @@ export default function DashboardPage({ children }) {
               <AdviceProvider>
                 <FAQProvider>
                   <TeamProvider>
-                    <div>
-                      <Main />
-                      {children}
-                      <GenericModal />
-                      <ConfirmationModal />
-                    </div>
+                    <ProtectedRoute>
+                      <div>
+                        <Main />
+                        {children}
+                        <GenericModal />
+                        <ConfirmationModal />
+                      </div>
+                    </ProtectedRoute>
                   </TeamProvider>
                 </FAQProvider>
               </AdviceProvider>

@@ -17,19 +17,9 @@ export const loginUser = async (email, password) => {
 };
 
 export const logoutUser = async () => {
-    const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/logout`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        }
-    });
-    const userData = await response.json();
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
     localStorage.removeItem('isDirector');
-    return userData.token;
 };
 
 export const getUserById = async (id) => {

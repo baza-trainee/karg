@@ -2,7 +2,7 @@ import DragDropFileUpload from '../../../DragDropFileUpload/DragDropFileUpload';
 import { Plus, TrashIcon } from '@/public/assets/icons';
 import styles from "./styles/imageUploader.module.scss";
 import { memo, useState, useEffect } from 'react';
-import { addBase64Prefix } from '@/utils/base64ImageHandler';
+import { getImageSrc } from '@/utils/base64ImageHandler';
 import { PlusPlaceholderMinImage } from '@/public/assets/icons';
 
 const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDeleteImage }) => {
@@ -10,33 +10,11 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
 
     useEffect(() => {
         if (images && images.length > 0) {
-            const urls = images.map(image => {
-                if (!image) return null;
-                if (image.startsWith('http') || image.startsWith('/')) {
-                    return image;
-                } else if (image.startsWith('data:image/')) {
-                    return image;
-                } else {
-                    return addBase64Prefix(image);
-                }
-            });
-
-            setPreviewUrls(urls);
+            setPreviewUrls(images.map(image => getImageSrc(image)));
         } else {
             setPreviewUrls([]);
         }
     }, [images]);
-
-    const getImageSrc = (image) => {
-        if (!image) return '';
-        if (image.startsWith('http')) return image;
-        if (image.startsWith('data:image/')) return image;
-        if (image.startsWith('/') && !image.startsWith('/9j/')) {
-            const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${image.replace(/^\/+/, '')}`;
-            return url;
-        }
-        return addBase64Prefix(image);
-    };
 
     return (
         <div className={styles.imageUploader}>

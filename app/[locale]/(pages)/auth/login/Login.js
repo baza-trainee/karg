@@ -30,7 +30,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [emailVisited, setEmailVisited] = useState(false);
   const [passwordVisited, setPasswordVisited] = useState(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
   const { setAccountId, setIsDirector, setActiveSection, isLoading, setIsLoading } = useContext(AdminContext);

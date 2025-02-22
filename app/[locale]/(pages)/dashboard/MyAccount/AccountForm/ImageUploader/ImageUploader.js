@@ -3,8 +3,10 @@ import { Plus, TrashIcon, CreateIcon } from '@/public/assets/icons';
 import styles from "./styles/imageUploader.module.scss";
 import variables from '../../../../../variables.module.scss';
 import { memo } from 'react';
+import { getImageSrc } from '@/utils/base64ImageHandler';
 
 const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDeleteImage }) => {
+
     return (
         <div>
             {!images.length ? (
@@ -41,7 +43,7 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
                             {images[index] ? (
                                 <div className={styles.row}>
                                     <img
-                                        src={images[index]}
+                                        src={getImageSrc(images[index])}
                                         alt={`Account image ${index + 1}`}
                                         className={styles.imageMin}
                                     />
@@ -71,11 +73,6 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
                                 </div>
                             ) : (
                                 <div className={styles.row}>
-                                    <img
-                                        src={userDefault.src}
-                                        alt={`Account default image`}
-                                        className={styles.imageMin}
-                                    />
                                     <div className={styles.text}>
                                         <p className={variables.font24w700}>Моє фото</p>
                                         <p className={variables.font20w500}>Зображення</p>
