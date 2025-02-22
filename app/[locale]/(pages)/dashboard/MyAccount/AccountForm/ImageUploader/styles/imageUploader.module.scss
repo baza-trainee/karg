@@ -6,16 +6,21 @@
   display: flex;
   gap: 10px;
   background-color: $bg-white;
+}
 
-  .placeholderImage {
-    width: 1098px;
-    height: 282px;
-  }
+.placeholderWrapper {
+  width: 131px;
+  height: 123px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $primary;
+  border-radius: 8px;
+}
 
-  .placeholderImageMin {
-    width: 100%;
-    height: 300px;
-  }
+.placeholderImage {
+  max-width: 100%;
+  max-height: 100%;
 }
 
 .imageMin {
@@ -24,8 +29,10 @@
 }
 
 .imageContainer {
-  height: 123px;
+  display: flex;
+  min-height: 131px;
   position: relative;
+  align-items: center;
 }
 
 .text {
@@ -35,28 +42,32 @@
   width: 146px;
   height: 66px;
 }
-.defaultImg{
-  height: 123px;
-}
+
+.defaultImg,
 .imageContainer img {
-  height: 131px;
+  height: 123px;
+  width: 131px;
+  flex-shrink: 0;
+  align-self: stretch;
   border-radius: 50px;
 }
+
+.defaultImg div {
+  font-size: 80px;
+}
+
 .row {
   display: flex;
   gap: 32px;
   align-items: center;
 }
+
 .imagesGrid {
   border-radius: 8px;
-  padding: 16px;
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 10px;
-  justify-content: center;
   justify-items: center;
-  align-content: space-evenly;
-  align-items: center;
   background-color: $bg-white;
 }
 
@@ -75,8 +86,12 @@
   font-size: 32px;
 }
 
-.trash_icon {
-  cursor: pointer;
+.trash_icon_active,
+.trash_icon_inactive {
   font-size: 32px;
   fill: rgba(0, 0, 0, 0.85);
+}
+
+.trash_icon_active {
+  cursor: pointer;
 }

@@ -28,24 +28,27 @@ function FormButtons({
 
     return (
         <div className={`${styles.buttonGroup} ${customButtonGroup}`}>
-            <Button
-                type="button"
-                className={`${rejectButtonStyle} ${customVariables}`}
-                onClick={() => {
-                    showModal('confirmation',
-                        <ConfirmationDialogTrigger
-                            confirmationTitle={confirmationTitle}
-                            message={message}
-                            cancelTitle={cancelTitle}
-                            confirmTitle={confirmTitle}
-                            leftButtonStyle={stylesBtn.confirmationCancelBtn}
-                            rightButtonStyle={stylesBtn.confirmationRevertBtn}
-                            actionOnConfirm={actionOnConfirm}
-                        />)
-                }}
-            >
-                {rejectButtonTitle}
-            </Button>
+            {!changePasswordButtonTitle &&
+                <Button
+                    type="button"
+                    className={`${rejectButtonStyle} ${customVariables}`}
+                    onClick={() => {
+                        showModal('confirmation',
+                            <ConfirmationDialogTrigger
+                                confirmationTitle={confirmationTitle}
+                                message={message}
+                                cancelTitle={cancelTitle}
+                                confirmTitle={confirmTitle}
+                                leftButtonStyle={stylesBtn.confirmationCancelBtn}
+                                rightButtonStyle={stylesBtn.confirmationRevertBtn}
+                                actionOnConfirm={actionOnConfirm}
+                            />)
+                    }}
+                >
+                    {rejectButtonTitle}
+                </Button>
+            }
+
             {changePasswordButtonTitle &&
                 <Button
                     className={restoreButtonStyle}

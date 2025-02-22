@@ -39,7 +39,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
     const { accountId } = useContext(AdminContext);
-    const { isDirector, setIsDirector } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData(accountData));
@@ -50,7 +49,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const maxImages = 1;
 
     useEffect(() => {
-
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
@@ -74,10 +72,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         setIsFormValid(checkFormValidity(formData));
     }, [formData]);
 
-
     const handleSubmit = async (e) => {
-
-
         const destructuredFormData = {
             id: formData.id ? formData.id : accountId,
             fullName: formData.fullName_name + " " + formData.fullName_lastName,
@@ -97,7 +92,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         e.preventDefault();
         setIsLoading(true);
         await submitTeamMemberData(
-            //type,
             destructuredFormData,
             destructuredOriginalData,
             hideModal,
@@ -107,6 +101,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         );
         setIsLoading(false);
     };
+
     const handleImageUploaded = (newImageUrl) => {
         setFormData(prev => {
             const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);

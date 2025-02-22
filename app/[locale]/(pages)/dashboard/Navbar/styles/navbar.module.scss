@@ -17,17 +17,18 @@
 
 @media screen and (max-width: 1439px) {
   .container {
-    min-height: 110px;
+    min-height: 89px;
     width: clamp(640px, 100%, 1194px);
   }
 
   .container .active_section {
-    font-size: clamp(1.375rem, calc(1.375rem + 0.4vw), 2rem);
+    font-size: clamp(1.375rem, calc(1.375rem + 0.6vw), 2rem);
   }
 }
 
 @media screen and (width: 1440px) {
   .container {
+    min-height: 89px;
     padding: 20px 48px 20px 48px;
     width: 1194px;
   }
@@ -50,7 +51,7 @@
 
 @media screen and (min-width: 1920px) {
   .container {
-    min-height: 135px;
+    min-height: 100px;
     width: 100%;
   }
 }

@@ -4,7 +4,6 @@ import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 export const submitPartnerData = async (type, formData, originalData, showModal, hideModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
-
     const getUpdatedFields = (formData, originalData) => {
         const patch = [];
         Object.keys(formData).forEach(key => {
