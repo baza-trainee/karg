@@ -1,7 +1,7 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function getAnimals(page, pageSize = 6, CategoryFilter, NameSearch, cultureCode) {
-    const apiUrl = `${API_BASE_URL}/api/animal/getall?Page=${page}&PageSize=${pageSize}&CategoryFilter=${CategoryFilter}&NameSearch=${NameSearch}&cultureCode=${cultureCode}`;
+    const apiUrl = `${API_BASE_URL}api/animal/getall?Page=${page}&PageSize=${pageSize}&CategoryFilter=${CategoryFilter}&NameSearch=${NameSearch}&cultureCode=${cultureCode}`;
 
     try {
         const response = await fetch(apiUrl);

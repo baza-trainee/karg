@@ -1,5 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_PARTNER = '/api/partner';
+const API_ENDPOINT_PARTNER = 'api/partner';
 
 export const getAllPartners = async () => {
     const authToken = localStorage.getItem('auth-token');

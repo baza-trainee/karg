@@ -1,5 +1,5 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-const API_ENDPOINT_ADVICE = '/api/advice';
+const API_ENDPOINT_ADVICE = 'api/advice';
 
 export const getAdviceById = async (id, cultureCode) => {
     const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_ADVICE}/getbyid?id=${id}&cultureCode=${cultureCode}`, {

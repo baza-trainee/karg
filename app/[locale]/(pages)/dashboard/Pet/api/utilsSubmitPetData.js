@@ -28,7 +28,6 @@ export const submitPetData = async (type, formData, originalData, showModal, hid
                 }
             }
         })
-
         return patch;
     }
 
