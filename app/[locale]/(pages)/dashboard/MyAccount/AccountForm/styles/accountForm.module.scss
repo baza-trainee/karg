@@ -1,16 +1,16 @@
 @import "/app/[locale]/colors.scss";
 @import "/app/[locale]/variables.module.scss";
 
-.formWrapper{
+.formWrapper {
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 1194px;
 }
 
 .form {
-  width: 1098px;
+
+  width: 90.45%;
   margin: 16px 48px 0 48px;
 }
 
@@ -24,18 +24,22 @@
   margin: auto;
   max-height: calc(100vh - 15px);
 }
-.customHeader{
+.customHeader {
   background-color: $bg-white;
   height: 63px;
   border-radius: 8px;
   padding: 16px;
 }
-.customButtonGroup{
+.customButtonGroup {
   display: flex;
   justify-content: center;
   background-color: $bg-white;
-  padding: 16px 0 24px 0;
+  padding: 35px 0 35px 0;
   gap: 24px;
 }
 
-
+@media screen and (width: 1440px) {
+  .form {
+    width: 1098px;
+  }
+}

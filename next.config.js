@@ -35,7 +35,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'freeimage.host'
+                hostname: 'dev.karg.kyiv.ua'
             },
 
         ],

@@ -1,9 +1,18 @@
 'use client'
 import { useState, useRef } from 'react';
 import styles from "./dragDropFileUpload.module.scss";
-import uploadImage from '../../../../api/uploadImage/route';
+import { encodeToBase64 } from '@/utils/base64ImageHandler';
 
-const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText, placeholderTextClassName = '', className = '', accept = 'image/*', style = {} }) => {
+const DragDropFileUpload = ({
+    onFileUploaded,
+    placeholderImage,
+    placeholderText,
+    placeholderTextClassName = '',
+    className = '',
+    accept = 'image/*',
+    style = {},
+    showPreview = false,
+}) => {
     const [file, setFile] = useState(null);
     const fileInputRef = useRef();
 
@@ -13,11 +22,14 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText,
 
     const handleFileUpload = async (file) => {
         try {
-            const url = await uploadImage(file);
-            onFileUploaded(url);
-            setFile(null);
+            if (!(file instanceof Blob) || !file.type.match(accept)) {
+                console.error('Invalid file type in DragDropFileUpload:', file);
+                return;
+            }
+            const base64 = await encodeToBase64(file);
+            onFileUploaded(base64);
         } catch (error) {
-            console.error('Error loading image:', error);
+            console.error('Error processing file in handleFileUpload:', error);
         }
     };
 
@@ -50,7 +62,7 @@ const DragDropFileUpload = ({ onFileUploaded, placeholderImage, placeholderText,
             onDrop={handleDrop}
             onClick={triggerFileInput}
         >
-            {file ? (
+            {file && showPreview ? (
                 <img src={URL.createObjectURL(file)} alt="Uploaded" />
             ) : (
                 <>

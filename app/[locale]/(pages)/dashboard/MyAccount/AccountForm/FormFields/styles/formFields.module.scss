@@ -1,43 +1,55 @@
 @import "/app/[locale]/colors.scss";
 
 .field {
-    min-height: 48px;
-    padding: 8px;
-    border-radius: 8px;
-    border: 1px solid $text-dark;
-    box-sizing: border-box;
-  }
+  min-height: 48px;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid $text-dark;
+  box-sizing: border-box;
+}
 
-  .nameFieldInput{
-    height: 48px;
-  }
+.nameFieldInput {
+  height: 48px;
+}
 
-  .formContainer{
-    display: flex;
-    width: 100%;
-    background-color: $bg-white;
-    border-radius: 8px;
-    justify-content: center;
-  }
+.descriptionField,
+.nameField {
+  font-size: clamp(0.813rem, calc(0.813rem + 0.4vw), 1.25rem);
+}
 
-  .formFields {
-    display: grid;
-    
-    grid-template-columns: repeat(2, 1fr);
-    width: 980px;
-    grid-template-rows: auto;
-    gap: 24px;
-    padding: 16px 0 32px 0;
-  }
+.formContainer {
+  display: flex;
+  width: 100%;
+  background-color: $bg-white;
+  border-radius: 8px;
+  justify-content: center;
+}
 
-  .inputBlock {
-    display: flex;
-    flex-direction: column;
-    width: 478px;
-    gap: 4px;
-  }
+.formFields {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 100%;
+  grid-template-rows: auto;
+  gap: 24px;
+  padding: 16px 0 32px 0;
+}
 
-  .editMode {
+.inputBlock {
+  display: flex;
+  flex-direction: column;
+  width: 90.07%;
+  gap: 4px;
+}
+
+.formFields .inputBlock:nth-child(odd) {
+  justify-self: end;
+}
+
+.formFields .inputBlock:nth-child(even) {
+  justify-self: start;
+}
+
+.editMode {
   .field {
     border: 1px solid $text-dark;
   }
@@ -47,5 +59,20 @@
   }
 }
 
+@media screen and (width: 1440px) {
+  .inputBlock {
+    width: 478px;
+  }
 
-  
+  .descriptionField,
+  .nameField {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .descriptionField,
+  .nameField {
+    font-size: clamp(1.25rem, calc(1rem + 0.4vw), 1.625rem);
+  }
+}

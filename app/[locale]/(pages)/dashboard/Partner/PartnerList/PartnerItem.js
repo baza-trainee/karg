@@ -17,12 +17,18 @@ export default function PartnerItem(
         children
     }) {
 
+    const processedPhotoSrc = photoSrc.length > 0
+        ? photoSrc[0].startsWith('http')
+            ? photoSrc[0]
+            : `${process.env.NEXT_PUBLIC_API_BASE_URL}${photoSrc[0]}`
+        : null;
+
     return (
         <div className={partnerLineStyle}>
             <div className={photoContainerStyle}>
-                {photoSrc && photoSrc.length > 0 ? (
+                {processedPhotoSrc ? (
                     <Image
-                        src={photoSrc[0]}
+                        src={processedPhotoSrc}
                         alt={photoAlt}
                         width={92}
                         height={92}

@@ -75,9 +75,9 @@ function PartnerForm({ type = 'create', partnerData = {} }) {
         setIsFormValid(checkFormValidity(formData));
     }, [formData]);
 
-    const handleImageUploaded = (newImageUrl) => {
+    const handleImageUploaded = (dataUrl) => {
         setFormData(prev => {
-            const updatedImages = [...prev.images, newImageUrl].slice(0, maxImages);
+            const updatedImages = [...prev.images, dataUrl].slice(0, maxImages);
             return { ...prev, images: updatedImages };
         });
         setHasUnsavedChanges(true);

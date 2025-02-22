@@ -25,7 +25,7 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                 </div>
                 <div className={styles.inputBlock}>
                     <label
-                        className={`${styles.descriptionField} ${variables.font20w400}`}
+                        className={`${styles.nameField} ${variables.font20w400}`}
                         htmlFor="lastNameField">
                         {lastNameTitle}
                     </label>
@@ -67,7 +67,6 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         name="email"
                         value={formData.email}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
-                        //onChange={(e) => handleChange(e)}
                         disabled={true}
                     >
                     </input>
