@@ -61,6 +61,7 @@ export default function LoginForm({
                                 value={password}
                                 onChange={(e) => handlePasswordChange(e)}
                                 onBlur={(e) => onPasswordBlur(e)}
+                                autoComplete="new-password" 
                             />
                             {isPasswordVisible ? (
                                 <HideShow className={styles.icon} onClick={onTogglePasswordVisibility} />

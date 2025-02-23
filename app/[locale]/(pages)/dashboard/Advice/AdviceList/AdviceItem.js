@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Image from 'next/image';
 import variables from '../../../../variables.module.scss';
+import { getImageSrc } from '@/utils/base64ImageHandler';
 export default function AdviceItem(
     {
         containerStyle,
@@ -18,14 +19,16 @@ export default function AdviceItem(
         iconsContainerStyle,
         children
     }) {
+    
+    const processedPhotoSrc = photoSrc.length > 0 ? getImageSrc(photoSrc[0]) : null;
 
     return (
         <div className={containerStyle}>
             <div className={adviceLineStyle}>
                 <div className={photoContainerStyle}>
-                    {photoSrc && photoSrc.length > 0 ? (
+                    {processedPhotoSrc && processedPhotoSrc.length > 0 ? (
                         <Image
-                            src={photoSrc[0]}
+                            src={processedPhotoSrc}
                             alt={photoAlt}
                             width={92}
                             height={92}
