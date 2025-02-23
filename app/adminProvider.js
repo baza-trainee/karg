@@ -52,7 +52,14 @@ export const AdminProvider = ({ children }) => {
 
             if (id) setAccountId(id);
             if (section) setActiveSection(section);
-            if (role !== null) setIsDirector(JSON.parse(role));
+            if (role !== null) {
+                try {
+                    setIsDirector(JSON.parse(role));
+                } catch (error) {
+                    console.error('Failed to parse isDirector:', error);
+                    setIsDirector(null);
+                }
+            }
         }
     }, []);
 
