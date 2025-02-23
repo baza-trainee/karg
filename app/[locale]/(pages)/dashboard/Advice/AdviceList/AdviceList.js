@@ -38,7 +38,7 @@ function AdviceList() {
     const { showModal } = useContext(ModalContext);
     const { isDirector } = useContext(AdminContext);
 
-    const currentRole = (isDirector === 'true') ? true : false;
+    const currentRole = isDirector;
 
     useEffect(() => {
         if (!isLoading) {

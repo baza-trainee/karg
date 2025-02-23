@@ -13,7 +13,6 @@ import Spinner from '@/components/Spinner/Spinner';
 import { deletePet } from '../api/utilsFetchPetData';
 import { PetContext } from "../PetContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
-import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -43,7 +42,7 @@ function PetList() {
         { label: 'Собаки', value: 'Dog' },
         { label: 'Інші тварини', value: 'Other' },
     ];
-    
+
     useEffect(() => {
         if (!isLoading) {
             loadPets();
@@ -124,7 +123,6 @@ function PetList() {
                             </PetItem>
                         )
                     })}
-                    <ScrollToTop />
                     <Pagination
                         totalPages={totalPages}
                         currentPage={currentPage}

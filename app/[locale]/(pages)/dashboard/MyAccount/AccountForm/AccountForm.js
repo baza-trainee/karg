@@ -73,6 +73,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     }, [formData]);
 
     const handleSubmit = async (e) => {
+        e.preventDefault();
         const destructuredFormData = {
             id: formData.id ? formData.id : accountId,
             fullName: formData.fullName_name + " " + formData.fullName_lastName,
@@ -89,7 +90,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             images: originalData.images,
         };
 
-        e.preventDefault();
         setIsLoading(true);
         await submitTeamMemberData(
             destructuredFormData,

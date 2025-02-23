@@ -25,7 +25,7 @@ export const addBase64Prefix = (base64) => {
 }
 
 export const base64ToImage = (base64) => {
-    if (!base64 || typeof base64 !== 'string') return ''; 
+    if (!base64 || typeof base64 !== 'string') return '';
     if (base64.includes('data:image/')) return base64;
     return addBase64Prefix(base64);
 }
@@ -43,9 +43,20 @@ export const processFileToBase64 = async (file) => {
 export const uploadFileAsBase64 = async (file, callback) => {
     try {
         const base64 = await processFileToBase64(file);
-        const dataUrl = addBase64Prefix(base64); 
+        const dataUrl = addBase64Prefix(base64);
         callback(dataUrl);
     } catch (error) {
         console.error('Error handling file upload:', error);
     }
 }
+
+export const getImageSrc = (image) => {
+    if (!image) return '';
+    if (image.startsWith('http')) return image;
+    if (image.startsWith('data:image/')) return image;
+    if (image.startsWith('/') && !image.startsWith('/9j/')) {
+        const url = `${process.env.NEXT_PUBLIC_API_BASE_URL}/${image.replace(/^\/+/, '')}`;
+        return url;
+    }
+    return addBase64Prefix(image);
+};

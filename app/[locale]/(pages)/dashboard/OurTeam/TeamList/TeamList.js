@@ -14,7 +14,6 @@ import { TeamContext } from "../TeamContext";
 import { AdminContext } from '@/app/adminProvider';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 
-
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
     message: "Цю дію буде неможливо скасувати, і всі пов'язані дані також будуть видалені",
@@ -34,8 +33,7 @@ function TeamList() {
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
-    const currentRole = (isDirector === 'true') ? true : false;
-
+    const currentRole = isDirector;
     useEffect(() => {
         if (!isLoading) {
             loadRescuers();

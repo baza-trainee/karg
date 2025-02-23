@@ -3,7 +3,7 @@ const API_ENDPOINT_AUTH = 'api/authentication';
 const API_ENDPOINT_RESCUER = 'api/rescuer';
 
 export const loginUser = async (email, password) => {
-    const authToken = localStorage.getItem('auth-token');
+    const authToken = typeof window !== 'undefined' ? localStorage.getItem('auth-token') : null;
     const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/login`, {
         method: 'POST',
         body: JSON.stringify({ email: email, password: password }),
@@ -17,23 +17,14 @@ export const loginUser = async (email, password) => {
 };
 
 export const logoutUser = async () => {
-    const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_AUTH}/logout`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        }
-    });
-    const userData = await response.json();
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
     localStorage.removeItem('isDirector');
-    return userData.token;
+    console.log('User logged out');
 };
 
 export const getUserById = async (id) => {
-    const authToken = localStorage.getItem('auth-token');
+    const authToken = typeof window !== 'undefined' ? localStorage.getItem('auth-token') : null;
     const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getbyid?id=${id}`, {
         method: "GET",
         headers: {

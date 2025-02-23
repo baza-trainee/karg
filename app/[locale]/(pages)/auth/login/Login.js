@@ -30,7 +30,7 @@ export default function LoginPage() {
   const router = useRouter();
   const [emailVisited, setEmailVisited] = useState(false);
   const [passwordVisited, setPasswordVisited] = useState(false);
-  const [isPasswordVisible, setIsPasswordVisible] = useState(true);
+  const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
   const { setAccountId, setIsDirector, setActiveSection, isLoading, setIsLoading } = useContext(AdminContext);
@@ -106,12 +106,14 @@ export default function LoginPage() {
       if (response && response.status === 1) {
         const authToken = await response.token;
         const accountId = await response.rescuerId;
-        const role = await response.isDirector;
+        const role = !!response.isDirector; 
+
+        console.log('Login role:', role);
 
         setLoginStatus(successMessages.authSuccess);
         localStorage.setItem('auth-token', authToken);
         localStorage.setItem('accountId', accountId);
-        localStorage.setItem('isDirector', role ? 'true' : 'false');
+        localStorage.setItem('isDirector', JSON.stringify(role)); 
         setAccountId(accountId);
         setIsDirector(role);
         setActiveSection('Мій акаунт');
