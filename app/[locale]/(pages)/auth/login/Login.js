@@ -33,7 +33,7 @@ export default function LoginPage() {
   const [isPasswordVisible, setIsPasswordVisible] = useState(false);
   const [isFormValid, setIsFormValid] = useState(false);
   const [loginStatus, setLoginStatus] = useState('');
-  const { setAccountId, setIsSuperAdmin, setActiveSection, isLoading, setIsLoading } = useContext(AdminContext);
+  const { setAccountId, setIsDirector, setActiveSection, isLoading, setIsLoading } = useContext(AdminContext);
   const [form, setForm] = useState({
     email: { value: '', emailError: '' },
     password: { value: '', passwordError: '' },
@@ -106,14 +106,14 @@ export default function LoginPage() {
       if (response && response.status === 1) {
         const authToken = await response.token;
         const accountId = await response.rescuerId;
-        const role = !!response.isSuperAdmin;
+        const role = !!response.isDirector;
 
         setLoginStatus(successMessages.authSuccess);
         localStorage.setItem('auth-token', authToken);
         localStorage.setItem('accountId', accountId);
-        localStorage.setItem('isSuperAdmin', JSON.stringify(role));
+        localStorage.setItem('isDirector', JSON.stringify(role));
         setAccountId(accountId);
-        setIsSuperAdmin(role);
+        setIsDirector(role);
         setActiveSection('Мій акаунт');
         router.push("/dashboard", { email: form.email.value });
       }

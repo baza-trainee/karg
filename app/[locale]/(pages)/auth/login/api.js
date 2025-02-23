@@ -19,7 +19,7 @@ export const loginUser = async (email, password) => {
 export const logoutUser = async () => {
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
-    localStorage.removeItem('isSuperAdmin');
+    localStorage.removeItem('isDirector');
 };
 
 export const getUserById = async (id) => {

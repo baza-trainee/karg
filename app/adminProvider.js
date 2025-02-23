@@ -7,8 +7,8 @@ export const AdminContext = createContext({
     setActiveSection: () => { },
     accountId: '',
     setAccountId: () => { },
-    isSuperAdmin: null,
-    setIsSuperAdmin: () => { },
+    isDirector: null,
+    setIsDirector: () => { },
     isLoading: false,
     setIsLoading: () => { },
 });
@@ -16,7 +16,7 @@ export const AdminContext = createContext({
 export const AdminProvider = ({ children }) => {
     const [accountId, setAccountId] = useState('');
     const [activeSection, setActiveSection] = useState('');
-    const [isSuperAdmin, setIsSuperAdmin] = useState(null);
+    const [isDirector, setIsDirector] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
 
     const hasMounted = useRef(false);
@@ -35,10 +35,10 @@ export const AdminProvider = ({ children }) => {
         }
     };
 
-    const handleSetIsSuperAdmin = (role) => {
-        setIsSuperAdmin(role);
+    const handleSetIsDirector = (role) => {
+        setIsDirector(role);
         if (typeof window !== 'undefined') {
-            localStorage.setItem('isSuperAdmin', JSON.stringify(role));
+            localStorage.setItem('isDirector', JSON.stringify(role));
         }
     };
 
@@ -48,11 +48,11 @@ export const AdminProvider = ({ children }) => {
 
             const id = typeof window !== 'undefined' ? localStorage.getItem('accountId') : null;
             const section = typeof window !== 'undefined' ? localStorage.getItem('activeSection') : null;
-            const role = typeof window !== 'undefined' ? localStorage.getItem('isSuperAdmin') : null;
+            const role = typeof window !== 'undefined' ? localStorage.getItem('isDirector') : null;
 
             if (id) setAccountId(id);
             if (section) setActiveSection(section);
-            if (role !== null) setIsSuperAdmin(JSON.parse(role));
+            if (role !== null) setIsDirector(JSON.parse(role));
         }
     }, []);
 
@@ -60,17 +60,17 @@ export const AdminProvider = ({ children }) => {
         if (typeof window !== 'undefined') {
             if (accountId) localStorage.setItem('accountId', accountId);
             if (activeSection) localStorage.setItem('activeSection', activeSection);
-            localStorage.setItem('isSuperAdmin', JSON.stringify(isSuperAdmin));
+            localStorage.setItem('isDirector', JSON.stringify(isDirector));
         }
-    }, [accountId, activeSection, isSuperAdmin]);
+    }, [accountId, activeSection, isDirector]);
 
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
         accountId,
         setAccountId: handleSetAccountId,
-        isSuperAdmin,
-        setIsSuperAdmin: handleSetIsSuperAdmin,
+        isDirector,
+        setIsDirector: handleSetIsDirector,
         isLoading,
         setIsLoading,
     };
