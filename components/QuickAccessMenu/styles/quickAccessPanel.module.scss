@@ -1,179 +1,178 @@
 @import '../../../app/[locale]/variables.module.scss';
 .accessMenuBlock {
+  display: flex;
+  align-items: center;
+  min-width: 320px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  background-color: $bg-purple;
+  height: fit-content;
+
+  @media screen and (min-width: 768px) {
+    min-width: 768px;
+    padding: 32px 64px;
+    justify-content: center;
+    flex-direction: row;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 0 80px;
+    position: relative;
+    top: -72.5px;
+    background-color: transparent;
+  }
+
+  @media screen and (min-width: 1440px) {
+    padding: 0 135px;
+  }
+
+  & .innerBlock {
     display: flex;
-    align-items: center;
-    min-width: 320px;
     flex-direction: column;
-    align-items: center;
-    gap: 16px;
-    padding-top: 24px;
-    padding-bottom: 24px;
-    background-color: $bg-purple;
+    width: 90%;
     height: fit-content;
-  
+    gap: 8px;
 
     @media screen and (min-width: 768px) {
-        min-width: 768px;
-        padding: 32px 64px;
-        justify-content: center;
-        flex-direction: row;
-        gap: 20px;
-        flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 142px 142px;
+      justify-content: center;
+      width: 100%;
+      grid-gap: 20px;
     }
-      
     @media screen and (min-width: 1200px) {
-        padding: 0 80px;
-        position: relative;
-        top: -72.5px;
-        background-color: transparent;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: 145px;
+      width: 100%;
+      justify-content: center;
+      grid-column-gap: 13px;
     }
-          
     @media screen and (min-width: 1440px) {
-        padding: 0 135px;
+      grid-column-gap: 30px;
+    }
+  }
+
+  & .accessMenuItem {
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 0.4fr 1fr;
+    align-content: space-between;
+    align-items: center;
+    background-color: #4d396f;
+    min-width: 288px;
+    min-height: 132px;
+    border-radius: 4px;
+    padding: 16px 16px 16px 20px;
+
+    @media screen and (min-width: 768px) {
+      min-height: 142px;
+      padding: 16px;
+    }
+    @media screen and (min-width: 1200px) {
+      max-width: 270px;
+      min-width: 250px;
+      height: 145px;
+      border-radius: 20px;
+      padding: 16px 24px 16px 20px;
+    }
+    @media screen and (min-width: 1440px) {
+      max-width: 100%;
+      min-width: 270px;
     }
 
-        & .innerBlock {
-            display: flex;
-            flex-direction: column;
-            width: 90%;
-            height: fit-content;
-            gap: 8px;
-            
-            @media screen and (min-width:768px) {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                grid-template-rows: 142px 142px;
-                justify-content: center;
-                width: 100%;
-                grid-gap: 20px;
-            }
-            @media screen and (min-width: 1200px) {
-                display: grid;
-                grid-template-columns: repeat(4, 1fr);
-                grid-template-rows: 145px;
-                width: 100%;
-                justify-content: center;
-                grid-column-gap: 13px;
-            }   
-            @media screen and (min-width: 1440px){
-                grid-column-gap: 30px;
-            }     
-        }
+    & .accessMenuText {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 7px;
+      min-width: 182px;
+      color: $text-white;
 
-    & .accessMenuItem {
-        display: flex;
-        justify-content:space-evenly;
-        align-items: center;
-        background-color: #4D396F;
-        min-width: 288px;
-        min-height: 132px;
-        border-radius: 4px;
-        padding: 16px 16px 16px 20px;
-        
+      @media screen and (min-width: 768px) {
+        //min-width: 241px;
+        min-height: 95px;
+        gap: 4px;
+      }
+
+      @media screen and (min-width: 1200px) {
+        min-width: 156px;
+        max-height: 113px;
+        gap: 8px;
+      }
+      & .title {
+        line-height: 26px;
 
         @media screen and (min-width: 768px) {
-            min-height: 142px;
-            padding: 16px;
+          line-height: 36.4px;
+        }
+
+        @media screen and (min-width: 1200px) {
+          line-height: 31.2px;
+        }
+      }
+      & .message {
+        line-height: 18.2px;
+        height: 36px;
+
+        @media screen and (min-width: 768px) {
+          line-height: 20.8px;
+          min-height: 42px;
         }
         @media screen and (min-width: 1200px) {
-            max-width: 270px;
-            min-width: 250px;
-            height: 145px;
-            border-radius: 20px;
-            padding: 16px 24px 16px 20px;
+          line-height: 20.8px;
+          min-height: 42px;
         }
-        @media screen and (min-width:1440px) {
-            max-width: 100%;
-            min-width: 270px;
+      }
+
+      & a {
+        display: flex;
+        background-color: transparent;
+        gap: 4px;
+        width: 124px;
+        height: 28px;
+        text-decoration: none;
+        color: $text-white;
+        align-self: flex-end;
+        align-items: center;
+        transition: color 250ms linear;
+        &:hover,
+        &:focus {
+          color: $button-default;
+        }
+        & .detailsButtonIcon {
+          fill: currentColor;
+          width: 24px;
+          height: 24px;
         }
 
-                & .accessMenuText {
-                    display: flex;
-                    flex-direction: column;
-                    justify-content: space-between;
-                    gap: 7px;
-                    min-width: 182px;
-                    color: $text-white;
-
-                    @media screen and (min-width: 768px) {
-                        //min-width: 241px;
-                        min-height: 95px;
-                        gap: 4px;
-                    }
-
-                    @media screen and (min-width: 1200px) {
-                        min-width: 156px;
-                        max-height: 113px;
-                        gap: 8px;
-                    }
-                    & .title {
-                        line-height: 26px;
-
-                        @media screen and (min-width: 768px){
-                            line-height: 36.4px;
-                        }
-
-                        @media screen and (min-width: 1200px){
-                            line-height: 31.2px;
-                        }
-                    }
-                    & .message {  
-                        line-height: 18.2px;
-                        height: 36px;
-
-                        @media screen and (min-width: 768px){
-                            line-height: 20.8px;
-                            min-height: 42px;
-                        }
-                        @media screen and (min-width: 1200px){
-                            line-height: 20.8px;
-                            min-height: 42px;
-                        }
-                    }
-
-                    & a {
-                        display: flex;
-                        background-color: transparent;
-                        gap: 4px;
-                        width: 124px;
-                        height: 28px;
-                        text-decoration: none;
-                        color: $text-white;
-                        align-self: flex-end;
-                        align-items: center;
-                        transition: color 250ms linear;
-                            &:hover,
-                            &:focus {
-                            color: $button-default;
-                            }
-                            & .detailsButtonIcon {
-                                fill: currentColor;
-                                width: 24px;
-                                height: 24px;
-                            }
-                      
-                        @media screen and (min-width: 768px) {
-                            align-self: flex-end;
-                            line-height: 20.8px;
-                        }
-                        @media screen and (min-width: 820px) {
-                            top: -12px;
-                        }
-                        @media screen and (min-width: 834px) {
-                        }
-                        @media screen and (min-width: 1200px) {
-                            min-width: 136px;
-                            top: 0;
-                            align-self: flex-start;
-                            line-height: 20.8px;
-                        }
-                    }             
-                }            
-    }  
-        & .iconSrc {
-            font-size: 62px;   
-            max-width: 50px;   
-            margin-right: 20px;
-        }   
-
+        @media screen and (min-width: 768px) {
+          align-self: flex-end;
+          line-height: 20.8px;
+        }
+        @media screen and (min-width: 820px) {
+          top: -12px;
+        }
+        @media screen and (min-width: 834px) {
+        }
+        @media screen and (min-width: 1200px) {
+          min-width: 136px;
+          top: 0;
+          align-self: flex-start;
+          line-height: 20.8px;
+        }
+      }
+    }
+  }
+  & .iconSrc {
+    font-size: 62px;
+    max-width: 50px;
+    margin-right: 20px;
+  }
 }
