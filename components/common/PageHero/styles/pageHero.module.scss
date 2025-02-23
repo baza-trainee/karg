@@ -1,5 +1,5 @@
-@import "@/app/[locale]/colors.scss";
-@import "@/app/[locale]/variables.module.scss";
+@import '@/app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
 
 .pageHero {
   position: relative;
@@ -19,7 +19,7 @@
     transform: translate(-50%, -50%);
 
     .buttonText {
-      @include font-styles(700, 18px);
+      @include font-styles(700, 20px);
       padding-top: 9px;
       padding-bottom: 8px;
       color: $text-dark;
@@ -35,14 +35,13 @@
 
 @media screen and (min-width: 768px) {
   .pageHero {
-    
     .pseudoButton {
       min-width: 372px;
       border-radius: 8px;
       top: calc(50%);
 
       .buttonText {
-        @include font-styles(700, 28px);
+        @include font-styles(700, 32px);
         padding: 12px 0;
       }
     }
