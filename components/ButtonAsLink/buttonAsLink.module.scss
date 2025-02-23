@@ -1,5 +1,5 @@
-@import "../../app/[locale]/colors.scss";
-@import "@/app/[locale]/variables.module.scss";
+@import '../../app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
 
 @mixin button-style() {
   display: flex;
@@ -45,7 +45,7 @@
   color: $text-white;
   transition: background-color 0.4s ease;
   cursor: pointer;
- 
+
   &:hover {
     background-color: $button-dark-hover;
   }
@@ -193,7 +193,7 @@
     padding: 9px 12px;
   }
 }
-@media screen and (min-width: 1440px) {
+@media screen and (min-width: 1200px) {
   .rescue {
     width: 370px;
     height: 56px;
@@ -201,4 +201,3 @@
     border-radius: 8px;
   }
 }
-
