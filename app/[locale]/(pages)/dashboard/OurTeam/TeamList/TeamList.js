@@ -33,7 +33,7 @@ function TeamList() {
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
-    const currentRole = isDirector === true || isDirector === 'true';
+    const currentRole = isDirector;
     useEffect(() => {
         if (!isLoading) {
             loadRescuers();
