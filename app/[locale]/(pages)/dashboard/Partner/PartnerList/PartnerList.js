@@ -9,6 +9,7 @@ import { CreateIcon, TrashIcon } from '@/public/assets/icons';
 import ModalContext from '@/app/ModalContext';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
 import { deletePartner } from "../api/utilsFetchPartnerData";
+import Pagination from '../../Pagination/Pagination';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -18,7 +19,17 @@ const deleteDialogActions = {
 };
 
 export default function PartnerList() {
-    const { loadPartners, isLoading, setIsLoading, partners, setPartners } = useContext(PartnerContext);
+    const {
+        loadPartners,
+        isLoading,
+        setIsLoading,
+        partners,
+        setPartners,
+        currentPage,
+        handlePageChange,
+        totalPages
+    } = useContext(PartnerContext);
+
     const { showModal } = useContext(ModalContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
 
@@ -26,11 +37,11 @@ export default function PartnerList() {
         if (!isLoading) {
             loadPartners();
         }
-    }, [loadPartners]);
+    }, [currentPage, loadPartners]);
 
     const handleDeletePartner = async (id) => {
         setIsLoading(true);
-        await deletePartner(id, setPartners);
+        await deletePartner(id, currentPage, partners, handlePageChange, setPartners);
         setIsLoading(false);
     };
 
@@ -86,6 +97,11 @@ export default function PartnerList() {
                                 </PartnerItem>
                             );
                         })}
+                        <Pagination
+                            totalPages={totalPages}
+                            currentPage={currentPage}
+                            handlePageChange={handlePageChange}
+                        />
                     </>
                 )
             }
