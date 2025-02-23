@@ -1,4 +1,7 @@
 @import '../../../app/[locale]/colors.scss';
+@import '../../../app/[locale]/variables.module.scss';
+
+// mobile
 
 .socIcons {
   margin: 5px;
@@ -14,7 +17,7 @@
   flex-shrink: 0;
   background-color: $button-dark-default;
   padding: 16px 16px 40px 16px;
-  gap: 32px;
+  gap: 30px;
   position: relative;
 }
 
@@ -37,6 +40,11 @@
 
 .brandHolderName {
   color: $button-default;
+  @include font-styles(800, 16px);
+}
+
+.navMenu {
+  @include font-styles(800, 18px);
 }
 
 .navMenu > ul {
@@ -98,6 +106,8 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @include font-styles(400, 18px);
+  gap: 12px;
 
   & a {
     text-decoration: none;
@@ -116,6 +126,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 12px;
   }
 }
 
@@ -145,9 +156,19 @@
   justify-self: center;
 }
 
+// tablet
+
 @media screen and (min-width: 768px) {
   .signature {
     font-size: 14px;
+  }
+
+  .brandHolderName {
+    @include font-styles(800, 24px);
+  }
+
+  .navMenu > ul {
+    gap: 20px;
   }
 }
 
@@ -202,7 +223,6 @@
     gap: 16px;
     position: relative;
     border-left: 2px solid $button-default;
-    // padding-left: 60%;
 
     & ul {
       flex-direction: column;
