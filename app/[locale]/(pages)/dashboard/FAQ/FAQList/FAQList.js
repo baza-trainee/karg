@@ -35,9 +35,9 @@ function FAQList() {
     } = useContext(FAQContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
-    const { isDirector } = useContext(AdminContext);
+    const { isSuperAdmin } = useContext(AdminContext);
 
-    const currentRole = isDirector;
+    const currentRole = isSuperAdmin;
 
     useEffect(() => {
         if (!isLoading) {

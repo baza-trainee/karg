@@ -1,14 +1,14 @@
 'use client'
 
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect, useState, useRef } from 'react';
 
 export const AdminContext = createContext({
     activeSection: '',
     setActiveSection: () => { },
     accountId: '',
     setAccountId: () => { },
-    isDirector: false,
-    setIsDirector: () => { },
+    isSuperAdmin: null,
+    setIsSuperAdmin: () => { },
     isLoading: false,
     setIsLoading: () => { },
 });
@@ -16,51 +16,61 @@ export const AdminContext = createContext({
 export const AdminProvider = ({ children }) => {
     const [accountId, setAccountId] = useState('');
     const [activeSection, setActiveSection] = useState('');
-    const [isDirector, setIsDirector] = useState(false);
+    const [isSuperAdmin, setIsSuperAdmin] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+
+    const hasMounted = useRef(false);
 
     const handleSetAccountId = (id) => {
         setAccountId(id);
-        if (typeof window !== 'undefined') localStorage.setItem('accountId', id);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('accountId', id);
+        }
     };
 
     const handleSetActiveSection = (section) => {
         setActiveSection(section);
-        if (typeof window !== 'undefined') localStorage.setItem('activeSection', section);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('activeSection', section);
+        }
     };
 
-    const handleSetIsDirector = (role) => {
-        setIsDirector(role);
-        if (typeof window !== 'undefined') localStorage.setItem('isDirector', JSON.stringify(role));
+    const handleSetIsSuperAdmin = (role) => {
+        setIsSuperAdmin(role);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('isSuperAdmin', JSON.stringify(role));
+        }
     };
 
     useEffect(() => {
-        const id = typeof window !== 'undefined' ? localStorage.getItem('accountId') : null;
-        const section = typeof window !== 'undefined' ? localStorage.getItem('activeSection') : null;
-        const role = typeof window !== 'undefined' ? localStorage.getItem('isDirector') : null;
+        if (!hasMounted.current) {
+            hasMounted.current = true;
 
-        console.log('useEffect role:', role);
+            const id = typeof window !== 'undefined' ? localStorage.getItem('accountId') : null;
+            const section = typeof window !== 'undefined' ? localStorage.getItem('activeSection') : null;
+            const role = typeof window !== 'undefined' ? localStorage.getItem('isSuperAdmin') : null;
 
-        if (id) setAccountId(id);
-        if (section) setActiveSection(section);
-        if (role !== null) setIsDirector(JSON.parse(role)); 
+            if (id) setAccountId(id);
+            if (section) setActiveSection(section);
+            if (role !== null) setIsSuperAdmin(JSON.parse(role));
+        }
     }, []);
 
     useEffect(() => {
         if (typeof window !== 'undefined') {
             if (accountId) localStorage.setItem('accountId', accountId);
             if (activeSection) localStorage.setItem('activeSection', activeSection);
-            localStorage.setItem('isDirector', JSON.stringify(isDirector));
+            localStorage.setItem('isSuperAdmin', JSON.stringify(isSuperAdmin));
         }
-    }, [accountId, activeSection, isDirector]);
+    }, [accountId, activeSection, isSuperAdmin]);
 
     const contextValue = {
         activeSection,
         setActiveSection: handleSetActiveSection,
         accountId,
         setAccountId: handleSetAccountId,
-        isDirector,
-        setIsDirector: handleSetIsDirector,
+        isSuperAdmin,
+        setIsSuperAdmin: handleSetIsSuperAdmin,
         isLoading,
         setIsLoading,
     };

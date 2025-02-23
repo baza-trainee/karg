@@ -181,6 +181,7 @@ export default function ResetPassword() {
                   value={password}
                   onChange={(e) => passwordHandler(e)}
                   onBlur={(e) => blurHandler(e)}
+                  autoComplete="new-password"
                 />
                 {isPasswordVisible ? (
                   <HideShow className={styles.icon} onClick={() => setIsPasswordVisible(!isPasswordVisible)} />
@@ -202,6 +203,7 @@ export default function ResetPassword() {
                   value={repeatPassword}
                   onChange={(e) => passwordHandler(e)}
                   onBlur={(e) => blurHandler(e)}
+                  autoComplete="new-password"
                 />
                 {isRepeatPasswordVisible ? (
                   <HideShow className={styles.icon} onClick={() => setIsRepeatPasswordVisible(!isRepeatPasswordVisible)} />

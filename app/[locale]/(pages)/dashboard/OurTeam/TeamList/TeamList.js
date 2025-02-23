@@ -29,11 +29,11 @@ function TeamList() {
         rescuers,
         setRescuers,
     } = useContext(TeamContext);
-    const { isDirector } = useContext(AdminContext);
+    const { isSuperAdmin } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
-    const currentRole = isDirector;
+    const currentRole = isSuperAdmin;
     useEffect(() => {
         if (!isLoading) {
             loadRescuers();
