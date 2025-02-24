@@ -6,7 +6,7 @@ export default async function FetchInitialCards(locale, endpoint, method) {
     const cultureCode = locale === 'uk' ? 'ua' : 'en';
 
     try {
-        const response = await axios.get(`${API_BASE_URL}/${endpoint}/${method}?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`);
+        const response = await axios.get(`${API_BASE_URL}${endpoint}/${method}?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`);
 
         return response.data.items || [];
 
