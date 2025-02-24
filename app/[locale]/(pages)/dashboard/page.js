@@ -11,6 +11,7 @@ import { AdviceProvider } from './Advice/AdviceContext';
 import { TeamProvider } from './OurTeam/TeamContext';
 import { PartnerProvider } from './Partner/PartnerContext';
 import { FAQProvider } from './FAQ/FAQContext';
+import { StatsProvider } from './Stats/StatsContext';
 import ProtectedRoute from './ProtectedRoute';
 
 export default function DashboardPage({ children }) {
@@ -22,18 +23,20 @@ export default function DashboardPage({ children }) {
           <PartnerProvider>
             <PetProvider>
               <AdviceProvider>
-                <FAQProvider>
-                  <TeamProvider>
-                    <ProtectedRoute>
-                      <div>
-                        <Main />
-                        {children}
-                        <GenericModal />
-                        <ConfirmationModal />
-                      </div>
-                    </ProtectedRoute>
-                  </TeamProvider>
-                </FAQProvider>
+                <StatsProvider>
+                  <FAQProvider>
+                    <TeamProvider>
+                      <ProtectedRoute>
+                        <div>
+                          <Main />
+                          {children}
+                          <GenericModal />
+                          <ConfirmationModal />
+                        </div>
+                      </ProtectedRoute>
+                    </TeamProvider>
+                  </FAQProvider>
+                </StatsProvider>
               </AdviceProvider>
             </PetProvider>
           </PartnerProvider>
