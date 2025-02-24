@@ -9,6 +9,7 @@ import AdviceForm from '../Advice/AdviceForm/AdviceForm';
 import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
 import FAQForm from '../FAQ/FAQForm/FAQForm';
+import StatsForm from '../Stats/StatsForm/StatsForm';
 
 export default function Navbar() {
   const { activeSection } = useContext(AdminContext);
@@ -36,7 +37,7 @@ export default function Navbar() {
     },
     'Підсумки': {
       caption: "Додати статтю",
-      genericModalContent: ""
+      genericModalContent: <StatsForm type="create" />
     },
     'Команда': {
       caption: "Додати користувача",
