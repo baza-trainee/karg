@@ -10,7 +10,7 @@
   background-color: $bg-lightgray;
   gap: 8px;
   color: $text-dark;
-  width: 1194px;
+  width: 100%;
 
   .teamTitle {
     display: flex;
@@ -19,7 +19,7 @@
     margin-top: 16px;
     height: 40px;
     align-items: center;
-    width: 100%;
+    width: 90.45%;
 
     .photoTitle {
       min-width: 50px;
@@ -40,8 +40,7 @@
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
-    min-width: 1098px;
-    width: 100%;
+    width: 90.45%;
   }
   .photoContainer {
     flex-shrink: 0;
@@ -55,10 +54,10 @@
   }
 
   & .fullname {
-    min-width: 240px;
+    width: 21.86%;
   }
   & .phone{
-    min-width: 632px;
+    width: 57.56%;
   }
 
   .iconsContainer {

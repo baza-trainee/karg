@@ -20,7 +20,6 @@ export const logoutUser = async () => {
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
     localStorage.removeItem('isDirector');
-    console.log('User logged out');
 };
 
 export const getUserById = async (id) => {

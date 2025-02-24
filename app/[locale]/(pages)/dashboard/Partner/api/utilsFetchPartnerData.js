@@ -9,21 +9,25 @@ export const initializeFormData = (data) => {
     }
 }
 
-export const fetchPartners = async (setPartners) => {
+export const fetchPartners = async (currentPage, setPartners, setTotalPages) => {
     try {
-        const data = await getAllPartners();
-        setPartners(data);
+        const data = await getAllPartners(currentPage);
+        setPartners(data.items);
+        setTotalPages(data.totalPages);
     } catch (error) {
         throw new Error('Error fetching partners:', error.message);
     }
 }
 
-export const deletePartner = async (id, setPartners) => {
+export const deletePartner = async (id, currentPage, partners, handlePageChange, setPartners ) => {
     try {
         await deletePartnerApi(id);
         setPartners(prevPartners => prevPartners.filter((partner) => partner.id !== id));
     } catch (error) {
         console.error('Error deleting the partner:', error.message);
+    } finally {
+        const newPage = currentPage > 1 && partners.length === 1 ? currentPage - 1 : currentPage;
+        handlePageChange(newPage);
     }
 }
 

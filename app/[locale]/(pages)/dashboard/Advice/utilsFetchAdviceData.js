@@ -52,7 +52,7 @@ export const deleteAdviceData = async (id, currentPage, advices, handlePageChang
 export const fetchAdvicesData = async (currentPage, currentLanguage = 'ua', setAdvices, setTotalPages) => {
     try {
         const data = await getAllAdvices(currentPage, currentLanguage);
-        setAdvices(data.advices);
+        setAdvices(data.items);
         setTotalPages(data.totalPages);
     } catch (error) {
         console.error('Error fetching advices:', error.message);

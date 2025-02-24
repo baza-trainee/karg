@@ -106,14 +106,12 @@ export default function LoginPage() {
       if (response && response.status === 1) {
         const authToken = await response.token;
         const accountId = await response.rescuerId;
-        const role = !!response.isDirector; 
-
-        console.log('Login role:', role);
+        const role = !!response.isDirector;
 
         setLoginStatus(successMessages.authSuccess);
         localStorage.setItem('auth-token', authToken);
         localStorage.setItem('accountId', accountId);
-        localStorage.setItem('isDirector', JSON.stringify(role)); 
+        localStorage.setItem('isDirector', JSON.stringify(role));
         setAccountId(accountId);
         setIsDirector(role);
         setActiveSection('Мій акаунт');
