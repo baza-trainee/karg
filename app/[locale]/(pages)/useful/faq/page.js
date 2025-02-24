@@ -25,7 +25,7 @@ const Faq = async ({ params: { locale } }) => {
 
   let cultureCode = (locale === "uk") ? "ua" : "en";
   // const response = await getAllFAQ("", cultureCode);
-  let API_URL = `https://dev.karg.kyiv.ua/api/faq/getall?page=1&pageSize=6&cultureCode=${cultureCode}`;
+  let API_URL = `https://dev.karg.kyiv.ua/api/faq/getall?page=1&pageSize=50&cultureCode=${cultureCode}`;
 
   let response = null;
   try {
