@@ -65,7 +65,7 @@
 .mobImage {
   display: block;
   object-fit: cover;
-
+  max-height: 120px;
   @media screen and (min-width: 768px) {
     display: none;
   }
@@ -73,7 +73,7 @@
 
 .tablImage {
   display: none;
-
+  max-height: 232px;
   @media screen and (min-width: 768px) and (max-width: 1199px) {
     display: block;
     object-fit: cover;
@@ -82,7 +82,7 @@
 
 .deskImage {
   display: none;
-
+  max-height: 400px;
   @media screen and (min-width: 1200px) {
     display: block;
     object-fit: cover;
