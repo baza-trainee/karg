@@ -50,7 +50,7 @@ function TeamList() {
         <div className={styles.container}>
             <div className={styles.teamTitle}>
                 <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.fullname} ${variables.font20w700}`}>Імʼя та прізвище</p>
+                <p className={`${styles.fullnameTitle} ${variables.font20w700}`}>Імʼя та прізвище</p>
                 <p className={`${styles.phoneTitle} ${variables.font20w700}`}>Телефон</p>
             </div>
             {isLoading ? <Spinner /> : (
