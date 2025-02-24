@@ -55,7 +55,7 @@ export const fetchPets = async (currentPage, selectedCategory, initialCategory, 
     const categoryQuery = selectedCategory === initialCategory ? '' : `&CategoryFilter=${selectedCategory}`;
     try {
         const data = await getAllAnimals(currentPage, categoryQuery, currentLanguage);
-        setPets(data.animals);
+        setPets(data.items);
         setTotalPages(data.totalPages);
     } catch (error) {
         console.error('Error fetching pets:', error.message);
