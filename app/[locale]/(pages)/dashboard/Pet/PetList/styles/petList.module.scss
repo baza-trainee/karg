@@ -20,7 +20,7 @@
     width: 100%;
 
     .photoTitle {
-      width: 8.38%;
+      width: 8.63%;
     }
   }
 
@@ -44,7 +44,7 @@
   }
 
   .photoContainer {
-    width: clamp(50px, 8.38%, 100px);
+    width: clamp(50px, 8.63%, 200px);
     flex-shrink: 0;
   }
 
@@ -72,7 +72,7 @@
   .petCategoryStyle,
   .nameTitle,
   .categoryTitle {
-    width: 10.93%;
+    width: 11.26%;
   }
 
   & .detailsInfo {
@@ -83,7 +83,7 @@
 
   .detailsInfoTitle,
   .detailsInfoBlock {
-    width: 24.5%;
+    width: 25.23%;
   }
 
   .iconsContainer {

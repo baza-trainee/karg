@@ -56,8 +56,8 @@ function AdviceList() {
         <div className={styles.container}>
             <div className={styles.adviceTitle}>
                 <p className={`${styles.photoTitle} ${variables.font20w700}`}>Фото</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Заголовок</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Текст статті</p>
+                <p className={`${styles.basicInfoTitle} ${variables.font20w700}`}>Заголовок</p>
+                <p className={`${styles.detailsTitle} ${variables.font20w700}`}>Текст статті</p>
             </div>
             {isLoading ? <Spinner /> : (
                 <>

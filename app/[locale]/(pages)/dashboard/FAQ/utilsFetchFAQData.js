@@ -46,7 +46,7 @@ export const deleteFAQItemData = async (id, currentPage, faq, handlePageChange, 
 export const fetchAllFAQData = async (currentPage, currentLanguage = 'ua', setFAQ, setTotalPages) => {
     try {
         const data = await getAllFAQ(currentPage, currentLanguage);
-        setFAQ(data);
+        setFAQ(data.items);
         //setTotalPages(data.totalPages);
     } catch (error) {
         console.error('Error fetching faq:', error.message);

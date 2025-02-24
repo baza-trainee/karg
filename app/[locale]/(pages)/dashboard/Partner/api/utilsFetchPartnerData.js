@@ -12,7 +12,7 @@ export const initializeFormData = (data) => {
 export const fetchPartners = async (currentPage, setPartners, setTotalPages) => {
     try {
         const data = await getAllPartners(currentPage);
-        setPartners(data.partners);
+        setPartners(data.items);
         setTotalPages(data.totalPages);
     } catch (error) {
         throw new Error('Error fetching partners:', error.message);

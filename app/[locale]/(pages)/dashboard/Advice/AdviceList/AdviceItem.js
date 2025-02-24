@@ -14,40 +14,37 @@ export default function AdviceItem(
         adviceTitle,
         adviceDetails,
         detailsStyle,
-        detailsBlockStyle,
         adviceLineStyle,
         iconsContainerStyle,
         children
     }) {
-    
+
     const processedPhotoSrc = photoSrc.length > 0 ? getImageSrc(photoSrc[0]) : null;
 
     return (
-        <div className={containerStyle}>
-            <div className={adviceLineStyle}>
-                <div className={photoContainerStyle}>
-                    {processedPhotoSrc && processedPhotoSrc.length > 0 ? (
-                        <Image
-                            src={processedPhotoSrc}
-                            alt={photoAlt}
-                            width={92}
-                            height={92}
-                            loading="lazy"
-                            className={photoStyle}
-                        />
-                    ) : (
-                        <div className={photoStyle} aria-hidden="true"></div>
-                    )}
-                </div>
-                <div className={`${basicInfoStyle} ${variables.font24w700}`}>{adviceTitle}</div>
-                <div className={detailsBlockStyle}>
-                    <div className={`${detailsStyle} ${variables.font20w500}`}>{adviceDetails}</div>
-                </div>
-                <div className={iconsContainerStyle}>
-                    {children}
-                </div>
+        // <div className={containerStyle}>
+        <div className={adviceLineStyle}>
+            <div className={photoContainerStyle}>
+                {processedPhotoSrc && processedPhotoSrc.length > 0 ? (
+                    <Image
+                        src={processedPhotoSrc}
+                        alt={photoAlt}
+                        width={92}
+                        height={92}
+                        loading="lazy"
+                        className={photoStyle}
+                    />
+                ) : (
+                    <div className={photoStyle} aria-hidden="true"></div>
+                )}
+            </div>
+            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{adviceTitle}</div>
+            <div className={`${detailsStyle} ${variables.font20w500}`}>{adviceDetails}</div>
+            <div className={iconsContainerStyle}>
+                {children}
             </div>
         </div>
+        // </div>
     )
 }
 AdviceItem.propTypes = {
