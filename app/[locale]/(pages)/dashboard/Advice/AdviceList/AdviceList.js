@@ -80,13 +80,13 @@ function AdviceList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={ () => {
                                         showModal('generic', <AdviceForm type='edit' adviceData={advice} />)
-                                    } : null}
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -98,7 +98,7 @@ function AdviceList() {
                                                 actionOnConfirm={handleDeleteAdvice}
                                                 actionArgs={advice.id}
                                             />)
-                                    } : null}
+                                    }}
                                 />
                             </AdviceItem>
                         )
