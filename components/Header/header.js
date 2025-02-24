@@ -144,7 +144,7 @@ const Header = () => {
               buttonStyle="primary-dark-W-288"
             />
             <div
-              className={`${styles.contactsContainerMobile} ${variables.button2}`}
+              className={`${styles.contactsContainerMobile}`}
             >
               <a href="tel: +380939862262">+38 (093) 986-2262</a>
               <a href="tel: +380988447937">+38 (098) 844-7937</a>

@@ -1,7 +1,7 @@
 "use client";
-import { AdminContext } from "@/app/adminProvider";
+// import { AdminContext } from "@/app/adminProvider";
 import styles from "./styles/footer.module.scss";
-import variables from "@/app/[locale]/variables.module.scss";
+// import variables from "@/app/[locale]/variables.module.scss";
 
 import Link from "next/link";
 import {
@@ -43,11 +43,11 @@ function Footer() {
         <Link href="/">
           <Logo className={styles.logo} />
         </Link>
-        <h2 className={`${styles.brandHolderName} ${variables.h3}`}>
+        <h2 className={`${styles.brandHolderName}`}>
           KYIV ANIMAL RESCUE GROUP
         </h2>
       </div>
-      <nav className={`${styles.navMenu} ${variables.Text3}`}>
+      <nav className={`${styles.navMenu}`}>
         <ul>
           <li>
             <Link href="/">{t('common:linkMain')}</Link>
@@ -123,7 +123,8 @@ function Footer() {
           <SocialIcons className={styles.socIcons} />
         </div>
       </div>
-      <div className={`${styles.contactsContainer} ${variables.button2}`}>
+      <div className={`${styles.contactsContainer}`}>
+
         <div className={styles.contactsContainerHolder}>
           <PhoneIcon className={styles.contactsContainerIcons} />
           <div className={styles.contactsContainerTelephones}>
@@ -131,18 +132,23 @@ function Footer() {
             <a href="tel: +380988447937">+38 (098) 844-7937</a>
           </div>
         </div>
+
         <div className={styles.contactsContainerEmail}>
           <EmailIcon className={styles.contactsContainerIcons} />
           <a href="mailto: karg.inform@gmail.com">karg.inform@gmail.com</a>
         </div>
+
         <div className={styles.contactsContainerLocation}>
           <LocationIcon className={styles.contactsContainerIcons} />
           <a>{t('common:address')}</a>
         </div>
+
       </div>
+
       <div className={styles.socialIconsHolderMobile}>
         <SocialIcons className={styles.socIcons} />
       </div>
+
       <p className={styles.signature}>
         {t('common:copyright')}
       </p>

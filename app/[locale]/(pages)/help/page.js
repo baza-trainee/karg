@@ -23,13 +23,29 @@ import {
     help_usHeroDeskExp,
 } from "@/public/assets/images/helpUs";
 
-const i18nNamespaces = ["home", "common"];
-
-const text = { pageHero: { buttonText: "Допомогти нам", altText: 'Розділ "Допомогти нам"' } };
+const i18nNamespaces = ["helpUs", "common"];
 
 const Help = async ({ params: { locale } }) => {
 
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
+    const DOCUMENT_TEXT = {
+        buttonText: t('buttonText'),
+        altText: t('altText'),
+        title: t('title'),
+        articleP1: t('articleP1'),
+        articleP2: t('articleP2'),
+        textBlock_title2: t('textBlock_title2'),
+        paymentsButtons_title: t('paymentsButtons_title'),
+        photoBlock_title: t('photoBlock_title')
+    };
+
+    const text = {
+        pageHero: {
+            buttonText: DOCUMENT_TEXT.buttonText,
+            altText: DOCUMENT_TEXT.altText
+        }
+    };
 
     return (
         <TranslationsProvider
@@ -47,17 +63,22 @@ const Help = async ({ params: { locale } }) => {
             />
             <main className={styles.container}>
                 <section className={styles.textBlock}>
-                    <h2 className={`${styles.textBlock_title} ${variables.Heading3}`}>Зробити донат</h2>
-                    <p className={`${styles.textBlock_text} ${variables.text_4}`}>Команда рятувальників завжди рада благодійникам, за допомогою яких шанс на життя отримає більше тваринок. Отримані кошти насамперед покривають витрати на придбання нового спорядження або допомогу тваринам, які перебувають на лікуванні.<br /><br />
-                        Для підтримки діяльності команди заповніть форму нижче.</p>
+                    <h2 className={`${styles.textBlock_title} ${variables.Heading3}`}>
+                        {DOCUMENT_TEXT.title}
+                    </h2>
+                    <p className={`${styles.textBlock_text} ${variables.text_4}`}>
+                        {DOCUMENT_TEXT.articleP1}<br /><br />
+                        {DOCUMENT_TEXT.articleP2}</p>
                 </section>
                 <section className={styles.bankingDetails_Container}>
-                    <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>Банківські реквізити</h3>
+                    <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>
+                        {DOCUMENT_TEXT.textBlock_title2}
+                    </h3>
                     <BankingDetails />
                 </section>
                 <section className={styles.paymentsButtons_Container}>
                     <h4 className={`${styles.paymentsButtons_title} ${variables.Heading3}`}>
-                        Підтримати нас через інші платіжні системи
+                        {DOCUMENT_TEXT.paymentsButtons_title}
                     </h4>
                     <div className={styles.paymentsButtons_buttonContainer}>
                         <a href='https://www.paypal.com/donate?token=edi9sEF4oDBmWo0mD58z1FB4RdVsYAeZB2XBwIzYqUJHt4GGhEG6GN8z9ztM1z-iOWAsAAElsFwd-2xk'>
@@ -75,7 +96,9 @@ const Help = async ({ params: { locale } }) => {
                     </div>
                 </section>
                 <section className={styles.photoBlock_Container}>
-                    <h4 className={`${styles.photoBlock_title} ${variables.Heading3}`}>Дякуємо вам!</h4>
+                    <h4 className={`${styles.photoBlock_title} ${variables.Heading3}`}>
+                        {DOCUMENT_TEXT.photoBlock_title}
+                    </h4>
                     <Image
                         className={styles.photoBlock_image_mobile}
                         src={help_usImage}

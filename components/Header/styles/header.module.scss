@@ -1,4 +1,5 @@
 @import '../../../app/[locale]/colors.scss';
+@import '../../../app/[locale]/variables.module.scss';
 
 .header {
   display: flex;
@@ -235,6 +236,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  @include font-styles(400, 16px);
 }
 
 .contactsContainerMobile > a {
