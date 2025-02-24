@@ -1,12 +1,13 @@
 "use client";
 
+import axios from 'axios';
 import Button from "@/components/Button/button";
 import stylesBtn from "@/components/Button/styles/button.module.scss";
 import styles from "../partners/styles/partners.module.scss";
 import variables from "@/app/[locale]/variables.module.scss";
 import { useEffect, useState } from "react";
 import { useTranslation } from 'react-i18next';
-import { fetchPartners } from "./../../../dashboard/Partner/api/utilsFetchPartnerData";
+// import { fetchPartners } from "./../../../dashboard/Partner/api/utilsFetchPartnerData";
 import Spinner from "@/components/Spinner/Spinner";
 
 const Partners = () => {
@@ -18,22 +19,39 @@ const Partners = () => {
     const openText = t('common:buttonOpenText');
     const closeText = t('common:buttonCloseText');
 
-    const getPartners = async () => {
+    // const getPartners = async () => {
+    //     setIsLoading(true);
+    //     try {
+    //         const data = await fetchPartners(setPartners);
+    //         return data;
+    //     } catch (error) {
+    //         throw error;
+    //     } finally {
+    //         setIsLoading(false);
+    //     }
+    // };
+
+    // useEffect(() => {
+    //     const partnersData = getPartners();
+    //     setPartners(partnersData);
+    // }, []);
+
+    const fetchPartners = async () => {
         setIsLoading(true);
         try {
-            const data = await fetchPartners(setPartners);
-            return data;
+            const response = await axios.get('https://dev.karg.kyiv.ua/api/partner/getall?page=1&pageSize=18&CategoryFilter=&NameSearch=&cultureCode=ua');
+            setPartners(response.data.items);
         } catch (error) {
-            throw error;
+            console.error("Error fetching partners:", error);
         } finally {
             setIsLoading(false);
         }
     };
 
     useEffect(() => {
-        const partnersData = getPartners();
-        setPartners(partnersData);
+        fetchPartners();
     }, []);
+
 
     const handleOpenClick = () => {
         setVisibleLogosCount(partners.length);
