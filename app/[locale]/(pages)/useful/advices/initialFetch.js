@@ -1,10 +1,21 @@
+"use client";
+
+import { useState, useEffect } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
 
+export default function InitialFetch({ locale }) {
+    const [initialCards, setInitialCards] = useState([]);
+    // const initialCards = await FetchInitialCards(locale, 'advice', 'getall');
 
+    useEffect(() => {
+        const loadInitialCards = async () => {
+            const cards = await FetchInitialCards(locale, 'api/advice', 'getall');
+            setInitialCards(cards);
+        };
 
-export default async function InitialFetch({ locale }) {
-    const initialCards = await FetchInitialCards(locale, 'advice', 'getall');
+        loadInitialCards();
+    }, [locale]);
 
     return (
         <>
