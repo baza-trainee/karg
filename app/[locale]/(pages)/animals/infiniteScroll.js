@@ -16,7 +16,6 @@ const InfiniteScroll = ({ locale }) => {
 
     useEffect(() => {
         if (fetching && currentPage <= totalPages) {
-            // console.log('fetch');
             axios.get(`${API_BASE_URL}api/animal/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {

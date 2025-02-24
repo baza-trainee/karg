@@ -42,7 +42,7 @@ export const deleteTeamUserData = async (id, setRescuers) => {
 export const fetchTeamData = async (setRescuers) => {
     try {
         const data = await getAllRescuers();
-        setRescuers(data);
+        setRescuers(data.items);
     } catch (error) {
         console.error('Error fetching rescuers:', error.message);
         setRescuers([]);

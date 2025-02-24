@@ -29,11 +29,11 @@ export default function Main() {
         return <FAQList />;
       case 'Підсумки':
         return <SummariesList />;
-      case 'Мій аккаунт':
+      case 'Мій акаунт':
         return <MyAccount />;
       case 'Команда':
         return <OurTeamList />;
-      case 'Мій акаунт':
+      case 'Допомога':
         return <MyAccount />
       default:
         return <PetList />;
