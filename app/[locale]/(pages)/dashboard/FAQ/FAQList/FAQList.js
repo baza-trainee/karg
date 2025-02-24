@@ -72,13 +72,13 @@ function FAQList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={ () => {
                                         showModal('generic', <FAQForm type='edit' faqData={faqItem} />)
-                                    } : null}
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -90,7 +90,7 @@ function FAQList() {
                                                 actionOnConfirm={handleDeleteFAQ}
                                                 actionArgs={faqItem.id}
                                             />)
-                                    } : null}
+                                    }}
                                 />
                             </FAQItem>
                         )
