@@ -34,7 +34,6 @@ const Help = async ({ params: { locale } }) => {
         altText: t('altText'),
         title: t('title'),
         articleP1: t('articleP1'),
-        articleP2: t('articleP2'),
         textBlock_title2: t('textBlock_title2'),
         paymentsButtons_title: t('paymentsButtons_title'),
         photoBlock_title: t('photoBlock_title')
@@ -67,8 +66,7 @@ const Help = async ({ params: { locale } }) => {
                         {DOCUMENT_TEXT.title}
                     </h2>
                     <p className={`${styles.textBlock_text} ${variables.text_4}`}>
-                        {DOCUMENT_TEXT.articleP1}<br /><br />
-                        {DOCUMENT_TEXT.articleP2}</p>
+                        {DOCUMENT_TEXT.articleP1}</p>
                 </section>
                 <section className={styles.bankingDetails_Container}>
                     <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>

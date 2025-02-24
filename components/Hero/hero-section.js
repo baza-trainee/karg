@@ -45,7 +45,7 @@ const HeroSection = () => {
           sizes="100vw"
           style={{
             width: "100%",
-            height: "400px",
+            height: "auto",
           }}
         />
       </div>

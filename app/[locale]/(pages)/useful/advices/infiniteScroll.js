@@ -19,7 +19,7 @@ const InfiniteScroll = ({ locale }) => {
             axios.get(`${API_BASE_URL}api/advice/getall?page=${currentPage}&pageSize=6&CategoryFilter=&NameSearch=&cultureCode=${cultureCode}`)
                 .then(response => {
                     setCards(prevCards => {
-                        const uniqueCards = new Set([...prevCards, ...response.data.advices]);
+                        const uniqueCards = new Set([...prevCards, ...response.data.items]);
                         return Array.from(uniqueCards);
                     });
                     setCurrentPage(prev => prev + 1);

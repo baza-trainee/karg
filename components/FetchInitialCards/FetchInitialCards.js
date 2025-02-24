@@ -8,16 +8,7 @@ export default async function FetchInitialCards(locale, endpoint, method) {
     try {
         const response = await axios.get(`${API_BASE_URL}/${endpoint}/${method}?page=${currentPage}&pageSize=6&cultureCode=${cultureCode}`);
 
-        switch (endpoint) {
-            case "advice":
-                return response.data.advices || [];
-
-            case "animal":
-                return response.data.animals || [];
-
-            case "yearresult":
-                return response.data.yearsResults || [];
-        }
+        return response.data.items || [];
 
     } catch (error) {
         console.error('Error fetching initial cards:', error);
