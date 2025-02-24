@@ -18,7 +18,7 @@ import styles from '../[id]/styles/[id].module.scss';
 const ItemAdvice = async ({ params: { locale, id } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   let cultureCode = (locale === "uk") ? "ua" : "en";
-
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
   const imageAlt = "pet image";
   const res = await getAdviceById(id, cultureCode);
   const adviceBody = res.description;
@@ -56,8 +56,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={570}
                 height={393}
                 className={`${styles.image} ${styles.deskImage}`}
-                // src={res.images[0]}
-                src={`data:image/png;base64,${res.images[0]}`}
+                src={`${API_BASE_URL}${res.images[0]}`}
+                // src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="33vw"
@@ -71,8 +71,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={706}
                 height={487}
                 className={`${styles.image} ${styles.tablImage}`}
-                // src={res.images[0]}
-                src={`data:image/png;base64,${res.images[0]}`}
+                src={`${API_BASE_URL}${res.images[0]}`}
+                // src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="100vw"
@@ -86,8 +86,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
                 width={288}
                 height={199}
                 className={`${styles.image} ${styles.mobImage}`}
-                // src={res.images[0]}
-                src={`data:image/png;base64,${res.images[0]}`}
+                src={`${API_BASE_URL}${res.images[0]}`}
+                // src={`data:image/png;base64,${res.images[0]}`}
                 alt={imageAlt}
                 quality={100}
                 sizes="33vw"
