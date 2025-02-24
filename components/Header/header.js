@@ -29,26 +29,30 @@ const Header = () => {
   const labelFirst = t('common:linkAboutUs');
   const labelSecond = t('common:linkUseful');
   const [isScrolled, setIsScrolled] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  const scrollHideThreshold = 70;
+  const scrollShowThreshold = 30;
 
   let isEn = (defaultLocale === currentLocale) ? false : true;
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 50) {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > scrollHideThreshold && currentScrollY > lastScrollY) {
         setIsScrolled(true);
-      } else {
+      } else if (currentScrollY < scrollShowThreshold && currentScrollY < lastScrollY) {
         setIsScrolled(false);
       }
+
+      setLastScrollY(currentScrollY);
     };
+
     window.addEventListener('scroll', handleScroll);
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []);
-
-  useEffect(() => {
-
-  });
+  }, [lastScrollY, scrollHideThreshold, scrollShowThreshold]);
 
   const listLabelFirst = [
     { label: t('common:linkHistory'), link: !isEn ? "/about/history_of_origin" : "/en/about/history_of_origin" },
