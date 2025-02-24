@@ -11,6 +11,7 @@ import PartnerList from '../Partner/PartnerList/PartnerList';
 import MyAccount from '../MyAccount/AccountForm/AccountForm';
 import OurTeamList from '../OurTeam/TeamList/TeamList';
 import FAQList from '../FAQ/FAQList/FAQList';
+import StatsList from '../Stats/StatsList/StatsList';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);
@@ -28,7 +29,7 @@ export default function Main() {
       case 'FAQ':
         return <FAQList />;
       case 'Підсумки':
-        return <SummariesList />;
+        return <StatsList />;
       case 'Мій акаунт':
         return <MyAccount />;
       case 'Команда':

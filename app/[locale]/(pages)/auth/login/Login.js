@@ -23,10 +23,6 @@ export default function LoginPage() {
     'authError': 'Введено невірний логін або пароль.'
   };
 
-  const successMessages = {
-    'authSuccess': 'Ви успішно увійшли до адмінпанелі.'
-  };
-
   const router = useRouter();
   const [emailVisited, setEmailVisited] = useState(false);
   const [passwordVisited, setPasswordVisited] = useState(false);
@@ -108,7 +104,6 @@ export default function LoginPage() {
         const accountId = await response.rescuerId;
         const role = !!response.isDirector;
 
-        setLoginStatus(successMessages.authSuccess);
         localStorage.setItem('auth-token', authToken);
         localStorage.setItem('accountId', accountId);
         localStorage.setItem('isDirector', JSON.stringify(role));
