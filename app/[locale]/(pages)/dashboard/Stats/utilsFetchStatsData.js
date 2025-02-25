@@ -3,9 +3,9 @@ import { getStatById, deleteStat, getAllStats } from "./api";
 export const initializeFormData = (data) => {
     return {
         id: data.id || '',
-        year: data.year || '',
         description_en: data.description_en || '',
         description_ua: data.description_ua || data.description || '',
+        year: data.year || '',
         images: data.images || [],
     }
 }
@@ -17,9 +17,9 @@ export const fetchStatData = async (statId, type) => {
             const enData = await getStatById(statId, 'en');
             const updatedFormData = {
                 id: uaData.id,
-                year: uaData.year || '',
                 description_en: enData.description || '',
                 description_ua: uaData.description || '',
+                year: uaData.year || '',
                 images: uaData.images || '',
             };
             return updatedFormData;
@@ -38,7 +38,6 @@ export const deleteStatData = async (id, currentPage, stats, handlePageChange, s
     } catch (error) {
         console.error('Error deleting:', error.message);
     } finally {
-        console.log('currentPage:', currentPage);
         const newPage = currentPage > 1 && stats.length === 1 ? currentPage - 1 : currentPage;
         handlePageChange(newPage);
     }

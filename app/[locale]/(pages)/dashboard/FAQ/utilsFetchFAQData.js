@@ -47,7 +47,7 @@ export const fetchAllFAQData = async (currentPage, currentLanguage = 'ua', setFA
     try {
         const data = await getAllFAQ(currentPage, currentLanguage);
         setFAQ(data.items);
-        //setTotalPages(data.totalPages);
+        setTotalPages(data.totalPages);
     } catch (error) {
         console.error('Error fetching faq:', error.message);
         setFAQ([]);

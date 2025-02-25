@@ -1,6 +1,6 @@
 'use client'
 
-import styles from "./styles/adviceForm.module.scss";
+import styles from "./styles/faqForm.module.scss";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
 import { useContext, useState, useEffect } from "react";
 import ModalContext from "@/app/ModalContext";
