@@ -43,7 +43,6 @@ export const deleteAdviceData = async (id, currentPage, advices, handlePageChang
     } catch (error) {
         console.error('Error deleting the advice:', error.message);
     } finally {
-        console.log('currentPage:', currentPage);
         const newPage = currentPage > 1 && advices.length === 1 ? currentPage - 1 : currentPage;
         handlePageChange(newPage);
     }

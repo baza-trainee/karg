@@ -15,8 +15,8 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                 <input
                     type="text"
                     id="nameField"
-                    name={language === 'ua' ? "title_ua" : "title_en"}
-                    value={language === 'ua' ? formData.title_ua : formData.title_en}
+                    name="year"
+                    value={formData.year}
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
                 >

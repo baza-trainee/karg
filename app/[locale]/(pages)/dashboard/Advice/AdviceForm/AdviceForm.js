@@ -54,7 +54,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     const [originalData, setOriginalData] = useState(initializeFormData(adviceData));
     const [isLoading, setIsLoading] = useState(false);
     const { loadAdvices } = useContext(AdviceContext);
-    const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
+    const title = type === 'create' ? "Додати статтю" : "Редагувати статтю";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
 
     useEffect(() => {

@@ -12,7 +12,7 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, fetchStatsData } from "../utilsFetchStatsData";
+import { initializeFormData, fetchStatData } from "../utilsFetchStatsData";
 import { StatsContext } from "../StatsContext";
 const maxImages = 4;
 
@@ -38,7 +38,7 @@ const confirmationDialogActions = {
 
 const successDialogActions = {
     successTitle: 'Вітаємо!',
-    successAddMessage: 'Нову пораду успішно додано!',
+    successAddMessage: 'Нову статтю успішно додано!',
     successChangeMessage: 'Внесені зміни збережено!',
     buttonText: 'Закрити'
 }
@@ -54,14 +54,14 @@ function StatsForm({ type = 'create', statData = {} }) {
     const [originalData, setOriginalData] = useState(initializeFormData(statData));
     const [isLoading, setIsLoading] = useState(false);
     const { loadStats } = useContext(StatsContext);
-    const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
+    const title = type === 'create' ? "Додати статтю" : "Редагувати статтю";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchStatsData(statData.id, type, setIsLoading);
+                const data = await fetchStatData(statData.id, type);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -149,7 +149,7 @@ function StatsForm({ type = 'create', statData = {} }) {
                             engLng={engLng}
                         />
                         <FormFields
-                            formData={formData}
+                            formData={formData || initializeFormData({})}
                             type={type}
                             language={language}
                             handleChange={handleChange}
