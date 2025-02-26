@@ -4,7 +4,7 @@ import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem'
 
 
 export default async function InitialFetch({ locale }) {
-    const initialCards = await FetchInitialCards(locale, 'yearresult', 'getall');
+    const initialCards = await FetchInitialCards(locale, 'yearresult', 'getall', 6);
 
     return (
         <>

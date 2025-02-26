@@ -9,7 +9,7 @@ export default function InitialFetch({ locale }) {
 
     useEffect(() => {
         const loadInitialCards = async () => {
-            const cards = await FetchInitialCards(locale, 'api/animal', 'getall');
+            const cards = await FetchInitialCards(locale, 'api/animal', 'getall', 6);
             setInitialCards(cards);
         };
 
