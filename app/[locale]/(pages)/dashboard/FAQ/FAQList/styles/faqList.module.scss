@@ -22,6 +22,7 @@
 
     .basicInfoTitle {
       width: 28.14%;
+      font-weight: 700;
     }
 
     .answerInfoTitle {
@@ -29,6 +30,7 @@
       overflow: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
+      font-weight: 700;
     }
   }
 
@@ -59,7 +61,7 @@
   }
 
   .iconsContainer {
-    width: 6.92%;
+    width: 7.13%;
     display: flex;
     gap: 15.79%;
     text-align: center;
@@ -83,7 +85,7 @@
   }
 
   .basicInfoTitle,
-  .answerInfoTitle{
+  .answerInfoTitle {
     font-size: clamp(0.813rem, calc(0.813vw + 0.8vh), 1.25rem);
   }
 
@@ -109,8 +111,13 @@
 
     .faqTitle {
       gap: 24px;
-      padding: 0px 16px 0 16px;
+      padding: 0px 16px 14px 16px;
       width: 100%;
+    }
+
+    .basicInfoTitle,
+    .answerInfoTitle {
+      font-size: 20px;
     }
 
     .faqLine {
@@ -173,4 +180,3 @@
     font-size: clamp(2.5rem, calc(2.5vw + 0.6vh), 3rem);
   }
 }
-

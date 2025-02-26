@@ -71,6 +71,7 @@
     flex-shrink: 0;
     width: clamp(50px, 8.63%, 200px);
     background-color: $primary;
+    border-radius: 8px;
   }
 
   & .photo {
@@ -80,7 +81,7 @@
   }
 
   .iconsContainer {
-    width: 6.92%;
+    width: 7.13%;
     display: flex;
     gap: 15.79%;
     text-align: center;
