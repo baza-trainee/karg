@@ -34,7 +34,7 @@ function FAQList() {
     } = useContext(FAQContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
-   
+
     useEffect(() => {
         if (!isLoading) {
             loadAllFaq();
@@ -50,8 +50,8 @@ function FAQList() {
     return (
         <div className={styles.container}>
             <div className={styles.faqTitle}>
-                <p className={`${styles.basicInfoTitle} ${variables.font20w700}`}>Питання</p>
-                <p className={`${styles.answerInfoTitle} ${variables.font20w700}`}>Відповідь</p>
+                <p className={styles.basicInfoTitle}>Питання</p>
+                <p className={styles.answerInfoTitle}>Відповідь</p>
             </div>
             {isLoading ? <Spinner /> : (
                 <>

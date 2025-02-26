@@ -14,7 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchAdviceData } from "../utilsFetchAdviceData";
 import { AdviceContext } from "../AdviceContext";
-const maxImages = 4;
+const maxImages = 2;
 
 const labels = {
     ukrLng: "Українська",
