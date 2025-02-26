@@ -13,7 +13,6 @@ import Spinner from '@/components/Spinner/Spinner';
 import { deleteFAQItemData } from '../utilsFetchFAQData';
 import { FAQContext } from "../FAQContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -35,9 +34,6 @@ function FAQList() {
     } = useContext(FAQContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
-    const { isDirector } = useContext(AdminContext);
-
-    const currentRole = isDirector;
 
     useEffect(() => {
         if (!isLoading) {
@@ -54,8 +50,8 @@ function FAQList() {
     return (
         <div className={styles.container}>
             <div className={styles.faqTitle}>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Питання</p>
-                <p className={`${styles.basicInfo} ${variables.font20w700}`}>Відповідь</p>
+                <p className={styles.basicInfoTitle}>Питання</p>
+                <p className={styles.answerInfoTitle}>Відповідь</p>
             </div>
             {isLoading ? <Spinner /> : (
                 <>
@@ -67,12 +63,12 @@ function FAQList() {
                                 basicInfoStyle={styles.basicInfo}
                                 faqQuestion={faqItem.question}
                                 faqAnswer={faqItem.answer}
-                                faqAnswerStyle={styles.anserInfo}
+                                faqAnswerStyle={styles.answerInfo}
                                 iconsContainerStyle={styles.iconsContainer}
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={ () => {
+                                    onClick={() => {
                                         showModal('generic', <FAQForm type='edit' faqData={faqItem} />)
                                     }}
                                 />
@@ -96,11 +92,11 @@ function FAQList() {
                         )
                     })}
 
-                    {/* <Pagination
+                    <Pagination
                         totalPages={totalPages}
                         currentPage={currentPage}
                         handlePageChange={handlePageChange}
-                    /> */}
+                    />
                 </>
             )}
         </div>

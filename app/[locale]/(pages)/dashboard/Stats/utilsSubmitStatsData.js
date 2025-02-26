@@ -1,4 +1,4 @@
-import { addStat, updateStat} from "./api";
+import { addStat, updateStat } from "./api";
 import { checkFormValidity } from './StatsForm/checkFormValidity';
 import SuccessDialog from "./SuccessDialog/SuccessDialog";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
@@ -38,9 +38,9 @@ export const submitStatsData = async (type, formData, originalData, hideModal, s
             return;
         }
         const statData = {
-            year: formData.year,
             description_en: formData.description_en,
             description_ua: formData.description_ua,
+            year: formData.year,
             images: formData.images,
         };
         try {

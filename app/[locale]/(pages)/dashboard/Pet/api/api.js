@@ -50,7 +50,7 @@ export const updateAnimal = async (id, updates) => {
 };
 
 export const getAllAnimals = async (page, categoryQuery, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/getall?Page=${page}&PageSize=10${categoryQuery}&cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_PET}/getall?Page=${page}&PageSize=6${categoryQuery}&cultureCode=${cultureCode}`, {
         headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json',

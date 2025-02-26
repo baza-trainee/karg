@@ -28,7 +28,7 @@ export default function Navbar() {
       genericModalContent: <PartnerForm type="create" />
     },
     'Поради': {
-      caption: "Додати статтю",
+      caption: "Створити статтю",
       genericModalContent: <AdviceForm type="create" />
     },
     'FAQ': {
@@ -36,7 +36,7 @@ export default function Navbar() {
       genericModalContent: <FAQForm type="create" />
     },
     'Підсумки': {
-      caption: "Додати статтю",
+      caption: "Створити статтю",
       genericModalContent: <StatsForm type="create" />
     },
     'Команда': {

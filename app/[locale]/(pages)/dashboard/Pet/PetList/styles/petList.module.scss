@@ -14,7 +14,7 @@
   .petTitle {
     display: flex;
     gap: 2.19%;
-    padding: 0px 1.46% 10px 1.46%;
+    padding: 0px 1.46% 14px 1.46%;
     margin-top: 16px;
     align-items: center;
     width: 100%;
@@ -87,7 +87,7 @@
   }
 
   .iconsContainer {
-    width: 6.92%;
+    width: 7.13%;
     display: flex;
     gap: 15.79%;
     text-align: center;
@@ -115,7 +115,7 @@
   .detailsTitle,
   .detailsInfoTitle,
   .photoTitle {
-    font-size: clamp(0.813rem, calc(0.813vw + 0.7vh), 1.25rem);
+    font-size: clamp(0.813rem, calc(0.813vw + 0.8vh), 1.25rem);
   }
 
   .petNameStyle {
@@ -144,7 +144,7 @@
   }
 
   .petTitle {
-    padding: 0px 16px 0 16px;
+    padding: 0px 16px 14px 16px;
     width: 1098px;
     gap: 24px;
   }

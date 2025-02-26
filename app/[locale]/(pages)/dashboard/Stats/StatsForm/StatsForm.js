@@ -12,9 +12,9 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, fetchStatsData } from "../utilsFetchStatsData";
+import { initializeFormData, fetchStatData } from "../utilsFetchStatsData";
 import { StatsContext } from "../StatsContext";
-const maxImages = 4;
+const maxImages = 2;
 
 const labels = {
     ukrLng: "Українська",
@@ -38,7 +38,7 @@ const confirmationDialogActions = {
 
 const successDialogActions = {
     successTitle: 'Вітаємо!',
-    successAddMessage: 'Нову пораду успішно додано!',
+    successAddMessage: 'Нову статтю успішно додано!',
     successChangeMessage: 'Внесені зміни збережено!',
     buttonText: 'Закрити'
 }
@@ -54,19 +54,19 @@ function StatsForm({ type = 'create', statData = {} }) {
     const [originalData, setOriginalData] = useState(initializeFormData(statData));
     const [isLoading, setIsLoading] = useState(false);
     const { loadStats } = useContext(StatsContext);
-    const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
+    const title = type === 'create' ? "Додати статтю" : "Редагувати статтю";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchStatsData(statData.id, type, setIsLoading);
+                const data = await fetchStatData(statData.id, type, setIsLoading);
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
             } catch (error) {
-                console.error('Error loading addvice data:', error.message);
+                console.error('Error loading stats data:', error.message);
             }
             setIsLoading(false);
         };
@@ -112,9 +112,10 @@ function StatsForm({ type = 'create', statData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
+        const newValue = name === 'year' ? value.replace(/\D/g, '').slice(0, 4) : value;
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: value };
+            const updatedFormData = { ...prev, [name]: newValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });

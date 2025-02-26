@@ -14,12 +14,25 @@
     gap: 16px;
   }
 
+  .descriptionField {
+    padding-top: 52px;
+  }
+
   .textareaField {
     border-radius: 8px;
     border: 1px solid $text-dark;
-    min-height: 48px;
+    min-height: 86px;
     max-height: 170px;
-    padding: 0 8px;
+    padding: 8px;
+    box-sizing: border-box;
+    overflow-y: auto;
+  }
+
+  .textareaFieldCreate {
+    border-radius: 8px;
+    border: 1px solid $text-dark;
+    min-height: 317px;
+    padding: 8px;
     box-sizing: border-box;
     overflow-y: auto;
   }

@@ -13,8 +13,6 @@ import Spinner from '@/components/Spinner/Spinner';
 import { deleteStatData } from '../utilsFetchStatsData';
 import { StatsContext } from "../StatsContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
-import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -36,9 +34,6 @@ function StatsList() {
     } = useContext(StatsContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
-    const { isDirector } = useContext(AdminContext);
-
-    const currentRole = isDirector;
 
     useEffect(() => {
         if (!isLoading) {
@@ -80,13 +75,13 @@ function StatsList() {
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('generic', <StatsForm type='edit' statData={stat} />)
-                                    } : null}
+                                    }}
                                 />
                                 <TrashIcon
                                     className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    onClick={() => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -98,12 +93,11 @@ function StatsList() {
                                                 actionOnConfirm={handleDeleteStat}
                                                 actionArgs={stat.id}
                                             />)
-                                    } : null}
+                                    }}
                                 />
                             </StatsItem>
                         )
                     })}
-                    <ScrollToTop />
                     <Pagination
                         totalPages={totalPages}
                         currentPage={currentPage}

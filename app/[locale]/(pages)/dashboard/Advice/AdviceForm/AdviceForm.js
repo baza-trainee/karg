@@ -14,7 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchAdviceData } from "../utilsFetchAdviceData";
 import { AdviceContext } from "../AdviceContext";
-const maxImages = 4;
+const maxImages = 2;
 
 const labels = {
     ukrLng: "Українська",
@@ -54,7 +54,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     const [originalData, setOriginalData] = useState(initializeFormData(adviceData));
     const [isLoading, setIsLoading] = useState(false);
     const { loadAdvices } = useContext(AdviceContext);
-    const title = type === 'create' ? "Додати пораду" : "Редагувати пораду";
+    const title = type === 'create' ? "Додати статтю" : "Редагувати статтю";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
 
     useEffect(() => {

@@ -30,6 +30,12 @@
       white-space: nowrap;
       text-overflow: ellipsis;
     }
+
+    .basicInfoTitle,
+    .photoTitle,
+    .detailsTitle {
+      font-weight: 700;
+    }
   }
 
   .adviceLine {
@@ -62,14 +68,14 @@
   }
 
   .detailsInfo {
-    max-width: 49.34%;
+    width: 49.34%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
   .iconsContainer {
-    width: 6.92%;
+    width: 7.13%;
     display: flex;
     gap: 15.79%;
     text-align: center;
@@ -122,6 +128,12 @@
     padding: 0 16px 14px 16px;
     width: 1098px;
     gap: 24px;
+  }
+
+  .photoTitle,
+  .basicInfoTitle,
+  .detailsTitle {
+    font-size: 20px;
   }
 
   .adviceLine {

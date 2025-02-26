@@ -1,5 +1,4 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
-// console.log('API_BASE_URL:', API_BASE_URL);
 const API_ENDPOINT_FAQ = 'api/faq';
 
 export const getFAQById = async (id, cultureCode) => {
@@ -28,7 +27,7 @@ export const addFAQItem = async (faqItemData) => {
         body: JSON.stringify(faqItemData)
     });
     if (!response.ok) {
-        console.log(`Failed to submit form with status: ${response.status}`);;
+        console.log(`Failed to submit form with status: ${response.status}`);
 
     }
     return response.json();
@@ -52,7 +51,7 @@ export const updateFAQItem = async (id, updates) => {
 };
 
 export const getAllFAQ = async (page, cultureCode) => {
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/getall?cultureCode=${cultureCode}`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_FAQ}/getall?Page=${page}&PageSize=10&cultureCode=${cultureCode}`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',

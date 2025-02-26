@@ -3,6 +3,7 @@ import variables from "../../../../../variables.module.scss";
 import { memo } from 'react';
 
 const FormFields = memo(({ formData, language, handleChange, questionTitle, answerTitle, type }) => {
+
     return (
         <div className={`${styles.formFields} ${type === 'edit' ? styles.editMode : ''}`}>
             <div className={styles.inputBlock}>
