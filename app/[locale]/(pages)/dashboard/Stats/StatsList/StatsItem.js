@@ -6,7 +6,6 @@ import { getImageSrc } from '@/utils/base64ImageHandler';
 
 export default function StatsItem(
     {
-        containerStyle,
         photoStyle,
         photoAlt,
         photoSrc = [],
@@ -23,7 +22,6 @@ export default function StatsItem(
     const processedPhotoSrc = photoSrc.length > 0 ? getImageSrc(photoSrc[0]) : null;
 
     return (
-        // <div className={containerStyle}>
         <div className={statLineStyle}>
             <div className={photoContainerStyle}>
                 {processedPhotoSrc && processedPhotoSrc.length > 0 ? (
@@ -39,24 +37,21 @@ export default function StatsItem(
                     <div className={photoStyle} aria-hidden="true"></div>
                 )}
             </div>
-            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{statTitle}</div>
+            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{`${statTitle} рік`}</div>
             <div className={`${detailsStyle} ${variables.font20w500}`}>{statDetails}</div>
             <div className={iconsContainerStyle}>
                 {children}
             </div>
         </div>
-        // </div>
     )
 }
 StatsItem.propTypes = {
-    containerStyle: PropTypes.string,
     photoStyle: PropTypes.string,
     photoSrc: PropTypes.array,
     photoAlt: PropTypes.string,
     statTitle: PropTypes.string,
     statDetails: PropTypes.string,
     detailsStyle: PropTypes.string,
-    rescueStory: PropTypes.string,
     basicInfoStyle: PropTypes.string,
     detailsBlockStyle: PropTypes.string,
     statLineStyle: PropTypes.string,

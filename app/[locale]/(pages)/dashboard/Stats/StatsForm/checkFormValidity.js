@@ -6,6 +6,11 @@ export const checkFormValidity = (formData) => {
         if (field === 'images') {
             return formData[field].length > 0;
         }
-        return formData[field].trim() !== '';
+
+        if (field === 'year') {
+            const yearValue = formData[field].trim();
+            return yearValue.length === 4 && /^\d{4}$/.test(yearValue);
+        }
+        return typeof formData[field] === 'string' && formData[field].trim() !== '';
     });
 };
