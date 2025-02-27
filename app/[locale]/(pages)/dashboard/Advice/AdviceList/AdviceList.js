@@ -2,7 +2,6 @@
 
 import { useContext, useEffect, memo } from 'react';
 import { TrashIcon, CreateIcon } from '@/public/assets/icons';
-import variables from '../../../../variables.module.scss';
 import styles from "./styles/adviceList.module.scss";
 import stylesBtn from "../../../../../../components/Button/styles/button.module.scss";
 import AdviceItem from "./AdviceItem";
@@ -13,8 +12,6 @@ import Spinner from '@/components/Spinner/Spinner';
 import { deleteAdviceData } from '../utilsFetchAdviceData';
 import { AdviceContext } from "../AdviceContext";
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
-import ScrollToTop from '@/components/common/ScrollToTop/scrollToTop';
-import { AdminContext } from '@/app/adminProvider';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -36,9 +33,6 @@ function AdviceList() {
     } = useContext(AdviceContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
-    const { isDirector } = useContext(AdminContext);
-
-    const currentRole = isDirector;
 
     useEffect(() => {
         if (!isLoading) {

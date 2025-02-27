@@ -35,8 +35,8 @@ function CategorySelector({ categories, onSelectedCategory }) {
             <div ref={dropDownRef} className={styles.selectedCategoryBlock}>
                 <p key="all"
                     className={styles.defaultCategory}
-                    onClick={() => handleSelectCategory({ label: 'Найновіші', value: null })}>
-                    Найновіші
+                    onClick={() => handleSelectCategory({ label: 'Тип тварини', value: null })}>
+                    Тип тварини
                 </p>
                 <div className={styles.iconContainer}>
                     <ShevronDown className={styles.icon} onClick={toggleDropdown} />

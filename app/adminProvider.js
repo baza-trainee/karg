@@ -11,6 +11,8 @@ export const AdminContext = createContext({
     setIsDirector: () => { },
     isLoading: false,
     setIsLoading: () => { },
+    activeHelpSection: '',
+    setActiveHelpSection: () => { },
 });
 
 export const AdminProvider = ({ children }) => {
@@ -18,6 +20,7 @@ export const AdminProvider = ({ children }) => {
     const [activeSection, setActiveSection] = useState('');
     const [isDirector, setIsDirector] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
+    const [activeHelpSection, setActiveHelpSection] = useState('');
 
     const hasMounted = useRef(false);
 
@@ -80,6 +83,8 @@ export const AdminProvider = ({ children }) => {
         setIsDirector: handleSetIsDirector,
         isLoading,
         setIsLoading,
+        activeHelpSection,
+        setActiveHelpSection,
     };
 
     return (
