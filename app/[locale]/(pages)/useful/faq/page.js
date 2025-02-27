@@ -1,3 +1,4 @@
+
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
@@ -20,6 +21,7 @@ const i18nNamespaces = ["home", "common"];
 const Faq = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   const faqData = await FetchInitialCards(locale, 'api/faq', 'getall', 50);
+  // console.log(faqData);
 
   return (
     <TranslationsProvider

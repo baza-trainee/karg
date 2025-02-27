@@ -53,8 +53,8 @@ const Help = async ({ params: { locale } }) => {
             namespaces={i18nNamespaces}>
             <Header />
             <PageHero
-                mobImage={help_usHeroMob.src}
-                tablImage={help_usHeroTab.src}
+                mobImage={help_usHeroDeskExp.src}
+                tablImage={help_usHeroDeskExp.src}
                 deskImage={help_usHeroDeskExp.src}
                 buttonText={text.pageHero.buttonText}
                 altText={text.pageHero.altText}

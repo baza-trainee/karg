@@ -21,10 +21,15 @@
   .cardContainer {
     display: grid;
     grid-template-columns: 0.1fr 1fr;
+
     .cardImage {
       grid-column: 2;
       width: 100%;
       background-color: $bg-purple;
+
+      & img {
+        aspect-ratio: 1/1.2;
+      }
     }
 
     .cardName {

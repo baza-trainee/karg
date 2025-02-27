@@ -1,12 +1,12 @@
 "use client";
 import styles from "./styles/missionDetailsDisclosure.module.scss";
-import { ArrowRight, DetailsClose } from "@/public/assets/icons";
-import { Box } from "@chakra-ui/react";
-import { motion } from "framer-motion";
-import { useState } from "react";
+// import { ArrowRight, DetailsClose } from "@/public/assets/icons";
+// import { Box } from "@chakra-ui/react";
+// import { motion } from "framer-motion";
+// import { useState } from "react";
 import { useTranslation } from 'react-i18next';
 
-const MotionBox = motion(Box);
+// const MotionBox = motion(Box);
 
 const variants = {
   hidden: { opacity: 0, transform: "translateY(-100px)" },
@@ -15,19 +15,19 @@ const variants = {
 };
 
 const MissionDetailsDisclosure = () => {
-  const [isDisclosureOpen, setIsDisclosureOpen] = useState(false);
+  // const [isDisclosureOpen, setIsDisclosureOpen] = useState(false);
   const { t } = useTranslation();
 
-  const handleDisclosure = () => {
-    setIsDisclosureOpen(!isDisclosureOpen);
-  };
+  // const handleDisclosure = () => {
+  //   setIsDisclosureOpen(!isDisclosureOpen);
+  // };
 
   return (
     <div>
       <p className={styles.missionText}>
         {t('missionText')}
       </p>
-      {!isDisclosureOpen && (
+      {/* {!isDisclosureOpen && (
         <button
           className={styles.missionButton}
           type="button"
@@ -36,8 +36,8 @@ const MissionDetailsDisclosure = () => {
           {t('missionMore')}
           <ArrowRight className={styles.missionButtonIcon} />
         </button>
-      )}
-      {isDisclosureOpen && (
+      )} */}
+      {/* {isDisclosureOpen && (
         <MotionBox
           variants={variants}
           initial="hidden"
@@ -57,7 +57,7 @@ const MissionDetailsDisclosure = () => {
             <DetailsClose className={styles.missionButtonIcon} />
           </button>
         </MotionBox>
-      )}
+      )} */}
     </div>
   );
 };

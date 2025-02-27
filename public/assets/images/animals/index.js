@@ -1,1 +1,1 @@
-export { default as ourAnimalsImage } from "./ourAnimals.png";
+export { default as ourAnimalsImage } from "./ourAnimals.jpg";
