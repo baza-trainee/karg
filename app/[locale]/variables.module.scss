@@ -221,9 +221,12 @@
     @include font-styles(400, 16px);
   }
   .btn2,
-  .button2,
   .quickAccessMenu_button_component {
     @include font-styles(800, 16px);
+  }
+
+  .button2 {
+    @include font-styles(800, 18px);
   }
 
   .quickText3 {
