@@ -25,6 +25,14 @@
       &:hover {
         background-color: #251c35;
       }
+
+      .partnerLogoPlaceholder {
+        width: 117px;
+        height: 110px;
+        border-radius: 4px;
+        background-color: transparent;
+        visibility: hidden;
+      }
     }
   }
 }
@@ -38,7 +46,8 @@
       grid-template-columns: repeat(4, 1fr);
       gap: 20px;
 
-      .partnerLogo {
+      .partnerLogo,
+      .partnerLogoPlaceholder {
         min-width: 162px;
         min-height: 152px;
       }
@@ -54,7 +63,8 @@
     .partners {
       gap: 30px;
 
-      .partnerLogo {
+      .partnerLogo,
+      .partnerLogoPlaceholder {
         min-width: 270px;
         min-height: 252px;
       }

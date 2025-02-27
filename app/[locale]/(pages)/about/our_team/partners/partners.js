@@ -67,6 +67,13 @@ const Partners = () => {
         window.open(partner.uri, '_blank', 'noopener,noreferrer');
     };
 
+    const processedPhotoSrc = (images) => {
+        if (!Array.isArray(images) && images.length === 0) {
+            return null;
+        }
+        return images[0].startsWith('http') ? images[0] : `${process.env.NEXT_PUBLIC_API_BASE_URL}${images[0]}`;
+    }
+
     return (
         isLoading ? (
             <Spinner />
@@ -77,13 +84,19 @@ const Partners = () => {
                     <div className={styles.partners}>
                         {Array.isArray(partners) && partners.length > 0 && (
                             partners.slice(0, visibleLogosCount).map((partner, index) => (
-                                <img
-                                    key={index}
-                                    src={partner.images[0]}
-                                    alt={partner.name}
-                                    className={styles.partnerLogo}
-                                    onClick={() => handleLogoClick(partner)}
-                                />
+                                (processedPhotoSrc ? (
+                                    <img onClick={() => handleLogoClick(partner)}
+                                        key={index}
+                                        src={processedPhotoSrc(partner.images)}
+                                        alt={partner.name}
+                                        width={92}
+                                        height={92}
+                                        loading="lazy"
+                                        className={styles.partnerLogo}
+                                    />
+                                ) : (
+                                        <div className={styles.partnerLogoPlaceholder} aria-hidden="true"></div>
+                                ))
                             ))
                         )}
                     </div>

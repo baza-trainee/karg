@@ -38,7 +38,6 @@ export const submitFAQData = async (type, formData, originalData, hideModal, sho
             return;
         }
         const faqData = {
-            id: formData.id,
             question_en: formData.question_en,
             answer_en: formData.answer_en,
             question_ua: formData.question_ua,
