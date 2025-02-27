@@ -1,1 +1,1 @@
-export { default as advices } from "./advices.png";
+export { default as advices } from "./advices.jpg";
