@@ -12,11 +12,21 @@ import MyAccount from '../MyAccount/AccountForm/AccountForm';
 import OurTeamList from '../OurTeam/TeamList/TeamList';
 import FAQList from '../FAQ/FAQList/FAQList';
 import StatsList from '../Stats/StatsList/StatsList';
+import HelpSidebar from '../HelpGuide/HelpSidebar';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);
 
   function renderSection() {
+
+    if (activeSection === 'Допомога') {
+      return (
+        <div>
+          <HelpSidebar />
+        </div>
+      )
+    }
+
     switch (activeSection) {
       case 'Контакти':
         return <ContactList />;
@@ -35,7 +45,7 @@ export default function Main() {
       case 'Команда':
         return <OurTeamList />;
       case 'Допомога':
-        return <MyAccount />
+        return <HelpSidebar />
       default:
         return <PetList />;
     }

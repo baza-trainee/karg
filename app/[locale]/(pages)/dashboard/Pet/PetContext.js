@@ -3,7 +3,7 @@ import { fetchPets } from "./api/utilsFetchPetData";
 export const PetContext = createContext(null);
 
 export const PetProvider = ({ children }) => {
-    const initialCategory = 'Найновіші';
+    const initialCategory = 'Тип тварини';
     const [selectedCategory, setSelectedCategory] = useState(initialCategory);
     const [currentPage, setCurrentPage] = useState(1);
     const [pets, setPets] = useState([]);

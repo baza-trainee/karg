@@ -15,6 +15,7 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                 <input
                     type="text"
                     id="nameField"
+                    maxLength="100"
                     name={language === 'ua' ? "title_ua" : "title_en"}
                     value={language === 'ua' ? formData.title_ua : formData.title_en}
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
@@ -31,7 +32,7 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                 <textarea
                     id="descriptionField"
                     name={language === 'ua' ? "description_ua" : "description_en"}
-                    maxLength="500"
+                    maxLength="5000"
                     value={language === 'ua' ? formData.description_ua : formData.description_en}
                     className={`${type === 'create' ? styles.textareaFieldCreate : styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
