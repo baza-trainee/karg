@@ -1,3 +1,5 @@
+@import '../../../variables.module.scss';
+
 .pageContainer {
   display: flex;
   flex-direction: column;
@@ -14,6 +16,7 @@
   flex-direction: column;
   align-items: flex-start;
   gap: 16px;
+  @include font-styles(300, 16px);
 }
 
 @media screen and (min-width: 768px) {
@@ -28,6 +31,7 @@
     justify-content: center;
     align-items: center;
     gap: 10px;
+    @include font-styles(300, 20px);
   }
 }
 
@@ -40,8 +44,9 @@
     display: inline-flex;
     // padding: 56px 235px 32px 235px;
     justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     gap: 10px;
     flex-direction: column;
+    @include font-styles(400, 24px);
   }
 }

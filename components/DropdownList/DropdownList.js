@@ -40,8 +40,11 @@ const DropdownList = ({ label, list, openBurgerMenu, subst }) => {
     return (
         <div>
             {!openBurgerMenu &&
-                <div className={`${styles.dropHover} ${openDropdown === label ? styles.active : ''}`} onClick={() => handleMenuToggle()} ref={wrapRef}>
-                    <p className={`${styles.navMenuDropList} ${styles.ArrowDown} ${(currentPathname.includes(subst)) ? styles.active : ""}`}>
+                <div className={`${styles.dropHover} ${openDropdown === label ? styles.active : ''}`}
+                    onClick={() => handleMenuToggle()}
+                    ref={wrapRef}>
+                    <p
+                        className={`${styles.navMenuDropList} ${styles.ArrowDown} ${(currentPathname.includes(subst)) ? styles.active : ""}`}>
                         <span>{label}</span>
                         <ArrowDown />
                     </p>
