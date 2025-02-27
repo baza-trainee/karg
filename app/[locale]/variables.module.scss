@@ -56,8 +56,9 @@
 .Subtitle2,
 .subtitle3,
 .Subtitle3,
+.w700_f20_f36_f44_subtitle_shared,
 .mobileSubtitle1 {
-  @include font-styles(700, 18px);
+  @include font-styles(700, 19px);
 }
 
 .text1,
@@ -95,7 +96,7 @@
 
 .supportText4,
 .text_4 {
-  @include font-styles(300, 14px);
+  @include font-styles(300, 16px);
 }
 
 .body {
@@ -252,7 +253,6 @@
   }
 
   .w700_f20_f36_f44_subtitle_shared,
-  .w700_f20_f36_f44_subtitle_shared,
   .Subtitle2,
   .Heading3 {
     @include font-styles(700, 44px);
@@ -287,7 +287,7 @@
 
   .quickAccessMenu_subtitle_component,
   .Subtitle3 {
-    @include font-styles(700, 24px);
+    @include font-styles(700, 20px);
   }
 
   .achievText3,
