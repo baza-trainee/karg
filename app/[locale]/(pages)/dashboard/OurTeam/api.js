@@ -51,9 +51,9 @@ export const updateRescuerInfo = async (id, updates) => {
     return response.json();
 };
 
-export const getAllRescuers = async () => {
+export const getAllRescuers = async (page) => {
     const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getall`, {
+    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getall?Page=${page}&PageSize=10`, {
         method: "GET",
         headers: {
             'Accept': 'application/json',

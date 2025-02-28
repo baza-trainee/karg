@@ -13,6 +13,10 @@
     font-weight: 700;
     line-height: 41.6px;
   }
+
+  .buttonDisabled {
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-width: 1439px) {
