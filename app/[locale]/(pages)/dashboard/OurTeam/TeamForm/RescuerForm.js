@@ -12,7 +12,7 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, deleteTeamUserData, fetchTeamUserData } from "../utilsFetchTeamData";
+import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 
 const labels = {
@@ -22,7 +22,7 @@ const labels = {
 
 const btnLabels = {
     btnReject: "Скасувати",
-    btnSubmit: "Опублікувати",
+    btnSubmit: "Зберігти",
     btnSaveChanges: "Зберегти зміни"
 }
 
@@ -90,6 +90,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             setHasUnsavedChanges,
             successDialogActions,
         );
+
         await loadRescuers();
         setIsLoading(false);
     };

@@ -24,7 +24,7 @@ const labels = {
 
 const btnLabels = {
     btnReject: "Скасувати",
-    btnSubmit: "Опублікувати",
+    btnSubmit: "Зберегти",
     btnSaveChanges: "Зберегти зміни"
 }
 

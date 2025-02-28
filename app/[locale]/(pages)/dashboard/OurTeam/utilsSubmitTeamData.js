@@ -40,6 +40,7 @@ export const submitTeamMemberData = async (type, formData, originalData, hideMod
         const rescuerData = {
             fullName: formData.fullName,
             email: formData.email,
+            role: formData.role,
             phoneNumber: formData.phoneNumber,
             images: formData.images,
         };
