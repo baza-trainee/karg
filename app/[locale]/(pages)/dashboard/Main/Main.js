@@ -13,6 +13,7 @@ import OurTeamList from '../OurTeam/TeamList/TeamList';
 import FAQList from '../FAQ/FAQList/FAQList';
 import StatsList from '../Stats/StatsList/StatsList';
 import HelpSidebar from '../HelpGuide/HelpSidebar';
+import ContactList from '../Contact/ContactList/ContactList';
 
 export default function Main() {
   const { activeSection } = useContext(AdminContext);

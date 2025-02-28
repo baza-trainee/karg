@@ -13,6 +13,7 @@ import { PartnerProvider } from './Partner/PartnerContext';
 import { FAQProvider } from './FAQ/FAQContext';
 import { StatsProvider } from './Stats/StatsContext';
 import ProtectedRoute from './ProtectedRoute';
+import { ContactProvider } from './Contact/ContactContext';
 
 export default function DashboardPage({ children }) {
 
@@ -25,6 +26,7 @@ export default function DashboardPage({ children }) {
               <AdviceProvider>
                 <StatsProvider>
                   <FAQProvider>
+                    <ContactProvider>
                     <TeamProvider>
                       <ProtectedRoute>
                         <div>
@@ -34,7 +36,8 @@ export default function DashboardPage({ children }) {
                           <ConfirmationModal />
                         </div>
                       </ProtectedRoute>
-                    </TeamProvider>
+                      </TeamProvider>
+                    </ContactProvider>
                   </FAQProvider>
                 </StatsProvider>
               </AdviceProvider>

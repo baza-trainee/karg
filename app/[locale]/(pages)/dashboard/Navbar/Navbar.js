@@ -10,6 +10,7 @@ import RescuerForm from '../OurTeam/TeamForm/RescuerForm';
 import ModalContext from '@/app/ModalContext';
 import FAQForm from '../FAQ/FAQForm/FAQForm';
 import StatsForm from '../Stats/StatsForm/StatsForm';
+import ContactForm from '../Contact/ContactForm/ContactForm';
 
 export default function Navbar() {
   const { activeSection, isDirector } = useContext(AdminContext);
@@ -17,7 +18,7 @@ export default function Navbar() {
   const buttonData = {
     'Контакти': {
       caption: "Додати контакт",
-      genericModalContent: ""
+      genericModalContent: <ContactForm type='create' />
     },
     'Тварини': {
       caption: "Додати тварину",
