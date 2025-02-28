@@ -83,8 +83,8 @@ function TeamList() {
                                     } : null}
                                 />
                                 <TrashIcon
-                                    className={`${styles.trash_icon} ${!currentRole || rescuer.id === 1 ? styles.icon_disabled : ''}`}
-                                    onClick={currentRole && rescuer.id !== 1 ? () => {
+                                    className={`${styles.trash_icon} ${!currentRole || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
+                                    onClick={currentRole && rescuer.role !== "Director" ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}

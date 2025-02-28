@@ -5,6 +5,7 @@ export const initializeFormData = (data) => {
         id: data.id || '',
         fullName: data.fullName || '',
         email: data.email || '',
+        role: data.role || '',
         phoneNumber: data.phoneNumber || '',
         images: data.images || [],
     }
@@ -18,6 +19,7 @@ export const fetchTeamUserData = async (rescuerId, type) => {
                 id: Data.id,
                 fullName: Data.fullName || '',
                 email: Data.email || '',
+                role: Data.role || '',
                 phoneNumber: Data.phoneNumber || '',
                 images: Data.images || '',
             };
