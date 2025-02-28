@@ -6,7 +6,7 @@ export const initializeFormData = (data) => {
         fullName_name: data?.fullName?.split(" ")[0] || '',
         fullName_lastName: data?.fullName?.split(" ")[1] || '',
         email: data.email || '',
-        phoneNumber: data.phoneNumber || 'Не вказаний',
+        phoneNumber: data.phoneNumber || '80000000000',
         images: data.images || [],
     }
 }
@@ -20,7 +20,7 @@ export const fetchTeamUserData = async (rescuerId, type) => {
                 fullName_name: Data.fullName.split(" ")[0] || '',
                 fullName_lastName: Data.fullName.split(" ")[1] || '',
                 email: Data.email || '',
-                phoneNumber: Data.phoneNumber || 'Не вказаний',
+                phoneNumber: Data.phoneNumber || '80000000000',
                 images: Data.images || [],
             };
             return updatedFormData;
