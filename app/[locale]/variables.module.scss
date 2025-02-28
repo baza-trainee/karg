@@ -36,6 +36,7 @@
   @include font-styles(700, 20px);
 }
 
+.quickAccessMenu_subtitle_component,
 .quickSubtitle1 {
   @include font-styles(700, 20px);
 }
@@ -190,6 +191,7 @@
 
   .btn1,
   .button1,
+  .quickAccessMenu_subtitle_component,
   .rescueButton1 {
     @include font-styles(700, 20px);
   }
