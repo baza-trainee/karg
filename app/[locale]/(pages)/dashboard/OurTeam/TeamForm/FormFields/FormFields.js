@@ -33,9 +33,9 @@ const FormFields = memo(({ formData, handleChange, handleImageUploaded, handleDe
                     name="phoneNumber"
                     type="tel"
                     inputMode="numeric"
-                    placeholder="+380(XX)XXX-XX-XX"
+                    placeholder="80XXXXXXXXX"
                     value={formData.phoneNumber || ''}
-                    maxLength="19"
+                    maxLength="11"
                     className={`${styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
                 >
