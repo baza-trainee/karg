@@ -88,7 +88,6 @@ function StatsForm({ type = 'create', statData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,

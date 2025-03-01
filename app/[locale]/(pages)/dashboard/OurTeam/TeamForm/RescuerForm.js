@@ -85,7 +85,6 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,

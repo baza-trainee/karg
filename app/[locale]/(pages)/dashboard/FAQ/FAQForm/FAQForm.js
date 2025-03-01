@@ -87,7 +87,6 @@ function FAQForm({ type = 'create', faqData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
