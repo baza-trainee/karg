@@ -1,7 +1,7 @@
 import { updateRescuerInfo } from "./api";
-import SuccessDialog from "./SuccessDialog/SuccessDialog";
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
-export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (destructuredFormData, destructuredOriginalData) => {
