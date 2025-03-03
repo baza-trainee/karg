@@ -13,6 +13,7 @@ import { deleteTeamUserData } from '../utilsFetchTeamData';
 import { TeamContext } from "../TeamContext";
 import { AdminContext } from '@/app/adminProvider';
 import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
+import Pagination from '../../Pagination/Pagination';
 
 const deleteDialogActions = {
     confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
@@ -28,6 +29,9 @@ function TeamList() {
         isLoading,
         rescuers,
         setRescuers,
+        currentPage,
+        handlePageChange,
+        totalPages
     } = useContext(TeamContext);
     const { isDirector } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
@@ -38,11 +42,11 @@ function TeamList() {
         if (!isLoading) {
             loadRescuers();
         }
-    }, [loadRescuers, loadRescuers]);
+    }, [loadRescuers, currentPage]);
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
-        await deleteTeamUserData(id, setRescuers);
+        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers);
         setIsLoading(false);
     };
 
@@ -73,14 +77,14 @@ function TeamList() {
                                 iconsContainerStyle={styles.iconsContainer}
                             >
                                 <CreateIcon
-                                    className={styles.create_icon}
+                                    className={`${styles.create_icon} ${!currentRole ? styles.icon_disabled : ''}`}
                                     onClick={currentRole ? () => {
                                         showModal('generic', <RescuerForm type='edit' rescuerData={rescuer} />)
                                     } : null}
                                 />
                                 <TrashIcon
-                                    className={styles.trash_icon}
-                                    onClick={currentRole ? () => {
+                                    className={`${styles.trash_icon} ${!currentRole || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
+                                    onClick={currentRole && rescuer.role !== "Director" ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
@@ -97,6 +101,11 @@ function TeamList() {
                             </RescuerItem>
                         )
                     })}
+                    <Pagination
+                        totalPages={totalPages}
+                        currentPage={currentPage}
+                        handlePageChange={handlePageChange}
+                    />
                 </>
             )}
         </div>

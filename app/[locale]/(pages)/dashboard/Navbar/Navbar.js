@@ -12,7 +12,7 @@ import FAQForm from '../FAQ/FAQForm/FAQForm';
 import StatsForm from '../Stats/StatsForm/StatsForm';
 
 export default function Navbar() {
-  const { activeSection } = useContext(AdminContext);
+  const { activeSection, isDirector } = useContext(AdminContext);
   const { showModal } = useContext(ModalContext);
   const buttonData = {
     'Контакти': {
@@ -45,7 +45,7 @@ export default function Navbar() {
     },
   }
 
-  const { caption, genericModalContent } = buttonData[activeSection] || ''; //buttonData['Тварини'];
+  const { caption, genericModalContent } = buttonData[activeSection] || '';
 
   const handleButtonClick = () => {
     showModal('generic', genericModalContent);
@@ -54,10 +54,11 @@ export default function Navbar() {
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      {activeSection !== "Мій акаунт" &&
+      {activeSection !== "Мій акаунт" && activeSection !== "Допомога" &&
         <Button
-          className={stylesBtn.buttonAddNewItem}
+          className={`${stylesBtn.buttonAddNewItem} ${activeSection === "Команда" && !Boolean(isDirector) ? styles.buttonDisabled : ''}`}
           onClick={handleButtonClick}
+          disabled={activeSection === "Команда" && !Boolean(isDirector)}
         >
           {caption}
         </Button>

@@ -12,7 +12,7 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, deleteTeamUserData, fetchTeamUserData } from "../utilsFetchTeamData";
+import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 
 const labels = {
@@ -22,7 +22,7 @@ const labels = {
 
 const btnLabels = {
     btnReject: "Скасувати",
-    btnSubmit: "Опублікувати",
+    btnSubmit: "Зберігти",
     btnSaveChanges: "Зберегти зміни"
 }
 
@@ -85,11 +85,11 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
         );
+
         await loadRescuers();
         setIsLoading(false);
     };
@@ -104,9 +104,13 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
+        let updatedValue = value;
+        if (name === 'phoneNumber') {
+            updatedValue = value.replace(/\D/g, '').slice(0, 11);
+        }
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: value };
+            const updatedFormData = { ...prev, [name]: updatedValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });

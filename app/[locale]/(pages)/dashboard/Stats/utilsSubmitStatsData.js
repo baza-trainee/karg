@@ -1,9 +1,8 @@
 import { addStat, updateStat } from "./api";
 import { checkFormValidity } from './StatsForm/checkFormValidity';
-import SuccessDialog from "./SuccessDialog/SuccessDialog";
-import stylesBtn from '@/components/Button/styles/button.module.scss';
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
-export const submitStatsData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitStatsData = async (type, formData, originalData, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {

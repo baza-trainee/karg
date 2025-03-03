@@ -1,9 +1,8 @@
 import { addFAQItem, updateFAQItem } from "./api";
 import { checkFormValidity } from './FAQForm/checkFormValidity';
-import SuccessDialog from "./SuccessDialog/SuccessDialog";
-import stylesBtn from '@/components/Button/styles/button.module.scss';
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
-export const submitFAQData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitFAQData = async (type, formData, originalData, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {

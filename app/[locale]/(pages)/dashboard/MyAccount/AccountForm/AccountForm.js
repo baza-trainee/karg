@@ -94,7 +94,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         await submitTeamMemberData(
             destructuredFormData,
             destructuredOriginalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,

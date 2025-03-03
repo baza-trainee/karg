@@ -50,7 +50,9 @@
   .photo {
     width: 100%;
     aspect-ratio: 1 / 1;
+    object-fit: cover;
     border-radius: 50%;
+    display: block;
   }
 
   .fullnameTitle {
@@ -64,13 +66,6 @@
   .phone {
     width: 59.29%;
   }
-  // .iconsContainer {
-  //   width: 76px;
-  //   display: flex;
-  //   justify-content: space-between;
-  //   text-align: center;
-  //   flex-shrink: 0;
-  // }
 
   .iconsContainer {
     width: 6.92%;
@@ -87,6 +82,13 @@
   .trash_icon {
     cursor: pointer;
     fill: rgba(0, 0, 0, 0.85);
+  }
+
+  .icon_disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+    pointer-events: none;
   }
 }
 
