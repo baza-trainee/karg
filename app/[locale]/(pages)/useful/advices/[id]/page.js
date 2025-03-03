@@ -26,8 +26,9 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
   const dataArray = res.created_At.split("/");
   let correctOrder = [dataArray[1], dataArray[0], dataArray[2]].join(".");
 
-  const firstTextPart = adviceArray.slice(0, 2);
-  const lastTextPart = adviceArray.slice(2);
+  // const firstTextPart = adviceArray.slice(0, 5);
+  const firstTextPart = adviceArray;
+  // const lastTextPart = adviceArray.slice(2);
 
   return (
     <TranslationsProvider
@@ -109,14 +110,14 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
               </div>
             ))}
           </div>
-
+          {/* 
           {lastTextPart.map((lastItem) => (
             <div key={lastItem} className={`${variables.Text3}`}>
               <p className={styles.paragraph}>
                 {lastItem}
               </p>
             </div>
-          ))}
+          ))} */}
 
           <div className={styles.shareContainer}>
             <span className={variables.Subtitle3}>{t('shareText')}</span>

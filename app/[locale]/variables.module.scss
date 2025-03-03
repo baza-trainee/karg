@@ -36,6 +36,7 @@
   @include font-styles(700, 20px);
 }
 
+.quickAccessMenu_subtitle_component,
 .quickSubtitle1 {
   @include font-styles(700, 20px);
 }
@@ -104,6 +105,7 @@
   letter-spacing: 0%;
 }
 
+.mainSubtitle_shared,
 .heading3 {
   @include font-styles(700, 18px);
 }
@@ -190,6 +192,7 @@
 
   .btn1,
   .button1,
+  .quickAccessMenu_subtitle_component,
   .rescueButton1 {
     @include font-styles(700, 20px);
   }
