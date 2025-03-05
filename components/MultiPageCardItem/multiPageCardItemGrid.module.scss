@@ -13,7 +13,7 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
   gap: 30px;
   width: 100%;
@@ -28,7 +28,7 @@
       background-color: $bg-purple;
 
       & img {
-        aspect-ratio: 1/1.2;
+        aspect-ratio: 1;
       }
     }
 
@@ -271,10 +271,9 @@
 }
 @media screen and (min-width: 768px) {
   .container {
-    // width: 525px;
     .cardContainer {
       width: 343px;
-      grid-auto-rows: 370px;
+      grid-auto-rows: min-content;
 
       .cardName {
         width: 100%;
@@ -284,6 +283,7 @@
 
       .contentHolder {
         gap: 4px;
+        height: 273px;
         .cardDesc {
           max-width: 308px;
         }
@@ -349,21 +349,21 @@
       justify-content: center;
       align-items: center;
       gap: 16px;
+    }
 
-      .adoptionModalButtons {
-        display: flex;
-        gap: 16px;
-        align-self: stretch;
-      }
+    .adoptionModalButtons {
+      display: flex;
+      gap: 16px;
+      align-self: stretch;
+      cursor: pointer;
     }
   }
 }
 @media screen and (min-width: 1200px) {
   .container {
-    // padding: 0 64px;
     .cardContainer {
       width: 370px;
-      grid-auto-rows: 370px;
+      grid-auto-rows: min-content;
 
       .cardName {
         width: 100%;
@@ -372,6 +372,7 @@
       }
 
       .contentHolder {
+        height: 273px;
         .cardDesc {
           max-width: 308px;
         }
