@@ -4,19 +4,25 @@ import variables from '../../../../variables.module.scss';
 
 export default function ContactItem(
     {
-        basicInfoStyle,
-        contactQuestion,
-        contactAnswer,
-        contactAnswerStyle,
+        categoryStyle,
+        contactCategory,
+        contactValue,
+        valueStyle,
         contactLineStyle,
         iconsContainerStyle,
+        contactIconStyle,
+        contactIcon,
+        contactIconContainerStyle,
         children
     }) {
 
     return (
         <div className={contactLineStyle}>
-            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{contactQuestion}</div>
-            <div className={`${contactAnswerStyle} ${variables.font20w500}`}>{contactAnswer}</div>
+            <div className={contactIconContainerStyle}>
+                <div className={`${contactIconStyle}`}>{contactIcon}</div>
+            </div>
+            <div className={`${categoryStyle} ${variables.font24w700}`}>{contactCategory}</div>
+            <div className={`${valueStyle} ${variables.font20w500}`}>{contactValue}</div>
             <div className={iconsContainerStyle}>
                 {children}
             </div>
@@ -24,11 +30,11 @@ export default function ContactItem(
     )
 }
 ContactItem.propTypes = {
-    contactQuestion: PropTypes.string,
-    contactAnswer: PropTypes.string,
+    contactCategory: PropTypes.string,
+    contactValue: PropTypes.string,
     contactAnswerStyle: PropTypes.string,
-    rescueStory: PropTypes.string,
-    basicInfoStyle: PropTypes.string,
+    valueStyle: PropTypes.string,
+    categoryStyle: PropTypes.string,
     contactLineStyle: PropTypes.string,
     iconsContainerStyle: PropTypes.string,
 };

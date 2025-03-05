@@ -2,42 +2,58 @@ import styles from "./styles/formFields.module.scss";
 import variables from "../../../../../variables.module.scss";
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, language, handleChange, questionTitle, answerTitle, type }) => {
+const FormFields = memo(({ formData, handleChange, categoryTitle, type, categoryLabel }) => {
 
     return (
         <div className={`${styles.formFields} ${type === 'edit' ? styles.editMode : ''}`}>
-            <div className={styles.inputBlock}>
+            <div className={styles.textareaBlock}>
                 <label
                     className={`${styles.nameField} ${variables.font20w400}`}
-                    htmlFor="questionField">
-                    {questionTitle}
-                </label>
-                <input
-                    type="text"
-                    id="questionField"
-                    maxLength="100"
-                    name={language === 'ua' ? "question_ua" : "question_en"}
-                    value={language === 'ua' ? formData.question_ua : formData.question_en}
-                    className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
-                    onChange={(e) => handleChange(e)}
                 >
-                </input>
+                    {categoryTitle}
+                </label>
+                <span className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}>
+                    {categoryLabel}
+                </span>
             </div>
-            <div className={styles.inputBlock}>
+
+            <div className={styles.textareaBlock}>
                 <label
                     className={`${styles.descriptionField} ${variables.font20w400}`}
-                    htmlFor="answerField">
-                    {answerTitle}
+                    htmlFor="valueField">
                 </label>
-                <textarea
-                    id="answerField"
-                    name={language === 'ua' ? "answer_ua" : "answer_en"}
-                    maxLength="5000"
-                    value={language === 'ua' ? formData.answer_ua : formData.answer_en}
-                    className={`${styles.textareaField} ${variables.font18w500}`}
-                    onChange={(e) => handleChange(e)}
-                >
-                </textarea>
+                {formData.category === "Location" ? (
+                    <>
+                        <textarea
+                            id="valueField"
+                            name="valueUa"
+                            maxLength="200"
+                            value={formData.valueUa || ''}
+                            className={`${styles.textareaField} ${variables.font18w500}`}
+                            onChange={(e) => handleChange(e)}
+                        >
+                        </textarea>
+                        <textarea
+                            id="valueField"
+                            name="valueEn"
+                            maxLength="200"
+                            value={formData.valueEn || ''}
+                            className={`${styles.textareaField} ${variables.font18w500}`}
+                            onChange={(e) => handleChange(e)}
+                        >
+                        </textarea>
+                    </>
+                ) : (
+                    <textarea
+                        id="valueField"
+                        name="value"
+                        maxLength="200"
+                        value={formData.value}
+                        className={`${styles.textareaField} ${variables.font18w500}`}
+                        onChange={(e) => handleChange(e)}
+                    >
+                    </textarea>
+                )}
             </div>
         </div>
     );

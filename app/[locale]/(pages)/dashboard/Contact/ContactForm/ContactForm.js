@@ -12,15 +12,11 @@ import FormFields from "./FormFields/FormFields";
 import FormButtons from "../../components/FormButtons/FormButtons";
 import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
-import { initializeFormData, fetchContactItemData } from "../utilsFetchContactData";
+import { fetchContactItemData } from "../utilsFetchContactData";
 import { ContactContext } from "../ContactContext";
+import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 
-const labels = {
-    ukrLng: "Українська",
-    engLng: "Англійська",
-    questionTitle: "Питання",
-    answerTitle: "Відповідь",
-};
+const categoryTitle = "Контакт";
 
 const btnLabels = {
     btnReject: "Скасувати",
@@ -42,15 +38,13 @@ const successDialogActions = {
     buttonText: 'Закрити'
 }
 
-function ContactForm({ type = 'create', contactData = {} }) {
-    const { ukrLng, engLng, questionTitle, answerTitle } = labels;
+function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
     const { confirmationTitle, message, cancelTitle, confirmTitle } = confirmationDialogActions;
     const { hideModal, showModal } = useContext(ModalContext);
-    const [language, setLanguage] = useState('ua');
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
-    const [formData, setFormData] = useState(initializeFormData(contactData));
-    const [originalData, setOriginalData] = useState(initializeFormData(contactData));
+    const [formData, setFormData] = useState(contactData);
+    const [originalData, setOriginalData] = useState(contactData);
     const [isLoading, setIsLoading] = useState(false);
     const { loadAllContacts } = useContext(ContactContext);
     const title = type === 'create' ? "Додати питання" : "Редагувати питання";
@@ -60,7 +54,26 @@ function ContactForm({ type = 'create', contactData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchContactItemData(contactData.id, type, setIsLoading);
+                let data;
+                if (type === 'edit' &&
+                    contactData.category === "Location" &&
+                    contactData.idUa &&
+                    contactData.idEn
+                ) {
+                    const [dataUa, dataEn] = await Promise.all([
+                        fetchContactItemData(contactData.idUa),
+                        fetchContactItemData(contactData.idEn)
+                    ]);
+                    data = {
+                        category: "Location",
+                        idUa: contactData.idUa,
+                        idEn: contactData.idEn,
+                        valueUa: dataUa.value || '',
+                        valueEn: dataEn.value || ''
+                    };
+                } else {
+                    data = await fetchContactItemData(contactData.id);
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -69,12 +82,12 @@ function ContactForm({ type = 'create', contactData = {} }) {
             }
             setIsLoading(false);
         };
-        if (type === 'edit' && contactData.id) {
+        if (type === 'edit' || (contactData.category === "Location" && contactData.id || (contactData.idUa && contactData.idEn))) {
             fetchInitialData();
         } else {
             setIsFormValid(checkFormValidity(formData));
         }
-    }, [contactData.id, type]);
+    }, [contactData.id, contactData.idUa, contactData.idEn, type]);
 
     useEffect(() => {
         setIsFormValid(checkFormValidity(formData));
@@ -83,9 +96,15 @@ function ContactForm({ type = 'create', contactData = {} }) {
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
+
+        const updatedData = formData.category === "Location" ? [
+            { id: formData.idUa, category: "LocationUa", value: formData.valueUa || '' },
+            { id: formData.idEn, category: "LocationEn", value: formData.valueEn || '' }
+        ] : [{ ...formData }];
+
         await submitContactData(
             type,
-            formData,
+            updatedData,
             originalData,
             hideModal,
             showModal,
@@ -96,16 +115,21 @@ function ContactForm({ type = 'create', contactData = {} }) {
         setIsLoading(false);
     };
 
-    const toggleLanguage = async (e) => {
-        e.preventDefault();
-        setLanguage((prev) => prev === 'ua' ? 'en' : 'ua');
-    }
-
     function handleChange(e) {
         const { name, value } = e.target;
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: value };
+            let updatedValue = value;
+            if (name === 'value' && formData.category === 'PhoneNumber') {
+                const formattedNumber = validateAndFormatPhoneNumber(value);
+                if (formattedNumber !== 'Некоректний номер') {
+                    updatedValue = formattedNumber;
+                }
+            }
+            if (name === 'value' && formData.category === 'Statistics') {
+                updatedValue = value.replace(/\D/g, "");
+            }
+            const updatedFormData = { ...prev, [name]: updatedValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });
@@ -126,18 +150,13 @@ function ContactForm({ type = 'create', contactData = {} }) {
                     <div className={styles.container}>
                         <FormHeader
                             title={title}
-                            language={language}
-                            toggleLanguage={toggleLanguage}
-                            ukrLng={ukrLng}
-                            engLng={engLng}
                         />
                         <FormFields
                             formData={formData}
                             type={type}
-                            language={language}
                             handleChange={handleChange}
-                            questionTitle={questionTitle}
-                            answerTitle={answerTitle}
+                            categoryTitle={categoryTitle}
+                            categoryLabel={categoryLabel}
                         />
                         <FormButtons
                             isFormValid={isFormValid}

@@ -11,28 +11,7 @@
   background-color: $bg-lightgray;
   gap: 8px;
   color: $text-dark;
-
-  .contactTitle {
-    display: flex;
-    gap: 2.19%;
-    padding: 0 1.46% 14px 1.46%;
-    margin-top: 16px;
-    align-items: center;
-    width: 100%;
-
-    .basicInfoTitle {
-      width: 28.14%;
-      font-weight: 700;
-    }
-
-    .answerInfoTitle {
-      width: 71.86%;
-      overflow: hidden;
-      white-space: nowrap;
-      text-overflow: ellipsis;
-      font-weight: 700;
-    }
-  }
+  margin-top: 15px;
 
   .contactLine {
     display: flex;
@@ -46,15 +25,34 @@
     width: 100%;
   }
 
-  .basicInfo {
-    width: 28.14%;
+  .contactIconContainer {
+    width: 3.75%;
+    height: 40px;
+
+    .contactIcon {
+      height: 40px;
+      color: $button-default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contactIcon svg {
+      transform: scale(2.3);
+      transform-origin: center;
+      display: block;
+    }
+  }
+
+  .category {
+    width: 32.83%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
   }
 
-  .answerInfo {
-    width: 60.23%;
+  .value {
+    width: 49.53%;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -76,24 +74,25 @@
     cursor: pointer;
     fill: rgba(0, 0, 0, 0.85);
   }
+
+  .icon_disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+    pointer-events: none;
+  }
 }
 
 @media screen and (max-width: 1439px) {
-  .contactLine,
-  .contactTitle {
+  .contactLine {
     width: clamp(632px, 100%, 100%);
   }
 
-  .basicInfoTitle,
-  .answerInfoTitle {
-    font-size: clamp(0.813rem, calc(0.813vw + 0.8vh), 1.25rem);
-  }
-
-  .basicInfo {
+  .category {
     font-size: clamp(0.875rem, calc(0.875vw + 0.9vh), 1.5rem);
   }
 
-  .answerInfo {
+  .value {
     font-size: clamp(0.813rem, calc(0.75vw + 0.8vh), 1.25rem);
   }
 
@@ -105,34 +104,28 @@
 
 @media screen and (width: 1440px) {
   .container {
-    padding: 0 48px 8px 48px;
+    padding: 0 48px 0 48px;
     gap: 8px;
     width: 1194px;
-
-    .contactTitle {
-      gap: 24px;
-      padding: 0px 16px 14px 16px;
-      width: 100%;
-    }
-
-    .basicInfoTitle,
-    .answerInfoTitle {
-      font-size: 20px;
-    }
 
     .contactLine {
       gap: 24px;
       width: 1098px;
+      padding: 16px;
     }
 
-    .basicInfo {
-      width: 300px;
+    .category {
+      width: 350px;
       font-size: 24px;
     }
 
-    .answerInfo {
-      width: 642px;
+    .value {
+      width: 528px;
       font-size: 20px;
+    }
+
+    .contactIconContainer {
+      width: 40px;
     }
 
     .iconsContainer {
@@ -148,13 +141,11 @@
 }
 
 @media screen and (min-width: 1441px) {
-  .basicInfo {
+  .category {
     font-size: clamp(1.2rem, calc(1.5vw + 0.7vh), 2.4rem);
   }
 
-  .basicInfoTitle,
-  .answerInfoTitle,
-  .answerInfo {
+  .value {
     font-size: clamp(1.25rem, calc(1.25vw + 0.4vh), 1.75rem);
   }
 
@@ -165,13 +156,11 @@
 }
 
 @media screen and (min-width: 1920px) {
-  .basicInfo {
+  .category {
     font-size: clamp(1.9rem, calc(1.75vw + 0.4vh), 2.6rem);
   }
 
-  .basicInfoTitle,
-  .answerInfoTitle,
-  .answerInfo {
+  .value {
     font-size: clamp(1.75rem, calc(1.25vw + 0.3vh), 2.2rem);
   }
 

@@ -33,5 +33,8 @@ export { default as PlusPlaceholderImage } from "./plus_placeholder_image.svg";
 export { default as PlusPlaceholderMinImage } from "./plus_placeholder_image_min.svg";
 export { default as Plus } from "./plus.svg";
 export { default as PlusPlaceholder } from "./plus_placeholder.svg";
+export { default as InstagramRound } from "./instagramRound.svg";
+export { default as FacebookRound } from "./facebookRound.svg";
+export { default as TelegramRound } from "./telegramRound.svg";
 
 

@@ -1,102 +1,138 @@
 'use client'
 
 import { useContext, useEffect, memo } from 'react';
-import { TrashIcon, CreateIcon } from '@/public/assets/icons';
-import variables from '../../../../variables.module.scss';
+import { CreateIcon, TrashIcon } from '@/public/assets/icons';
 import styles from "./styles/contactList.module.scss";
-import stylesBtn from "../../../../../../components/Button/styles/button.module.scss";
 import ContactItem from "./ContactItem";
-import Pagination from '../../Pagination/Pagination';
 import ModalContext from '@/app/ModalContext';
 import ContactForm from '../ContactForm/ContactForm';
 import Spinner from '@/components/Spinner/Spinner';
-import { deleteContactItemData } from '../utilsFetchContactData';
 import { ContactContext } from "../ContactContext";
-import ConfirmationDialogTrigger from "../../ConfirmationDialogTrigger";
+import { FacebookRound, InstagramRound, EmailIcon, LocationIcon, PhoneIcon, TelegramRound } from '@/public/assets/icons/index';
 
-const deleteDialogActions = {
-    confirmationTitle: 'Ви впевнені, що хочете видалити цей елемент?',
-    message: "Цю дію буде неможливо скасувати, і всі пов'язані дані також будуть видалені",
-    cancelTitle: 'Скасувати',
-    confirmTitle: 'Видалити'
+const categoryLabels = {
+    'PhoneNumber': [
+        'Номер телефону 1',
+        'Номер телефону 2'
+    ],
+    'Email': 'Електронна пошта',
+    'Location': 'Розташування',
+    'Instagram': 'Instagram',
+    'Facebook': 'Facebook',
+    'Telegram': 'Telegram',
+    'Statistics': [
+        'Тварин врятовано',
+        'Тварин евакуйовано із зони бойових дій',
+        'Тварин знайшли свій новий дім',
+        'Тонн корму передано'
+    ],
 };
+
+const categoryIcons = {
+    'PhoneNumber': <PhoneIcon />,
+    'Email': <EmailIcon />,
+    'Location': <LocationIcon />,
+    'Instagram': <InstagramRound />,
+    'Facebook': <FacebookRound />,
+    'Telegram': <TelegramRound />,
+}
 
 function ContactList() {
     const {
         loadAllContacts,
-        currentPage,
-        setIsLoading,
         isLoading,
         contact,
-        setContact,
-        handlePageChange,
-        totalPages
     } = useContext(ContactContext);
-    const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
     useEffect(() => {
         if (!isLoading) {
             loadAllContacts();
         }
-    }, [currentPage, loadAllContacts]);
+    }, [loadAllContacts]);
 
-    const handleDeleteContact = async (id) => {
-        setIsLoading(true);
-        await deleteContactItemData(id, currentPage, contact, handlePageChange, setContact);
-        setIsLoading(false);
-    };
+    const locationUaItem = contact.find(item => item.category === 'LocationUa');
+    const locationEnItem = contact.find(item => item.category === 'LocationEn');
+    const locationItem = (locationUaItem || locationEnItem) ? {
+        id: 'combined location',
+        category: 'Location',
+        idUa: locationUaItem?.id || null,
+        idEn: locationEnItem?.id || null,
+        valueUa: locationUaItem?.value || '',
+        valueEn: locationEnItem?.value || '',
+    } : null;
+
+    const filteredContacts = contact.filter(item => item.category !== 'LocationUa' && item.category !== 'LocationEn');
+
+    const orderedContacts = [...filteredContacts];
+    if (locationItem) {
+        orderedContacts.splice(3, 0, locationItem);
+    }
 
     return (
         <div className={styles.container}>
-            <div className={styles.contactTitle}>
-                <p className={styles.basicInfoTitle}>Питання</p>
-                <p className={styles.answerInfoTitle}>Відповідь</p>
-            </div>
             {isLoading ? <Spinner /> : (
                 <>
-                    {contact && contact.map((contactItem) => {
+                    {orderedContacts.map((contactItem) => {
+                        let displayCategory = categoryLabels[contactItem.category] || contactItem.category;
+                        let displayedValue = contactItem.value;
+
+                        if (contactItem.category === 'PhoneNumber') {
+                            displayCategory = categoryLabels.PhoneNumber[contactItem.id - 1];
+                        }
+                        if (contactItem.category === 'Statistics') {
+                            displayCategory = categoryLabels.Statistics[contactItem.id - 9];
+                        }
+                        if (contactItem.category === 'Location') {
+                            displayedValue = `${contactItem.valueUa} | ${contactItem.valueEn}`;
+                        }
+                        if (contactItem.category === 'Statistics' && contactItem.id === 12) {
+                            displayedValue = `${contactItem.value}+`;
+                        }
                         return (
                             <ContactItem
                                 key={contactItem.id}
                                 contactLineStyle={styles.contactLine}
-                                basicInfoStyle={styles.basicInfo}
-                                contactQuestion={contactItem.question}
-                                contactAnswer={contactItem.answer}
-                                contactAnswerStyle={styles.answerInfo}
+                                categoryStyle={styles.category}
+                                contactCategory={displayCategory}
+                                contactValue={displayedValue}
+                                valueStyle={styles.value}
                                 iconsContainerStyle={styles.iconsContainer}
+                                contactIconStyle={styles.contactIcon}
+                                contactIcon={categoryIcons[contactItem.category] || null}
+                                contactIconContainerStyle={styles.contactIconContainer}
                             >
                                 <CreateIcon
                                     className={styles.create_icon}
                                     onClick={() => {
-                                        showModal('generic', <ContactForm type='edit' contactData={contactItem} />)
+                                        if (contactItem.category === 'Location') {
+                                            showModal('generic',
+                                                <ContactForm
+                                                    type='edit'
+                                                    contactData={{
+                                                        category: "Location",
+                                                        idUa: contactItem.idUa,
+                                                        idEn: contactItem.idEn,
+                                                    }}
+                                                    categoryLabel={categoryLabels['Location']}
+                                                />);
+                                        } else {
+                                            showModal(
+                                                'generic',
+                                                <ContactForm
+                                                    type='edit'
+                                                    contactData={contactItem}
+                                                    categoryLabel={displayCategory}
+                                                />);
+                                        }
                                     }}
                                 />
                                 <TrashIcon
-                                    className={styles.trash_icon}
-                                    onClick={() => {
-                                        showModal('confirmation',
-                                            <ConfirmationDialogTrigger
-                                                confirmationTitle={confirmationTitle}
-                                                message={message}
-                                                cancelTitle={cancelTitle}
-                                                confirmTitle={confirmTitle}
-                                                leftButtonStyle={stylesBtn.confirmationCancelBtn}
-                                                rightButtonStyle={stylesBtn.confirmationDeleteBtn}
-                                                actionOnConfirm={handleDeleteContact}
-                                                actionArgs={contactItem.id}
-                                            />)
-                                    }}
+                                    className={`${styles.trash_icon} ${styles.icon_disabled}`}
                                 />
                             </ContactItem>
                         )
                     })}
-
-                    <Pagination
-                        totalPages={totalPages}
-                        currentPage={currentPage}
-                        handlePageChange={handlePageChange}
-                    />
                 </>
             )}
         </div>
