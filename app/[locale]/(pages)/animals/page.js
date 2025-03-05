@@ -45,7 +45,7 @@ const Animals = async ({ params: { locale } }) => {
                     <p>{DOCUMENT_TEXT.p2}</p>
                 </section>
                 <InitialFetch locale={locale} />
-                <InfiniteScroll locale={locale} />
+                {/* <InfiniteScroll locale={locale} /> */}
             </main>
             <Footer />
         </TranslationsProvider>
