@@ -12,6 +12,9 @@ export function validateAndFormatPhoneNumber(phoneNumber) {
     if (cleanedNumber.length > 12) {
         return "Невірна довжина номера";
     }
+    if (cleanedNumber.length === 12 && !cleanedNumber.startsWith("0") && !cleanedNumber.startsWith("38") && !cleanedNumber.startsWith("+38")) {
+        return 'Некоректний формат номера';
+    }
     if (cleanedNumber.length === 10 && cleanedNumber.startsWith("0")) {
         return `+38 (${cleanedNumber.slice(0, 3)}) ${cleanedNumber.slice(3, 6)}-${cleanedNumber.slice(6, 8)}${cleanedNumber.slice(8, 11)}`;
     }

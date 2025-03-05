@@ -50,7 +50,7 @@ export default function Navbar() {
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      {activeSection !== "Мій акаунт" && activeSection !== "Допомога" && activeSection !== "Контакти" &&
+      {activeSection !== "Мій акаунт" && activeSection !== "Допомога" && activeSection !== "Контакти та статистичні дані" &&
         <Button
           className={`${stylesBtn.buttonAddNewItem} ${activeSection === "Команда" && !Boolean(isDirector) ? styles.buttonDisabled : ''}`}
           onClick={handleButtonClick}

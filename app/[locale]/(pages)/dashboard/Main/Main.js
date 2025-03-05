@@ -29,7 +29,7 @@ export default function Main() {
     }
 
     switch (activeSection) {
-      case 'Контакти':
+      case 'Контакти та статистичні дані':
         return <ContactList />;
       case 'Тварини':
         return <PetList />;
