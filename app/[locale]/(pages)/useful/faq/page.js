@@ -40,8 +40,8 @@ const Faq = async ({ params: { locale } }) => {
           priority={true}
         />
         <ul className={styles.questionsList}>
-          {faqData && faqData ? (
-            faqData.map(({ id, question, answer }) => (
+          {Array.isArray(faqData.items) ? (
+            faqData.items.map(({ id, question, answer }) => (
               <li key={id}>
                 <FaqItem q={question} a={answer} />
               </li>
