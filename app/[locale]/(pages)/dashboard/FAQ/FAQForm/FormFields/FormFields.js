@@ -2,7 +2,7 @@ import styles from "./styles/formFields.module.scss";
 import variables from "../../../../../variables.module.scss";
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, language, handleChange, questionTitle, answerTitle, type }) => {
+const FormFields = memo(({ formData, language, handleChange, handleOnBlur, questionTitle, answerTitle, type }) => {
 
     return (
         <div className={`${styles.formFields} ${type === 'edit' ? styles.editMode : ''}`}>
@@ -15,11 +15,11 @@ const FormFields = memo(({ formData, language, handleChange, questionTitle, answ
                 <input
                     type="text"
                     id="questionField"
-                    maxLength="100"
                     name={language === 'ua' ? "question_ua" : "question_en"}
                     value={language === 'ua' ? formData.question_ua : formData.question_en}
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
+                    onBlur={(e)=> handleOnBlur(e)}
                 >
                 </input>
             </div>
