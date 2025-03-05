@@ -110,6 +110,20 @@ function FAQForm({ type = 'create', faqData = {} }) {
         });
     }
 
+    const handleOnBlur = (e) => {
+        const { name, value } = e.target;
+        let updatedValue = value;
+        setHasUnsavedChanges(true);
+        setFormData(prev => {
+            if (name === 'question_ua' || name === 'question_en') {
+                updatedValue = value.replace(/\?/g, "").trim() + "?";
+            }
+            const updatedFormData = { ...prev, [name]: updatedValue };
+            setIsFormValid(checkFormValidity(updatedFormData));
+            return updatedFormData;
+        });
+    }
+
     const undoingChanges = () => {
         setFormData({ ...originalData });
         setIsFormValid(checkFormValidity(originalData));
@@ -135,6 +149,7 @@ function FAQForm({ type = 'create', faqData = {} }) {
                             type={type}
                             language={language}
                             handleChange={handleChange}
+                            handleOnBlur={handleOnBlur}
                             questionTitle={questionTitle}
                             answerTitle={answerTitle}
                         />

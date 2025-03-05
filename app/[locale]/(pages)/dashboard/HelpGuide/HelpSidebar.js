@@ -8,14 +8,16 @@ import AdviceTab from "./Tabs/AdviceTab";
 import FAQTab from "./Tabs/FAQTab";
 import MyAccountTab from "./Tabs/MyAccountTab";
 import TeamTab from "./Tabs/TeamTab";
-import HelpTab from "./Tabs/HelpTab";
 import StatsTab from "./Tabs/StatsTab";
+import ContactTab from "./Tabs/ContactTab";
 
 function HelpSidebar() {
     const { activeHelpSection, setActiveHelpSection } = useContext(AdminContext);
 
     function renderHelpSection() {
         switch (activeHelpSection) {
+            case 'Контакти та статистичні дані':
+                return <ContactTab />
             case 'Загальні Питання':
                 return <GeneralTab />
             case 'Вкладка Тварини':
@@ -32,8 +34,6 @@ function HelpSidebar() {
                 return <MyAccountTab />
             case 'Вкладка Команда':
                 return <TeamTab />
-            case 'Вкладка Допомога':
-                return <HelpTab />
             default:
                 return <GeneralTab />
         }
@@ -44,15 +44,66 @@ function HelpSidebar() {
             <div className={styles.helpSidebarWrapper}>
                 <nav className={styles.helpSidebar}>
                     <ul>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Загальні Питання')}>Загальні Питання</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Тварини')}>Вкладка Тварини</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Партнери')}>Вкладка Партнери</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Поради')}>Вкладка Поради</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка FAQ')}>Вкладка FAQ</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Підсумки')}>Вкладка Підсумки</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Мій акаунт')}>Вкладка Мій акаунт</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Команда')}>Вкладка Команда</button></li>
-                        <li><button className={styles.button} onClick={() => setActiveHelpSection('Вкладка Допомога')}>Вкладка Допомога</button></li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Загальні Питання')}>
+                                Загальні Питання
+                            </button>
+                        </li>
+                        <li>
+                            <button className={styles.button}
+                                onClick={() => setActiveHelpSection('Контакти та статистичні дані')}>
+                                Вкладка Контакти та статистичні дані
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Тварини')}>
+                                Вкладка Тварини
+                            </button>
+                        </li>
+                        <li>
+                            <button className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Партнери')}>
+                                Вкладка Партнери
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Поради')}>
+                                Вкладка Поради
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка FAQ')}>
+                                Вкладка FAQ
+                            </button>
+                        </li>
+                        <li>
+                            <button className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Підсумки')}>
+                                Вкладка Підсумки
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Мій акаунт')}>
+                                Вкладка Мій акаунт
+                            </button>
+                        </li>
+                        <li>
+                            <button
+                                className={styles.button}
+                                onClick={() => setActiveHelpSection('Вкладка Команда')}>
+                                Вкладка Команда
+                            </button>
+                        </li>
                     </ul>
                 </nav>
             </div>
