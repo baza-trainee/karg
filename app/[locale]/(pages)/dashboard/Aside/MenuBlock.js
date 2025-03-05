@@ -18,7 +18,7 @@ export default function MenuBlock() {
   ];
 
   const dataList = [
-    { 'title': 'Контакти', 'icon': <ContactsIcon className={styles.icon} />, 'href': '/dashboard/contact' },
+    { 'title': 'Контакти та статистичні дані', 'icon': <ContactsIcon className={styles.icon} />, 'href': '/dashboard/contact' },
     { 'title': 'Тварини', 'icon': <PetsIcon className={styles.icon} />, 'href': '/dashboard/animals' },
     { 'title': 'Партнери', 'icon': <SwitchCameraIcon className={styles.icon} />, 'href': '/dashboard/partners' },
     { 'title': 'Корисне', 'icon': <GroupIcon className={styles.icon} />, 'isNestedItems': true, 'nestedData': nestedData, 'href': '/' },

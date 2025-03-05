@@ -36,5 +36,5 @@ export { default as PlusPlaceholder } from "./plus_placeholder.svg";
 export { default as InstagramRound } from "./instagramRound.svg";
 export { default as FacebookRound } from "./facebookRound.svg";
 export { default as TelegramRound } from "./telegramRound.svg";
-
+export {default as SquirrelIcon} from "./squirrelWhite.svg";
 

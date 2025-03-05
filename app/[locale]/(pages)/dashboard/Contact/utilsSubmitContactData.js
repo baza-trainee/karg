@@ -1,5 +1,5 @@
 import { updateContactItem } from "./api";
-import SuccessDialog from "./SuccessDialog/SuccessDialog";
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
 export const submitContactData = async (type, formData, originalData, hideModal, showModal, setHasUnsavedChanges, successDialogActions) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
