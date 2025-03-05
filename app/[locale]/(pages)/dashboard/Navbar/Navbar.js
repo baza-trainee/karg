@@ -15,10 +15,6 @@ export default function Navbar() {
   const { activeSection, isDirector } = useContext(AdminContext);
   const { showModal } = useContext(ModalContext);
   const buttonData = {
-    'Контакти': {
-      caption: "Додати контакт",
-      genericModalContent: ""
-    },
     'Тварини': {
       caption: "Додати тварину",
       genericModalContent: <PetForm type="create" />
@@ -54,7 +50,7 @@ export default function Navbar() {
   return (
     <div className={styles.container}>
       <p className={styles.active_section}>{activeSection}</p>
-      {activeSection !== "Мій акаунт" && activeSection !== "Допомога" &&
+      {activeSection !== "Мій акаунт" && activeSection !== "Допомога" && activeSection !== "Контакти" &&
         <Button
           className={`${stylesBtn.buttonAddNewItem} ${activeSection === "Команда" && !Boolean(isDirector) ? styles.buttonDisabled : ''}`}
           onClick={handleButtonClick}
