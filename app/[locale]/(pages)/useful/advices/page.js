@@ -41,7 +41,7 @@ const Advices = async ({ params: { locale } }) => {
             <main className={styles.pageContainer}>
                 <SearchBar />
                 <InitialFetch locale={locale} />
-                <InfiniteScroll />
+                {/* <InfiniteScroll /> */}
             </main>
             <Footer />
         </TranslationsProvider>

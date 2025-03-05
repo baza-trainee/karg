@@ -1,18 +1,20 @@
 'use client';
-// styles
+
+import axios from 'axios';
 import styles from './multiPageCardItemGrid.module.scss';
+import paginationStyles from './pagination.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
 import { MenuBurgerClose } from "@/public/assets/icons";
+import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
 import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
-// components
 import Image from "next/image";
 import Link from 'next/link';
-// hooks
 import { useRouter } from "next/navigation";
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { usePathname } from 'next/navigation';
 
-const MultiPageCardItem = ({ data, buttonVariant }) => {
+const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage, pageSize }) => {
     const { t } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -21,10 +23,11 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
     const [carouselIndex, setCarouselIndex] = useState(0);
     const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
     const [adoptionModal, setAdoptionModal] = useState(null);
-    const [adoptionModalForm, setAdoptionModalForm] = useState({ name: '', phone: '' });
+    const [adoptionModalForm, setAdoptionModalForm] = useState({ name: '', phone: '', animalName: '', animalImageUri: '' });
     const [adoptionModalError, setAdoptionModalError] = useState('');
 
     const router = useRouter();
+    const pathname = usePathname();
 
     const DOCUMENT_TEXT = {
         cardButtonText: t('cardButtonText'),
@@ -44,7 +47,6 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
         adoptionModalButtonsCancelText: t('adoptionModalButtonsCancelText'),
     };
 
-
     function handleClick(e, id) {
         const card = data.find(card => card.id === id);
         setSelectedCard(card);
@@ -56,7 +58,6 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
     };
 
     const handleCarousel = (caseButton) => {
-        // console.log(selectedCard.images);
         switch (caseButton) {
             case 'prev':
                 setCarouselIndex((carouselIndex - 1 + selectedCard.images.length) % selectedCard.images.length);
@@ -68,10 +69,14 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
     };
 
     const handleAdoptionModal = (e, selectedCard) => {
-        // console.log(selectedCard);
         closeModal();
         setAdoptionModal(selectedCard);
         setModalPosition({ x: e.clientX, y: e.clientY });
+        setAdoptionModalForm({
+            ...adoptionModalForm,
+            animalName: selectedCard.name,
+            animalImageUri: `${API_BASE_URL}${selectedCard.images[0]}`
+        });
     };
 
     const closeAdoptionModal = () => {
@@ -94,16 +99,13 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
 
         if (adoptionModalForm.name.length === 0) {
             return setAdoptionModalError("Поле ім'я пусте");
-        } else {
-            console.log('name good');
         }
 
         if (!phoneRegex.test(adoptionModalForm.phone)) {
             return setAdoptionModalError("Введено некоректний номер телефону");
-        } else {
-            console.log('phone good');
         }
 
+        telegramSend();
 
     };
 
@@ -115,14 +117,14 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
         switch (buttonVariant) {
             case 'button':
                 return (
-
                     <button className={styles.cardButton} onClick={(e) => handleClick(e, id)}>
                         {DOCUMENT_TEXT.cardButtonText}
                     </button>
                 );
             case 'link':
                 return (
-                    <Link className={styles.cardLink} href={`/useful/advices/${id}`}>
+                    <Link className={styles.cardLink}
+                        href={pathname.includes('/useful/results') ? `/useful/results/${id}` : `/useful/advices/${id}`}>
                         {DOCUMENT_TEXT.cardLinkText}{'>'}
                     </Link>
                 );
@@ -131,25 +133,11 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
         }
     };
 
-    const getImageSource = (image) => {
-        const isBase64 = (str) => {
-            try {
-                return btoa(atob(str)) === str;
-            } catch (err) {
-                return false;
-            }
-        };
-
-        return isBase64(image)
-            ? `data:image/png;base64,${image}`
-            : image;
-    };
-
     const renderImage = (card) => {
         const imageUrl = `${API_BASE_URL}${card.images[0].slice(1)}`;
-        console.log('Full Image URL:', imageUrl);
-        console.log('API_BASE_URL:', API_BASE_URL);
-        console.log('Image Path:', card.images[0].slice(1));
+        // console.log('Full Image URL:', imageUrl);
+        // console.log('API_BASE_URL:', API_BASE_URL);
+        // console.log('Image Path:', card.images[0].slice(1));
 
         return (
             <Image
@@ -166,10 +154,86 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
         );
     };
 
+    const handlePreviousPage = () => {
+        if (currentPage > 1) {
+            onPageChange(currentPage - 1);
+        }
+    };
+
+    const handleNextPage = () => {
+        if (currentPage < totalPages) {
+            onPageChange(currentPage + 1);
+        }
+    };
+
+    const handleSpecificChange = (page) => {
+        if (page - 1 < totalPages && page >= 1) {
+            onPageChange(page);
+        }
+    };
+
+    const pageButtons = [];
+    let startPage = Math.max(1, currentPage - 1);
+    let endPage = Math.min(totalPages, currentPage + 1);
+
+    if (startPage > 1) {
+        if (startPage > 2) {
+            pageButtons.push(
+                <button key="1" className={paginationStyles.pageButton} onClick={() => handleSpecificChange(1)}>
+                    1
+                </button>
+            );
+            pageButtons.push(<span key="ellipsis-start" className={paginationStyles.ellipsis}>...</span>);
+        } else {
+            startPage = 1;
+        }
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+        pageButtons.push(
+            <button
+                key={i}
+                className={currentPage === i ? paginationStyles.currentPage : paginationStyles.pageButton}
+                onClick={() => handleSpecificChange(i)}
+                disabled={currentPage === i}
+            >
+                {i}
+            </button>
+        );
+    }
+
+    if (endPage < totalPages) {
+        if (endPage < totalPages - 1) {
+            pageButtons.push(<span key="ellipsis-end" className={paginationStyles.ellipsis}>...</span>);
+        }
+        pageButtons.push(
+            <button key={totalPages} className={paginationStyles.pageButton} onClick={() => handleSpecificChange(totalPages)}>
+                {totalPages}
+            </button>
+        );
+    }
+
+    const telegramSend = async () => {
+
+        const data = {
+            fullname: adoptionModalForm.name,
+            phoneNumber: adoptionModalForm.phone,
+            animalName: adoptionModalForm.animalName,
+            animalImageUri: adoptionModalForm.animalImageUri
+        };
+
+        try {
+            const response = await axios.post(`${API_BASE_URL}api/telegrambot/sendannouncement`, data);
+
+        } catch (error) {
+            console.error('Error sending telegram message:', error);
+        }
+    };
+
+
     return (
         <div className={styles.container}>
             {data.map(card => (
-
                 <div key={card.id} className={styles.cardContainer}>
                     <div className={styles.cardImage}>
                         {renderImage(card)}
@@ -180,31 +244,47 @@ const MultiPageCardItem = ({ data, buttonVariant }) => {
                         {renderButton(card.id)}
                     </div>
                 </div>
-
             ))}
+
+            <div className={paginationStyles.paginationContainer}>
+                <div className={paginationStyles.navigationContainer}>
+                    <ArrowLeft
+                        className={`${paginationStyles.arrowIcon} ${currentPage === 1 ? paginationStyles.disabled : ''}`} />
+                    <button onClick={handlePreviousPage}
+                        className={paginationStyles.navigationButton}
+                        disabled={currentPage === 1}>
+                        Попередня
+                    </button>
+                </div>
+                <div className={paginationStyles.pageButtonContainer}>
+                    {pageButtons}
+                </div>
+                <div className={paginationStyles.navigationContainer}>
+                    <button onClick={handleNextPage}
+                        className={paginationStyles.navigationButton}
+                        disabled={currentPage === totalPages}>
+                        Наступна
+                    </button>
+                    <ArrowRight
+                        className={`${paginationStyles.arrowIcon} ${currentPage === totalPages ? paginationStyles.disabled : ''}`} />
+                </div>
+            </div>
 
             {selectedCard && (
                 <div className={styles.modalContentContainer}>
                     <div className={styles.modalBackground} onClick={closeModal}></div>
-
-                    <div
-                        className={styles.modalContainer}
-                    // style={{ top: modalPosition.y }}
-                    >
+                    <div className={styles.modalContainer}>
                         <div className={styles.imageContainer}>
                             <button className={styles.leftIcon} onClick={() => handleCarousel('prev')}>
                                 <LeftIcon className={styles.leftIcon} />
                             </button>
                             <Image
                                 src={`${API_BASE_URL}${selectedCard.images[carouselIndex]}`}
-                                // src={`data:image/png;base64,${selectedCard.images[carouselIndex]}`}
-                                // src={getImageSource(selectedCard.images[carouselIndex])}
                                 alt={DOCUMENT_TEXT.cardAltText}
                                 sizes="100vw"
                                 width={300}
                                 height={359}
                                 style={{
-                                    // width: "100%",
                                     height: "359px",
                                 }}
                             />
