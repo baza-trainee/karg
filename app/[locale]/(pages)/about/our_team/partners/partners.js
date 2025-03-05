@@ -18,6 +18,7 @@ const Partners = () => {
     const { t } = useTranslation();
     const openText = t('common:buttonOpenText');
     const closeText = t('common:buttonCloseText');
+    const API_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
     // const getPartners = async () => {
     //     setIsLoading(true);
@@ -39,7 +40,7 @@ const Partners = () => {
     const fetchPartners = async () => {
         setIsLoading(true);
         try {
-            const response = await axios.get('https://dev.karg.kyiv.ua/api/partner/getall?page=1&pageSize=18&CategoryFilter=&NameSearch=&cultureCode=ua');
+            const response = await axios.get(`${API_URL}api/partner/getall?page=1&pageSize=18&CategoryFilter=&NameSearch=&cultureCode=ua`);
             setPartners(response.data.items);
         } catch (error) {
             console.error("Error fetching partners:", error);
@@ -71,8 +72,8 @@ const Partners = () => {
         if (!Array.isArray(images) && images.length === 0) {
             return null;
         }
-        return images[0].startsWith('http') ? images[0] : `${process.env.NEXT_PUBLIC_API_BASE_URL}${images[0]}`;
-    }
+        return images[0].startsWith('http') ? images[0] : `${API_URL}${images[0]}`;
+    };
 
     return (
         isLoading ? (
@@ -95,7 +96,7 @@ const Partners = () => {
                                         className={styles.partnerLogo}
                                     />
                                 ) : (
-                                        <div className={styles.partnerLogoPlaceholder} aria-hidden="true"></div>
+                                    <div className={styles.partnerLogoPlaceholder} aria-hidden="true"></div>
                                 ))
                             ))
                         )}

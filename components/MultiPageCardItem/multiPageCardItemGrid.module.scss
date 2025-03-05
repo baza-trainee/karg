@@ -37,7 +37,7 @@
       grid-row: 2;
       transform: translate(-20px, -40px);
       padding: 25px 29px;
-      width: 230px;
+      width: 280px;
       overflow: hidden;
       text-wrap: nowrap;
       height: 74px;
@@ -67,6 +67,7 @@
         border-radius: 4px 4px 0 0;
         // margin-bottom: 10px;
         overflow: hidden;
+        max-height: 126px;
       }
 
       .cardButton {

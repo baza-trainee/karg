@@ -88,7 +88,6 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,

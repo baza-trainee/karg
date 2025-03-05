@@ -85,7 +85,6 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             type,
             formData,
             originalData,
-            hideModal,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
@@ -105,9 +104,13 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
+        let updatedValue = value;
+        if (name === 'phoneNumber') {
+            updatedValue = value.replace(/\D/g, '').slice(0, 11);
+        }
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: value };
+            const updatedFormData = { ...prev, [name]: updatedValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });
