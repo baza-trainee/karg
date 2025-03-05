@@ -8,7 +8,7 @@ import ModalContext from '@/app/ModalContext';
 import ContactForm from '../ContactForm/ContactForm';
 import Spinner from '@/components/Spinner/Spinner';
 import { ContactContext } from "../ContactContext";
-import { FacebookRound, InstagramRound, EmailIcon, LocationIcon, PhoneIcon, TelegramRound } from '@/public/assets/icons/index';
+import { FacebookRound, InstagramRound, EmailIcon, LocationIcon, PhoneIcon, TelegramRound, SquirrelIcon } from '@/public/assets/icons/index';
 
 const categoryLabels = {
     'PhoneNumber': [
@@ -35,6 +35,7 @@ const categoryIcons = {
     'Instagram': <InstagramRound />,
     'Facebook': <FacebookRound />,
     'Telegram': <TelegramRound />,
+    'Statistics': <SquirrelIcon />,
 }
 
 function ContactList() {
@@ -85,9 +86,6 @@ function ContactList() {
                         }
                         if (contactItem.category === 'Location') {
                             displayedValue = `${contactItem.valueUa} | ${contactItem.valueEn}`;
-                        }
-                        if (contactItem.category === 'Statistics' && contactItem.id === 12) {
-                            displayedValue = `${contactItem.value}+`;
                         }
                         return (
                             <ContactItem

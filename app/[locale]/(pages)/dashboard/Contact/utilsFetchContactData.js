@@ -18,10 +18,14 @@ export const fetchContactItemData = async (contactId, type = 'edit', contactData
                 };
             } else {
                 const data = await getContactById(contactId);
+                let cleanValue = data.value || '';
+                if (data.category === "Statistics" && data.id === 12) {
+                    cleanValue = cleanValue.replace(/\+$/, "");
+                }
                 return {
                     id: data.id || '',
                     category: data.category || '',
-                    value: data.value || '',
+                    value: cleanValue || '',
                 };
             }
         } catch (error) {

@@ -16,7 +16,7 @@ import { fetchContactItemData } from "../utilsFetchContactData";
 import { ContactContext } from "../ContactContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 
-const categoryTitle = "Контакт";
+const categoryTitle = "Вид даних";
 
 const btnLabels = {
     btnReject: "Скасувати",
@@ -33,7 +33,7 @@ const confirmationDialogActions = {
 
 const successDialogActions = {
     successTitle: 'Вітаємо!',
-    successAddMessage: 'Нове питання успішно додано!',
+    successAddMessage: 'Нові дані успішно додано!',
     successChangeMessage: 'Внесені зміни збережено!',
     buttonText: 'Закрити'
 }
@@ -47,7 +47,7 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
     const [originalData, setOriginalData] = useState(contactData);
     const [isLoading, setIsLoading] = useState(false);
     const { loadAllContacts } = useContext(ContactContext);
-    const title = type === 'create' ? "Додати питання" : "Редагувати питання";
+    const title = type === 'create' ? "Додати питання" : "Редагувати дані";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
 
     useEffect(() => {
@@ -97,10 +97,17 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
         e.preventDefault();
         setIsLoading(true);
 
-        const updatedData = formData.category === "Location" ? [
-            { id: formData.idUa, category: "LocationUa", value: formData.valueUa || '' },
-            { id: formData.idEn, category: "LocationEn", value: formData.valueEn || '' }
-        ] : [{ ...formData }];
+        const updatedData = formData.category === "Location"
+            ? [
+                { id: formData.idUa, category: "LocationUa", value: formData.valueUa || '' },
+                { id: formData.idEn, category: "LocationEn", value: formData.valueEn || '' }
+            ]
+            : [{
+                ...formData,
+                value: formData.category === "Statistics" && formData.id === 12
+                    ? `${formData.value}+`
+                    : formData.value
+            }];
 
         await submitContactData(
             type,
@@ -121,6 +128,8 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
         setFormData(prev => {
             let updatedValue = value;
             if (name === 'value' && formData.category === 'PhoneNumber') {
+                updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
+
                 const formattedNumber = validateAndFormatPhoneNumber(value);
                 if (formattedNumber !== 'Некоректний номер') {
                     updatedValue = formattedNumber;

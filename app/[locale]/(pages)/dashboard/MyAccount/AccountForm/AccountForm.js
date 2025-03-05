@@ -16,6 +16,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchTeamUserData } from "../utilsFetchAccountData";
 import variables from '../../../../variables.module.scss';
+import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 
 const labels = {
     firstNameTitle: "Імʼя",
@@ -113,7 +114,16 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         const { name, value } = e.target;
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: value };
+            let updatedValue = value;
+            if (name === 'phoneNumber') {
+                updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
+
+                const formattedNumber = validateAndFormatPhoneNumber(value);
+                if (formattedNumber !== 'Некоректний номер') {
+                    updatedValue = formattedNumber;
+                }
+            }
+            const updatedFormData = { ...prev, [name]: updatedValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });

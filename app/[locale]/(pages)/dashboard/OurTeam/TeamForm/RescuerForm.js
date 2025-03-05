@@ -14,6 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
+import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
@@ -106,7 +107,12 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         const { name, value } = e.target;
         let updatedValue = value;
         if (name === 'phoneNumber') {
-            updatedValue = value.replace(/\D/g, '').slice(0, 11);
+            updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
+
+            const formattedNumber = validateAndFormatPhoneNumber(value);
+            if (formattedNumber !== 'Некоректний номер') {
+                updatedValue = formattedNumber;
+            }
         }
         setHasUnsavedChanges(true);
         setFormData(prev => {
