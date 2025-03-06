@@ -3,11 +3,12 @@
 .pageContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  padding: 24px 16px;
-  gap: 16px;
-  position: relative;
+  justify-content: flex-start;
+  min-height: fit-content;
+  // align-items: center;
+  // padding: 24px 16px;
+  // gap: 16px;
+  // position: relative;
 }
 
 .textContainer {
@@ -22,7 +23,7 @@
 @media screen and (min-width: 768px) {
   .pageContainer {
     gap: 20px;
-    padding: 0 64px 64px 64px;
+    // padding: 0 64px 64px 64px;
   }
 
   .textContainer {
@@ -37,7 +38,7 @@
 
 @media screen and (min-width: 1200px) {
   // .pageContainer {
-  // padding: 0 135px;
+  //   flex-grow: 1;
   // }
 
   .textContainer {
