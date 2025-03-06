@@ -7,12 +7,12 @@ import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem'
 export default function InitialFetch({ locale }) {
     const [initialCards, setInitialCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize] = useState(6);
+    const [pageSize] = useState(12);
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
         const loadInitialCards = async () => {
-            const data = await FetchInitialCards(locale, 'api/advice', 'getall', 6);
+            const data = await FetchInitialCards(locale, 'api/advice', 'getall', pageSize, currentPage);
             setInitialCards(data.items);
             setTotalPages(data.totalPages);
         };
