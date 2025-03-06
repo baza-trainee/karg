@@ -13,5 +13,8 @@
     "adoptionModalFormPhonePlaceholderText": "Enter a valid phone number",
     "adoptionModalText_text": "The animal being adopted.",
     "adoptionModalButtonsText": "Submit",
-    "adoptionModalButtonsCancelText": "Cancel"
+    "adoptionModalButtonsCancelText": "Cancel",
+    "infoModalSuccess": "Your application has been successfully submitted. Please wait, you will be contacted to confirm the details",
+    "infoModalError": "Sorry, your application was not submitted. Please try again later",
+    "returnToPortalButton": "Return to portal"
 }

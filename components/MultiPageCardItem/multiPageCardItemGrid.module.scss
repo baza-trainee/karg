@@ -1,5 +1,16 @@
 @import '../../app/[locale]/colors.scss';
 
+.outerContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 16px;
+  gap: 16px;
+  flex-grow: 1;
+  min-height: 54vh;
+}
+
 .modalBackground {
   position: fixed;
   top: 0;
@@ -13,10 +24,11 @@
 .container {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   gap: 30px;
   width: 100%;
+  flex-grow: 1;
 
   .cardContainer {
     display: grid;
@@ -86,49 +98,65 @@
     }
   }
 
+  // .modalContentContainer {
+  //   display: flex;
+  //   justify-content: center;
+  //   align-items: flex-start;
+  //   overflow: auto;
+  //   width: 100vw;
+  //   height: 90dvh;
+  //   position: fixed;
+  //   left: 0px;
+  //   top: 60px;
+  //   z-index: 1000;
+  //   overscroll-behavior-y: none;
+  // }
+
   .modalContentContainer {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    overflow: auto;
-    width: 100vw;
-    height: 90dvh;
+    align-items: center;
     position: fixed;
-    left: 0px;
-    top: 60px;
-    z-index: 1000;
-    overscroll-behavior-y: none;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 3000;
+    overflow: auto;
   }
 
   .modalContainer {
+    // position: relative;
+    // left: 0;
+    // display: flex;
+    // justify-content: center;
+    // align-items: center;
+    z-index: 3000;
+    // flex-direction: column;
+
     position: relative;
-    left: 0;
-    // width: 100%;
-    // transform: translateY(-50%);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    flex-direction: column;
+    max-width: 100vw;
+    max-height: 90vh;
+    width: auto;
+    height: auto;
+    padding: 20px;
+    overflow: auto;
 
     .imageContainer {
+      max-width: 100%;
+      height: auto;
       position: relative;
       background-color: #ead3b9;
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
-      // gap: 30px;
 
-      .leftIcon {
-        font-size: 24px;
-        margin: 10px;
-        color: #6b5199;
-      }
-
+      .leftIcon,
       .rightIcon {
         font-size: 24px;
-        margin: 10px;
+        // margin: 10px;
         color: #6b5199;
       }
 
@@ -139,6 +167,9 @@
         top: 0;
         right: 0;
         padding: 16px 14px;
+        border-radius: 50%;
+        border: 1px solid #ead3b9;
+        background-color: rgba(234, 211, 185, 0.2);
       }
 
       .closeButton {
@@ -147,7 +178,21 @@
       }
     }
 
+    .innerModalDesktopContainer {
+      display: none;
+    }
+
+    .innerModalDesktopHistoryContainer {
+      display: none;
+    }
+
+    .innerModalDesktopNameContainer {
+      display: none;
+    }
+
     .innerModalContainer {
+      max-width: 100%;
+      height: auto;
       background: white;
       padding: 20px;
       border-radius: 4px;
@@ -198,6 +243,7 @@
       border: 1px solid $button-dark-default;
       background-color: $button-dark-default;
       color: #fff;
+      cursor: pointer;
     }
   }
 
@@ -208,7 +254,7 @@
     justify-content: center;
     align-items: center;
     gap: 8px;
-    z-index: 1000;
+    z-index: 3000;
     flex-direction: column;
     padding: 8px;
     background-color: #fff;
@@ -266,11 +312,16 @@
       border: 1px solid $button-dark-default;
       background-color: $button-dark-default;
       color: #fff;
+      cursor: pointer;
     }
   }
 }
+
 @media screen and (min-width: 768px) {
   .container {
+    gap: 0;
+    row-gap: 30px;
+
     .cardContainer {
       width: 343px;
       grid-auto-rows: min-content;
@@ -305,24 +356,26 @@
       position: fixed;
       left: 0px;
       top: 20px;
-      z-index: 1000;
+      z-index: 3000;
       overscroll-behavior-y: none;
     }
 
     .modalContainer {
       position: relative;
-      width: 625px;
+      // width: 625px;
+      width: 90vw;
       padding: 16px;
 
       .innerModalContainer {
-        max-width: 625px;
-        align-items: flex-start;
-        justify-items: flex-start;
+        // max-width: 625px;
+        max-width: 90vw;
+        align-items: center;
+        justify-items: center;
 
         .innerModalButtons {
           display: flex;
           width: 493px;
-          align-items: flex-start;
+          align-items: center;
           flex-direction: row;
           gap: 19px;
         }
@@ -332,6 +385,7 @@
         width: fit-content;
         padding: 9px 12px;
         flex: 1 0 0;
+        cursor: pointer;
       }
 
       .actionButtonTransparent {
@@ -359,8 +413,18 @@
     }
   }
 }
+
 @media screen and (min-width: 1200px) {
+  .outerContainer {
+    margin: 0 auto;
+    padding: 32px 64px;
+  }
+
   .container {
+    margin: 0 auto;
+    max-width: 1850px;
+    justify-content: stretch;
+
     .cardContainer {
       width: 370px;
       grid-auto-rows: min-content;
@@ -381,6 +445,100 @@
           margin-top: auto;
           border-radius: 8px;
         }
+      }
+    }
+
+    .modalContainer {
+      display: grid;
+      grid-template-areas:
+        'img desc'
+        'his his';
+      max-width: 1200px;
+
+      .imageContainer {
+        grid-area: img;
+
+        .leftIcon,
+        .rightIcon {
+          background-color: whitesmoke;
+          border-radius: 8px;
+          margin: 10px;
+        }
+
+        .closeButtonContainer {
+          display: none;
+        }
+      }
+
+      .innerModalDesktopContainer {
+        max-width: 90vw;
+        align-items: center;
+        justify-items: center;
+        max-width: 100%;
+        height: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 0 4px 4px 0;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        gap: 6px;
+        grid-area: desc;
+
+        .innerModalDesktopNameContainer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+
+          .closeButtonContainer {
+            font-size: 52px;
+            border-radius: 50%;
+            border: 1px solid #ead3b9;
+            background-color: rgba(234, 211, 185, 0.2);
+          }
+
+          & h2 {
+            color: $button-default;
+            justify-self: flex-start;
+            font-size: 44px;
+            font-weight: 700;
+          }
+        }
+
+        .innerModalButtons {
+          display: flex;
+          justify-content: stretch;
+          align-items: center;
+          flex-direction: row;
+          width: 100%;
+          max-width: 470px;
+          gap: 8px;
+        }
+      }
+
+      .innerModalDesktopHistoryContainer {
+        grid-area: his;
+        align-items: center;
+        justify-items: center;
+        background: white;
+        padding: 20px;
+        border-radius: 0 4px 4px 0;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        gap: 8px;
+
+        & h3 {
+          justify-self: center;
+          color: #000;
+          font-size: 28px;
+          font-weight: 500;
+        }
+      }
+
+      .innerModalContainer {
+        display: none;
       }
     }
   }
