@@ -7,7 +7,7 @@ import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem'
 export default function InitialFetch({ locale }) {
     const [initialCards, setInitialCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize] = useState(24);
+    const [pageSize] = useState(12);
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {

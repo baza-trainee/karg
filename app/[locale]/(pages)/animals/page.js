@@ -7,7 +7,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
-import InfiniteScroll from './infiniteScroll';
+// import InfiniteScroll from './infiniteScroll';
 import InitialFetch from './initialFetch';
 // images
 import { ourAnimalsImage } from '@/public/assets/images/animals';
