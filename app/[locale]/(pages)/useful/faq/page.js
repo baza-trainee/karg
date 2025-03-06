@@ -10,9 +10,7 @@ import {
   faqHeroDesk,
 } from "@/public/assets/images/useful/faq";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
-import FetchInitialCards from "@/components/FetchInitialCards/FetchInitialCards";
-import styles from "./faq.module.scss";
-import { FaqItem } from "@/components/FaqItem/faq-item";
+import InitialFetch from "./initialFetch";
 
 const buttonText = "FAQ";
 const altText = "bats sit on a branch";
@@ -20,8 +18,6 @@ const i18nNamespaces = ["home", "common"];
 
 const Faq = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
-  const faqData = await FetchInitialCards(locale, 'api/faq', 'getall', 50);
-  // console.log(faqData);
 
   return (
     <TranslationsProvider
@@ -39,20 +35,7 @@ const Faq = async ({ params: { locale } }) => {
           altText={altText}
           priority={true}
         />
-        <ul className={styles.questionsList}>
-          {Array.isArray(faqData.items) ? (
-            faqData.items.map(({ id, question, answer }) => (
-              <li key={id}>
-                <FaqItem q={question} a={answer} />
-              </li>
-            ))
-          ) : (
-            <ul>
-              <li>Ой лишенько ! Щось пішло не так і розділ "питань і відповідей" кудись подівся.</li>
-              <li>No FAQs found</li>
-            </ul>
-          )}
-        </ul>
+        <InitialFetch locale={locale} />
       </main>
       <ScrollToTop />
       <Footer />
