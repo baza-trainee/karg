@@ -27,7 +27,7 @@ const FormFields = memo(({ formData, handleChange, categoryTitle, type, category
                         <textarea
                             id="valueField"
                             name="valueUa"
-                            maxLength="200"
+                            maxLength="500"
                             value={formData.valueUa || ''}
                             className={`${styles.textareaField} ${variables.font18w500}`}
                             onChange={(e) => handleChange(e)}
@@ -36,7 +36,7 @@ const FormFields = memo(({ formData, handleChange, categoryTitle, type, category
                         <textarea
                             id="valueField"
                             name="valueEn"
-                            maxLength="200"
+                            maxLength="500"
                             value={formData.valueEn || ''}
                             className={`${styles.textareaField} ${variables.font18w500}`}
                             onChange={(e) => handleChange(e)}
@@ -47,7 +47,7 @@ const FormFields = memo(({ formData, handleChange, categoryTitle, type, category
                     <textarea
                         id="valueField"
                         name="value"
-                        maxLength="200"
+                        maxLength="500"
                         value={formData.value}
                         className={`${styles.textareaField} ${variables.font18w500}`}
                         onChange={(e) => handleChange(e)}

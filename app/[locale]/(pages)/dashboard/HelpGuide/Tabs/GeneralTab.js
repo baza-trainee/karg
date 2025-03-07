@@ -5,7 +5,7 @@ export default function GeneralTab() {
         <div>
             <article>
                 <div className={styles.pageTitle}>
-                    <h2>Загальні відомості</h2>
+                    <h2>Загальні питання</h2>
                 </div>
                 <div className={styles.pageContent}>
                     <ol>

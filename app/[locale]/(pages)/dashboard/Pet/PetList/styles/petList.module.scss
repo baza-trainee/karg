@@ -205,7 +205,7 @@
   }
 
   .petNameStyle {
-    font-size: clamp(1.5rem, calc(1.5vw + 0.6vh), 2.25rem);
+    font-size: clamp(1.2rem, calc(1.3vw + 0.5vh), 2.2rem);
   }
 
   .nameTitle,
@@ -221,26 +221,5 @@
   .create_icon,
   .trash_icon {
     font-size: clamp(2rem, calc(1.5vw + 0.6vh), 2.5rem);
-  }
-}
-
-@media screen and (min-width: 1920px) {
-  .petNameStyle {
-    font-size: clamp(2rem, calc(1.75vw + 0.4vh), 2.6rem);
-  }
-
-  .nameTitle,
-  .categoryTitle,
-  .detailsTitle,
-  .detailsInfoTitle,
-  .photoTitle,
-  .petCategoryStyle,
-  .detailsInfo {
-    font-size: clamp(1.75rem, calc(1.25vw + 0.3vh), 2.2rem);
-  }
-
-  .create_icon,
-  .trash_icon {
-    font-size: clamp(2.5rem, calc(2.5vw + 0.6vh), 3rem);
   }
 }
