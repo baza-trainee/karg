@@ -44,60 +44,63 @@ function HelpSidebar() {
             <div className={styles.helpSidebarWrapper}>
                 <nav className={styles.helpSidebar}>
                     <ul>
-                        <li>
+                        <li className={activeHelpSection === 'Загальні Питання' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Загальні Питання')}>
                                 Загальні Питання
                             </button>
                         </li>
-                        <li>
-                            <button className={styles.button}
+                        <li className={activeHelpSection === 'Контакти та статистичні дані' ? styles.active : ''}>
+                            <button
+                                className={styles.button}
                                 onClick={() => setActiveHelpSection('Контакти та статистичні дані')}>
                                 Вкладка Контакти та статистичні дані
                             </button>
                         </li>
-                        <li>
+                        <li className={activeHelpSection === 'Вкладка Тварини' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Тварини')}>
                                 Вкладка Тварини
                             </button>
                         </li>
-                        <li>
-                            <button className={styles.button}
+                        <li className={activeHelpSection === 'Вкладка Партнери' ? styles.active : ''}>
+                            <button
+                                className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Партнери')}>
                                 Вкладка Партнери
                             </button>
                         </li>
-                        <li>
+                        <li className={activeHelpSection === 'Вкладка Поради' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Поради')}>
                                 Вкладка Поради
                             </button>
                         </li>
-                        <li>
+                        <li className={activeHelpSection === 'Вкладка FAQ' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка FAQ')}>
                                 Вкладка FAQ
                             </button>
                         </li>
-                        <li>
-                            <button className={styles.button}
+                        <li className={activeHelpSection === 'Вкладка Підсумки' ? styles.active : ''}>
+                            <button
+                                className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Підсумки')}>
                                 Вкладка Підсумки
                             </button>
                         </li>
-                        <li>
+                        <li className={activeHelpSection === 'Вкладка Мій акаунт' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Мій акаунт')}>
                                 Вкладка Мій акаунт
                             </button>
                         </li>
-                        <li>
+                        <li className={activeHelpSection === 'Вкладка Команда' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Вкладка Команда')}>

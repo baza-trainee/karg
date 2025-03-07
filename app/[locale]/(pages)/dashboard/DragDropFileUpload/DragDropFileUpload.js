@@ -29,7 +29,7 @@ const DragDropFileUpload = ({
                 return;
             }
             if (file.size > MAX_FILE_SIZE) {
-                alert('Розмір файлу перевищує 500 КБ. Будь ласка, завантажте менший файл.');
+                alert('Розмір файлу перевищує 300 КБ. Будь ласка, завантажте менший файл.');
                 return;
             }
             const base64 = await encodeToBase64(file);
