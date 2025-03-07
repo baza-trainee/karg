@@ -1,5 +1,5 @@
-@import '../../app/[locale]/colors.scss';
-@import '@/app/[locale]/variables.module.scss';
+@import "../../app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
 
 @mixin button-style() {
   display: flex;
@@ -74,6 +74,14 @@
 .button-help {
   @include button-help-style;
   min-width: 288px;
+}
+
+.backToHome {
+  padding: 11px 12px;
+  min-width: clamp(200px, 23.75vw, 342px);
+  background-color: #ffa33c;
+  border-radius: 8px;
+  color: #141414;
 }
 
 .button-quick-menu {
