@@ -111,10 +111,9 @@ function StatsForm({ type = 'create', statData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        const newValue = name === 'year' ? value.replace(/\D/g, '').slice(0, 4) : value;
         setHasUnsavedChanges(true);
         setFormData(prev => {
-            const updatedFormData = { ...prev, [name]: newValue };
+            const updatedFormData = { ...prev, [name]: value };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
         });

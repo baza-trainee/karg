@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import styles from "./dragDropFileUpload.module.scss";
 import { encodeToBase64 } from '@/utils/base64ImageHandler';
 
-const MAX_FILE_SIZE = 500000;
+const MAX_FILE_SIZE = 300000;
 
 const DragDropFileUpload = ({
     onFileUploaded,

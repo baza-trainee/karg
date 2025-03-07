@@ -15,10 +15,10 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                 <input
                     type="text"
                     id="nameField"
-                    name="year"
-                    value={formData.year}
+                    name={language === 'ua' ? "title_ua" : "title_en"}
+                    maxLength="500"
+                    value={language === 'ua' ? formData.title_ua : formData.title_en}
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
-                    placeholder="2025"
                     onChange={(e) => handleChange(e)}
                 >
                 </input>

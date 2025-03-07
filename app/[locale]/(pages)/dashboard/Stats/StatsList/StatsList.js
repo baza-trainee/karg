@@ -68,7 +68,7 @@ function StatsList() {
                                 photoAlt={photoAlt}
                                 photoContainerStyle={styles.photoContainer}
                                 basicInfoStyle={styles.basicInfo}
-                                statTitle={stat.year}
+                                statTitle={stat.title}
                                 statDetails={stat.description}
                                 detailsStyle={styles.detailsInfo}
                                 iconsContainerStyle={styles.iconsContainer}
