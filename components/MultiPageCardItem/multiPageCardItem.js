@@ -212,10 +212,10 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     src={`${API_BASE_URL}${selectedCard.images[carouselIndex]}`}
                                     alt={DOCUMENT_TEXT.cardAltText}
                                     sizes="100vw"
-                                    width={300}
-                                    height={359}
+                                    width={336}
+                                    height={336}
                                     style={{
-                                        height: "359px",
+                                        height: "336px",
                                     }}
                                 />
                                 <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>

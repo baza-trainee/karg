@@ -19,7 +19,7 @@
 @media screen and (min-width: 768px) {
   .pageContainer {
     gap: 20px;
-    padding: 0 64px 64px 64px;
+    // padding: 0 64px 64px 64px;
   }
 
   .textContainer {
@@ -32,9 +32,9 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .pageContainer {
-    padding: 64px 135px;
-  }
+  // .pageContainer {
+  //   padding: 64px 135px;
+  // }
 
   .textContainer {
     display: inline-flex;
