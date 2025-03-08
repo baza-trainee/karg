@@ -19,15 +19,25 @@ import SocialIcons from "../SocialIcons/socialIcons";
 import { useTranslation } from 'react-i18next';
 import DropdownList from '../DropdownList/DropdownList';
 import { DropdownProvider } from "../DropdownList/DropdownContext";
+import { useContactLinks } from '@/app/contactLinksProvider';
 
 const Header = () => {
   const [openBurgerMenu, setOpenBurgerMenu] = useToggle(false);
+  const {
+    phone1,
+    phone2,
+    email,
+    address
+  } = useContactLinks();
+
   const { t, i18n } = useTranslation();
   const currentLocale = i18n.language;
   const defaultLocale = i18nConfig.defaultLocale;
   const currentPathname = usePathname();
+
   const labelFirst = t('common:linkAboutUs');
   const labelSecond = t('common:linkUseful');
+
   const [isScrolled, setIsScrolled] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
   const scrollHideThreshold = 70;
@@ -71,12 +81,12 @@ const Header = () => {
   return (
     <header className={styles.header}>
       <div className={`${styles.topBar} ${isScrolled ? styles.topBarHidden : ''}`}>
-        <a className={variables.mainSubtitle_shared} href="tel: +380939862262">
-          +38 (093) 986-2262
+        <a className={variables.mainSubtitle_shared} href={`tel: ${phone1}`}>
+          {phone1}
         </a>
         <SocialIcons className={styles.socIcons} />
-        <a className={variables.mainSubtitle_shared} href="tel: +380988447937">
-          +38 (098) 844-7937
+        <a className={variables.mainSubtitle_shared} href={`tel: ${phone2}`}>
+          {phone2}
         </a>
       </div>
       <nav className={styles.headerContainer}>
@@ -150,14 +160,11 @@ const Header = () => {
             <div
               className={`${styles.contactsContainerMobile}`}
             >
-              <a href="tel: +380939862262">+38 (093) 986-2262</a>
-              <a href="tel: +380988447937">+38 (098) 844-7937</a>
-              <a href="mailto: karg.inform@gmail.com">karg.inform@gmail.com</a>
-              <a
-                href="https://maps.app.goo.gl/4Ra4rk12B7hkwKmM6"
-                target="_blank"
-              >
-                {t('common:address')}
+              <a href={`tel: ${phone1}`}>{phone1}</a>
+              <a href={`tel: ${phone2}`}>{phone2}</a>
+              <a href={`mailto: ${email}`}>{email}</a>
+              <a>
+                {currentLocale === 'uk' ? address[0] : address[1] || t('common:address')}
               </a>
             </div>
             <SocialIcons className={styles.socIconsMobile} />

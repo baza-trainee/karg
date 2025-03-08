@@ -29,6 +29,7 @@ export default async function Home({ params: { locale } }) {
       locale={locale}
       namespaces={i18nNamespaces}
     >
+
       <AdminProvider>
         <div className={styles.main}>
           <Header />
