@@ -1,7 +1,5 @@
 "use client";
-// import { AdminContext } from "@/app/adminProvider";
 import styles from "./styles/footer.module.scss";
-// import variables from "@/app/[locale]/variables.module.scss";
 
 import Link from "next/link";
 import {
@@ -15,10 +13,18 @@ import { useState } from "react";
 import SocialIcons from "../SocialIcons/socialIcons";
 import ButtonAsLinkAsLink from "@/components/ButtonAsLink/buttonAsLink";
 import { useTranslation } from 'react-i18next';
+import { useContactLinks } from '@/app/contactLinksProvider';
 
 function Footer() {
   const [open, setOpen] = useState({ firstList: false, secondList: false });
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLocale = i18n.language;
+  const {
+    phone1,
+    phone2,
+    email,
+    address
+  } = useContactLinks();
 
   const handleClick = (e) => {
     const target = e.currentTarget.dataset.list;
@@ -128,19 +134,19 @@ function Footer() {
         <div className={styles.contactsContainerHolder}>
           <PhoneIcon className={styles.contactsContainerIcons} />
           <div className={styles.contactsContainerTelephones}>
-            <a href="tel: +380939862262">+38 (093) 986-2262</a>
-            <a href="tel: +380988447937">+38 (098) 844-7937</a>
+            <a href={`tel: ${phone1}`}>{phone1}</a>
+            <a href={`tel: ${phone2}`}>{phone2}</a>
           </div>
         </div>
 
         <div className={styles.contactsContainerEmail}>
           <EmailIcon className={styles.contactsContainerIcons} />
-          <a href="mailto: karg.inform@gmail.com">karg.inform@gmail.com</a>
+          <a href={`mailto: ${email}`}>{email}</a>
         </div>
 
         <div className={styles.contactsContainerLocation}>
           <LocationIcon className={styles.contactsContainerIcons} />
-          <a>{t('common:address')}</a>
+          <a>{currentLocale === 'uk' ? address[0] : address[1] || t('common:address')}</a>
         </div>
 
       </div>

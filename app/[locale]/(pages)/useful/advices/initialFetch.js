@@ -18,7 +18,7 @@ export default function InitialFetch({ locale }) {
         };
 
         loadInitialCards();
-    }, [locale]);
+    }, [locale, currentPage, pageSize]);
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
