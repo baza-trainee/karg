@@ -1,1 +1,1 @@
-export { default as results } from "./results.png";
+export { default as results } from "./results.jpg";
