@@ -37,9 +37,11 @@ export const submitStatsData = async (type, formData, originalData, showModal, s
             return;
         }
         const statData = {
+            title_en: formData.title_en,
+            title_ua: formData.title_ua,
             description_en: formData.description_en,
             description_ua: formData.description_ua,
-            year: formData.year,
+            created_at: formData.created_at || '',
             images: formData.images,
         };
         try {

@@ -49,13 +49,18 @@
         border-bottom: 1px solid #ddd;
         transition: background 0.3s ease, transform 0.2s ease;
 
+        &.active {
+          background-color: #e0e0e0;
+          color: #ff8c0c;
+        }
+
         &:hover {
           background: #e0e0e0;
           transform: scale(1.02);
           color: #ff8c0c;
         }
       }
-
+      
       .button {
         width: 100%;
         text-align: left;

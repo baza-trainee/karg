@@ -37,7 +37,7 @@ export default function StatsItem(
                     <div className={photoStyle} aria-hidden="true"></div>
                 )}
             </div>
-            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{`${statTitle} рік`}</div>
+            <div className={`${basicInfoStyle} ${variables.font24w700}`}>{`${statTitle}`}</div>
             <div className={`${detailsStyle} ${variables.font20w500}`}>{statDetails}</div>
             <div className={iconsContainerStyle}>
                 {children}

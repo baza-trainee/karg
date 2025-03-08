@@ -2,35 +2,49 @@ const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 const API_ENDPOINT_RESCUER = 'api/rescuer';
 
 export const getRescuerById = async (id) => {
-    const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getbyid?id=${id}`, {
-        method: "GET",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        },
-    });
-    if (!response.ok) {
-        throw new Error('Failed to fetch');
+    try {
+        const authToken = localStorage.getItem('auth-token');
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/getbyid?id=${id}`, {
+            method: "GET",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+        });
+        if (response.status === 404) {
+            return { error: "not_found" };
+        }
+        if (!response.ok) {
+            return { error: `API error: ${response.status}` };
+        }
+        const data = await response.json();
+        return data || { error: "Empty response" };
+    } catch (error) {
+        console.error(`Error fetching rescuer by id:`, error);
+        return { error: "Failed to fetch" };
     }
-    return response.json();
 };
 
 export const updateRescuerInfo = async (id, updates) => {
-    const authToken = localStorage.getItem('auth-token');
-    const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/update?id=${id}`, {
-        method: "PATCH",
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${authToken}`
-        },
-        body: JSON.stringify(updates)
-    });
-    if (!response.ok) {
-        throw new Error('Failed to update rescuer info');
+    try {
+        const authToken = localStorage.getItem('auth-token');
+        const response = await fetch(`${API_BASE_URL}${API_ENDPOINT_RESCUER}/update?id=${id}`, {
+            method: "PATCH",
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify(updates)
+        });
+        if (!response.ok) {
+            return { error: `API error: ${response.status}` };
+        }
+        return response.json();
+    } catch (error) {
+        console.error(`Ошибка при запросе updateRescuerInfo:`, error);
+        return { error: "Failed to fetch" };
     }
-    return response.json();
 };
 

@@ -1,15 +1,10 @@
 export const checkFormValidity = (formData) => {
     if (!formData) return false;
-    const requiredFields = ['year', 'description_ua', 'description_en', 'images'];
+    const requiredFields = ['title_ua', 'title_en', 'description_ua', 'description_en', 'images'];
 
     return requiredFields.every(field => {
         if (field === 'images') {
             return formData[field].length > 0;
-        }
-
-        if (field === 'year') {
-            const yearValue = formData[field].trim();
-            return yearValue.length === 4 && /^\d{4}$/.test(yearValue);
         }
         return typeof formData[field] === 'string' && formData[field].trim() !== '';
     });
