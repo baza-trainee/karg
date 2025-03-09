@@ -12,7 +12,7 @@ export function validateAndFormatPhoneNumber(phoneNumber) {
     if (cleanedNumber.length > 12) {
         return "Невірна довжина номера";
     }
-    if (cleanedNumber.length === 12 && !cleanedNumber.startsWith("0") && !cleanedNumber.startsWith("38") && !cleanedNumber.startsWith("+38")) {
+    if (cleanedNumber.length === 12 && !cleanedNumber.startsWith("0") && !cleanedNumber.startsWith("38")) {
         return 'Некоректний формат номера';
     }
     if (cleanedNumber.length === 10 && cleanedNumber.startsWith("0")) {
@@ -46,6 +46,6 @@ export const checkFormValidity = (formData) => {
         return isValid;
     }
 
-    const isValidDefault = typeof formData.value === "string" && formData.value.trim().length > 0;
-    return isValidDefault;
+    const areFieldsFilled = typeof formData.value === "string" && formData.value.trim().length > 0;
+    return areFieldsFilled;
 };

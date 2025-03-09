@@ -19,11 +19,12 @@ import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
     phoneNumberTitle: "Телефон",
+    emailTitle: "Email"
 };
 
 const btnLabels = {
     btnReject: "Скасувати",
-    btnSubmit: "Зберігти",
+    btnSubmit: "Зберегти",
     btnSaveChanges: "Зберегти зміни"
 }
 
@@ -42,7 +43,7 @@ const successDialogActions = {
 }
 
 function RescuerForm({ type = 'create', rescuerData = {} }) {
-    const { fullNameTitle, phoneNumberTitle } = labels;
+    const { fullNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { confirmationTitle, message, cancelTitle, confirmTitle } = confirmationDialogActions;
     const { hideModal, showModal } = useContext(ModalContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
@@ -105,6 +106,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
+        
         let updatedValue = value;
         if (name === 'phoneNumber') {
             updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
@@ -116,6 +118,22 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         }
         setHasUnsavedChanges(true);
         setFormData(prev => {
+            const updatedFormData = { ...prev, [name]: updatedValue };
+            setIsFormValid(checkFormValidity(updatedFormData));
+            return updatedFormData;
+        });
+    }
+
+    function handleBlur(e) {
+        const { name, value } = e.target;
+        setFormData(prev => {
+            let updatedValue = value;
+            if (name === 'phoneNumber') {
+                const digitsCount = updatedValue.replace(/\D/g, '').length;
+                if (digitsCount < 10) {
+                    updatedValue = 'Некоректна довжина номера';
+                }
+            }
             const updatedFormData = { ...prev, [name]: updatedValue };
             setIsFormValid(checkFormValidity(updatedFormData));
             return updatedFormData;
@@ -135,7 +153,6 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         });
         setHasUnsavedChanges(true);
     }
-
     return (
         <form className={styles.form} onSubmit={handleSubmit}>
             {isLoading ? (
@@ -150,11 +167,13 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
                             formData={formData}
                             type={type}
                             handleChange={handleChange}
+                            handleBlur={handleBlur}
                             handleImageUploaded={handleImageUploaded}
                             handleDeleteImage={handleDeleteImage}
                             maxImages={maxImages}
                             phoneNumberTitle={phoneNumberTitle}
                             fullNameTitle={fullNameTitle}
+                            emailTitle={emailTitle}
                         />
                         <FormButtons
                             isFormValid={isFormValid}
