@@ -41,6 +41,7 @@ export default function LoginForm({
                             name='email'
                             type='email'
                             value={email}
+                            maxLength='320'
                             placeholder={blockCaptions.emailPlaceholder}
                             onChange={(e) => handleEmailChange(e)}
                             onBlur={(e) => onEmailBlur(e)}

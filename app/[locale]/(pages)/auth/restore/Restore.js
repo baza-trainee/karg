@@ -129,6 +129,7 @@ export default function Restore() {
                     id='email'
                     type='email'
                     value={email}
+                    maxLength='320'
                     placeholder={blockTitles.emailPlaceholder}
                     onChange={(e) => emailHandler(e)}
                     onBlur={(e) => blurHandler(e)}

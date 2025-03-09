@@ -12,7 +12,7 @@ export default async function NotFound() {
                 <div className={styles.subtitle}>Сторінку не знайдено</div>
             </div>
             <div className={styles.text}>Ця сторінка не існує або була видалена!
-                Пропонуємо вам повернутися на головн</div>
+                Пропонуємо вам повернутися на головну</div>
             <ButtonAsLink route="/" buttonCaption={"На головну"} buttonStyle="backToHome" />
         </div>
     );

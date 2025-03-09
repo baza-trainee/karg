@@ -1,3 +1,9 @@
+const validateEmail = (value) => {
+    const re = /^(?![_.-])[a-zA-Z0-9]+([.-](?![.-])[a-zA-Z0-9]+)*(\.[a-zA-Z0-9]+)*?@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+$/;
+    return typeof value === "string" && value.trim() !== "" && re.test(value.toLowerCase());
+};
+
+
 export function validateAndFormatPhoneNumber(phoneNumber) {
     if (typeof phoneNumber !== "string") {
         return 'Некоректний номер';
@@ -7,7 +13,7 @@ export function validateAndFormatPhoneNumber(phoneNumber) {
     if (cleanedNumber.length > 12) {
         return "Невірна довжина номера";
     }
-    if (cleanedNumber.length === 12 && !cleanedNumber.startsWith("0") && !cleanedNumber.startsWith("38") && !cleanedNumber.startsWith("+38")) {
+    if (cleanedNumber.length === 12 && !cleanedNumber.startsWith("0") && !cleanedNumber.startsWith("38")) {
         return 'Некоректний формат номера';
     }
     if (cleanedNumber.length === 10 && cleanedNumber.startsWith("0")) {
@@ -21,11 +27,13 @@ export function validateAndFormatPhoneNumber(phoneNumber) {
 
 export const checkFormValidity = (formData) => {
     if (!formData) return false;
-    const requiredFields = ['fullName', 'phoneNumber'];
+    const requiredFields = ['fullName', 'phoneNumber', 'email'];
+    if (requiredFields.some(field => !formData[field])) return false;
+    const areFieldsFilled = requiredFields.every(field => formData[field].trim() !== '');
+    const isNameValid = (formData.fullName || '').length >= 3;
+    const isEmailValid = validateEmail(formData.email);
+    const phoneDigitsCount = (formData.phoneNumber || '').replace(/\D/g, '').length;
+    const isPhoneValid = phoneDigitsCount >= 10 && validateAndFormatPhoneNumber(formData.phoneNumber) !== "Некоректний номер";
 
-    if (formData.category === "phoneNumber") {
-        return validateAndFormatPhoneNumber(formData.value) !== "Некоректний номер";
-    }
-
-    return requiredFields.every(field => formData[field].trim() !== '');
+    return areFieldsFilled && isPhoneValid && isNameValid && isEmailValid;
 };

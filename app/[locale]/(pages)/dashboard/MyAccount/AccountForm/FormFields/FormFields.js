@@ -2,7 +2,7 @@ import styles from "./styles/formFields.module.scss";
 import variables from "../../../../../variables.module.scss";
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTitle, lastNameTitle, emailTitle }) => {
+const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTitle, lastNameTitle, emailTitle, handleBlur }) => {
     return (
         <div className={styles.formContainer}>
             <div className={`${styles.formFields} ${styles.editMode}`}>
@@ -17,6 +17,7 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         type="text"
                         id="firstNameField"
                         name="fullName_name"
+                        maxLength="500"
                         value={formData.fullName_name}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                         onChange={(e) => handleChange(e)}
@@ -33,6 +34,7 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         type="text"
                         id="lastNameField"
                         name="fullName_lastName"
+                        maxLength="500"
                         value={formData.fullName_lastName}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                         onChange={(e) => handleChange(e)}
@@ -52,6 +54,7 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         value={formData.phoneNumber}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                         onChange={(e) => handleChange(e)}
+                        onBlur={(e) => handleBlur(e)}
                     >
                     </input>
                 </div>
@@ -65,6 +68,7 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         type="text"
                         id="emailField"
                         name="email"
+                        maxLength='320'
                         value={formData.email}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                         disabled={true}
