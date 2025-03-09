@@ -7,7 +7,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
-import InfiniteScroll from './infiniteScroll';
+// import InfiniteScroll from './infiniteScroll';
 import InitialFetch from './initialFetch';
 // images
 import { advices } from '@/public/assets/images/advices';
@@ -38,7 +38,7 @@ const Advices = async ({ params: { locale } }) => {
                 altText={DOCUMENT_TEXT.altText}
             />
 
-            <main className={styles.pageContainer}>
+            <main className={styles.pageContainer} style={{ flex: 1 }}>
                 <SearchBar />
                 <InitialFetch locale={locale} />
                 {/* <InfiniteScroll /> */}

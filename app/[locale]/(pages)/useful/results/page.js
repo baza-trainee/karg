@@ -37,7 +37,7 @@ const Results = async ({ params: { locale } }) => {
                 altText={DOCUMENT_TEXT.altText}
             />
 
-            <main className={styles.pageContainer}>
+            <main className={styles.pageContainer} style={{ flex: 1 }}>
                 <InitialFetch locale={locale} />
                 {/* <InfiniteScroll /> */}
             </main>

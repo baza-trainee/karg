@@ -155,10 +155,10 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                 sizes="100vw"
                 width={268}
                 height={268}
-                style={{
-                    width: "100%",
-                    height: "auto",
-                }}
+            // style={{
+            //     width: "268px",
+            //     height: "268px",
+            // }}
             />
         );
     };
@@ -212,10 +212,10 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     src={`${API_BASE_URL}${selectedCard.images[carouselIndex]}`}
                                     alt={DOCUMENT_TEXT.cardAltText}
                                     sizes="100vw"
-                                    width={336}
-                                    height={336}
+                                    width={268}
+                                    height={268}
                                     style={{
-                                        height: "336px",
+                                        height: "268px",
                                     }}
                                 />
                                 <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
