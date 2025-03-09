@@ -18,6 +18,7 @@ const FormFieldsPartner = memo(({ formData, handleChange, handleImageUploaded, h
                     id="nameField"
                     name={'name'}
                     value={formData.name}
+                    maxLength="500"
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
                 >
@@ -40,6 +41,7 @@ const FormFieldsPartner = memo(({ formData, handleChange, handleImageUploaded, h
                     id="linkField"
                     name={'uri'}
                     value={formData.uri}
+                    maxLength="8000"
                     className={`${styles.field} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
                 >

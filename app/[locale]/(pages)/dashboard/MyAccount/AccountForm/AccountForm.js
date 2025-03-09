@@ -117,10 +117,25 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             let updatedValue = value;
             if (name === 'phoneNumber') {
                 updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
-
                 const formattedNumber = validateAndFormatPhoneNumber(value);
                 if (formattedNumber !== 'Некоректний номер') {
                     updatedValue = formattedNumber;
+                }
+            }
+            const updatedFormData = { ...prev, [name]: updatedValue };
+            setIsFormValid(checkFormValidity(updatedFormData));
+            return updatedFormData;
+        });
+    }
+
+    function handleBlur(e) {
+        const { name, value } = e.target;
+        setFormData(prev => {
+            let updatedValue = value;
+            if (name === 'phoneNumber') {
+                const digitsCount = updatedValue.replace(/\D/g, '').length;
+                if (digitsCount < 10) {
+                    updatedValue = 'Некоректна довжина номера';
                 }
             }
             const updatedFormData = { ...prev, [name]: updatedValue };
@@ -162,6 +177,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
                                     formData={formData}
                                     type={type}
                                     handleChange={handleChange}
+                                    handleBlur={handleBlur}
                                     maxImages={maxImages}
                                     firstNameTitle={firstNameTitle}
                                     lastNameTitle={lastNameTitle}
@@ -171,7 +187,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
                                 <FormButtons
                                     isFormValid={isFormValid}
                                     handleSubmit={handleSubmit}
-                                    restoreButtonStyle={stylesBtn.adminMyAccountFormBtnRejct}
+                                    restoreButtonStyle={stylesBtn.adminMyAccountFormBtnReject}
                                     submitButtonStyle={stylesBtn.adminMyAccountFormBtnSubmit}
                                     submitButtonTitle={btnSaveChanges}
                                     changePasswordButtonTitle={changePasswordButton}
