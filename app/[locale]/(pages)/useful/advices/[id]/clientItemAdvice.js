@@ -7,33 +7,25 @@ import variables from '@/app/[locale]/variables.module.scss';
 import SocialIcons from "@/components/SocialIcons/socialIcons";
 import GoBackButton from "@/components/common/GoBackButton/GoBackButton";
 import GoBackIcon from "@/components/ServerSideIcon/GoBackIcon";
-// import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation";
 
 const ClientItemAdvice = ({ id, cultureCode, API_BASE_URL, endpoint, translations }) => {
     const [advice, setAdvice] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
 
-    // const router = useRouter();
+    const router = useRouter();
 
     useEffect(() => {
         const fetchAdvice = async () => {
             try {
                 setLoading(true);
                 const res = await getById(endpoint, id, cultureCode);
-                console.log(res);
+                if (res.status === 404) {
 
-                // if (res.status === 404) {
-                //     const locale = cultureCode === 'ua' ? 'uk' : cultureCode;
-                //     if (locale === 'uk') {
-                //         router.push(`/${locale}/not-found-ua`);
-                //         return;
-                //     } else {
-                //         router.push(`/${locale}/not-found-en`);
-                //         return;
-                //     }
-
-                // }
+                    router.push(`/not-found`);
+                    return;
+                }
                 setAdvice(res);
                 setLoading(false);
             } catch (err) {
