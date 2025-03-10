@@ -15,6 +15,7 @@ import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
+import { AdminContext } from "@/app/adminProvider";
 
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
@@ -55,6 +56,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
     const title = type === 'create' ? "Додати користувача" : "Редагувати користувача";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
     const maxImages = 2;
+    const { isDirector } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -91,7 +93,6 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             setHasUnsavedChanges,
             successDialogActions,
         );
-
         await loadRescuers();
         setIsLoading(false);
     };
@@ -106,7 +107,6 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
 
     function handleChange(e) {
         const { name, value } = e.target;
-        
         let updatedValue = value;
         if (name === 'phoneNumber') {
             updatedValue = value.replace(/(?!^\+)[^\d]/g, '');
@@ -174,6 +174,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
                             phoneNumberTitle={phoneNumberTitle}
                             fullNameTitle={fullNameTitle}
                             emailTitle={emailTitle}
+                            isDirector={isDirector}
                         />
                         <FormButtons
                             isFormValid={isFormValid}
