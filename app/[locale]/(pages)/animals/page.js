@@ -7,8 +7,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
-// import InfiniteScroll from './infiniteScroll';
-import InitialFetch from './initialFetch';
+import AnimalsClient from './AnimalsClient';
 // images
 import { ourAnimalsImage } from '@/public/assets/images/animals';
 
@@ -22,7 +21,6 @@ const Animals = async ({ params: { locale } }) => {
         p1: t('p1'),
         p2: t('p2'),
     };
-    // console.log('Current localeAnim:', locale);
 
     return (
         <TranslationsProvider
@@ -39,16 +37,14 @@ const Animals = async ({ params: { locale } }) => {
                 altText={DOCUMENT_TEXT.altText}
             />
 
-            <main className={styles.pageContainer}>
-                <section className={styles.textContainer}>
-                    <p>{DOCUMENT_TEXT.p1}</p>
-                    <p>{DOCUMENT_TEXT.p2}</p>
-                </section>
-                <InitialFetch locale={locale} />
-                {/* <InfiniteScroll locale={locale} /> */}
-            </main>
+            <section className={styles.textContainer}>
+                <p>{DOCUMENT_TEXT.p1}</p>
+                <p>{DOCUMENT_TEXT.p2}</p>
+            </section>
+            <AnimalsClient locale={locale} />
             <Footer />
         </TranslationsProvider>
     );
 };
+
 export default Animals;

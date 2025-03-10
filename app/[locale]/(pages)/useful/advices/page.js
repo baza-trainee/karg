@@ -11,7 +11,7 @@ import PageHero from '@/components/common/PageHero/pageHero';
 import InitialFetch from './initialFetch';
 // images
 import { advices } from '@/public/assets/images/advices';
-import SearchBar from '@/components/SearchBar/SearchBar';
+// import SearchBar from '@/components/SearchBar/SearchBar';
 
 const i18nNamespaces = ["advices", "uniCards", "common"];
 
@@ -39,7 +39,7 @@ const Advices = async ({ params: { locale } }) => {
             />
 
             <main className={styles.pageContainer} style={{ flex: 1 }}>
-                <SearchBar />
+                {/* <SearchBar /> */}
                 <InitialFetch locale={locale} />
                 {/* <InfiniteScroll /> */}
             </main>
