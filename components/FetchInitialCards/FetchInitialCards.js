@@ -1,22 +1,32 @@
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-const FetchInitialCards = async (locale, endpoint, method, pageSize, page = 1) => {
+const FetchInitialCards = async (locale, api, method, pageSize, page, searchTerm = '', category = '') => {
+    locale = locale === 'uk' ? 'ua' : 'en';
+    let url = `${API_BASE_URL}${api}/${method}?page=${page}&pageSize=${pageSize}&cultureCode=${locale}`;
+    if (searchTerm) {
+        url += `&nameSearch=${searchTerm}`;
+    }
+    if (category) {
+        url += `&categoryFilter=${category}`;
+    }
+
     try {
-        const cultureCode = (locale === "uk") ? "ua" : "en";
-        const url = `${API_BASE_URL}${endpoint}/${method}?page=${page}&pageSize=${pageSize}&cultureCode=${cultureCode}`;
-        // console.log("Fetching data from:", url);
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+            },
+        });
 
         if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
+            throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
         }
 
-        const data = await response.json();
-        // console.log("Data received:", data);
-        return data;
+        return await response.json();
     } catch (error) {
-        console.error("Error fetching data:", error);
-        return { items: [], total: 0 };
+        console.error("Error fetching initial cards:", error);
+        throw error;
     }
 };
 

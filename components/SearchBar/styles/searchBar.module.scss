@@ -2,11 +2,20 @@
 
 .container {
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  align-items: center;
+  flex-direction: column;
   justify-content: space-between;
-  padding: 0 48px 0 48px;
-  margin-top: 24px;
-  width: 100%;
+  // padding: 0 48px 0 48px;
+
+  & .searchContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 0 48px 0 48px;
+    margin-top: 24px;
+    width: 100%;
+  }
 
   & .search {
     width: 100%;
@@ -15,6 +24,7 @@
     padding: 12.5px 8px 12.5px 8px;
     border-radius: 8px;
     border: 1px solid $text-dark;
+
     &::placeholder {
       color: $text-gray;
       font-size: 18px;
@@ -22,6 +32,14 @@
       line-height: 23.4px;
     }
   }
+
+  & .select {
+    padding: 12.5px 8px 12.5px 8px;
+    border-radius: 8px;
+    border: 1px solid $text-dark;
+    height: 48px;
+  }
+
   & .icon {
     // cursor: pointer;
     position: relative;
@@ -38,8 +56,9 @@
   }
 }
 
-// @media screen and (min-width: 1200px) {
-//   .container {
-//     margin-top: 64p;
-//   }
-// }
+@media screen and (min-width: 1200px) {
+  .container {
+    flex-direction: row;
+    margin-right: 48px;
+  }
+}
