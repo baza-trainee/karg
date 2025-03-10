@@ -155,6 +155,20 @@ function Footer() {
         <SocialIcons className={styles.socIcons} />
       </div>
 
+      <div className={styles.documentsLinksHolder}>
+        <ul className={styles.navMenuRules}>
+          <li>
+            <Link href="/documents/statut">{t('common:statut')}</Link>
+          </li>
+          <li>
+            <Link href="/documents/privacy_policy">{t('common:privacy_policy')}</Link>
+          </li>
+          <li>
+            <Link href="/documents/website_rules">{t('common:website_rules')}</Link>
+          </li>
+        </ul>
+      </div>
+
       <p className={styles.signature}>
         {t('common:copyright')}
       </p>
