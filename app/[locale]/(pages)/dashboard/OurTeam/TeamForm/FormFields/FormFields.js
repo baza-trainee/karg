@@ -3,7 +3,20 @@ import variables from "../../../../../variables.module.scss";
 import ImageUploader from '../ImageUploader/ImageUploader';
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, handleChange, handleImageUploaded, handleDeleteImage, maxImages, phoneNumberTitle, fullNameTitle, emailTitle, type, handleBlur }) => {
+const FormFields = memo(({
+    formData,
+    handleChange,
+    handleImageUploaded,
+    handleDeleteImage,
+    maxImages,
+    phoneNumberTitle,
+    fullNameTitle,
+    emailTitle,
+    type,
+    handleBlur,
+    isDirector
+}) => {
+    
     return (
         <div className={`${styles.formFields} ${type === 'edit' ? styles.editMode : ''}`}>
             <div className={styles.inputBlock}>
@@ -52,11 +65,11 @@ const FormFields = memo(({ formData, handleChange, handleImageUploaded, handleDe
                     name="email"
                     type="email"
                     required
-                    disabled={type === 'edit'}
+                    disabled={type === 'edit' && !isDirector}
                     maxLength='320'
                     value={formData.email || ''}
                     className={`${styles.textareaField} ${variables.font18w500}`}
-                    onChange={(e) => handleChange(e)} 
+                    onChange={(e) => handleChange(e)}
                 >
                 </input>
             </div>
