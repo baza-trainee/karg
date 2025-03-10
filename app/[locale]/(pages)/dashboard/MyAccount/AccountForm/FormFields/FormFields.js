@@ -2,7 +2,16 @@ import styles from "./styles/formFields.module.scss";
 import variables from "../../../../../variables.module.scss";
 import { memo } from 'react';
 
-const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTitle, lastNameTitle, emailTitle, handleBlur }) => {
+const FormFields = memo(({
+    formData,
+    handleChange,
+    phoneNumberTitle,
+    firstNameTitle,
+    lastNameTitle,
+    emailTitle,
+    handleBlur,
+    isDirector
+}) => {
     return (
         <div className={styles.formContainer}>
             <div className={`${styles.formFields} ${styles.editMode}`}>
@@ -71,7 +80,8 @@ const FormFields = memo(({ formData, handleChange, phoneNumberTitle, firstNameTi
                         maxLength='320'
                         value={formData.email}
                         className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
-                        disabled={true}
+                        disabled={!isDirector}
+                        onChange={(e) => handleChange(e)}
                     >
                     </input>
                 </div>

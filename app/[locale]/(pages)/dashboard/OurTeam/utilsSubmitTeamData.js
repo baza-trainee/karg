@@ -44,7 +44,16 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
             images: formData.images,
         };
         try {
-            await addRescuer(rescuerData);
+            const result = await addRescuer(rescuerData);
+            if (result.emailConflict) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.emailConflict}
+                        buttonText={buttonText}
+                    />)
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -63,7 +72,16 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
             return;
         }
         try {
-            await updateRescuerInfo(formData.id, updates);
+            const result = await updateRescuerInfo(formData.id, updates);
+            if (result.emailConflict) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.emailConflict}
+                        buttonText={buttonText}
+                    />)
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -72,7 +90,7 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
                 />)
             setHasUnsavedChanges(false);
         } catch (error) {
-            console.error('Error updating animal:', error);
+            console.error('Error updating rescuer:', error);
         }
     };
     if (type === 'create') {
