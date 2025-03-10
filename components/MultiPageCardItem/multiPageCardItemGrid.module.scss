@@ -206,6 +206,9 @@
       display: grid;
       place-items: center;
       gap: 8px;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      word-break: break-all;
 
       & h2 {
         color: $button-default;
@@ -431,7 +434,7 @@
   .container {
     margin: 0 auto;
     max-width: 1850px;
-    justify-content: stretch;
+    justify-content: center;
 
     .cardContainer {
       width: 370px;
@@ -494,6 +497,9 @@
         place-items: center;
         gap: 6px;
         grid-area: desc;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        word-break: break-all;
 
         .innerModalDesktopNameContainer {
           display: flex;
