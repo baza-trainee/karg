@@ -36,7 +36,16 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
             return;
         }
         try {
-            await updateRescuerInfo(destructuredFormData.id, updates);
+            const result = await updateRescuerInfo(destructuredFormData.id, updates);
+            if (result.emailConflict) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.emailConflict}
+                        buttonText={buttonText}
+                    />)
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

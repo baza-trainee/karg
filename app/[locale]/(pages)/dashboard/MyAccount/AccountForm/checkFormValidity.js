@@ -1,3 +1,8 @@
+const validateEmail = (value) => {
+    const re = /^(?![_.-])[a-zA-Z0-9]+([.-](?![.-])[a-zA-Z0-9]+)*(\.[a-zA-Z0-9]+)*?@[a-zA-Z0-9]+(-[a-zA-Z0-9]+)*(\.[a-zA-Z]{2,})+$/;
+    return typeof value === "string" && value.trim() !== "" && re.test(value.toLowerCase());
+};
+
 export function validateAndFormatPhoneNumber(phoneNumber) {
     if (typeof phoneNumber !== "string") {
         return 'Некоректний номер';
@@ -25,8 +30,9 @@ export const checkFormValidity = (formData) => {
     if (requiredFields.some(field => !formData[field])) return false;
     const areFieldsFilled = requiredFields.every(field => formData[field].trim() !== '');
     const isNameValid = (formData.fullName_name || '').length >= 3 && (formData.fullName_lastName || '').length >= 3;
+    const isEmailValid = validateEmail(formData.email);
     const phoneDigitsCount = (formData.phoneNumber || '').replace(/\D/g, '').length;
     const isPhoneValid = phoneDigitsCount >= 10 && validateAndFormatPhoneNumber(formData.phoneNumber) !== "Некоректний номер";
 
-    return areFieldsFilled && isPhoneValid && isNameValid;
+    return areFieldsFilled && isPhoneValid && isNameValid && isEmailValid;
 };
