@@ -19,6 +19,7 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                     name={language === 'ua' ? "name_ua" : "name_en"}
                     value={language === 'ua' ? formData.name_ua : formData.name_en}
                     maxLength="500"
+                    minLength="3"
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
                 >
@@ -65,6 +66,7 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                     id="descriptionField"
                     name={language === 'ua' ? "description_ua" : "description_en"}
                     maxLength="10000"
+                    minLength="35"
                     value={language === 'ua' ? formData.description_ua : formData.description_en}
                     className={`${styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
@@ -81,6 +83,7 @@ const FormFields = memo(({ formData, language, handleChange, handleImageUploaded
                     id="storyField"
                     name={language === 'ua' ? "story_ua" : "story_en"}
                     maxLength="10000"
+                    minLength="35"
                     value={language === 'ua' ? formData.story_ua : formData.story_en}
                     className={`${styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
