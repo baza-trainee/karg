@@ -16,6 +16,7 @@ const FormFields = memo(({ formData, language, handleChange, handleOnBlur, quest
                     type="text"
                     id="questionField"
                     maxLength="500"
+                    minLength="3"
                     name={language === 'ua' ? "question_ua" : "question_en"}
                     value={language === 'ua' ? formData.question_ua : formData.question_en}
                     className={`${styles.nameFieldInput} ${styles.field} ${variables.font18w500}`}
@@ -34,6 +35,7 @@ const FormFields = memo(({ formData, language, handleChange, handleOnBlur, quest
                     id="answerField"
                     name={language === 'ua' ? "answer_ua" : "answer_en"}
                     maxLength="10000"
+                    minLength="35"
                     value={language === 'ua' ? formData.answer_ua : formData.answer_en}
                     className={`${styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}
