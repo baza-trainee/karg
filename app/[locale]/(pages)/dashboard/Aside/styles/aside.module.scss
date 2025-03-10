@@ -115,7 +115,8 @@
 .icon {
   fill: currentColor;
   cursor: pointer;
-  min-width: 9.76%;
+  width: 9.76%;
+  min-width: 18px;
 }
 
 .nestedStyle {
@@ -191,7 +192,9 @@
   }
 
   .icon {
-    font-size: clamp(1.125rem, calc(1rem + 0.3vw), 1.25rem);
+    min-width: 20px;
+    
+    // font-size: clamp(1.125rem, calc(1rem + 0.3vw), 1.25rem);
   }
 
   .item_logo {
@@ -280,6 +283,7 @@
 
   .icon {
     font-size: clamp(1.5rem, calc(1rem + 0.3vw), 1.75rem);
+    min-width: 24px;
   }
 
   .item_logo {

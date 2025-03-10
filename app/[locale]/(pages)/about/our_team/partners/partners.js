@@ -72,7 +72,7 @@ const Partners = () => {
         if (!Array.isArray(images) && images.length === 0) {
             return null;
         }
-        return images[0].startsWith('http') ? images[0] : `${API_URL}${images[0]}`;
+        return images[0]?.startsWith('http') ? images[0] : `${API_URL}${images[0]}`;
     };
 
     return (

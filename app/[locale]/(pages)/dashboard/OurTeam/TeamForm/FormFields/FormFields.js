@@ -66,7 +66,7 @@ const FormFields = memo(({
                     type="email"
                     required
                     disabled={type === 'edit' && !isDirector}
-                    maxLength='320'
+                    maxLength='254'
                     value={formData.email || ''}
                     className={`${styles.textareaField} ${variables.font18w500}`}
                     onChange={(e) => handleChange(e)}

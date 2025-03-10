@@ -48,6 +48,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const title = "Персональна інформація";
     const { changePasswordButton, btnSaveChanges } = btnLabels;
     const maxImages = 1;
+    const { isDirector } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -183,6 +184,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
                                     lastNameTitle={lastNameTitle}
                                     phoneNumberTitle={phoneNumberTitle}
                                     emailTitle={emailTitle}
+                                    isDirector={isDirector}
                                 />
                                 <FormButtons
                                     isFormValid={isFormValid}

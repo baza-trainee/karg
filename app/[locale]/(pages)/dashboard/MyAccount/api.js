@@ -38,6 +38,15 @@ export const updateRescuerInfo = async (id, updates) => {
             },
             body: JSON.stringify(updates)
         });
+        if (response.status === 409) {
+            try {
+                const errorBody = await response.json();
+                return { emailConflict: errorBody?.message || "Працівник з такою електронною поштою вже існує" };
+            } catch (error) {
+                console.error(`Ошибка при парсинге ответа updateRescuerInfo:`, error);
+                return { emailConflict: "Працівник з такою електронною поштою вже існує" };
+            }
+        }
         if (!response.ok) {
             return { error: `API error: ${response.status}` };
         }
