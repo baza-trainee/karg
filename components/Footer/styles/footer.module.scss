@@ -101,6 +101,25 @@
   }
 }
 
+.navMenuRules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  text-align: center;
+
+  & > li > a {
+    color: $text-gray;
+    transition: color 0.4s ease-in-out;
+  }
+
+  & > li > a:hover {
+    color: $button-default;
+  }
+}
+
 .contactsContainer {
   display: flex;
   flex-direction: column;
@@ -142,8 +161,12 @@
   display: none;
 }
 
-// .arrowDownIcon {
-// }
+.documentsLinksHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: policy;
+}
 
 .signature {
   color: $text-gray;
@@ -176,6 +199,9 @@
   .signature {
     font-size: 16px;
   }
+  .navMenuRules {
+    flex-direction: row;
+  }
 
   .footer {
     padding: 56px 9.375%;
@@ -186,7 +212,8 @@
     width: 100%;
     grid-template-areas:
       'logo contactsContainer navMenu navMenu button'
-      'logo contactsContainer navMenu navMenu button';
+      'logo contactsContainer navMenu navMenu button'
+      'policy policy policy policy policy';
   }
 
   .logo {
