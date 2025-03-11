@@ -1,12 +1,12 @@
 'use client';
 
 import { useState } from 'react';
-import styles from './styles/animals.module.scss';
+import styles from '../../animals/styles/animals.module.scss';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import InitialFetch from './initialFetch';
 import { useTranslation } from 'react-i18next';
 
-const AnimalClient = ({ locale }) => {
+const AdviceClient = ({ locale }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [resultsCount, setResultsCount] = useState(0);
     const [category, setCategory] = useState('');
@@ -34,7 +34,6 @@ const AnimalClient = ({ locale }) => {
             <SearchBar
                 cultureCode={locale}
                 onSearch={updateSearchTerm}
-                showCategoryFilter={true}
             />
             {searchResultsCount()}
             {searchTerm && resultsCount === 0 && searchTerm && (
@@ -45,4 +44,4 @@ const AnimalClient = ({ locale }) => {
     );
 };
 
-export default AnimalClient;
+export default AdviceClient;

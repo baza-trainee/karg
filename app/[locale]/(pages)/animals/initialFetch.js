@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
 
@@ -9,6 +9,7 @@ export default function InitialFetch({ locale, searchTerm, category, onResults }
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
+    const previousCards = useRef([]);
 
     useEffect(() => {
         const loadCards = async () => {
@@ -16,10 +17,17 @@ export default function InitialFetch({ locale, searchTerm, category, onResults }
                 let data;
                 if (searchTerm || category) {
                     data = await FetchInitialCards(locale, 'api/animal', 'getall', pageSize, currentPage, searchTerm, category);
+                    if (data.items.length > 0) {
+                        previousCards.current = data.items;
+                        setCards(data.items);
+                    } else {
+                        setCards(previousCards.current);
+                    }
                 } else {
                     data = await FetchInitialCards(locale, 'api/animal', 'getall', pageSize, currentPage);
+                    previousCards.current = data.items;
+                    setCards(data.items);
                 }
-                setCards(data.items);
                 setTotalPages(data.totalPages);
                 onResults(data.items.length);
             } catch (error) {

@@ -1,40 +1,56 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
 
-export default function InitialFetch({ locale }) {
-    const [initialCards, setInitialCards] = useState([]);
+export default function InitialFetch({ locale, searchTerm, category, onResults }) {
+    const [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
+    const previousCards = useRef([]);
 
     useEffect(() => {
-        const loadInitialCards = async () => {
-            const data = await FetchInitialCards(locale, 'api/advice', 'getall', pageSize, currentPage);
-            setInitialCards(data.items);
-            setTotalPages(data.totalPages);
+        const loadCards = async () => {
+            try {
+                let data;
+                if (searchTerm || category) {
+                    data = await FetchInitialCards(locale, 'api/advice', 'getall', pageSize, currentPage, searchTerm, category);
+                    if (data.items.length > 0) {
+                        previousCards.current = data.items;
+                        setCards(data.items);
+                    } else {
+                        setCards(previousCards.current);
+                    }
+                } else {
+                    data = await FetchInitialCards(locale, 'api/advice', 'getall', pageSize, currentPage);
+                    previousCards.current = data.items;
+                    setCards(data.items);
+                }
+                setTotalPages(data.totalPages);
+                onResults(data.items.length);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                onResults(0);
+            }
         };
 
-        loadInitialCards();
-    }, [locale, currentPage, pageSize]);
+        loadCards();
+    }, [locale, currentPage, pageSize, searchTerm, category, onResults]);
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
     };
 
     return (
-        <>
-            <MultiPageCardItem
-                data={initialCards}
-                buttonVariant="link"
-                onPageChange={handlePageChange}
-                currentPage={currentPage}
-                pageSize={pageSize}
-                totalPages={totalPages}
-            />
-
-        </>
+        <MultiPageCardItem
+            data={cards}
+            buttonVariant="link"
+            onPageChange={handlePageChange}
+            currentPage={currentPage}
+            pageSize={pageSize}
+            totalPages={totalPages}
+        />
     );
 }
