@@ -3,20 +3,23 @@
 import { useState, useEffect, useRef } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
+import Spinner from '@/components/Spinner/Spinner';
 
-export default function InitialFetch({ locale, searchTerm, category, onResults }) {
+export default function PaginatedCardList({ locale, endpoint, multiPageCardButtonVariant, searchTerm, category, onResults }) {
     const [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
     const previousCards = useRef([]);
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const loadCards = async () => {
+            setIsLoading(true);
             try {
                 let data;
                 if (searchTerm || category) {
-                    data = await FetchInitialCards(locale, 'api/animal', 'getall', pageSize, currentPage, searchTerm, category);
+                    data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage, searchTerm, category);
                     if (data.items.length > 0) {
                         previousCards.current = data.items;
                         setCards(data.items);
@@ -24,7 +27,7 @@ export default function InitialFetch({ locale, searchTerm, category, onResults }
                         setCards(previousCards.current);
                     }
                 } else {
-                    data = await FetchInitialCards(locale, 'api/animal', 'getall', pageSize, currentPage);
+                    data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage);
                     previousCards.current = data.items;
                     setCards(data.items);
                 }
@@ -33,6 +36,8 @@ export default function InitialFetch({ locale, searchTerm, category, onResults }
             } catch (error) {
                 console.error("Error fetching data:", error);
                 onResults(0);
+            } finally {
+                setIsLoading(false);
             }
         };
 
@@ -45,14 +50,18 @@ export default function InitialFetch({ locale, searchTerm, category, onResults }
 
     return (
         <>
-            <MultiPageCardItem
-                data={cards}
-                buttonVariant="button"
-                onPageChange={handlePageChange}
-                currentPage={currentPage}
-                pageSize={pageSize}
-                totalPages={totalPages}
-            />
+            {isLoading ? (
+                <Spinner />
+            ) : (
+                <MultiPageCardItem
+                    data={cards}
+                    buttonVariant={multiPageCardButtonVariant}
+                    onPageChange={handlePageChange}
+                    currentPage={currentPage}
+                    pageSize={pageSize}
+                    totalPages={totalPages}
+                />
+            )}
         </>
     );
 }
