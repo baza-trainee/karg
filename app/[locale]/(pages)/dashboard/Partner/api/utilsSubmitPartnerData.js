@@ -41,7 +41,16 @@ export const submitPartnerData = async (type, formData, originalData, showModal,
             uri: formData.uri,
         };
         try {
-            await addPartner(partnerData);
+            const result = await addPartner(partnerData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -61,7 +70,16 @@ export const submitPartnerData = async (type, formData, originalData, showModal,
             return;
         }
         try {
-            await updatePartner(formData.id, updates);
+            const result = await updatePartner(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

@@ -36,6 +36,25 @@ export const updateContactItem = async (id, updates) => {
             },
             body: JSON.stringify(updates)
         });
+        if (response.status >= 400 && response.status < 500) {
+            try {
+                const contentType = response.headers.get('Content-Type');
+                if (contentType && contentType.includes('application/json')) {
+                    const errorBody = await response.json();
+                    const errorMessage = (typeof errorBody === 'object' && errorBody.message) ? errorBody.message : errorBody;
+                    return { error: errorMessage };
+                } else {
+                    const errorText = await response.text();
+                    return { error: errorText };
+                }
+            } catch (error) {
+                console.error("Помилка при розборі відповіді 400-499:", error);
+                return { error: "Помилка валідації" };
+            }
+        }
+        if (response.status >= 500) {
+            return { error: "Сталася помилка на сервері." };
+        }
         if (!response.ok) {
             return { error: `API error: ${response.status}` };
         }

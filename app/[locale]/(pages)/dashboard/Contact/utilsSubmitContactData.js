@@ -43,20 +43,28 @@ export const submitContactData = async (type, formData, originalData, hideModal,
                 continue;
             }
             try {
-                await updateContactItem(item.id, updates);
+                const result = await updateContactItem(item.id, updates);
+                if (result.error) {
+                    showModal('confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={result.error}
+                            buttonText={buttonText}
+                        />);
+                    return;
+                }
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={successTitle}
+                        message={type === 'create' ? successAddMessage : successChangeMessage}
+                        buttonText={buttonText}
+                    />
+                );
+                setHasUnsavedChanges(false);
             } catch (error) {
                 console.error('Error updating contact:', error);
             }
         }
-
-        showModal('confirmation',
-            <SuccessDialog
-                title={successTitle}
-                message={type === 'create' ? successAddMessage : successChangeMessage}
-                buttonText={buttonText}
-            />
-        );
-        setHasUnsavedChanges(false);
     };
     await handleUpdateContact();
 }
