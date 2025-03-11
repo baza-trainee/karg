@@ -11,7 +11,7 @@ export const AdminContext = createContext({
     setIsDirector: () => { },
     isLoading: false,
     setIsLoading: () => { },
-    activeHelpSection: '',
+    activeHelpSection: 'Загальні Питання',
     setActiveHelpSection: () => { },
 });
 
@@ -20,7 +20,7 @@ export const AdminProvider = ({ children }) => {
     const [activeSection, setActiveSection] = useState('');
     const [isDirector, setIsDirector] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-    const [activeHelpSection, setActiveHelpSection] = useState('');
+    const [activeHelpSection, setActiveHelpSection] = useState('Загальні Питання');
 
     const hasMounted = useRef(false);
 
@@ -45,6 +45,14 @@ export const AdminProvider = ({ children }) => {
         }
     };
 
+    const handleSetActiveHelpSection = (section) => {
+        setActiveHelpSection(section);
+        if (typeof window !== 'undefined') {
+            localStorage.setItem('activeHelpSection', section);
+        }
+    };
+
+
     useEffect(() => {
         if (!hasMounted.current) {
             hasMounted.current = true;
@@ -52,6 +60,7 @@ export const AdminProvider = ({ children }) => {
             const id = typeof window !== 'undefined' ? localStorage.getItem('accountId') : null;
             const section = typeof window !== 'undefined' ? localStorage.getItem('activeSection') : null;
             const role = typeof window !== 'undefined' ? localStorage.getItem('isDirector') : null;
+            const storedHelpSection = typeof window !== 'undefined' ? localStorage.getItem('activeHelpSection') : null;
 
             if (id) setAccountId(id);
             if (section) setActiveSection(section);
@@ -63,6 +72,7 @@ export const AdminProvider = ({ children }) => {
                     setIsDirector(null);
                 }
             }
+            if (storedHelpSection) setActiveHelpSection(storedHelpSection);
         }
     }, []);
 
@@ -84,7 +94,7 @@ export const AdminProvider = ({ children }) => {
         isLoading,
         setIsLoading,
         activeHelpSection,
-        setActiveHelpSection,
+        setActiveHelpSection: handleSetActiveHelpSection,
     };
 
     return (
