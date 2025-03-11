@@ -1,15 +1,41 @@
 import paginationStyles from './pagination.module.scss';
 import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
-import { useEffect } from 'react';
+import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const { t } = useTranslation('common');
 
-    useEffect(() => {
-        window.scrollTo({
-            top: 0,
-        });
+    // useEffect(() => {
+    //     window.scrollTo({
+    //         top: 0,
+    //     });
+    // }, [currentPage]);
+
+    useLayoutEffect(() => {
+        const cardList = document.getElementById('card-list');
+        const search = document.getElementById('search');
+
+        if (search) {
+            search.scrollIntoView({
+                behavior: 'auto',
+                block: 'center'
+            });
+            return;
+        }
+
+        if (cardList) {
+            cardList.scrollIntoView({
+                behavior: 'auto',
+                block: 'start'
+            });
+            window.scrollBy({
+                top: -100,
+                behavior: 'auto',
+            });
+        }
+
+
     }, [currentPage]);
 
     const handlePreviousPage = () => {
