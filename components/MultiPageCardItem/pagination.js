@@ -1,8 +1,10 @@
 import paginationStyles from './pagination.module.scss';
 import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
 import { useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
+    const { t } = useTranslation('common');
 
     useEffect(() => {
         window.scrollTo({
@@ -77,7 +79,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 <button onClick={handlePreviousPage}
                     className={paginationStyles.navigationButton}
                     disabled={currentPage === 1}>
-                    Попередня
+                    {t('prevPagination')}
                 </button>
             </div>
             <div className={paginationStyles.pageButtonContainer}>
@@ -87,7 +89,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 <button onClick={handleNextPage}
                     className={paginationStyles.navigationButton}
                     disabled={currentPage === totalPages}>
-                    Наступна
+                    {t('nextPagination')}
                 </button>
                 <ArrowRight
                     className={`${paginationStyles.arrowIcon} ${currentPage === totalPages ? paginationStyles.disabled : ''}`} />

@@ -33,5 +33,9 @@
     "cats": "Cats",
     "dogs": "Dogs",
     "otherAnimals": "Other animals",
+    "found": "Found:",
+    "notFound": "Nothing found for your query",
+    "nextPagination": "Next",
+    "prevPagination": "Previous",
     "copyright": "Development by Baza Trainee Ukraine © 2025 All rights reserved"
 }

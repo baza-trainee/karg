@@ -33,5 +33,9 @@
      "cats": "Коти",
      "dogs": "Собаки",
      "otherAnimals": "Інші тварини",
+     "found": "Знайдено:",
+     "notFound": "За вашим запитом нічого не знайдено",
+     "nextPagination": "Наступна",
+     "prevPagination": "Попередня",
      "copyright": "Розробка Baza Trainee Ukraine © 2025 Всі права захищені"
 }

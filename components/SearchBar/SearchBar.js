@@ -5,7 +5,7 @@ import styles from "./styles/searchBar.module.scss";
 import useDebounce from './useDebounce';
 import { useTranslation } from 'react-i18next';
 
-const SearchBar = ({ cultureCode, onSearch, clearSearch }) => {
+const SearchBar = ({ cultureCode, onSearch, clearSearch, showCategoryFilter = false }) => {
     const { t } = useTranslation('common');
     const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('');
@@ -47,17 +47,18 @@ const SearchBar = ({ cultureCode, onSearch, clearSearch }) => {
                 />
                 <SearchIcon className={styles.icon} />
             </div>
-            <select
-                className={styles.select}
-                value={category}
-                onChange={handleCategoryChange}
-            >
-                <option value="">{t('allCategories')}</option>
-                <option value="Cat">{t('cats')}</option>
-                <option value="Dog">{t('dogs')}</option>
-                <option value="Other">{t('otherAnimals')}</option>
-            </select>
-
+            {showCategoryFilter && (
+                <select
+                    className={styles.select}
+                    value={category}
+                    onChange={handleCategoryChange}
+                >
+                    <option value="">{t('allCategories')}</option>
+                    <option value="Cat">{t('cats')}</option>
+                    <option value="Dog">{t('dogs')}</option>
+                    <option value="Other">{t('otherAnimals')}</option>
+                </select>
+            )}
         </div>
     );
 };
