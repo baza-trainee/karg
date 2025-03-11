@@ -1,30 +1,24 @@
 'use client';
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect } from 'react';
 import { SearchIcon } from '@/public/assets/icons';
 import styles from "./styles/searchBar.module.scss";
 import useDebounce from './useDebounce';
 import { useTranslation } from 'react-i18next';
 
-const SearchBar = ({ cultureCode, onSearch, clearSearch, showCategoryFilter = false }) => {
+const SearchBar = ({ cultureCode, onSearch, showCategoryFilter = false, searchResultsCount, searchErrorResult }) => {
     const { t } = useTranslation('common');
     const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('');
     const debouncedSearchTerm = useDebounce(searchTerm, 1000);
-    const inputRef = useRef(null);
 
     useEffect(() => {
-        onSearch(debouncedSearchTerm, category);
+        if (debouncedSearchTerm.length >= 3) {
+            onSearch(debouncedSearchTerm, category);
+        } else {
+            onSearch('', category);
+        }
     }, [debouncedSearchTerm, category, cultureCode, onSearch]);
 
-    useEffect(() => {
-        if (clearSearch) {
-            setSearchTerm('');
-            setCategory('');
-            if (inputRef.current) {
-                inputRef.current.value = '';
-            }
-        }
-    }, [clearSearch]);
 
     const handleChange = (event) => {
         setSearchTerm(event.target.value);
@@ -35,7 +29,7 @@ const SearchBar = ({ cultureCode, onSearch, clearSearch, showCategoryFilter = fa
     };
 
     return (
-        <div className={styles.container}>
+        <div id="search" className={styles.container}>
             <div className={styles.searchContainer}>
                 <input
                     type='text'
@@ -43,10 +37,12 @@ const SearchBar = ({ cultureCode, onSearch, clearSearch, showCategoryFilter = fa
                     className={styles.search}
                     value={searchTerm}
                     onChange={handleChange}
-                    ref={inputRef}
+                    autoComplete='off'
                 />
                 <SearchIcon className={styles.icon} />
             </div>
+            {searchResultsCount && searchResultsCount()}
+            {searchErrorResult && searchErrorResult()}
             {showCategoryFilter && (
                 <select
                     className={styles.select}

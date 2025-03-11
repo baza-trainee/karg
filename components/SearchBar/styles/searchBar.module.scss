@@ -15,6 +15,7 @@
     padding: 0 48px 0 48px;
     margin-top: 24px;
     width: 100%;
+    grid-area: s;
   }
 
   & .search {
@@ -58,9 +59,17 @@
 
 @media screen and (min-width: 1200px) {
   .container {
-    flex-direction: row;
-    margin-right: 48px;
+    display: grid;
+    grid-template-areas:
+      's s s s c'
+      'm m m m m';
+    justify-content: space-around;
+    align-items: center;
     max-width: 1400px;
     width: 100%;
+
+    & .select {
+      grid-area: c;
+    }
   }
 }
