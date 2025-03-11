@@ -24,7 +24,7 @@
     transform: translateY(100%);
     opacity: 0;
     visibility: hidden;
-    z-index: 1000;
+    z-index: 9999;
 
     &.active {
       opacity: 1;

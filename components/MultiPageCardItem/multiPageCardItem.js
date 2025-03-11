@@ -342,7 +342,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                             className={styles.modalBackground}
                             onClick={closeInfoModal}></div>
                         <div className={styles.adoptionModalContainer}>
-                            <h3 className={variables.mainSubtitle_shared}>
+                            <h3 style={{ textAlign: 'center' }} className={variables.mainSubtitle_shared}>
                                 {infoModal.text}
                             </h3>
                             <button
