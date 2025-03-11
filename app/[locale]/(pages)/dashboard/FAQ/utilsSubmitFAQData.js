@@ -43,7 +43,16 @@ export const submitFAQData = async (type, formData, originalData, showModal, set
             answer_ua: formData.answer_ua,
         };
         try {
-            await addFAQItem(faqData);
+            const result = await addFAQItem(faqData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -62,7 +71,16 @@ export const submitFAQData = async (type, formData, originalData, showModal, set
             return;
         }
         try {
-            await updateFAQItem(formData.id, updates);
+            const result = await updateFAQItem(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

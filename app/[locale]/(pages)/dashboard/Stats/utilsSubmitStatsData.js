@@ -45,7 +45,16 @@ export const submitStatsData = async (type, formData, originalData, showModal, s
             images: formData.images,
         };
         try {
-            await addStat(statData);
+            const result = await addStat(statData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -64,7 +73,16 @@ export const submitStatsData = async (type, formData, originalData, showModal, s
             return;
         }
         try {
-            await updateStat(formData.id, updates);
+            const result = await updateStat(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
