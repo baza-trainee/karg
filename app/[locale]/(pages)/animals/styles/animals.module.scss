@@ -11,8 +11,16 @@
   // position: relative;
 }
 
-.searchResultsCount {
+.searchResultsCount,
+.searchErrorResult {
   text-align: center;
+  margin-top: -20px;
+  margin-bottom: 20px;
+  grid-area: m;
+}
+
+.searchErrorResult {
+  color: red;
 }
 
 .textContainer {
