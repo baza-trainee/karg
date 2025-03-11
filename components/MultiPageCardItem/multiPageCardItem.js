@@ -252,9 +252,9 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                 <p>{selectedCard?.story ? selectedCard.story : null}</p>
                             </div>
                             <div className={styles.innerModalContainer}>
-                                <h2>{selectedCard.name}</h2>
+                                <h2 className={variables.button1}>{selectedCard.name}</h2>
                                 <p>{selectedCard.description}</p>
-                                <h3>{selectedCard?.story ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
+                                <h3 className={variables.button1}>{selectedCard?.story ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
                                 <p>{selectedCard?.story ? selectedCard.story : null}</p>
                                 <div className={styles.innerModalButtons}>
                                     <button onClick={() => handleRedirect('/help')} className={styles.actionButtonTransparent}>
