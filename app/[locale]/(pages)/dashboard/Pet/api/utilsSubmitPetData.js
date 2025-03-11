@@ -47,7 +47,16 @@ export const submitPetData = async (type, formData, originalData, showModal, hid
             description_en: formData.description_en,
         };
         try {
-            await addAnimal(animalData);
+            const result = await addAnimal(animalData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -67,7 +76,16 @@ export const submitPetData = async (type, formData, originalData, showModal, hid
             return;
         }
         try {
-            await updateAnimal(formData.id, updates);
+            const result = await updateAnimal(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

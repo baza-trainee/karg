@@ -45,7 +45,16 @@ export const submitAdviceData = async (type, formData, originalData, showModal, 
             images: formData.images,
         };
         try {
-            await addAdvice(adviceData);
+            const result = await addAdvice(adviceData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -64,7 +73,16 @@ export const submitAdviceData = async (type, formData, originalData, showModal, 
             return;
         }
         try {
-            await updateAdvice(formData.id, updates);
+            const result = await updateAdvice(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

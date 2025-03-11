@@ -54,6 +54,15 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
                     />)
                 return;
             }
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}
@@ -80,6 +89,15 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
                         message={result.emailConflict}
                         buttonText={buttonText}
                     />)
+                return;
+            }
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
                 return;
             }
             showModal('confirmation',
