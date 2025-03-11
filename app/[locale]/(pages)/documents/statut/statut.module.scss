@@ -11,6 +11,15 @@
   max-width: 90%;
   width: 100%;
   margin: 0 auto;
+  margin-top: 64px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 96px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    margin-top: 166px;
+  }
 
   iframe {
     width: 100%;
