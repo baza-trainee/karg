@@ -4,6 +4,7 @@
 .pageHero {
   position: relative;
   width: 100%;
+  margin-top: 64px;
 
   .pseudoButton {
     display: flex;
@@ -35,6 +36,8 @@
 
 @media screen and (min-width: 768px) {
   .pageHero {
+    margin-top: 96px;
+
     .pseudoButton {
       min-width: 372px;
       border-radius: 8px;
@@ -50,6 +53,8 @@
 
 @media screen and (min-width: 1200px) {
   .pageHero {
+    margin-top: 110px;
+
     .pseudoButton {
       min-width: 536px;
       top: calc(50%);
