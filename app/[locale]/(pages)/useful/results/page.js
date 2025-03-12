@@ -7,8 +7,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
-// import InfiniteScroll from './infiniteScroll';
-import InitialFetch from './initialFetch';
+import YearResultClient from './YearResultClient';
 // images
 import { results } from '@/public/assets/images/useful/results';
 
@@ -38,8 +37,7 @@ const Results = async ({ params: { locale } }) => {
             />
 
             <main className={styles.pageContainer} style={{ flex: 1 }}>
-                <InitialFetch locale={locale} />
-                {/* <InfiniteScroll /> */}
+                <YearResultClient locale={locale} />
             </main>
             <Footer />
         </TranslationsProvider>

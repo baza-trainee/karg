@@ -3,7 +3,7 @@
 import { useState } from 'react';
 import styles from './styles/animals.module.scss';
 import SearchBar from '@/components/SearchBar/SearchBar';
-import InitialFetch from './initialFetch';
+import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
 import { useTranslation } from 'react-i18next';
 
 const AnimalClient = ({ locale }) => {
@@ -24,9 +24,17 @@ const AnimalClient = ({ locale }) => {
     const searchResultsCount = () => {
         if (searchTerm) {
             if (resultsCount > 0) {
-                <p className={styles.searchResultsCount}>{t('found')}{resultsCount}</p>;
+                return <p className={styles.searchResultsCount}>{t('found')}{resultsCount}</p>;
             }
         }
+        return null;
+    };
+
+    const searchErrorResult = () => {
+        if (searchTerm && resultsCount === 0) {
+            return <p className={styles.searchErrorResult}>{t('notFound')}</p>;
+        }
+        return null;
     };
 
     return (
@@ -35,12 +43,16 @@ const AnimalClient = ({ locale }) => {
                 cultureCode={locale}
                 onSearch={updateSearchTerm}
                 showCategoryFilter={true}
+                searchResultsCount={searchResultsCount}
+                searchErrorResult={searchErrorResult}
             />
-            {searchResultsCount()}
-            {searchTerm && resultsCount === 0 && searchTerm && (
-                <p className={styles.searchResultsCount}>{t('notFound')}</p>
-            )}
-            <InitialFetch locale={locale} searchTerm={searchTerm} category={category} onResults={handleResults} />
+            <PaginatedCardList
+                locale={locale}
+                endpoint={'api/animal'}
+                multiPageCardButtonVariant={'button'}
+                searchTerm={searchTerm}
+                category={category}
+                onResults={handleResults} />
         </main>
     );
 };

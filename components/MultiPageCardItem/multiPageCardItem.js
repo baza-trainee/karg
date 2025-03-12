@@ -8,12 +8,12 @@ import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
 import Image from "next/image";
 import Link from 'next/link';
 import { useRouter } from "next/navigation";
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import Pagination from './pagination';
 
-const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage, pageSize }) => {
+const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
     const { t } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -94,8 +94,6 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
         });
     };
 
-
-
     const adoptionModalTelInput = (event) => {
         if (!event.target.value) {
             setAdoptionModalForm({
@@ -119,6 +117,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
         }
         closeAdoptionModal();
         telegramSend();
+        setAdoptionModalForm({ name: '', phone: '', animalName: '', animalImageUri: '' });
     };
 
     const handleRedirect = (route) => {
@@ -155,10 +154,8 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                 sizes="100vw"
                 width={268}
                 height={268}
-            // style={{
-            //     width: "268px",
-            //     height: "268px",
-            // }}
+                // loading="lazy"
+                priority={true}
             />
         );
     };
@@ -185,7 +182,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
     };
 
     return (
-        <div className={styles.outerContainer}>
+        <div id="card-list" className={styles.outerContainer}>
             <div className={styles.container}>
                 {data.map(card => (
                     <div key={card.id} className={styles.cardContainer}>
@@ -214,9 +211,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     sizes="100vw"
                                     width={268}
                                     height={268}
-                                    style={{
-                                        height: "268px",
-                                    }}
+                                    loading="lazy"
                                 />
                                 <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
                                     <RightIcon className={styles.rightIcon} />
@@ -285,6 +280,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     name="name"
                                     placeholder={DOCUMENT_TEXT.adoptionModalFormPlaceholderText}
                                     className={styles.adoptionModalInput}
+                                    autoComplete='off'
                                     onChange={(e) => {
                                         setAdoptionModalForm(
                                             {
@@ -303,6 +299,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     placeholder={DOCUMENT_TEXT.adoptionModalFormPhonePlaceholderText}
                                     className={styles.adoptionModalInput}
                                     value={adoptionModalForm.phone}
+                                    autoComplete='off'
                                     onFocus={(e) => adoptionModalTelInput(e)}
                                     onChange={(e) => {
                                         setAdoptionModalForm(

@@ -6,7 +6,7 @@ import SearchBar from '@/components/SearchBar/SearchBar';
 import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
 import { useTranslation } from 'react-i18next';
 
-const AdviceClient = ({ locale }) => {
+const YearResultClient = ({ locale }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [resultsCount, setResultsCount] = useState(0);
     const [category, setCategory] = useState('');
@@ -49,7 +49,7 @@ const AdviceClient = ({ locale }) => {
             />
             <PaginatedCardList
                 locale={locale}
-                endpoint={'api/advice'}
+                endpoint={'api/yearresult'}
                 multiPageCardButtonVariant={'link'}
                 searchTerm={searchTerm}
                 category={category}
@@ -58,4 +58,4 @@ const AdviceClient = ({ locale }) => {
     );
 };
 
-export default AdviceClient;
+export default YearResultClient;
