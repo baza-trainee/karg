@@ -1,4 +1,4 @@
-@import "@/app/[locale]/colors.scss";
+@import '@/app/[locale]/colors.scss';
 
 .contacts {
   padding: 24px 16px 56px;
@@ -10,6 +10,15 @@
 
   @media screen and (min-width: 1200px) {
     padding: 56px 135px 128px;
+  }
+
+  .contactsItem {
+    font-size: 16;
+    font-weight: 400;
+
+    @media screen and (min-width: 1200px) {
+      font-size: 20;
+    }
   }
 
   &Title {
@@ -175,7 +184,6 @@
     margin-bottom: 13px;
 
     @media screen and (min-width: 768px) {
-      font-family: "Roboto", sans-serif;
       font-size: 20px;
       font-weight: 700;
       line-height: calc(22 / 20);
@@ -198,7 +206,6 @@
     font-weight: 700;
 
     @media screen and (min-width: 768px) {
-      font-family: "Roboto", sans-serif;
       font-size: 20px;
       font-weight: 700;
       line-height: calc(22 / 20);
@@ -249,7 +256,6 @@
     }
 
     @media screen and (min-width: 1200px) {
-      font-family: "Roboto", sans-serif;
       font-size: 20px;
       font-weight: 300;
     }

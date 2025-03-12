@@ -5,7 +5,7 @@ import styles from "./styles/searchBar.module.scss";
 import useDebounce from './useDebounce';
 import { useTranslation } from 'react-i18next';
 
-const SearchBar = ({ cultureCode, onSearch, showCategoryFilter = false, searchResultsCount, searchErrorResult }) => {
+const SearchBar = ({ cultureCode, onSearch, showCategoryFilter = false, searchResultsCount, searchErrorResult, withCategoryFilter }) => {
     const { t } = useTranslation('common');
     const [searchTerm, setSearchTerm] = useState('');
     const [category, setCategory] = useState('');
@@ -29,7 +29,7 @@ const SearchBar = ({ cultureCode, onSearch, showCategoryFilter = false, searchRe
     };
 
     return (
-        <div id="search" className={styles.container}>
+        <div id="search" className={withCategoryFilter ? styles.container : styles.singleContainer}>
             <div className={styles.searchContainer}>
                 <input
                     type='text'

@@ -45,6 +45,7 @@ const AnimalClient = ({ locale }) => {
                 showCategoryFilter={true}
                 searchResultsCount={searchResultsCount}
                 searchErrorResult={searchErrorResult}
+                withCategoryFilter={true}
             />
             <PaginatedCardList
                 locale={locale}

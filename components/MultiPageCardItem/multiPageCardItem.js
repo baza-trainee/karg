@@ -128,13 +128,13 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
         switch (buttonVariant) {
             case 'button':
                 return (
-                    <button className={styles.cardButton} onClick={(e) => handleClick(e, id)}>
+                    <button className={`${styles.cardButton} ${variables.button1}`} onClick={(e) => handleClick(e, id)}>
                         {DOCUMENT_TEXT.cardButtonText}
                     </button>
                 );
             case 'link':
                 return (
-                    <Link className={styles.cardLink}
+                    <Link className={`${styles.cardLink} ${variables.button1}`}
                         href={pathname.includes('/useful/results') ? `/useful/results/${id}` : `/useful/advices/${id}`}>
                         {DOCUMENT_TEXT.cardLinkText}{'>'}
                     </Link>
@@ -189,7 +189,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                         <div className={styles.cardImage}>
                             {renderImage(card)}
                         </div>
-                        <h2 className={`${styles.cardName} ${variables.subtitle2}`}>{card.name || card.title}</h2>
+                        <h2 className={`${styles.cardName} ${variables.font20w700}`}>{card.name || card.title}</h2>
                         <div className={styles.contentHolder}>
                             <p className={styles.cardDesc}>{card.description}</p>
                             {renderButton(card.id)}
@@ -234,10 +234,14 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                 </div>
                                 <p>{selectedCard.description}</p>
                                 <div className={styles.innerModalButtons}>
-                                    <button onClick={() => handleRedirect('/help')} className={styles.actionButtonTransparent}>
+                                    <button
+                                        onClick={() => handleRedirect('/help')}
+                                        className={`${styles.actionButtonTransparent} ${variables.button1}`}>
                                         {DOCUMENT_TEXT.actionButtonTransparentText}
                                     </button>
-                                    <button onClick={(e) => handleAdoptionModal(e, selectedCard)} className={styles.actionButtonBackground}>
+                                    <button
+                                        onClick={(e) => handleAdoptionModal(e, selectedCard)}
+                                        className={`${styles.actionButtonBackground} ${variables.button1}`}>
                                         {DOCUMENT_TEXT.actionButtonBackgroundText}
                                     </button>
                                 </div>
@@ -252,10 +256,14 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                 <h3 className={variables.button1}>{selectedCard?.story ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
                                 <p>{selectedCard?.story ? selectedCard.story : null}</p>
                                 <div className={styles.innerModalButtons}>
-                                    <button onClick={() => handleRedirect('/help')} className={styles.actionButtonTransparent}>
+                                    <button
+                                        onClick={() => handleRedirect('/help')}
+                                        className={`${styles.actionButtonTransparent} ${variables.button1}`}>
                                         {DOCUMENT_TEXT.actionButtonTransparentText}
                                     </button>
-                                    <button onClick={(e) => handleAdoptionModal(e, selectedCard)} className={styles.actionButtonBackground}>
+                                    <button
+                                        onClick={(e) => handleAdoptionModal(e, selectedCard)}
+                                        className={`${styles.actionButtonBackground}`}>
                                         {DOCUMENT_TEXT.actionButtonBackgroundText}
                                     </button>
                                 </div>
@@ -316,7 +324,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                             </form>
                             <div className={styles.adoptionModalButtons}>
                                 <input
-                                    className={styles.actionButtonBackground}
+                                    className={`${styles.actionButtonBackground} ${variables.button1}`}
                                     type="submit"
                                     value={DOCUMENT_TEXT.adoptionModalButtonsText}
                                     form='adoptionModal'
@@ -324,7 +332,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                 />
                                 <button
                                     onClick={closeAdoptionModal}
-                                    className={styles.actionButtonTransparent}
+                                    className={`${styles.actionButtonTransparent} ${variables.button1}`}
                                 >
                                     {DOCUMENT_TEXT.adoptionModalButtonsCancelText}
                                 </button>
@@ -344,7 +352,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                             </h3>
                             <button
                                 onClick={closeInfoModal}
-                                className={styles.actionButtonBackground}
+                                className={`${styles.actionButtonBackground} ${variables.button1}`}
                             >
                                 {DOCUMENT_TEXT.returnToPortalButton}
                             </button>
