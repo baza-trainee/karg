@@ -32,15 +32,15 @@ const LanguageMenu = () => {
             currentLocale === i18nConfig.defaultLocale &&
             !i18nConfig.prefixDefault
         ) {
-            router.push('/' + newLocale + currentPathname);
+            router.replace('/' + newLocale + currentPathname);
         } else {
-            router.push(
+            router.replace(
                 currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
             );
         }
-        router.refresh();
         setOpen(false);
     };
+
     const handleMenuToggle = () => {
         setOpen(!isOpen);
     };
@@ -75,3 +75,5 @@ const LanguageMenu = () => {
 };
 
 export default LanguageMenu;
+
+

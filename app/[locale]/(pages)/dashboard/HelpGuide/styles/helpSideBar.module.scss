@@ -24,8 +24,8 @@
     font-size: 18px;
     font-weight: 500;
     margin-top: 60px;
-    width: 22%;
-    min-width: 220px;
+    width: 18%;
+    min-width: 190px;
     background-color: #fff;
     min-height: 100vh;
     height: auto;
@@ -60,7 +60,7 @@
           color: #ff8c0c;
         }
       }
-      
+
       .button {
         width: 100%;
         text-align: left;
@@ -114,6 +114,10 @@
   .helpContent {
     padding: 16px 40px 16px 26px;
     width: 1098px;
+  }
+
+  .helpSidebarWrapper {
+    min-width: 200px;
   }
 }
 

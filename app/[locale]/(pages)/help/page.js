@@ -79,7 +79,8 @@ const Help = async ({ params: { locale } }) => {
                         {DOCUMENT_TEXT.paymentsButtons_title}
                     </h4>
                     <div className={styles.paymentsButtons_buttonContainer}>
-                        <a href='https://www.paypal.com/donate?token=edi9sEF4oDBmWo0mD58z1FB4RdVsYAeZB2XBwIzYqUJHt4GGhEG6GN8z9ztM1z-iOWAsAAElsFwd-2xk'>
+
+                        <a href='https://www.paypal.com/donate/?hosted_button_id=2C6ZR9NSLGRNJ'>
                             <button className={`${styles.paymentsButtons_button} ${variables.mainSubtitle_shared}`}>PayPal</button>
                         </a>
 
