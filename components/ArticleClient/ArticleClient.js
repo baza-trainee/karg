@@ -2,14 +2,14 @@
 import { useEffect, useState } from "react";
 import { getById } from "@/components/common/api/apiGet";
 import Image from "next/image";
-import styles from './styles/[id].module.scss';
+import styles from '@/app/[locale]/(pages)/useful/advices/[id]/styles/[id].module.scss';
 import variables from '@/app/[locale]/variables.module.scss';
 import SocialIcons from "@/components/SocialIcons/socialIcons";
 import GoBackButton from "@/components/common/GoBackButton/GoBackButton";
 import GoBackIcon from "@/components/ServerSideIcon/GoBackIcon";
 import { useRouter } from "next/navigation";
 
-const ClientItemAdvice = ({ id, cultureCode, API_BASE_URL, endpoint, translations }) => {
+const ArticleClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }) => {
     const [advice, setAdvice] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -127,4 +127,4 @@ const ClientItemAdvice = ({ id, cultureCode, API_BASE_URL, endpoint, translation
     );
 };
 
-export default ClientItemAdvice;
+export default ArticleClient;

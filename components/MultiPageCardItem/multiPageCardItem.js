@@ -13,7 +13,7 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import Pagination from './pagination';
 
-const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage, pageSize }) => {
+const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
     const { t } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -94,8 +94,6 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
         });
     };
 
-
-
     const adoptionModalTelInput = (event) => {
         if (!event.target.value) {
             setAdoptionModalForm({
@@ -158,10 +156,6 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                 height={268}
                 // loading="lazy"
                 priority={true}
-            // style={{
-            //     width: "268px",
-            //     height: "268px",
-            // }}
             />
         );
     };
@@ -218,9 +212,6 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
                                     width={268}
                                     height={268}
                                     loading="lazy"
-                                    style={{
-                                        height: "268px",
-                                    }}
                                 />
                                 <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
                                     <RightIcon className={styles.rightIcon} />

@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
-import Spinner from '@/components/Spinner/Spinner';
+// import Spinner from '@/components/Spinner/Spinner';
 
 export default function PaginatedCardList({ locale, endpoint, multiPageCardButtonVariant, searchTerm, category, onResults }) {
     const [cards, setCards] = useState([]);
@@ -52,18 +52,18 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
 
     return (
         <>
-            {isLoading ? (
+            {/* {isLoading ? (
                 <Spinner />
-            ) : (
-                <MultiPageCardItem
-                    data={cards}
-                    buttonVariant={multiPageCardButtonVariant}
-                    onPageChange={handlePageChange}
-                    currentPage={currentPage}
-                    pageSize={pageSize}
-                    totalPages={totalPages}
-                />
-            )}
+            ) : ( */}
+            <MultiPageCardItem
+                data={cards}
+                buttonVariant={multiPageCardButtonVariant}
+                onPageChange={handlePageChange}
+                currentPage={currentPage}
+                pageSize={pageSize}
+                totalPages={totalPages}
+            />
+            {/* )} */}
         </>
     );
 }

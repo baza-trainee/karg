@@ -6,7 +6,7 @@ export default function StatutContent({ pdfUrl }) {
     return (
         <Box className={styles.container}>
             <Heading as="h1" textAlign="center" mb={8}>
-                Статут організації
+                Статут
             </Heading>
             <iframe
                 src={pdfUrl}

@@ -3,7 +3,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Footer from "@/components/Footer/footer";
 import Header from "@/components/Header/header";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
-import ClientItemAdvice from "../../advices/[id]/clientItemAdvice";
+import ArticleClient from "@/components/ArticleClient/ArticleClient";
 
 const i18nNamespaces = ["advices", "common"];
 
@@ -25,7 +25,7 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
     >
       <Header />
       <main style={{ flex: 1 }}>
-        <ClientItemAdvice
+        <ArticleClient
           id={id}
           cultureCode={cultureCode}
           API_BASE_URL={API_BASE_URL}

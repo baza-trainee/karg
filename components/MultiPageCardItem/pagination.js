@@ -6,19 +6,14 @@ import { useTranslation } from 'react-i18next';
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const { t } = useTranslation('common');
 
-    // useEffect(() => {
-    //     window.scrollTo({
-    //         top: 0,
-    //     });
-    // }, [currentPage]);
-
     useLayoutEffect(() => {
         const cardList = document.getElementById('card-list');
         const search = document.getElementById('search');
+        const faq = document.getElementById('faq');
 
         if (search) {
             search.scrollIntoView({
-                behavior: 'auto',
+                behavior: 'smooth',
                 block: 'center'
             });
             return;
@@ -33,8 +28,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
                 top: -100,
                 behavior: 'auto',
             });
+            return;
         }
 
+        if (faq) {
+            faq.scrollIntoView({
+                behavior: 'auto',
+                block: 'start'
+            });
+            window.scrollBy({
+                top: -100,
+                behavior: 'auto',
+            });
+            return;
+        }
 
     }, [currentPage]);
 

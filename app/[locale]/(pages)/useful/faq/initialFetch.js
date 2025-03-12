@@ -9,7 +9,7 @@ import Pagination from '@/components/MultiPageCardItem/pagination';
 export default function InitialFetch({ locale }) {
     const [initialCards, setInitialCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
-    const [pageSize] = useState(12);
+    const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ export default function InitialFetch({ locale }) {
     };
 
     return (
-        <div className={styles.faqContainer}>
+        <div id="faq" className={styles.faqContainer}>
             <ul className={styles.questionsList}>
                 {Array.isArray(initialCards) ? (
                     initialCards.map(({ id, question, answer }) => (
