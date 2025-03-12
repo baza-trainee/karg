@@ -26,7 +26,7 @@ const Faq = async ({ params: { locale } }) => {
       namespaces={i18nNamespaces}
     >
       <Header />
-      <main>
+      <main style={{ flex: 1 }}>
         <PageHero
           mobImage={faqHeroMob.src}
           tablImage={faqHeroTab.src}

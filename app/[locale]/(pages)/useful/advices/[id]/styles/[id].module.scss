@@ -39,6 +39,12 @@
     display: flex;
     align-items: center;
     gap: 4px;
+    width: fit-content;
+    transition: color 0.5s ease-in-out;
+
+    &:hover {
+      color: $button-hover;
+    }
 
     @media screen and (min-width: 768px) {
       margin-bottom: 20px;

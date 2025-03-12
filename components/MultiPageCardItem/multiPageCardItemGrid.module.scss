@@ -84,7 +84,7 @@
         overflow: hidden;
         width: 100%;
         padding: auto;
-        max-height: 126px;
+        max-height: 147px;
       }
 
       .cardButton {
@@ -93,12 +93,24 @@
         width: 100%;
         padding: 10.5px 12px;
         border-radius: 0 0 4px 4px;
+        transition: background-color 0.5s ease-in-out;
+
+        &:hover,
+        &:focus {
+          background-color: $button-dark-hover;
+        }
       }
 
       .cardLink {
         font-weight: 800;
         align-self: flex-end;
         margin-top: auto;
+        transition: color 0.5s ease-in-out;
+
+        &:hover,
+        &:focus {
+          color: $button-hover;
+        }
       }
     }
   }
@@ -238,6 +250,13 @@
       align-items: center;
       border-radius: 8px;
       border: 1px solid $button-dark-default;
+      transition: background-color, color 0.5s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: $button-dark-hover;
+        color: #fff;
+      }
     }
 
     .actionButtonBackground {
@@ -252,6 +271,12 @@
       background-color: $button-dark-default;
       color: #fff;
       cursor: pointer;
+      transition: background-color 0.5s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: $button-dark-hover;
+      }
     }
   }
 
@@ -307,6 +332,13 @@
       align-items: center;
       border-radius: 8px;
       border: 1px solid $button-dark-default;
+      transition: background-color, color 0.5s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: $button-dark-hover;
+        color: #fff;
+      }
     }
 
     .actionButtonBackground {
@@ -321,6 +353,12 @@
       background-color: $button-dark-default;
       color: #fff;
       cursor: pointer;
+      transition: background-color 0.5s ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: $button-dark-hover;
+      }
     }
 
     .adoptionModalButtons {
@@ -349,7 +387,6 @@
         min-width: 280px;
         width: 100%;
         padding: 26px 22px;
-        font-size: 18px;
       }
 
       .contentHolder {
@@ -454,7 +491,6 @@
         min-width: 280px;
         width: 100%;
         padding: 26px 22px;
-        font-size: 18px;
       }
 
       .contentHolder {
