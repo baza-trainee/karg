@@ -2,28 +2,26 @@
 import styles from "./socialIcons.module.scss";
 
 import { Facebook, Instagram, Telegram } from "@/public/assets/icons";
-import { useContactLinks } from '@/app/contactLinksProvider';
 
-const SocialIcons = ({ className }) => {
-  const { instagram, facebook, telegram } = useContactLinks();
+const SocialIcons = ({ className, urlToShare = '' }) => {
 
   return (
     <div className={`${styles.iconsContainer}`}>
       <a
-        target="_blanc"
-        href={instagram}
+        target="_blank"
+        href={''}
       >
         <Instagram className={className} />
       </a>
       <a
-        target="_blanc"
-        href={facebook}
+        target="_blank"
+        href={`https://www.facebook.com/sharer/sharer.php?u=${urlToShare}`}
       >
         <Facebook className={className} />
       </a>
       <a
-        target="_blanc"
-        href={telegram}
+        target="_blank"
+        href={`https://t.me/share/url?url=${urlToShare}`}
       >
         <Telegram className={className} />
       </a>

@@ -13,7 +13,7 @@ const ArticleClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }
     const [advice, setAdvice] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const urlToShare = encodeURIComponent(window.location.href);
     const router = useRouter();
 
     useEffect(() => {
@@ -120,7 +120,10 @@ const ArticleClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }
             <div className={styles.shareContainer}>
                 <span className={variables.Subtitle3}>{translations.shareText}</span>
                 <div className={styles.iconsContainer}>
-                    <SocialIcons className={styles.socIcons} />
+                    <SocialIcons
+                        className={styles.socIcons}
+                        urlToShare={urlToShare}
+                    />
                 </div>
             </div>
         </div>
