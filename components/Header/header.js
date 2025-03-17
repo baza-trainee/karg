@@ -75,7 +75,7 @@ const Header = () => {
   const listLabelSecond = [
     { label: t('common:linkAdvices'), link: !isEn ? "/useful/advices" : "/en/useful/advices" },
     { label: 'FAQ', link: !isEn ? "/useful/faq" : "/en/useful/faq" },
-    { label: t('common:linkSummaries'), link: !isEn ? "/useful/results" : "/useful/results" },
+    { label: t('common:linkSummaries'), link: !isEn ? "/useful/results" : "/en/useful/results" },
   ];
 
   return (
