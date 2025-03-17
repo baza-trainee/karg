@@ -3,6 +3,7 @@
 import MissionDetailsDisclosure from "../MissionDetailsDisclosure/mission-details-disclosure";
 import SwiperSlider from "../SwiperSlider/swiper-slider";
 import styles from "./styles/mission.module.scss";
+import variables from "@/app/[locale]/variables.module.scss";
 import { useTranslation } from 'react-i18next';
 
 const MissionSection = () => {
@@ -10,7 +11,7 @@ const MissionSection = () => {
   return (
     <section className={styles.mission}>
       <div className={styles.container}>
-        <h2 className={styles.missionTitle}>{t('missionTitle')}</h2>
+        <h2 className={`${styles.missionTitle} ${variables.Subtitle2}`}>{t('missionTitle')}</h2>
         <MissionDetailsDisclosure />
         <SwiperSlider />
       </div>
