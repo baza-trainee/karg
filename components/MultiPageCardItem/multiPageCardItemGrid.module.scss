@@ -34,16 +34,28 @@
   .cardContainer {
     display: grid;
     grid-template-columns: 0.1fr 1fr;
+    width: auto;
+    grid-auto-rows: min-content;
+
+    @media (min-width: 768px) {
+      width: 343px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 370px;
+    }
 
     .cardImage {
       grid-column: 2;
       width: 100%;
       background-color: $bg-purple;
+      // aspect-ratio: 1;
 
       & img {
         aspect-ratio: 1;
         width: 100%;
         height: 100%;
+        object-fit: cover;
       }
     }
 
@@ -65,6 +77,7 @@
     }
 
     .contentHolder {
+      height: 273px;
       grid-column: 2;
       grid-row: 2;
       display: flex;

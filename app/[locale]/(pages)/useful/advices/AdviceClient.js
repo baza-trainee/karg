@@ -5,11 +5,13 @@ import styles from '../../animals/styles/animals.module.scss';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
 import { useTranslation } from 'react-i18next';
+import SkeletonCards from '@/components/SkeletonCards/SkeletonCards';
 
 const AdviceClient = ({ locale }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [resultsCount, setResultsCount] = useState(0);
     const [category, setCategory] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     const { t } = useTranslation('common');
 
     const updateSearchTerm = (newSearchTerm, newCategory) => {
@@ -47,13 +49,16 @@ const AdviceClient = ({ locale }) => {
                 searchResultsCount={searchResultsCount}
                 searchErrorResult={searchErrorResult}
             />
+            {isLoading && <SkeletonCards />}
             <PaginatedCardList
                 locale={locale}
                 endpoint={'api/advice'}
                 multiPageCardButtonVariant={'link'}
                 searchTerm={searchTerm}
                 category={category}
-                onResults={handleResults} />
+                onResults={handleResults}
+                shortVersion={true}
+                setIsLoading={setIsLoading} />
         </main>
     );
 };

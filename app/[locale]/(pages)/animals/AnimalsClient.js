@@ -1,15 +1,17 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import styles from './styles/animals.module.scss';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
 import { useTranslation } from 'react-i18next';
+import SkeletonCards from '@/components/SkeletonCards/SkeletonCards';
 
 const AnimalClient = ({ locale }) => {
     const [searchTerm, setSearchTerm] = useState('');
     const [resultsCount, setResultsCount] = useState(0);
     const [category, setCategory] = useState('');
+    const [isLoading, setIsLoading] = useState(true);
     const { t } = useTranslation('common');
 
     const updateSearchTerm = (newSearchTerm, newCategory) => {
@@ -17,9 +19,9 @@ const AnimalClient = ({ locale }) => {
         setCategory(newCategory);
     };
 
-    const handleResults = (count) => {
+    const handleResults = useCallback((count) => {
         setResultsCount(count);
-    };
+    }, []);
 
     const searchResultsCount = () => {
         if (searchTerm) {
@@ -47,13 +49,18 @@ const AnimalClient = ({ locale }) => {
                 searchErrorResult={searchErrorResult}
                 withCategoryFilter={true}
             />
+            {isLoading && <SkeletonCards />}
             <PaginatedCardList
                 locale={locale}
                 endpoint={'api/animal'}
                 multiPageCardButtonVariant={'button'}
                 searchTerm={searchTerm}
                 category={category}
-                onResults={handleResults} />
+                onResults={handleResults}
+                setIsLoading={setIsLoading}
+            />
+
+
         </main>
     );
 };
