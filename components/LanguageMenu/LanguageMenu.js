@@ -1,9 +1,8 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { usePathname } from 'next/navigation';
+import { useRouter, usePathname, useSearchParams } from 'next/navigation';
 import { useTranslation } from 'react-i18next';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import i18nConfig from '@/i18nConfig';
 import styles from './styles/LanguageMenu.module.scss';
 import variables from "@/app/[locale]/variables.module.scss";
@@ -12,34 +11,47 @@ import { ArrowDown } from "@/public/assets/icons";
 const LanguageMenu = () => {
     const [isOpen, setOpen] = useState(false);
     const { i18n } = useTranslation();
-    const currentLocale = i18n.language;
     const router = useRouter();
-    const currentPathname = usePathname();
+    const pathname = usePathname();
+    const searchParams = useSearchParams();
     const locales = i18nConfig.locales;
-    const localeLables = {
+    const defaultLocale = i18nConfig.defaultLocale;
+
+    const getCurrentLocale = () => {
+        const segments = pathname.split('/').filter(Boolean);
+        return segments.length > 0 && locales.includes(segments[0]) ? segments[0] : defaultLocale;
+    };
+
+    const [currentLocale, setCurrentLocale] = useState(getCurrentLocale);
+
+    const localeLabels = {
         uk: 'ukr',
         en: 'eng'
     };
-    const changeLocale = (locale) => {
-        const newLocale = locale;
-        const days = 30;
-        const date = new Date();
-        date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
-        const expires = '; expires=' + date.toUTCString();
-        document.cookie = `NEXT_LOCALE=${newLocale};expires=${expires};path=/`;
 
-        if (
-            currentLocale === i18nConfig.defaultLocale &&
-            !i18nConfig.prefixDefault
-        ) {
-            router.replace('/' + newLocale + currentPathname);
-        } else {
-            router.replace(
-                currentPathname.replace(`/${currentLocale}`, `/${newLocale}`)
-            );
+    const changeLocale = (newLocale) => {
+        if (newLocale === currentLocale) return;
+        let segments = pathname.split('/').filter(Boolean);
+
+        if (locales.includes(segments[0])) {
+            segments.shift();
         }
-        setOpen(false);
+        let newPathname = newLocale === defaultLocale
+            ? `/${segments.join('/')}`
+            : `/${newLocale}/${segments.join('/')}`;
+
+        const queryString = searchParams.toString();
+        if (queryString) {
+            newPathname += `?${queryString}`;
+        }
+        router.push(newPathname, { scroll: false });
     };
+
+    useEffect(() => {
+        const newLocale = getCurrentLocale();
+        setCurrentLocale(newLocale);
+        i18n.changeLanguage(newLocale);
+    }, [pathname]);
 
     const handleMenuToggle = () => {
         setOpen(!isOpen);
@@ -56,24 +68,22 @@ const LanguageMenu = () => {
         document.addEventListener("mousedown", handleClickOutsideMenu);
         return () => {
             document.removeEventListener("mousedown", handleClickOutsideMenu);
-        }
+        };
     }, []);
 
     return (
-        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={() => handleMenuToggle()} ref={wrapRef}>
-            <div className={styles.languageMenuIndicator}>{localeLables[currentLocale]}</div>
+        <div className={`${styles.languageMenu} ${variables.button2}`} onClick={handleMenuToggle} ref={wrapRef}>
+            <div className={styles.languageMenuIndicator}>{localeLabels[currentLocale]}</div>
             <ul className={`${styles.languageList} ${isOpen ? styles.active : ''}`}>
                 {locales.map((locale) => (
                     <li className={styles.languageItem} key={locale} onClick={() => changeLocale(locale)}>
-                        {localeLables[locale]}
+                        {localeLabels[locale]}
                     </li>
                 ))}
             </ul>
-            <ArrowDown className={`${styles.languageMenuIndicator}`} />
+            <ArrowDown className={styles.languageMenuIndicator} />
         </div>
     );
 };
 
 export default LanguageMenu;
-
-

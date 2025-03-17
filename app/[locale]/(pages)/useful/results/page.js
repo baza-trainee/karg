@@ -10,6 +10,7 @@ import PageHero from '@/components/common/PageHero/pageHero';
 import YearResultClient from './YearResultClient';
 // images
 import { results } from '@/public/assets/images/useful/results';
+import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["results", "uniCards", "common"];
 
@@ -27,6 +28,7 @@ const Results = async ({ params: { locale } }) => {
             locale={locale}
             namespaces={i18nNamespaces}
         >
+            <SavePrevPage />
             <Header />
             <PageHero
                 mobImage={results.src}

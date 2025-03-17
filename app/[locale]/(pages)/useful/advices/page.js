@@ -10,6 +10,7 @@ import PageHero from '@/components/common/PageHero/pageHero';
 // images
 import { advices } from '@/public/assets/images/advices';
 import AdviceClient from './AdviceClient';
+import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["advices", "uniCards", "common"];
 
@@ -27,6 +28,7 @@ const Advices = async ({ params: { locale } }) => {
             locale={locale}
             namespaces={i18nNamespaces}
         >
+            <SavePrevPage />
             <Header />
             <PageHero
                 mobImage={advices.src}
