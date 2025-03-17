@@ -135,7 +135,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
             case 'link':
                 return (
                     <Link className={`${styles.cardLink} ${variables.button1}`}
-                        href={pathname.includes('/useful/results') ? `/useful/results/${id}` : `/useful/advices/${id}`}>
+                        href={`${pathname.startsWith('/en') ? '/en' : ''}${pathname.includes('/useful/results') ? `/useful/results/${id}` : `/useful/advices/${id}`}`}>
                         {DOCUMENT_TEXT.cardLinkText}{'>'}
                     </Link>
                 );

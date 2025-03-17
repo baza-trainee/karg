@@ -3,16 +3,27 @@
 import { I18nextProvider } from 'react-i18next';
 import initTranslations from '@/app/i18n';
 import { createInstance } from 'i18next';
+import { useState, useEffect, useRef } from 'react';
 
-export default function TranslationsProvider({
-    children,
-    locale,
-    namespaces,
-    resources
-}) {
-    const i18n = createInstance();
+export default function TranslationsProvider({ children, locale, namespaces, resources }) {
+    const i18nRef = useRef(null);
+    const [isReady, setIsReady] = useState(false);
 
-    initTranslations(locale, namespaces, i18n, resources);
+    useEffect(() => {
+        if (!i18nRef.current) {
+            i18nRef.current = createInstance();
 
-    return <I18nextProvider i18n={i18n}>{children}</I18nextProvider>;
+            initTranslations(locale, namespaces, i18nRef.current, resources)
+                .then(() => setIsReady(true))
+                .catch(err => {
+                    console.error("i18n initialization error:", err);
+                    setIsReady(true);
+                });
+        }
+    }, [locale, namespaces, resources]);
+
+    if (!isReady) {
+        return null;
+    }
+    return <I18nextProvider i18n={i18nRef.current}>{children}</I18nextProvider>;
 }
