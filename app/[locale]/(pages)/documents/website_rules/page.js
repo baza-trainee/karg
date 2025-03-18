@@ -6,6 +6,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 // components
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ["common"];
 
@@ -274,6 +275,7 @@ const WebsiteRules = async ({ params: { locale } }) => {
 
                 <p className={styles.paragraph}>Правила були в останній раз викладені в новій редакції в березні 2025 р.</p>
             </div>
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider>
     );

@@ -8,6 +8,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
 import AnimalsClient from './AnimalsClient';
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 // images
 import { ourAnimalsImage } from '@/public/assets/images/animals';
 
@@ -42,6 +43,7 @@ const Animals = async ({ params: { locale } }) => {
                 <p>{DOCUMENT_TEXT.p2}</p>
             </section>
             <AnimalsClient locale={locale} />
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider>
     );

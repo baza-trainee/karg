@@ -8,6 +8,7 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
 import YearResultClient from './YearResultClient';
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 // images
 import { results } from '@/public/assets/images/useful/results';
 import SavePrevPage from "@/components/SavePrevPage";
@@ -41,6 +42,7 @@ const Results = async ({ params: { locale } }) => {
             <main className={styles.pageContainer} style={{ flex: 1 }}>
                 <YearResultClient locale={locale} />
             </main>
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider>
     );
