@@ -23,7 +23,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
     const title = t('common:needInfoTitle');
     const subtitle = t('common:needInfoSubtitle');
     const buttonCaption = t('common:buttonQuestion');
-    const route = "/useful/faq";
+    const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
 
     const rescueTypes = [
         { cardMessage: t('common:rescueTypes1'), id: 1 },
@@ -54,7 +54,7 @@ const RulesOfAppeal = async ({ params: { locale } }) => {
                 <NeedInfo
                     title={title}
                     subtitle={subtitle}
-                    route={route}
+                    route={localizedPath("/useful/faq")}
                     buttonCaption={buttonCaption}
                 />
             </main>

@@ -34,13 +34,15 @@ export function MenuItem({ title, href, iconSrc, innerMessage }) {
 }
 
 export default function QuickAccessMenu() {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
+  const currentLocale = i18n.language;
+  const localizedPath = (path) => currentLocale === 'uk' ? path : `/${currentLocale}${path}`;
 
   const quickMenuData = [
-    { 'title': t('quickMenuDonate'), 'href': '/help', 'iconSrc': <DonateIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuDonateMessage') },
-    { 'title': t('quickMenuServices'), 'href': '/about/rules_of_appeal#rescue-types', 'iconSrc': <HandshakeIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuServicesMessage') },
-    { 'title': t('quickMenuAnimals'), 'href': '/animals', 'iconSrc': <PawprintIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuAnimalsMessage') },
-    { 'title': t('quickMenuReports'), 'href': '/useful/results', 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
+    { 'title': t('quickMenuDonate'), 'href': localizedPath('/help'), 'iconSrc': <DonateIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuDonateMessage') },
+    { 'title': t('quickMenuServices'), 'href': localizedPath('/about/rules_of_appeal#rescue-types'), 'iconSrc': <HandshakeIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuServicesMessage') },
+    { 'title': t('quickMenuAnimals'), 'href': localizedPath('/animals'), 'iconSrc': <PawprintIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuAnimalsMessage') },
+    { 'title': t('quickMenuReports'), 'href': localizedPath('/useful/results'), 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
   ];
 
   const donate = t('common:buttonSupportText');
@@ -65,7 +67,7 @@ export default function QuickAccessMenu() {
       <ButtonAsLink
         buttonStyle='button-quick-menu'
         buttonCaption={donate}
-        route='/help'
+        route={localizedPath('/help')}
       />
     </section>
   );

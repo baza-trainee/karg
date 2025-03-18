@@ -6,11 +6,11 @@ import initTranslations from "../../app/i18n";
 
 export default async function Support({ locale, namespaces }) {
     const { t } = await initTranslations(locale, namespaces);
-
+    const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
     const supportTitle = t('supportTitle');
     const supportData = [
-        { 'cardTitle': t('supportSubtitle1'), 'cardMessage': t('supportMessage1'), 'buttonText': t('supportButtonText1'), 'buttonRoute': '/help', id: 1 },
-        { 'cardTitle': t('supportSubtitle2'), 'cardMessage': t('supportMessage2'), 'buttonText': t('supportButtonText2'), 'buttonRoute': '/animals', id: 2 },
+        { 'cardTitle': t('supportSubtitle1'), 'cardMessage': t('supportMessage1'), 'buttonText': t('supportButtonText1'), 'buttonRoute': localizedPath('/help'), id: 1 },
+        { 'cardTitle': t('supportSubtitle2'), 'cardMessage': t('supportMessage2'), 'buttonText': t('supportButtonText2'), 'buttonRoute': localizedPath('/animals'), id: 2 },
     ];
 
     return (
