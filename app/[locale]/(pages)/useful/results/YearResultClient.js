@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import styles from '../../animals/styles/animals.module.scss';
 import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
 import { useTranslation } from 'react-i18next';
@@ -10,9 +10,9 @@ const YearResultClient = ({ locale }) => {
     const { t } = useTranslation('common');
     const [isLoading, setIsLoading] = useState(true);
 
-    const handleResults = (count) => {
+    const handleResults = useCallback((count) => {
         return 0;
-    };
+    }, []);
 
     return (
         <main className={styles.pageContainer}>

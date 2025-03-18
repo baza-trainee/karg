@@ -7,6 +7,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 // images
 import { advices } from '@/public/assets/images/advices';
 import AdviceClient from './AdviceClient';
@@ -41,6 +42,7 @@ const Advices = async ({ params: { locale } }) => {
             <main className={styles.pageContainer} style={{ flex: 1 }}>
                 <AdviceClient locale={locale} />
             </main>
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider>
     );

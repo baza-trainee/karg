@@ -3,6 +3,7 @@ import TranslationsProvider from "@/components/TranslationsProvider";
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import StatutContent from './statut';
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ["common"];
 
@@ -17,6 +18,7 @@ const Statut = async ({ params: { locale } }) => {
         >
             <Header />
             <StatutContent pdfUrl="/documents/statut.pdf" />
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider>
     );
