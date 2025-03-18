@@ -1,5 +1,6 @@
 "use client";
 import styles from "./styles/missionDetailsDisclosure.module.scss";
+import variables from "@/app/[locale]/variables.module.scss";
 // import { ArrowRight, DetailsClose } from "@/public/assets/icons";
 // import { Box } from "@chakra-ui/react";
 // import { motion } from "framer-motion";
@@ -24,7 +25,7 @@ const MissionDetailsDisclosure = () => {
 
   return (
     <div>
-      <p className={styles.missionText}>
+      <p className={`${styles.missionText} ${variables.supportText4}`}>
         {t('missionText')}
       </p>
       {/* {!isDisclosureOpen && (

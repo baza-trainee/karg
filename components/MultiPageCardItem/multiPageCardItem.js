@@ -1,5 +1,5 @@
 'use client';
-
+import React from 'react';
 import axios from 'axios';
 import styles from './multiPageCardItemGrid.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
@@ -13,7 +13,13 @@ import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
 import Pagination from './pagination';
 
-const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
+const arePropsEqual = (prevProps, nextProps) => {
+
+    return prevProps.data === nextProps.data &&
+        prevProps.currentPage === nextProps.currentPage;
+};
+
+const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
     const { t } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
@@ -151,7 +157,7 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
             <Image
                 src={imageUrl}
                 alt={DOCUMENT_TEXT.cardAltText}
-                sizes="100vw"
+                sizes="(max-width: 768px) 311px, (max-width: 1200px) 343px, 370px"
                 width={268}
                 height={268}
                 // loading="lazy"
@@ -367,6 +373,6 @@ const MultiPageCardItem = ({ data, buttonVariant, totalPages, onPageChange, curr
             />
         </div>
     );
-};
+}, arePropsEqual);
 
 export default MultiPageCardItem;

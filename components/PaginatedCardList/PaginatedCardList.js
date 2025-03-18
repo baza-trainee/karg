@@ -3,25 +3,30 @@
 import { useState, useEffect, useRef } from 'react';
 import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards';
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
-// import Spinner from '@/components/Spinner/Spinner';
 
-export default function PaginatedCardList({ locale, endpoint, multiPageCardButtonVariant, searchTerm, category, onResults }) {
+export default function PaginatedCardList({ locale, endpoint, multiPageCardButtonVariant, searchTerm, category, onResults, setIsLoading, shortVersion }) {
     const [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
     const previousCards = useRef([]);
-    const [isLoading, setIsLoading] = useState(false);
-    const searchOrCategoryPage = 1;
-    const searchOrCategoryPageSize = 40;
+    const searchCurrentPage = 1;
+    const searchPageSize = 45;
 
     useEffect(() => {
         const loadCards = async () => {
-            setIsLoading(true);
             try {
                 let data;
-                if (searchTerm || category) {
-                    data = await FetchInitialCards(locale, endpoint, 'getall', searchOrCategoryPageSize, searchOrCategoryPage, searchTerm, category);
+                if (searchTerm && category) {
+                    data = await FetchInitialCards(locale, endpoint, 'getall', searchPageSize, searchCurrentPage, searchTerm, category);
+                    if (data.items.length > 0) {
+                        previousCards.current = data.items;
+                        setCards(data.items);
+                    } else {
+                        setCards(previousCards.current);
+                    }
+                } else if (searchTerm || category) {
+                    data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage, searchTerm, category);
                     if (data.items.length > 0) {
                         previousCards.current = data.items;
                         setCards(data.items);
@@ -29,7 +34,9 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
                         setCards(previousCards.current);
                     }
                 } else {
-                    data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage);
+                    shortVersion ?
+                        data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage, searchTerm = '', category = '', shortVersion)
+                        : data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage);
                     previousCards.current = data.items;
                     setCards(data.items);
                 }
@@ -44,7 +51,7 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
         };
 
         loadCards();
-    }, [locale, currentPage, pageSize, searchTerm, category, onResults]);
+    }, [locale, currentPage, pageSize, searchTerm, category, onResults, setIsLoading, shortVersion]);
 
     const handlePageChange = (newPage) => {
         setCurrentPage(newPage);
@@ -52,9 +59,6 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
 
     return (
         <>
-            {/* {isLoading ? (
-                <Spinner />
-            ) : ( */}
             <MultiPageCardItem
                 data={cards}
                 buttonVariant={multiPageCardButtonVariant}
@@ -63,7 +67,6 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
                 pageSize={pageSize}
                 totalPages={totalPages}
             />
-            {/* )} */}
         </>
     );
 }
