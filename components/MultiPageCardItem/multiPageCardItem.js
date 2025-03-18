@@ -20,7 +20,7 @@ const arePropsEqual = (prevProps, nextProps) => {
 };
 
 const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
-    const { t } = useTranslation('uniCards');
+    const { t, i18n } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
@@ -35,9 +35,11 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
     const [infoModal, setInfoModal] = useState(
         { showModal: false, status: false, text: '' }
     );
-
+   
     const router = useRouter();
     const pathname = usePathname();
+    const currentLocale = i18n.language;
+    const localizedPath = (path) => currentLocale === 'uk' ? path : `/${currentLocale}${path}`;
 
     const DOCUMENT_TEXT = {
         cardButtonText: t('cardButtonText'),
@@ -241,7 +243,7 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
                                 <p>{selectedCard.description}</p>
                                 <div className={styles.innerModalButtons}>
                                     <button
-                                        onClick={() => handleRedirect('/help')}
+                                        onClick={() => handleRedirect(localizedPath('/help'))}
                                         className={`${styles.actionButtonTransparent} ${variables.button1}`}>
                                         {DOCUMENT_TEXT.actionButtonTransparentText}
                                     </button>
@@ -263,7 +265,7 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
                                 <p>{selectedCard?.story ? selectedCard.story : null}</p>
                                 <div className={styles.innerModalButtons}>
                                     <button
-                                        onClick={() => handleRedirect('/help')}
+                                        onClick={() => handleRedirect(localizedPath('/help'))}
                                         className={`${styles.actionButtonTransparent} ${variables.button1}`}>
                                         {DOCUMENT_TEXT.actionButtonTransparentText}
                                     </button>

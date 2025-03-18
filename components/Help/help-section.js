@@ -9,11 +9,13 @@ import NeedInfo from "../common/NeedInfo/needInfo";
 import { useTranslation } from 'react-i18next';
 
 const Help = () => {
-    const { t } = useTranslation();
+    const { t, i18n } = useTranslation();
     const title = t('helpTitle');
     const subtitle = t('helpSubtitle');
     const buttonCaption = t('helpButtonRules');
-    const route = "/about/rules_of_appeal";
+    const currentLocale = i18n.language;
+    const localizedPath = (path) => currentLocale === 'uk' ? path : `/${currentLocale}${path}`;
+    const route = localizedPath("/about/rules_of_appeal");
 
     return (
         <section className={styles.container}>

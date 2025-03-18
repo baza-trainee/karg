@@ -10,6 +10,7 @@ export default async function RescueTypes({ locale, namespaces, rescueTypes, isB
   const titleRescueTypes = t('common:rescueTypestytle');
   const allActivities = t('common:buttonOpenText');
   const isOdd = rescueTypes.length % 2 != 0;
+  const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
 
   return (
     <div>
@@ -42,7 +43,7 @@ export default async function RescueTypes({ locale, namespaces, rescueTypes, isB
           <ButtonAsLink
             buttonStyle="rescue"
             buttonCaption={allActivities}
-            route="/about/rules_of_appeal"
+            route={localizedPath("/about/rules_of_appeal")}
           />
         )}
       </div>

@@ -34,6 +34,7 @@ const Header = () => {
   const currentLocale = i18n.language;
   const defaultLocale = i18nConfig.defaultLocale;
   const currentPathname = usePathname();
+  const localizedPath = (path) => currentLocale === 'uk' ? path : `/${currentLocale}${path}`;
 
   const labelFirst = t('common:linkAboutUs');
   const labelSecond = t('common:linkUseful');
@@ -65,17 +66,17 @@ const Header = () => {
   }, [lastScrollY, scrollHideThreshold, scrollShowThreshold]);
 
   const listLabelFirst = [
-    { label: t('common:linkHistory'), link: !isEn ? "/about/history_of_origin" : "/en/about/history_of_origin" },
-    { label: t('common:linkRules'), link: !isEn ? "/about/rules_of_appeal" : "/en/about/rules_of_appeal" },
-    { label: t('common:linkTeam'), link: !isEn ? "/about/our_team" : "/en/about/our_team" },
-    { label: t('common:linkContacts'), link: !isEn ? "/about/contacts" : "/en/about/contacts" }
+    { label: t('common:linkHistory'), link: localizedPath("/about/history_of_origin") },
+    { label: t('common:linkRules'), link: localizedPath("/about/rules_of_appeal") },
+    { label: t('common:linkTeam'), link: localizedPath("/about/our_team") },
+    { label: t('common:linkContacts'), link: localizedPath("/about/contacts") }
   ];
 
 
   const listLabelSecond = [
-    { label: t('common:linkAdvices'), link: !isEn ? "/useful/advices" : "/en/useful/advices" },
-    { label: 'FAQ', link: !isEn ? "/useful/faq" : "/en/useful/faq" },
-    { label: t('common:linkSummaries'), link: !isEn ? "/useful/results" : "/en/useful/results" },
+    { label: t('common:linkAdvices'), link: localizedPath("/useful/advices") },
+    { label: 'FAQ', link: localizedPath("/useful/faq") },
+    { label: t('common:linkSummaries'), link: localizedPath("/useful/results") },
   ];
 
   return (
@@ -91,22 +92,22 @@ const Header = () => {
       </div>
       <nav className={styles.headerContainer}>
         <div className={styles.inner}>
-          <Link href="/">
+          <Link href={localizedPath("/")}>
             <Logo className={styles.logo} />
           </Link>
           <ul className={`${styles.navMenu} ${variables.button2}`}>
             <DropdownProvider>
               <li>
-                <Link className={((!isEn && currentPathname === '/') || (isEn && currentPathname === '/en')) ? styles.active : ""} href={!isEn ? "/" : "/en"}>{t('common:linkMain')}</Link>
+                <Link className={((!isEn && currentPathname === '/') || (isEn && currentPathname === '/en')) ? styles.active : ""} href={localizedPath("/")}>{t('common:linkMain')}</Link>
               </li>
               <li>
                 <DropdownList label={labelFirst} list={listLabelFirst} subst="/about" />
               </li>
               <li>
-                <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href={!isEn ? "/animals" : "/en/animals"}>{t('common:linkAnimals')}</Link>
+                <Link className={(currentPathname === '/animals' || currentPathname === '/en/animals') ? styles.active : ""} href={localizedPath("/animals")}>{t('common:linkAnimals')}</Link>
               </li>
               <li>
-                <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href={!isEn ? "/help" : "/en/help"}>{t('common:linkHelpUs')}</Link>
+                <Link className={(currentPathname === '/help' || currentPathname === '/en/help') ? styles.active : ""} href={localizedPath("/help")}>{t('common:linkHelpUs')}</Link>
               </li>
               <li>
                 <DropdownList label={labelSecond} list={listLabelSecond} subst="/useful" />
@@ -116,7 +117,7 @@ const Header = () => {
           <div className={styles.sideMenu}>
             <LanguageMenu />
             <ButtonAsLink
-              route="/help"
+              route={localizedPath("/help")}
               buttonCaption={t('common:buttonSupportText')}
               buttonStyle="header-primary-button-default"
             />
@@ -135,16 +136,16 @@ const Header = () => {
               <ul>
                 <DropdownProvider>
                   <li>
-                    <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={currentLocale === "uk" ? "/" : "/en"}>{t('common:linkMain')}</Link>
+                    <Link className={((currentPathname === '/' && currentLocale === "uk") || currentPathname === '/en') ? styles.active : ""} href={localizedPath("/")}>{t('common:linkMain')}</Link>
                   </li>
                   <li>
                     <DropdownList label={labelFirst} list={listLabelFirst} openBurgerMenu={openBurgerMenu} />
                   </li>
                   <li>
-                    <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={"/animals"}>{t('common:linkAnimals')}</Link>
+                    <Link className={((currentPathname === '/animals' && currentLocale === "uk") || currentPathname === '/en/animals') ? styles.active : ""} href={localizedPath("/animals")}>{t('common:linkAnimals')}</Link>
                   </li>
                   <li>
-                    <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={"/help"}>{t('common:linkHelpUs')}</Link>
+                    <Link className={((currentPathname === '/help' && currentLocale === "uk") || currentPathname === '/en/help') ? styles.active : ""} href={localizedPath("/help")}>{t('common:linkHelpUs')}</Link>
                   </li>
                   <li>
                     <DropdownList label={labelSecond} list={listLabelSecond} openBurgerMenu={openBurgerMenu} />
@@ -153,7 +154,7 @@ const Header = () => {
               </ul>
             </div>
             <ButtonAsLink
-              route="/help"
+              route={localizedPath("/help")}
               buttonCaption={t('common:buttonSupportText')}
               buttonStyle="primary-dark-W-288"
             />

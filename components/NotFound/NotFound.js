@@ -28,7 +28,7 @@ export default function NotFound({ locale }) {
                 <div className={styles.subtitle}>{t("notFoundSubtitle")}</div>
             </div>
             <div className={styles.text}>{t("notFoundText")}</div>
-            <ButtonAsLink route="/" buttonCaption={t("backToHome")} buttonStyle="backToHome" />
+            <ButtonAsLink route={locale === 'uk' ? "/" : `/${locale}/`} buttonCaption={t("backToHome")} buttonStyle="backToHome" />
         </div>
     );
 }

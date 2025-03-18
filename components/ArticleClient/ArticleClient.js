@@ -22,8 +22,7 @@ const ArticleClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }
                 setLoading(true);
                 const res = await getById(endpoint, id, cultureCode);
                 if (res.status === 404) {
-
-                    router.push(`/not-found`);
+                    router.push(cultureCode === "ua" ? `/not-found` : `/en/not-found`);
                     return;
                 }
                 setAdvice(res);

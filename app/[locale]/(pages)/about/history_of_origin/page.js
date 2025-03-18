@@ -32,9 +32,8 @@ const i18nNamespaces = ["historyOfOrigin", "common"];
 
 const historyOfOrigin = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
-
+  const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
   const altText = "Boy open a car trunk";
-  const route = "/about/rules_of_appeal";
 
   return (
     <TranslationsProvider
@@ -53,11 +52,11 @@ const historyOfOrigin = async ({ params: { locale } }) => {
         />
         <div className={styles.container}>
           <h3 className={styles.historyTitle}>{t("historyOfOriginTitle")}</h3>
-          <div className={`${styles.historyText} ${styles.historyTextTop}`}>
+          <div className={`${ styles.historyText } ${ styles.historyTextTop }`}>
             <p>{t("historyOfOriginTextFirstPart")}</p>
             <p>{t("historyOfOriginTextSecondPart")}</p>
           </div>
-          <div className={`${styles.imgOuterWrap} ${styles.imgOuterWrapTop}`}>
+          <div className={`${ styles.imgOuterWrap } ${ styles.imgOuterWrapTop } `}>
             <Image
               className={styles.historyMob}
               src={historyMobOne}
@@ -162,11 +161,11 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               />
             </div>
           </div>
-          <p className={`${styles.historyText} ${styles.historyTextBottom}`}>
+          <p className={`${ styles.historyText } ${ styles.historyTextBottom } `}>
             {t("historyOfOriginTextThirdPart")}
           </p>
           <div
-            className={`${styles.imgOuterWrap} ${styles.imgOuterWrapBottom}`}
+            className={`${ styles.imgOuterWrap } ${ styles.imgOuterWrapBottom } `}
           >
             <Image
               className={styles.historyMob}
@@ -204,7 +203,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           </div>
           <div className={styles.btnWrap}>
             <ButtonAsLink
-              route="/about/our_team"
+              route={localizedPath("/about/our_team")}
               buttonCaption={t("historyOfOriginButtonText")}
               buttonStyle="rescue"
             />
@@ -214,7 +213,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           title={t("needInfoTitle")}
           subtitle={t("needInfoSubtitle")}
           buttonCaption={t("needInfoButtonCaption")}
-          route={route}
+          route={localizedPath("/about/rules_of_appeal")}
         />
         <ScrollToTop/>
         <Footer />
