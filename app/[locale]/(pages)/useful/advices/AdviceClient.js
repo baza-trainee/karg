@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import styles from '../../animals/styles/animals.module.scss';
 import SearchBar from '@/components/SearchBar/SearchBar';
 import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
@@ -19,9 +19,9 @@ const AdviceClient = ({ locale }) => {
         setCategory(newCategory);
     };
 
-    const handleResults = (count) => {
+    const handleResults = useCallback((count) => {
         setResultsCount(count);
-    };
+    }, []);
 
 
     const searchResultsCount = () => {

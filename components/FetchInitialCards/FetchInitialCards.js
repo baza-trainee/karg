@@ -25,7 +25,6 @@ const FetchInitialCards = async (locale, api, method, pageSize, page, searchTerm
         if (!response.ok) {
             throw new Error(`Failed to fetch: ${response.status} ${response.statusText}`);
         }
-        console.log(response);
         return await response.json();
     } catch (error) {
         console.error("Error fetching initial cards:", error);
