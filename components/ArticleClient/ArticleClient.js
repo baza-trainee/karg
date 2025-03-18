@@ -119,7 +119,7 @@ const ArticleClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }
             <div className={styles.shareContainer}>
                 <span className={variables.Subtitle3}>{translations.shareText}</span>
                 <div className={styles.iconsContainer}>
-                    <SocialIcons className={styles.socIcons} />
+                    <SocialIcons className={styles.socIcons} shareCurrentPage={true} />
                 </div>
             </div>
         </div>
