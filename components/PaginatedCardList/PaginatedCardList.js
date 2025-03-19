@@ -10,15 +10,26 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
     const [pageSize] = useState(15);
     const [totalPages, setTotalPages] = useState(0);
     const previousCards = useRef([]);
-    const searchCurrentPage = 1;
     const searchPageSize = 45;
+
+    const prevSearchTermRef = useRef(searchTerm);
+    const prevCategoryRef = useRef(category);
+
+    useEffect(() => {
+        if (prevSearchTermRef.current !== searchTerm || prevCategoryRef.current !== category) {
+            setCurrentPage(1);
+            prevSearchTermRef.current = searchTerm;
+            prevCategoryRef.current = category;
+        }
+    }, [searchTerm, category]);
 
     useEffect(() => {
         const loadCards = async () => {
+            setIsLoading(true);
             try {
                 let data;
                 if (searchTerm && category) {
-                    data = await FetchInitialCards(locale, endpoint, 'getall', searchPageSize, searchCurrentPage, searchTerm, category);
+                    data = await FetchInitialCards(locale, endpoint, 'getall', searchPageSize, currentPage, searchTerm, category);
                     if (data.items.length > 0) {
                         previousCards.current = data.items;
                         setCards(data.items);
