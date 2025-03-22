@@ -16,6 +16,7 @@ import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import { AdminContext } from "@/app/adminProvider";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
@@ -62,7 +63,26 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchTeamUserData(rescuerData.id, type, setIsLoading);
+                const data = await fetchTeamUserData(rescuerData.id, type);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));

@@ -43,7 +43,7 @@ function StatsList() {
 
     const handleDeleteStat = async (id) => {
         setIsLoading(true);
-        await deleteStatData(id, currentPage, stats, handlePageChange, setStats);
+        await deleteStatData(id, currentPage, stats, handlePageChange, setStats, showModal);
         setIsLoading(false);
     };
 

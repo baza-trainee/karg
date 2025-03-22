@@ -41,7 +41,7 @@ export default function PartnerList() {
 
     const handleDeletePartner = async (id) => {
         setIsLoading(true);
-        await deletePartner(id, currentPage, partners, handlePageChange, setPartners);
+        await deletePartner(id, currentPage, partners, handlePageChange, setPartners, showModal);
         setIsLoading(false);
     };
 

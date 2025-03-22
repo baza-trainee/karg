@@ -14,6 +14,8 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchStatData } from "../utilsFetchStatsData";
 import { StatsContext } from "../StatsContext";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+
 const maxImages = 1;
 
 const labels = {
@@ -62,6 +64,25 @@ function StatsForm({ type = 'create', statData = {} }) {
             setIsLoading(true);
             try {
                 const data = await fetchStatData(statData.id, type, setIsLoading);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));

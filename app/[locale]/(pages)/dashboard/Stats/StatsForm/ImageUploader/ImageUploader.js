@@ -8,7 +8,7 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
     const [previewUrls, setPreviewUrls] = useState([]);
 
     useEffect(() => {
-        if (images && images.length > 0) {
+        if (images && images?.length > 0) {
             setPreviewUrls(images.map(image => getImageSrc(image)));
         } else {
             setPreviewUrls([]);
@@ -17,7 +17,7 @@ const ImageUploader = memo(({ images, maxImages, handleImageUploaded, handleDele
 
     return (
         <div>
-            {!images.length ? (
+            {!images?.length ? (
                 <DragDropFileUpload
                     placeholderImage={<PlusPlaceholder className={styles.placeholderImage} />}
                     className={styles.uploadArea}

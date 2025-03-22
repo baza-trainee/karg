@@ -15,6 +15,8 @@ import { checkFormValidity } from './checkFormValidity';
 import { fetchContactItemData } from "../utilsFetchContactData";
 import { ContactContext } from "../ContactContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+import { initializeFormData } from "../utilsFetchContactData";
 
 const categoryTitle = "Вид даних";
 
@@ -74,6 +76,25 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
                 } else {
                     data = await fetchContactItemData(contactData.id);
                 }
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -82,7 +103,9 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
             }
             setIsLoading(false);
         };
-        if (type === 'edit' || (contactData.category === "Location" && contactData.id || (contactData.idUa && contactData.idEn))) {
+        if (type === 'edit' && (contactData.id
+            || (contactData.category === 'Location'
+                && contactData.idUa && contactData.idEn))) {
             fetchInitialData();
         } else {
             setIsFormValid(checkFormValidity(formData));

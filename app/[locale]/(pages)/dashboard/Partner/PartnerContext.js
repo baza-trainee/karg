@@ -1,5 +1,7 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useState, useContext } from 'react';
 import { fetchPartners } from "./api/utilsFetchPartnerData";
+import ModalContext from '@/app/ModalContext';
+
 export const PartnerContext = createContext(null);
 
 export const PartnerProvider = ({ children }) => {
@@ -7,11 +9,12 @@ export const PartnerProvider = ({ children }) => {
     const [isLoading, setIsLoading] = useState(false);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
+    const { showModal } = useContext(ModalContext);
 
     const loadPartners = useCallback(async () => {
         setIsLoading(true);
         try {
-            await fetchPartners(currentPage, setPartners, setTotalPages);
+            await fetchPartners(currentPage, setPartners, setTotalPages, showModal);
         } catch (error) {
             console.error('Error loading partners:', error);
             setPartners([]);

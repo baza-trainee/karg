@@ -1,5 +1,7 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useState, useCallback, useContext } from 'react';
 import { fetchAdvicesData } from "./utilsFetchAdviceData";
+import ModalContext from '@/app/ModalContext';
+
 export const AdviceContext = createContext(null);
 
 export const AdviceProvider = ({ children }) => {
@@ -9,11 +11,12 @@ export const AdviceProvider = ({ children }) => {
     const [advices, setAdvices] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const { showModal } = useContext(ModalContext);
 
     const loadAdvices = useCallback(async () => {
         setIsLoading(true);
         try {
-            await fetchAdvicesData(currentPage, 'ua', setAdvices, setTotalPages);
+            await fetchAdvicesData(currentPage, 'ua', setAdvices, setTotalPages, showModal);
         } catch (error) {
             console.error('Error loading advices:', error);
             setAdvices([]);

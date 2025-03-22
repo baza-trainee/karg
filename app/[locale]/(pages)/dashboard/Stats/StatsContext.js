@@ -1,5 +1,7 @@
-import React, { createContext, useState, useCallback, useEffect } from 'react';
+import React, { createContext, useState, useCallback, useContext } from 'react';
 import { fetchStatsData } from "./utilsFetchStatsData";
+import ModalContext from '@/app/ModalContext';
+
 export const StatsContext = createContext(null);
 
 export const StatsProvider = ({ children }) => {
@@ -9,11 +11,12 @@ export const StatsProvider = ({ children }) => {
     const [stats, setStats] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const { showModal } = useContext(ModalContext);
 
     const loadStats = useCallback(async () => {
         setIsLoading(true);
         try {
-            await fetchStatsData(currentPage, 'ua', setStats, setTotalPages);
+            await fetchStatsData(currentPage, 'ua', setStats, setTotalPages, showModal);
         } catch (error) {
             console.error('Error loading:', error);
             setStats([]);
