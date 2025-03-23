@@ -155,7 +155,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

@@ -175,7 +175,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
 
     return (
         <div className={styles.formWrapper}>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit} noValidate>
                 {isLoading ? (
                     <Spinner />
                 ) : (

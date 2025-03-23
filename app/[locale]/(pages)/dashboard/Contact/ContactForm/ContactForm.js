@@ -16,7 +16,6 @@ import { fetchContactItemData } from "../utilsFetchContactData";
 import { ContactContext } from "../ContactContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import SuccessDialog from "../../SuccessDialog/SuccessDialog";
-import { initializeFormData } from "../utilsFetchContactData";
 
 const categoryTitle = "Вид даних";
 
@@ -77,8 +76,8 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
                     data = await fetchContactItemData(contactData.id);
                 }
                 if (data?.error) {
-                    setFormData(initializeFormData({}));
-                    setOriginalData(initializeFormData({}));
+                    setFormData({});
+                    setOriginalData({});
                     setIsFormValid(false);
                     hideModal('generic');
                     const errorMessage = data.error === 'not_found'
@@ -174,7 +173,7 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (
