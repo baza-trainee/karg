@@ -46,6 +46,15 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                     />)
                 return;
             }
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
             showModal('confirmation',
                 <SuccessDialog
                     title={successTitle}

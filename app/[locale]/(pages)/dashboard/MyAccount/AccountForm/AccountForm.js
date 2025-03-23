@@ -17,6 +17,7 @@ import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchTeamUserData } from "../utilsFetchAccountData";
 import variables from '../../../../variables.module.scss';
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     firstNameTitle: "Імʼя",
@@ -54,7 +55,26 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchTeamUserData(accountId, type);
+                const data = await fetchTeamUserData(accountId, type );
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));

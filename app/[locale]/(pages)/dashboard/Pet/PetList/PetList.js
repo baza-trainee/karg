@@ -51,7 +51,7 @@ function PetList() {
 
     const handleDeletePet = async (id) => {
         setIsLoading(true);
-        await deletePet(id, currentPage, pets, handlePageChange, setPets);
+        await deletePet(id, currentPage, pets, handlePageChange, setPets, showModal);
         setIsLoading(false);
     };
 

@@ -42,7 +42,7 @@ function AdviceList() {
 
     const handleDeleteAdvice = async (id) => {
         setIsLoading(true);
-        await deleteAdviceData(id, currentPage, advices, handlePageChange, setAdvices);
+        await deleteAdviceData(id, currentPage, advices, handlePageChange, setAdvices, showModal);
         setIsLoading(false);
     };
 

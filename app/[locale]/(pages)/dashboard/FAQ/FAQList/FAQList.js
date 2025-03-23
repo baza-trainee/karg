@@ -43,7 +43,7 @@ function FAQList() {
 
     const handleDeleteFAQ = async (id) => {
         setIsLoading(true);
-        await deleteFAQItemData(id, currentPage, faq, handlePageChange, setFAQ);
+        await deleteFAQItemData(id, currentPage, faq, handlePageChange, setFAQ, showModal);
         setIsLoading(false);
     };
 

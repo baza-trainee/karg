@@ -46,7 +46,7 @@ function TeamList() {
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
-        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers);
+        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers, showModal);
         setIsLoading(false);
     };
 
