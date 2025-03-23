@@ -155,7 +155,7 @@ function StatsForm({ type = 'create', statData = {} }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

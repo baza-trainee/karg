@@ -174,7 +174,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         setHasUnsavedChanges(true);
     }
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (
