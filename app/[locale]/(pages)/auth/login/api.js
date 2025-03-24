@@ -16,10 +16,10 @@ export const loginUser = async (email, password) => {
     return userData;
 };
 
-export const logoutUser = async () => {
+export const logoutUser = async (setIsDirector) => {
     localStorage.removeItem('auth-token');
     localStorage.removeItem('accountId');
-    localStorage.removeItem('isDirector');
+    setIsDirector(null);
 };
 
 export const getUserById = async (id) => {

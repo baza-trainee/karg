@@ -57,7 +57,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
     const title = type === 'create' ? "Додати користувача" : "Редагувати користувача";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
     const maxImages = 2;
-    const { isDirector } = useContext(AdminContext);
+    const { isDirector, accountId } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -112,6 +112,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
+            accountId,
         );
         await loadRescuers();
         setIsLoading(false);

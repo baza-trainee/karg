@@ -5,8 +5,8 @@ export default class authService {
         return loginUser(email, password);
     };
 
-    static async logout() {
-        return await logoutUser();
+    static async logout(setIsDirector) {
+        return await logoutUser(setIsDirector);
     };
 
     static async getById(id) {
