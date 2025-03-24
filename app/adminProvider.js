@@ -38,13 +38,6 @@ export const AdminProvider = ({ children }) => {
         }
     };
 
-    const handleSetIsDirector = (role) => {
-        setIsDirector(role);
-        if (typeof window !== 'undefined') {
-            localStorage.setItem('isDirector', JSON.stringify(role));
-        }
-    };
-
     const handleSetActiveHelpSection = (section) => {
         setActiveHelpSection(section);
         if (typeof window !== 'undefined') {
@@ -52,26 +45,16 @@ export const AdminProvider = ({ children }) => {
         }
     };
 
-
     useEffect(() => {
         if (!hasMounted.current) {
             hasMounted.current = true;
 
             const id = typeof window !== 'undefined' ? localStorage.getItem('accountId') : null;
             const section = typeof window !== 'undefined' ? localStorage.getItem('activeSection') : null;
-            const role = typeof window !== 'undefined' ? localStorage.getItem('isDirector') : null;
             const storedHelpSection = typeof window !== 'undefined' ? localStorage.getItem('activeHelpSection') : null;
 
             if (id) setAccountId(id);
             if (section) setActiveSection(section);
-            if (role !== null) {
-                try {
-                    setIsDirector(JSON.parse(role));
-                } catch (error) {
-                    console.error('Failed to parse isDirector:', error);
-                    setIsDirector(null);
-                }
-            }
             if (storedHelpSection) setActiveHelpSection(storedHelpSection);
         }
     }, []);
@@ -80,9 +63,8 @@ export const AdminProvider = ({ children }) => {
         if (typeof window !== 'undefined') {
             if (accountId) localStorage.setItem('accountId', accountId);
             if (activeSection) localStorage.setItem('activeSection', activeSection);
-            localStorage.setItem('isDirector', JSON.stringify(isDirector));
         }
-    }, [accountId, activeSection, isDirector]);
+    }, [accountId, activeSection]);
 
     const contextValue = {
         activeSection,
@@ -90,7 +72,7 @@ export const AdminProvider = ({ children }) => {
         accountId,
         setAccountId: handleSetAccountId,
         isDirector,
-        setIsDirector: handleSetIsDirector,
+        setIsDirector,
         isLoading,
         setIsLoading,
         activeHelpSection,

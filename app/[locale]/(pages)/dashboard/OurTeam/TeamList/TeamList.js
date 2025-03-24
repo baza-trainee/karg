@@ -33,16 +33,26 @@ function TeamList() {
         handlePageChange,
         totalPages
     } = useContext(TeamContext);
-    const { isDirector } = useContext(AdminContext);
+    const { isDirector, setIsDirector, accountId } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
-    const currentRole = isDirector;
     useEffect(() => {
         if (!isLoading) {
             loadRescuers();
         }
     }, [loadRescuers, currentPage]);
+
+    useEffect(() => { 
+        if (!isLoading && rescuers.length && accountId) {
+            const numericId = Number(accountId);
+            const currentUser = rescuers.find(user => user.id === numericId);
+            const isDirectorFromServer = currentUser?.role === "Director";
+            setIsDirector(isDirectorFromServer);
+        }
+    }, [isLoading, rescuers, accountId, setIsDirector]);
+
+    const currentRole = isDirector;
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);

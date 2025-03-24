@@ -1,7 +1,7 @@
 import { updateRescuerInfo } from "./api";
 import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
-export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions) => {
+export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions, accountId) => {
     const { successTitle, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (destructuredFormData, destructuredOriginalData) => {
@@ -37,6 +37,9 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
         }
         try {
             const result = await updateRescuerInfo(destructuredFormData.id, updates);
+            if (result.token && Number(destructuredFormData.id) === Number(accountId)) {
+                localStorage.setItem('auth-token', result.token);
+            }
             if (result.emailConflict) {
                 showModal('confirmation',
                     <SuccessDialog

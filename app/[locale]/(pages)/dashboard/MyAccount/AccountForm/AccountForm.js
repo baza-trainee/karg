@@ -40,7 +40,7 @@ const successDialogActions = {
 function AccountForm({ type = 'edit', accountData = {} }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
-    const { accountId } = useContext(AdminContext);
+    const { accountId, isDirector } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData(accountData));
@@ -49,7 +49,6 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const title = "Персональна інформація";
     const { changePasswordButton, btnSaveChanges } = btnLabels;
     const maxImages = 1;
-    const { isDirector } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
@@ -119,6 +118,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
+            accountId,
         );
         setIsLoading(false);
     };
