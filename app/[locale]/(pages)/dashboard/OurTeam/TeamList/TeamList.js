@@ -33,7 +33,7 @@ function TeamList() {
         handlePageChange,
         totalPages
     } = useContext(TeamContext);
-    const { isDirector, setIsDirector, accountId } = useContext(AdminContext);
+    const { isDirector } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
@@ -42,17 +42,6 @@ function TeamList() {
             loadRescuers();
         }
     }, [loadRescuers, currentPage]);
-
-    useEffect(() => { 
-        if (!isLoading && rescuers.length && accountId) {
-            const numericId = Number(accountId);
-            const currentUser = rescuers.find(user => user.id === numericId);
-            const isDirectorFromServer = currentUser?.role === "Director";
-            setIsDirector(isDirectorFromServer);
-        }
-    }, [isLoading, rescuers, accountId, setIsDirector]);
-
-    const currentRole = isDirector;
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
@@ -87,14 +76,14 @@ function TeamList() {
                                 iconsContainerStyle={styles.iconsContainer}
                             >
                                 <CreateIcon
-                                    className={`${styles.create_icon} ${!currentRole ? styles.icon_disabled : ''}`}
-                                    onClick={currentRole ? () => {
+                                    className={`${styles.create_icon} ${!isDirector ? styles.icon_disabled : ''}`}
+                                    onClick={isDirector ? () => {
                                         showModal('generic', <RescuerForm type='edit' rescuerData={rescuer} />)
                                     } : null}
                                 />
                                 <TrashIcon
-                                    className={`${styles.trash_icon} ${!currentRole || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
-                                    onClick={currentRole && rescuer.role !== "Director" ? () => {
+                                    className={`${styles.trash_icon} ${!isDirector || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
+                                    onClick={isDirector && rescuer.role !== "Director" ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}
