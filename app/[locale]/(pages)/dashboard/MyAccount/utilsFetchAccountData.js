@@ -11,14 +11,18 @@ export const initializeFormData = (data) => {
     }
 }
 
-export const fetchTeamUserData = async (rescuerId, type) => {
+export const fetchTeamUserData = async (rescuerId, type, setIsDirector) => {
     if (type === 'edit' && rescuerId) {
         try {
             const data = await getRescuerById(rescuerId);
-            if (data.error) {
+            if (data?.error) {
                 const errorMessage = data.error;
                 console.error('Error fetching rescuer data:', errorMessage);
                 return { error: errorMessage };
+            }
+
+            if (data?.role && typeof setIsDirector === 'function') {
+                setIsDirector(data?.role === "Director");
             }
             const updatedFormData = {
                 id: data.id,

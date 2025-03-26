@@ -40,7 +40,7 @@ const successDialogActions = {
 function AccountForm({ type = 'edit', accountData = {} }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
-    const { accountId, isDirector } = useContext(AdminContext);
+    const { accountId, isDirector, setIsDirector } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData(accountData));
@@ -54,7 +54,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchTeamUserData(accountId, type );
+                const data = await fetchTeamUserData(accountId, type, setIsDirector);
                 if (data?.error) {
                     setFormData(initializeFormData({}));
                     setOriginalData(initializeFormData({}));

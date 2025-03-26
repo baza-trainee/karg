@@ -1,6 +1,13 @@
 'use client'
 
 import { createContext, useEffect, useState, useRef } from 'react';
+import { getRescuerById } from '../app/[locale]/(pages)/dashboard/MyAccount/api';
+
+let roleFetched = false;
+
+export const resetRoleFetched = () => {
+    roleFetched = false;
+};
 
 export const AdminContext = createContext({
     activeSection: '',
@@ -65,6 +72,26 @@ export const AdminProvider = ({ children }) => {
             if (activeSection) localStorage.setItem('activeSection', activeSection);
         }
     }, [accountId, activeSection]);
+
+    useEffect(() => {
+        const restoreDirectorRole = async () => {
+            const authToken = localStorage.getItem('auth-token');
+
+            if (!authToken || !accountId || isDirector !== null || roleFetched) return;
+            roleFetched = true;
+
+            try {
+                const data = await getRescuerById(accountId);
+                if (data?.role) {
+                    setIsDirector(data.role === 'Director');
+                }
+            } catch (error) {
+                console.error("Помилка при відновленні ролі:", error);
+            }
+        };
+
+        restoreDirectorRole();
+    }, [accountId, isDirector]);
 
     const contextValue = {
         activeSection,
