@@ -1,12 +1,18 @@
+import { useLayoutEffect, useRef } from 'react';
 import paginationStyles from './pagination.module.scss';
 import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
-import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const { t } = useTranslation('common');
+    const isFirstRender = useRef(true);
 
     useLayoutEffect(() => {
+        if (isFirstRender.current) {
+            isFirstRender.current = false;
+            return;
+        }
+
         const cardList = document.getElementById('card-list');
         const search = document.getElementById('search');
         const faq = document.getElementById('faq');
@@ -32,6 +38,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         }
 
         if (faq) {
+            console.log('Scrolling to faq');
             faq.scrollIntoView({
                 behavior: 'auto',
                 block: 'start'
@@ -42,7 +49,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             });
             return;
         }
-
     }, [currentPage]);
 
     const handlePreviousPage = () => {
@@ -58,7 +64,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     };
 
     const handleSpecificChange = (page) => {
-        if (page - 1 < totalPages && page >= 1) {
+        if (page >= 1 && page <= totalPages) {
             onPageChange(page);
         }
     };
