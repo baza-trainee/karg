@@ -14,26 +14,6 @@ const nextConfig = {
         remotePatterns: [
             {
                 protocol: 'https',
-                hostname: 'upload.wikimedia.org',
-            },
-            {
-                protocol: 'https',
-                hostname: 'dailylviv.com',
-            },
-            {
-                protocol: 'https',
-                hostname: 'media.istockphoto.com'
-            },
-            {
-                protocol: 'https',
-                hostname: 'turtlerescueleague.org'
-            },
-            {
-                protocol: 'https',
-                hostname: 'storinka.com.ua'
-            },
-            {
-                protocol: 'https',
                 hostname: 'dev.karg.kyiv.ua'
             },
 
