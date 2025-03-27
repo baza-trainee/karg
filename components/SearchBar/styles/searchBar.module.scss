@@ -152,6 +152,12 @@
     max-width: 1400px;
     width: 100%;
 
+    & .searchContainerWrapper {
+      width: 100%;
+      grid-area: s;
+      position: relative;
+    }
+
     & .searchContainer {
       padding: 0;
     }
