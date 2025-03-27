@@ -30,19 +30,22 @@ const SearchBar = ({ cultureCode, onSearch, showCategoryFilter = false, searchRe
 
     return (
         <div id="search" className={withCategoryFilter ? styles.container : styles.singleContainer}>
-            <div className={styles.searchContainer}>
-                <input
-                    type='text'
-                    placeholder={t('search')}
-                    className={styles.search}
-                    value={searchTerm}
-                    onChange={handleChange}
-                    autoComplete='off'
-                />
-                <SearchIcon className={styles.icon} />
+            <div className={styles.searchContainerWrapper}>
+                <div className={styles.searchContainer}>
+                    <input
+                        type='text'
+                        placeholder={t('search')}
+                        className={styles.search}
+                        value={searchTerm}
+                        onChange={handleChange}
+                        autoComplete='off'
+                    />
+                    <SearchIcon className={styles.icon} />
+                </div>
+                {searchResultsCount && searchResultsCount()}
+                {searchErrorResult && searchErrorResult()}
             </div>
-            {searchResultsCount && searchResultsCount()}
-            {searchErrorResult && searchErrorResult()}
+
             {showCategoryFilter && (
                 <select
                     className={styles.select}
