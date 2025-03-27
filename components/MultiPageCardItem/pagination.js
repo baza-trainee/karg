@@ -8,9 +8,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const isFirstRender = useRef(true);
 
     useLayoutEffect(() => {
-
         if (isFirstRender.current) {
-            console.log('Skipping scroll on first render');
             isFirstRender.current = false;
             return;
         }
