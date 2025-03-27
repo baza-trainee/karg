@@ -5,6 +5,7 @@ import FetchInitialCards from '@/components/FetchInitialCards/FetchInitialCards'
 import MultiPageCardItem from '@/components/MultiPageCardItem/multiPageCardItem';
 
 export default function PaginatedCardList({ locale, endpoint, multiPageCardButtonVariant, searchTerm, category, onResults, setIsLoading, shortVersion }) {
+
     const [cards, setCards] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
     const [pageSize] = useState(15);
@@ -45,9 +46,11 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
                         setCards(previousCards.current);
                     }
                 } else {
-                    shortVersion ?
+                    shortVersion
+                        ?
                         data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage, searchTerm = '', category = '', shortVersion)
-                        : data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage);
+                        :
+                        data = await FetchInitialCards(locale, endpoint, 'getall', pageSize, currentPage);
                     previousCards.current = data.items;
                     setCards(data.items);
                 }
