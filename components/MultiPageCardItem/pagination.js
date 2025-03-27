@@ -1,17 +1,27 @@
+import { useLayoutEffect, useRef } from 'react';
 import paginationStyles from './pagination.module.scss';
 import { ArrowRight, ArrowLeft } from "@/public/assets/icons";
-import { useLayoutEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const { t } = useTranslation('common');
+    const isFirstRender = useRef(true);
 
     useLayoutEffect(() => {
+        console.log('useLayoutEffect triggered, currentPage:', currentPage);
+
+        if (isFirstRender.current) {
+            console.log('Skipping scroll on first render');
+            isFirstRender.current = false;
+            return;
+        }
+
         const cardList = document.getElementById('card-list');
         const search = document.getElementById('search');
         const faq = document.getElementById('faq');
 
         if (search) {
+            console.log('Scrolling to search');
             search.scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
@@ -20,6 +30,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         }
 
         if (cardList) {
+            console.log('Scrolling to cardList');
             cardList.scrollIntoView({
                 behavior: 'auto',
                 block: 'start'
@@ -32,6 +43,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         }
 
         if (faq) {
+            console.log('Scrolling to faq');
             faq.scrollIntoView({
                 behavior: 'auto',
                 block: 'start'
@@ -42,7 +54,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
             });
             return;
         }
-
     }, [currentPage]);
 
     const handlePreviousPage = () => {
@@ -58,7 +69,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     };
 
     const handleSpecificChange = (page) => {
-        if (page - 1 < totalPages && page >= 1) {
+        if (page >= 1 && page <= totalPages) {
             onPageChange(page);
         }
     };
