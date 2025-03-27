@@ -8,7 +8,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     const isFirstRender = useRef(true);
 
     useLayoutEffect(() => {
-        console.log('useLayoutEffect triggered, currentPage:', currentPage);
 
         if (isFirstRender.current) {
             console.log('Skipping scroll on first render');
@@ -21,7 +20,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         const faq = document.getElementById('faq');
 
         if (search) {
-            console.log('Scrolling to search');
             search.scrollIntoView({
                 behavior: 'smooth',
                 block: 'center'
@@ -30,7 +28,6 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         }
 
         if (cardList) {
-            console.log('Scrolling to cardList');
             cardList.scrollIntoView({
                 behavior: 'auto',
                 block: 'start'
