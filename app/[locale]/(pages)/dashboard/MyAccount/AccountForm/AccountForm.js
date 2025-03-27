@@ -17,6 +17,7 @@ import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchTeamUserData } from "../utilsFetchAccountData";
 import variables from '../../../../variables.module.scss';
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     firstNameTitle: "Імʼя",
@@ -39,7 +40,7 @@ const successDialogActions = {
 function AccountForm({ type = 'edit', accountData = {} }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
-    const { accountId } = useContext(AdminContext);
+    const { accountId, isDirector, setIsDirector } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData(accountData));
@@ -48,13 +49,31 @@ function AccountForm({ type = 'edit', accountData = {} }) {
     const title = "Персональна інформація";
     const { changePasswordButton, btnSaveChanges } = btnLabels;
     const maxImages = 1;
-    const { isDirector } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchTeamUserData(accountId, type);
+                const data = await fetchTeamUserData(accountId, type, setIsDirector);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -99,6 +118,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
+            accountId,
         );
         setIsLoading(false);
     };
@@ -155,7 +175,7 @@ function AccountForm({ type = 'edit', accountData = {} }) {
 
     return (
         <div className={styles.formWrapper}>
-            <form className={styles.form} onSubmit={handleSubmit}>
+            <form className={styles.form} onSubmit={handleSubmit} noValidate>
                 {isLoading ? (
                     <Spinner />
                 ) : (

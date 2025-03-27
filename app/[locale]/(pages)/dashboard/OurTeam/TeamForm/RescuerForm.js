@@ -16,6 +16,7 @@ import { initializeFormData, fetchTeamUserData } from "../utilsFetchTeamData";
 import { TeamContext } from "../TeamContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import { AdminContext } from "@/app/adminProvider";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
@@ -56,13 +57,32 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
     const title = type === 'create' ? "Додати користувача" : "Редагувати користувача";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
     const maxImages = 2;
-    const { isDirector } = useContext(AdminContext);
+    const { isDirector, accountId } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchTeamUserData(rescuerData.id, type, setIsLoading);
+                const data = await fetchTeamUserData(rescuerData.id, type);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -92,6 +112,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
+            accountId,
         );
         await loadRescuers();
         setIsLoading(false);
@@ -154,7 +175,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
         setHasUnsavedChanges(true);
     }
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

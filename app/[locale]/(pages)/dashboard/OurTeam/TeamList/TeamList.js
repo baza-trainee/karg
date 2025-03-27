@@ -37,7 +37,6 @@ function TeamList() {
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
-    const currentRole = isDirector;
     useEffect(() => {
         if (!isLoading) {
             loadRescuers();
@@ -46,7 +45,7 @@ function TeamList() {
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
-        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers);
+        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers, showModal);
         setIsLoading(false);
     };
 
@@ -77,14 +76,14 @@ function TeamList() {
                                 iconsContainerStyle={styles.iconsContainer}
                             >
                                 <CreateIcon
-                                    className={`${styles.create_icon} ${!currentRole ? styles.icon_disabled : ''}`}
-                                    onClick={currentRole ? () => {
+                                    className={`${styles.create_icon} ${!isDirector ? styles.icon_disabled : ''}`}
+                                    onClick={isDirector ? () => {
                                         showModal('generic', <RescuerForm type='edit' rescuerData={rescuer} />)
                                     } : null}
                                 />
                                 <TrashIcon
-                                    className={`${styles.trash_icon} ${!currentRole || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
-                                    onClick={currentRole && rescuer.role !== "Director" ? () => {
+                                    className={`${styles.trash_icon} ${!isDirector || rescuer.role === "Director" ? styles.icon_disabled : ''}`}
+                                    onClick={isDirector && rescuer.role !== "Director" ? () => {
                                         showModal('confirmation',
                                             <ConfirmationDialogTrigger
                                                 confirmationTitle={confirmationTitle}

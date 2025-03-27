@@ -14,6 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchFAQItemData } from "../utilsFetchFAQData";
 import { FAQContext } from "../FAQContext";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     ukrLng: "Українська",
@@ -61,6 +62,25 @@ function FAQForm({ type = 'create', faqData = {} }) {
             setIsLoading(true);
             try {
                 const data = await fetchFAQItemData(faqData.id, type, setIsLoading);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -131,7 +151,7 @@ function FAQForm({ type = 'create', faqData = {} }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

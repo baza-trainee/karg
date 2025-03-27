@@ -1,5 +1,7 @@
-import React, { createContext, useState, useCallback } from 'react';
+import React, { createContext, useState, useCallback, useContext } from 'react';
 import { fetchPets } from "./api/utilsFetchPetData";
+import ModalContext from '@/app/ModalContext';
+
 export const PetContext = createContext(null);
 
 export const PetProvider = ({ children }) => {
@@ -9,11 +11,12 @@ export const PetProvider = ({ children }) => {
     const [pets, setPets] = useState([]);
     const [totalPages, setTotalPages] = useState(1);
     const [isLoading, setIsLoading] = useState(false);
+    const { showModal } = useContext(ModalContext);
 
     const loadPets = useCallback(async () => {
         setIsLoading(true);
         try {
-            await fetchPets(currentPage, selectedCategory, initialCategory, 'ua', setPets, setTotalPages);
+            await fetchPets(currentPage, selectedCategory, initialCategory, 'ua', setPets, setTotalPages, showModal);
         } catch (error) {
             console.error('Error loading pets:', error);
             setPets([]);

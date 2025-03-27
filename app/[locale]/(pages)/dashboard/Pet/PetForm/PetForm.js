@@ -14,6 +14,7 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchPetData } from "../api/utilsFetchPetData";
 import { PetContext } from "../PetContext";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     ukrLng: "Українська",
@@ -64,7 +65,26 @@ function PetForm({ type = 'create', petData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchPetData(petData.id, type, setIsLoading);
+                const data = await fetchPetData(petData.id, type);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -138,7 +158,7 @@ function PetForm({ type = 'create', petData = {} }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

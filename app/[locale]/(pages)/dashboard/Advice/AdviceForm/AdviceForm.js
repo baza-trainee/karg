@@ -14,6 +14,8 @@ import { memo } from 'react';
 import { checkFormValidity } from './checkFormValidity';
 import { initializeFormData, fetchAdviceData } from "../utilsFetchAdviceData";
 import { AdviceContext } from "../AdviceContext";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+
 const maxImages = 1;
 
 const labels = {
@@ -61,7 +63,26 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchAdviceData(adviceData.id, type, setIsLoading);
+                const data = await fetchAdviceData(adviceData.id, type)
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -134,7 +155,7 @@ function AdviceForm({ type = 'create', adviceData = {} }) {
     }
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (

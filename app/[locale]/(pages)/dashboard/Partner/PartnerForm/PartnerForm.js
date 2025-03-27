@@ -11,6 +11,7 @@ import { PartnerContext } from "../PartnerContext";
 import { useUnsavedChanges } from "@/app/UnsavedChangesContext";
 import { checkFormValidity } from "./checkFormValidity";
 import ModalContext from "@/app/ModalContext";
+import SuccessDialog from "../../SuccessDialog/SuccessDialog";
 
 const labels = {
     nameTitle: "Назва компанії",
@@ -55,7 +56,26 @@ function PartnerForm({ type = 'create', partnerData = {} }) {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
-                const data = await fetchPartnerData(partnerData.id, type, setIsLoading);
+                const data = await fetchPartnerData(partnerData.id, type);
+                if (data?.error) {
+                    setFormData(initializeFormData({}));
+                    setOriginalData(initializeFormData({}));
+                    setIsFormValid(false);
+                    hideModal('generic');
+                    const errorMessage = data.error === 'not_found'
+                        ? 'Запис не знайдено, або було видалено.'
+                        : data.error;
+                    showModal(
+                        'confirmation',
+                        <SuccessDialog
+                            title={"Помилка"}
+                            message={errorMessage}
+                            buttonText={"Закрити"}
+                        />
+                    );
+                    setIsLoading(false);
+                    return;
+                }
                 setFormData(data);
                 setOriginalData(data);
                 setIsFormValid(checkFormValidity(data));
@@ -124,7 +144,7 @@ function PartnerForm({ type = 'create', partnerData = {} }) {
     };
 
     return (
-        <form className={styles.form} onSubmit={handleSubmit}>
+        <form className={styles.form} onSubmit={handleSubmit} noValidate>
             {isLoading ? (
                 <Spinner />
             ) : (
