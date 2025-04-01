@@ -8,10 +8,101 @@ import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
-const i18nNamespaces = ["common"];
+const i18nNamespaces = ["privacyPolicy", "common"];
 
 const PrivacyPolicy = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
+    const DOCUMENT = {
+        title: t('title'),
+        intro: [
+            t('intro.paragraph1'),
+            t('intro.paragraph2')
+        ],
+        terms: {
+            heading: t('terms.heading'),
+            list: [
+                t('terms.list.0'),
+                t('terms.list.1'),
+                t('terms.list.2'),
+                t('terms.list.3'),
+                t('terms.list.4'),
+                t('terms.list.5'),
+                t('terms.list.6'),
+                t('terms.list.7'),
+                t('terms.list.8')
+            ]
+        },
+        dataCollected: {
+            heading: t('dataCollected.heading'),
+            list: [
+                t('dataCollected.list.0'),
+                t('dataCollected.list.1')
+            ],
+            paragraphs: [
+                t('dataCollected.paragraph')
+            ]
+        },
+        cookies: [
+            t('cookies.paragraph1'),
+            t('cookies.paragraph2')
+        ],
+        purposes: {
+            heading: t('purposes.heading'),
+            list: [
+                t('purposes.list.0'),
+                t('purposes.list.1'),
+                t('purposes.list.2'),
+                t('purposes.list.3'),
+                t('purposes.list.4'),
+                t('purposes.list.5'),
+                t('purposes.list.6')
+            ]
+        },
+        legalBasis: [
+            t('legalBasis.paragraph1'),
+            t('legalBasis.paragraph2')
+        ],
+        specificPurposes: {
+            heading: t('specificPurposes.heading'),
+            list: [
+                t('specificPurposes.list.0'),
+                t('specificPurposes.list.1')
+            ]
+        },
+        nonPersonalData: [
+            t('nonPersonalData.paragraph1'),
+            t('nonPersonalData.paragraph2')
+        ],
+        dataSharing: {
+            heading: t('dataSharing.heading'),
+            list: [
+                t('dataSharing.list.0')
+            ],
+            paragraphs: [
+                t('dataSharing.paragraph')
+            ]
+        },
+        dataProtection: [
+            t('dataProtection.paragraph1'),
+            t('dataProtection.paragraph2'),
+            t('dataProtection.paragraph3')
+        ],
+        userRights: [
+            t('userRights.paragraph1'),
+            t('userRights.paragraph2')
+        ],
+        dataTransfer: [
+            t('dataTransfer.paragraph1'),
+            t('dataTransfer.paragraph2'),
+            t('dataTransfer.paragraph3'),
+            t('dataTransfer.paragraph4'),
+            t('dataTransfer.paragraph5')
+        ],
+        policyChanges: [
+            t('policyChanges.paragraph')
+        ]
+    };
 
     return (
         <TranslationsProvider
@@ -21,227 +112,83 @@ const PrivacyPolicy = async ({ params: { locale } }) => {
         >
             <Header />
             <div className={styles.container}>
-                <h1 className={styles.heading}><strong>ПОЛІТИКА КОНФІДЕНЦІЙНОСТІ</strong></h1>
+                <h1 className={styles.heading}><strong>{DOCUMENT.title}</strong></h1>
 
-                <p className={styles.paragraph}>Ця Політика конфіденційності («Політика») охоплює питання збору,
-                    використання, розголошення, передачі та зберігання персональної
-                    інформації користувача.</p>
+                {(DOCUMENT.intro).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Будь ласка, переконайтесь, що ви ознайомились із нашими правилами
-                    конфіденційності та зв'яжіться з нами, якщо у вас виникли запитання з
-                    цього приводу.</p>
-
-                <h2 className={`${styles.paragraph} ${styles.subheading}`}>Терміни, що використовуються у цій Політиці:</h2>
+                <h2 className={`${styles.paragraph} ${styles.subheading}`}>{DOCUMENT.terms.heading}</h2>
 
                 <ul className={styles.list}>
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Персональні дані -- будь-які відомості про фізичну особу, яка
-                        ідентифікована або може бути конкретно ідентифікована;</li>
+                    {(DOCUMENT.terms).list.map((text, index) => {
+                        return <li key={index} className={`${styles.listItem} ${styles.paragraph}`}>{text}</li>;
+                    })}
 
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Суб'єкт персональних даних -- ідентифікована чи така, що може бути
-                        ідентифікована фізична особа, персональні дані якої обробляються
-                        Власником персональних даних, який є відповідальним за обробку
-                        таких даних;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Обробка персональних даних -- будь-яка дія або сукупність дій, котрі
-                        вчиняються по відношенню до персональних даних або сукупності
-                        персональних даних, такі як збирання, реєстрація, накопичення,
-                        структурування, зберігання, адаптування, зміна, поновлення,
-                        знеособлення, використання і поширення шляхом передачі,
-                        розповсюдження чи іншим способом, що робить такі дані доступними,
-                        комбінування, обмеження чи знищення персональних даних, у тому
-                        числі з використанням інформаційних (автоматизованих) систем;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Обмеження щодо обробки персональних даних -- позначення персональних
-                        даних, що зберігаються, з метою обмеження їхньої обробки в
-                        майбутньому;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Власник персональних даних -- фізична або юридична особа, яка
-                        самостійно або спільно з іншими особами визначає мету обробки
-                        персональних даних, встановлює склад цих даних та процедури їх
-                        обробки;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Розпорядник персональних даних -- фізична чи юридична особа, якій
-                        Власником персональних даних надано право обробляти ці дані від
-                        імені Власника;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Третя особа -- будь-яка фізична або юридична особа, за винятком
-                        суб'єкта персональних даних, Власника чи Розпорядника персональних
-                        даних, якій Власником чи Розпорядником персональних даних
-                        здійснюється передача персональних даних та яка уповноважена
-                        здійснювати їх обробку;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>Згода суб'єкта персональних даних -- добровільне волевиявлення
-                        фізичної особи щодо надання дозволу на обробку її персональних
-                        даних відповідно до сформульованої мети їх обробки, висловлене у
-                        формі, що дає змогу зробити висновок про надання згоди;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>IP-адреса -- унікальний ідентифікатор, який використовується певними
-                        електронними пристроями для ідентифікації та обміну даними один з
-                        одним в мережі Інтернет.</li>
                 </ul>
 
-                <h2 className={`${styles.paragraph} ${styles.subheading}`}>Дані, що збираються або можуть збиратися Власником:</h2>
+                <h2 className={`${styles.paragraph} ${styles.subheading}`}>{DOCUMENT.dataCollected.heading}</h2>
 
                 <ul className={styles.list}>
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>контактні дані (ім'я, прізвище, номер телефону, адреса електронної
-                        пошти тощо);</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>фотографії, матеріали відео зйомки тощо.</li>
+                    {(DOCUMENT.dataCollected).list.map((text, index) => {
+                        return <li key={index} className={`${styles.listItem} ${styles.paragraph}`}>{text}</li>;
+                    })}
                 </ul>
 
-                <p className={styles.paragraph}>Власник також може збирати дані, які містять інформацію про доменне ім'я
-                    або IP-адресу, дату та тривалість перебування Інтернет-користувача на
-                    сайті Команди. Такі дані збираються автоматично, коли
-                    Інтернет-користувач відвідує сайт Команди. У поєднанні з іншими даними
-                    ця інформація допомагає Власнику дізнатися, який контент є найбільш
-                    привабливим для відвідувачів. Крім того, такі дані допомагають Власнику
-                    виявити дестабілізацію роботи обладнання.</p>
+                <p className={styles.paragraph}>{DOCUMENT.dataCollected.paragraphs[0]}</p>
 
-                <p className={styles.paragraph}>Веб-сайти використовують файли cookies, що являють собою невеликі
-                    текстові файли, які розміщені на пристрої користувача для зберігання
-                    даних і які може читати веб-сервер в домені, що розмістив їх. Власник
-                    використовує файли cookies для забезпечення можливості авторизації
-                    користувача на веб-сайтах компанії, аналізу роботи веб-сайтів,
-                    відстеження діяльності користувачів на веб-сайтах, збору даних трафіку
-                    та для досягнення інших законних цілей.</p>
+                {(DOCUMENT.cookies).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Більшість веб-браузерів автоматично використовують файли cookies,
-                    надаючи при цьому користувачам можливість керувати цим процесом шляхом
-                    їх блокування або видалення. Інструкції з блокування або видалення
-                    файлів cookies можна знайти в налаштуваннях конфіденційності або
-                    довідковій документації кожного веб-браузера.</p>
-
-                <h2 className={`${styles.paragraph} ${styles.subheading}`}>Компанія збирає ваші дані для таких цілей:</h2>
+                <h2 className={`${styles.paragraph} ${styles.subheading}`}>{DOCUMENT.purposes.heading}</h2>
 
                 <ul className={styles.list}>
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>зв'язок з користувачем;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>надання відповідей на запити, питання та реагування на потреби
-                        користувача;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>проведення опитувань та досліджень;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>адміністрування членства та збір внесків на підтримку Команди;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>організація та реєстрація користувача на заходи, що проводяться
-                        Командою в рамках її статутної діяльності або до проведення яких
-                        долучається Команда;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>використання користувачем веб-сайту Команди та його функціоналу;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>адміністрування веб-сайтів Команди, у тому числі покращення роботи
-                        Інтернет-сервісів компанії (розробка нових функцій та пропозицій
-                        тощо).</li>
+                    {(DOCUMENT.purposes).list.map((text, index) => {
+                        return <li key={index} className={`${styles.listItem} ${styles.paragraph}`}>{text}</li>;
+                    })}
                 </ul>
 
-                <p className={styles.paragraph}>Будь ласка, зверніть увагу, що, окрім перерахованих вище цілей, Власник
-                    також може обробляти персональні дані для надання правоохоронним органам
-                    інформації, яка є необхідною для кримінального провадження, або якщо
-                    така обробка є необхідною для виконання іншого законного обов'язку, з
-                    метою захисту життєво важливого інтересу як суб'єкта персональних даних
-                    або інтересу іншої фізичної особи, або захисту будь-яких інших законних
-                    інтересів компанії чи третьої особи, які не порушують основні права та
-                    свободи як суб'єкта персональних даних.</p>
+                {(DOCUMENT.legalBasis).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Законний інтерес означає інтерес Команди в рамках здійснення її
-                    статутної діяльності. Коли Власник обробляє персональну інформацію в
-                    цілях, що відповідають його законним інтересам, він обов'язково
-                    збалансовує будь-який потенційний вплив на користувача та його права.
-                    Законні інтереси Власника автоматично не переважають над інтересами
-                    користувача.</p>
-
-                <h2 className={`${styles.paragraph} ${styles.subheading}`}>Власник обробляє персональні дані для конкретних законних цілей, серед
-                    яких, зокрема:</h2>
+                <h2 className={`${styles.paragraph} ${styles.subheading}`}>{DOCUMENT.specificPurposes.heading}</h2>
 
                 <ul className={styles.list}>
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>зв'язок з користувачем;</li>
-
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>направлення користувачу електронних повідомлень, які містять
-                        інформацію про новини, заходи, події тощо, які можуть бути
-                        цікавими для користувача.</li>
+                    {(DOCUMENT.specificPurposes).list.map((text, index) => {
+                        return <li key={index} className={`${styles.listItem} ${styles.paragraph}`}>{text}</li>;
+                    })}
                 </ul>
 
-                <p className={styles.paragraph}>Власник також може збирати дані, які не відносяться безпосередньо до
-                    конкретної людини (вони не є персональними даними). Власник може
-                    збирати, використовувати, передавати і розкривати такі відомості з
-                    будь-якою метою. При об'єднанні даних, що не є персональними, з
-                    персональними даними об'єднані дані будуть вважатися особистими, поки
-                    вони залишаються об'єднаними.</p>
+                {(DOCUMENT.nonPersonalData).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Власник намагається полегшити для користувача процес відстеження
-                    точності, повноти та актуальності його персональних даних. Власник буде
-                    зберігати персональну інформацію протягом періоду, необхідного для
-                    виконання цілей, викладених у цій Політиці. Визначаючи тривалість таких
-                    періодів, Власник спочатку вирішує, чи потрібно йому збирати персональні
-                    дані взагалі, і, якщо така потреба дійсно існує, Власник зберігає їх
-                    лише на строк, необхідний для реалізації мети збору (наприклад, на строк
-                    трудових відносин з компанії тощо), за винятком випадків, коли закон
-                    встановлює більшу тривалість зберігання.</p>
-
-                <h2 className={`${styles.paragraph} ${styles.subheading}`}>Власник не надає персональні дані користувача організаціям чи особам за
-                    межами членської спільноти Команди, крім вказаних нижче випадків:</h2>
+                <h2 className={`${styles.paragraph} ${styles.subheading}`}>{DOCUMENT.dataSharing.heading}</h2>
 
                 <ul className={styles.list}>
-                    <li className={`${styles.listItem} ${styles.paragraph}`}>дані учасників подій, що організовуються Командою або до організації
-                        яких долучається Команда, можуть бути надані протокольним службам
-                        органів державної влади та місцевого самоврядування, адміністрації
-                        будівель, де відбувається захід для забезпечення вільного входу,
-                        спікерам (модераторам) заходів за їхньої усної чи письмової згоди.</li>
+                    <li className={`${styles.listItem} ${styles.paragraph}`}>{DOCUMENT.dataSharing.list.at(0)}</li>
                 </ul>
 
-                <p className={styles.paragraph}>Лише імена, прізвища, електронні адреси, фотографії та посади учасників
-                    заходів, що організовуються Командою або до організації яких долучається
-                    Команда, членів керівних органів Команди можуть бути опубліковані на
-                    веб-сайті (веб-сайтах) Команди.</p>
+                <p className={styles.paragraph}>{DOCUMENT.dataSharing.paragraphs.at(0)}</p>
 
-                <p className={styles.paragraph}>Команда дуже серйозно ставиться до захисту персональних даних
-                    користувача і пропагує їх захист. Власник захищає персональні дані
-                    різними способами з метою збереження конфіденційності та цілісності,
-                    запобігання несанкціонованому використанню або розголошенню персональних
-                    даних та захисту персональних даних користувача від втрати,
-                    неправильного використання, несанкціонованого доступу, розголошення,
-                    зміни та знищення.</p>
+                {(DOCUMENT.dataProtection).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>У кожного співробітника компанії є унікальний пароль для доступу до
-                    адміністративної частини веб-сайту, а також доступ до локальної бази
-                    даних.</p>
+                {(DOCUMENT.userRights).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Хостинг-провайдери та оператори сервісів обміну файлами забезпечують
-                    захист за допомогою шифрування. Деякі типи даних, які зберігаються на
-                    сервісі обміну файлами, можуть бути обмежені у доступі для певної групи
-                    користувачів. Наприклад, співробітники одного відділу не можуть отримати
-                    доступ до даних інших відділів.</p>
+                {(DOCUMENT.dataTransfer).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Користувач має право на виправлення, видалення або доступ до своїх
-                    персональних даних, обмеження їхньої обробки або заперечення щодо
-                    обробки своїх персональних даних. Якщо обробка здійснюється за згодою
-                    Користувача, він має право відкликати її в будь-який час.</p>
+                {(DOCUMENT.policyChanges).map((text, index) => {
+                    return <p key={index} className={styles.paragraph}>{text}</p>;
+                })}
 
-                <p className={styles.paragraph}>Для здійснення цих прав, будь ласка, зв'яжіться з Командою за допомогою
-                    засобів зв'язку, що вказані на Сайті.</p>
-
-                <p className={styles.paragraph}>Інформація, яку Власник збирає, може бути передана, збережена та
-                    оброблена в будь-якій країні.</p>
-
-                <p className={styles.paragraph}>Зокрема, Власник може передавати персональні дані сервісу розсилки
-                    електронних повідомлень, для розсилки інформаційних повідомлень,
-                    бюлетенів, запрошень, пропозицій тощо.</p>
-
-                <p className={styles.paragraph}>Власник також може надавати персональні дані своєму оператору сервісу
-                    обміну файлами, для забезпечення зберігання інформації, що на ньому
-                    знаходиться.</p>
-
-                <p className={styles.paragraph}>Дані можуть передаватися також компанії Google LLC та/або Meta Platforms
-                    Inc. шляхом використання платформами файлів cookies. В даному випадку ці
-                    компанії виступають в якості розпорядника таких даних.</p>
-
-                <p className={styles.paragraph}>Хоча інші території можуть і не мати таких самих стандартів захисту
-                    персональних даних, як в межах країни Користувача, Власник буде захищати
-                    персональні дані, які передає, відповідно до положень цієї Політики.</p>
-
-                <p className={styles.paragraph}>Команда залишає за собою право вносити зміни в дану політику в
-                    односторонньому порядку, без попереднього повідомлення. Актуальна версія
-                    політики доступна на Сайті Команди.</p>
             </div>
             <ScrollToTop />
             <Footer />
