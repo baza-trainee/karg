@@ -1,0 +1,86 @@
+{
+    "title": "PRIVACY POLICY",
+    "intro": {
+        "paragraph1": "This Privacy Policy ('Policy') covers the collection, use, disclosure, transfer, and storage of user personal information.",
+        "paragraph2": "Please make sure you review our privacy rules and contact us if you have any questions regarding this matter."
+    },
+    "terms": {
+        "heading": "Terms used in this Policy:",
+        "list": [
+            "Personal data -- any information about an individual who is identified or can be specifically identified;",
+            "Personal data subject -- an identified or identifiable individual whose personal data is processed by the Personal Data Owner responsible for such processing;",
+            "Processing of personal data -- any action or set of actions performed on personal data or sets of personal data, such as collection, registration, accumulation, structuring, storage, adaptation, modification, updating, anonymization, use, and dissemination through transfer, distribution, or other means that make such data accessible, combination, restriction, or destruction of personal data, including using information (automated) systems;",
+            "Restriction of personal data processing -- marking stored personal data to limit its future processing;",
+            "Personal Data Owner -- an individual or legal entity that independently or jointly with others determines the purpose of personal data processing, establishes the composition of such data, and the procedures for its processing;",
+            "Personal Data Processor -- an individual or legal entity authorized by the Personal Data Owner to process such data on behalf of the Owner;",
+            "Third party -- any individual or legal entity, except for the personal data subject, Owner, or Processor, to whom the Owner or Processor transfers personal data and who is authorized to process it;",
+            "Consent of the personal data subject -- a voluntary expression of will by an individual to allow the processing of their personal data for a specified purpose, expressed in a form that allows concluding that consent has been given;",
+            "IP address -- a unique identifier used by certain electronic devices to identify and exchange data with each other on the Internet."
+        ]
+    },
+    "dataCollected": {
+        "heading": "Data collected or may be collected by the Owner:",
+        "list": [
+            "contact details (name, surname, phone number, email address, etc.);",
+            "photos, video materials, etc."
+        ],
+        "paragraph": "The Owner may also collect data containing information about the domain name or IP address, date, and duration of the user's stay on the Team's website. Such data is collected automatically when the user visits the Team's website. Combined with other data, this information helps the Owner understand which content is most attractive to visitors. Additionally, such data helps the Owner identify destabilization of equipment operation."
+    },
+    "cookies": {
+        "paragraph1": "Websites use cookies, which are small text files placed on the user's device to store data and can be read by the web server in the domain that placed them. The Owner uses cookies to enable user authorization on the company's websites, analyze website performance, track user activity on websites, collect traffic data, and for other legitimate purposes.",
+        "paragraph2": "Most web browsers automatically use cookies, providing users with the ability to manage this process by blocking or deleting them. Instructions for blocking or deleting cookies can be found in the privacy settings or documentation of each web browser."
+    },
+    "purposes": {
+        "heading": "The company collects your data for the following purposes:",
+        "list": [
+            "communication with the user;",
+            "responding to inquiries, questions, and addressing user needs;",
+            "conducting surveys and research;",
+            "administering membership and collecting contributions to support the Team;",
+            "organizing and registering users for events conducted by the Team as part of its statutory activities or events the Team is involved in;",
+            "enabling the user to use the Team's website and its functionality;",
+            "administering the Team's websites, including improving the company's online services (developing new features and offerings, etc.)."
+        ]
+    },
+    "legalBasis": {
+        "paragraph1": "Please note that, in addition to the above purposes, the Owner may also process personal data to provide law enforcement agencies with information necessary for criminal proceedings or if such processing is required to fulfill another legal obligation, to protect the vital interests of the personal data subject or another individual, or to protect any other legitimate interests of the company or a third party that do not violate the fundamental rights and freedoms of the personal data subject.",
+        "paragraph2": "Legitimate interest means the Team's interest within the framework of its statutory activities. When the Owner processes personal information for purposes consistent with its legitimate interests, it always balances any potential impact on the user and their rights. The Owner's legitimate interests do not automatically override the user's interests."
+    },
+    "specificPurposes": {
+        "heading": "The Owner processes personal data for specific legitimate purposes, including:",
+        "list": [
+            "communication with the user;",
+            "sending the user electronic messages containing information about news, events, activities, etc., that may be of interest to the user."
+        ]
+    },
+    "nonPersonalData": {
+        "paragraph1": "The Owner may also collect data that does not directly relate to a specific individual (it is not personal data). The Owner may collect, use, transfer, and disclose such information for any purpose. When non-personal data is combined with personal data, the combined data will be considered personal as long as it remains combined.",
+        "paragraph2": "The Owner strives to make it easier for the user to track the accuracy, completeness, and relevance of their personal data. The Owner will retain personal information for the period necessary to fulfill the purposes outlined in this Policy. When determining the duration of such periods, the Owner first decides whether it needs to collect personal data at all, and if such a need exists, the Owner retains it only for the period necessary to achieve the purpose of collection (e.g., for the duration of employment with the company, etc.), except where the law establishes a longer retention period."
+    },
+    "dataSharing": {
+        "heading": "The Owner does not provide user personal data to organizations or individuals outside the Team's membership community, except in the following cases:",
+        "list": [
+            "data of participants in events organized by the Team or events the Team is involved in may be provided to protocol services of government and local authorities, building administrations where the event takes place to ensure free entry, speakers (moderators) of events with their verbal or written consent."
+        ],
+        "paragraph": "Only the names, surnames, email addresses, photos, and positions of participants in events organized by the Team or events the Team is involved in, members of the Team's governing bodies, may be published on the Team's website(s)."
+    },
+    "dataProtection": {
+        "paragraph1": "The Team takes the protection of user personal data very seriously and promotes its protection. The Owner protects personal data in various ways to maintain confidentiality and integrity, prevent unauthorized use or disclosure of personal data, and protect user personal data from loss, misuse, unauthorized access, disclosure, alteration, and destruction.",
+        "paragraph2": "Each company employee has a unique password to access the administrative part of the website, as well as access to the local database.",
+        "paragraph3": "Hosting providers and file-sharing service operators ensure protection through encryption. Some types of data stored on the file-sharing service may be restricted in access for certain user groups. For example, employees of one department cannot access data from other departments."
+    },
+    "userRights": {
+        "paragraph1": "The user has the right to correct, delete, or access their personal data, restrict its processing, or object to the processing of their personal data. If processing is carried out with the user's consent, they have the right to withdraw it at any time.",
+        "paragraph2": "To exercise these rights, please contact the Team using the contact methods provided on the Website."
+    },
+    "dataTransfer": {
+        "paragraph1": "The information collected by the Owner may be transferred, stored, and processed in any country.",
+        "paragraph2": "In particular, the Owner may transfer personal data to an email distribution service for sending informational messages, newsletters, invitations, offers, etc.",
+        "paragraph3": "The Owner may also provide personal data to its file-sharing service operator to ensure the storage of information located on it.",
+        "paragraph4": "Data may also be transferred to Google LLC and/or Meta Platforms Inc. through the use of cookies by these platforms. In this case, these companies act as processors of such data.",
+        "paragraph5": "Although other territories may not have the same personal data protection standards as the user's country, the Owner will protect the personal data it transfers in accordance with the provisions of this Policy."
+    },
+    "policyChanges": {
+        "paragraph": "The Team reserves the right to make changes to this policy unilaterally without prior notice. The current version of the policy is available on the Team's Website."
+    }
+}
