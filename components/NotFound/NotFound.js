@@ -17,7 +17,8 @@ export default function NotFound({ locale }) {
             notFoundText: "Ця сторінка не існує або була видалена! Пропонуємо вам повернутися на головну",
             backToHome: "На головну"
         }
-    }
+    };
+
     const t = (key) => translations[locale][key] || key;
 
     return (
@@ -28,7 +29,7 @@ export default function NotFound({ locale }) {
                 <div className={styles.subtitle}>{t("notFoundSubtitle")}</div>
             </div>
             <div className={styles.text}>{t("notFoundText")}</div>
-            <ButtonAsLink route={locale === 'uk' ? "/" : `/${locale}/`} buttonCaption={t("backToHome")} buttonStyle="backToHome" />
+            <ButtonAsLink route={locale === 'ua' ? "/" : `/${locale}/`} buttonCaption={t("backToHome")} buttonStyle="backToHome" />
         </div>
     );
 }

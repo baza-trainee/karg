@@ -14,9 +14,6 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import BankingDetails from './bankingDetails';
 // images, icons
 import {
-    help_usHeroMob,
-    help_usHeroTab,
-    help_usHeroDesk,
     help_usImage,
     help_usImage_tablet,
     help_usImage_desktop,
@@ -24,6 +21,14 @@ import {
 } from "@/public/assets/images/helpUs";
 
 const i18nNamespaces = ["helpUs", "common"];
+
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Допомогти нам" : "Help our cause"
+    };
+};
 
 const Help = async ({ params: { locale } }) => {
 

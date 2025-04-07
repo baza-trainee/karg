@@ -15,6 +15,14 @@ import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["results", "uniCards", "common"];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Підсумки" : "Year results"
+    };
+};
+
 const Results = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
 

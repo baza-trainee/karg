@@ -10,6 +10,14 @@ import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
 
 const i18nNamespaces = ["statut", "common"];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Статут" : "Statut"
+    };
+};
+
 const Statut = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
 

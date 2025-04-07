@@ -14,6 +14,14 @@ import { ourAnimalsImage } from '@/public/assets/images/animals';
 
 const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Наші тварини" : "Our animals"
+    };
+};
+
 const Animals = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
     const DOCUMENT_TEXT = {
