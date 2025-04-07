@@ -166,7 +166,7 @@ function Footer() {
             <Link href={localizedPath("/documents/privacy_policy")}>{t('common:privacy_policy')}</Link>
           </li>
           <li>
-            <Link href={localizedPath("/documents/website_rules")}>{t('common:website_rules')}</Link>
+            <Link href={localizedPath("/documents/terms_of_use")}>{t('common:website_rules')}</Link>
           </li>
         </ul>
       </div>
