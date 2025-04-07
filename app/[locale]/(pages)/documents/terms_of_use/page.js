@@ -10,6 +10,14 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ["websiteRules", "common"];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Правила користування сайтом" : "Terms of use"
+    };
+};
+
 const WebsiteRules = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
     const DOCUMENT = {

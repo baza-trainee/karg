@@ -14,6 +14,14 @@ import {
 
 const i18nNamespaces = ["contacts", "common"];
 
+export const metadata = ({ locale }) => {
+  const isUkrainian = locale === "uk";
+
+  return {
+    title: isUkrainian ? "Контакти" : "Contacts"
+  };
+};
+
 const Contacts = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 

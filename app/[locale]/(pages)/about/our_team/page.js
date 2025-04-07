@@ -13,6 +13,14 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ['ourTeam', 'common'];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Наша команда" : "Our team"
+    };
+};
+
 const OurTeam = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
@@ -33,7 +41,7 @@ const OurTeam = async ({ params: { locale } }) => {
                 <Donation locale={locale} namespaces={i18nNamespaces} />
                 <Partners />
             </main>
-            <ScrollToTop/>
+            <ScrollToTop />
             <Footer />
         </TranslationsProvider >
     );

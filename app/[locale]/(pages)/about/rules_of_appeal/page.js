@@ -15,6 +15,14 @@ import variables from "@/app/[locale]/variables.module.scss";
 
 const i18nNamespaces = ['rulesOfAppeal', 'common'];
 
+export const metadata = ({ locale }) => {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Правила звернення" : "Rules of appeal"
+    };
+};
+
 const RulesOfAppeal = async ({ params: { locale } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
 

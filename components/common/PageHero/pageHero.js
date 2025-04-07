@@ -7,9 +7,9 @@ const PageHero = ({ mobImage, tablImage, deskImage, buttonText, altText }) => {
     return (
         <section className={styles.pageHero}>
             <div className={styles.pseudoButton}>
-                <span className={styles.buttonText} >
+                <h1 className={styles.buttonText} >
                     {buttonText}
-                </span>
+                </h1>
             </div>
             <Image
                 className={`${styles.image} ${styles.mobImage}`}

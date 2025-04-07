@@ -7,6 +7,14 @@ import ArticleClient from "@/components/ArticleClient/ArticleClient";
 
 const i18nNamespaces = ["advices", "common"];
 
+export const metadata = ({ locale }) => {
+  const isUkrainian = locale === "uk";
+
+  return {
+    title: isUkrainian ? "Підсумки" : "Year results"
+  };
+};
+
 const ItemAdvice = async ({ params: { locale, id } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   let cultureCode = (locale === "uk") ? "ua" : "en";

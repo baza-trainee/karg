@@ -30,6 +30,14 @@ import NeedInfo from "@/components/common/NeedInfo/needInfo";
 
 const i18nNamespaces = ["historyOfOrigin", "common"];
 
+export const metadata = ({ locale }) => {
+  const isUkrainian = locale === "uk";
+
+  return {
+    title: isUkrainian ? "Історія виникнення команди" : "Team's history of origin"
+  };
+};
+
 const historyOfOrigin = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
   const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
@@ -51,12 +59,12 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           altText={altText}
         />
         <div className={styles.container}>
-          <h3 className={styles.historyTitle}>{t("historyOfOriginTitle")}</h3>
-          <div className={`${ styles.historyText } ${ styles.historyTextTop }`}>
+          <h2 className={styles.historyTitle}>{t("historyOfOriginTitle")}</h2>
+          <div className={`${styles.historyText} ${styles.historyTextTop}`}>
             <p>{t("historyOfOriginTextFirstPart")}</p>
             <p>{t("historyOfOriginTextSecondPart")}</p>
           </div>
-          <div className={`${ styles.imgOuterWrap } ${ styles.imgOuterWrapTop } `}>
+          <div className={`${styles.imgOuterWrap} ${styles.imgOuterWrapTop} `}>
             <Image
               className={styles.historyMob}
               src={historyMobOne}
@@ -161,11 +169,11 @@ const historyOfOrigin = async ({ params: { locale } }) => {
               />
             </div>
           </div>
-          <p className={`${ styles.historyText } ${ styles.historyTextBottom } `}>
+          <p className={`${styles.historyText} ${styles.historyTextBottom} `}>
             {t("historyOfOriginTextThirdPart")}
           </p>
           <div
-            className={`${ styles.imgOuterWrap } ${ styles.imgOuterWrapBottom } `}
+            className={`${styles.imgOuterWrap} ${styles.imgOuterWrapBottom} `}
           >
             <Image
               className={styles.historyMob}
@@ -215,7 +223,7 @@ const historyOfOrigin = async ({ params: { locale } }) => {
           buttonCaption={t("needInfoButtonCaption")}
           route={localizedPath("/about/rules_of_appeal")}
         />
-        <ScrollToTop/>
+        <ScrollToTop />
         <Footer />
       </div>
     </TranslationsProvider>

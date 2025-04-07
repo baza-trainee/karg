@@ -4,15 +4,63 @@ import i18nConfig from "@/i18nConfig";
 import { dir } from "i18next";
 import { Providers } from "../providers";
 
-
 const manrope = Manrope({
   weight: ["300", "400", "500", "700", "800"],
   subsets: ["latin", "cyrillic"],
 });
 
-export const metadata = {
-  title: "KARG",
-  description: "Kyiv Animal Rescue Group",
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export const metadata = ({ locale }) => {
+  const isUkrainian = locale === "uk";
+
+  return {
+    title: {
+      default: isUkrainian
+        ? "Kyiv Animal Rescue Group: порятунок тварин, допомога тваринам"
+        : "Kyiv Animal Rescue Group: animal rescue, help animals",
+      template: "%s - Kyiv Animal Rescue Group",
+    },
+    description: isUkrainian
+      ? "Порятунок тварин у Києві – допомагаємо котам, собакам, птахам і диким тваринам. 11 років рятуємо тварин. Якщо знайшли поранену тварину – звертайтесь!"
+      : "Animal rescue in Kyiv – helping cats, dogs, birds, and wild animals. 11 years of saving animals. If you find an injured animal – contact us!",
+    keywords: isUkrainian
+      ? "порятунок тварин, допомога тваринам, порятунок тварин Київ, KARG, rescue animals, animal help"
+      : "animal rescue, help animals, KARG, rescue animals, animal help",
+    openGraph: {
+      title: "Kyiv Animal Rescue Group",
+      description: isUkrainian
+        ? "Порятунок тварин у Києві – допомагаємо котам, собакам, птахам і диким тваринам. 11 років рятуємо тварин. Якщо знайшли поранену тварину – звертайтесь!"
+        : "Animal rescue in Kyiv – helping cats, dogs, birds, and wild animals. 11 years of saving animals. If you find an injured animal – contact us!",
+      type: "website",
+      url: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
+      locale: isUkrainian ? "uk_UA" : "en_US",
+      localeAlternate: ["uk_UA", "en_US"],
+      site_name: "Kyiv Animal Rescue Group",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Kyiv Animal Rescue Group",
+      description: isUkrainian
+        ? "Порятунок тварин у Києві – допомагаємо котам, собакам, птахам і диким тваринам."
+        : "Animal rescue in Kyiv – helping cats, dogs, birds, and wild animals.",
+      images: [
+        {
+          url: "/app/opengraph-image.png",
+          alt: isUkrainian
+            ? "Kyiv Animal Rescue Group: порятунок тварин"
+            : "Kyiv Animal Rescue Group: animal rescue",
+        },
+      ],
+    },
+    canonical: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
+    alternates: {
+      languages: {
+        uk: API_BASE_URL,
+        en: `${API_BASE_URL}en`,
+      },
+    },
+  };
 };
 
 export function generateStaticParams() {

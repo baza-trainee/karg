@@ -11,7 +11,7 @@ const TeamSection = async ({ locale, namespaces }) => {
         <section>
             <div className={styles.container}>
                 <div className={styles.introduction}>
-                    <h3 className={variables.Subtitle2}>{t('subtitle')}</h3>
+                    <h2 className={variables.Subtitle2}>{t('subtitle')}</h2>
                     <div className={styles.foundersQuote}>
                         <p className={`${styles.quote} ${variables.heading3}`}>{t('quote')}</p>
                         <p className={`${styles.signature} ${variables.Text3}`}>{t('signature')}</p>
