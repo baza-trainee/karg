@@ -5,4 +5,17 @@ module.exports = {
     priority: 0.7,
     sitemapSize: 5000,
     exclude: ["/auth/login", "/dashboard"],
+    robotsTxtOptions: {
+        policies: [
+            {
+                userAgent: "*",
+                allow: "/",
+                disallow: ["/auth/login", "/dashboard"],
+            },
+            {
+                userAgent: "Yandex",
+                disallow: "*/",
+            },
+        ],
+    },
 };

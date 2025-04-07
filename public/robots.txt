@@ -1,0 +1,15 @@
+# *
+User-agent: *
+Allow: /
+Disallow: /auth/login
+Disallow: /dashboard
+
+# Yandex
+User-agent: Yandex
+Disallow: */
+
+# Host
+Host: https://dev.karg.kyiv.ua/
+
+# Sitemaps
+Sitemap: https://dev.karg.kyiv.ua/sitemap.xml
