@@ -16,6 +16,14 @@ const buttonText = "FAQ";
 const altText = "bats sit on a branch";
 const i18nNamespaces = ["home", "common"];
 
+export const metadata = ({ locale }) => {
+  const isUkrainian = locale === "uk";
+
+  return {
+    title: isUkrainian ? "Питання і відповіді" : "FAQ"
+  };
+};
+
 const Faq = async ({ params: { locale } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
 
