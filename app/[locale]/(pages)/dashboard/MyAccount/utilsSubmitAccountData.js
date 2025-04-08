@@ -33,7 +33,7 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
     const handleUpdateAccount = async () => {
         const updates = getUpdatedFields(destructuredFormData, destructuredOriginalData);
         if (!updates.length) {
-            return;
+            return { success: false };
         }
         try {
             const result = await updateRescuerInfo(destructuredFormData.id, updates);
@@ -47,7 +47,7 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                         message={result.emailConflict}
                         buttonText={buttonText}
                     />)
-                return;
+                return { success: false };
             }
             if (result.error) {
                 showModal('confirmation',
@@ -56,7 +56,7 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                         message={result.error}
                         buttonText={buttonText}
                     />);
-                return;
+                return { success: false };
             }
             showModal('confirmation',
                 <SuccessDialog
@@ -65,9 +65,11 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                     buttonText={buttonText}
                 />)
             setHasUnsavedChanges(false);
+            return { success: true };
         } catch (error) {
             console.error('Error updating rescuer account:', error);
+            return { success: false };
         }
     };
-    await handleUpdateAccount();
+    return await handleUpdateAccount();
 }

@@ -110,6 +110,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             formData,
             originalData,
             showModal,
+            hideModal,
             setHasUnsavedChanges,
             successDialogActions,
             accountId,

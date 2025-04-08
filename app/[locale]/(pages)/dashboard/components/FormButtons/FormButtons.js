@@ -51,6 +51,7 @@ function FormButtons({
 
             {changePasswordButtonTitle &&
                 <Button
+                    type="button"
                     className={restoreButtonStyle}
                     disabled={!isFormValid}
                     onClick={() => router.push("/auth/restore")}

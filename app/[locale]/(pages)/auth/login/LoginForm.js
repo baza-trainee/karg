@@ -76,6 +76,7 @@ export default function LoginForm({
                     {(loginStatus && isFormValid) && <p className={emailError || passwordError ? styles.success : `${styles.authError} ${variables.font20w400}`}>{loginStatus}</p>}
                     <div className={styles.buttonResetContainer}>
                         <button
+                            type="button"
                             className={styles.buttonReset}
                             onClick={() => router.push("/auth/restore")}>{blockCaptions.forgotButton}
                         </button>

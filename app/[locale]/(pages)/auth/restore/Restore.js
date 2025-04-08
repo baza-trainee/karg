@@ -143,6 +143,7 @@ export default function Restore() {
                 >{blockTitles.sendNewEmail}
                 </button>
                 <button
+                  type="button"
                   className={`${styles.goToLogin} ${variables.font20w700}`}
                   onClick={() => router.push('/auth/login')}
                 >{blockTitles.goToLogin}
