@@ -17,6 +17,10 @@
   transition: color 0.3s ease-in-out;
 }
 
+.wrapper {
+  cursor: pointer;
+}
+
 .active {
   @extend .bg-gradient;
   &:hover {

@@ -51,7 +51,7 @@ export default function ResetPassword() {
   }, [form])
 
   const validatePassword = (value) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\d~!?@#$%^&*_\-+(){}\[\]>\\/<|"'.,:;]{6,64}$/;
+    const passwordRegex = /^(?=.*[A-ZА-ЯЁЇІЄҐ])(?=.*[a-zа-яёїієґ])(?=.*\d)[A-Za-zА-Яа-яЁёЇїІіЄєҐґ\d~!?@#$%^&*_\-+()\[\]{}><\/\\|"'.,:;]{6,64}$/u;
     let errorMessage = '';
     if (!value) {
       errorMessage = errorMessages.emptyFieldError;

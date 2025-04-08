@@ -20,8 +20,8 @@ export default function LogoutBlock() {
   return (
     <div
       className={styles.log_out}
-      onClick={handleLogout}
     >
+      <div className={styles.wrapper} onClick={handleLogout}>
       <AsideItem
         itemStyle={styles.item}
         titleStyle={styles.title}
@@ -31,7 +31,8 @@ export default function LogoutBlock() {
         <LogoutIcon
           className={styles.icon}
         />
-      </AsideItem>
+        </AsideItem>
+      </div>
     </div>
   )
 }
