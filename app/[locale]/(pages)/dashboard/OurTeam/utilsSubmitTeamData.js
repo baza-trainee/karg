@@ -2,7 +2,7 @@ import { addRescuer, updateRescuerInfo } from "./api";
 import { checkFormValidity } from './TeamForm/checkFormValidity';
 import SuccessDialog from "../SuccessDialog/SuccessDialog";
 
-export const submitTeamMemberData = async (type, formData, originalData, showModal, setHasUnsavedChanges, successDialogActions, accountId) => {
+export const submitTeamMemberData = async (type, formData, originalData, showModal, hideModal, setHasUnsavedChanges, successDialogActions, accountId) => {
     const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (formData, originalData) => {
@@ -78,6 +78,7 @@ export const submitTeamMemberData = async (type, formData, originalData, showMod
     const handleUpdateRescuer = async () => {
         const updates = getUpdatedFields(formData, originalData);
         if (!updates.length) {
+            hideModal('generic');
             return;
         }
         try {
