@@ -63,6 +63,10 @@
     }
   }
 
+  .passwordInput {
+    padding-right: 50px;
+  }
+
   .errorBorder {
     outline: none;
     border: 1px solid $text-error;
@@ -111,7 +115,6 @@
 
 .logo {
   font-size: 158px;
-  
 }
 
 .buttonResetContainer {

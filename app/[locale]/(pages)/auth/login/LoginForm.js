@@ -53,7 +53,7 @@ export default function LoginForm({
                         <label htmlFor='password'>
                             {blockCaptions.passwordLabel}
                             <input
-                                className={(passwordVisited && passwordError) ? styles.errorBorder : styles.ordinaryBorder}
+                                className={`${styles.passwordInput} ${(passwordVisited && passwordError) ? styles.errorBorder : styles.ordinaryBorder}`}
                                 type={isPasswordVisible ? 'text' : 'password'}
                                 aria-label='password'
                                 id='password'
