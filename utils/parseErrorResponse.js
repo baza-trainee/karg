@@ -21,7 +21,7 @@ export const parseErrorResponse = async (response) => {
         console.error("Помилка при розборі error response:", error);
         return {
             status: response?.status || 0,
-            error: `API error: ${response.status}`
+            error: `API error: ${response?.status}`
         };
     }
 };

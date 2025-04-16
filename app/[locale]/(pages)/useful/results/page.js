@@ -19,7 +19,7 @@ export const metadata = ({ locale }) => {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Підсумки" : "Year results"
+        title: isUkrainian ? "Підсумки" : "Results"
     };
 };
 

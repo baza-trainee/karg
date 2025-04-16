@@ -127,7 +127,7 @@ function ContactForm({ type = 'edit', contactData = {}, categoryLabel }) {
             : [{
                 ...formData,
                 value: formData.category === "Statistics" && formData.id === 12
-                    ? `${formData.value}+`
+                    ? `${formData.value}`
                     : formData.value
             }];
 
