@@ -1,7 +1,8 @@
 import { updateRescuerInfo } from "./api";
 import SuccessDialog from "../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../handleForbiddenAccess";
 
-export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions, accountId) => {
+export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions, accountId, logoutDependencies) => {
     const { successTitle, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (destructuredFormData, destructuredOriginalData) => {
@@ -37,10 +38,10 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
         }
         try {
             const result = await updateRescuerInfo(destructuredFormData.id, updates);
-            if (result.token && Number(destructuredFormData.id) === Number(accountId)) {
+            if (result?.token && Number(destructuredFormData.id) === Number(accountId)) {
                 localStorage.setItem('auth-token', result.token);
             }
-            if (result.emailConflict) {
+            if (result?.emailConflict) {
                 showModal('confirmation',
                     <SuccessDialog
                         title={"Помилка"}
@@ -49,7 +50,11 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                     />)
                 return { success: false };
             }
-            if (result.error) {
+            if (result?.status === 403) {
+                handleForbiddenAccess(result, showModal, logoutDependencies)
+                return { success: false };
+            }
+            if (result?.error) {
                 showModal('confirmation',
                     <SuccessDialog
                         title={"Помилка"}

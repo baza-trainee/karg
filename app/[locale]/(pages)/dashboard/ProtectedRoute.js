@@ -15,12 +15,18 @@ const ProtectedRoute = ({ children }) => {
         }
     }, []);
 
+    const checkAuth = () => {
+        const storedToken = localStorage.getItem('auth-token');
+        const storedAccountId = localStorage.getItem('accountId');
+        return (storedToken && storedAccountId);
+    }
+
     useEffect(() => {
-        if (isMounted && !accountId) {
+        if (isMounted && !checkAuth()) {
             router.push('/auth/login');
         }
-    }, [isMounted, accountId, router]);
-    
+    }, [isMounted, router]);
+
     if (!isMounted) return <div style={{ display: 'none' }}></div>;
     return accountId ? children : null;
 }

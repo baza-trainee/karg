@@ -39,6 +39,7 @@ export default function ResetPassword() {
   const { isLoading, setIsLoading } = useContext(AdminContext);
   const password = form.password.value;
   const repeatPassword = form.repeatPassword.value;
+  const {accountId, setAccountId} = useContext(AdminContext);
 
   useEffect(() => {
     const isPasswordValid = form.password.value && !form.password.passwordError && form.password.passwordVisited;
@@ -130,6 +131,10 @@ export default function ResetPassword() {
     e.preventDefault();
     const newPassword = form.password.value;
     const token = searchParams.get('token');
+    const currentAccountId = accountId;
+    if (currentAccountId) {
+      localStorage.setItem('accountId', currentAccountId);
+    }
     localStorage.setItem('auth-token', token);
     const data = {
       'password': newPassword,

@@ -1,11 +1,11 @@
-import { loginUser, logoutUser } from "./api";
+// import { loginUser, logoutUser } from "./api";
 
-export default class authService {
-    static async login(email, password) {
-        return loginUser(email, password);
-    };
+// export default class authService {
+//     static async login(email, password) {
+//         return loginUser(email, password);
+//     };
 
-    static async logout(setIsDirector, setAccountId, setActiveSection) {
-        return await logoutUser(setIsDirector, setAccountId, setActiveSection);
-    };
-}
+//     static async logout(setIsDirector, setAccountId, setActiveSection, setActiveHelpSection) {
+//         return await logoutUser(setIsDirector, setAccountId, setActiveSection, setActiveHelpSection);
+//     };
+// }

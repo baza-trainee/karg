@@ -15,6 +15,9 @@ export const fetchTeamUserData = async (rescuerId, type, setIsDirector) => {
     if (type === 'edit' && rescuerId) {
         try {
             const data = await getRescuerById(rescuerId);
+            if (data?.status === 403) {
+                return data;
+            }
             if (data?.error) {
                 const errorMessage = data.error;
                 console.error('Error fetching rescuer data:', errorMessage);

@@ -17,6 +17,7 @@ import { TeamContext } from "../TeamContext";
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import { AdminContext } from "@/app/adminProvider";
 import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../../handleForbiddenAccess";
 
 const labels = {
     fullNameTitle: "Імʼя та прізвище",
@@ -57,14 +58,18 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
     const title = type === 'create' ? "Додати користувача" : "Редагувати користувача";
     const { btnReject, btnSubmit, btnSaveChanges } = btnLabels;
     const maxImages = 2;
-    const { isDirector, accountId } = useContext(AdminContext);
+    const { isDirector, accountId, logoutDependencies } = useContext(AdminContext);
 
     useEffect(() => {
         const fetchInitialData = async () => {
             setIsLoading(true);
             try {
                 const data = await fetchTeamUserData(rescuerData.id, type);
-                if (data?.error) {
+                if (data?.status === 403) {
+                    handleForbiddenAccess(data, showModal, logoutDependencies);
+                    setIsLoading(false);
+                    return;
+                } else if (data?.error) {
                     setFormData(initializeFormData({}));
                     setOriginalData(initializeFormData({}));
                     setIsFormValid(false);
@@ -114,6 +119,7 @@ function RescuerForm({ type = 'create', rescuerData = {} }) {
             setHasUnsavedChanges,
             successDialogActions,
             accountId,
+            logoutDependencies,
         );
         await loadRescuers();
         setIsLoading(false);
