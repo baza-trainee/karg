@@ -10,7 +10,24 @@ import { useTranslation } from 'react-i18next';
 
 export function MenuItem({ title, href, iconSrc, innerMessage }) {
   const { t } = useTranslation();
-  const details = t('quickMenuDetails');
+  
+  let details;
+  switch (title) {
+    case t('quickMenuDonate'):
+      details = t('quickMenuDetailsDonate');
+      break;
+    case t('quickMenuServices'):
+      details = t('quickMenuDetailsServices');
+      break;
+    case t('quickMenuAnimals'):
+      details = t('quickMenuDetailsAnimals');
+      break;
+    case t('quickMenuReports'):
+      details = t('quickMenuDetailsReports');
+      break;
+    default:
+      details = t('quickMenuDetailsDefault');
+  }
 
   return (
 
