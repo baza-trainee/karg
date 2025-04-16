@@ -6,13 +6,22 @@ export const parseErrorResponse = async (response) => {
             const errorMessage = (typeof errorBody === 'object' && errorBody.message)
                 ? errorBody.message
                 : errorBody;
-            return { error: errorMessage || `API error: ${response.status}` };
+            return {
+                status: response.status,
+                error: errorMessage || `API error: ${response.status}`,
+            };
         } else {
             const errorText = await response.text();
-            return { error: errorText || `API error: ${response.status}` };
+            return {
+                status: response.status,
+                error: errorText || `API error: ${response.status}`,
+            };
         }
     } catch (error) {
         console.error("Помилка при розборі error response:", error);
-        return { error: `API error: ${response.status}` };
+        return {
+            status: response?.status || 0,
+            error: `API error: ${response.status}`
+        };
     }
 };

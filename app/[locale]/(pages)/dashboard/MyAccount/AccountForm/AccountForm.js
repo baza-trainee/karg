@@ -18,6 +18,7 @@ import { initializeFormData, fetchTeamUserData } from "../utilsFetchAccountData"
 import variables from '../../../../variables.module.scss';
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../../handleForbiddenAccess";
 
 const labels = {
     firstNameTitle: "Імʼя",
@@ -40,7 +41,7 @@ const successDialogActions = {
 function AccountForm({ type = 'edit' }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
-    const { accountId, isDirector, setIsDirector } = useContext(AdminContext);
+    const { accountId, isDirector, setIsDirector, logoutDependencies } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
     const [formData, setFormData] = useState(initializeFormData({}));
@@ -56,7 +57,11 @@ function AccountForm({ type = 'edit' }) {
             setIsLoading(true);
             try {
                 const data = await fetchTeamUserData(accountId, type, setIsDirector);
-                if (data?.error) {
+                if (data?.status === 403) {
+                    handleForbiddenAccess(data, showModal, logoutDependencies);
+                    setIsLoading(false);
+                    return;
+                } else if (data?.error) {
                     setFormData(initializeFormData({}));
                     setOriginalData(initializeFormData({}));
                     setIsFormValid(false);
@@ -121,6 +126,7 @@ function AccountForm({ type = 'edit' }) {
             setHasUnsavedChanges,
             successDialogActions,
             accountId,
+            logoutDependencies,
         );
         if (result?.success) {
             const updatedOriginalData = {

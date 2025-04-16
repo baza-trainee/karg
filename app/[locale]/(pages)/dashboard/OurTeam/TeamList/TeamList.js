@@ -33,7 +33,7 @@ function TeamList() {
         handlePageChange,
         totalPages
     } = useContext(TeamContext);
-    const { isDirector } = useContext(AdminContext);
+    const { isDirector, logoutDependencies } = useContext(AdminContext);
     const { confirmationTitle, message, cancelTitle, confirmTitle } = deleteDialogActions;
     const { showModal } = useContext(ModalContext);
 
@@ -45,7 +45,7 @@ function TeamList() {
 
     const handleDeleteRescuer = async (id) => {
         setIsLoading(true);
-        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers, showModal);
+        await deleteTeamUserData(id, currentPage, rescuers, handlePageChange, setRescuers, showModal, logoutDependencies);
         setIsLoading(false);
     };
 
