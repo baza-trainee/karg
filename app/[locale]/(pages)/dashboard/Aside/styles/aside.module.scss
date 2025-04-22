@@ -167,10 +167,6 @@
     font-size: clamp(0.75rem, calc(0.6rem + 0.6vw), 1.25rem);
   }
 
-  .logo {
-    width: 24.5%;
-  }
-
   .logo_name {
     display: flex;
     align-items: center;
@@ -191,14 +187,12 @@
   }
 
   .logo {
-    width: 24%;
+    width: 24, 5%;
     font-size: clamp(2.25rem, calc(2.25rem + 1vw), 2.875rem);
   }
 
   .icon {
     min-width: 20px;
-    
-    // font-size: clamp(1.125rem, calc(1rem + 0.3vw), 1.25rem);
   }
 
   .item_logo {
@@ -231,6 +225,7 @@
 
   .logo {
     font-size: 46px;
+    min-width: 46px;
   }
 
   .logo_name {
