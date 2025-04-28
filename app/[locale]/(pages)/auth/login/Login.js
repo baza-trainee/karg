@@ -1,7 +1,7 @@
 'use client';
 import React, { useState, useEffect, useContext } from 'react';
 import { useRouter } from "next/navigation";
-import authService from './authService';
+import { loginUser } from './api';
 import { AdminContext } from '@/app/adminProvider';
 import LoginForm from './LoginForm';
 import Spinner from "@/components/Spinner/Spinner";
@@ -22,6 +22,7 @@ export default function LoginPage() {
     'passwordError': 'Ви ввели невідповідний пароль.',
     'authError': 'Введено невірний логін або пароль.'
   };
+  const serverErrorMessage = "Виникла помилка на сервері. Будь ласка, спробуйте пізніше.";
 
   const router = useRouter();
   const [emailVisited, setEmailVisited] = useState(false);
@@ -64,7 +65,7 @@ export default function LoginPage() {
   };
 
   const validatePassword = (value) => {
-    const passwordRegex = /^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)[A-Za-z\u0400-\u04FF\d~!?@#$%^&*(){}\[\]><\/\\|"'.,:;-]{1,64}$/;
+    const passwordRegex = /^(?=.*[A-ZА-ЯЁЇІЄҐ])(?=.*[a-zа-яёїієґ])(?=.*\d)[A-Za-zА-Яа-яЁёЇїІіЄєҐґ\d~!?@#$%^&*_\-+()\[\]{}><\/\\|"'.,:;]{6,64}$/u;
     if (!passwordRegex.test(value)) {
       return errorMessages.passwordError;
     }
@@ -97,26 +98,25 @@ export default function LoginPage() {
     }
     try {
       setIsLoading(true);
-      const response = await authService.login(form.email.value, form.password.value);
+      const response = await loginUser(form.email.value, form.password.value);
+      const { data, httpStatus } = response || {};
+      const { token, status, message, rescuerId } = data || {};
 
-      if (response && response.status === 1) {
-        const authToken = await response.token;
-        const accountId = await response.rescuerId;
-
-        localStorage.setItem('auth-token', authToken);
-        localStorage.setItem('accountId', accountId);
-        setAccountId(accountId);
+      if (status === 1) {
+        localStorage.setItem('auth-token', token);
+        localStorage.setItem('accountId', rescuerId);
+        setAccountId(rescuerId);
         setActiveSection('Мій акаунт');
         router.push("/dashboard", { email: form.email.value });
       }
-      else if (response.status === 400 || (!response.status)) {
-        setLoginStatus(response.message || errorMessages.authError);
+      else if (httpStatus >= 400 && httpStatus < 500) {
+        setLoginStatus(message || errorMessages.authError);
       }
-      else if ((response.status === 500)) {
-        setLoginStatus(response.message || "Виникла помилка на сервері. Будь ласка, спробуйте пізніше.");
+      else if (status === 0 || httpStatus >= 500) {
+        setLoginStatus(message || serverErrorMessage);
       }
     } catch (error) {
-      setLoginStatus(errorMessages.authError);
+      setLoginStatus(serverErrorMessage);
       console.error("Error:", error);
 
     } finally {

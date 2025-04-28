@@ -74,12 +74,6 @@ const Help = async ({ params: { locale } }) => {
                     <p className={`${styles.textBlock_text} ${variables.text_4}`}>
                         {DOCUMENT_TEXT.articleP1}</p>
                 </section>
-                <section className={styles.bankingDetails_Container}>
-                    <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>
-                        {DOCUMENT_TEXT.textBlock_title2}
-                    </h3>
-                    <BankingDetails translation={DOCUMENT_TEXT.copy} />
-                </section>
                 <section className={styles.paymentsButtons_Container}>
                     <h4 className={`${styles.paymentsButtons_title} ${variables.Heading3}`}>
                         {DOCUMENT_TEXT.paymentsButtons_title}
@@ -99,6 +93,12 @@ const Help = async ({ params: { locale } }) => {
                         </a>
 
                     </div>
+                </section>
+                <section className={styles.bankingDetails_Container}>
+                    <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>
+                        {DOCUMENT_TEXT.textBlock_title2}
+                    </h3>
+                    <BankingDetails />
                 </section>
                 <section className={styles.photoBlock_Container}>
                     <h4 className={`${styles.photoBlock_title} ${variables.Heading3}`}>

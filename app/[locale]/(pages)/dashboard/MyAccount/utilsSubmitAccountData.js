@@ -1,7 +1,8 @@
 import { updateRescuerInfo } from "./api";
 import SuccessDialog from "../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../handleForbiddenAccess";
 
-export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions, accountId) => {
+export const submitTeamMemberData = async (destructuredFormData, destructuredOriginalData, showModal, setHasUnsavedChanges, successDialogActions, accountId, logoutDependencies) => {
     const { successTitle, successChangeMessage, buttonText } = successDialogActions;
 
     const getUpdatedFields = (destructuredFormData, destructuredOriginalData) => {
@@ -33,30 +34,34 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
     const handleUpdateAccount = async () => {
         const updates = getUpdatedFields(destructuredFormData, destructuredOriginalData);
         if (!updates.length) {
-            return;
+            return { success: false };
         }
         try {
             const result = await updateRescuerInfo(destructuredFormData.id, updates);
-            if (result.token && Number(destructuredFormData.id) === Number(accountId)) {
+            if (result?.token && Number(destructuredFormData.id) === Number(accountId)) {
                 localStorage.setItem('auth-token', result.token);
             }
-            if (result.emailConflict) {
+            if (result?.emailConflict) {
                 showModal('confirmation',
                     <SuccessDialog
                         title={"Помилка"}
                         message={result.emailConflict}
                         buttonText={buttonText}
                     />)
-                return;
+                return { success: false };
             }
-            if (result.error) {
+            if (result?.status === 403) {
+                handleForbiddenAccess(result, showModal, logoutDependencies)
+                return { success: false };
+            }
+            if (result?.error) {
                 showModal('confirmation',
                     <SuccessDialog
                         title={"Помилка"}
                         message={result.error}
                         buttonText={buttonText}
                     />);
-                return;
+                return { success: false };
             }
             showModal('confirmation',
                 <SuccessDialog
@@ -65,9 +70,11 @@ export const submitTeamMemberData = async (destructuredFormData, destructuredOri
                     buttonText={buttonText}
                 />)
             setHasUnsavedChanges(false);
+            return { success: true };
         } catch (error) {
             console.error('Error updating rescuer account:', error);
+            return { success: false };
         }
     };
-    await handleUpdateAccount();
+    return await handleUpdateAccount();
 }

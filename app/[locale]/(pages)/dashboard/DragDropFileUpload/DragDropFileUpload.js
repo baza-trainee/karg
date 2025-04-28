@@ -3,7 +3,7 @@ import { useState, useRef } from 'react';
 import styles from "./dragDropFileUpload.module.scss";
 import { encodeToBase64 } from '@/utils/base64ImageHandler';
 
-const MAX_FILE_SIZE = 300000;
+const MAX_FILE_SIZE = 1 * 1024 * 1024; 
 
 const DragDropFileUpload = ({
     onFileUploaded,
@@ -29,7 +29,7 @@ const DragDropFileUpload = ({
                 return;
             }
             if (file.size > MAX_FILE_SIZE) {
-                alert('Розмір файлу перевищує 300 КБ. Будь ласка, завантажте менший файл.');
+                alert('Розмір файлу перевищує 1 МБ. Будь ласка, завантажте менший файл.');
                 return;
             }
             const base64 = await encodeToBase64(file);

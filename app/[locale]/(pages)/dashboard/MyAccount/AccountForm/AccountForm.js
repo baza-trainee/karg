@@ -2,7 +2,7 @@
 
 import styles from "./styles/accountForm.module.scss";
 import stylesBtn from '@/components/Button/styles/button.module.scss';
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useRef } from "react";
 import ModalContext from "@/app/ModalContext";
 import { AdminContext } from '@/app/adminProvider';
 import Spinner from "@/components/Spinner/Spinner";
@@ -18,6 +18,7 @@ import { initializeFormData, fetchTeamUserData } from "../utilsFetchAccountData"
 import variables from '../../../../variables.module.scss';
 import { validateAndFormatPhoneNumber } from "./checkFormValidity";
 import SuccessDialog from "../../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../../handleForbiddenAccess";
 
 const labels = {
     firstNameTitle: "Імʼя",
@@ -37,15 +38,16 @@ const successDialogActions = {
     buttonText: 'Закрити'
 }
 
-function AccountForm({ type = 'edit', accountData = {} }) {
+function AccountForm({ type = 'edit' }) {
     const { firstNameTitle, lastNameTitle, phoneNumberTitle, emailTitle } = labels;
     const { hideModal, showModal } = useContext(ModalContext);
-    const { accountId, isDirector, setIsDirector } = useContext(AdminContext);
+    const { accountId, isDirector, setIsDirector, logoutDependencies } = useContext(AdminContext);
     const { setHasUnsavedChanges } = useUnsavedChanges();
     const [isFormValid, setIsFormValid] = useState(false);
-    const [formData, setFormData] = useState(initializeFormData(accountData));
-    const [originalData, setOriginalData] = useState(initializeFormData(accountData));
+    const [formData, setFormData] = useState(initializeFormData({}));
+    const [originalData, setOriginalData] = useState(() => initializeFormData({}));
     const [isLoading, setIsLoading] = useState(false);
+    const initializedRef = useRef(false);
     const title = "Персональна інформація";
     const { changePasswordButton, btnSaveChanges } = btnLabels;
     const maxImages = 1;
@@ -55,7 +57,11 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             setIsLoading(true);
             try {
                 const data = await fetchTeamUserData(accountId, type, setIsDirector);
-                if (data?.error) {
+                if (data?.status === 403) {
+                    handleForbiddenAccess(data, showModal, logoutDependencies);
+                    setIsLoading(false);
+                    return;
+                } else if (data?.error) {
                     setFormData(initializeFormData({}));
                     setOriginalData(initializeFormData({}));
                     setIsFormValid(false);
@@ -82,8 +88,9 @@ function AccountForm({ type = 'edit', accountData = {} }) {
             }
             setIsLoading(false);
         };
-        if (accountId) {
+        if (!initializedRef.current && accountId) {
             fetchInitialData();
+            initializedRef.current = true;
         } else {
             setIsFormValid(checkFormValidity(formData));
         }
@@ -105,21 +112,33 @@ function AccountForm({ type = 'edit', accountData = {} }) {
 
         const destructuredOriginalData = {
             id: originalData.id ? originalData.id : accountId,
-            fullName: originalData.fullName_name + " " + originalData.fullName_lastName,
+            fullName: `${originalData.fullName_name || ''} ${originalData.fullName_lastName || ''}`,
             email: originalData.email,
             phoneNumber: originalData.phoneNumber,
             images: originalData.images,
         };
 
         setIsLoading(true);
-        await submitTeamMemberData(
+        const result = await submitTeamMemberData(
             destructuredFormData,
             destructuredOriginalData,
             showModal,
             setHasUnsavedChanges,
             successDialogActions,
             accountId,
+            logoutDependencies,
         );
+        if (result?.success) {
+            const updatedOriginalData = {
+                id: formData.id,
+                fullName_name: formData.fullName_name,
+                fullName_lastName: formData.fullName_lastName,
+                email: formData.email,
+                phoneNumber: formData.phoneNumber,
+                images: formData.images,
+            };
+            setOriginalData(updatedOriginalData);
+        }
         setIsLoading(false);
     };
 

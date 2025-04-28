@@ -13,9 +13,10 @@ import ContactTab from "./Tabs/ContactTab";
 
 function HelpSidebar() {
     const { activeHelpSection, setActiveHelpSection } = useContext(AdminContext);
+    const currentHelpSection = activeHelpSection || 'Загальні Питання';
 
     function renderHelpSection() {
-        switch (activeHelpSection) {
+        switch (currentHelpSection) {
             case 'Контакти та статистичні дані':
                 return <ContactTab />
             case 'Загальні Питання':
@@ -44,63 +45,63 @@ function HelpSidebar() {
             <div className={styles.helpSidebarWrapper}>
                 <nav className={styles.helpSidebar}>
                     <ul>
-                        <li className={activeHelpSection === 'Загальні Питання' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Загальні Питання' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Загальні Питання')}>
                                 Загальні Питання
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Контакти та статистичні дані' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Контакти та статистичні дані' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Контакти та статистичні дані')}>
                                 Контакти та статистичні дані
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Тварини' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Тварини' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Тварини')}>
                                 Тварини
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Партнери' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Партнери' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Партнери')}>
                                 Партнери
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Поради' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Поради' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Поради')}>
                                 Поради
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'FAQ' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'FAQ' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('FAQ')}>
                                 FAQ
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Підсумки' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Підсумки' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Підсумки')}>
                                 Підсумки
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Мій акаунт' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Мій акаунт' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Мій акаунт')}>
                                 Мій акаунт
                             </button>
                         </li>
-                        <li className={activeHelpSection === 'Команда' ? styles.active : ''}>
+                        <li className={currentHelpSection === 'Команда' ? styles.active : ''}>
                             <button
                                 className={styles.button}
                                 onClick={() => setActiveHelpSection('Команда')}>

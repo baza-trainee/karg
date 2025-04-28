@@ -7,7 +7,7 @@ import variables from "../../../variables.module.scss";
 import ModalContext from '@/app/ModalContext';
 import { useUnsavedChanges } from '@/app/UnsavedChangesContext';
 
-function SuccessDialog({ title, message, buttonText }) {
+function SuccessDialog({ title, message, buttonText, onRedirect = () => { } }) {
     const { hideModal } = useContext(ModalContext);
     const { hasUnsavedChanges } = useUnsavedChanges();
     const containerRef = useRef(null);
@@ -20,7 +20,10 @@ function SuccessDialog({ title, message, buttonText }) {
         if (!hasUnsavedChanges) {
             hideModal('generic');
         }
-    }, [hasUnsavedChanges, hideModal]);
+        if (typeof onRedirect === 'function') {
+            onRedirect();
+        }
+    }, [hasUnsavedChanges, hideModal, onRedirect]);
 
     const handleKeyDown = (e) => {
         if (e.key === 'Enter') {

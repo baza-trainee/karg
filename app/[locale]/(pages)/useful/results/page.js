@@ -19,7 +19,7 @@ export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Підсумки" : "Year results"
+        title: isUkrainian ? "Підсумки" : "Results"
     };
 };
 

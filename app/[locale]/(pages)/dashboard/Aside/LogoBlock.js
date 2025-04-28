@@ -2,9 +2,9 @@
 
 import React from 'react';
 import AsideItem from './AsideItem';
-import { LogoIcon } from '@/public/assets/icons/aside';
 import styles from "./styles/aside.module.scss";
 import Link from "next/link";
+import { Logo } from "@/public/assets/icons";
 
 
 export default function LogoBlock() {
@@ -17,7 +17,7 @@ export default function LogoBlock() {
           wrapperStyle={styles.wrapper_logo}
           title="Kyiv animal rescue group"
         >
-          <LogoIcon className={styles.logo} />
+          <Logo className={styles.logo} />
         </AsideItem>
       </Link>
     </div>
