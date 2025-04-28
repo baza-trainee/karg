@@ -12,7 +12,10 @@ import Help from "@/components/Help/help-section";
 import Support from "@/components/Support/Support";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import styles from "./styles/main.module.scss";
+
 const i18nNamespaces = ['main', 'common'];
+
+
 
 export default async function Home({ params: { locale } }) {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);

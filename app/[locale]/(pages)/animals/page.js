@@ -14,7 +14,7 @@ import { ourAnimalsImage } from '@/public/assets/images/animals';
 
 const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {

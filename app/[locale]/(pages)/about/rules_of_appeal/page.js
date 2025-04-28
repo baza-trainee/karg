@@ -15,7 +15,7 @@ import variables from "@/app/[locale]/variables.module.scss";
 
 const i18nNamespaces = ['rulesOfAppeal', 'common'];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {

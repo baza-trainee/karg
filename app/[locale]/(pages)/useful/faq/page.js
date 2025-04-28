@@ -16,11 +16,11 @@ const buttonText = "FAQ";
 const altText = "bats sit on a branch";
 const i18nNamespaces = ["home", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
-    title: isUkrainian ? "Питання і відповіді" : "FAQ"
+    title: isUkrainian ? "Питання і відповіді" : "Facts and questions"
   };
 };
 

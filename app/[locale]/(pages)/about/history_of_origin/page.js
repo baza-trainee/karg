@@ -30,7 +30,7 @@ import NeedInfo from "@/components/common/NeedInfo/needInfo";
 
 const i18nNamespaces = ["historyOfOrigin", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
