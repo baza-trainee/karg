@@ -14,7 +14,7 @@ import {
 
 const i18nNamespaces = ["contacts", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {

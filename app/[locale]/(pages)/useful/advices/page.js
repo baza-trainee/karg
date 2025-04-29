@@ -15,7 +15,7 @@ import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["advices", "uniCards", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {

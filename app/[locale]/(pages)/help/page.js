@@ -22,7 +22,7 @@ import {
 
 const i18nNamespaces = ["helpUs", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
@@ -41,7 +41,8 @@ const Help = async ({ params: { locale } }) => {
         articleP1: t('articleP1'),
         textBlock_title2: t('textBlock_title2'),
         paymentsButtons_title: t('paymentsButtons_title'),
-        photoBlock_title: t('photoBlock_title')
+        photoBlock_title: t('photoBlock_title'),
+        copy: t('copy')
     };
 
     const text = {

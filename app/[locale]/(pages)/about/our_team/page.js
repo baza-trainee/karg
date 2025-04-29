@@ -13,7 +13,7 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ['ourTeam', 'common'];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {

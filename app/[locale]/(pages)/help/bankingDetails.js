@@ -1,10 +1,9 @@
 'use client';
 import React, { useState } from 'react';
 import styles from './styles/help.module.scss';
-import variables from "@/app/[locale]/variables.module.scss";
 import BankingCard from './bankingCard';
 
-const BankingDetails = () => {
+const BankingDetails = ({ translation }) => {
     const [copied, setCopied] = useState(false);
 
     const copyToClipboard = (text) => {
@@ -49,7 +48,7 @@ const BankingDetails = () => {
             </div>
             <div className={`${styles.bankingDetails_toast} ${copied ? styles.bankingDetails_toast_show : ''}`}>
                 <div className={styles.bankingDetails_toast_content}>
-                    <span>Copied to clipboard!</span>
+                    <span>{translation}</span>
                 </div>
             </div>
         </div>

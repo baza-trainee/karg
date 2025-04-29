@@ -9,15 +9,19 @@ const manrope = Manrope({
   subsets: ["latin", "cyrillic"],
 });
 
+export function generateStaticParams() {
+  return i18nConfig.locales.map((locale) => ({ locale }));
+}
+
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
     title: {
       default: isUkrainian
-        ? "Kyiv Animal Rescue Group: порятунок тварин, допомога тваринам"
+        ? "Команда Порятунку Тварин: головна сторінка"
         : "Kyiv Animal Rescue Group: animal rescue, help animals",
       template: "%s - Kyiv Animal Rescue Group",
     },
@@ -63,13 +67,12 @@ export const metadata = ({ locale }) => {
   };
 };
 
-export function generateStaticParams() {
-  return i18nConfig.locales.map((locale) => ({ locale }));
-}
-
 export default function RootLayout({ children, params: { locale } }) {
   return (
     <html lang={locale} dir={dir(locale)}>
+      <head>
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+      </head>
       <body className={manrope.className}>
         <Providers>{children}</Providers>
       </body>

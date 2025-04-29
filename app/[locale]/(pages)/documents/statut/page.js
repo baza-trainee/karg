@@ -10,7 +10,7 @@ import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
 
 const i18nNamespaces = ["statut", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
