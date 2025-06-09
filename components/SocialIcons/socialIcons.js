@@ -8,7 +8,6 @@ import { useContactLinks } from '@/app/contactLinksProvider';
 const SocialIcons = ({ className, shareCurrentPage = false }) => {
   const { instagram, facebook, telegram } = useContactLinks();
   const [currentPageUrl, setCurrentPageUrl] = useState('');
-  const [copied, setCopied] = useState(false);
 
   useEffect(() => {
     if (shareCurrentPage && typeof window !== 'undefined') {
@@ -32,33 +31,14 @@ const SocialIcons = ({ className, shareCurrentPage = false }) => {
     }
   };
 
-  const copyToClipboard = async (e) => {
-    if (shareCurrentPage) {
-      e.preventDefault();
-      try {
-        await navigator.clipboard.writeText(currentPageUrl);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      } catch (err) {
-        console.error(err);
-      }
-    }
-  };
-
   return (
     <div className={`${styles.iconsContainer}`}>
       <a
         target="_blank"
         href={shareCurrentPage ? '#' : instagram}
-        onClick={shareCurrentPage ? copyToClipboard : undefined}
         rel="noreferrer"
       >
-        <Instagram className={className} />
-        {copied && shareCurrentPage && <div className={`${styles.socIcons_toast} ${copied ? styles.socIcons_toast_show : ''}`}>
-          <div className={styles.socIcons_toast_content}>
-            <span>Copied to clipboard!</span>
-          </div>
-        </div>}
+        {shareCurrentPage ? undefined : <Instagram className={className} />}
       </a>
       <a
         target="_blank"
