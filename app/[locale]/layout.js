@@ -23,7 +23,9 @@ export async function generateMetadata({ params: { locale } }) {
       default: isUkrainian
         ? "Команда Порятунку Тварин: головна сторінка"
         : "Kyiv Animal Rescue Group: animal rescue, help animals",
-      template: "%s - Kyiv Animal Rescue Group",
+      template: isUkrainian
+        ? "%s - Команда Порятунку Тварин"
+        : "%s - Kyiv Animal Rescue Group",
     },
     description: isUkrainian
       ? "Порятунок тварин у Києві – допомагаємо котам, собакам, птахам і диким тваринам. 11 років рятуємо тварин. Якщо знайшли поранену тварину – звертайтесь!"
