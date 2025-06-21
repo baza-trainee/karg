@@ -162,7 +162,7 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                                 quality={100}
                                 sizes="
                                 (max-width: 768px) 288px, 
-                                (max-width: 1200px) 570px, 
+                                (max-width: 1400px) 570px, 
                                 706px
                             "
                             />
@@ -183,16 +183,19 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                                             <Image
                                                 key={element}
                                                 loading="lazy"
-                                                width={80}
-                                                height={61}
-                                                className={`${styles.image}`}
+                                                width={170}
+                                                height={171}
+                                                className={`${styles.imageCarousel}`}
                                                 src={`${API_BASE_URL}${element}`}
                                                 alt="pet image"
                                                 quality={100}
+                                                sizes="
+                                (max-width: 768px) 80px, 
+                                (max-width: 1400px) 130px, 
+                                170px
+                            "
                                                 style={{
-                                                    width: "80px",
-                                                    height: "61px",
-                                                    objectFit: "cover",
+                                                    padding: 5,
                                                     border: index === carouselIndex ? "2px solid #2196f3" : "none",
                                                     opacity: index === carouselIndex ? 1 : 0.7,
                                                     transition: "border 0.2s, opacity 0.2s"
