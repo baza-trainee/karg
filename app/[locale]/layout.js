@@ -54,13 +54,13 @@ export async function generateMetadata({ params: { locale } }) {
         {
           url: "/app/opengraph-image.png",
           alt: isUkrainian
-            ? "Kyiv Animal Rescue Group: порятунок тварин"
-            : "Kyiv Animal Rescue Group: animal rescue",
+            ? "Порятунок тварин | Kyiv Animal Rescue Group"
+            : "Animal rescue | Kyiv Animal Rescue Group",
         },
       ],
     },
-    canonical: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
     alternates: {
+      canonical: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
       languages: {
         uk: API_BASE_URL,
         en: `${API_BASE_URL}en`,
