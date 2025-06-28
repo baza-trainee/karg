@@ -98,7 +98,7 @@ const Help = async ({ params: { locale } }) => {
                     <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>
                         {DOCUMENT_TEXT.textBlock_title2}
                     </h3>
-                    <BankingDetails />
+                    <BankingDetails translation={DOCUMENT_TEXT.copy} />
                 </section>
                 <section className={styles.photoBlock_Container}>
                     <h4 className={`${styles.photoBlock_title} ${variables.Heading3}`}>

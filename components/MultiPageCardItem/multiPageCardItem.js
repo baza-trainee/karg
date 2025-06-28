@@ -35,7 +35,7 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
     const [infoModal, setInfoModal] = useState(
         { showModal: false, status: false, text: '' }
     );
-   
+
     const router = useRouter();
     const pathname = usePathname();
     const currentLocale = i18n.language;
@@ -61,12 +61,6 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
         infoModalError: t('infoModalError'),
         returnToPortalButton: t('returnToPortalButton')
     };
-
-    function handleClick(e, id) {
-        const card = data.find(card => card.id === id);
-        setSelectedCard(card);
-        setModalPosition({ x: e.clientX, y: e.clientY });
-    }
 
     const closeModal = () => {
         setSelectedCard(null);
@@ -136,9 +130,10 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
         switch (buttonVariant) {
             case 'button':
                 return (
-                    <button className={`${styles.cardButton} ${variables.button1}`} onClick={(e) => handleClick(e, id)}>
+                    <Link className={`${styles.cardButton} ${variables.button1}`}
+                        href={`${pathname.startsWith('/en') ? '/en' : ''}/animals/${id}`}>
                         {DOCUMENT_TEXT.cardButtonText}
-                    </button>
+                    </Link>
                 );
             case 'link':
                 return (
@@ -168,26 +163,7 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
         );
     };
 
-    const telegramSend = async () => {
 
-        const data = {
-            fullname: adoptionModalForm.name,
-            phoneNumber: adoptionModalForm.phone,
-            animalName: adoptionModalForm.animalName,
-            animalImageUri: adoptionModalForm.animalImageUri
-        };
-
-        try {
-            const response = await axios.post(`${API_BASE_URL}api/telegrambot/sendannouncement`, data);
-            console.log(response.status);
-            console.log(response.data);
-
-            setInfoModal({ showModal: true, status: true, text: DOCUMENT_TEXT.infoModalSuccess });
-        } catch (error) {
-            console.error('Error sending telegram message:', error);
-            setInfoModal({ showModal: true, status: false, text: DOCUMENT_TEXT.infoModalError });
-        }
-    };
 
     return (
         <div id="card-list" className={styles.outerContainer}>
@@ -280,93 +256,6 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
                     </div>
                 )}
 
-                {adoptionModal && (
-                    <div className={styles.modalContentContainer}>
-                        <div className={styles.modalBackground} onClick={closeAdoptionModal}></div>
-                        <div className={styles.adoptionModalContainer}>
-                            <h3 className={styles.adoptionModalHeading}>
-                                {DOCUMENT_TEXT.adoptionModalHeadingText}
-                            </h3>
-                            <form className={styles.adoptionModalForm} id='adoptionModal'>
-                                <label htmlFor="name">
-                                    {DOCUMENT_TEXT.adoptionModalFormLabelText}
-                                </label>
-                                <input
-                                    type="text"
-                                    name="name"
-                                    placeholder={DOCUMENT_TEXT.adoptionModalFormPlaceholderText}
-                                    className={styles.adoptionModalInput}
-                                    autoComplete='off'
-                                    onChange={(e) => {
-                                        setAdoptionModalForm(
-                                            {
-                                                ...adoptionModalForm,
-                                                name: e.target.value
-                                            }
-                                        );
-                                    }}
-                                />
-                                <label htmlFor="phone">
-                                    {DOCUMENT_TEXT.adoptionModalFormPhoneText}
-                                </label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    placeholder={DOCUMENT_TEXT.adoptionModalFormPhonePlaceholderText}
-                                    className={styles.adoptionModalInput}
-                                    value={adoptionModalForm.phone}
-                                    autoComplete='off'
-                                    onFocus={(e) => adoptionModalTelInput(e)}
-                                    onChange={(e) => {
-                                        setAdoptionModalForm(
-                                            {
-                                                ...adoptionModalForm,
-                                                phone: e.target.value
-                                            }
-                                        );
-                                    }}
-                                />
-                                <p className={styles.adoptionModalErrorText}>{adoptionModalError}</p>
-                                <p className={styles.adoptionModalText}>
-                                    {DOCUMENT_TEXT.adoptionModalText_text}<br /><span>{adoptionModal.name}</span></p>
-                            </form>
-                            <div className={styles.adoptionModalButtons}>
-                                <input
-                                    className={`${styles.actionButtonBackground} ${variables.button1}`}
-                                    type="submit"
-                                    value={DOCUMENT_TEXT.adoptionModalButtonsText}
-                                    form='adoptionModal'
-                                    onClick={(e) => handleSendingAdoptionModal(e)}
-                                />
-                                <button
-                                    onClick={closeAdoptionModal}
-                                    className={`${styles.actionButtonTransparent} ${variables.button1}`}
-                                >
-                                    {DOCUMENT_TEXT.adoptionModalButtonsCancelText}
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                )}
-
-                {infoModal.showModal && (
-                    <div className={styles.modalContentContainer}>
-                        <div
-                            className={styles.modalBackground}
-                            onClick={closeInfoModal}></div>
-                        <div className={styles.adoptionModalContainer}>
-                            <h3 style={{ textAlign: 'center' }} className={variables.mainSubtitle_shared}>
-                                {infoModal.text}
-                            </h3>
-                            <button
-                                onClick={closeInfoModal}
-                                className={`${styles.actionButtonBackground} ${variables.button1}`}
-                            >
-                                {DOCUMENT_TEXT.returnToPortalButton}
-                            </button>
-                        </div>
-                    </div>
-                )}
             </div>
             <Pagination
                 currentPage={currentPage}
