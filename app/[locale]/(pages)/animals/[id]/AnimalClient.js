@@ -58,6 +58,8 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
     if (error) return <div className={styles.error}>Error: {error}</div>;
     if (!article) return <div className={styles.notFound}>Article not found</div>;
 
+    const [descFirst, descRest] = splitBySentence(article.description);
+
     const handleCarousel = (caseButton) => {
         switch (caseButton) {
             case 'prev':
@@ -136,6 +138,36 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
         }
     };
 
+    function splitBySentence(text, maxLen = 1000) {
+        if (!text || text.length <= maxLen) return [text];
+
+        const boundaryRegex = /[.!?]\s/g;
+        let lastBoundary = -1;
+        let match;
+
+        while ((match = boundaryRegex.exec(text)) !== null) {
+            if (match.index >= maxLen) {
+                lastBoundary = match.index + 1;
+                break;
+            }
+        }
+
+        if (lastBoundary === -1) {
+            boundaryRegex.lastIndex = 0;
+            let prev = -1;
+            while ((match = boundaryRegex.exec(text)) !== null) {
+                if (match.index < maxLen) prev = match.index + 1;
+                else break;
+            }
+            lastBoundary = prev > 0 ? prev : maxLen;
+        }
+
+        return [
+            text.slice(0, lastBoundary).trim(),
+            text.slice(lastBoundary).trim()
+        ];
+    }
+
     return (
         <div className={styles.container}>
             <GoBackButton className={styles.goBackButton}>
@@ -146,86 +178,86 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
             <div className={styles.line}></div>
 
             <div className={styles.wrapper}>
-                <div className={styles.contentHolder}>
-                    <div className={styles.imageContainer}>
-                        <div className={styles.mainImageContainer}>
-                            <button className={styles.leftIcon} onClick={() => handleCarousel('prev')}>
+                <div className={styles.imageContainer}>
+                    <div className={styles.mainImageContainer}>
+                        {article.images.length > 1
+                            ? <button className={styles.leftIcon} onClick={() => handleCarousel('prev')}>
                                 <LeftIcon className={styles.leftIcon} />
                             </button>
-                            <Image
-                                loading="lazy"
-                                width={1200}
-                                height={1200}
-                                className={styles.image}
-                                src={`${API_BASE_URL}${article.images[carouselIndex]}`}
-                                alt="pet image"
-                                quality={100}
-                                sizes="
+                            : <div className={styles.leftIconPlaceholder} />}
+                        <Image
+                            loading="lazy"
+                            width={1200}
+                            height={1200}
+                            className={styles.image}
+                            src={`${API_BASE_URL}${article.images[carouselIndex]}`}
+                            alt="pet image"
+                            quality={100}
+                            sizes="
                                 (max-width: 768px) 288px, 
                                 (max-width: 1400px) 570px, 
                                 706px
                             "
-                            />
-                            <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
+                        />
+                        {article.images.length > 1
+                            ? <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
                                 <RightIcon className={styles.rightIcon} />
                             </button>
-                        </div>
-                        <div className={styles.imageCarouselContainer}>
-                            {article.images.map((element, index) => {
-                                if (index !== carouselIndex) {
-                                    return (
-                                        <div
+                            : <div className={styles.rightIconPlaceholder} />}
+                    </div>
+                    <div className={styles.imageCarouselContainer}>
+                        {article.images.map((element, index) => {
+                            if (index !== carouselIndex) {
+                                return (
+                                    <div
+                                        key={element}
+                                        className={`${styles.imageCarouselWrapper} ${index === carouselIndex ? styles.active : ""}`}
+                                        onClick={() => setCarouselIndex(index)}
+                                        style={{ cursor: "pointer" }}
+                                    >
+                                        <Image
                                             key={element}
-                                            className={`${styles.imageCarouselWrapper} ${index === carouselIndex ? styles.active : ""}`}
-                                            onClick={() => setCarouselIndex(index)}
-                                            style={{ cursor: "pointer" }}
-                                        >
-                                            <Image
-                                                key={element}
-                                                loading="lazy"
-                                                width={170}
-                                                height={171}
-                                                className={`${styles.imageCarousel}`}
-                                                src={`${API_BASE_URL}${element}`}
-                                                alt="pet image"
-                                                quality={100}
-                                                sizes="
+                                            loading="lazy"
+                                            width={170}
+                                            height={171}
+                                            className={`${styles.imageCarousel}`}
+                                            src={`${API_BASE_URL}${element}`}
+                                            alt="pet image"
+                                            quality={100}
+                                            sizes="
                                 (max-width: 768px) 80px, 
                                 (max-width: 1400px) 130px, 
                                 170px
                             "
-                                                style={{
-                                                    padding: 5,
-                                                    border: index === carouselIndex ? "2px solid #2196f3" : "none",
-                                                    opacity: index === carouselIndex ? 1 : 0.7,
-                                                    transition: "border 0.2s, opacity 0.2s"
-                                                }}
-                                            />
-                                        </div>
-                                    );
-                                }
-                                return null;
-                            })}
-                        </div>
+                                            style={{
+                                                padding: 5,
+                                                border: index === carouselIndex ? "2px solid #2196f3" : "none",
+                                                opacity: index === carouselIndex ? 1 : 0.7,
+                                                transition: "border 0.2s, opacity 0.2s"
+                                            }}
+                                        />
+                                    </div>
+                                );
+                            }
+                            return null;
+                        })}
                     </div>
                 </div>
                 <div className={styles.contentWrapper}>
-                    <div className={styles.mainTextWrapper}>
-                        <div className={`${variables.Heading3} ${styles.adviceTitle}`}>
-                            {article.name}
-                        </div>
+                    <div className={`${variables.Heading3} ${styles.adviceTitle}`}>
+                        {article.name}
                     </div>
                     <div className={styles.secondaryTextWrapper}>
-                        <div className={`${variables.mobileSubtitle2}`}>
+                        <div className={`${variables.subtitle2}`}>
                             Опис:
                         </div>
-                        <p className={`${variables.mobileText2}`}>
-                            {article.description}
-                        </p>
+                        <p className={`${variables.mobileText2}`}>{descFirst}</p>
                     </div>
+
                 </div>
+                {descRest && <p className={`${variables.mobileText2} ${styles.descRest}`}>{descRest}</p>}
                 <div className={`${styles.secondaryTextWrapper} ${styles.story}`}>
-                    <div className={`${variables.mobileSubtitle2}`}>
+                    <div className={`${variables.subtitle2}`}>
                         Історія порятунку:
                     </div>
                     <p className={`${variables.mobileText2}`}>

@@ -99,15 +99,18 @@
     margin-bottom: 15px;
     gap: 16px;
     display: grid;
+    grid-template-columns: 1fr 1fr;
+    // grid-template-rows: auto auto 1fr;
     grid-template-areas:
-      'img mText mText'
-      'img mText mText'
-      'img buttons buttons'
-      'sText sText sText';
+      'img text'
+      'img button'
+      'descRest descRest'
+      'story story';
     place-items: center;
   }
 
-  .contentHolder {
+  .imageContainer {
+    width: 100%;
     display: flex;
     flex-direction: column;
     justify-items: center;
@@ -123,18 +126,14 @@
     }
 
     @media screen and (min-width: 1200px) {
-      flex-direction: row;
       grid-area: img;
+      align-self: start;
       width: 770px;
     }
   }
 
-  .imageContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+  .descRest {
+    grid-area: descRest;
   }
 
   .mainImageContainer {
@@ -152,6 +151,13 @@
       margin: 10px;
       color: #6b5199;
       z-index: 2;
+    }
+
+    .leftIconPlaceholder,
+    .rightIconPlaceholder {
+      width: 100%;
+      height: 100%;
+      visibility: hidden;
     }
 
     @media screen and (min-width: 1200px) {
@@ -178,7 +184,6 @@
 }
 
 .contentWrapper,
-.mainTextWrapper,
 .secondaryTextWrapper {
   display: flex;
   flex-direction: column;
@@ -190,14 +195,15 @@
   height: 100%;
   position: relative;
   flex: 1;
-  grid-area: mText;
+  grid-area: text;
+  align-self: start;
 
   @media screen and (min-width: 1200px) {
     justify-content: flex-start;
   }
 }
 
-.mainTextWrapper,
+.contentWrapper,
 .secondaryTextWrapper {
   gap: 8px;
 }
@@ -226,7 +232,7 @@
   }
 }
 .story {
-  grid-area: sText;
+  grid-area: story;
   width: 100%;
 }
 
@@ -291,8 +297,6 @@
   flex-direction: column;
   align-self: center;
   gap: 8px;
-  margin-top: auto;
-  grid-area: buttons;
 
   @media screen and (min-width: 768px) {
     display: flex;
@@ -310,5 +314,8 @@
     width: 100%;
     max-width: 470px;
     gap: 8px;
+    grid-area: button;
+    align-self: end;
+    margin-top: 24px;
   }
 }
