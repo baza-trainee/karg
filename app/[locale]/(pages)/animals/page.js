@@ -4,6 +4,7 @@ import styles from './styles/animals.module.scss';
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 // components
+import SavePrevPage from '@/components/SavePrevPage';
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
@@ -37,6 +38,7 @@ const Animals = async ({ params: { locale } }) => {
             locale={locale}
             namespaces={i18nNamespaces}
         >
+            <SavePrevPage />
             <Header />
             <PageHero
                 mobImage={ourAnimalsImage.src}
