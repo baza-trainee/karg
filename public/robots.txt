@@ -6,7 +6,7 @@ Disallow: /dashboard
 
 # Yandex
 User-agent: Yandex
-Disallow: */
+Disallow: /
 
 # Host
 Host: https://dev.karg.kyiv.ua/
