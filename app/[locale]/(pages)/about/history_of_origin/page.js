@@ -29,12 +29,16 @@ import PageHero from "@/components/common/PageHero/pageHero";
 import NeedInfo from "@/components/common/NeedInfo/needInfo";
 
 const i18nNamespaces = ["historyOfOrigin", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
-    title: isUkrainian ? "Історія виникнення команди" : "Team's history of origin"
+    title: isUkrainian ? "Історія виникнення команди" : "Team's history of origin",
+    alternates: {
+      canonical: isUkrainian ? `${API_BASE_URL}about/our_team` : `${API_BASE_URL}en/about/our_team`,
+    },
   };
 };
 

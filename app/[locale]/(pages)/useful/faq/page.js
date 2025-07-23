@@ -15,12 +15,16 @@ import InitialFetch from "./initialFetch";
 const buttonText = "FAQ";
 const altText = "bats sit on a branch";
 const i18nNamespaces = ["home", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
-    title: isUkrainian ? "Питання і відповіді" : "Facts and questions"
+    title: isUkrainian ? "Питання і відповіді" : "Facts and questions",
+    alternates: {
+      canonical: isUkrainian ? `${API_BASE_URL}useful/faq` : `${API_BASE_URL}en/useful/faq`,
+    },
   };
 };
 

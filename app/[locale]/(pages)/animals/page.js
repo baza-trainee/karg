@@ -14,12 +14,16 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import { ourAnimalsImage } from '@/public/assets/images/animals';
 
 const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Наші тварини" : "Our animals"
+        title: isUkrainian ? "Наші тварини" : "Our animals",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}animals` : `${API_BASE_URL}en/animals`,
+        },
     };
 };
 

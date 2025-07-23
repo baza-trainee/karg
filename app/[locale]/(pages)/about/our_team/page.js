@@ -12,12 +12,16 @@ import Partners from "./partners/partners";
 import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 
 const i18nNamespaces = ['ourTeam', 'common'];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Наша команда" : "Our team"
+        title: isUkrainian ? "Наша команда" : "Our team",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}about/our_team` : `${API_BASE_URL}en/about/our_team`,
+        },
     };
 };
 

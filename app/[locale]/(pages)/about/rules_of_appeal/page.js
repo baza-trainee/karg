@@ -14,12 +14,16 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import variables from "@/app/[locale]/variables.module.scss";
 
 const i18nNamespaces = ['rulesOfAppeal', 'common'];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Правила звернення" : "Rules of appeal"
+        title: isUkrainian ? "Правила звернення" : "Rules of appeal",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}about/rules_of_appeal` : `${API_BASE_URL}en/about/rules_of_appeal`,
+        },
     };
 };
 
