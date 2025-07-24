@@ -13,12 +13,16 @@ import {
 } from "@/public/assets/images/about/contacts/index";
 
 const i18nNamespaces = ["contacts", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
   const isUkrainian = locale === "uk";
 
   return {
-    title: isUkrainian ? "Контакти" : "Contacts"
+    title: isUkrainian ? "Контакти" : "Contacts",
+    alternates: {
+      canonical: isUkrainian ? `${API_BASE_URL}about/contacts` : `${API_BASE_URL}en/about/contacts`,
+    },
   };
 };
 

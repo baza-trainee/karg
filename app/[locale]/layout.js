@@ -21,11 +21,11 @@ export async function generateMetadata({ params: { locale } }) {
   return {
     title: {
       default: isUkrainian
-        ? "Команда Порятунку Тварин: головна сторінка"
-        : "Kyiv Animal Rescue Group: animal rescue, help animals",
+        ? "Головна | Команда Порятунку Тварин"
+        : "Main page | Kyiv Animal Rescue Group",
       template: isUkrainian
-        ? "%s - Команда Порятунку Тварин"
-        : "%s - Kyiv Animal Rescue Group",
+        ? "%s | Команда Порятунку Тварин"
+        : "%s | Kyiv Animal Rescue Group",
     },
     description: isUkrainian
       ? "Порятунок тварин у Києві – допомагаємо котам, собакам, птахам і диким тваринам. 11 років рятуємо тварин. Якщо знайшли поранену тварину – звертайтесь!"
@@ -54,13 +54,13 @@ export async function generateMetadata({ params: { locale } }) {
         {
           url: "/app/opengraph-image.png",
           alt: isUkrainian
-            ? "Kyiv Animal Rescue Group: порятунок тварин"
-            : "Kyiv Animal Rescue Group: animal rescue",
+            ? "Порятунок тварин | Kyiv Animal Rescue Group"
+            : "Animal rescue | Kyiv Animal Rescue Group",
         },
       ],
     },
-    canonical: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
     alternates: {
+      canonical: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
       languages: {
         uk: API_BASE_URL,
         en: `${API_BASE_URL}en`,

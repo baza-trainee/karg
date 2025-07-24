@@ -14,12 +14,16 @@ import AdviceClient from './AdviceClient';
 import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["advices", "uniCards", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Поради" : "Advices"
+        title: isUkrainian ? "Поради" : "Advices",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}useful/advices` : `${API_BASE_URL}en/useful/advices`,
+        },
     };
 };
 

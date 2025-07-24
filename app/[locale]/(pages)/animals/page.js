@@ -4,6 +4,7 @@ import styles from './styles/animals.module.scss';
 import initTranslations from "@/app/i18n";
 import TranslationsProvider from "@/components/TranslationsProvider";
 // components
+import SavePrevPage from '@/components/SavePrevPage';
 import Header from "@/components/Header/header";
 import Footer from "@/components/Footer/footer";
 import PageHero from '@/components/common/PageHero/pageHero';
@@ -13,12 +14,16 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 import { ourAnimalsImage } from '@/public/assets/images/animals';
 
 const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Наші тварини" : "Our animals"
+        title: isUkrainian ? "Наші тварини" : "Our animals",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}animals` : `${API_BASE_URL}en/animals`,
+        },
     };
 };
 
@@ -37,6 +42,7 @@ const Animals = async ({ params: { locale } }) => {
             locale={locale}
             namespaces={i18nNamespaces}
         >
+            <SavePrevPage />
             <Header />
             <PageHero
                 mobImage={ourAnimalsImage.src}

@@ -21,12 +21,16 @@ import {
 } from "@/public/assets/images/helpUs";
 
 const i18nNamespaces = ["helpUs", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Допомогти нам" : "Help our cause"
+        title: isUkrainian ? "Допомогти нам" : "Help us",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}help` : `${API_BASE_URL}en/help`,
+        },
     };
 };
 
@@ -98,7 +102,7 @@ const Help = async ({ params: { locale } }) => {
                     <h3 className={`${styles.textBlock_title} ${variables.Heading3}`}>
                         {DOCUMENT_TEXT.textBlock_title2}
                     </h3>
-                    <BankingDetails />
+                    <BankingDetails translation={DOCUMENT_TEXT.copy} />
                 </section>
                 <section className={styles.photoBlock_Container}>
                     <h4 className={`${styles.photoBlock_title} ${variables.Heading3}`}>

@@ -14,12 +14,16 @@ import { results } from '@/public/assets/images/useful/results';
 import SavePrevPage from "@/components/SavePrevPage";
 
 const i18nNamespaces = ["results", "uniCards", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Підсумки" : "Results"
+        title: isUkrainian ? "Підсумки" : "Results",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}useful/results` : `${API_BASE_URL}en/useful/results`,
+        },
     };
 };
 

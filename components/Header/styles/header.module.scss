@@ -86,10 +86,17 @@
 
 .logo,
 .burgerIcon {
-  font-size: 36px;
   margin: 8px 8px;
   color: #fff;
   cursor: pointer;
+}
+
+.logo {
+  font-size: 48px;
+}
+
+.burgerIcon {
+  font-size: 36px;
 }
 
 @media screen and (min-width: 768px) {
