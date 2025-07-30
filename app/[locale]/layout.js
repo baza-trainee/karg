@@ -42,7 +42,7 @@ export async function generateMetadata({ params: { locale } }) {
       url: isUkrainian ? API_BASE_URL : `${API_BASE_URL}en`,
       locale: isUkrainian ? "uk_UA" : "en_US",
       localeAlternate: ["uk_UA", "en_US"],
-      site_name: "Kyiv Animal Rescue Group",
+      siteName: "Kyiv Animal Rescue Group",
     },
     twitter: {
       card: "summary_large_image",
