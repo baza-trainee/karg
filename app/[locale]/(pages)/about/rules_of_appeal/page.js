@@ -20,7 +20,7 @@ export async function generateMetadata({ params: { locale } }) {
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Правила звернення" : "Rules of appeal",
+        title: isUkrainian ? "Правила звернення" : "Contact protocol",
         alternates: {
             canonical: isUkrainian ? `${API_BASE_URL}about/rules_of_appeal` : `${API_BASE_URL}en/about/rules_of_appeal`,
         },
