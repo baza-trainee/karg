@@ -1,17 +1,22 @@
 'use client';
 
-import { useEffect, useState } from "react";
-import { getById } from "@/components/common/api/apiGet";
-import Image from "next/image";
+import variables from '@/app/[locale]/variables.module.scss';
 import styles from './animalArticle.module.scss';
 import modalStyles from './modalStyles.module.scss';
-import variables from '@/app/[locale]/variables.module.scss';
+
+import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
+
+import { useEffect, useState } from "react";
+import { getById } from "@/components/common/api/apiGet";
+import { useRouter } from "next/navigation";
+import { usePathname } from 'next/navigation';
+import Image from "next/image";
+import axios from 'axios';
+
 import SocialIcons from "@/components/SocialIcons/socialIcons";
 import GoBackButton from "@/components/common/GoBackButton/GoBackButton";
 import GoBackIcon from "@/components/ServerSideIcon/GoBackIcon";
-import { useRouter } from "next/navigation";
-import { usePathname } from 'next/navigation';
-import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
+
 
 const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations }) => {
 
@@ -116,7 +121,7 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
     };
 
     const closeInfoModal = () => {
-        setInfoModal(null);
+        setInfoModal(false);
     };
 
     const telegramSend = async () => {
@@ -127,14 +132,15 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
             animalName: adoptionModalForm.animalName,
             animalImageUri: adoptionModalForm.animalImageUri
         };
-
+        console.log(data);
         try {
             const response = await axios.post(`${API_BASE_URL}api/telegrambot/sendannouncement`, data);
+            console.log(response);
 
-            setInfoModal({ showModal: true, status: true, text: DOCUMENT_TEXT.infoModalSuccess });
+            setInfoModal({ showModal: true, status: true, text: translations.infoModalSuccess });
         } catch (error) {
             console.error('Error sending telegram message:', error);
-            setInfoModal({ showModal: true, status: false, text: DOCUMENT_TEXT.infoModalError });
+            setInfoModal({ showModal: true, status: false, text: translations.infoModalError });
         }
     };
 
@@ -251,18 +257,28 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                         <div className={`${variables.subtitle2}`}>
                             Опис:
                         </div>
-                        <p className={`${variables.mobileText2}`}>{descFirst}</p>
+                        <div className={styles.secondaryTextWrapper}>
+                            {descFirst.split('\n').map((paragraph, index) => (
+                                <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                            ))}
+                        </div>
                     </div>
 
                 </div>
-                {descRest && <p className={`${variables.mobileText2} ${styles.descRest}`}>{descRest}</p>}
+                {descRest && <div className={styles.secondaryTextWrapper}>
+                    {descRest.split('\n').map((paragraph, index) => (
+                        <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                    ))}
+                </div>}
                 <div className={`${styles.secondaryTextWrapper} ${styles.story}`}>
                     <div className={`${variables.subtitle2}`}>
                         Історія порятунку:
                     </div>
-                    <p className={`${variables.mobileText2}`}>
-                        {article.story}
-                    </p>
+                    <div className={styles.secondaryTextWrapper}>
+                        {article.story.split('\n').map((paragraph, index) => (
+                            <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                        ))}
+                    </div>
                 </div>
                 <div className={styles.innerModalButtons}>
                     <button
@@ -283,7 +299,7 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                 <div className={modalStyles.modalContentContainer}>
                     <div className={modalStyles.modalBackground} onClick={closeAdoptionModal}></div>
                     <div className={modalStyles.adoptionModalContainer}>
-                        <h3 className={modalStyles.adoptionModalHeading}>
+                        <h3 className={`${modalStyles.adoptionModalHeading} ${variables.mainSubtitle_shared}`}>
                             {translations.adoptionModalHeadingText}
                         </h3>
                         <form className={modalStyles.adoptionModalForm} id='adoptionModal'>
@@ -326,8 +342,8 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                                 }}
                             />
                             <p className={modalStyles.adoptionModalErrorText}>{adoptionModalError}</p>
-                            <p className={modalStyles.adoptionModalText}>
-                                {translations.adoptionModalText_text}<br /><span>{adoptionModal.name}</span></p>
+                            <p className={`${modalStyles.adoptionModalText}`}>
+                                {translations.adoptionModalText_text}<br /><span className={variables.mainSubtitle_shared}>{adoptionModal.name}</span></p>
                         </form>
                         <div className={modalStyles.adoptionModalButtons}>
                             <input

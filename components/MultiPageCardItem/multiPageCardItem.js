@@ -1,6 +1,5 @@
 'use client';
 import React from 'react';
-import axios from 'axios';
 import styles from './multiPageCardItemGrid.module.scss';
 import variables from '../../app/[locale]/variables.module.scss';
 import { MenuBurgerClose } from "@/public/assets/icons";

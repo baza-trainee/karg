@@ -226,7 +226,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    width: fit-content;
+    // width: fit-content;
     padding: 9px 12px;
     flex: 1 0 0;
   }
@@ -256,7 +256,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    width: fit-content;
+    // width: fit-content;
     padding: 9px 12px;
     flex: 1 0 0;
     cursor: pointer;
@@ -300,7 +300,6 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 493px;
     align-items: center;
     flex-direction: row;
     gap: 19px;
@@ -312,7 +311,6 @@
     align-items: center;
     flex-direction: row;
     width: 100%;
-    max-width: 470px;
     gap: 8px;
     grid-area: button;
     align-self: end;

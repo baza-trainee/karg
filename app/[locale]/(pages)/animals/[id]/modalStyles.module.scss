@@ -92,11 +92,31 @@
     cursor: pointer;
     width: 100%;
   }
+
+  @media screen and (min-width: 768px) {
+    .adoptionModalContainer {
+      display: flex;
+      width: 520px;
+      padding: 24px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .adoptionModalButtons {
+      display: flex;
+      gap: 16px;
+      flex-direction: row-reverse;
+      align-self: stretch;
+      cursor: pointer;
+    }
+  }
 }
 
 .actionButtonBackground {
   display: flex;
-  // width: 270px;
+
   width: 100%;
   padding: 11px 12px;
   flex-direction: column;
@@ -115,9 +135,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    width: fit-content;
     padding: 9px 12px;
-    flex: 1 0 0;
     cursor: pointer;
   }
 }
@@ -141,8 +159,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    width: fit-content;
     padding: 9px 12px;
-    flex: 1 0 0;
+    cursor: pointer;
   }
 }
