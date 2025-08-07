@@ -92,6 +92,10 @@
   justify-content: space-between;
   // padding: 0 48px 0 48px;
 
+  & .searchContainerWrapper {
+    width: 100%;
+  }
+
   & .searchContainer {
     display: flex;
     flex-wrap: wrap;
@@ -153,7 +157,6 @@
     width: 100%;
 
     & .searchContainerWrapper {
-      width: 100%;
       grid-area: s;
       position: relative;
     }
