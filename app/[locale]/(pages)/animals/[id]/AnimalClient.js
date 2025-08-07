@@ -250,16 +250,16 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                     </div>
                 </div>
                 <div className={styles.contentWrapper}>
-                    <div className={`${variables.Heading3} ${styles.adviceTitle}`}>
+                    <h1 className={`${variables.Heading3} ${styles.adviceTitle}`}>
                         {article.name}
-                    </div>
+                    </h1>
                     <div className={styles.secondaryTextWrapper}>
-                        <div className={`${variables.subtitle2}`}>
+                        {/* <div className={`${variables.subtitle2}`}>
                             Опис:
-                        </div>
+                        </div> */}
                         <div className={styles.secondaryTextWrapper}>
                             {descFirst.split('\n').map((paragraph, index) => (
-                                <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                                <p key={index} className={variables.Text3}>{paragraph}</p>
                             ))}
                         </div>
                     </div>
@@ -267,16 +267,16 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                 </div>
                 {descRest && <div className={styles.secondaryTextWrapper}>
                     {descRest.split('\n').map((paragraph, index) => (
-                        <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                        <p key={index} className={variables.Text3}>{paragraph}</p>
                     ))}
                 </div>}
                 <div className={`${styles.secondaryTextWrapper} ${styles.story}`}>
                     <div className={`${variables.subtitle2}`}>
-                        Історія порятунку:
+                        {translations.animalDesc}
                     </div>
                     <div className={styles.secondaryTextWrapper}>
                         {article.story.split('\n').map((paragraph, index) => (
-                            <p key={index} className={variables.mobileText2}>{paragraph}</p>
+                            <p key={index} className={variables.Text3}>{paragraph}</p>
                         ))}
                     </div>
                 </div>
