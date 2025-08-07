@@ -7,13 +7,39 @@ import AnimalClient from "./AnimalClient";
 
 const i18nNamespaces = ["uniCards", "advices", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params }) {
+    const { locale, id } = params;
     const isUkrainian = locale === "uk";
+    const cultureCode = isUkrainian ? "ua" : "en";
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-    return {
-        title: isUkrainian ? "Наші тварини" : "Our animals"
-    };
-};
+    try {
+        const response = await fetch(`${API_BASE_URL}api/animal/getbyid?id=${id}&cultureCode=${cultureCode}`);
+
+        const animal = await response.json();
+
+        const animalName = animal.name || (isUkrainian ? "Тварина" : "Animal");
+
+        return {
+            title: isUkrainian ? `Наші улюбленці - ${animalName}` : `Our favorites - ${animalName}`,
+            alternates: {
+                canonical: isUkrainian
+                    ? `${API_BASE_URL}/animals/${id}`
+                    : `${API_BASE_URL}/en/animals/${id}`,
+            },
+        };
+    } catch (error) {
+        console.error("Failed to fetch animal data for metadata", error);
+        return {
+            title: isUkrainian ? "Наші тварини" : "Our animals",
+            alternates: {
+                canonical: isUkrainian
+                    ? `${API_BASE_URL}/animals`
+                    : `${API_BASE_URL}/en/animals`,
+            },
+        };
+    }
+}
 
 const ItemAdvice = async ({ params: { locale, id } }) => {
     const { t, resources } = await initTranslations(locale, i18nNamespaces);
@@ -40,7 +66,8 @@ const ItemAdvice = async ({ params: { locale, id } }) => {
         adoptionModalButtonsCancelText: t('adoptionModalButtonsCancelText'),
         infoModalSuccess: t('infoModalSuccess'),
         infoModalError: t('infoModalError'),
-        returnToPortalButton: t('returnToPortalButton')
+        returnToPortalButton: t('returnToPortalButton'),
+        animalDesc: t('animalDesc')
     };
 
     return (
