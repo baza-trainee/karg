@@ -16,5 +16,6 @@
     "adoptionModalButtonsCancelText": "Скасувати",
     "infoModalSuccess": "Ваша заява успішно передана. Зачекайте, з вами зв'яжуться для погодження деталей",
     "infoModalError": "Вибачте, ваша заява не відправлена. Спробуйте, будь-ласка, ще раз пізніше",
-    "returnToPortalButton": "Повернутись на сайт"
+    "returnToPortalButton": "Повернутись на сайт",
+    "animalDesc": "Історія порятунку:"
 }
