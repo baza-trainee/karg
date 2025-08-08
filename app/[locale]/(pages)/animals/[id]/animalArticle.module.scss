@@ -128,7 +128,7 @@
     @media screen and (min-width: 1200px) {
       grid-area: img;
       align-self: start;
-      width: 770px;
+      width: max-content;
     }
   }
 
@@ -147,8 +147,9 @@
 
     .leftIcon,
     .rightIcon {
+      align-self: center;
+      justify-self: center;
       font-size: 24px;
-      margin: 10px;
       color: #6b5199;
       z-index: 2;
     }
@@ -162,7 +163,10 @@
 
     @media screen and (min-width: 1200px) {
       float: right;
-      margin-left: 25px;
+      .leftIcon,
+      .rightIcon {
+        font-size: 36px;
+      }
     }
   }
 
@@ -226,7 +230,7 @@
   }
 
   @media screen and (min-width: 768px) {
-    width: fit-content;
+    // width: fit-content;
     padding: 9px 12px;
     flex: 1 0 0;
   }
@@ -256,7 +260,7 @@
   }
 
   @media screen and (min-width: 1200px) {
-    width: fit-content;
+    // width: fit-content;
     padding: 9px 12px;
     flex: 1 0 0;
     cursor: pointer;
@@ -279,7 +283,7 @@
   @media screen and (min-width: 768px) {
     height: 393px;
   }
-  @media screen and (min-width: 1400px) {
+  @media screen and (min-width: 1200px) {
     height: 487px;
   }
 }
@@ -300,7 +304,6 @@
 
   @media screen and (min-width: 768px) {
     display: flex;
-    width: 493px;
     align-items: center;
     flex-direction: row;
     gap: 19px;
@@ -312,7 +315,6 @@
     align-items: center;
     flex-direction: row;
     width: 100%;
-    max-width: 470px;
     gap: 8px;
     grid-area: button;
     align-self: end;

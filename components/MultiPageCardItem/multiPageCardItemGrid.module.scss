@@ -346,23 +346,6 @@
         flex: 1 0 0;
       }
     }
-
-    .adoptionModalContainer {
-      display: flex;
-      width: 520px;
-      padding: 24px;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 16px;
-    }
-
-    .adoptionModalButtons {
-      display: flex;
-      gap: 16px;
-      align-self: stretch;
-      cursor: pointer;
-    }
   }
 }
 

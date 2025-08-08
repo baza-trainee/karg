@@ -55,7 +55,7 @@ export default function PaginatedCardList({ locale, endpoint, multiPageCardButto
                     setCards(data.items);
                 }
                 setTotalPages(data.totalPages);
-                onResults(data.items.length);
+                onResults(data.totalItems);
             } catch (error) {
                 console.error("Error fetching data:", error);
                 onResults(0);
