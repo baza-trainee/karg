@@ -114,7 +114,7 @@ function Footer() {
                   <Link href={localizedPath("/useful/faq")}>FAQ</Link>
                 </li>
                 <li>
-                  <Link href={localizedPath("/useful/results")}>{t('common:linkSummaries')}</Link>
+                  <Link href={localizedPath("/useful/stats")}>{t('common:linkSummaries')}</Link>
                 </li>
               </ul>
             ) : null}

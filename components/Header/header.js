@@ -76,7 +76,7 @@ const Header = () => {
   const listLabelSecond = [
     { label: t('common:linkAdvices'), link: localizedPath("/useful/advices") },
     { label: 'FAQ', link: localizedPath("/useful/faq") },
-    { label: t('common:linkSummaries'), link: localizedPath("/useful/results") },
+    { label: t('common:linkSummaries'), link: localizedPath("/useful/stats") },
   ];
 
   return (

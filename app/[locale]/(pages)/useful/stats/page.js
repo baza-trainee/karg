@@ -22,7 +22,7 @@ export async function generateMetadata({ params: { locale } }) {
     return {
         title: isUkrainian ? "Підсумки" : "Stats",
         alternates: {
-            canonical: isUkrainian ? `${API_BASE_URL}useful/results` : `${API_BASE_URL}en/useful/results`,
+            canonical: isUkrainian ? `${API_BASE_URL}useful/stats` : `${API_BASE_URL}en/useful/stats`,
         },
     };
 };
