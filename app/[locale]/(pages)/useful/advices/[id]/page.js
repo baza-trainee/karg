@@ -7,13 +7,39 @@ import ArticleClient from "@/components/ArticleClient/ArticleClient";
 
 const i18nNamespaces = ["advices", "common"];
 
-export const metadata = ({ locale }) => {
+export async function generateMetadata({ params }) {
+  const { locale, id } = params;
   const isUkrainian = locale === "uk";
+  const cultureCode = isUkrainian ? "ua" : "en";
+  const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-  return {
-    title: isUkrainian ? "Поради" : "Advices"
-  };
-};
+  try {
+    const response = await fetch(`${API_BASE_URL}api/advice/getbyid?id=${id}&cultureCode=${cultureCode}`);
+
+    const advice = await response.json();
+
+    const adviceTitle = advice.title || (isUkrainian ? "Порада" : "Advice");
+
+    return {
+      title: isUkrainian ? `${adviceTitle}` : `${adviceTitle}`,
+      alternates: {
+        canonical: isUkrainian
+          ? `${API_BASE_URL}useful/advices/${id}`
+          : `${API_BASE_URL}en/useful/advices/${id}`,
+      },
+    };
+  } catch (error) {
+    console.error("Failed to fetch article data for metadata", error);
+    return {
+      title: isUkrainian ? "Поради" : "Advices",
+      alternates: {
+        canonical: isUkrainian
+          ? `${API_BASE_URL}useful/advices`
+          : `${API_BASE_URL}en/useful/advices`,
+      },
+    };
+  }
+}
 
 const ItemAdvice = async ({ params: { locale, id } }) => {
   const { t, resources } = await initTranslations(locale, i18nNamespaces);
