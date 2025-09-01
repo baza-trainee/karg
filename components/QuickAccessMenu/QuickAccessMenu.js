@@ -10,7 +10,7 @@ import { useTranslation } from 'react-i18next';
 
 export function MenuItem({ title, href, iconSrc, innerMessage }) {
   const { t } = useTranslation();
-  
+
   let details;
   switch (title) {
     case t('quickMenuDonate'):
@@ -59,7 +59,7 @@ export default function QuickAccessMenu() {
     { 'title': t('quickMenuDonate'), 'href': localizedPath('/help'), 'iconSrc': <DonateIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuDonateMessage') },
     { 'title': t('quickMenuServices'), 'href': localizedPath('/about/rules_of_appeal#rescue-types'), 'iconSrc': <HandshakeIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuServicesMessage') },
     { 'title': t('quickMenuAnimals'), 'href': localizedPath('/animals'), 'iconSrc': <PawprintIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuAnimalsMessage') },
-    { 'title': t('quickMenuReports'), 'href': localizedPath('/useful/results'), 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
+    { 'title': t('quickMenuReports'), 'href': localizedPath('/useful/stats'), 'iconSrc': <ReportIcon className={styles.iconSrc} />, 'innerMessage': t('quickMenuReportsMessage') },
   ];
 
   const donate = t('common:buttonSupportText');
