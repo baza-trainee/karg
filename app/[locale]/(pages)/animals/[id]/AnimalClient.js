@@ -9,7 +9,6 @@ import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
 import { useEffect, useState } from "react";
 import { getById } from "@/components/common/api/apiGet";
 import { useRouter } from "next/navigation";
-import { usePathname } from 'next/navigation';
 import Image from "next/image";
 import axios from 'axios';
 
@@ -34,7 +33,6 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
     );
 
     const router = useRouter();
-    const pathname = usePathname();
 
     const localizedPath = (path) => cultureCode === 'ua' ? path : `/${cultureCode}${path}`;
 
