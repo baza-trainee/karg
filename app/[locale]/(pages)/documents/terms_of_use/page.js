@@ -11,10 +11,14 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 const i18nNamespaces = ["websiteRules", "common"];
 
 export async function generateMetadata({ params: { locale } }) {
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Правила користування сайтом" : "Terms of use"
+        title: isUkrainian ? "Правила користування сайтом" : "Terms of use",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}documents/terms_of_use` : `${API_BASE_URL}en/documents/terms_of_use`,
+        },
     };
 };
 

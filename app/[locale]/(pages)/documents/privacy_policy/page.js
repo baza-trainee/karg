@@ -11,10 +11,14 @@ import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
 const i18nNamespaces = ["privacyPolicy", "common"];
 
 export async function generateMetadata({ params: { locale } }) {
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Політика конфіденційності" : "Privacy policy"
+        title: isUkrainian ? "Політика конфіденційності" : "Privacy policy",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}documents/privacy_policy` : `${API_BASE_URL}en/documents/privacy_policy`,
+        },
     };
 };
 

@@ -24,8 +24,8 @@ export async function generateMetadata({ params }) {
             title: isUkrainian ? `Наші улюбленці - ${animalName}` : `Our favorites - ${animalName}`,
             alternates: {
                 canonical: isUkrainian
-                    ? `${API_BASE_URL}/animals/${id}`
-                    : `${API_BASE_URL}/en/animals/${id}`,
+                    ? `${API_BASE_URL}animals/${id}`
+                    : `${API_BASE_URL}en/animals/${id}`,
             },
         };
     } catch (error) {
@@ -34,8 +34,8 @@ export async function generateMetadata({ params }) {
             title: isUkrainian ? "Наші тварини" : "Our animals",
             alternates: {
                 canonical: isUkrainian
-                    ? `${API_BASE_URL}/animals`
-                    : `${API_BASE_URL}/en/animals`,
+                    ? `${API_BASE_URL}animals`
+                    : `${API_BASE_URL}en/animals`,
             },
         };
     }

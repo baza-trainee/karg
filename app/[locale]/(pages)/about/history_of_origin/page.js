@@ -37,7 +37,7 @@ export async function generateMetadata({ params: { locale } }) {
   return {
     title: isUkrainian ? "Історія виникнення команди" : "Team's history of origin",
     alternates: {
-      canonical: isUkrainian ? `${API_BASE_URL}about/our_team` : `${API_BASE_URL}en/about/our_team`,
+      canonical: isUkrainian ? `${API_BASE_URL}about/history_of_origin` : `${API_BASE_URL}en/about/history_of_origin`,
     },
   };
 };

@@ -11,10 +11,14 @@ import ButtonAsLink from "@/components/ButtonAsLink/buttonAsLink";
 const i18nNamespaces = ["statut", "common"];
 
 export async function generateMetadata({ params: { locale } }) {
+    const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
     const isUkrainian = locale === "uk";
 
     return {
-        title: isUkrainian ? "Статут" : "Statut"
+        title: isUkrainian ? "Статут" : "Statut",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}documents/statut` : `${API_BASE_URL}en/documents/statut`,
+        },
     };
 };
 

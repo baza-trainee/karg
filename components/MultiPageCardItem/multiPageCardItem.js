@@ -1,16 +1,15 @@
 'use client';
 import React from 'react';
-import styles from './multiPageCardItemGrid.module.scss';
-import variables from '../../app/[locale]/variables.module.scss';
-import { MenuBurgerClose } from "@/public/assets/icons";
-import { LeftIcon, RightIcon } from '@/public/assets/icons/imageCarousel';
-import Image from "next/image";
-import Link from 'next/link';
-import { useRouter } from "next/navigation";
-import { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { usePathname } from 'next/navigation';
+
+import Image from "next/image";
+import Link from 'next/link';
+
 import Pagination from './pagination';
+
+import styles from './multiPageCardItemGrid.module.scss';
+import variables from '../../app/[locale]/variables.module.scss';
 
 const arePropsEqual = (prevProps, nextProps) => {
 
@@ -19,110 +18,17 @@ const arePropsEqual = (prevProps, nextProps) => {
 };
 
 const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageChange, currentPage }) => {
-    const { t, i18n } = useTranslation('uniCards');
+    const { t } = useTranslation('uniCards');
 
     const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
 
-    const [selectedCard, setSelectedCard] = useState(null);
-    const [carouselIndex, setCarouselIndex] = useState(0);
-    const [modalPosition, setModalPosition] = useState({ x: 0, y: 0 });
-    const [adoptionModal, setAdoptionModal] = useState(null);
-    const [adoptionModalForm, setAdoptionModalForm] = useState(
-        { name: '', phone: '', animalName: '', animalImageUri: '' }
-    );
-    const [adoptionModalError, setAdoptionModalError] = useState('');
-    const [infoModal, setInfoModal] = useState(
-        { showModal: false, status: false, text: '' }
-    );
-
-    const router = useRouter();
     const pathname = usePathname();
-    const currentLocale = i18n.language;
-    const localizedPath = (path) => currentLocale === 'uk' ? path : `/${currentLocale}${path}`;
 
     const DOCUMENT_TEXT = {
         cardButtonText: t('cardButtonText'),
         cardLinkText: t('cardLinkText'),
         adoptionModalFormText: t('adoptionModalFormText'),
         cardAltText: t('cardAltText'),
-        rescueHistoryText: t('rescueHistoryText'),
-        actionButtonTransparentText: t('actionButtonTransparentText'),
-        actionButtonBackgroundText: t('actionButtonBackgroundText'),
-        adoptionModalHeadingText: t('adoptionModalHeadingText'),
-        adoptionModalFormLabelText: t('adoptionModalFormLabelText'),
-        adoptionModalFormPlaceholderText: t('adoptionModalFormPlaceholderText'),
-        adoptionModalFormPhoneText: t('adoptionModalFormPhoneText'),
-        adoptionModalFormPhonePlaceholderText: t('adoptionModalFormPhonePlaceholderText'),
-        adoptionModalText_text: t('adoptionModalText_text'),
-        adoptionModalButtonsText: t('adoptionModalButtonsText'),
-        adoptionModalButtonsCancelText: t('adoptionModalButtonsCancelText'),
-        infoModalSuccess: t('infoModalSuccess'),
-        infoModalError: t('infoModalError'),
-        returnToPortalButton: t('returnToPortalButton')
-    };
-
-    const closeModal = () => {
-        setSelectedCard(null);
-    };
-
-    const closeAdoptionModal = () => {
-        setAdoptionModal(null);
-    };
-
-    const closeInfoModal = () => {
-        setInfoModal({ showModal: false, status: false, text: '' });
-    };
-
-    const handleCarousel = (caseButton) => {
-        switch (caseButton) {
-            case 'prev':
-                setCarouselIndex((carouselIndex - 1 + selectedCard.images.length) % selectedCard.images.length);
-                break;
-            case 'next':
-                setCarouselIndex((carouselIndex + 1) % selectedCard.images.length);
-                break;
-        }
-    };
-
-    const handleAdoptionModal = (e, selectedCard) => {
-        closeModal();
-        setAdoptionModal(selectedCard);
-        setModalPosition({ x: e.clientX, y: e.clientY });
-        setAdoptionModalForm({
-            ...adoptionModalForm,
-            animalName: selectedCard.name,
-            animalImageUri: `${API_BASE_URL}${selectedCard.images[0]}`
-        });
-    };
-
-    const adoptionModalTelInput = (event) => {
-        if (!event.target.value) {
-            setAdoptionModalForm({
-                ...adoptionModalForm,
-                phone: '+38'
-            });
-        }
-    };
-
-    const handleSendingAdoptionModal = (event) => {
-        event.preventDefault();
-
-        const phoneRegex = /^\+38\d{10}$/;
-
-        if (adoptionModalForm.name.length === 0) {
-            return setAdoptionModalError("Поле ім'я пусте");
-        }
-
-        if (!phoneRegex.test(adoptionModalForm.phone)) {
-            return setAdoptionModalError("Введено некоректний номер телефону");
-        }
-        closeAdoptionModal();
-        telegramSend();
-        setAdoptionModalForm({ name: '', phone: '', animalName: '', animalImageUri: '' });
-    };
-
-    const handleRedirect = (route) => {
-        router.push(route);
     };
 
     const renderButton = (id) => {
@@ -137,7 +43,7 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
             case 'link':
                 return (
                     <Link className={`${styles.cardLink} ${variables.button1}`}
-                        href={`${pathname.startsWith('/en') ? '/en' : ''}${pathname.includes('/useful/results') ? `/useful/results/${id}` : `/useful/advices/${id}`}`}>
+                        href={`${pathname.startsWith('/en') ? '/en' : ''}${pathname.includes('/useful/stats') ? `/useful/stats/${id}` : `/useful/advices/${id}`}`}>
                         {DOCUMENT_TEXT.cardLinkText}{'>'}
                     </Link>
                 );
@@ -162,8 +68,6 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
         );
     };
 
-
-
     return (
         <div id="card-list" className={styles.outerContainer}>
             <div className={styles.container}>
@@ -174,86 +78,15 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
                         </div>
                         <h2 className={`${styles.cardName} ${variables.font20w700}`}>{card.name || card.title}</h2>
                         <div className={styles.contentHolder}>
-                            <p className={styles.cardDesc}>{card.description}</p>
+                            <div className={styles.cardDesc}>
+                                {card.description.split('\n').map((paragraph, i) => (
+                                    <p key={i}>{paragraph}</p>
+                                ))}
+                            </div>
                             {renderButton(card.id)}
                         </div>
                     </div>
                 ))}
-
-                {selectedCard && (
-                    <div className={styles.modalContentContainer}>
-                        <div className={styles.modalBackground} onClick={closeModal}></div>
-                        <div className={styles.modalContainer}>
-                            <div className={styles.imageContainer}>
-                                <button className={styles.leftIcon} onClick={() => handleCarousel('prev')}>
-                                    <LeftIcon className={styles.leftIcon} />
-                                </button>
-                                <Image
-                                    src={`${API_BASE_URL}${selectedCard.images[carouselIndex]}`}
-                                    alt={DOCUMENT_TEXT.cardAltText}
-                                    sizes="100vw"
-                                    width={268}
-                                    height={268}
-                                    loading="lazy"
-                                />
-                                <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
-                                    <RightIcon className={styles.rightIcon} />
-                                </button>
-                                <button
-                                    className={styles.closeButtonContainer}
-                                    onClick={closeModal}><MenuBurgerClose
-                                        className={styles.closeButton} />
-                                </button>
-                            </div>
-                            <div className={styles.innerModalDesktopContainer}>
-                                <div className={styles.innerModalDesktopNameContainer}>
-                                    <h2>{selectedCard.name}</h2>
-                                    <button
-                                        className={styles.closeButtonContainer}
-                                        onClick={closeModal}>
-                                        <MenuBurgerClose
-                                            className={styles.closeButton} />
-                                    </button>
-                                </div>
-                                <p>{selectedCard.description}</p>
-                                <div className={styles.innerModalButtons}>
-                                    <button
-                                        onClick={() => handleRedirect(localizedPath('/help'))}
-                                        className={`${styles.actionButtonTransparent} ${variables.button1}`}>
-                                        {DOCUMENT_TEXT.actionButtonTransparentText}
-                                    </button>
-                                    <button
-                                        onClick={(e) => handleAdoptionModal(e, selectedCard)}
-                                        className={`${styles.actionButtonBackground} ${variables.button1}`}>
-                                        {DOCUMENT_TEXT.actionButtonBackgroundText}
-                                    </button>
-                                </div>
-                            </div>
-                            <div className={styles.innerModalDesktopHistoryContainer}>
-                                <h3 className={variables.subtitle2}>{selectedCard?.story ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
-                                <p>{selectedCard?.story ? selectedCard.story : null}</p>
-                            </div>
-                            <div className={styles.innerModalContainer}>
-                                <h2 className={variables.button1}>{selectedCard.name}</h2>
-                                <p>{selectedCard.description}</p>
-                                <h3 className={variables.button1}>{selectedCard?.story ? DOCUMENT_TEXT.rescueHistoryText : null}</h3>
-                                <p>{selectedCard?.story ? selectedCard.story : null}</p>
-                                <div className={styles.innerModalButtons}>
-                                    <button
-                                        onClick={() => handleRedirect(localizedPath('/help'))}
-                                        className={`${styles.actionButtonTransparent} ${variables.button1}`}>
-                                        {DOCUMENT_TEXT.actionButtonTransparentText}
-                                    </button>
-                                    <button
-                                        onClick={(e) => handleAdoptionModal(e, selectedCard)}
-                                        className={`${styles.actionButtonBackground}`}>
-                                        {DOCUMENT_TEXT.actionButtonBackgroundText}
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                )}
 
             </div>
             <Pagination

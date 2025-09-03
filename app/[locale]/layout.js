@@ -52,7 +52,7 @@ export async function generateMetadata({ params: { locale } }) {
         : "Animal rescue in Kyiv – helping cats, dogs, birds, and wild animals.",
       images: [
         {
-          url: "/app/opengraph-image.png",
+          url: `${API_BASE_URL}/app/opengraph-image.png`,
           alt: isUkrainian
             ? "Порятунок тварин | Kyiv Animal Rescue Group"
             : "Animal rescue | Kyiv Animal Rescue Group",
