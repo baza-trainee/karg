@@ -12,6 +12,7 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import axios from 'axios';
 
+import FullScreenGallery from './FullScreenGallery';
 import SocialIcons from "@/components/SocialIcons/socialIcons";
 import GoBackButton from "@/components/common/GoBackButton/GoBackButton";
 import GoBackIcon from "@/components/ServerSideIcon/GoBackIcon";
@@ -31,6 +32,7 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
     const [infoModal, setInfoModal] = useState(
         { showModal: false, status: false, text: '' }
     );
+    const [isFullScreenGallery, setIsFullScreenGallery] = useState(false);
 
     const router = useRouter();
 
@@ -172,6 +174,12 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
         ];
     }
 
+    const handleGalleryClick = () => {
+        if (window.innerWidth > 768) {
+            setIsFullScreenGallery(true);
+        }
+    };
+
     return (
         <div className={styles.container}>
             <GoBackButton className={styles.goBackButton}>
@@ -202,6 +210,8 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                                 (max-width: 1400px) 570px, 
                                 706px
                             "
+                            onClick={handleGalleryClick}
+                            style={{ cursor: window.innerWidth > 768 ? 'pointer' : 'default' }}
                         />
                         {article.images.length > 1
                             ? <button className={styles.rightIcon} onClick={() => handleCarousel('next')}>
@@ -292,6 +302,14 @@ const AnimalClient = ({ id, cultureCode, API_BASE_URL, endpoint, translations })
                 </div>
 
             </div>
+
+            <FullScreenGallery
+                images={article?.images || []}
+                API_BASE_URL={API_BASE_URL}
+                isOpen={isFullScreenGallery}
+                onClose={() => setIsFullScreenGallery(false)}
+                initialIndex={carouselIndex}
+            />
 
             {adoptionModal && (
                 <div className={modalStyles.modalContentContainer}>
