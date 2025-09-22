@@ -211,9 +211,6 @@
   justify-content: center;
   color: $text-dark;
   gap: 12px;
-  & .active {
-    box-shadow: inset 0 -2px 0 $primary;
-  }
 }
 
 .navMenuMobile {
@@ -223,10 +220,20 @@
   }
 }
 
-.navMenuMobile > a {
-  & .active {
-    box-shadow: inset 0 -2px 0 $primary;
-  }
+.navMenuMobile > ul > li.active {
+  box-shadow: inset 0 -2px 0 $primary;
+}
+
+.navMenuMobile > a.active {
+  box-shadow: inset 0 -2px 0 $primary;
+}
+
+.navMenuInnerList > li.active {
+  box-shadow: inset 0 -2px 0 $primary;
+}
+
+.navMenuInnerList > li > a.active {
+  box-shadow: inset 0 -2px 0 $primary;
 }
 
 .navMenuInnerMenu {
@@ -235,7 +242,7 @@
   align-items: center;
   justify-content: center;
   gap: 12px;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 .navMenuInnerList {
@@ -245,17 +252,10 @@
   justify-content: center;
   gap: 8px;
   margin-top: 10px;
-  cursor: pointer;
-  & .active {
-    box-shadow: inset 0 -2px 0 $primary;
-  }
 }
 
 .navMenuInnerList > li > a {
   color: $button-dark-hover;
-  & .active {
-    box-shadow: inset 0 -2px 0 $primary;
-  }
 }
 
 .contactsContainerMobile {
@@ -265,6 +265,10 @@
   align-items: center;
   gap: 12px;
   @include font-styles(400, 16px);
+
+  @media screen and (min-width: 768px) {
+    @include font-styles(400, 18px);
+  }
 }
 
 .contactsContainerMobile > a {
@@ -334,9 +338,9 @@
     color: #fff;
     text-decoration: none;
     transition: color 0.3s ease-in-out;
-    &.active {
-      box-shadow: inset 0 -2px 0 $button-hover;
-    }
+    // &.active {
+    //   box-shadow: inset 0 -2px 0 $button-hover;
+    // }
   }
 
   .navMenu a:hover {
@@ -365,9 +369,9 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    &.active {
-      box-shadow: inset 0 -2px 0 $button-hover;
-    }
+    // &.active {
+    //   box-shadow: inset 0 -2px 0 $button-hover;
+    // }
   }
 
   .dropHover {
