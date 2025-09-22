@@ -43,6 +43,16 @@ export async function generateMetadata({ params: { locale } }) {
       locale: isUkrainian ? "uk_UA" : "en_US",
       localeAlternate: ["uk_UA", "en_US"],
       siteName: "Kyiv Animal Rescue Group",
+      images: [
+        {
+          url: `${API_BASE_URL}opengraph-image.png`,
+          width: 1200,
+          height: 630,
+          alt: isUkrainian
+            ? "Порятунок тварин | Kyiv Animal Rescue Group"
+            : "Animal rescue | Kyiv Animal Rescue Group",
+        },
+      ]
     },
     twitter: {
       card: "summary_large_image",
@@ -52,7 +62,7 @@ export async function generateMetadata({ params: { locale } }) {
         : "Animal rescue in Kyiv – helping cats, dogs, birds, and wild animals.",
       images: [
         {
-          url: `${API_BASE_URL}/app/opengraph-image.png`,
+          url: `${API_BASE_URL}opengraph-image.png`,
           alt: isUkrainian
             ? "Порятунок тварин | Kyiv Animal Rescue Group"
             : "Animal rescue | Kyiv Animal Rescue Group",
