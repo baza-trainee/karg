@@ -91,13 +91,13 @@
       .cardDesc {
         color: $text-dark;
         border-radius: 4px 4px 0 0;
+        width: 100%;
+        height: fit-content;
+        white-space: pre-line;
         display: -webkit-box;
         -webkit-line-clamp: 7;
         -webkit-box-orient: vertical;
         overflow: hidden;
-        text-overflow: ellipsis;
-        width: 100%;
-        height: fit-content;
       }
 
       .cardButton {
@@ -202,9 +202,9 @@
       display: grid;
       place-items: center;
       gap: 8px;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      word-break: break-all;
+      // word-wrap: break-word;
+      // overflow-wrap: break-word;
+      // word-break: break-all;
 
       & h2 {
         color: $button-default;
