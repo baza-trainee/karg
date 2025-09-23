@@ -78,10 +78,13 @@ const MultiPageCardItem = React.memo(({ data, buttonVariant, totalPages, onPageC
                         </div>
                         <h2 className={`${styles.cardName} ${variables.font20w700}`}>{card.name || card.title}</h2>
                         <div className={styles.contentHolder}>
-                            <div className={styles.cardDesc}>
+                            {/* <div className={styles.cardDesc}>
                                 {card.description.split('\n').map((paragraph, i) => (
-                                    <p key={i}>{paragraph}</p>
+                                    <p className={styles.cardP} key={i}>{paragraph}</p>
                                 ))}
+                            </div> */}
+                            <div className={styles.cardDesc}>
+                                {card.description}
                             </div>
                             {renderButton(card.id)}
                         </div>
