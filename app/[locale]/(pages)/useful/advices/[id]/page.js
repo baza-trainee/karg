@@ -27,6 +27,11 @@ export async function generateMetadata({ params }) {
           ? `${API_BASE_URL}useful/advices/${id}`
           : `${API_BASE_URL}en/useful/advices/${id}`,
       },
+      openGraph: {
+        url: isUkrainian
+          ? `${API_BASE_URL}useful/advices/${id}`
+          : `${API_BASE_URL}en/useful/advices/${id}`,
+      },
     };
   } catch (error) {
     console.error("Failed to fetch article data for metadata", error);
