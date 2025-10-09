@@ -23,6 +23,9 @@ export async function generateMetadata({ params: { locale } }) {
     alternates: {
       canonical: isUkrainian ? `${API_BASE_URL}about/contacts` : `${API_BASE_URL}en/about/contacts`,
     },
+    openGraph: {
+      url: isUkrainian ? `${API_BASE_URL}about/contacts` : `${API_BASE_URL}en/about/contacts`,
+    },
   };
 };
 

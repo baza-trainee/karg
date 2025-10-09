@@ -216,6 +216,7 @@
 .actionButtonTransparent {
   display: flex;
   width: 270px;
+  min-height: 50px;
   padding: 11px 12px;
   flex-direction: column;
   justify-content: center;
@@ -244,6 +245,7 @@
 .actionButtonBackground {
   display: flex;
   width: 270px;
+  min-height: 50px;
   padding: 11px 12px;
   flex-direction: column;
   justify-content: center;
