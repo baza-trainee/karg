@@ -35,7 +35,7 @@ const YearResultClient = ({ locale }) => {
                 searchTerm={''}
                 category={''}
                 onResults={handleResults}
-                shortVersion={true}
+                shortVersion={false}
                 setIsLoading={setIsLoading} />
         </main>
     );
