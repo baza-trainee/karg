@@ -57,7 +57,7 @@ const AdviceClient = ({ locale }) => {
                 searchTerm={searchTerm}
                 category={category}
                 onResults={handleResults}
-                shortVersion={true}
+                shortVersion={false}
                 setIsLoading={setIsLoading} />
         </main>
     );
