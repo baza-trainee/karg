@@ -1,0 +1,52 @@
+@import "@/app/[locale]/colors.scss";
+
+.container {
+  width: 100%;
+  padding-left: 16px;
+  padding-right: 16px;
+  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    padding-left: 64px;
+    padding-right: 64px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding-left: 135px;
+    padding-right: 135px;
+  }
+}
+
+.mission {
+  padding: 24px 0;
+  text-align: right;
+
+  color: var(--text-dark, #141414);
+
+  @media screen and (min-width: 768px) {
+    padding: 32px 0;
+  }
+
+  @media screen and (min-width: 1200px) {
+    padding: 48px 0;
+  }
+
+  &Title {
+    font-size: 24px;
+    font-weight: 700;
+    line-height: calc(31.2 / 24);
+
+    text-align: center;
+
+    margin-bottom: 16px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 32px;
+      margin-bottom: 32px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      font-size: 44px;
+    }
+  }
+}

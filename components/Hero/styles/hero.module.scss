@@ -1,0 +1,75 @@
+@import '../../../app/[locale]/colors.scss';
+
+.hero {
+  position: relative;
+  background-color: #eadeff;
+
+  &Title {
+    top: 10px;
+    position: absolute;
+    left: 0;
+    right: 0;
+
+    text-align: center;
+    display: flex;
+    justify-content: center;
+
+    font-size: 36px;
+    font-weight: 800;
+
+    line-height: $line-height;
+    text-transform: capitalize;
+    letter-spacing: 0;
+
+    color: $button-active;
+
+    @media screen and (min-width: 768px) {
+      font-size: 46px;
+      top: 28px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      right: 52px;
+      top: 64px;
+      left: auto;
+      color: $button-default;
+    }
+
+    @media screen and (min-width: 1440px) {
+      top: 64px;
+      font-size: 56px;
+      letter-spacing: 1.12px;
+    }
+  }
+}
+
+.mobImage {
+  object-fit: cover;
+  margin-top: 52px;
+
+  @media screen and (min-width: 767px) {
+    display: none;
+  }
+}
+
+.tabImage {
+  display: none;
+  margin-top: 96px;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+    background-position: top;
+  }
+}
+
+.deskImage {
+  display: none;
+  margin-top: 110px;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+    background-position: top;
+  }
+}

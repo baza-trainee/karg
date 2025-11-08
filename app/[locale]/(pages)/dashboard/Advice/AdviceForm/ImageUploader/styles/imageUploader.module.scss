@@ -1,0 +1,62 @@
+@import "/app/[locale]/variables.module.scss";
+
+.uploadArea {
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+
+  .placeholderImage {
+    width: 1196px;
+    height: 180px;
+  }
+
+  .placeholderImageMin {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+.imageMin {
+  height: 100%;
+  width: 200px;
+}
+
+.imageContainer {
+  height: 200px;
+  position: relative;
+
+  .deleteIconContainer {
+    position: absolute;
+    z-index: 20;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 28px;
+    height: 28px;
+    background-color: white;
+    top: 8px;
+    right: 8px;
+    border-radius: 2px;
+    border: 2px solid red;
+    border: 0.5px solid $button-active;
+
+    .deleteIcon {
+      fill: $button-active;
+      height: 20px;
+      width: 16px;
+    }
+  }
+}
+
+.imageContainer img {
+  height: 200px;
+  border-radius: 8px;
+}
+
+.imagesFlex {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+}

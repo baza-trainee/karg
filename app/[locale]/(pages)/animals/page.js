@@ -1,0 +1,69 @@
+// styles
+import styles from './styles/animals.module.scss';
+// locale
+import initTranslations from "@/app/i18n";
+import TranslationsProvider from "@/components/TranslationsProvider";
+// components
+import SavePrevPage from '@/components/SavePrevPage';
+import Header from "@/components/Header/header";
+import Footer from "@/components/Footer/footer";
+import PageHero from '@/components/common/PageHero/pageHero';
+import AnimalsClient from './AnimalsClient';
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
+// images
+import { ourAnimalsImage } from '@/public/assets/images/animals';
+
+const i18nNamespaces = ["ourAnimals", "uniCards", "common"];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export async function generateMetadata({ params: { locale } }) {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Наші тварини" : "Our animals",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}animals` : `${API_BASE_URL}en/animals`,
+        },
+        openGraph: {
+            url: isUkrainian ? `${API_BASE_URL}animals` : `${API_BASE_URL}en/animals`,
+        },
+    };
+};
+
+const Animals = async ({ params: { locale } }) => {
+    const { t, resources } = await initTranslations(locale, i18nNamespaces);
+    const DOCUMENT_TEXT = {
+        buttonText: t('buttonText'),
+        altText: t('buttonText'),
+        p1: t('p1'),
+        p2: t('p2'),
+    };
+
+    return (
+        <TranslationsProvider
+            resources={resources}
+            locale={locale}
+            namespaces={i18nNamespaces}
+        >
+            <SavePrevPage />
+            <Header />
+            <PageHero
+                mobImage={ourAnimalsImage.src}
+                tablImage={ourAnimalsImage.src}
+                deskImage={ourAnimalsImage.src}
+                buttonText={DOCUMENT_TEXT.buttonText}
+                altText={DOCUMENT_TEXT.altText}
+            />
+
+            <section className={styles.textContainer}>
+                <p>{DOCUMENT_TEXT.p1}</p>
+                <p>{DOCUMENT_TEXT.p2}</p>
+            </section>
+            <AnimalsClient locale={locale} />
+            <ScrollToTop />
+            <Footer />
+        </TranslationsProvider>
+    );
+};
+
+export default Animals;

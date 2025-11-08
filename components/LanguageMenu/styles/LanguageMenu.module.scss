@@ -1,0 +1,59 @@
+@import '../../../app/[locale]/colors.scss';
+
+.languageMenu {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  background-color: $primary;
+  color: $text-white;
+  text-transform: uppercase;
+  min-width: 24px;
+  max-width: 73px;
+  position: relative;
+  text-align: center;
+  z-index: 5;
+
+  .languageMenuIndicator {
+    transition: color 0.3s ease-in-out;
+  }
+
+  .languageList {
+    position: absolute;
+    list-style-type: none;
+    bottom: 0px;
+    transform: translateY(100%);
+    opacity: 0;
+    visibility: hidden;
+    z-index: 9999;
+
+    &.active {
+      opacity: 1;
+      visibility: visible;
+      background-color: $primary;
+      width: 100%;
+      padding-bottom: 5px;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+    }
+
+    .languageItem {
+      padding-top: 5px;
+
+      &:first-child {
+        padding-top: 17px;
+      }
+
+      &:hover {
+        cursor: pointer;
+        color: $button-default;
+      }
+    }
+  }
+}
+
+.languageMenu:hover {
+  cursor: pointer;
+  & .languageMenuIndicator {
+    color: $button-default;
+  }
+}

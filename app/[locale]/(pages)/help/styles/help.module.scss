@@ -1,0 +1,347 @@
+@import '../../../colors.scss';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.textBlock {
+  display: inline-flex;
+  padding: 24px 16px 16px 16px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  .textBlock_title {
+    align-self: center;
+  }
+}
+
+.bankingDetails_toast {
+  position: fixed;
+  top: 80px;
+  right: -300px;
+  transition: right 0.5s ease-in-out;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+
+  @media screen and (min-width: 768px) {
+    top: 130px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    top: 180px;
+  }
+}
+
+.bankingDetails_toast_show {
+  right: 30px;
+}
+
+.bankingDetails_toast_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bankingDetails_Container {
+  display: flex;
+  padding: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .bankingDetails_title {
+    align-self: center;
+  }
+
+  .bankingDetails_cardsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+
+    .bankingDetails_card {
+      display: flex;
+      width: 100%;
+      padding: 32px 9px;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      border-radius: 4px;
+      background: $bg-purple;
+
+      .bankingDetails_textItem {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        width: 100%;
+      }
+      @keyframes borderMove {
+        0% {
+          border-width: 3px;
+          border-style: double;
+          border-color: transparent;
+          border-left-color: #111;
+        }
+        25% {
+          border-left-color: transparent;
+          border-top-color: #111;
+        }
+        50% {
+          border-top-color: transparent;
+          border-right-color: #111;
+        }
+        75% {
+          border-right-color: transparent;
+          border-bottom-color: #111;
+        }
+        100% {
+          border-bottom-color: transparent;
+          border-left-color: #111;
+        }
+      }
+
+      .bankingDetails_IconItem {
+        position: relative;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+        gap: 1px;
+        cursor: pointer;
+      }
+
+      .bankingDetails_IconItem address {
+        // flex-shrink: 1;
+        // flex-grow: 1;
+        flex: 12;
+        text-align: center;
+      }
+
+      .bankingDetails_IconItem::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        border: 3px double transparent;
+        border-radius: 10px;
+        pointer-events: none;
+      }
+
+      .bankingDetails_IconItem:hover::before {
+        animation: borderMove 1s infinite;
+      }
+    }
+
+    .bankingDetails_cardButton {
+      display: flex;
+      width: 270px;
+      min-height: 44px;
+      max-height: 52px;
+      padding: 10px 12px 11px 12px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      border-radius: 4px;
+      background: $button-dark-default;
+      color: #ffffff;
+    }
+  }
+}
+
+.paymentsButtons_Container {
+  display: flex;
+  width: 320px;
+  padding: 16px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  .paymentsButtons_title {
+    text-align: center;
+  }
+
+  .paymentsButtons_buttonContainer {
+    display: flex;
+    width: 320px;
+    padding: 16px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+}
+
+.paymentsButtons_button {
+  display: flex;
+  width: 288px;
+  height: 64px;
+  padding: 8px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+  border-radius: 8px;
+  background: $button-dark-hover;
+  color: #ffffff;
+}
+
+.photoBlock_Container {
+  display: flex;
+  width: 100%;
+  padding: 24px 16px 48px 16px;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  .photoBlock_image_mobile {
+    // width: 288px;
+    // height: 221px;
+    display: block;
+    border-radius: 4px;
+  }
+
+  .photoBlock_image_tablet {
+    display: none;
+    border-radius: 8px;
+  }
+
+  .photoBlock_image_desktop {
+    display: none;
+    border-radius: 8px;
+  }
+}
+
+@media screen and (min-width: 900px) {
+  .paymentsButtons_button {
+    width: 222px;
+    height: 66px;
+  }
+
+  .textBlock {
+    display: flex;
+    width: 834px;
+    padding: 32px 64px 8px 64px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .textBlock_text {
+      align-self: stretch;
+    }
+  }
+
+  .bankingDetails_Container {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    .bankingDetails_cardsContainer {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row;
+      gap: 20px;
+      flex: 1 0 0;
+    }
+
+    .bankingDetails_card {
+      display: flex;
+      width: 343px;
+      padding: 20px 88px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 202px;
+      align-self: stretch;
+      text-align: center;
+
+      .copy_icon {
+        width: 16px;
+        // height: 16px;
+        cursor: pointer;
+        flex-shrink: 0;
+      }
+
+      .bankingDetails_cardText {
+        height: 100%;
+      }
+    }
+  }
+
+  .paymentsButtons_Container {
+    display: flex;
+    width: 100%;
+    padding: 32px 64px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    background: #eadeff;
+
+    .paymentsButtons_buttonContainer {
+      display: flex;
+      // width: 706px;
+      align-items: center;
+      justify-items: center;
+      justify-content: center;
+      flex-direction: row;
+      gap: 20px;
+    }
+  }
+
+  .photoBlock_Container {
+    padding: 32px 64px 64px 64px;
+    justify-content: center;
+    gap: 20px;
+
+    .photoBlock_image_mobile {
+      display: none;
+    }
+
+    .photoBlock_image_tablet {
+      display: block;
+    }
+
+    .photoBlock_image_desktop {
+      display: none;
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .paymentsButtons_button {
+    width: 370px;
+    height: 100px;
+  }
+
+  .photoBlock_image_desktop {
+    display: block;
+  }
+
+  .textBlock {
+    display: flex;
+    width: 1170px;
+    padding: 32px 64px 8px 64px;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+
+    .textBlock_text {
+      align-self: stretch;
+    }
+  }
+}

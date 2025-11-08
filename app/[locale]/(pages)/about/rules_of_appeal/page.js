@@ -1,0 +1,82 @@
+import initTranslations from "../../../../i18n";
+import TranslationsProvider from "@/components/TranslationsProvider";
+import styles from "../rules_of_appeal/styles/rulesOfAppeal.module.scss";
+import Header from "@/components/Header/header";
+import Footer from "@/components/Footer/footer";
+import PageHero from "@/components/common/PageHero/pageHero";
+import mobImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-mob.jpg";
+import tablImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-tabl.jpg";
+import deskImage from "@/public/assets/images/about/rulesOfAppeal/rules-hero-img-desk.jpg";
+import NeedInfo from "@/components/common/NeedInfo/needInfo";
+import Rules from "./rules/rules";
+import RescueTypes from "@/components/RescueTypes/RescueTypes";
+import ScrollToTop from "@/components/common/ScrollToTop/scrollToTop";
+import variables from "@/app/[locale]/variables.module.scss";
+
+const i18nNamespaces = ['rulesOfAppeal', 'common'];
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
+export async function generateMetadata({ params: { locale } }) {
+    const isUkrainian = locale === "uk";
+
+    return {
+        title: isUkrainian ? "Правила звернення" : "Contact protocol",
+        alternates: {
+            canonical: isUkrainian ? `${API_BASE_URL}about/rules_of_appeal` : `${API_BASE_URL}en/about/rules_of_appeal`,
+        },
+        openGraph: {
+            url: isUkrainian ? `${API_BASE_URL}about/rules_of_appeal` : `${API_BASE_URL}en/about/rules_of_appeal`,
+        },
+    };
+};
+
+const RulesOfAppeal = async ({ params: { locale } }) => {
+    const { t, resources } = await initTranslations(locale, i18nNamespaces);
+
+    const altText = "Rescuers near the man";
+    const buttonText = t('pseudoButtonText');
+    const title = t('common:needInfoTitle');
+    const subtitle = t('common:needInfoSubtitle');
+    const buttonCaption = t('common:buttonQuestion');
+    const localizedPath = (path) => locale === 'uk' ? path : `/${locale}${path}`;
+
+    const rescueTypes = [
+        { cardMessage: t('common:rescueTypes1'), id: 1 },
+        { cardMessage: t('common:rescueTypes2'), id: 2 },
+        { cardMessage: t('common:rescueTypes3'), id: 3 },
+        { cardMessage: t('common:rescueTypes4'), id: 4 },
+        { cardMessage: t('common:rescueTypes5'), id: 5 },
+        { cardMessage: t('common:rescueTypes6'), id: 6 },
+        { cardMessage: t('common:rescueTypes7'), id: 7 },
+    ];
+
+    return (
+        <TranslationsProvider resources={resources} locale={locale} namespaces={i18nNamespaces}>
+            <Header />
+            <main>
+                <PageHero
+                    mobImage={mobImage.src}
+                    tablImage={tablImage.src}
+                    deskImage={deskImage.src}
+                    buttonText={buttonText}
+                    altText={altText} />
+                <Rules locale={locale} namespaces={i18nNamespaces} />
+                <RescueTypes locale={locale} namespaces={i18nNamespaces} rescueTypes={rescueTypes} isButtonAsLink={false} />
+                <div className={`${styles.article} ${variables.text_4}`}>
+                    <p>{t('articleFirstPar')}</p>
+                    <p>{t('articleSecondPar')}</p>
+                </div>
+                <NeedInfo
+                    title={title}
+                    subtitle={subtitle}
+                    route={localizedPath("/useful/faq")}
+                    buttonCaption={buttonCaption}
+                />
+            </main>
+            <ScrollToTop />
+            <Footer />
+        </TranslationsProvider >
+    );
+};
+
+export default RulesOfAppeal;

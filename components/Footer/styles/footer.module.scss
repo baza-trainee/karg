@@ -1,0 +1,329 @@
+@import '../../../app/[locale]/colors.scss';
+@import '../../../app/[locale]/variables.module.scss';
+
+// mobile
+
+.socIcons {
+  margin: 5px;
+  font-size: 30px;
+  @include socIcons;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  background-color: $button-dark-default;
+  padding: 16px 16px 40px 16px;
+  gap: 30px;
+  position: relative;
+}
+
+.logo {
+  font-size: 80px;
+}
+
+.brandHolder {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.brandHolderLogo {
+  font-size: 60px;
+  margin-bottom: 16px;
+}
+
+.brandHolderName {
+  color: $button-default;
+  @include font-styles(800, 16px);
+}
+
+.navMenu {
+  @include font-styles(800, 18px);
+}
+
+.navMenu > ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  text-wrap: nowrap;
+  p,
+  a {
+    color: #fff;
+    cursor: pointer;
+  }
+
+  @media (hover: none) {
+    p:active,
+    a:active {
+      color: $button-default;
+    }
+  }
+
+  @media (hover: hover) {
+    p,
+    a {
+      transition: color 0.4s ease-in-out;
+    }
+    p:hover,
+    a:hover {
+      color: $button-default;
+    }
+  }
+}
+
+.navMenuInnerMenu {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}
+
+.navMenuInnerList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 10px;
+  text-align: center;
+
+  & > li > a {
+    color: $text-gray;
+  }
+}
+
+.navMenuRules {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 10px;
+  text-align: center;
+
+  & > li > a {
+    color: $text-gray;
+    transition: color 0.4s ease-in-out;
+  }
+
+  & > li > a:hover {
+    color: $button-default;
+  }
+}
+
+.contactsContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @include font-styles(400, 18px);
+  gap: 12px;
+
+  & a {
+    text-decoration: none;
+    color: #fff;
+    margin-bottom: 4px;
+    transition: color 0.4s ease-in-out;
+  }
+
+  p:hover,
+  a:hover {
+    color: $button-default;
+  }
+
+  .contactsContainerTelephones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+}
+
+.line {
+  display: none;
+}
+
+.contactsContainerIcons {
+  display: none;
+}
+
+.socialIconsHolderDesktop {
+  display: none;
+}
+
+.documentsLinksHolder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  grid-area: policy;
+}
+
+.signature {
+  color: $text-gray;
+  font-size: 10px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 140%;
+  position: absolute;
+  bottom: 8px;
+  justify-self: center;
+}
+
+// tablet
+
+@media screen and (min-width: 768px) {
+  .signature {
+    font-size: 14px;
+  }
+
+  .brandHolderName {
+    @include font-styles(800, 24px);
+  }
+
+  .navMenu > ul {
+    gap: 20px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .signature {
+    font-size: 16px;
+  }
+  .navMenuRules {
+    flex-direction: row;
+  }
+
+  .footer {
+    padding: 56px 9.375%;
+    display: grid;
+    place-items: center;
+    justify-content: space-between;
+    gap: 30px;
+    width: 100%;
+    grid-template-areas:
+      'logo contactsContainer navMenu navMenu button'
+      'logo contactsContainer navMenu navMenu button'
+      'policy policy policy policy policy';
+  }
+
+  .logo {
+    font-size: 80px;
+  }
+
+  .buttonAndIconsHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    grid-area: button;
+  }
+
+  .brandHolder {
+    grid-area: logo;
+  }
+
+  .brandHolderLogo {
+    font-size: 100px;
+  }
+
+  .brandHolderName {
+    display: none;
+  }
+
+  .navMenu {
+    grid-area: navMenu;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    position: relative;
+    border-left: 2px solid $button-default;
+
+    & ul {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      gap: 16px;
+    }
+
+    @media screen and (min-width: 1200px) {
+      min-width: 150px;
+      padding-left: 30%;
+    }
+
+    @media screen and (min-width: 1440px) {
+      padding-left: 45%;
+    }
+
+    @media screen and (min-width: 1600px) {
+      padding-left: 60%;
+      min-width: 200px;
+    }
+  }
+
+  .navMenuLI {
+    display: none;
+  }
+
+  .buttonAndIconsHolder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  .socialIconsHolderDesktop {
+    display: block;
+  }
+
+  .socialIconsHolderMobile {
+    display: none;
+  }
+
+  .contactsContainer {
+    grid-area: contactsContainer;
+    justify-content: flex-start;
+    align-items: flex-start;
+    width: 100%;
+    margin-right: 30px;
+  }
+
+  .contactsContainerIcons {
+    display: block;
+    font-size: 40px;
+  }
+
+  @mixin flex-center($gap: 10px) {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: $gap;
+  }
+
+  .contactsContainerHolder {
+    @include flex-center;
+  }
+
+  .contactsContainerEmail {
+    @include flex-center;
+  }
+
+  .contactsContainerLocation {
+    @include flex-center;
+  }
+}

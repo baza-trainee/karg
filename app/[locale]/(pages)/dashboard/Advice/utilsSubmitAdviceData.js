@@ -1,0 +1,102 @@
+import { addAdvice, updateAdvice } from "./api";
+import { checkFormValidity } from './AdviceForm/checkFormValidity';
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
+
+export const submitAdviceData = async (type, formData, originalData, showModal, setHasUnsavedChanges, successDialogActions) => {
+    const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
+
+    const getUpdatedFields = (formData, originalData) => {
+        const patch = [];
+        Object.keys(formData).forEach(key => {
+            if (Array.isArray(formData[key])) {
+                if (JSON.stringify(formData[key]) !== JSON.stringify(originalData[key])) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
+            } else {
+                if (formData[key] !== originalData[key]) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
+            }
+        })
+        return patch;
+    }
+
+    const handleCreateAdvice = async () => {
+        if (!checkFormValidity(formData)) {
+            setIsFormValid(false);
+            return;
+        }
+        const adviceData = {
+            title_en: formData.title_en,
+            description_en: formData.description_en,
+            title_ua: formData.title_ua,
+            description_ua: formData.description_ua,
+            created_at: formData.created_at,
+            images: formData.images,
+        };
+        try {
+            const result = await addAdvice(adviceData);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
+            showModal('confirmation',
+                <SuccessDialog
+                    title={successTitle}
+                    message={type === 'create' ? successAddMessage : successChangeMessage}
+                    buttonText={buttonText}
+                />)
+            setHasUnsavedChanges(false);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
+    const handleUpdateAdvice = async () => {
+        const updates = getUpdatedFields(formData, originalData);
+        if (!updates.length) {
+            return;
+        }
+        try {
+            const result = await updateAdvice(formData.id, updates);
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
+            showModal('confirmation',
+                <SuccessDialog
+                    title={successTitle}
+                    message={type === 'create' ? successAddMessage : successChangeMessage}
+                    buttonText={buttonText}
+                />)
+            setHasUnsavedChanges(false);
+        } catch (error) {
+            console.error('Error updating advice:', error);
+        }
+    };
+    if (type === 'create') {
+        await handleCreateAdvice();
+    } else {
+        await handleUpdateAdvice();
+    }
+}

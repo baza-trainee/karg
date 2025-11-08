@@ -1,0 +1,10 @@
+export { default as Phill } from "./Phill.jpg";
+export { default as Snowball } from "./Snowball.jpg";
+export { default as Paspertu } from "./Paspertu.jpg";
+export { default as Oblina } from "./Oblina.jpg";
+export { default as Mirtl } from "./Mirtl.jpg";
+export { default as Lada } from "./Lada.jpg";
+export { default as Kostya } from "./Kostya.jpg";
+export { default as Gosha } from "./Gosha.jpg";
+export { default as Cottage } from "./Cottage.jpg";
+export { default as Bilyash } from "./Bilyash.jpg"; 

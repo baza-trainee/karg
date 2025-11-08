@@ -1,0 +1,99 @@
+@import "/app/[locale]/variables.module.scss";
+
+.uploadArea {
+  width: 100%;
+  border-radius: 8px;
+  display: flex;
+  gap: 10px;
+  background-color: $bg-white;
+}
+
+.placeholderWrapper {
+  width: 131px;
+  height: 123px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $primary;
+  border-radius: 8px;
+}
+
+.placeholderImage {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.imageMin {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 50px;
+}
+
+.imageContainer {
+  display: flex;
+  min-height: 131px;
+  position: relative;
+  align-items: center;
+}
+
+.text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 146px;
+  height: 66px;
+}
+
+.defaultImg,
+.imageContainer img {
+  height: 123px;
+  width: 131px;
+  flex-shrink: 0;
+  align-self: stretch;
+  border-radius: 50px;
+}
+
+.defaultImg div {
+  font-size: 80px;
+}
+
+.row {
+  display: flex;
+  gap: 32px;
+  align-items: center;
+}
+
+.imagesGrid {
+  border-radius: 8px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  justify-items: center;
+  background-color: $bg-white;
+}
+
+.iconsContainer {
+  width: 32px;
+  height: 76px;
+  flex-direction: column;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.create_icon {
+  cursor: pointer;
+  font-size: 32px;
+}
+
+.trash_icon_active,
+.trash_icon_inactive {
+  font-size: 32px;
+  fill: rgba(0, 0, 0, 0.85);
+}
+
+.trash_icon_active {
+  cursor: pointer;
+}

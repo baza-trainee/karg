@@ -1,0 +1,57 @@
+@import "../../../app/[locale]/colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 71px;
+  padding-bottom: 76px;
+
+  .image {
+    z-index: -5;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .container {
+    padding-top: 48px;
+    padding-bottom: 48px;
+  }
+}
+
+.mobImage {
+  display: block;
+  object-fit: cover;
+
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.deskImage {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+  }
+}

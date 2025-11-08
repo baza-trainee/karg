@@ -1,0 +1,19 @@
+@import "../../../../variables.module.scss";
+.container {
+  display: flex;
+  background-color: $bg-lightgray;
+  width: 100%;
+  min-height: 100vh;
+  & .column {
+    width: 83%;
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-lightgray;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .column {
+    min-width: 638px;
+  }
+}

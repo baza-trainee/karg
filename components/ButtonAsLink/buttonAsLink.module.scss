@@ -1,0 +1,211 @@
+@import '../../app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
+
+@mixin button-style() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.4s ease;
+
+  &:hover {
+    background-color: $button-hover;
+  }
+}
+
+@mixin button-help-style() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $button-default;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  color: $text-dark;
+  &:hover {
+    background-color: $button-hover;
+  }
+
+  &:active {
+    background-color: $button-active;
+  }
+}
+
+@mixin button-rescue-style() {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $button-dark-default;
+  padding: 10px 12px;
+  border-radius: 4px;
+  border: none;
+  color: $text-white;
+  transition: background-color 0.4s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
+  }
+}
+
+.header-primary-button-default {
+  display: none;
+}
+
+.primary-dark-W-288 {
+  @include button-style;
+  min-width: 288px;
+  background-color: $button-dark-default;
+  color: white;
+}
+
+.button-help-main-page {
+  @include button-help-style;
+  min-width: 270px;
+  max-width: 288px;
+}
+
+.button-help {
+  @include button-help-style;
+  min-width: 288px;
+}
+
+.backToHome {
+  padding: 11px 12px;
+  min-width: clamp(200px, 23.75vw, 342px);
+  background-color: #ffa33c;
+  border-radius: 8px;
+  color: #141414;
+}
+
+.button-quick-menu {
+  @include button-help-style;
+  min-width: 288px;
+  &:active {
+    color: $text-white;
+    background-color: $button-active;
+  }
+  @media screen and (min-width: 768px) {
+    width: 100%;
+  }
+  @media screen and (min-width: 1200px) {
+    width: 100%;
+  }
+}
+
+.primary-lite-W-288 {
+  @include button-style;
+  min-width: 288px;
+  background-color: $button-default;
+  color: #141414;
+  grid-area: button;
+
+  &:active {
+    background-color: $button-active;
+  }
+}
+
+.rescue {
+  @include button-rescue-style;
+  width: 288px;
+  height: 44px;
+  margin-top: 0;
+}
+
+.button-support-donate-block {
+  @include button-help-style;
+  min-width: 288px;
+}
+
+@media screen and (min-width: 768px) {
+  .button-help-main-page,
+  .button-help,
+  .button-quick-menu {
+    min-width: 288px;
+    padding: 9px 12px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .header-primary-button-default {
+    @include button-style;
+    padding: 11px 12px;
+    min-width: 170px;
+    background-color: $button-default;
+    border-radius: 4px;
+    border: none;
+  }
+
+  .button-help-main-page,
+  .button-help {
+    min-width: 370px;
+    padding: 13px 12px;
+  }
+  .button-quick-menu {
+    display: none;
+  }
+
+  .button-support-donate-block {
+    padding: 15px 12px;
+    min-width: 370px;
+  }
+}
+
+.primary-dark {
+  @include button-style;
+  min-width: 270px;
+  max-width: 288px;
+  min-height: 44px;
+  max-height: 52px;
+  background-color: $button-dark-default;
+}
+
+.support {
+  @extend .primary-dark;
+  padding: 10.5px 12px;
+  min-width: 256px;
+  margin-top: 16px;
+  line-height: 23.5px;
+  color: $text-white;
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
+  }
+}
+@media screen and (min-width: 768px) {
+  .support {
+    min-width: 270px;
+    margin-top: 16px;
+    min-height: 52px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .support {
+    padding: 12px;
+    line-height: 26px;
+  }
+}
+
+@media screen and (min-width: 834px) {
+  .rescue {
+    padding: 9px 12px;
+  }
+}
+@media screen and (min-width: 1200px) {
+  .rescue {
+    width: 370px;
+    height: 56px;
+    padding: 15px 12px;
+    border-radius: 8px;
+  }
+}

@@ -1,0 +1,95 @@
+@import '@/app/[locale]/colors.scss';
+@import '@/app/[locale]/variables.module.scss';
+
+.pageHero {
+  position: relative;
+  width: 100%;
+  margin-top: 52px;
+
+  .pseudoButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $button-default;
+    min-width: 218px;
+    max-width: 536px;
+    border-radius: 4px;
+    position: absolute;
+    top: calc(50%);
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    .buttonText {
+      @include font-styles(700, 20px);
+      padding-top: 9px;
+      padding-bottom: 8px;
+      color: $text-dark;
+    }
+  }
+
+  .image {
+    z-index: -5;
+    object-fit: cover;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .pageHero {
+    margin-top: 96px;
+
+    .pseudoButton {
+      min-width: 372px;
+      border-radius: 8px;
+      top: calc(50%);
+
+      .buttonText {
+        @include font-styles(700, 32px);
+        padding: 12px 0;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .pageHero {
+    margin-top: 110px;
+
+    .pseudoButton {
+      min-width: 536px;
+      top: calc(50%);
+
+      .buttonText {
+        @include font-styles(700, 48px);
+        padding: 32px 0;
+      }
+    }
+  }
+}
+
+.mobImage {
+  display: block;
+  object-fit: cover;
+  max-height: 120px;
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.tablImage {
+  display: none;
+  max-height: 232px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    object-fit: cover;
+  }
+}
+
+.deskImage {
+  display: none;
+  max-height: 400px;
+  @media screen and (min-width: 1200px) {
+    display: block;
+    object-fit: cover;
+  }
+}

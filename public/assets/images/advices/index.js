@@ -1,0 +1,1 @@
+export { default as advices } from "./advices.jpg";

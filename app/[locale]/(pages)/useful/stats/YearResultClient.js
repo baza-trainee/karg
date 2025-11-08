@@ -1,0 +1,44 @@
+'use client';
+
+import { useState, useCallback, useEffect } from 'react';
+import styles from '../../animals/styles/animals.module.scss';
+import PaginatedCardList from '@/components/PaginatedCardList/PaginatedCardList';
+import { useTranslation } from 'react-i18next';
+import SkeletonCards from '@/components/SkeletonCards/SkeletonCards';
+
+const YearResultClient = ({ locale }) => {
+    const { t } = useTranslation('common');
+    const [isLoading, setIsLoading] = useState(true);
+    const [resultsCount, setResultsCount] = useState(0);
+    const [showSkeleton, setShowSkeleton] = useState(true);
+
+    const handleResults = useCallback((count) => {
+        setResultsCount(count);
+    }, []);
+
+    useEffect(() => {
+        if (!isLoading) {
+            const timer = setTimeout(() => setShowSkeleton(false), 500);
+            return () => clearTimeout(timer);
+        } else {
+            setShowSkeleton(true);
+        }
+    }, [isLoading]);
+
+    return (
+        <main className={styles.pageContainer}>
+            {isLoading && <SkeletonCards />}
+            <PaginatedCardList
+                locale={locale}
+                endpoint={'api/yearresult'}
+                multiPageCardButtonVariant={'link'}
+                searchTerm={''}
+                category={''}
+                onResults={handleResults}
+                shortVersion={false}
+                setIsLoading={setIsLoading} />
+        </main>
+    );
+};
+
+export default YearResultClient;

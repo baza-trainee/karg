@@ -1,0 +1,28 @@
+<svg width="10" height="9" viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect width="10" height="9" />
+<g id="Hi-fi Mobile">
+<path d="M-2399 -3529H3943V-3535H-2399V-3529ZM3942 -3530V2768H3948V-3530H3942ZM3943 2767H-2399V2773H3943V2767ZM-2398 2768V-3530H-2404V2768H-2398ZM-2399 2767C-2398.45 2767 -2398 2767.45 -2398 2768H-2404C-2404 2770.76 -2401.76 2773 -2399 2773V2767ZM3942 2768C3942 2767.45 3942.45 2767 3943 2767V2773C3945.76 2773 3948 2770.76 3948 2768H3942ZM3943 -3529C3942.45 -3529 3942 -3529.45 3942 -3530H3948C3948 -3532.76 3945.76 -3535 3943 -3535V-3529ZM-2399 -3535C-2401.76 -3535 -2404 -3532.76 -2404 -3530H-2398C-2398 -3529.45 -2398.45 -3529 -2399 -3529V-3535Z" fill="black"/>
+<g id="Mob_ about us (&#208;&#157;&#208;&#176;&#209;&#136;&#208;&#176; &#208;&#186;&#208;&#190;&#208;&#188;&#208;&#176;&#208;&#189;&#208;&#180;&#208;&#176;)">
+<rect width="320" height="3986" transform="translate(-271 -3304)" />
+<g id="partners block mob">
+<rect width="320" height="426" transform="translate(-271 -391)" />
+</g>
+<g id="scroll" filter="url(#filter0_d_1_2)">
+<circle id="Ellipse 17" cx="5" cy="5" r="20" />
+<path id="Vector (Stroke)" fill-rule="evenodd" clip-rule="evenodd" d="M4.49492 0.840421C4.77387 0.460745 5.22613 0.460745 5.50508 0.840421L9.79079 6.67375C10.0697 7.05343 10.0697 7.66901 9.79079 8.04868C9.51184 8.42836 9.05958 8.42836 8.78064 8.04868L5 2.90282L1.21936 8.04868C0.940416 8.42836 0.488155 8.42836 0.209209 8.04868C-0.0697365 7.66901 -0.0697365 7.05343 0.209209 6.67375L4.49492 0.840421Z" fill="#3A3345"/>
+</g>
+</g>
+</g>
+<defs>
+<filter id="filter0_d_1_2" x="-19" y="-17" width="52" height="52" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+<feOffset dx="2" dy="4"/>
+<feGaussianBlur stdDeviation="3"/>
+<feComposite in2="hardAlpha" operator="out"/>
+<feColorMatrix type="matrix" values="0 0 0 0 0.095 0 0 0 0 0.095 0 0 0 0 0.095 0 0 0 0.1 0"/>
+<feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_1_2"/>
+<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_1_2" result="shape"/>
+</filter>
+</defs>
+</svg>

@@ -1,0 +1,12 @@
+@import "../../../../../../colors.scss";
+
+.header {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .title {
+    color: $button-default;
+    text-align: center;
+  }

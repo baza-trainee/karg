@@ -1,0 +1,80 @@
+name: CICD
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - opened
+      - synchronize
+      - closed
+
+jobs:
+  build:
+    if: github.event_name == 'workflow_dispatch' || github.event.action == 'opened' || github.event.action == 'synchronize'
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ github.event.pull_request.base.ref == 'main' && 'stg' || 'dev' }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.x'
+          cache: 'npm'
+          cache-dependency-path: 'package-lock.json'
+
+      - name: Set URL
+        run: |
+          echo '${{ toJson(github) }}' | jq .
+          env
+          echo "NEXT_PUBLIC_API_BASE_URL=https://${DEPLOY_HOST}.karg.kyiv.ua/" > .env
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build code
+        run: npm run build --if-present
+
+      - name: Setup QEMU
+        uses: docker/setup-qemu-action@v3
+
+      - name: Setup Docker Buildx
+        uses: docker/setup-buildx-action@v3
+        with:
+          driver: docker-container
+          install: true
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.KARG_DOCKERHUB_USERNAME }}
+          password: ${{ secrets.KARG_DOCKERHUB_TOKEN }}
+
+      - name: Build and push Docker image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: ./Dockerfile
+          platforms: linux/arm64
+          push: true
+          build-args: FORCE_COLOR=1
+          tags: |
+            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/frontend:latest
+            ${{ secrets.KARG_DOCKERHUB_USERNAME }}/frontend:${{ github.sha }}
+
+
+  deploy:
+    if: github.event.pull_request.merged == true
+    runs-on: ubuntu-latest
+    env:
+      DEPLOY_HOST: ${{ github.event.pull_request.base.ref == 'main' && 'stg' || 'dev' }}
+    steps:
+      - name: Deploy
+        uses: appleboy/ssh-action@v1.2.0
+        with:
+          host: ${{ secrets.KARG_HOST }}
+          username: github
+          key: ${{ secrets.KARG_SSH_PRIVATE_KEY }}
+          script: ${{ env.DEPLOY_HOST }}.karg.kyiv.ua

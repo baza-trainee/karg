@@ -1,0 +1,165 @@
+@import '../../../colors.scss';
+
+.modalContentContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  overflow: auto;
+  width: 100%;
+  position: fixed;
+  left: 0px;
+  top: 20px;
+  z-index: 3000;
+  overscroll-behavior-y: none;
+  border-radius: 8px;
+
+  @media screen and (min-width: 768px) {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    width: 100vw;
+    height: 95dvh;
+    position: fixed;
+    left: 0px;
+    top: 20px;
+    z-index: 3000;
+    overscroll-behavior-y: none;
+  }
+}
+
+.modalBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 999;
+}
+
+.adoptionModalContainer {
+  position: relative;
+  width: 520px;
+  height: 450px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 3000;
+  flex-direction: column;
+  padding: 8px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  place-self: center;
+
+  .adoptionModalHeading {
+    color: $button-default;
+  }
+
+  .adoptionModalForm {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 8px;
+
+    .adoptionModalInput {
+      padding: 12px 8px 13px 8px;
+      border: 1px solid #141414;
+      border-radius: 8px;
+    }
+
+    .adoptionModalText {
+      text-align: center;
+    }
+
+    .adoptionModalText > span {
+      color: $button-default;
+    }
+
+    .adoptionModalErrorText {
+      color: red;
+    }
+  }
+
+  .adoptionModalButtons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  @media screen and (min-width: 768px) {
+    .adoptionModalContainer {
+      display: flex;
+      width: 520px;
+      padding: 24px;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .adoptionModalButtons {
+      display: flex;
+      gap: 16px;
+      flex-direction: row-reverse;
+      align-self: stretch;
+      cursor: pointer;
+    }
+  }
+}
+
+.actionButtonBackground {
+  display: flex;
+
+  width: 100%;
+  padding: 11px 12px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid $button-dark-default;
+  background-color: $button-dark-default;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.5s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $button-dark-hover;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 9px 12px;
+    cursor: pointer;
+  }
+}
+
+.actionButtonTransparent {
+  display: flex;
+  // width: 270px;
+  width: 100%;
+  padding: 11px 12px;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid $button-dark-default;
+  transition: background-color, color 0.5s ease-in-out;
+
+  &:hover,
+  &:focus {
+    background-color: $button-dark-hover;
+    color: #fff;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 9px 12px;
+    cursor: pointer;
+  }
+}

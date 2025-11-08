@@ -1,0 +1,21 @@
+{
+    "cardButtonText": "Read Details",
+    "cardLinkText": "Read more",
+    "adoptionModalFormText": "Name field is empty",
+    "cardAltText": "Pet photo",
+    "rescueHistoryText": "Rescue history",
+    "actionButtonTransparentText": "Support",
+    "actionButtonBackgroundText": "Adopt",
+    "adoptionModalHeadingText": "Adoption application",
+    "adoptionModalFormLabelText": "Name",
+    "adoptionModalFormPlaceholderText": "Enter your name",
+    "adoptionModalFormPhoneText": "Phone number",
+    "adoptionModalFormPhonePlaceholderText": "Enter a valid phone number",
+    "adoptionModalText_text": "The animal being adopted.",
+    "adoptionModalButtonsText": "Submit",
+    "adoptionModalButtonsCancelText": "Cancel",
+    "infoModalSuccess": "Your application has been successfully submitted. Please wait, you will be contacted to confirm the details",
+    "infoModalError": "Sorry, your application was not submitted. Please try again later",
+    "returnToPortalButton": "Return to portal",
+    "animalDesc": "Rescue history:"
+}

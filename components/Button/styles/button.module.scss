@@ -1,0 +1,203 @@
+@import "./../../../app/[locale]/colors.scss";
+
+.btn {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: $line-height;
+
+  color: $text-dark;
+  background-color: $button-default;
+  border-color: transparent;
+
+  &Support {
+    border-radius: 4px;
+    padding: 12px;
+    width: 288px;
+    height: 44px;
+
+    @media screen and (min-width: 1200px) {
+      border-radius: 8px;
+      width: 170px;
+      height: 48px;
+    }
+  }
+}
+
+.seeAllbtn {
+  @extend .btn;
+  background-color: $button-dark-default;
+  color: white;
+  border-radius: 4px;
+  padding: 10px 12px;
+  min-width: 270px;
+
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+
+  &:active {
+    background-color: $button-dark-active;
+  }
+}
+
+.passwordBtn {
+  @extend .btn;
+  font-size: 16px;
+  width: 216px;
+  padding: 13px 12px;
+  border-radius: 4px;
+  &:hover {
+    background-color: $button-hover;
+  }
+
+  &:active {
+    background-color: $button-active;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .seeAllbtn {
+    min-width: 288px;
+    font-size: 20px;
+    padding: 9px 12px;
+  }
+
+  @media screen and (min-width: 1200px) {
+    .seeAllbtn {
+      min-width: 370px;
+      padding: 15px 12px;
+    }
+  }
+}
+
+.adminFormButtonReject,
+.adminFormButtonSubmit {
+  width: 100%;
+  padding: 11px 12px;
+  border-radius: 8px;
+}
+.adminFormButtonSubmit {
+  background: $button-default;
+  &:hover {
+    background-color: $button-hover;
+  }
+
+  &:active {
+    background-color: $button-active;
+  }
+
+  &:disabled {
+    background-color: $button-disabled;
+  }
+}
+.adminFormButtonReject {
+  border: 1px solid $button-dark-default;
+  background: none;
+}
+
+.buttonAddNewItem {
+  cursor: pointer;
+  min-width: 256px;
+  height: 48px;
+  padding: 11px 12px 11px 12px;
+  background-color: $button-dark-default;
+  border-radius: 8px;
+  color: $text-white;
+
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+
+  &:active {
+    background-color: $button-dark-active;
+  }
+  &:disabled {
+    background-color: $button-disabled;
+  }
+}
+
+@media screen and (width: 1440px) {
+  .buttonAddNewItem {
+    font-size: 20px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .buttonAddNewItem {
+    font-size: clamp(1.25rem, calc(1rem + 0.3vw), 1.5rem);
+    align-items: end;
+  }
+}
+
+.adminMyAccountFormBtnSubmit,
+.adminMyAccountFormBtnReject {
+  cursor: pointer;
+  width: 38.34%;
+  height: 48px;
+  padding: 11px 12px 11px 12px;
+  border-radius: 8px;
+}
+.adminMyAccountFormBtnSubmit {
+  color: $text-white;
+  background-color: $button-dark-default;
+  &:hover {
+    background-color: $button-dark-hover;
+  }
+
+  &:active {
+    background-color: $button-dark-active;
+  }
+
+  &:disabled {
+    background-color: #BEBEBE;
+  }
+}
+.adminMyAccountFormBtnReject {
+  border: 1px solid $button-dark-default;
+  background: none;
+}
+
+.confirmationCancelBtn,
+.confirmationRevertBtn,
+.confirmationDeleteBtn {
+  width: 270px;
+  height: 48px;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid $button-dark-default;
+}
+
+.confirmationCancelBtn {
+  background-color: $bg-white;
+}
+
+.confirmationRevertBtn {
+  background-color: $button-default;
+  border: none;
+  &:hover {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-active;
+  }
+}
+
+.confirmationDeleteBtn {
+  color: $bg-white;
+  background-color: $text-error;
+  border: none;
+}
+
+.congratsCloseBtn {
+  width: 564px;
+  min-height: 48px;
+  background-color: $bg-white;
+  padding: 11px 12px;
+  border-radius: 8px;
+  border: 1px solid $button-dark-default;
+}

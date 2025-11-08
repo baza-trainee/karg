@@ -1,0 +1,320 @@
+@import './colors.scss';
+
+// Mixins
+@mixin font-styles($font-weight, $font-size, $line-height: 130%) {
+  font-weight: $font-weight;
+  font-size: $font-size;
+  line-height: $line-height;
+  font-display: swap;
+}
+
+// *_component - style used only in components
+// *_page - style used only in pages
+// *_shared - style used in both components and pages
+
+// Typography for Mobile
+
+.quickAccessMenu_button_component,
+.advicesButton_page {
+  @include font-styles(800, 16px);
+}
+
+.Subtitle1 {
+  @include font-styles(700, 20px);
+}
+
+.subtitle1,
+.quickSubtitle1,
+.rescueSubtitle1 {
+  @include font-styles(700, 20px);
+}
+
+.supportSubtitle1 {
+  @include font-styles(700, 19px);
+}
+
+.achievSubtitle2 {
+  @include font-styles(700, 20px);
+}
+
+.quickAccessMenu_subtitle_component,
+.quickSubtitle1 {
+  @include font-styles(700, 20px);
+}
+.Heading3,
+.mobileHeading3 {
+  @include font-styles(700, 19px);
+}
+
+.button1 {
+  @include font-styles(700, 18px);
+}
+
+.subtitle2,
+.button2,
+.rescueButton1,
+.supportSubtitle2,
+.supportButton1,
+.Subtitle2,
+.subtitle3,
+.Subtitle3,
+.w700_f20_f36_f44_subtitle_shared,
+.mobileSubtitle1 {
+  @include font-styles(700, 19px);
+}
+
+.text1,
+.rescueText1,
+.mobileSubtitle2 {
+  @include font-styles(500, 18px);
+}
+
+.text2,
+.mobileText2 {
+  @include font-styles(400, 16px);
+}
+
+.Text3 {
+  @include font-styles(400, 16px);
+}
+
+.text4 {
+  @include font-styles(300, 16px);
+}
+
+.supportText4 {
+  @include font-styles(400, 16px);
+}
+
+.text3,
+.quickText3,
+.achievText3 {
+  @include font-styles(400, 14px);
+}
+
+.font16w300lh20 {
+  @include font-styles(300, 16px, 20.8px);
+}
+
+.text_4 {
+  @include font-styles(300, 16px);
+}
+
+.body {
+  @include font-styles(300, 16px);
+  letter-spacing: 0%;
+}
+
+.mainSubtitle_shared,
+.heading3 {
+  @include font-styles(700, 18px);
+}
+
+// admin panel fonts
+.font32w700 {
+  @include font-styles(700, 32px);
+}
+
+.font24w700 {
+  @include font-styles(700, 24px);
+}
+
+.font24w400 {
+  @include font-styles(400, 24px);
+}
+
+.font20w400 {
+  @include font-styles(400, 20px);
+}
+
+.font20w500 {
+  @include font-styles(500, 20px);
+}
+
+.font18w500 {
+  @include font-styles(500, 18px);
+}
+
+.font16w300 {
+  @include font-styles(300, 16px);
+}
+
+.font14w400 {
+  @include font-styles(400, 14px);
+}
+
+.font20w700 {
+  @include font-styles(700, 20px);
+}
+
+// Typography for tablet
+@media (min-width: 768px) {
+  .heading {
+    @include font-styles(800, 46px, 59.8px);
+    font-family: $font-family-heading;
+  }
+
+  .h2,
+  .w700_f20_f36_f44_subtitle_shared,
+  .achievSubtitle2,
+  .Subtitle1 {
+    @include font-styles(700, 32px);
+  }
+
+  .supportSubtitle1 {
+    @include font-styles(700, 28px);
+  }
+
+  .Subtitle2,
+  .subtitle3,
+  .Heading3 {
+    @include font-styles(700, 28px);
+  }
+
+  .supportSubtitle2 {
+    //BUG-M-T-110.11/1
+    @include font-styles(700, 26px);
+  }
+
+  .supportSubtitle2 {
+    //BUG-M-T-110.11/1
+    @include font-styles(700, 26px);
+  }
+
+  .h3,
+  .mainSubtitle_shared,
+  .subtitle2 {
+    @include font-styles(700, 24px);
+  }
+
+  .btn1,
+  .button1,
+  .quickAccessMenu_subtitle_component,
+  .rescueButton1 {
+    @include font-styles(700, 20px);
+  }
+
+  .rescueText1,
+  .text1,
+  .text3 {
+    @include font-styles(500, 20px);
+  }
+
+  .supportText4,
+  .body,
+  .p {
+    @include font-styles(400, 20px);
+    letter-spacing: 0%;
+  }
+
+  .advicesButton_page {
+    @include font-styles(800, 18px);
+  }
+  .Subtitle3 {
+    @include font-styles(700, 18px);
+  }
+
+  .Text3 {
+    @include font-styles(400, 18px);
+  }
+  .achievText3 {
+    @include font-styles(400, 16px);
+  }
+  .btn2,
+  .quickAccessMenu_button_component {
+    @include font-styles(800, 16px);
+  }
+
+  .button2 {
+    @include font-styles(800, 18px);
+  }
+
+  .quickText3 {
+    @include font-styles(400, 16px);
+  }
+
+  .text_4 {
+    @include font-styles(300, 20px);
+  }
+
+  .heading3 {
+    @include font-styles(700, 24px);
+  }
+}
+
+// Typography for Desktop
+@media (min-width: 1200px) {
+  .heading {
+    @include font-styles(800, 59px, 72.8px);
+    font-family: $font-family-heading;
+  }
+
+  .h2,
+  .achievSubtitle2,
+  .Heading2 {
+    @include font-styles(700, 48px);
+  }
+
+  .w700_f20_f36_f44_subtitle_shared,
+  .Subtitle2,
+  .Heading3 {
+    @include font-styles(700, 44px);
+  }
+
+  .h3,
+  .mainSubtitle_shared,
+  .subtitle2,
+  .btn1,
+  .supportSubtitle2,
+  .text1,
+  .subtitle3 {
+    @include font-styles(700, 28px);
+  }
+
+  .button1 {
+    @include font-styles(700, 20px);
+  }
+
+  .supportText4,
+  .body,
+  .p,
+  .text_4 {
+    @include font-styles(400, 24px);
+    letter-spacing: 0%;
+  }
+
+  .rescueText1,
+  .text3 {
+    @include font-styles(500, 24px);
+  }
+
+  .quickAccessMenu_subtitle_component,
+  .Subtitle3 {
+    @include font-styles(700, 20px);
+  }
+
+  .achievText3,
+  .Text3 {
+    @include font-styles(400, 20px);
+  }
+
+  .quickText3 {
+    @include font-styles(300, 16px);
+  }
+
+  .rescueButton1,
+  .quickSubtitle1 {
+    @include font-styles(700, 20px);
+  }
+
+  .btn2,
+  .button2,
+  .quickAccessMenu_button_component,
+  .advicesButton_page {
+    @include font-styles(800, 18px);
+  }
+
+  .heading3 {
+    @include font-styles(700, 30px);
+  }
+}

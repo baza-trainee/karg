@@ -1,0 +1,34 @@
+.swiper {
+  width: 100%;
+  height: 100%;
+
+  .swiperSlide {
+    position: relative;
+    width: 100%;
+    box-sizing: border-box;
+  }
+}
+
+.imgMissionMob {
+  @media screen and (min-width: 768px) {
+    display: none;
+  }
+}
+
+.imgMissionTab {
+  display: none;
+
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    display: block;
+    display: flex;
+    justify-content: center;
+  }
+}
+
+.imgMissionDesk {
+  display: none;
+
+  @media screen and (min-width: 1200px) {
+    display: block;
+  }
+}

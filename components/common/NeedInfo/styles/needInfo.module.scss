@@ -1,0 +1,150 @@
+@import "@/app/[locale]/colors.scss";
+@import "@/app/[locale]/variables.module.scss";
+
+@mixin flexContainer() {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.desk {
+  background-color: $bg-purple;
+  padding: 48px 9px;
+
+  .text {
+    width: 81.46%;
+
+    .title {
+      @include font-styles(700, 18px);
+    }
+
+    .subtitle {
+      @include font-styles(400, 16px);
+    }
+  }
+}
+
+.mainPageDesk {
+  background-color: $bg-white-transparent;
+  width: 90vw;
+  padding: 43px 9px;
+  border-radius: 4px;
+
+  .text {
+    width: 91.11%;
+
+    .title {
+      width: 72.36%;
+      @include font-styles(700, 19px);
+    }
+
+    .subtitle {
+      @include font-styles(400, 16px);
+      letter-spacing: 0.8px;
+    }
+  }
+}
+
+.desk,
+.mainPageDesk {
+  @include flexContainer;
+  margin: 0 auto;
+  gap: 16px;
+
+  .text {
+    @include flexContainer;
+    text-align: center;
+    gap: 16px;
+    line-height: 130%;
+    color: $text-dark;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .desk {
+    padding: 32px 37px;
+    gap: 20px;
+
+    .text {
+      width: 90.1%;
+      gap: 20px;
+
+      .title {
+        @include font-styles(700, 26px);
+        width: 100%;
+      }
+
+      .subtitle {
+        @include font-styles(400, 18px);
+        width: 100%;
+      }
+    }
+  }
+
+  .mainPageDesk {
+    width: 74.94vw;
+    padding: 32px 37px;
+    gap: 16px;
+    border-radius: 8px;
+
+    .text {
+      width: 100%;
+      gap: 16px;
+
+      .title {
+        @include font-styles(700, 28px);
+        width: 94.38%;
+      }
+
+      .subtitle {
+        @include font-styles(400, 20px);
+        letter-spacing: 1px;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .desk {
+    padding: 57px 134px;
+    gap: 32px;
+
+    .text {
+      width: 70.82%;
+      gap: 32px;
+
+      .title {
+        @include font-styles(700, 44px);
+        width: 62.7%;
+      }
+
+      .subtitle {
+        @include font-styles(400, 24px);
+        width: 100%;
+        letter-spacing: 1.2px;
+      }
+    }
+  }
+
+  .mainPageDesk {
+    padding: 48px 134px;
+    width: 76.39vw;
+    gap: 32px;
+
+    .text {
+      width: 100%;
+      gap: 32px;
+
+      .title {
+        @include font-styles(700, 44px);
+        width: 62.5%;
+      }
+
+      .subtitle {
+        @include font-styles(400, 24px);
+        letter-spacing: 1.2px;
+      }
+    }
+  }
+}

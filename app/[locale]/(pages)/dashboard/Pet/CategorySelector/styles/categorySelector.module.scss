@@ -1,0 +1,95 @@
+@import "../../../../../colors.scss";
+
+.selectorBlock {
+  display: flex;
+  justify-content: flex-end;
+  gap: 8px;
+  width: 15.39%;
+  align-items: center;
+  position: relative;
+
+  .iconContainer {
+    display: flex;
+    justify-content: center;
+    width: 24px;
+  }
+
+  .icon {
+    width: 13px;
+    height: auto;
+    cursor: pointer;
+  }
+}
+
+.selectedCategoryBlock {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.dropdownContent {
+  position: absolute;
+  top: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  z-index: 1;
+  padding: 7px 9px;
+  box-sizing: border-box;
+  border-radius: 8px;
+  border: 1px solid $button-active;
+  background: $bg-white;
+  font-weight: 500;
+}
+
+.defaultCategory {
+  cursor: pointer;
+  color: $button-default;
+}
+
+.category {
+  text-align: left;
+  cursor: pointer;
+}
+
+.activeCategory {
+  background-color: $button-loading;
+}
+
+@media screen and (max-width: 1439px) {
+  .defaultCategory {
+    font-size: clamp(0.813rem, calc(0.813vw + 0.7vh), 1.25rem);
+  }
+
+  .category {
+    font-size: clamp(0.813rem, calc(0.875vw + 0.5vh), 1.125rem);
+  }
+}
+
+@media screen and (width: 1440px) {
+  .selectorBlock {
+    width: 169px;
+  }
+
+  .defaultCategory {
+    font-size: 20px;
+  }
+
+  .category {
+    font-size: 18px;
+  }
+
+  .dropdownContent {
+    width: 129px;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .defaultCategory {
+    font-size: clamp(1.25rem, calc(1.25vw + 0.4vh), 1.75rem);
+  }
+
+  .category {
+    font-size: clamp(1.125rem, calc(1.125vw + 0.5vh), 1.75rem);
+  }
+}

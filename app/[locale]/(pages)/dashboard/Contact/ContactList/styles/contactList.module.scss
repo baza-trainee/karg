@@ -1,0 +1,156 @@
+@import "../../../../../variables.module.scss";
+@import "../../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 3.33% 0 3.33%;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  background-color: $bg-lightgray;
+  gap: 8px;
+  color: $text-dark;
+  margin-top: 15px;
+
+  .contactLine {
+    display: flex;
+    flex-direction: row;
+    gap: 2.25%;
+    padding: 1.46%;
+    overflow: hidden;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 8px;
+    width: 100%;
+  }
+
+  .contactIconContainer {
+    width: 3.75%;
+    height: 40px;
+
+    .contactIcon {
+      height: 40px;
+      color: $button-default;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .contactIcon svg {
+      transform: scale(2.3);
+      transform-origin: center;
+      display: block;
+    }
+  }
+
+  .category {
+    width: 32.83%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .value {
+    width: 49.53%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+
+  .iconsContainer {
+    width: 7.13%;
+    display: flex;
+    gap: 15.79%;
+    text-align: center;
+    flex-shrink: 0;
+  }
+
+  .create_icon {
+    cursor: pointer;
+  }
+
+  .trash_icon {
+    cursor: pointer;
+    fill: rgba(0, 0, 0, 0.85);
+  }
+
+  .icon_disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    filter: grayscale(50%);
+    pointer-events: none;
+  }
+}
+
+@media screen and (max-width: 1439px) {
+  .contactLine {
+    width: clamp(632px, 100%, 100%);
+  }
+
+  .category {
+    font-size: clamp(0.875rem, calc(0.875vw + 0.9vh), 1.5rem);
+  }
+
+  .value {
+    font-size: clamp(0.813rem, calc(0.75vw + 0.8vh), 1.25rem);
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: clamp(1rem, calc(1rem + 0.7vh), 2rem);
+  }
+}
+
+@media screen and (width: 1440px) {
+  .container {
+    padding: 0 48px 0 48px;
+    gap: 8px;
+    width: 1194px;
+
+    .contactLine {
+      gap: 24px;
+      width: 1098px;
+      padding: 16px;
+    }
+
+    .category {
+      width: 350px;
+      font-size: 24px;
+    }
+
+    .value {
+      width: 528px;
+      font-size: 20px;
+    }
+
+    .contactIconContainer {
+      width: 40px;
+    }
+
+    .iconsContainer {
+      justify-content: flex-end;
+      width: 76px;
+    }
+
+    .create_icon,
+    .trash_icon {
+      font-size: 32px;
+    }
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .category {
+    font-size: clamp(1.2rem, calc(1.3vw + 0.5vh), 2.2rem);
+  }
+
+  .value {
+    font-size: clamp(1.25rem, calc(1.25vw + 0.4vh), 1.75rem);
+  }
+
+  .create_icon,
+  .trash_icon {
+    font-size: clamp(2rem, calc(1.5vw + 0.6vh), 2.5rem);
+  }
+}

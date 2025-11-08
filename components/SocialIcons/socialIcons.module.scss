@@ -1,0 +1,45 @@
+.iconsContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  grid-area: socialIcons;
+
+  width: 100%;
+  justify-content: center;
+
+  @media screen and (min-width: 768px) {
+    justify-content: center;
+  }
+}
+
+.iconsContacts {
+  margin: 10px;
+  font-size: 44px;
+  @media screen and (min-width: 768px) and (max-width: 1199px) {
+    margin: 5px;
+    font-size: 30px;
+  }
+}
+
+.socIcons_toast {
+  position: fixed;
+  top: 100px;
+  right: -300px;
+  transition: right 0.5s ease-in-out;
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+}
+
+.socIcons_toast_show {
+  right: 30px;
+}
+
+.socIcons_toast_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

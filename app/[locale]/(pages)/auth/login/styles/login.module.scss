@@ -1,0 +1,171 @@
+@import "../../../../colors.scss";
+
+.container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+  padding-top: 14.58vh;
+  align-items: center;
+  gap: 32px;
+  background-color: $button-dark-default;
+
+  @media screen and (min-width: 1440px) {
+    padding: 140px 458px 0;
+  }
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 524px;
+  height: fit-content;
+  background-color: $bg-white;
+  border-radius: 12px;
+  box-shadow: 2px 4px 10px 0px rgba(1, 1, 1, 0.2);
+  padding: 32px;
+  gap: 12px;
+  @media screen and (min-width: 1440px) {
+    height: fit-content;
+  }
+
+  label {
+    padding: 0;
+    width: 100%;
+    max-height: 78px;
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 26px;
+    color: $text-dark;
+  }
+
+  input {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 4px;
+    width: 460px;
+    min-height: 48px;
+    padding: 8px 16px 8px 8px;
+    align-items: center;
+    gap: 8px;
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 23.4px;
+    border-radius: 8px;
+    &::placeholder {
+      color: $text-gray;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $button-active;
+      border-radius: 8px;
+    }
+  }
+
+  .passwordInput {
+    padding-right: 50px;
+  }
+
+  .errorBorder {
+    outline: none;
+    border: 1px solid $text-error;
+  }
+
+  .ordinaryBorder {
+    outline: none;
+    border: 1px solid $text-dark;
+  }
+
+  .error {
+    color: $text-error;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18.2px;
+    min-height: 26px;
+  }
+
+  .authError {
+    @extend .error;
+    text-align: center;
+  }
+
+  .success {
+    @extend .error;
+    color: $button-default;
+  }
+
+  .email,
+  .password {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .password {
+    position: relative;
+  }
+}
+
+.icon {
+  position: absolute;
+  font-size: 24px;
+  right: 18px;
+  top: 40px;
+}
+
+.logo {
+  font-size: 158px;
+}
+
+.buttonResetContainer {
+  padding: 8px 2px 8px 308px;
+  height: 40px;
+  border: none;
+  background-color: transparent;
+  font-size: 18px;
+  font-weight: 800;
+  color: $text-dark;
+  &:focus {
+    outline: none;
+  }
+
+  .buttonReset {
+    width: 145px;
+  }
+}
+
+.buttonLogin {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  background-color: $button-default;
+  color: $text-dark;
+  font-size: 20px;
+  font-weight: 700;
+  padding: 12px;
+  height: 48px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  &:hover {
+    background-color: $button-hover;
+  }
+  &:active {
+    background-color: $button-dark-active;
+    color: $text-white;
+  }
+}
+
+.buttonLoginDisabled {
+  @extend .buttonLogin;
+  background-color: $button-dark-disabled;
+  color: $text-gray;
+  &:hover {
+    background-color: $button-dark-disabled;
+  }
+  &:active {
+    background-color: $button-dark-disabled;
+    color: $text-gray;
+  }
+}

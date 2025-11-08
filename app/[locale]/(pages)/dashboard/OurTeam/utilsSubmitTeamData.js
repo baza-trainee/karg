@@ -1,0 +1,132 @@
+import { addRescuer, updateRescuerInfo } from "./api";
+import { checkFormValidity } from './TeamForm/checkFormValidity';
+import SuccessDialog from "../SuccessDialog/SuccessDialog";
+import handleForbiddenAccess from "../handleForbiddenAccess";
+
+export const submitTeamMemberData = async (type, formData, originalData, showModal, hideModal, setHasUnsavedChanges, successDialogActions, accountId, logoutDependencies) => {
+    const { successTitle, successAddMessage, successChangeMessage, buttonText } = successDialogActions;
+
+    const getUpdatedFields = (formData, originalData) => {
+        const patch = [];
+        Object.keys(formData).forEach(key => {
+            if (Array.isArray(formData[key])) {
+                if (JSON.stringify(formData[key]) !== JSON.stringify(originalData[key])) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
+            } else {
+                if (formData[key] !== originalData[key]) {
+                    patch.push({
+                        operationType: 1,
+                        path: `/${key}`,
+                        op: "replace",
+                        value: formData[key]
+                    });
+                }
+            }
+        })
+        return patch;
+    }
+
+    const handleCreateTeamMember = async () => {
+        if (!checkFormValidity(formData)) {
+            setIsFormValid(false);
+            return;
+        }
+        const rescuerData = {
+            fullName: formData.fullName,
+            email: formData.email,
+            role: formData.role,
+            phoneNumber: formData.phoneNumber,
+            images: formData.images,
+        };
+        try {
+            const result = await addRescuer(rescuerData);
+            if (result?.status === 403) { 
+                handleForbiddenAccess(result, showModal, logoutDependencies);
+                return;
+            }
+            if (result.emailConflict) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.emailConflict}
+                        buttonText={buttonText}
+                    />)
+                return;
+            }
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
+            showModal('confirmation',
+                <SuccessDialog
+                    title={successTitle}
+                    message={type === 'create' ? successAddMessage : successChangeMessage}
+                    buttonText={buttonText}
+                />)
+            setHasUnsavedChanges(false);
+        } catch (error) {
+            console.error('Error submitting form:', error);
+        }
+    };
+
+    const handleUpdateRescuer = async () => {
+        const updates = getUpdatedFields(formData, originalData);
+        if (!updates.length) {
+            hideModal('generic');
+            return;
+        }
+        try {
+            const result = await updateRescuerInfo(formData.id, updates);
+            if (result.token && Number(formData.id) === Number(accountId)) {
+                localStorage.setItem('auth-token', result.token);
+            }
+            if (result?.status === 403) {
+                handleForbiddenAccess(result, showModal, logoutDependencies);
+                return;
+            }
+            if (result.emailConflict) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.emailConflict}
+                        buttonText={buttonText}
+                    />)
+                return;
+            }
+            if (result.error) {
+                showModal('confirmation',
+                    <SuccessDialog
+                        title={"Помилка"}
+                        message={result.error}
+                        buttonText={buttonText}
+                    />);
+                return;
+            }
+            showModal('confirmation',
+                <SuccessDialog
+                    title={successTitle}
+                    message={type === 'create' ? successAddMessage : successChangeMessage}
+                    buttonText={buttonText}
+                />)
+            setHasUnsavedChanges(false);
+        } catch (error) {
+            console.error('Error updating rescuer:', error);
+        }
+    };
+    if (type === 'create') {
+        await handleCreateTeamMember();
+    } else {
+        await handleUpdateRescuer();
+    }
+}
